@@ -1,0 +1,60 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/[Tt]errainDataCache/
+/[Ss]creenShots/
+/ServerData/
+/[Cc]aches/
+
+# IDE
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# Build output
+*.apk
+*.aab
+*.unitypackage
+crashlytics-build.properties
+
+# OS
+.DS_Store
+Thumbs.db
+
+# C# / Visual Studio
+# 注意：*.csproj 会误伤手写工程 game/AgentCore/AgentCore.csproj（独立 dotnet build 用），
+# 该例外在 game/.gitignore 中以 !AgentCore.csproj 恢复。
+*.csproj
+*.sln
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+sysinfo.txt
+
+# Node / TypeScript（server & web）
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local config
+*.local

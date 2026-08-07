@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: Whalebone API
+  version: 0.1.0
+  description: >
+    游戏客户端与官网共用的服务端接口契约。
+    版本规则：契约先行，改动须三端（game/server/web）同步。
+    标注 [待定] 的字段等待需求文档与 token 商业模型定稿。
+
+servers:
+  - url: https://api.whalebone.local/api/v1
+
+paths:
+  /health:
+    get:
+      summary: 存活探针（部署/容器健康检查用）
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, enum: [ok] }
+                  version: { type: string }
+
+  /auth/steam:
+    post:
+      summary: Steam 关联登录（主账号）
+      description: 客户端用 Steam 鉴权票据换取服务端会话；[待定] 回调细节需 Steamworks 账号就绪
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auth_ticket: { type: string }
+      responses:
+        '200':
+          description: 会话令牌
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token: { type: string }
+                  refresh_token: { type: string }
+
+  /auth/email:
+    post:
+      summary: 邮箱注册/登录（官网用户）
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        '200':
+          description: 会话令牌
+
+  /agent/chat:
+    post:
+      summary: 游戏内对话唯一入口
+      description: >
+        客户端携带 JWT 调用；服务端依次执行：鉴权 → 配额校验 → LLM 网关路由
+        （本地 Ollama 优先 → 云端兜底）→ 计量 → 扣减余额 → 流式返回。
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [crew_id, player_input]
+              properties:
+                crew_id: { type: string, description: 船员实例 ID }
+                player_input: { type: string, minLength: 1 }
+                persona_snapshot: { type: string, description: [待定] 客户端侧 Persona+记忆快照或改为服务端拉取 }
+      responses:
+        '200':
+          description: AgentReply（契约见 agent-reply.schema.json）
+          content:
+            application/json:
+              schema: { $ref: './agent-reply.schema.json' }
+        '402':
+          description: 点数余额不足（可降级本地/模板对话）
+        '429':
+          description: 超过限流（RPM/TPM）
+
+  /wallet:
+    get:
+      summary: 玩家点数余额与用量（用户中心/游戏内展示）
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  points_balance: { type: number, description: 玩家点数余额 }
+                  monthly_usage_tokens: { type: integer, description: 本月已消耗上游 token }
+                  monthly_limit_tokens: { type: integer, description: 本月额度 [待定] }
+
+  /billing/orders:
+    post:
+      summary: 创建购买点数订单（Steam 钱包 / 官网支付）
+      description: '[待定] 定价模型与支付渠道（Steam 钱包 webhook / 微信 / 支付宝）待 token 商业模型定稿'
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plan: { type: string, description: 点数套餐 ID [待定] }
+      responses:
+        '200':
+          description: 支付参数（渠道相关）
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,40 @@
+# ============================================================
+# Unity 项目忽略（game/ 是 Unity 项目根目录）
+# 说明：根仓库 .gitignore 已覆盖通用规则，此处补充 Unity 特有产物。
+# ============================================================
+
+# Unity 生成目录
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/[Tt]errainDataCache/
+/[Ss]creenShots/
+/ServerData/
+/[Cc]aches/
+
+# Unity 生成的 C# 工程文件（Assembly-CSharp.csproj 等由编辑器自动生成，不入库）
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.userprefs
+*.apk
+*.aab
+
+# --- 例外：手写独立工程必须保留 ---
+# AgentCore 是纯 C# 独立库（铁律 4：可独立 dotnet build），其 csproj 必须入库
+!AgentCore.csproj
+
+# AgentCore 独立工程的构建产物（dotnet build 生成，不入库）
+AgentCore/bin/
+AgentCore/obj/
+
+# 素材占位（.gitkeep 由仓库规则保留）
