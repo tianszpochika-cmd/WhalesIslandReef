@@ -37,14 +37,17 @@ namespace Whalebone.EditorTools
 
             public void RunFinished(ITestResultAdaptor result)
             {
-                int passed = result.passCount;
-                int failed = result.failCount;
-                Debug.Log($"[D1Acceptance] ① 测试完成：Passed={passed} Failed={failed} Total={result.testCount}");
+                int passed = result.PassCount;
+                int failed = result.FailCount;
+                int skipped = result.SkippedCount;
+                int inconclusive = result.InconclusiveCount;
+                int total = passed + failed + skipped + inconclusive;
+                Debug.Log($"[D1Acceptance] ① 测试完成：Passed={passed} Failed={failed} Skipped={skipped} Inconclusive={inconclusive} Total={total}");
 
-                if (failed > 0 || result.testCount == 0)
+                if (failed > 0 || total == 0)
                 {
                     Debug.LogError("[D1Acceptance] 测试未全绿，中止后续步骤。请打开 Window>General>Test Runner 查看失败详情。");
-                    EditorUtility.DisplayDialog("D1 验收", $"测试失败 {failed} 个（总 {result.testCount}），已中止美化。\n请先在 Test Runner 查看并修复。", "OK");
+                    EditorUtility.DisplayDialog("D1 验收", $"测试失败 {failed} 个（总 {total}），已中止美化。\n请先在 Test Runner 查看并修复。", "OK");
                     return;
                 }
 
@@ -66,7 +69,7 @@ namespace Whalebone.EditorTools
                 EditorSceneManager.OpenScene("Assets/Scenes/InitialHarbor.unity", OpenSceneMode.Single);
 
                 Debug.Log("[D1Acceptance] ✅ D1 一键验收完成：测试全绿 + 港口美化已应用 + 场景已打开。");
-                EditorUtility.DisplayDialog("D1 验收", "✅ 测试全绿（" + passed + "/" + result.testCount + "）\n港口美化已应用，InitialHarbor 已打开。\n点 Play 查看效果。", "OK");
+                EditorUtility.DisplayDialog("D1 验收", "✅ 测试全绿（" + passed + "/" + total + "）\n港口美化已应用，InitialHarbor 已打开。\n点 Play 查看效果。", "OK");
             }
 
             public void TestStarted(ITestAdaptor test) { }
