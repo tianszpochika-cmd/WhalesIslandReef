@@ -44,22 +44,15 @@ namespace Whalebone.Agent
                 try { raw = await _llm.CompleteAsync(system, playerInput); }
                 catch { break; } // 模型不可用，走模板兜底
 
-                reply = AgentReply.FromJson(raw);
-                if (reply.IsValid) break;
+                if (AgentReplyValidator.TryParseD2(raw, out reply, out _)) break;
                 reply = null;
             }
 
             // 4) 模板兜底：任何模型都失败时保证可玩
             if (reply == null) reply = TemplateFallback.Reply(_agent.Persona, playerInput);
 
-            // 5) 数值裁决（强逻辑层）：好感度变化真实生效
-            _agent.Stats.ApplyAffinityChange(reply.AffinityChange);
-
-            // 6) 写记忆
+            // 5) 只记录对话内容。好感提议由 Crew 关系系统单独裁决并应用一次。
             _agent.Memory.RecordDialogue(playerInput, reply.Speech);
-            if (reply.AffinityChange != 0f)
-                _agent.Memory.RecordEvent("event",
-                    "船长与" + _agent.DisplayName + "交谈，好感变化" + reply.AffinityChange.ToString("+#;-#;0"), 0.6f);
             if (_agent.Memory.ShouldSummarize) _agent.Memory.Summarize(_llm);
 
             return reply;

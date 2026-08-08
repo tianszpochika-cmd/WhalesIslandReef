@@ -1,7 +1,7 @@
 # Whalebone AgentCore —— 纯 Agent 项目骨架
 
 > 游戏暂名《鲸骨航线》。本骨架实现了"强逻辑 × 重交互"的最小闭环，纯 C#、零第三方依赖，
-> 已在本机验证编译通过、6 项自测全部 PASS。
+> 已在本机验证编译通过；旧有核心自测与 D2 对话测试全部 PASS。
 
 ## 1. 骨架里有什么（对应架构分层）
 
@@ -11,13 +11,15 @@
 | `LLMClient.cs` | 推理层 | `ILLMClient` 统一接口；`OllamaClient`（本地，默认优先）；`DeepSeekClient`（云端兜底）；`LLMRouter` 自动降级；`TemplateFallback` 无模型兜底 |
 | `AgentMemory.cs` | Agent 层 | 三层记忆：短期上下文(8 轮) / 会话摘要(10 轮触发) / 长期事件(重要性加权)；`IMemoryStore` 接口（骨架为内存实现，Unity 阶段接 SQLite） |
 | `CrewAgent.cs` | Agent 层 | 船员聚合体：人格 + 数值 + 记忆 |
-| `DialogueSession.cs` | 交互闭环 | 玩家输入 → 组装 prompt → LLM → 结构化校验(可重试) → 数值裁决 → 写记忆 |
+| `DialogueSession.cs` | 交互闭环 | 玩家输入 → 组装 prompt → LLM → D2 结构化校验/降级 → 合法提议 → 写记忆 |
+| `AgentReplyValidator.cs` | 契约边界 | 校验必填字段、情绪枚举、好感整数范围与 D2 `action=none` |
+| `MockLLMClient.cs` | 离线兜底 | 无 Ollama/网络时返回确定性合法回复 |
 | `MutinyMonitor.cs` | 强逻辑层 | 数值边界示例：叛变预警 + 分支锁（低好感锁"求情"，LLM 无权限绕过） |
 | `Bootstrap.cs` | 本地演示 | CLI 交互入口（仅验证用，Unity 内由 UI 替代） |
 | `AgentCoreTests.cs` | 测试 | 无网络自测：JSON 解析 / 叛变风险 / 好感夹取 / Prompt 组装 / 分支锁 |
 
 **核心原则：Agent 只做"嘴和脑的提案者"，`CrewStats` 等强逻辑层做"手和法的裁决者"。**
-LLM 输出必须过 JSON schema 解析（`AgentReply.FromJson`）才能影响数值——幻觉被锁死在文案层。
+LLM 输出必须先过 `AgentReplyValidator`；`DialogueSession` 只返回合法的好感提议，关系系统才拥有最终数值裁决权——幻觉被锁死在文案层。
 
 ## 2. 本地运行（验证闭环）
 
@@ -37,7 +39,7 @@ dotnet run -- --deepseek=<api_key>      # 本地优先，DeepSeek 云端兜底
 3. 对话 UI（输入框/气泡/打字机）接到 `Speak()` 的返回值 `AgentReply`（含 Speech/Emotion/Action）；
 4. `Action` 字段对接游戏侧已注册的动作系统（P2A，需求文档阶段定义动作清单）；
 5. 记忆持久化：把 `InMemoryStore` 换成 SQLite 实现（骨架已定义 `IMemoryStore` 接口，直接实现即可）；
-6. 原 `MiniJson` 若在正式版想换 Newtonsoft / System.Text.Json，只改 `AgentReply.FromJson` 一处。
+6. 原 `MiniJson` 若在正式版想换 Newtonsoft / System.Text.Json，只改 `AgentReplyValidator` 的边界适配处。
 
 ## 4. 占位素材工作流（先用免费素材推逻辑，后期替换）
 
@@ -52,7 +54,7 @@ dotnet run -- --deepseek=<api_key>      # 本地优先，DeepSeek 云端兜底
 3. **通过 Prefab/引用隔离**：场景只引用 Prefab，换素材时只改 Prefab 内部的模型/材质，**不重写任何逻辑代码**——这正是本骨架"逻辑与表现解耦"的意义；
 4. **建替换追踪表**（Excel/Notion 一张表即可）：每个占位资产 → 待替换目标来源 → 状态，P3 前统一替换；
 5. **动画/绑定成本最高**：占位角色一开始就用带骨架的（Synty 免费角色 + Mixamo 动画），避免后期重绑；
-6. 逻辑正确性与素材无关——`AgentCoreTests` 的 6 项测试证明：**换素材永远不需要改逻辑**。
+6. 逻辑正确性与素材无关——`AgentCoreTests` 的旧有 6 项测试证明：**换素材永远不需要改逻辑**；D2 对话边界另有专门测试。
 
 ## 5. 给需求文档的接口约定（你要写的需求文档可以这样组织）
 

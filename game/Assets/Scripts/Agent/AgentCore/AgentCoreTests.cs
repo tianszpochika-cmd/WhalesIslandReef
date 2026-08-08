@@ -19,6 +19,7 @@ namespace Whalebone.Agent
             failed += Check("好感度夹取 ±100", TestAffinityClamp);
             failed += Check("Persona prompt 包含 JSON 指令与约束", TestPersonaPrompt);
             failed += Check("分支锁：低好感锁求情分支", TestBranchLock);
+            failed += D2DialogueTests.RunAll();
             return failed;
         }
 

@@ -5,7 +5,7 @@
 ## 当前阶段
 
 - D1：工程底座与初始港口，已由用户完成验收。
-- D2：航行与对话闭环，已进入任务拆分与第一道范围冻结门。
+- D2：航行与对话闭环，D2-01 至 D2-10 已完成，自动化验收 23/23 通过。
 
 ## D2 入口
 
@@ -20,3 +20,4 @@
 - [D2 同步任务 08：运行时集成](game/prompts/D2/08_SYNC_RUNTIME_INTEGRATION.md)
 - [D2 同步任务 09：好感与存档闭环](game/prompts/D2/09_SYNC_AFFINITY_SAVE_E2E.md)
 - [D2 同步任务 10：最终验收](game/prompts/D2/10_SYNC_D2_ACCEPTANCE.md)
+- [D2 最终验收报告](game/design/D2_ACCEPTANCE_REPORT.md)

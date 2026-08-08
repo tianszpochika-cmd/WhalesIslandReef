@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Whalebone.Agent
@@ -203,6 +204,40 @@ namespace Whalebone.Agent
             return sb.ToString();
         }
 
+        public static bool HasKey(string json, string key)
+        {
+            return FindKey(json, key) >= 0;
+        }
+
+        /// <summary>校验顶层对象没有 Schema 之外的字段，并确认值边界可被扫描。</summary>
+        public static bool HasOnlyTopLevelKeys(string json, string[] allowedKeys)
+        {
+            if (string.IsNullOrEmpty(json) || allowedKeys == null) return false;
+            var allowed = new HashSet<string>(allowedKeys, StringComparer.Ordinal);
+            int index = SkipWs(json, 0);
+            if (index >= json.Length || json[index++] != '{') return false;
+
+            while (true)
+            {
+                index = SkipWs(json, index);
+                if (index >= json.Length) return false;
+                if (json[index] == '}') return true;
+                if (json[index] != '"') return false;
+
+                string key = ReadQuoted(json, ref index);
+                if (key == null || !allowed.Contains(key)) return false;
+                index = SkipWs(json, index);
+                if (index >= json.Length || json[index++] != ':') return false;
+                if (!SkipValue(json, ref index)) return false;
+
+                index = SkipWs(json, index);
+                if (index >= json.Length) return false;
+                if (json[index] == ',') { index++; continue; }
+                if (json[index] == '}') return true;
+                return false;
+            }
+        }
+
         public static double GetNumber(string json, string key)
         {
             int i = FindKey(json, key);
@@ -215,7 +250,7 @@ namespace Whalebone.Agent
                 else break;
             }
             double v = 0;
-            double.TryParse(sb.ToString(), out v);
+            double.TryParse(sb.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out v);
             return v;
         }
 
@@ -244,6 +279,53 @@ namespace Whalebone.Agent
                 }
             }
             return list.ToArray();
+        }
+
+        private static string ReadQuoted(string json, ref int index)
+        {
+            if (index >= json.Length || json[index] != '"') return null;
+            index++;
+            var sb = new StringBuilder();
+            bool escaped = false;
+            while (index < json.Length)
+            {
+                char c = json[index++];
+                if (escaped) { sb.Append(c); escaped = false; continue; }
+                if (c == '\\') { escaped = true; continue; }
+                if (c == '"') return sb.ToString();
+                sb.Append(c);
+            }
+            return null;
+        }
+
+        private static bool SkipValue(string json, ref int index)
+        {
+            int nested = 0;
+            bool inString = false;
+            bool escaped = false;
+            while (index < json.Length)
+            {
+                char c = json[index];
+                if (inString)
+                {
+                    index++;
+                    if (escaped) { escaped = false; continue; }
+                    if (c == '\\') { escaped = true; continue; }
+                    if (c == '"') inString = false;
+                    continue;
+                }
+
+                if (c == '"') { inString = true; index++; continue; }
+                if (c == '{' || c == '[') { nested++; index++; continue; }
+                if (c == '}' || c == ']')
+                {
+                    if (nested > 0) { nested--; index++; continue; }
+                    return true;
+                }
+                if (nested == 0 && c == ',') return true;
+                index++;
+            }
+            return !inString && nested == 0;
         }
     }
 }

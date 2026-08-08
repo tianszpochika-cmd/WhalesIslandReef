@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Whalebone.Agent;
+using Whalebone.Systems.D2;
 
 namespace Whalebone.Systems.Save
 {
@@ -129,6 +130,30 @@ namespace Whalebone.Systems.Save
             WritePlayer(GameState.CurrentPlayer);
             if (GameState.CurrentShip != null) WriteShip(GameState.CurrentShip);
             foreach (var c in GameState.CrewAgents) WriteCrew(c);
+        }
+
+        /// <summary>
+        /// D2 运行时快照的唯一落库入口。新增字段写入已有 location_json，旧数据库无需迁移。
+        /// </summary>
+        public static void SaveD2Runtime(SailingSnapshot sailing, DayNightSnapshot dayNight)
+        {
+            if (GameState.CurrentPlayer == null)
+                throw new InvalidOperationException("[SaveSystem] 无进行中的游戏，无法保存 D2 快照。");
+
+            var location = GameState.CurrentPlayer.Location ?? new LocationRef();
+            if (sailing != null)
+            {
+                location.Type = "open_sea";
+                location.PortId = null;
+                location.X = sailing.PositionX;
+                location.Y = sailing.PositionZ;
+                location.Heading = sailing.Heading;
+                location.Speed = sailing.Speed;
+            }
+            location.DayIndex = Math.Max(0, dayNight.DayIndex);
+            location.NormalizedTime = dayNight.NormalizedTime;
+            GameState.CurrentPlayer.Location = location;
+            Save();
         }
 
         /// <summary>从 SQLite 恢复 Player/Ship/CrewAgent 到 GameState，成功返回 true。</summary>
@@ -328,6 +353,15 @@ PRAGMA user_version = " + SchemaVersion + @";
                 p.Location.PortId = SaveJson.GetStr(loc, "portId", null);
                 p.Location.X = SaveJson.GetFloat(loc, "x");
                 p.Location.Y = SaveJson.GetFloat(loc, "y");
+                p.Location.Heading = SaveJson.GetFloat(loc, "heading");
+                p.Location.Speed = SaveJson.GetFloat(loc, "speed");
+                p.Location.DayIndex = SaveJson.GetInt(loc, "dayIndex");
+                p.Location.NormalizedTime = SaveJson.GetFloat(loc, "normalizedTime", 0.25f);
+                if (p.Location.NormalizedTime < 0f || p.Location.NormalizedTime >= 1f)
+                {
+                    p.Location.NormalizedTime %= 1f;
+                    if (p.Location.NormalizedTime < 0f) p.Location.NormalizedTime += 1f;
+                }
             }
 
             return p;
@@ -495,6 +529,10 @@ PRAGMA user_version = " + SchemaVersion + @";
                 ["portId"] = loc.PortId ?? "",
                 ["x"] = loc.X,
                 ["y"] = loc.Y,
+                ["heading"] = loc.Heading,
+                ["speed"] = loc.Speed,
+                ["dayIndex"] = loc.DayIndex,
+                ["normalizedTime"] = loc.NormalizedTime,
             };
         }
 

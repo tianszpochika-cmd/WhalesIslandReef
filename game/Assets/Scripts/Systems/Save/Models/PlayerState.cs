@@ -19,7 +19,11 @@ namespace Whalebone.Systems.Save
         public string Type = "port";   // "port" | "open_sea"
         public string PortId;          // Type == port 时有效
         public float X;                // Type == open_sea 时有效
-        public float Y;
+        public float Y;                // D2 世界 Z 坐标兼容映射
+        public float Heading;          // D2 船只朝向（度）
+        public float Speed;             // D2 船只速度
+        public int DayIndex;            // D2 昼夜日期
+        public float NormalizedTime = 0.25f; // D2 一日内时间 0..1
 
         public LocationRef() { }
         public LocationRef(string portId)

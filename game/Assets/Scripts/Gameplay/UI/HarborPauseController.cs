@@ -19,6 +19,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Core;
+using Whalebone.Gameplay.D2;
 
 namespace Whalebone.Gameplay.UI
 {
@@ -110,6 +111,8 @@ namespace Whalebone.Gameplay.UI
 
             _sceneChangeRequested = true;
             Debug.Log("[HarborPause] 返回主菜单按钮被点击");
+            var d2 = FindFirstObjectByType<D2RuntimeBootstrap>(FindObjectsInactive.Include);
+            if (d2 != null) d2.SaveProgress();
             _paused = false;
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.None;

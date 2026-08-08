@@ -31,6 +31,16 @@ npm run start    # 运行（需先 build）
 | worker（定时任务） | src/modules/worker | ⬜ 占位 |
 | ws（对话流式推送） | src/modules/ws | ⬜ 待建（需 @nestjs/websockets） |
 
+## D2 开发态对话入口
+
+`POST /api/v1/agent/chat` 已提供开发态 Mock 返回，严格输出 `contracts/agent-reply.schema.json` 规定的字段。请求示例：
+
+```json
+{"crew_id":"crew-old-sailor","player_input":"天气如何？"}
+```
+
+真实 JWT、点数、Ollama/云端路由和流式推送仍在网关模块边界内，D2 本地游戏不依赖它们才能完成对话。
+
 ## 环境变量
 
 见 `.env.example`（复制为 `.env`，本地可不配，默认值可用；生产必须全量）。

@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
 using Whalebone.Agent;
+using Whalebone.Systems.D2;
 using Whalebone.Systems.Save;
 
 namespace Save.Tests
@@ -149,6 +150,38 @@ namespace Save.Tests
             Assert.AreEqual(1, GameState.CrewAgents[0].Stats.Skills[SkillType.Sailing]);
             var traitIds = GameState.CrewAgentTraitIds[sailor.Id];
             Assert.Contains("trait_old_sailor", traitIds);
+        }
+
+        [Test]
+        public void D2Runtime_SaveLoad_RestoresLocationClockAndAffinity()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "D2 船长" });
+            var sailor = GameState.CrewAgents[0];
+            var proposal = new AgentReply { Speech = "记住这片海。", AffinityChange = 5f, Action = "none" };
+            Assert.IsTrue(CrewRelationSystem.ApplyAgentProposal(sailor, proposal));
+
+            SaveSystem.SaveD2Runtime(
+                new SailingSnapshot
+                {
+                    ShipId = GameState.CurrentShip.Id,
+                    PositionX = 12.5f,
+                    PositionZ = -8.25f,
+                    Heading = 135f,
+                    Speed = 2f,
+                    MaxSpeed = 4f,
+                    ControlMode = D2ControlMode.Character,
+                },
+                new DayNightSnapshot(4, 0.72f));
+
+            GameState.Reset();
+            Assert.IsTrue(SaveSystem.Load());
+            Assert.AreEqual("open_sea", GameState.CurrentPlayer.Location.Type);
+            Assert.AreEqual(12.5f, GameState.CurrentPlayer.Location.X, 0.0001f);
+            Assert.AreEqual(-8.25f, GameState.CurrentPlayer.Location.Y, 0.0001f);
+            Assert.AreEqual(135f, GameState.CurrentPlayer.Location.Heading, 0.0001f);
+            Assert.AreEqual(4, GameState.CurrentPlayer.Location.DayIndex);
+            Assert.AreEqual(0.72f, GameState.CurrentPlayer.Location.NormalizedTime, 0.0001f);
+            Assert.AreEqual(5f, GameState.CrewAgents[0].Stats.Affinity, 0.0001f);
         }
 
         [Test]

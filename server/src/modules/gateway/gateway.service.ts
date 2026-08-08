@@ -3,25 +3,51 @@ import { Injectable } from '@nestjs/common';
 export interface ChatRequest {
   crewId: string;
   playerInput: string;
+  personaSnapshot?: string;
+}
+
+export type AgentEmotion = 'neutral' | 'suspicious' | 'happy' | 'angry' | 'sad' | 'afraid';
+
+export interface AgentReply {
+  speech: string;
+  emotion: AgentEmotion;
+  affinity_change: number;
+  action: 'none';
+  action_args: string[];
 }
 
 @Injectable()
 export class GatewayService {
-  // ★ LLM 网关核心（骨架占位）
-  //
-  // 设计链路（对应 contracts/openapi/v1.yaml 的 /agent/chat）：
-  //   鉴权(JWT) → 配额校验(billing) → 上游路由(本地 Ollama 优先 → 云端 DeepSeek 兜底)
-  //   → metering 计量(入+出 token) → 扣减余额 → 流式返回(WS/SSE)
-  //
-  // 待玩法关键词/需求文档定稿后实现：
-  //   - 路由策略与上游注册表（按成本/质量/可用性）
-  //   - Persona + 记忆快照的传递方式（客户端上送 vs 服务端拉取）
-  //   - 重试、熔断、超时与降级（回落模板对话）
-  async chat(req: ChatRequest): Promise<unknown> {
-    return {
-      status: 'not_implemented',
-      hint: '待网关路由与上游接入',
-      crew_id: req.crewId,
-    };
+  // D2 开发态网关：先提供可重复的合法回复，确保服务端接线和 Unity Mock
+  // 不被真实账号、配额或上游模型阻塞。生产路由在本模块边界内替换。
+  async chat(req: ChatRequest): Promise<AgentReply> {
+    const input = req.playerInput.trim();
+    const reply: AgentReply = input.includes('天气')
+      ? {
+          speech: '海风正好，船长。',
+          emotion: 'happy',
+          affinity_change: 1,
+          action: 'none',
+          action_args: [],
+        }
+      : {
+          speech: '先把手上的活干完，船长。',
+          emotion: 'neutral',
+          affinity_change: 0,
+          action: 'none',
+          action_args: [],
+        };
+
+    this.assertReply(reply);
+    return reply;
+  }
+
+  private assertReply(reply: AgentReply): void {
+    if (!reply.speech || reply.speech.length < 1) throw new Error('invalid_agent_reply_speech');
+    if (reply.affinity_change < -10 || reply.affinity_change > 10
+      || !Number.isInteger(reply.affinity_change)) {
+      throw new Error('invalid_agent_reply_affinity');
+    }
+    if (reply.action !== 'none') throw new Error('invalid_agent_reply_action');
   }
 }
