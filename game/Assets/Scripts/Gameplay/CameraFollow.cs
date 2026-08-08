@@ -65,7 +65,11 @@ namespace Whalebone.Gameplay
             if (target == null) return;
             HandleInput();
             ApplyPosition();
-            transform.LookAt(target.position + targetOffset);
+            // 修复 P1C 累积旋转导致 QuaternionToEuler 警告刷屏（2026-08-08 统筹）：
+            // 手动构造 quaternion 并 normalize，避免 LookAt 在 pitch 边界退化产生不标准化 rotation
+            Vector3 dir = target.position + targetOffset - transform.position;
+            if (dir.sqrMagnitude > 0.0001f)
+                transform.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
         }
 
         /// <summary>读取输入：右键/中键拖动旋转，滚轮缩放。</summary>
