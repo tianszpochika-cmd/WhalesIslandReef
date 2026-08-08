@@ -39,7 +39,7 @@ namespace Whalebone.EditorTools
             {
                 int passed = result.PassCount;
                 int failed = result.FailCount;
-                int skipped = result.SkippedCount;
+                int skipped = result.SkipCount;
                 int inconclusive = result.InconclusiveCount;
                 int total = passed + failed + skipped + inconclusive;
                 Debug.Log($"[D1Acceptance] ① 测试完成：Passed={passed} Failed={failed} Skipped={skipped} Inconclusive={inconclusive} Total={total}");
