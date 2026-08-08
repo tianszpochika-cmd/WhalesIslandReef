@@ -95,7 +95,12 @@ namespace Whalebone.Gameplay.UI
             scaler.matchWidthOrHeight = 0.5f;
             _rootCanvas.AddComponent<GraphicRaycaster>();
 
-            if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include) == null)
+            if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include) != null)
+            {
+                // 修复：旧 EventSystem 可能没挂 InputSystemUIInputModule 导致 UI 点击失效（2026-08-09 统筹）
+                var oldEs = FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include).gameObject;
+                Object.DestroyImmediate(oldEs);
+            }
             {
                 var es = new GameObject("EventSystem");
                 es.transform.SetParent(transform, false);
