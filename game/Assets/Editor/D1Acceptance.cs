@@ -24,7 +24,9 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.TestTools.TestRunner.Api;
 using UnityEngine;
-using UnityEngine.TestTools;
+// TestMode 在两个 namespace 都定义（UnityEditor.TestTools.TestRunner.Api + UnityEngine.TestTools）——
+// 用别名明确指向 Api.TestMode（与 Filter.testMode 同 namespace，必须保持一致）
+using TestMode = UnityEditor.TestTools.TestRunner.Api.TestMode;
 
 namespace Whalebone.EditorTools
 {
