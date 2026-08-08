@@ -224,8 +224,9 @@ namespace Whalebone.Gameplay.UI
                 string name = _captainInput.text.Trim();
                 if (name.Length == 0)
                 {
-                    _newGameErrorText.text = Localization.IsEnglish ? "Name required" : "请输入船长名";
-                    return;
+                    // 输入框为空 → 自动填默认值"新船长"（不阻塞流程；2026-08-08 统筹）
+                    name = "新船长";
+                    _captainInput.text = name;
                 }
                 _newGameErrorText.text = "";
 
