@@ -94,7 +94,7 @@ namespace Save.Tests
             Assert.AreEqual("老水手", sailor.Persona.Name);
             Assert.AreEqual("eng", CrewAgentCodec.CultureEng);
             var traitIds = GameState.CrewAgentTraitIds[sailor.Id];
-            Assert.Contains("trait_old_sailor", traitIds, "老水手必须含"老水手"经历特质");
+            Assert.Contains("trait_old_sailor", traitIds, "老水手必须含老水手经历特质");
             Assert.GreaterOrEqual(traitIds.Count, 3);
             Assert.LessOrEqual(traitIds.Count, 4);
         }
