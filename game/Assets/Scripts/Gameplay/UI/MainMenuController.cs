@@ -221,11 +221,13 @@ namespace Whalebone.Gameplay.UI
             _captainInput.textComponent.text = "";
             _localized.Add(new LocalizedText { Text = phText, Key = "newgame_placeholder_name" });
 
-            _newGameErrorText = CreateText(_newGamePanel, "ErrorText", "", 24, new Vector2(0, 0));
+            _newGameErrorText = CreateText(_newGamePanel, "ErrorText", "", 28, new Vector2(0, 40));
             _newGameErrorText.color = Color.red;
 
             CreateLocalizedButton(_newGamePanel, "BtnConfirm", "newgame_confirm", new Vector2(-100, -110), () =>
             {
+                // 诊断日志（2026-08-09 统筹）：确认回调触发即打印，用于定位"点了没反应"
+                Debug.Log("[MainMenu] 确认按钮被点击");
                 string name = _captainInput.text.Trim();
                 if (name.Length == 0)
                 {
