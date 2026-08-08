@@ -140,7 +140,8 @@ namespace Whalebone.Gameplay.UI
             rt.anchoredPosition = pos;
             rt.sizeDelta = new Vector2(320, 64);
 
-            var img = rt.gameObject.AddComponent<Image>();
+            img = rt.gameObject.AddComponent<Image>();
+            img.sprite = UiSprites.White;
             img.color = new Color(0.15f, 0.28f, 0.4f, 0.92f);
 
             var btn = rt.gameObject.AddComponent<Button>();
@@ -171,6 +172,7 @@ namespace Whalebone.Gameplay.UI
             var inputRt = (RectTransform)inputGo.transform;
             inputRt.anchoredPosition = new Vector2(80, 70);
             inputRt.sizeDelta = new Vector2(460, 48);
+            inputGo.GetComponent<Image>().sprite = UiSprites.White;
             inputGo.GetComponent<Image>().color = new Color(0.12f, 0.18f, 0.24f, 0.95f);
             _captainInput = inputGo.GetComponent<InputField>();
 
@@ -286,6 +288,7 @@ namespace Whalebone.Gameplay.UI
             bg.transform.SetParent(sliderGo.transform, false);
             var bgRt = (RectTransform)bg.transform;
             bgRt.anchorMin = new Vector2(0, 0.25f); bgRt.anchorMax = new Vector2(1, 0.75f);
+            bg.GetComponent<Image>().sprite = UiSprites.White;
             bg.GetComponent<Image>().color = new Color(0.12f, 0.18f, 0.24f, 0.8f);
 
             var fill = new GameObject("Fill", typeof(RectTransform), typeof(Image));
@@ -293,6 +296,7 @@ namespace Whalebone.Gameplay.UI
             var fRt = (RectTransform)fill.transform;
             fRt.anchorMin = Vector2.zero; fRt.anchorMax = Vector2.one;
             fRt.offsetMin = new Vector2(0, 4); fRt.offsetMax = new Vector2(0, -4);
+            fill.GetComponent<Image>().sprite = UiSprites.White;
             fill.GetComponent<Image>().color = new Color(0.3f, 0.55f, 0.75f, 0.9f);
             slider.fillRect = fRt;
             slider.targetGraphic = bg.GetComponent<Image>();
@@ -306,6 +310,7 @@ namespace Whalebone.Gameplay.UI
             var rt = (RectTransform)go.transform;
             rt.anchoredPosition = pos;
             rt.sizeDelta = new Vector2(300, 42);
+            go.GetComponent<Image>().sprite = UiSprites.White;
             go.GetComponent<Image>().color = new Color(0.12f, 0.18f, 0.24f, 0.95f);
 
             var dropdown = go.GetComponent<Dropdown>();
@@ -350,6 +355,7 @@ namespace Whalebone.Gameplay.UI
         {
             var go = CreateFullRect(_rootCanvas, name).gameObject;
             var img = go.AddComponent<Image>();
+            img.sprite = UiSprites.White;
             img.color = new Color(0.05f, 0.09f, 0.13f, 0.97f);
             go.SetActive(false);   // 初始隐藏，由控制器开关
             return go;
@@ -398,6 +404,7 @@ namespace Whalebone.Gameplay.UI
             rt.anchoredPosition = pos;
             rt.sizeDelta = new Vector2(280, 58);
             var img = go.GetComponent<Image>();
+            img.sprite = UiSprites.White;
             img.color = new Color(0.2f, 0.36f, 0.52f, 0.95f);
 
             var btn = go.GetComponent<Button>();
@@ -488,6 +495,25 @@ namespace Whalebone.Gameplay.UI
                         _default = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); // 兜底（无中文字形）
                 }
                 return _default;
+            }
+        }
+    }
+
+    /// <summary>UI Image 默认白底 sprite（修复 P1A 漏 sprite bug：Unity Image 不设 sprite 就不渲染）。</summary>
+    internal static class UiSprites
+    {
+        private static Sprite _white;
+        public static Sprite White
+        {
+            get
+            {
+                if (_white == null)
+                {
+                    var tex = Texture2D.whiteTexture;
+                    _white = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+                    _white.name = "Whalebone_WhiteSprite";
+                }
+                return _white;
             }
         }
     }
