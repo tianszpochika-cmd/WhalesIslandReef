@@ -388,13 +388,42 @@ namespace Whalebone.Gameplay.UI
 
         private void OpenPanel(GameObject panel)
         {
-            // 修复 P1A 单 SetActive(false) 在某些 Canvas 嵌套下失效导致双面板同时显示（2026-08-08 统筹）
-            // 改为全关所有面板后只开当前（防御性编程）
-            _mainMenuPanel.SetActive(false);
-            if (_newGamePanel != null) _newGamePanel.SetActive(false);
-            if (_settingsPanel != null) _settingsPanel.SetActive(false);
-            if (_aboutPanel != null) _aboutPanel.SetActive(false);
+            // 修复 P1A 单 SetActive(false) 在 Canvas 嵌套下失效导致双面板显示（2026-08-08 统筹）
+            // 改用 CanvasGroup.alpha + blocksRaycasts 双保险（Unity 6 推荐方式，alpha 0 立即隐藏内容）
+            HidePanel(_mainMenuPanel);
+            HidePanel(_newGamePanel);
+            HidePanel(_settingsPanel);
+            HidePanel(_aboutPanel);
+            ShowPanel(panel);
+            // 强制 Canvas 立即重绘（避免下一帧才生效）
+            Canvas.ForceUpdateCanvases();
+        }
+
+        private static void HidePanel(GameObject panel)
+        {
+            if (panel == null) return;
+            var cg = GetOrAddCanvasGroup(panel);
+            cg.alpha = 0f;
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
+            panel.SetActive(false);
+        }
+
+        private static void ShowPanel(GameObject panel)
+        {
+            if (panel == null) return;
+            var cg = GetOrAddCanvasGroup(panel);
+            cg.alpha = 1f;
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
             panel.SetActive(true);
+        }
+
+        private static CanvasGroup GetOrAddCanvasGroup(GameObject panel)
+        {
+            var cg = panel.GetComponent<CanvasGroup>();
+            if (cg == null) cg = panel.AddComponent<CanvasGroup>();
+            return cg;
         }
 
         private void ClosePanel(GameObject panel)
