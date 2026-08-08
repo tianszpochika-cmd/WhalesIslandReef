@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://whalebone.local/contracts/agent-reply.schema.json",
+  "title": "AgentReply",
+  "description": "LLM 结构化输出契约：游戏客户端解析与服务端校验共用。与 game/AgentCore/AgentModels.cs 的 AgentReply 一一对应。",
+  "type": "object",
+  "required": ["speech", "emotion", "affinity_change", "action"],
+  "properties": {
+    "speech": {
+      "type": "string",
+      "minLength": 1,
+      "description": "船员说话内容（1-2 句，≤30 汉字，由 Persona 约束）"
+    },
+    "emotion": {
+      "type": "string",
+      "enum": ["neutral", "suspicious", "happy", "angry", "sad", "afraid"],
+      "description": "情绪，驱动表情/语音语调/UI 表现"
+    },
+    "affinity_change": {
+      "type": "integer",
+      "minimum": -10,
+      "maximum": 10,
+      "description": "对船长好感变化量，强逻辑层据此更新 CrewStats.Affinity"
+    },
+    "action": {
+      "type": "string",
+      "default": "none",
+      "description": "动作名（P2A），游戏侧注册表；none 表示无动作。动作清单见 docs/game/ACTIONS.md（待需求文档定稿）"
+    },
+    "action_args": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "动作参数，如 [\"main\", \"fast\"]"
+    }
+  },
+  "additionalProperties": false
+}
