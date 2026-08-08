@@ -14,9 +14,9 @@
 
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEditor.TestTools;
+using UnityEditor.TestTools.TestRunner.Api;
+using UnityEditor.TestRunner;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Whalebone.EditorTools
 {
