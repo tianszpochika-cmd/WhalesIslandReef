@@ -61,13 +61,16 @@ namespace Whalebone.Core
         {
             State = GameState.InGame;
 
-            // P1C 前场景名不存在的容错：不切换，仅日志
-            if (!Application.CanStreamedLevelBeLoaded("InitialHarbor"))
+            // 修复 P1A 在 Editor 下 Application.CanStreamedLevelBeLoaded 假阳性 + LoadScene 抛异常导致流程中断（2026-08-08 统筹）
+            try
             {
-                Debug.LogWarning("[GameManager] InitialHarbor 场景尚未加入 Build Settings（P1C 阶段实现）。当前停留在 MainMenu。");
-                return;
+                SceneManager.LoadScene("InitialHarbor");
             }
-            SceneManager.LoadScene("InitialHarbor");
+            catch (UnityException ex)
+            {
+                Debug.LogWarning("[GameManager] InitialHarbor 加载失败（不在 Build Settings？sceneCountInBuildSettings="
+                    + UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings + "）：" + ex.Message);
+            }
         }
     }
 }
