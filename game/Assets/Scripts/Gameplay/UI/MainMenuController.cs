@@ -116,6 +116,23 @@ namespace Whalebone.Gameplay.UI
             return rt;
         }
 
+        /// <summary>
+        /// 创建锚点居中、显式 sizeDelta 的子 RectTransform（小 UI 用；勿用 CreateFullRect）。
+        /// 修复 P1A CreateMenuButton 误用 CreateFullRect 导致按钮被拉伸到全屏、相互重叠的问题（2026-08-08 统筹修复）。
+        /// </summary>
+        private static RectTransform CreateAnchoredRect(GameObject parent, string name, Vector2 size, Vector2 pos)
+        {
+            var go = new GameObject(name, typeof(RectTransform));
+            go.transform.SetParent(parent.transform, false);
+            var rt = (RectTransform)go.transform;
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.sizeDelta = size;
+            rt.anchoredPosition = pos;
+            return rt;
+        }
+
         // ============================================================
         // 主菜单（标题 + 4 按钮）
         // ============================================================
@@ -136,9 +153,7 @@ namespace Whalebone.Gameplay.UI
 
         private void CreateMenuButton(GameObject parent, string name, string textKey, Vector2 pos, UnityEngine.Events.UnityAction onClick)
         {
-            var rt = CreateFullRect(parent, name);
-            rt.anchoredPosition = pos;
-            rt.sizeDelta = new Vector2(320, 64);
+            var rt = CreateAnchoredRect(parent, name, new Vector2(320, 64), pos);
 
             var img = rt.gameObject.AddComponent<Image>();
             img.sprite = UiSprites.White;
