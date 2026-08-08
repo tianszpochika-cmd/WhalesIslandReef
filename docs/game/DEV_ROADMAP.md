@@ -53,11 +53,11 @@
 - [ ] UI 框架：UGUI 基础（面板切换、按钮、输入框、下拉框）
 
 ### D1.3 新游戏与存档骨架（第 2-3 周）
-- [ ] 存档系统接口 `SaveSystem`（SQLite：players/ships/crew_agents 表，见 DATA_MODELS 第 7 节）
-- [ ] 新游戏流程：创建 Player（船长名/初始金钱/初始船/老水手船员）→ 落库 → 进入 InGame
-- [ ] 继续流程：读存档 → 恢复状态 → 进入 InGame
-- [ ] 初始环境场景 `InitialHarbor`：初始港口（低模占位） + 玩家的船（小渔船占位） + 老水手 NPC（站立/简单动画）
-- [ ] 设置持久化（PlayerPrefs 或 Settings 表：音量/语言/画质）
+- [x] 存档系统接口 `SaveSystem`（SQLite：players/ships/crew_agents 表 + trait_defs/ship_type_defs 种子，见 DATA_MODELS 第 7 节）——✅ D1-P1B 完成（实现说明见 design/SAVE_SYSTEM.md）
+- [x] 新游戏流程【逻辑层】：创建 Player（船长名/初始金钱 500/小渔船/老水手船员）→ 落库 → HasSave true ——✅ D1-P1B 完成（UI 创建流程待 P1A 接入）
+- [x] 继续流程【逻辑层】：读存档 → 恢复 Player/Ship/CrewAgent → true/false ——✅ D1-P1B 完成（UI 入口待 P1A 接入）
+- [ ] 初始环境场景 `InitialHarbor`：初始港口（低模占位） + 玩家的船（小渔船占位） + 老水手 NPC（站立/简单动画）——P1C
+- [ ] 设置持久化（PlayerPrefs 或 Settings 表：音量/语言/画质）——P1A
 
 ### D1.4 验收清单（DoD）
 - [ ] 项目冷启动（exe 或编辑器）→ 主菜单正常显示

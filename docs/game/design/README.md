@@ -11,6 +11,7 @@
 | `BALANCE.md` | 数值平衡基线 | 🟡 骨架 |
 | `COMBAT.md` | 战斗设计 | 🟡 骨架 |
 | `PROGRESSION.md` | 成长与进度 | 🟡 骨架 |
+| `SAVE_SYSTEM.md` | 存档系统实现说明（SQLite 方案/表结构/数据流） | ✅ 已建（D1-P1B） |
 
 ## 设计阶段工作流
 
