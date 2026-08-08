@@ -481,7 +481,12 @@ namespace Whalebone.Gameplay.UI
             get
             {
                 if (_default == null)
-                    _default = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                {
+                    // 优先加载 Noto Sans CJK（中文字形；位于 Assets/Resources/Fonts/，统筹修复 2026-08-08）
+                    _default = Resources.Load<Font>("Fonts/ph_font_noto_sans_cjk_sc");
+                    if (_default == null)
+                        _default = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); // 兜底（无中文字形）
+                }
                 return _default;
             }
         }
