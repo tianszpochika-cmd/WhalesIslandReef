@@ -230,15 +230,25 @@ namespace Whalebone.Gameplay.UI
                 _newGameErrorText.text = "";
 
                 // P0 契约：只调用 SaveSystem 公开接口
-                SaveSystem.NewGame(new NewGameParams
+                try
                 {
-                    CaptainName = name,
-                    ShipTypeId = "small_fishing"   // M0 固定小渔船
-                });
-                Debug.Log("[MainMenu] NewGame 已发起：" + name);
+                    SaveSystem.NewGame(new NewGameParams
+                    {
+                        CaptainName = name,
+                        ShipTypeId = "small_fishing"   // M0 固定小渔船
+                    });
+                    Debug.Log("[MainMenu] NewGame 已发起：" + name);
 
-                // P1C 场景未实现时 LoadInitialHarbor 只打日志不崩溃（GameManager 已容错）
-                GameManager.Instance.LoadInitialHarbor();
+                    // 关闭 NewGame 面板（修复 P1A 漏调用 ClosePanel 导致面板不退出的 bug；2026-08-08 统筹）
+                    ClosePanel(_newGamePanel);
+                    // P1C 场景未实现时 LoadInitialHarbor 只打日志不崩溃（GameManager 已容错）
+                    GameManager.Instance.LoadInitialHarbor();
+                }
+                catch (System.Exception ex)
+                {
+                    _newGameErrorText.text = "创建失败：" + ex.Message;
+                    Debug.LogError("[MainMenu] NewGame 异常：" + ex);
+                }
             });
 
             CreateLocalizedButton(_newGamePanel, "BtnCancel", "newgame_cancel", new Vector2(100, -110), () => ClosePanel(_newGamePanel));
