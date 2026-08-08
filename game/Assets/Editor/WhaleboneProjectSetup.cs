@@ -33,12 +33,13 @@ namespace Whalebone.EditorTools
         [MenuItem("Tools/Whalebone/Setup Project (幂等)")]
         public static void RunOnce()
         {
-            // ---- 1. 启用新版 Input System（0=旧版 1=新版 2=两者）----
-            if (PlayerSettings.activeInputHandler != ActiveInputHandler.InputSystemPlayer)
-            {
-                PlayerSettings.activeInputHandler = ActiveInputHandler.InputSystemPlayer;
-                Debug.Log("[WhaleboneSetup] Input System 已启用（activeInputHandler=1）");
-            }
+            // ---- 1. 启用新版 Input System（Unity 6 默认由 manifest.json 控制）----
+            // Unity 6 已移除 PlayerSettings.activeInputHandler / ActiveInputHandler 枚举。
+            // 只要 Packages/manifest.json 含 com.unity.inputsystem 包，默认就是新 Input System（activeInputHandler=1）。
+            // 此处仅记录状态，不强行修改；如未来需要切换可通过 Edit > Project Settings > Player > Active Input Handling 操作。
+#if UNITY_2022_2_OR_NEWER
+            Debug.Log("[WhaleboneSetup] Unity 6：activeInputHandler 由 manifest.json 中的 com.unity.inputsystem 包自动启用");
+#endif
 
             // ---- 2. 产品信息 ----
             PlayerSettings.companyName = "Whalebone Studio";
@@ -54,8 +55,17 @@ namespace Whalebone.EditorTools
                           EditorUserBuildSettings.activeBuildTarget);
             }
 
-            // ---- 4. URP 管线自动创建（URP 包就绪后生效）----
-            TrySetupUrp();
+            // ---- 4. URP 管线 ----
+            // 说明：URP 17 中 ScriptableObject.CreateInstance 创建的 UniversalRendererData
+            // 不会写入所有 SerializeField 字段，导致 Unity 加载时标记为 Missing；
+            // 反射 SetRenderer 方法签名也已变更。改用人工方式：
+            //   1) 在 Unity 中 Assets > Create > Rendering > URP Asset 创建完整资产
+            //   2) 自动创建的 WhaleboneRenderer/WhaleboneURP 已由本脚本初次写入，
+            //      如需重建请使用菜单命令（已禁用自动创建以防被破坏）
+            if (GraphicsSettings.currentRenderPipeline == null)
+            {
+                Debug.Log("[WhaleboneSetup] URP 管线未配置。请手动通过 Assets > Create > Rendering > URP Asset 创建，或从模板导入。");
+            }
 
             AssetDatabase.SaveAssets();
         }
@@ -115,7 +125,6 @@ namespace Whalebone.EditorTools
 
             // 挂到 GraphicsSettings（URP 管线）
             GraphicsSettings.defaultRenderPipeline = (RenderPipelineAsset)pipelineAsset;
-            GraphicsSettings.renderPipelineAsset = (RenderPipelineAsset)pipelineAsset;
 
             Debug.Log("[WhaleboneSetup] URP 管线已创建并启用: " + pipelinePath);
         }
