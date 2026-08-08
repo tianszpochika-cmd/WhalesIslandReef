@@ -64,6 +64,10 @@ namespace Whalebone.EditorTools
 
             Dictionary<string, Material> mats = CreateMaterials();
             CreateVegetationPrefabs(mats);
+            // 修复 106 删除事件后 Prefabs/Placeholder 目录为空导致船/人不可见（2026-08-09 统筹）：
+            // 从 FBX 自动生成 Prefab 到 Prefabs/Placeholder/，避免 LoadAssetAtPath 返回 null
+            EnsurePrefabFromFbx(ShipFbx, LegacyShipPrefab);
+            EnsurePrefabFromFbx(CrewFbx, LegacyCrewPrefab);
 
             Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             BuildScene(scene, mats);
@@ -329,11 +333,48 @@ namespace Whalebone.EditorTools
             return go;
         }
 
+        /// <summary>从 FBX 生成 Prefab 到 Prefabs/Placeholder/（修复 106 删除后船/人不可见，2026-08-09 统筹）。
+        /// 如果 Prefab 已存在 → 跳过；如果 FBX 不存在 → 打 Error 跳过（避免静默失败）。</summary>
+        private static void EnsurePrefabFromFbx(string fbxPath, string prefabPath)
+        {
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath) != null) return;
+
+            // 强制导入 FBX（首次打开工程可能没导入完）
+            AssetDatabase.ImportAsset(fbxPath, ImportAssetOptions.ForceUpdate);
+            var fbxAsset = AssetDatabase.LoadAssetAtPath<GameObject>(fbxPath);
+            if (fbxAsset == null)
+            {
+                Debug.LogError("[HarborArtInstaller] EnsurePrefabFromFbx 失败：FBX 资产加载不到 " + fbxPath + "（请手动 Reimport）");
+                return;
+            }
+
+            // 在临时场景实例化 → 保存为 Prefab → 清理
+            var tempScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
+            GameObject instance = null;
+            try
+            {
+                instance = (GameObject)PrefabUtility.InstantiatePrefab(fbxAsset);
+                PrefabUtility.SaveAsPrefabAsset(instance, prefabPath);
+            }
+            finally
+            {
+                if (instance != null) Object.DestroyImmediate(instance);
+                EditorSceneManager.CloseScene(tempScene, true);
+            }
+            Debug.Log("[HarborArtInstaller] 生成 Prefab: " + prefabPath);
+        }
+
         /// <summary>实例化 FBX 模型：按包围盒缩放到目标尺寸、覆盖占位材质、长轴对齐 +Z（船头朝海）。</summary>
         private static GameObject InstantiateModel(string fbxPath, string instanceName, Vector3 position,
             Material overrideMat, float targetLength, float targetHeight)
         {
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(fbxPath);
+            // 优先 Prefab 路径（更稳）；fallback FBX 直接加载
+            string prefabPath = fbxPath
+                .Replace("/Models/Ships/ph_ship_fishing.fbx", "/Prefabs/Placeholder/ph_ship_fishing.prefab")
+                .Replace("/Models/Crew/ph_crew_male.fbx", "/Prefabs/Placeholder/ph_crew_male.prefab")
+                .Replace("/Models/Props/", "/Prefabs/Placeholder/");
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+            if (prefab == null) prefab = AssetDatabase.LoadAssetAtPath<GameObject>(fbxPath);
             if (prefab == null)
             {
                 Debug.LogError("[HarborArtInstaller] 找不到模型资产: " + fbxPath + "（请确认 Unity 已完成素材导入）");
