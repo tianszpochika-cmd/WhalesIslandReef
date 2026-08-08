@@ -66,10 +66,20 @@ namespace Whalebone.Gameplay
             HandleInput();
             ApplyPosition();
             // 修复 P1C 累积旋转导致 QuaternionToEuler 警告刷屏（2026-08-08 统筹）：
-            // 手动构造 quaternion 并 normalize，避免 LookAt 在 pitch 边界退化产生不标准化 rotation
-            Vector3 dir = target.position + targetOffset - transform.position;
-            if (dir.sqrMagnitude > 0.0001f)
-                transform.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
+            // （1）forward 永远 normalized（2）当 forward 与 up 接近平行时切换 worldUp 避免 LookRotation 退化
+            // （3）结果 quaternion 强制 normalize（Unity 6 internal 严格检查）
+            Vector3 forward = target.position + targetOffset - transform.position;
+            if (forward.sqrMagnitude < 0.0001f) return;
+            Vector3 fwd = forward.normalized;
+            Vector3 up = Vector3.up;
+            if (Mathf.Abs(Vector3.Dot(fwd, up)) > 0.999f)
+            {
+                // 接近退化：切换一个不与 fwd 平行的 worldUp（保证 LookRotation 稳定）
+                Vector3 alt = Vector3.Cross(fwd, Vector3.forward);
+                if (alt.sqrMagnitude < 0.01f) alt = Vector3.Cross(fwd, Vector3.right);
+                up = alt.normalized;
+            }
+            transform.rotation = Quaternion.LookRotation(fwd, up).normalized;
         }
 
         /// <summary>读取输入：右键/中键拖动旋转，滚轮缩放。</summary>
