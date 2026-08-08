@@ -9,7 +9,7 @@
 //
 // 说明：
 //   - 输入走新版 Input System（工程 activeInputHandler=Both，向下兼容）
-//   - 未指定 Target 时自动停用并告警（场景搭建期容错）
+//   - 未指定 Target 时使用临时观察锚点并告警（场景搭建期容错）
 // ============================================================
 
 using UnityEngine;
@@ -38,8 +38,15 @@ namespace Whalebone.Gameplay
 
         private float yaw;                 // 水平角（围绕目标，0 = 目标正后方）
         private Vector3 velocity;          // SmoothDamp 内部状态
+        private Transform fallbackTarget;  // 场景资源损坏时的临时观察锚点
 
         public Transform Target { get => target; set => target = value; }
+
+        private void Awake()
+        {
+            // 场景 YAML 或失效 Prefab 可能留下近似但未归一化的旋转；URP 会在相机裁剪阶段直接报错。
+            transform.rotation = NormalizeRotation(transform.rotation);
+        }
 
         private void Start()
         {
@@ -51,13 +58,23 @@ namespace Whalebone.Gameplay
             }
             if (target == null)
             {
-                Debug.LogWarning("[CameraFollow] 未指定跟随目标，相机停用。请在场景中将 Target 指向玩家船（或存在名为 ph_ship_fishing 的对象）。");
-                enabled = false;
-                return;
+                // 允许玩家继续检查相机输入，同时明确报告场景资产问题；资源修复后会自动使用真实船只。
+                var fallback = new GameObject("CameraTarget_Fallback");
+                fallback.hideFlags = HideFlags.HideAndDontSave;
+                fallback.transform.position = Vector3.zero;
+                fallbackTarget = fallback.transform;
+                target = fallbackTarget;
+                Debug.LogError("[CameraFollow] 找不到玩家船 ph_ship_fishing，当前使用临时观察锚点。请重新运行 Tools > Whalebone > Install Harbor Art。");
             }
             // 初始摆位：目标后上方，避免启动瞬间跳变
             ApplyPosition();
-            transform.LookAt(target.position + targetOffset);
+            ApplyLookRotation();
+        }
+
+        private void OnDestroy()
+        {
+            if (fallbackTarget != null)
+                Destroy(fallbackTarget.gameObject);
         }
 
         private void LateUpdate()
@@ -65,21 +82,37 @@ namespace Whalebone.Gameplay
             if (target == null) return;
             HandleInput();
             ApplyPosition();
-            // 修复 P1C 累积旋转导致 QuaternionToEuler 警告刷屏（2026-08-08 统筹）：
-            // （1）forward 永远 normalized（2）当 forward 与 up 接近平行时切换 worldUp 避免 LookRotation 退化
-            // （3）结果 quaternion 强制 normalize（Unity 6 internal 严格检查）
+            ApplyLookRotation();
+        }
+
+        private void ApplyLookRotation()
+        {
+            // forward 永远 normalized；接近竖直时切换 worldUp，避免 LookRotation 退化。
             Vector3 forward = target.position + targetOffset - transform.position;
             if (forward.sqrMagnitude < 0.0001f) return;
             Vector3 fwd = forward.normalized;
             Vector3 up = Vector3.up;
             if (Mathf.Abs(Vector3.Dot(fwd, up)) > 0.999f)
             {
-                // 接近退化：切换一个不与 fwd 平行的 worldUp（保证 LookRotation 稳定）
                 Vector3 alt = Vector3.Cross(fwd, Vector3.forward);
                 if (alt.sqrMagnitude < 0.01f) alt = Vector3.Cross(fwd, Vector3.right);
                 up = alt.normalized;
             }
-            transform.rotation = Quaternion.LookRotation(fwd, up).normalized;
+            transform.rotation = NormalizeRotation(Quaternion.LookRotation(fwd, up));
+        }
+
+        private static Quaternion NormalizeRotation(Quaternion value)
+        {
+            float lengthSquared = value.x * value.x + value.y * value.y + value.z * value.z + value.w * value.w;
+            if (float.IsNaN(lengthSquared) || float.IsInfinity(lengthSquared) || lengthSquared < 0.000001f)
+                return Quaternion.identity;
+
+            float inverseLength = 1f / Mathf.Sqrt(lengthSquared);
+            return new Quaternion(
+                value.x * inverseLength,
+                value.y * inverseLength,
+                value.z * inverseLength,
+                value.w * inverseLength);
         }
 
         /// <summary>读取输入：右键/中键拖动旋转，滚轮缩放。</summary>
@@ -99,7 +132,9 @@ namespace Whalebone.Gameplay
             float scroll = mouse.scroll.ReadValue().y;
             if (Mathf.Abs(scroll) > 0.0001f)
             {
-                distance = Mathf.Clamp(distance - scroll * zoomSpeed * Time.deltaTime, minDistance, maxDistance);
+                // 鼠标滚轮是事件增量，不是每秒速度；不乘 Time.deltaTime，避免缩放几乎无感。
+                // 不同鼠标的滚轮单位不同，0.01f 将常见的 120/格与触控板小增量统一到可用范围。
+                distance = Mathf.Clamp(distance - scroll * zoomSpeed * 0.01f, minDistance, maxDistance);
             }
         }
 

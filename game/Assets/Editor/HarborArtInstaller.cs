@@ -34,6 +34,7 @@ namespace Whalebone.EditorTools
     /// <summary>
     /// 初始环境场景（圣玛格丽特港）CC0 资产美化安装器。菜单：Tools > Whalebone > Install Harbor Art (占位美化, 幂等)
     /// </summary>
+    [InitializeOnLoad]
     public static class HarborArtInstaller
     {
         private const string ScenePath = "Assets/Scenes/InitialHarbor.unity";
@@ -48,11 +49,20 @@ namespace Whalebone.EditorTools
         // 旧几何体 Prefab（被 fbx 替换，清理）
         private const string LegacyShipPrefab = PrefabDir + "/ph_ship_fishing.prefab";
         private const string LegacyCrewPrefab = PrefabDir + "/ph_crew_male.prefab";
+        private const string AutoRepairSessionKey = "Whalebone.HarborArtInstaller.AutoRepairAttempted";
 
         // 世界布局常量（米：海面 y=0；陆地 -Z；码头沿 X；船停码头南侧、船头朝 +Z 面向大海）
         private static readonly Vector3 ShipPos = new Vector3(0f, 0f, -5.2f);
         private const float BeachTopY = 0.28f;      // 沙滩顶面
         private const float DockTopY = 0.19f;       // 码头平台顶面
+
+        static HarborArtInstaller()
+        {
+            // 资产目录被清理、首次导入中断或旧场景引用失效时，自动修复一次。
+            // 延迟到编辑器空闲后执行，避免在 Unity 正在导入脚本/模型时重建场景。
+            EditorApplication.delayCall += TryAutoRepair;
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        }
 
         // ---------------- 入口 ----------------
 
@@ -78,6 +88,38 @@ namespace Whalebone.EditorTools
             AssetDatabase.Refresh();
 
             Debug.Log("[HarborArtInstaller] 安装完成: " + ScenePath);
+        }
+
+        private static void OnPlayModeStateChanged(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingPlayMode)
+                EditorApplication.delayCall += TryAutoRepair;
+        }
+
+        private static void TryAutoRepair()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode ||
+                SessionState.GetBool(AutoRepairSessionKey, false) ||
+                HasRequiredHarborAssets())
+                return;
+
+            SessionState.SetBool(AutoRepairSessionKey, true);
+            Debug.LogWarning("[HarborArtInstaller] 检测到港口船只/水手 Prefab 缺失，自动执行一次港口占位资源安装。");
+            try
+            {
+                Install();
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError("[HarborArtInstaller] 自动安装失败：" + ex);
+            }
+        }
+
+        private static bool HasRequiredHarborAssets()
+        {
+            return AssetDatabase.LoadAssetAtPath<GameObject>(LegacyShipPrefab) != null &&
+                   AssetDatabase.LoadAssetAtPath<GameObject>(LegacyCrewPrefab) != null &&
+                   AssetDatabase.LoadAssetAtPath<Material>(MatDir + "/ph_mat_sea.mat") != null;
         }
 
         // ---------------- 目录与清理 ----------------
@@ -522,6 +564,9 @@ namespace Whalebone.EditorTools
             shadow.effectDistance = new Vector2(2f, -2f);
 
             MakeLabel(canvasGo.transform, "HarborSubtitle", -100f, 22, "Sainte-Marguerite · 1675", font, FontStyle.Normal, new Color(0.95f, 0.90f, 0.80f, 0.95f));
+            MakeLabel(canvasGo.transform, "HarborControls", -970f, 24,
+                "操作：按住鼠标右键或中键拖动调整视角 · 滚轮缩放距离",
+                font, FontStyle.Normal, new Color(1f, 1f, 1f, 0.9f));
         }
 
         private static Text MakeLabel(Transform parent, string name, float yPos, int fontSize, string content,

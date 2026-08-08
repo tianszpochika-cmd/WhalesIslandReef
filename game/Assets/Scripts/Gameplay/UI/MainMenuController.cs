@@ -18,6 +18,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Core;
 using Whalebone.Systems.Save;
@@ -29,12 +30,22 @@ namespace Whalebone.Gameplay.UI
     /// </summary>
     public class MainMenuController : MonoBehaviour
     {
-        // ---- 自动挂载：MainMenu 场景启动时创建控制器 ----
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        private static void AutoBootstrap()
+        // ---- 自动挂载：每次进入 MainMenu 场景都创建控制器 ----
+        // RuntimeInitializeOnLoadMethod(AfterSceneLoad) 只适合首次启动；
+        // 从 InitialHarbor 返回 MainMenu 时必须监听 sceneLoaded，否则场景切换成功但 UI 不会重建。
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void InstallSceneBootstrap()
         {
-            // 仅当当前场景是 MainMenu 时创建（避免其他场景误挂）
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MainMenu")
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name != "MainMenu")
+                return;
+
+            if (FindFirstObjectByType<MainMenuController>(FindObjectsInactive.Include) != null)
                 return;
 
             // 确保 GameManager 存在（P0 单例）
@@ -43,6 +54,7 @@ namespace Whalebone.Gameplay.UI
 
             var host = new GameObject("MainMenuController");
             host.AddComponent<MainMenuController>();
+            Debug.Log("[MainMenu] 场景加载完成，主菜单控制器已重新创建");
         }
 
         // ---- 面板根（代码创建）----
@@ -69,6 +81,7 @@ namespace Whalebone.Gameplay.UI
 
         private void Awake()
         {
+            EnsureMainMenuCamera();
             BuildCanvas();
             BuildMainMenu();
             BuildNewGamePanel();
@@ -78,25 +91,26 @@ namespace Whalebone.Gameplay.UI
             SettingsStore.ApplyAll();   // 启动应用持久化设置
             RefreshAllTexts();          // 初始语言应用
             RefreshContinueState();     // 继续按钮初始状态
-
-            // 诊断性自动 NewGame（3 秒后；2026-08-09 统筹）：跳过 UI 点击验证 SaveSystem+LoadInitialHarbor 是否能跑通
-            Invoke(nameof(AutoDebugNewGame), 3f);
+            Debug.Log("[MainMenu] UI 初始化完成：主菜单已显示");
         }
 
-        private void AutoDebugNewGame()
+        /// <summary>
+        /// 主菜单使用 ScreenSpaceOverlay，不依赖相机；这里补一台只负责清屏的相机，
+        /// 避免 Unity Game 视图显示 “No cameras rendering” 造成“切换卡住”的误判。
+        /// </summary>
+        private void EnsureMainMenuCamera()
         {
-            Debug.Log("[MainMenuController] AutoDebugNewGame: 开始");
-            try
-            {
-                SaveSystem.NewGame(new NewGameParams { CaptainName = "AutoDebug", ShipTypeId = "small_fishing" });
-                Debug.Log("[MainMenuController] AutoDebugNewGame: SaveSystem.NewGame 成功");
-                GameManager.Instance.LoadInitialHarbor();
-                Debug.Log("[MainMenuController] AutoDebugNewGame: LoadInitialHarbor 已调用");
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError("[MainMenuController] AutoDebugNewGame 异常：" + ex);
-            }
+            if (FindFirstObjectByType<Camera>(FindObjectsInactive.Include) != null)
+                return;
+
+            var cameraGo = new GameObject("MainMenuCamera");
+            cameraGo.transform.SetParent(transform, false);
+            var camera = cameraGo.AddComponent<Camera>();
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = new Color(0.025f, 0.055f, 0.09f, 1f);
+            camera.cullingMask = 0;
+            camera.depth = -100f;
+            camera.tag = "MainCamera";
         }
 
         // ============================================================
@@ -114,18 +128,46 @@ namespace Whalebone.Gameplay.UI
             scaler.matchWidthOrHeight = 0.5f;
             _rootCanvas.AddComponent<GraphicRaycaster>();
 
-            if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include) != null)
+            // 不再 DestroyImmediate 旧 EventSystem：Play Mode 下销毁旧对象可能让
+            // EventSystem.current 暂时指向失效实例，表现为 UI 能显示但 Button 不收点击。
+            var es = FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include);
+            if (es == null)
             {
-                // 修复：旧 EventSystem 可能没挂 InputSystemUIInputModule 导致 UI 点击失效（2026-08-09 统筹）
-                var oldEs = FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include).gameObject;
-                Object.DestroyImmediate(oldEs);
+                var esGo = new GameObject("EventSystem");
+                esGo.transform.SetParent(transform, false);
+                es = esGo.AddComponent<UnityEngine.EventSystems.EventSystem>();
             }
+
+            // 主菜单是运行时创建的，不能让其他场景/残留对象继续竞争当前 EventSystem。
+            foreach (var other in FindObjectsByType<UnityEngine.EventSystems.EventSystem>(
+                         FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
-                var es = new GameObject("EventSystem");
-                es.transform.SetParent(transform, false);
-                es.AddComponent<UnityEngine.EventSystems.EventSystem>();
-                es.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+                if (other != es) other.gameObject.SetActive(false);
             }
+
+            es.gameObject.SetActive(true);
+            if (UnityEngine.EventSystems.EventSystem.current != es)
+                UnityEngine.EventSystems.EventSystem.current = es;
+            es.sendNavigationEvents = true;
+
+            // 保证场景中始终只有一个启用的 UI 输入模块；保留旧模块对象可避免
+            // Unity 在当前帧仍持有已销毁模块的引用。
+            var inputModule = es.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if (inputModule == null)
+                inputModule = es.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            inputModule.enabled = true;
+
+            foreach (var module in es.GetComponents<UnityEngine.EventSystems.BaseInputModule>())
+            {
+                if (module != inputModule) module.enabled = false;
+            }
+
+            // 明确重置运行时模块的默认 Point/LeftClick/Submit 动作，避免复用到
+            // 没有有效动作引用的旧实例（动态 AddComponent 不会替我们修复旧实例）。
+            inputModule.AssignDefaultActions();
+            es.UpdateModules();
+            Debug.Log("[MainMenu] EventSystem 已就绪：" + es.gameObject.name + " / " +
+                      inputModule.GetType().Name + " / actions=Default");
         }
 
         private static RectTransform CreateFullRect(GameObject parent, string name)
@@ -191,6 +233,10 @@ namespace Whalebone.Gameplay.UI
 
             // 按钮文字（本地化注册）
             var label = CreateText(rt.gameObject, "Label", "", 32, Vector2.zero);
+            label.rectTransform.anchorMin = Vector2.zero;
+            label.rectTransform.anchorMax = Vector2.one;
+            label.rectTransform.offsetMin = Vector2.zero;
+            label.rectTransform.offsetMax = Vector2.zero;
             label.alignment = TextAnchor.MiddleCenter;
             _localized.Add(new LocalizedText { Text = label, Key = textKey });
         }
@@ -226,6 +272,7 @@ namespace Whalebone.Gameplay.UI
             inputText.fontSize = 26;
             inputText.color = Color.white;
             inputText.alignment = TextAnchor.MiddleLeft;
+            inputText.raycastTarget = false;
             _captainInput.textComponent = inputText;
 
             var placeholder = new GameObject("Placeholder", typeof(RectTransform));
@@ -236,6 +283,7 @@ namespace Whalebone.Gameplay.UI
             phText.font = Fonts.Default;
             phText.fontSize = 26;
             phText.color = new Color(0.7f, 0.7f, 0.7f, 0.8f);
+            phText.raycastTarget = false;
             _captainInput.placeholder = phText;
             _captainInput.textComponent.text = "";
             _localized.Add(new LocalizedText { Text = phText, Key = "newgame_placeholder_name" });
@@ -409,6 +457,7 @@ namespace Whalebone.Gameplay.UI
             var img = go.AddComponent<Image>();
             img.sprite = UiSprites.White;
             img.color = new Color(0.05f, 0.09f, 0.13f, 0.97f);
+            img.raycastTarget = false;
             go.SetActive(false);   // 初始隐藏，由控制器开关
             return go;
         }
@@ -456,7 +505,8 @@ namespace Whalebone.Gameplay.UI
         private void ClosePanel(GameObject panel)
         {
             panel.SetActive(false);
-            _mainMenuPanel.SetActive(true);
+            ShowPanel(_mainMenuPanel);
+            Canvas.ForceUpdateCanvases();
         }
 
         private Text CreateText(GameObject parent, string name, string content, int size, Vector2 pos)
@@ -472,6 +522,8 @@ namespace Whalebone.Gameplay.UI
             text.alignment = TextAnchor.MiddleCenter;
             text.color = Color.white;
             text.text = content;
+            // 文本只负责显示，不能覆盖按钮/输入框的 GraphicRaycaster 命中区域。
+            text.raycastTarget = false;
             return text;
         }
 
@@ -498,6 +550,10 @@ namespace Whalebone.Gameplay.UI
             btn.onClick.AddListener(onClick);
 
             var label = CreateText(go, "Label", "", 26, Vector2.zero);
+            label.rectTransform.anchorMin = Vector2.zero;
+            label.rectTransform.anchorMax = Vector2.one;
+            label.rectTransform.offsetMin = Vector2.zero;
+            label.rectTransform.offsetMax = Vector2.zero;
             label.alignment = TextAnchor.MiddleCenter;
             _localized.Add(new LocalizedText { Text = label, Key = labelKey });
             return btn;

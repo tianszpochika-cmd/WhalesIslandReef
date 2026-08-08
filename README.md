@@ -1,4 +1,4 @@
-# 鲸骨航线（Whalebone）— 纯 Agent 3D 航海游戏
+# WhalesIslandReef（鲸骨航线）— 纯 Agent 3D 航海游戏
 
 > 1675 年加勒比海 · 开放世界航海沙盒 RPG ｜ 大陆个人开发者 · Steam 目标 ｜ 强逻辑 × 重交互
 

@@ -51,6 +51,7 @@ namespace Whalebone.Core
         public void LoadMainMenu()
         {
             State = GameState.MainMenu;
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -60,6 +61,7 @@ namespace Whalebone.Core
         public void LoadInitialHarbor()
         {
             State = GameState.InGame;
+            Time.timeScale = 1f;
 
             // 修复 P1A 在 Editor 下 Application.CanStreamedLevelBeLoaded 假阳性 + LoadScene 抛异常导致流程中断（2026-08-08 统筹）
             try
