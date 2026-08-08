@@ -95,7 +95,7 @@ namespace Whalebone.Gameplay.UI
             scaler.matchWidthOrHeight = 0.5f;
             _rootCanvas.AddComponent<GraphicRaycaster>();
 
-            if (FindObjectOfType<UnityEngine.EventSystems.EventSystem>() == null)
+            if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>(FindObjectsInactive.Include) == null)
             {
                 var es = new GameObject("EventSystem");
                 es.transform.SetParent(transform, false);
@@ -140,7 +140,7 @@ namespace Whalebone.Gameplay.UI
             rt.anchoredPosition = pos;
             rt.sizeDelta = new Vector2(320, 64);
 
-            img = rt.gameObject.AddComponent<Image>();
+            var img = rt.gameObject.AddComponent<Image>();
             img.sprite = UiSprites.White;
             img.color = new Color(0.15f, 0.28f, 0.4f, 0.92f);
 
