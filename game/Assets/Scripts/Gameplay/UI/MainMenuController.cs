@@ -388,7 +388,12 @@ namespace Whalebone.Gameplay.UI
 
         private void OpenPanel(GameObject panel)
         {
+            // 修复 P1A 单 SetActive(false) 在某些 Canvas 嵌套下失效导致双面板同时显示（2026-08-08 统筹）
+            // 改为全关所有面板后只开当前（防御性编程）
             _mainMenuPanel.SetActive(false);
+            if (_newGamePanel != null) _newGamePanel.SetActive(false);
+            if (_settingsPanel != null) _settingsPanel.SetActive(false);
+            if (_aboutPanel != null) _aboutPanel.SetActive(false);
             panel.SetActive(true);
         }
 
