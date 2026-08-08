@@ -78,6 +78,25 @@ namespace Whalebone.Gameplay.UI
             SettingsStore.ApplyAll();   // 启动应用持久化设置
             RefreshAllTexts();          // 初始语言应用
             RefreshContinueState();     // 继续按钮初始状态
+
+            // 诊断性自动 NewGame（3 秒后；2026-08-09 统筹）：跳过 UI 点击验证 SaveSystem+LoadInitialHarbor 是否能跑通
+            Invoke(nameof(AutoDebugNewGame), 3f);
+        }
+
+        private void AutoDebugNewGame()
+        {
+            Debug.Log("[MainMenuController] AutoDebugNewGame: 开始");
+            try
+            {
+                SaveSystem.NewGame(new NewGameParams { CaptainName = "AutoDebug", ShipTypeId = "small_fishing" });
+                Debug.Log("[MainMenuController] AutoDebugNewGame: SaveSystem.NewGame 成功");
+                GameManager.Instance.LoadInitialHarbor();
+                Debug.Log("[MainMenuController] AutoDebugNewGame: LoadInitialHarbor 已调用");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError("[MainMenuController] AutoDebugNewGame 异常：" + ex);
+            }
         }
 
         // ============================================================
