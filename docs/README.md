@@ -11,6 +11,7 @@
 
 - [D2 任务总览与依赖图](game/prompts/D2/README.md)
 - [D2 同步任务 01：范围与接口冻结](game/prompts/D2/01_SYNC_D2_SCOPE_FREEZE.md)
+- [D2 同步任务 02：契约与测试门](game/prompts/D2/02_SYNC_CONTRACT_TEST_GATE.md)
 - [D2 异步任务 03：航行核心](game/prompts/D2/03_ASYNC_SAILING_CORE.md)
 - [D2 异步任务 04：海洋与昼夜](game/prompts/D2/04_ASYNC_OCEAN_DAY_NIGHT.md)
 - [D2 异步任务 05：AgentCore 对话](game/prompts/D2/05_ASYNC_AGENTCORE_DIALOGUE.md)
