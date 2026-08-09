@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Whalebone.Agent;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.D4;
+using Whalebone.Systems.D5;
 
 namespace Whalebone.Systems.Save
 {
@@ -26,6 +27,8 @@ namespace Whalebone.Systems.Save
         public static D3RuntimeSnapshot CurrentD3Runtime;
         /// <summary>当前 D4 内容扩充快照；由 D4 表现层持有并通过 SaveSystem 落库。</summary>
         public static D4RuntimeSnapshot CurrentD4Runtime;
+        /// <summary>当前 D5 打磨上架快照；由 D5 表现层持有并通过 SaveSystem 落库。</summary>
+        public static D5RuntimeSnapshot CurrentD5Runtime;
 
         /// <summary>当前船上的船员 Agent 列表（AgentCore.CrewAgent）。</summary>
         public static readonly List<CrewAgent> CrewAgents = new List<CrewAgent>();
@@ -46,6 +49,7 @@ namespace Whalebone.Systems.Save
             CurrentShip = null;
             CurrentD3Runtime = null;
             CurrentD4Runtime = null;
+            CurrentD5Runtime = null;
             CrewAgents.Clear();
             CrewAgentTraitIds.Clear();
         }

@@ -19,6 +19,7 @@ using Whalebone.Agent;
 using Whalebone.Systems.D2;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.D4;
+using Whalebone.Systems.D5;
 
 namespace Whalebone.Systems.Save
 {
@@ -186,6 +187,20 @@ namespace Whalebone.Systems.Save
             Save();
         }
 
+        /// <summary>
+        /// D5 快照的唯一落库入口。快照作为 location_json.d5 保存，旧数据库无需迁移；
+        /// Save 域只复制内容，不计算世界、特质、性能或成就结果。
+        /// </summary>
+        public static void SaveD5Runtime(D5RuntimeSnapshot snapshot)
+        {
+            if (GameState.CurrentPlayer == null)
+                throw new InvalidOperationException("[SaveSystem] 无进行中的游戏，无法保存 D5 快照。");
+            GameState.CurrentD5Runtime = snapshot == null ? null : snapshot.Clone();
+            GameState.CurrentPlayer.D5Runtime = GameState.CurrentD5Runtime == null
+                ? null : GameState.CurrentD5Runtime.Clone();
+            Save();
+        }
+
         /// <summary>读取当前已加载的 D3 快照副本；旧 D2 存档没有快照时返回 null。</summary>
         public static D3RuntimeSnapshot LoadD3Runtime()
         {
@@ -199,6 +214,14 @@ namespace Whalebone.Systems.Save
         {
             var snapshot = GameState.CurrentD4Runtime ??
                 (GameState.CurrentPlayer == null ? null : GameState.CurrentPlayer.D4Runtime);
+            return snapshot == null ? null : snapshot.Clone();
+        }
+
+        /// <summary>读取当前已加载的 D5 快照副本；D1-D4 旧存档没有该字段时返回 null。</summary>
+        public static D5RuntimeSnapshot LoadD5Runtime()
+        {
+            var snapshot = GameState.CurrentD5Runtime ??
+                (GameState.CurrentPlayer == null ? null : GameState.CurrentPlayer.D5Runtime);
             return snapshot == null ? null : snapshot.Clone();
         }
 
@@ -233,6 +256,7 @@ namespace Whalebone.Systems.Save
                     GameState.CurrentShip = ship;
                     GameState.CurrentD3Runtime = player.D3Runtime == null ? null : player.D3Runtime.Clone();
                     GameState.CurrentD4Runtime = player.D4Runtime == null ? null : player.D4Runtime.Clone();
+                    GameState.CurrentD5Runtime = player.D5Runtime == null ? null : player.D5Runtime.Clone();
                     GameState.CrewAgents.AddRange(crew);
                     foreach (var kv in crewTraitIds)
                         GameState.CrewAgentTraitIds[kv.Key] = kv.Value;
@@ -359,7 +383,7 @@ PRAGMA user_version = " + SchemaVersion + @";
                     SaveJson.Stringify(p.Reputation),
                     SaveJson.Stringify(p.Inventory),
                     p.ShipId,
-                    SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime, p.D4Runtime)),
+                    SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime, p.D4Runtime, p.D5Runtime)),
                     p.PlaySeconds);
             }
         }
@@ -414,6 +438,8 @@ PRAGMA user_version = " + SchemaVersion + @";
                     p.D3Runtime = D3FromObj(d3Object);
                 if (loc.TryGetValue("d4", out object d4Value) && d4Value is Dictionary<string, object> d4Object)
                     p.D4Runtime = D4FromObj(d4Object);
+                if (loc.TryGetValue("d5", out object d5Value) && d5Value is Dictionary<string, object> d5Object)
+                    p.D5Runtime = D5FromObj(d5Object);
             }
 
             return p;
@@ -573,7 +599,7 @@ PRAGMA user_version = " + SchemaVersion + @";
             return result;
         }
 
-        private static Dictionary<string, object> LocationToObj(LocationRef loc, D3RuntimeSnapshot d3 = null, D4RuntimeSnapshot d4 = null)
+        private static Dictionary<string, object> LocationToObj(LocationRef loc, D3RuntimeSnapshot d3 = null, D4RuntimeSnapshot d4 = null, D5RuntimeSnapshot d5 = null)
         {
             var result = new Dictionary<string, object>
             {
@@ -588,6 +614,7 @@ PRAGMA user_version = " + SchemaVersion + @";
             };
             if (d3 != null) result["d3"] = D3ToObj(d3);
             if (d4 != null) result["d4"] = D4ToObj(d4);
+            if (d5 != null) result["d5"] = D5ToObj(d5);
             return result;
         }
 
@@ -829,6 +856,115 @@ PRAGMA user_version = " + SchemaVersion + @";
                 Enum.TryParse(SaveJson.GetStr(logObj, "kind", "Voyage"), true, out entry.Kind);
                 result.RouteLog.Add(entry);
             }
+            return result;
+        }
+
+        private static Dictionary<string, object> D5ToObj(D5RuntimeSnapshot d5)
+        {
+            var world = new Dictionary<string, object>
+            {
+                ["currentIslandId"] = d5.World.CurrentIslandId ?? "santa_margarita",
+                ["discoveredIslands"] = StringListToObjects(d5.World.DiscoveredIslands),
+                ["visitedIslands"] = StringListToObjects(d5.World.VisitedIslands),
+                ["mapRevision"] = d5.World.MapRevision,
+            };
+            var character = new Dictionary<string, object>
+            {
+                ["presetId"] = d5.Character.PresetId ?? "dockhand_male",
+                ["skinTone"] = d5.Character.SkinTone ?? "sun_bronzed",
+                ["hairStyle"] = d5.Character.HairStyle ?? "short",
+                ["hairColor"] = d5.Character.HairColor ?? "brown",
+                ["outfit"] = d5.Character.Outfit ?? "deckhand",
+                ["faceScale"] = d5.Character.FaceScale,
+                ["bodyScale"] = d5.Character.BodyScale,
+            };
+            var performance = new Dictionary<string, object>
+            {
+                ["quality"] = d5.Performance.Quality.ToString(),
+                ["targetWidth"] = d5.Performance.TargetWidth, ["targetHeight"] = d5.Performance.TargetHeight,
+                ["targetFps"] = d5.Performance.TargetFps, ["lastFps"] = d5.Performance.LastFps,
+                ["minFps"] = d5.Performance.MinFps, ["averageFps"] = d5.Performance.AverageFps,
+                ["sampleCount"] = d5.Performance.SampleCount, ["meetsTarget"] = d5.Performance.MeetsTarget,
+            };
+            var steam = new Dictionary<string, object>
+            {
+                ["appId"] = d5.Steam.AppId ?? "UNCONFIGURED", ["offlineMode"] = d5.Steam.OfflineMode,
+                ["cloudEnabled"] = d5.Steam.CloudEnabled, ["pendingCloudRevision"] = d5.Steam.PendingCloudRevision,
+                ["lastSync"] = d5.Steam.LastSync ?? "never",
+                ["unlockedAchievements"] = StringListToObjects(d5.Steam.UnlockedAchievements),
+            };
+            var crewTraits = new Dictionary<string, object>();
+            foreach (var pair in d5.CrewTraitIds)
+                crewTraits[pair.Key] = StringListToObjects(pair.Value);
+            return new Dictionary<string, object>
+            {
+                ["world"] = world, ["character"] = character, ["performance"] = performance,
+                ["steam"] = steam, ["language"] = d5.Language == "en" ? "en" : "zh",
+                ["playerTraitIds"] = StringListToObjects(d5.PlayerTraitIds), ["crewTraitIds"] = crewTraits,
+            };
+        }
+
+        private static D5RuntimeSnapshot D5FromObj(Dictionary<string, object> obj)
+        {
+            var result = new D5RuntimeSnapshot();
+            var world = Nested(obj, "world");
+            if (world != null)
+            {
+                result.World.CurrentIslandId = SaveJson.GetStr(world, "currentIslandId", "santa_margarita");
+                result.World.MapRevision = SaveJson.GetInt(world, "mapRevision");
+                result.World.DiscoveredIslands.Clear();
+                result.World.VisitedIslands.Clear();
+                ReadStringListObject(result.World.DiscoveredIslands, world, "discoveredIslands");
+                ReadStringListObject(result.World.VisitedIslands, world, "visitedIslands");
+            }
+
+            var character = Nested(obj, "character");
+            if (character != null)
+            {
+                result.Character.PresetId = SaveJson.GetStr(character, "presetId", "dockhand_male");
+                result.Character.SkinTone = SaveJson.GetStr(character, "skinTone", "sun_bronzed");
+                result.Character.HairStyle = SaveJson.GetStr(character, "hairStyle", "short");
+                result.Character.HairColor = SaveJson.GetStr(character, "hairColor", "brown");
+                result.Character.Outfit = SaveJson.GetStr(character, "outfit", "deckhand");
+                result.Character.FaceScale = SaveJson.GetFloat(character, "faceScale", 1f);
+                result.Character.BodyScale = SaveJson.GetFloat(character, "bodyScale", 1f);
+            }
+
+            var performance = Nested(obj, "performance");
+            if (performance != null)
+            {
+                result.Performance.TargetWidth = SaveJson.GetInt(performance, "targetWidth", 1920);
+                result.Performance.TargetHeight = SaveJson.GetInt(performance, "targetHeight", 1080);
+                result.Performance.TargetFps = SaveJson.GetInt(performance, "targetFps", 60);
+                result.Performance.LastFps = SaveJson.GetFloat(performance, "lastFps");
+                result.Performance.MinFps = SaveJson.GetFloat(performance, "minFps");
+                result.Performance.AverageFps = SaveJson.GetFloat(performance, "averageFps");
+                result.Performance.SampleCount = SaveJson.GetInt(performance, "sampleCount");
+                result.Performance.MeetsTarget = performance.ContainsKey("meetsTarget") && Convert.ToBoolean(performance["meetsTarget"]);
+                Enum.TryParse(SaveJson.GetStr(performance, "quality", "Medium"), true, out result.Performance.Quality);
+            }
+
+            var steam = Nested(obj, "steam");
+            if (steam != null)
+            {
+                result.Steam.AppId = SaveJson.GetStr(steam, "appId", "UNCONFIGURED");
+                result.Steam.OfflineMode = !steam.ContainsKey("offlineMode") || Convert.ToBoolean(steam["offlineMode"]);
+                result.Steam.CloudEnabled = !steam.ContainsKey("cloudEnabled") || Convert.ToBoolean(steam["cloudEnabled"]);
+                result.Steam.PendingCloudRevision = SaveJson.GetInt(steam, "pendingCloudRevision");
+                result.Steam.LastSync = SaveJson.GetStr(steam, "lastSync", "never");
+                ReadStringListObject(result.Steam.UnlockedAchievements, steam, "unlockedAchievements");
+            }
+            result.Language = SaveJson.GetStr(obj, "language", "zh") == "en" ? "en" : "zh";
+            ReadStringListObject(result.PlayerTraitIds, obj, "playerTraitIds");
+            var crewTraits = Nested(obj, "crewTraitIds");
+            if (crewTraits != null)
+                foreach (var pair in crewTraits)
+                {
+                    var values = new List<string>();
+                    if (pair.Value is List<object> list)
+                        foreach (var value in list) values.Add(Convert.ToString(value));
+                    result.CrewTraitIds[pair.Key] = values;
+                }
             return result;
         }
 

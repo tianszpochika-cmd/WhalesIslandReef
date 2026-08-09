@@ -250,6 +250,87 @@ paths:
             application/json:
               schema: { $ref: '../d4-content.schema.json#/$defs/mainline_state' }
 
+  /world/islands:
+    post:
+      summary: D5 12 岛世界状态镜像
+      description: 客户端 D5WorldSystem 仍是本地发现/访问裁决者；服务端只校验并回显快照。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d5-release.schema.json#/$defs/world_state' }
+      responses:
+        '200':
+          description: WorldState
+          content:
+            application/json:
+              schema: { $ref: '../d5-release.schema.json#/$defs/world_state' }
+
+  /profile/traits:
+    post:
+      summary: D5 50 条特质状态镜像
+      description: 特质目录与生成由客户端 D5TraitSystem 裁决，服务端只过滤合法 ID。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                playerTraitIds: { type: array, items: { type: string }, maxItems: 4 }
+                crewTraitIds: { type: object, additionalProperties: { type: array, items: { type: string }, maxItems: 4 } }
+      responses:
+        '200':
+          description: TraitState
+
+  /profile/customization:
+    post:
+      summary: D5 基础捏脸预设镜像
+      description: 角色预设由客户端 D5CharacterSystem 裁决；没有 Steamworks SDK 也可离线运行。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d5-release.schema.json#/$defs/character_state' }
+      responses:
+        '200':
+          description: CharacterState
+          content:
+            application/json:
+              schema: { $ref: '../d5-release.schema.json#/$defs/character_state' }
+
+  /performance/report:
+    post:
+      summary: D5 1080p/60 性能报告镜像
+      description: 性能采样在客户端完成；服务端不伪造硬件指标，只回显目标与采样结果。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d5-release.schema.json#/$defs/performance_state' }
+      responses:
+        '200':
+          description: PerformanceState
+          content:
+            application/json:
+              schema: { $ref: '../d5-release.schema.json#/$defs/performance_state' }
+
+  /steam/cloud:
+    post:
+      summary: D5 Steam 成就/云存档桥接镜像
+      description: 本地离线安全桥接与待上传队列；真实 Steamworks 同步需要发布者 App ID 和 SDK。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d5-release.schema.json#/$defs/steam_state' }
+      responses:
+        '200':
+          description: SteamState
+          content:
+            application/json:
+              schema: { $ref: '../d5-release.schema.json#/$defs/steam_state' }
+
   /wallet:
     get:
       summary: 玩家点数余额与用量（用户中心/游戏内展示）

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Whalebone.Agent;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.D4;
+using Whalebone.Systems.D5;
 
 namespace Whalebone.Systems.Save
 {
@@ -61,6 +62,8 @@ namespace Whalebone.Systems.Save
         public D3RuntimeSnapshot D3Runtime;
         /// <summary>D4 内容扩充快照；只由 D4 系统裁决，Save 域负责序列化。</summary>
         public D4RuntimeSnapshot D4Runtime;
+        /// <summary>D5 打磨上架快照；只由 D5 系统裁决，Save 域负责序列化。</summary>
+        public D5RuntimeSnapshot D5Runtime;
 
         /// <summary>创建全新玩家（技能默认 1、初始金钱 500、初始位置=圣玛格丽特港）。</summary>
         public static PlayerState CreateNew(string id, string name)

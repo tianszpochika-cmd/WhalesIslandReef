@@ -14,7 +14,7 @@ namespace Whalebone.Gameplay.D4
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
-            if (!Application.isBatchMode || !HasArgument("-d4Smoke")) return;
+            if (!Application.isBatchMode || !HasArgument("-d4Smoke") || HasArgument("-d5Smoke")) return;
             new GameObject("D4RuntimeSmokeProbe").AddComponent<D4RuntimeSmokeProbe>();
         }
 

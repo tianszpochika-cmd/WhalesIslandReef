@@ -8,6 +8,7 @@
 - D2：航行与对话闭环，D2-01 至 D2-10 已完成，自动化验收 23/23 通过。
 - D3：贸易与完整航程可玩环，已完成；范围与验收见 [D3 范围冻结](game/design/D3_SCOPE.md) 和 [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)。
 - D4：内容扩充，已完成；范围与验收见 [D4 范围冻结](game/design/D4_SCOPE.md) 和 [D4 最终验收报告](game/design/D4_ACCEPTANCE_REPORT.md)。
+- D5：打磨上架技术阶段，已完成；外部 Steam 发布动作见 [D5 发布清单](game/design/D5_RELEASE_CHECKLIST.md)，技术验收见 [D5 最终验收报告](game/design/D5_ACCEPTANCE_REPORT.md)。
 
 ## D2 入口
 
@@ -37,3 +38,11 @@
 - [D4 范围冻结与验收门](game/design/D4_SCOPE.md)
 - [D4 内容契约](../contracts/d4-content.schema.json)
 - [D4 最终验收报告](game/design/D4_ACCEPTANCE_REPORT.md)
+
+## D5 入口
+
+- [D5 任务总览与依赖图](game/prompts/D5/README.md)
+- [D5 范围冻结与验收门](game/design/D5_SCOPE.md)
+- [D5 发布清单](game/design/D5_RELEASE_CHECKLIST.md)
+- [D5 发布契约](../contracts/d5-release.schema.json)
+- [D5 最终验收报告](game/design/D5_ACCEPTANCE_REPORT.md)

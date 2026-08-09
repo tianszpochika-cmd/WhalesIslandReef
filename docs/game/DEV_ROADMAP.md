@@ -1,6 +1,6 @@
 # 开发阶段路线图（DEV_ROADMAP）
 
-> 状态：**D1、D2、D3、D4 已完成并通过自动化验收，准备进入 D5**（2026-08-09）
+> 状态：**D1、D2、D3、D4、D5 技术阶段已完成并通过自动化验收**（2026-08-09）
 > 阶段划分原则：按"**可体验的可见成果**"切分——每个阶段结束时项目能跑、能玩、能看到东西，而不是"代码写完了"。
 > 与 MVP 分级（M0-M3）对齐：D 是执行视角，M 是范围视角。
 
@@ -15,7 +15,7 @@
 | Unity 环境 | ✅ 已就绪 | Unity 6 `6000.0.80f1` + 编辑器/脚本编译链 |
 | 海洋插件 | ⬜ D2 引入 | Crest Ocean（$90）——主菜单阶段不需要 |
 | 本地 AI | ⬜ D2 引入 | Ollama + qwen2.5:3b——对话闭环才需要 |
-| Steamworks | ⬜ D5 引入 | 发布阶段 |
+| Steamworks | ✅ D5 Bridge 已接入 | 真实 SDK/App ID/Partner 配置仍在发布清单 |
 | Ollama 包/账号注册/支付 | ⬜ 按需 | 服务端随 D2/D5 联动 |
 
 **结论：D1 只需装 Unity + IDE 即可开工。** 其余依赖按阶段引入，不阻塞起步。
@@ -93,8 +93,10 @@ Unity 6 + IDE + Git（仅此三项）。
 船型 5 + 改装数值化 + 炮战（简化格斗）+ 七势力声望（含私掠/禁运/检查）+ 15 种动物 + 疾病医疗 + 主线 3 章 + 航线日志。
 **依赖**：D3 可玩环。D4-01 至 D4-10 已顺序完成；Unity D2+D3+D4+Save EditMode 55/55 通过，InitialHarbor D4 运行时冒烟通过。详见 [`D4_ACCEPTANCE_REPORT.md`](design/D4_ACCEPTANCE_REPORT.md)。
 
-### D5 打磨上架（M3，下一阶段）
-12 岛 + 特质 50 + 捏脸基础 + 中英本地化 + 性能（1080p 60fps）+ Steamworks 集成（成就/云存档/商店页）+ Steam Direct 缴费（$100）+ 愿望单运营 + Next Fest → EA 发售。
+### D5 打磨上架（M3，技术阶段已完成）
+12 岛 + 特质 50 + 8 个基础角色预设 + 中英本地化 + 性能（1080p 60fps 目标监控）+ Steam 成就/云存档离线安全 Bridge + 商店元数据和发布清单已完成。Unity D2+D3+D4+D5+Save EditMode 63/63 通过，D5 运行时冒烟验证 12 个岛标记、海图 UI 和玩家对象创建成功。详见 [`D5_ACCEPTANCE_REPORT.md`](design/D5_ACCEPTANCE_REPORT.md)。
+
+Steam Direct 缴费、真实 App ID/SDK、商店审核、愿望单运营和 Next Fest 属于外部人工发布动作，清单见 [`D5_RELEASE_CHECKLIST.md`](design/D5_RELEASE_CHECKLIST.md)。
 
 ---
 

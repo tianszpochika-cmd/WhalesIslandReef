@@ -14,6 +14,9 @@
 | `SAVE_SYSTEM.md` | 存档系统实现说明（SQLite 方案/表结构/数据流） | ✅ 已建（D1-P1B） |
 | `D4_SCOPE.md` | D4 内容扩充范围、数据所有权与验收门 | ✅ D4 已完成 |
 | `D4_ACCEPTANCE_REPORT.md` | D4 自动化与运行时最终验收 | ✅ D4 已通过 |
+| `D5_SCOPE.md` | D5 打磨上架范围、外部发布边界与验收门 | ✅ D5 已完成 |
+| `D5_RELEASE_CHECKLIST.md` | Steam 技术准备与外部发布人工清单 | ✅ 技术项完成 |
+| `D5_ACCEPTANCE_REPORT.md` | D5 自动化、运行时与发布桥接验收 | ✅ D5 已通过 |
 
 ## 设计阶段工作流
 

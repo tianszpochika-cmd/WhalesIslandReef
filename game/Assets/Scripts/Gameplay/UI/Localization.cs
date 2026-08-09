@@ -59,7 +59,7 @@ namespace Whalebone.Gameplay.UI
 
                 // 关于
                 {"about_title", "关于"},
-                {"about_version", "版本：v0.1.0-D1"},
+                {"about_version", "版本：v0.5.0-D5"},
                 {"about_dev", "独立开发者（鲸骨航线）"},
                 {"about_compliance", "素材授权：原创/已授权资产；\n适龄提示：本游戏含轻度暴力与酒精描写，适合 12 岁以上。\n若使用 AI 生成素材，将在此列明授权记录。"},
                 {"about_exit", "退出"},
@@ -98,7 +98,7 @@ namespace Whalebone.Gameplay.UI
                 {"controls_text", "W/A/S/D or Arrows: steer\nMouse: camera\n1-5: skill hotkeys\nEsc: menu"},
 
                 {"about_title", "About"},
-                {"about_version", "Version: v0.1.0-D1"},
+                {"about_version", "Version: v0.5.0-D5"},
                 {"about_dev", "Solo Developer (Whalebone)"},
                 {"about_compliance", "Assets: original/licensed.\nAge rating: mild violence & alcohol, 12+.\nAI-generated assets will be listed here with licenses."},
                 {"about_exit", "Quit"},
