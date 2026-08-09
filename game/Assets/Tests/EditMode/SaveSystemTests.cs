@@ -17,6 +17,7 @@ using System.IO;
 using NUnit.Framework;
 using Whalebone.Agent;
 using Whalebone.Systems.D2;
+using Whalebone.Systems.D3;
 using Whalebone.Systems.Save;
 
 namespace Save.Tests
@@ -182,6 +183,44 @@ namespace Save.Tests
             Assert.AreEqual(4, GameState.CurrentPlayer.Location.DayIndex);
             Assert.AreEqual(0.72f, GameState.CurrentPlayer.Location.NormalizedTime, 0.0001f);
             Assert.AreEqual(5f, GameState.CrewAgents[0].Stats.Affinity, 0.0001f);
+        }
+
+        [Test]
+        public void D3Runtime_SaveLoad_RestoresTradeVoyageAndMarketState()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "D3 船长" });
+            var snapshot = new D3RuntimeSnapshot
+            {
+                CurrentLocationId = PortCatalog.GreenCayId,
+                DestinationId = PortCatalog.DriftwoodIsleId,
+                VoyageStatus = D3VoyageStatus.InPort,
+                Weather = D3WeatherType.Rain,
+                CurrentDay = 3,
+                TotalDays = 4,
+                VoyageSeed = 987,
+                Water = 11,
+                Food = 12,
+                Hull = 55,
+                HullMax = 60,
+                Money = 432,
+            };
+            snapshot.Cargo["sugar"] = 7;
+            snapshot.PersonalItems["compass"] = 1;
+            snapshot.MarketStock["sugar"] = 43;
+            snapshot.GatheredThisVisit["timber"] = 2;
+            snapshot.EventIds.Add("rain_catch");
+
+            SaveSystem.SaveD3Runtime(snapshot);
+            GameState.Reset();
+            Assert.IsTrue(SaveSystem.Load());
+            var loaded = SaveSystem.LoadD3Runtime();
+            Assert.IsNotNull(loaded);
+            Assert.AreEqual(PortCatalog.GreenCayId, loaded.CurrentLocationId);
+            Assert.AreEqual(PortCatalog.DriftwoodIsleId, loaded.DestinationId);
+            Assert.AreEqual(D3WeatherType.Rain, loaded.Weather);
+            Assert.AreEqual(7, loaded.Cargo["sugar"]);
+            Assert.AreEqual(43, loaded.MarketStock["sugar"]);
+            Assert.AreEqual("rain_catch", loaded.EventIds[0]);
         }
 
         [Test]

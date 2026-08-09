@@ -94,6 +94,85 @@ paths:
         '429':
           description: 超过限流（RPM/TPM）
 
+  /trade/quote:
+    post:
+      summary: D3 开发态港口报价
+      description: 本地强逻辑与服务端镜像共用的报价字段；正式联机裁决尚未启用。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [port_id, commodity_id]
+              properties:
+                port_id: { type: string }
+                commodity_id: { type: string }
+                market_stock: { type: integer, minimum: 0, default: 50 }
+                event_coefficient: { type: number, minimum: 0.5, maximum: 1.5, default: 1 }
+      responses:
+        '200':
+          description: MarketQuote（字段见 D3 JSON Schema）
+          content:
+            application/json:
+              schema: { $ref: '../d3-trade.schema.json#/$defs/market_quote' }
+        '400':
+          description: 港口、货物或参数无效
+
+  /trade/order:
+    post:
+      summary: D3 开发态买卖订单
+      description: 仅提供确定性开发态镜像；Unity 本地仍由 TradeEconomySystem 裁决。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '../d3-trade.schema.json#/$defs/trade_order'
+              properties:
+                money: { type: integer, minimum: 0 }
+                cargo_count: { type: integer, minimum: 0 }
+                cargo_capacity: { type: integer, minimum: 0 }
+                market_stock: { type: integer, minimum: 0, default: 50 }
+                event_coefficient: { type: number, minimum: 0.5, maximum: 1.5, default: 1 }
+      responses:
+        '200':
+          description: TradeResult（字段见 D3 JSON Schema）
+          content:
+            application/json:
+              schema: { $ref: '../d3-trade.schema.json#/$defs/trade_result' }
+        '400':
+          description: 订单参数无效
+
+  /voyage/settle:
+    post:
+      summary: D3 开发态航程结算镜像
+      description: 服务端只验证并回显结算快照，不取代游戏端 VoyageSettlementSystem 的数值裁决。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [succeeded, origin_id, destination_id, days_elapsed, events, water_remaining, food_remaining, hull_remaining]
+              properties:
+                succeeded: { type: boolean }
+                origin_id: { type: string }
+                destination_id: { type: string }
+                days_elapsed: { type: integer, minimum: 0 }
+                events: { type: array, items: { type: string } }
+                water_remaining: { type: integer, minimum: 0 }
+                food_remaining: { type: integer, minimum: 0 }
+                hull_remaining: { type: integer, minimum: 0 }
+                message: { type: string }
+      responses:
+        '200':
+          description: VoyageSettlement（字段见 D3 JSON Schema）
+          content:
+            application/json:
+              schema: { $ref: '../d3-trade.schema.json#/$defs/voyage_settlement' }
+
   /wallet:
     get:
       summary: 玩家点数余额与用量（用户中心/游戏内展示）

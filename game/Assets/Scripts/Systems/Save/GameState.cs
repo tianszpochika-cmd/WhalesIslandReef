@@ -10,6 +10,7 @@
 
 using System.Collections.Generic;
 using Whalebone.Agent;
+using Whalebone.Systems.D3;
 
 namespace Whalebone.Systems.Save
 {
@@ -20,6 +21,8 @@ namespace Whalebone.Systems.Save
     {
         public static PlayerState CurrentPlayer;
         public static ShipState CurrentShip;
+        /// <summary>当前 D3 运行时快照；由 D3 表现层持有并通过 SaveSystem 落库。</summary>
+        public static D3RuntimeSnapshot CurrentD3Runtime;
 
         /// <summary>当前船上的船员 Agent 列表（AgentCore.CrewAgent）。</summary>
         public static readonly List<CrewAgent> CrewAgents = new List<CrewAgent>();
@@ -38,6 +41,7 @@ namespace Whalebone.Systems.Save
         {
             CurrentPlayer = null;
             CurrentShip = null;
+            CurrentD3Runtime = null;
             CrewAgents.Clear();
             CrewAgentTraitIds.Clear();
         }

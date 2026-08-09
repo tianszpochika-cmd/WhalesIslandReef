@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using Whalebone.Agent;
+using Whalebone.Systems.D3;
 
 namespace Whalebone.Systems.Save
 {
@@ -55,6 +56,8 @@ namespace Whalebone.Systems.Save
         public string ShipId;
         public LocationRef Location = new LocationRef();
         public int PlaySeconds;
+        /// <summary>D3 快照序列化载体；数值仍由 D3 系统裁决，Save 域只保存/还原。</summary>
+        public D3RuntimeSnapshot D3Runtime;
 
         /// <summary>创建全新玩家（技能默认 1、初始金钱 500、初始位置=圣玛格丽特港）。</summary>
         public static PlayerState CreateNew(string id, string name)

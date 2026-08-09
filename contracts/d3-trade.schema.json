@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whalebone.local/contracts/d3-trade.schema.json",
+  "title": "Whalebone D3 Trade and Voyage Contract",
+  "description": "D3 开发态贸易报价、下单和航程结算的跨端字段事实源。",
+  "type": "object",
+  "required": ["commodity", "market_quote", "trade_order", "trade_result", "voyage_settlement"],
+  "properties": {
+    "commodity": { "$ref": "#/$defs/commodity" },
+    "market_quote": { "$ref": "#/$defs/market_quote" },
+    "trade_order": { "$ref": "#/$defs/trade_order" },
+    "trade_result": { "$ref": "#/$defs/trade_result" },
+    "voyage_settlement": { "$ref": "#/$defs/voyage_settlement" }
+  },
+  "$defs": {
+    "commodity": {
+      "type": "object",
+      "required": ["commodity_id", "display_name", "base_price", "cargo_volume"],
+      "properties": {
+        "commodity_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "display_name": { "type": "string", "minLength": 1 },
+        "base_price": { "type": "integer", "minimum": 1 },
+        "cargo_volume": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "market_quote": {
+      "type": "object",
+      "required": ["port_id", "commodity_id", "buy_unit_price", "sell_unit_price", "supply_coefficient", "tariff_coefficient", "event_coefficient"],
+      "properties": {
+        "port_id": { "type": "string", "minLength": 1 },
+        "commodity_id": { "type": "string", "minLength": 1 },
+        "buy_unit_price": { "type": "integer", "minimum": 1 },
+        "sell_unit_price": { "type": "integer", "minimum": 1 },
+        "supply_coefficient": { "type": "number", "minimum": 0.5, "maximum": 1.8 },
+        "tariff_coefficient": { "type": "number", "minimum": 0.5, "maximum": 1.5 },
+        "event_coefficient": { "type": "number", "minimum": 0.5, "maximum": 1.5 }
+      },
+      "additionalProperties": false
+    },
+    "trade_order": {
+      "type": "object",
+      "required": ["port_id", "commodity_id", "action", "quantity"],
+      "properties": {
+        "port_id": { "type": "string", "minLength": 1 },
+        "commodity_id": { "type": "string", "minLength": 1 },
+        "action": { "type": "string", "enum": ["buy", "sell"] },
+        "quantity": { "type": "integer", "minimum": 1 },
+        "money": { "type": "integer", "minimum": 0 },
+        "cargo_count": { "type": "integer", "minimum": 0 },
+        "cargo_capacity": { "type": "integer", "minimum": 0 },
+        "market_stock": { "type": "integer", "minimum": 0 },
+        "event_coefficient": { "type": "number", "minimum": 0.5, "maximum": 1.5 }
+      },
+      "additionalProperties": false
+    },
+    "trade_result": {
+      "type": "object",
+      "required": ["succeeded", "quantity", "total_price", "money_after", "message"],
+      "properties": {
+        "succeeded": { "type": "boolean" },
+        "quantity": { "type": "integer", "minimum": 0 },
+        "total_price": { "type": "integer", "minimum": 0 },
+        "money_after": { "type": "integer", "minimum": 0 },
+        "message": { "type": "string" },
+        "code": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "voyage_settlement": {
+      "type": "object",
+      "required": ["succeeded", "origin_id", "destination_id", "days_elapsed", "events", "water_remaining", "food_remaining", "hull_remaining"],
+      "properties": {
+        "succeeded": { "type": "boolean" },
+        "origin_id": { "type": "string", "minLength": 1 },
+        "destination_id": { "type": "string", "minLength": 1 },
+        "days_elapsed": { "type": "integer", "minimum": 0 },
+        "events": { "type": "array", "items": { "type": "string" } },
+        "water_remaining": { "type": "integer", "minimum": 0 },
+        "food_remaining": { "type": "integer", "minimum": 0 },
+        "hull_remaining": { "type": "integer", "minimum": 0 },
+        "message": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

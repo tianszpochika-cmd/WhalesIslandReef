@@ -17,6 +17,7 @@ using System.IO;
 using UnityEngine;
 using Whalebone.Agent;
 using Whalebone.Systems.D2;
+using Whalebone.Systems.D3;
 
 namespace Whalebone.Systems.Save
 {
@@ -156,6 +157,28 @@ namespace Whalebone.Systems.Save
             Save();
         }
 
+        /// <summary>
+        /// D3 快照的唯一落库入口。快照作为 location_json.d3 保存，旧数据库无需迁移；
+        /// Save 域不计算金钱、价格、补给或事件，只复制可序列化状态。
+        /// </summary>
+        public static void SaveD3Runtime(D3RuntimeSnapshot snapshot)
+        {
+            if (GameState.CurrentPlayer == null)
+                throw new InvalidOperationException("[SaveSystem] 无进行中的游戏，无法保存 D3 快照。");
+            GameState.CurrentD3Runtime = snapshot == null ? null : snapshot.Clone();
+            GameState.CurrentPlayer.D3Runtime = GameState.CurrentD3Runtime == null
+                ? null : GameState.CurrentD3Runtime.Clone();
+            Save();
+        }
+
+        /// <summary>读取当前已加载的 D3 快照副本；旧 D2 存档没有快照时返回 null。</summary>
+        public static D3RuntimeSnapshot LoadD3Runtime()
+        {
+            var snapshot = GameState.CurrentD3Runtime ??
+                (GameState.CurrentPlayer == null ? null : GameState.CurrentPlayer.D3Runtime);
+            return snapshot == null ? null : snapshot.Clone();
+        }
+
         /// <summary>从 SQLite 恢复 Player/Ship/CrewAgent 到 GameState，成功返回 true。</summary>
         public static bool Load()
         {
@@ -185,6 +208,7 @@ namespace Whalebone.Systems.Save
                     GameState.Reset();
                     GameState.CurrentPlayer = player;
                     GameState.CurrentShip = ship;
+                    GameState.CurrentD3Runtime = player.D3Runtime == null ? null : player.D3Runtime.Clone();
                     GameState.CrewAgents.AddRange(crew);
                     foreach (var kv in crewTraitIds)
                         GameState.CrewAgentTraitIds[kv.Key] = kv.Value;
@@ -311,7 +335,7 @@ PRAGMA user_version = " + SchemaVersion + @";
                     SaveJson.Stringify(p.Reputation),
                     SaveJson.Stringify(p.Inventory),
                     p.ShipId,
-                    SaveJson.Stringify(LocationToObj(p.Location)),
+                    SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime)),
                     p.PlaySeconds);
             }
         }
@@ -362,6 +386,8 @@ PRAGMA user_version = " + SchemaVersion + @";
                     p.Location.NormalizedTime %= 1f;
                     if (p.Location.NormalizedTime < 0f) p.Location.NormalizedTime += 1f;
                 }
+                if (loc.TryGetValue("d3", out object d3Value) && d3Value is Dictionary<string, object> d3Object)
+                    p.D3Runtime = D3FromObj(d3Object);
             }
 
             return p;
@@ -521,9 +547,9 @@ PRAGMA user_version = " + SchemaVersion + @";
             return result;
         }
 
-        private static Dictionary<string, object> LocationToObj(LocationRef loc)
+        private static Dictionary<string, object> LocationToObj(LocationRef loc, D3RuntimeSnapshot d3 = null)
         {
-            return new Dictionary<string, object>
+            var result = new Dictionary<string, object>
             {
                 ["type"] = loc.Type,
                 ["portId"] = loc.PortId ?? "",
@@ -534,6 +560,59 @@ PRAGMA user_version = " + SchemaVersion + @";
                 ["dayIndex"] = loc.DayIndex,
                 ["normalizedTime"] = loc.NormalizedTime,
             };
+            if (d3 != null) result["d3"] = D3ToObj(d3);
+            return result;
+        }
+
+        private static Dictionary<string, object> D3ToObj(D3RuntimeSnapshot d3)
+        {
+            return new Dictionary<string, object>
+            {
+                ["currentLocationId"] = d3.CurrentLocationId ?? "",
+                ["destinationId"] = d3.DestinationId ?? "",
+                ["voyageStatus"] = d3.VoyageStatus.ToString(),
+                ["weather"] = d3.Weather.ToString(),
+                ["currentDay"] = d3.CurrentDay,
+                ["totalDays"] = d3.TotalDays,
+                ["voyageSeed"] = d3.VoyageSeed,
+                ["water"] = d3.Water,
+                ["food"] = d3.Food,
+                ["hull"] = d3.Hull,
+                ["hullMax"] = d3.HullMax,
+                ["money"] = d3.Money,
+                ["cargo"] = d3.Cargo,
+                ["personalItems"] = d3.PersonalItems,
+                ["marketStock"] = d3.MarketStock,
+                ["gatheredThisVisit"] = d3.GatheredThisVisit,
+                ["eventIds"] = d3.EventIds,
+            };
+        }
+
+        private static D3RuntimeSnapshot D3FromObj(Dictionary<string, object> obj)
+        {
+            var result = new D3RuntimeSnapshot
+            {
+                CurrentLocationId = SaveJson.GetStr(obj, "currentLocationId", null),
+                DestinationId = SaveJson.GetStr(obj, "destinationId", null),
+                CurrentDay = SaveJson.GetInt(obj, "currentDay"),
+                TotalDays = SaveJson.GetInt(obj, "totalDays"),
+                VoyageSeed = SaveJson.GetInt(obj, "voyageSeed"),
+                Water = SaveJson.GetInt(obj, "water"),
+                Food = SaveJson.GetInt(obj, "food"),
+                Hull = SaveJson.GetInt(obj, "hull"),
+                HullMax = SaveJson.GetInt(obj, "hullMax"),
+                Money = SaveJson.GetInt(obj, "money"),
+            };
+            if (Enum.TryParse(SaveJson.GetStr(obj, "voyageStatus", "InPort"), true, out D3VoyageStatus status))
+                result.VoyageStatus = status;
+            if (Enum.TryParse(SaveJson.GetStr(obj, "weather", "Calm"), true, out D3WeatherType weather))
+                result.Weather = weather;
+            ReadIntDictObject(result.Cargo, obj, "cargo");
+            ReadIntDictObject(result.PersonalItems, obj, "personalItems");
+            ReadIntDictObject(result.MarketStock, obj, "marketStock");
+            ReadIntDictObject(result.GatheredThisVisit, obj, "gatheredThisVisit");
+            ReadStringListObject(result.EventIds, obj, "eventIds");
+            return result;
         }
 
         private static List<string> ReadStringArray(string json)
@@ -550,6 +629,22 @@ PRAGMA user_version = " + SchemaVersion + @";
             var parsed = SaveJson.ParseDict(json);
             if (parsed == null) return;
             foreach (var kv in parsed) target[kv.Key] = (int)ToLong(kv.Value);
+        }
+
+        private static void ReadIntDictObject(Dictionary<string, int> target,
+            Dictionary<string, object> source, string key)
+        {
+            if (target == null || source == null || !source.TryGetValue(key, out object value)) return;
+            if (!(value is Dictionary<string, object> dict)) return;
+            foreach (var item in dict) target[item.Key] = (int)ToLong(item.Value);
+        }
+
+        private static void ReadStringListObject(List<string> target,
+            Dictionary<string, object> source, string key)
+        {
+            if (target == null || source == null || !source.TryGetValue(key, out object value)) return;
+            if (!(value is List<object> list)) return;
+            foreach (var item in list) target.Add(Convert.ToString(item));
         }
 
         private static void FillFloatDict(Dictionary<string, float> target, string json)

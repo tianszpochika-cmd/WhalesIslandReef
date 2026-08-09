@@ -6,6 +6,7 @@
 
 - D1：工程底座与初始港口，已由用户完成验收。
 - D2：航行与对话闭环，D2-01 至 D2-10 已完成，自动化验收 23/23 通过。
+- D3：贸易与完整航程可玩环，已完成；范围与验收见 [D3 范围冻结](game/design/D3_SCOPE.md) 和 [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)。
 
 ## D2 入口
 
@@ -21,3 +22,10 @@
 - [D2 同步任务 09：好感与存档闭环](game/prompts/D2/09_SYNC_AFFINITY_SAVE_E2E.md)
 - [D2 同步任务 10：最终验收](game/prompts/D2/10_SYNC_D2_ACCEPTANCE.md)
 - [D2 最终验收报告](game/design/D2_ACCEPTANCE_REPORT.md)
+
+## D3 入口
+
+- [D3 任务总览与依赖图](game/prompts/D3/README.md)
+- [D3 范围冻结与验收门](game/design/D3_SCOPE.md)
+- [D3 贸易/航程契约](../contracts/d3-trade.schema.json)
+- [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)
