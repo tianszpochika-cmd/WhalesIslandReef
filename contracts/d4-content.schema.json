@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whalebone.local/contracts/d4-content.schema.json",
+  "title": "Whalebone D4 Content Contract",
+  "type": "object",
+  "required": ["faction_state", "combat_state", "ecology_state", "health_state", "mainline_state", "route_log"],
+  "properties": {
+    "faction_state": { "$ref": "#/$defs/faction_state" },
+    "combat_state": { "$ref": "#/$defs/combat_state" },
+    "ecology_state": { "$ref": "#/$defs/ecology_state" },
+    "health_state": { "$ref": "#/$defs/health_state" },
+    "mainline_state": { "$ref": "#/$defs/mainline_state" },
+    "shipyard_state": { "$ref": "#/$defs/shipyard_state" },
+    "route_log": { "type": "array", "items": { "$ref": "#/$defs/route_log_entry" } }
+  },
+  "$defs": {
+    "faction_id": { "type": "string", "enum": ["england", "spain", "france", "portugal", "pirates", "tribes", "smugglers"] },
+    "faction_state": {
+      "type": "object",
+      "required": ["reputation", "embargoed_ports", "privateer_permits", "wanted_level"],
+      "properties": {
+        "reputation": { "type": "object", "additionalProperties": { "type": "integer", "minimum": -100, "maximum": 100 } },
+        "at_war": { "type": "array", "items": { "type": "string" } },
+        "embargoed_ports": { "type": "array", "items": { "type": "string" } },
+        "privateer_permits": { "type": "array", "items": { "$ref": "#/$defs/faction_id" } },
+        "wanted_level": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "weapon_id": { "type": "string", "enum": ["round_shot", "chain_shot", "grape_shot"] },
+    "combat_state": {
+      "type": "object",
+      "required": ["status", "player_hull", "enemy_hull", "distance", "loaded_count", "weapon"],
+      "properties": {
+        "status": { "type": "string", "enum": ["idle", "engaged", "boarded", "victory", "escaped", "defeat"] },
+        "enemy_id": { "type": "string" },
+        "player_hull": { "type": "integer", "minimum": 0 },
+        "enemy_hull": { "type": "integer", "minimum": 0 },
+        "distance": { "type": "number", "minimum": 0 },
+        "loaded_count": { "type": "integer", "minimum": 0 },
+        "weapon": { "$ref": "#/$defs/weapon_id" },
+        "enemy_crew": { "type": "integer", "minimum": 0 },
+        "player_crew": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "animal_id": { "type": "string", "enum": ["whale", "dolphin", "shark", "sea_turtle", "stingray", "fish_school", "iguana", "parrot", "hermit_crab", "crab", "venomous_snake", "mosquito_swarm", "crocodile", "jaguar", "golden_parrot"] },
+    "animal_state": {
+      "type": "object",
+      "required": ["animal_id", "behavior", "health", "observed"],
+      "properties": {
+        "animal_id": { "$ref": "#/$defs/animal_id" },
+        "behavior": { "type": "string", "enum": ["foraging", "alert", "attacking", "breeding_hint"] },
+        "health": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "observed": { "type": "boolean" },
+        "collection_value": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "ecology_state": {
+      "type": "object",
+      "required": ["habitat_id", "animals", "collection_count"],
+      "properties": {
+        "habitat_id": { "type": "string" },
+        "animals": { "type": "array", "items": { "$ref": "#/$defs/animal_state" } },
+        "collection_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "disease_id": { "type": "string", "enum": ["scurvy", "malaria", "yellow_fever", "dysentery", "consumption"] },
+    "crew_health": {
+      "type": "object",
+      "required": ["crew_id", "health", "fatigue", "diseases"],
+      "properties": {
+        "crew_id": { "type": "string" },
+        "health": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "fatigue": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "diseases": { "type": "array", "items": { "$ref": "#/$defs/disease_id" } }
+      }
+    },
+    "health_state": {
+      "type": "object",
+      "required": ["crew", "medical_supplies"],
+      "properties": {
+        "crew": { "type": "array", "items": { "$ref": "#/$defs/crew_health" } },
+        "medical_supplies": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "mainline_state": {
+      "type": "object",
+      "required": ["chapter", "mission_index", "flags", "completed_missions"],
+      "properties": {
+        "chapter": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "mission_index": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "flags": { "type": "object", "additionalProperties": { "type": "boolean" } },
+        "completed_missions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "shipyard_state": {
+      "type": "object",
+      "required": ["ship_type_id", "unlocked_ship_types", "upgrades"],
+      "properties": {
+        "ship_type_id": { "type": "string" },
+        "unlocked_ship_types": { "type": "array", "items": { "type": "string" } },
+        "upgrades": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0, "maximum": 3 } }
+      }
+    },
+    "route_log_entry": {
+      "type": "object",
+      "required": ["id", "day", "kind", "text"],
+      "properties": {
+        "id": { "type": "string" },
+        "day": { "type": "integer", "minimum": 0 },
+        "kind": { "type": "string", "enum": ["voyage", "combat", "faction", "animal", "medical", "mainline", "crew_diary"] },
+        "origin_id": { "type": "string" },
+        "destination_id": { "type": "string" },
+        "text": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

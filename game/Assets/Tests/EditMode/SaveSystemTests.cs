@@ -18,6 +18,7 @@ using NUnit.Framework;
 using Whalebone.Agent;
 using Whalebone.Systems.D2;
 using Whalebone.Systems.D3;
+using Whalebone.Systems.D4;
 using Whalebone.Systems.Save;
 
 namespace Save.Tests
@@ -221,6 +222,36 @@ namespace Save.Tests
             Assert.AreEqual(7, loaded.Cargo["sugar"]);
             Assert.AreEqual(43, loaded.MarketStock["sugar"]);
             Assert.AreEqual("rain_catch", loaded.EventIds[0]);
+        }
+
+        [Test]
+        public void D4Runtime_SaveLoad_RestoresContentState()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "D4 船长" });
+            var snapshot = new D4RuntimeSnapshot();
+            snapshot.Factions.Reputation["england"] = 42;
+            snapshot.Factions.PrivateerPermits.Add("england");
+            snapshot.Shipyard.Upgrades["Cannon"] = 2;
+            snapshot.Combat.Status = D4CombatStatus.Victory;
+            snapshot.Combat.EnemyHull = 0;
+            snapshot.Ecology.HabitatId = "jungle";
+            snapshot.Health.MedicalSupplies = 7;
+            snapshot.Mainline.Flags["learn_combat"] = true;
+            snapshot.Mainline.CompletedMissions.Add("ch2_cannon");
+            snapshot.RouteLog.Add(new RouteLogEntry { Id = "log_0001", Day = 4, Kind = D4LogKind.Combat, Text = "炮战胜利" });
+
+            SaveSystem.SaveD4Runtime(snapshot);
+            GameState.Reset();
+            Assert.IsTrue(SaveSystem.Load());
+            var loaded = SaveSystem.LoadD4Runtime();
+            Assert.IsNotNull(loaded);
+            Assert.AreEqual(42, loaded.Factions.Reputation["england"]);
+            Assert.IsTrue(loaded.Factions.PrivateerPermits.Contains("england"));
+            Assert.AreEqual(2, loaded.Shipyard.Upgrades["Cannon"]);
+            Assert.AreEqual(D4CombatStatus.Victory, loaded.Combat.Status);
+            Assert.AreEqual(7, loaded.Health.MedicalSupplies);
+            Assert.IsTrue(loaded.Mainline.Flags["learn_combat"]);
+            Assert.AreEqual("炮战胜利", loaded.RouteLog[0].Text);
         }
 
         [Test]

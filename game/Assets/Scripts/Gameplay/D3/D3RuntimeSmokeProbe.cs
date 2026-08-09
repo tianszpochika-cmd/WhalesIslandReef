@@ -17,8 +17,15 @@ namespace Whalebone.Gameplay.D3
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
-            if (Application.isBatchMode)
+            if (Application.isBatchMode && !HasArgument("-d4Smoke"))
                 new GameObject("D3RuntimeSmokeProbe").AddComponent<D3RuntimeSmokeProbe>();
+        }
+
+        private static bool HasArgument(string argument)
+        {
+            foreach (var value in System.Environment.GetCommandLineArgs())
+                if (value == argument) return true;
+            return false;
         }
 
         private void Start()

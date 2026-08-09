@@ -173,6 +173,83 @@ paths:
             application/json:
               schema: { $ref: '../d3-trade.schema.json#/$defs/voyage_settlement' }
 
+  /factions/state:
+    post:
+      summary: D4 开发态势力状态镜像
+      description: 客户端 D4FactionSystem 仍是本地单机裁决者；服务端只校验并回显状态字段。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d4-content.schema.json#/$defs/faction_state' }
+      responses:
+        '200':
+          description: FactionState
+          content:
+            application/json:
+              schema: { $ref: '../d4-content.schema.json#/$defs/faction_state' }
+
+  /combat/resolve:
+    post:
+      summary: D4 开发态炮战结算镜像
+      description: 不取代客户端 D4CombatSystem 的命中和伤害裁决。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d4-content.schema.json#/$defs/combat_state' }
+      responses:
+        '200':
+          description: CombatState
+          content:
+            application/json:
+              schema: { $ref: '../d4-content.schema.json#/$defs/combat_state' }
+
+  /animals/encounter:
+    post:
+      summary: D4 动物遭遇镜像
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d4-content.schema.json#/$defs/ecology_state' }
+      responses:
+        '200':
+          description: EcologyState
+          content:
+            application/json:
+              schema: { $ref: '../d4-content.schema.json#/$defs/ecology_state' }
+
+  /medical/treat:
+    post:
+      summary: D4 医疗结算镜像
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d4-content.schema.json#/$defs/health_state' }
+      responses:
+        '200':
+          description: HealthState
+          content:
+            application/json:
+              schema: { $ref: '../d4-content.schema.json#/$defs/health_state' }
+
+  /mainline/advance:
+    post:
+      summary: D4 主线推进镜像
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '../d4-content.schema.json#/$defs/mainline_state' }
+      responses:
+        '200':
+          description: MainlineState
+          content:
+            application/json:
+              schema: { $ref: '../d4-content.schema.json#/$defs/mainline_state' }
+
   /wallet:
     get:
       summary: 玩家点数余额与用量（用户中心/游戏内展示）

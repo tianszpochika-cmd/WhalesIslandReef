@@ -18,6 +18,7 @@ using UnityEngine;
 using Whalebone.Agent;
 using Whalebone.Systems.D2;
 using Whalebone.Systems.D3;
+using Whalebone.Systems.D4;
 
 namespace Whalebone.Systems.Save
 {
@@ -171,11 +172,33 @@ namespace Whalebone.Systems.Save
             Save();
         }
 
+        /// <summary>
+        /// D4 快照的唯一落库入口。快照作为 location_json.d4 保存，旧数据库无需迁移；
+        /// Save 域只复制内容，不计算战斗、声望、疾病或任务结果。
+        /// </summary>
+        public static void SaveD4Runtime(D4RuntimeSnapshot snapshot)
+        {
+            if (GameState.CurrentPlayer == null)
+                throw new InvalidOperationException("[SaveSystem] 无进行中的游戏，无法保存 D4 快照。");
+            GameState.CurrentD4Runtime = snapshot == null ? null : snapshot.Clone();
+            GameState.CurrentPlayer.D4Runtime = GameState.CurrentD4Runtime == null
+                ? null : GameState.CurrentD4Runtime.Clone();
+            Save();
+        }
+
         /// <summary>读取当前已加载的 D3 快照副本；旧 D2 存档没有快照时返回 null。</summary>
         public static D3RuntimeSnapshot LoadD3Runtime()
         {
             var snapshot = GameState.CurrentD3Runtime ??
                 (GameState.CurrentPlayer == null ? null : GameState.CurrentPlayer.D3Runtime);
+            return snapshot == null ? null : snapshot.Clone();
+        }
+
+        /// <summary>读取当前已加载的 D4 快照副本；D1-D3 旧存档没有该字段时返回 null。</summary>
+        public static D4RuntimeSnapshot LoadD4Runtime()
+        {
+            var snapshot = GameState.CurrentD4Runtime ??
+                (GameState.CurrentPlayer == null ? null : GameState.CurrentPlayer.D4Runtime);
             return snapshot == null ? null : snapshot.Clone();
         }
 
@@ -209,6 +232,7 @@ namespace Whalebone.Systems.Save
                     GameState.CurrentPlayer = player;
                     GameState.CurrentShip = ship;
                     GameState.CurrentD3Runtime = player.D3Runtime == null ? null : player.D3Runtime.Clone();
+                    GameState.CurrentD4Runtime = player.D4Runtime == null ? null : player.D4Runtime.Clone();
                     GameState.CrewAgents.AddRange(crew);
                     foreach (var kv in crewTraitIds)
                         GameState.CrewAgentTraitIds[kv.Key] = kv.Value;
@@ -335,7 +359,7 @@ PRAGMA user_version = " + SchemaVersion + @";
                     SaveJson.Stringify(p.Reputation),
                     SaveJson.Stringify(p.Inventory),
                     p.ShipId,
-                    SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime)),
+                    SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime, p.D4Runtime)),
                     p.PlaySeconds);
             }
         }
@@ -388,6 +412,8 @@ PRAGMA user_version = " + SchemaVersion + @";
                 }
                 if (loc.TryGetValue("d3", out object d3Value) && d3Value is Dictionary<string, object> d3Object)
                     p.D3Runtime = D3FromObj(d3Object);
+                if (loc.TryGetValue("d4", out object d4Value) && d4Value is Dictionary<string, object> d4Object)
+                    p.D4Runtime = D4FromObj(d4Object);
             }
 
             return p;
@@ -547,7 +573,7 @@ PRAGMA user_version = " + SchemaVersion + @";
             return result;
         }
 
-        private static Dictionary<string, object> LocationToObj(LocationRef loc, D3RuntimeSnapshot d3 = null)
+        private static Dictionary<string, object> LocationToObj(LocationRef loc, D3RuntimeSnapshot d3 = null, D4RuntimeSnapshot d4 = null)
         {
             var result = new Dictionary<string, object>
             {
@@ -561,6 +587,7 @@ PRAGMA user_version = " + SchemaVersion + @";
                 ["normalizedTime"] = loc.NormalizedTime,
             };
             if (d3 != null) result["d3"] = D3ToObj(d3);
+            if (d4 != null) result["d4"] = D4ToObj(d4);
             return result;
         }
 
@@ -612,6 +639,218 @@ PRAGMA user_version = " + SchemaVersion + @";
             ReadIntDictObject(result.MarketStock, obj, "marketStock");
             ReadIntDictObject(result.GatheredThisVisit, obj, "gatheredThisVisit");
             ReadStringListObject(result.EventIds, obj, "eventIds");
+            return result;
+        }
+
+        private static Dictionary<string, object> D4ToObj(D4RuntimeSnapshot d4)
+        {
+            var reputation = new Dictionary<string, object>();
+            foreach (var pair in d4.Factions.Reputation) reputation[pair.Key] = pair.Value;
+            var faction = new Dictionary<string, object>
+            {
+                ["reputation"] = reputation,
+                ["atWar"] = StringListToObjects(d4.Factions.AtWar),
+                ["embargoedPorts"] = StringListToObjects(d4.Factions.EmbargoedPorts),
+                ["privateerPermits"] = StringListToObjects(d4.Factions.PrivateerPermits),
+                ["wantedLevel"] = d4.Factions.WantedLevel,
+            };
+
+            var upgrades = new Dictionary<string, object>();
+            foreach (var pair in d4.Shipyard.Upgrades) upgrades[pair.Key] = pair.Value;
+            var shipyard = new Dictionary<string, object>
+            {
+                ["shipTypeId"] = d4.Shipyard.ShipTypeId ?? "small_fishing",
+                ["unlockedShipTypes"] = StringListToObjects(d4.Shipyard.UnlockedShipTypes),
+                ["upgrades"] = upgrades,
+            };
+
+            var combat = new Dictionary<string, object>
+            {
+                ["status"] = d4.Combat.Status.ToString(), ["enemyId"] = d4.Combat.EnemyId ?? "",
+                ["playerHull"] = d4.Combat.PlayerHull, ["playerHullMax"] = d4.Combat.PlayerHullMax,
+                ["enemyHull"] = d4.Combat.EnemyHull, ["enemyHullMax"] = d4.Combat.EnemyHullMax,
+                ["distance"] = d4.Combat.Distance, ["wind"] = d4.Combat.Wind,
+                ["playerCannons"] = d4.Combat.PlayerCannons, ["loadedCount"] = d4.Combat.LoadedCount,
+                ["weapon"] = d4.Combat.Weapon.ToString(), ["enemyCannons"] = d4.Combat.EnemyCannons,
+                ["enemyLoadedCount"] = d4.Combat.EnemyLoadedCount, ["enemyCrew"] = d4.Combat.EnemyCrew,
+                ["playerCrew"] = d4.Combat.PlayerCrew, ["turn"] = d4.Combat.Turn,
+                ["boardingScore"] = d4.Combat.BoardingScore,
+            };
+
+            var animals = new List<object>();
+            foreach (var animal in d4.Ecology.Animals)
+                animals.Add(new Dictionary<string, object>
+                {
+                    ["animalId"] = animal.AnimalId ?? "", ["behavior"] = animal.Behavior.ToString(),
+                    ["health"] = animal.Health, ["observed"] = animal.Observed,
+                    ["collectionValue"] = animal.CollectionValue,
+                });
+            var ecology = new Dictionary<string, object>
+            {
+                ["habitatId"] = d4.Ecology.HabitatId ?? "", ["animals"] = animals,
+                ["collectionCount"] = d4.Ecology.CollectionCount,
+            };
+
+            var crewHealth = new List<object>();
+            foreach (var crew in d4.Health.Crew)
+                crewHealth.Add(new Dictionary<string, object>
+                {
+                    ["crewId"] = crew.CrewId ?? "", ["health"] = crew.Health, ["fatigue"] = crew.Fatigue,
+                    ["diseases"] = StringListToObjects(crew.Diseases),
+                });
+            var health = new Dictionary<string, object>
+            {
+                ["crew"] = crewHealth, ["medicalSupplies"] = d4.Health.MedicalSupplies,
+            };
+
+            var flags = new Dictionary<string, object>();
+            foreach (var pair in d4.Mainline.Flags) flags[pair.Key] = pair.Value;
+            var mainline = new Dictionary<string, object>
+            {
+                ["chapter"] = d4.Mainline.Chapter, ["missionIndex"] = d4.Mainline.MissionIndex,
+                ["flags"] = flags, ["completedMissions"] = StringListToObjects(d4.Mainline.CompletedMissions),
+            };
+
+            var logs = new List<object>();
+            foreach (var entry in d4.RouteLog)
+                logs.Add(new Dictionary<string, object>
+                {
+                    ["id"] = entry.Id ?? "", ["day"] = entry.Day, ["kind"] = entry.Kind.ToString(),
+                    ["originId"] = entry.OriginId ?? "", ["destinationId"] = entry.DestinationId ?? "",
+                    ["text"] = entry.Text ?? "",
+                });
+
+            return new Dictionary<string, object>
+            {
+                ["factions"] = faction, ["shipyard"] = shipyard, ["combat"] = combat,
+                ["ecology"] = ecology, ["health"] = health, ["mainline"] = mainline, ["routeLog"] = logs,
+            };
+        }
+
+        private static D4RuntimeSnapshot D4FromObj(Dictionary<string, object> obj)
+        {
+            var result = new D4RuntimeSnapshot();
+            var faction = Nested(obj, "factions");
+            if (faction != null)
+            {
+                ReadIntDictObject(result.Factions.Reputation, faction, "reputation");
+                ReadStringListObject(result.Factions.AtWar, faction, "atWar");
+                ReadStringListObject(result.Factions.EmbargoedPorts, faction, "embargoedPorts");
+                ReadStringListObject(result.Factions.PrivateerPermits, faction, "privateerPermits");
+                result.Factions.WantedLevel = SaveJson.GetInt(faction, "wantedLevel");
+            }
+
+            var shipyard = Nested(obj, "shipyard");
+            if (shipyard != null)
+            {
+                result.Shipyard.ShipTypeId = SaveJson.GetStr(shipyard, "shipTypeId", "small_fishing");
+                result.Shipyard.UnlockedShipTypes.Clear();
+                ReadStringListObject(result.Shipyard.UnlockedShipTypes, shipyard, "unlockedShipTypes");
+                ReadIntDictObject(result.Shipyard.Upgrades, shipyard, "upgrades");
+            }
+
+            var combat = Nested(obj, "combat");
+            if (combat != null)
+            {
+                result.Combat.EnemyId = SaveJson.GetStr(combat, "enemyId", null);
+                result.Combat.PlayerHull = SaveJson.GetInt(combat, "playerHull");
+                result.Combat.PlayerHullMax = SaveJson.GetInt(combat, "playerHullMax");
+                result.Combat.EnemyHull = SaveJson.GetInt(combat, "enemyHull");
+                result.Combat.EnemyHullMax = SaveJson.GetInt(combat, "enemyHullMax");
+                result.Combat.Distance = SaveJson.GetFloat(combat, "distance");
+                result.Combat.Wind = SaveJson.GetFloat(combat, "wind");
+                result.Combat.PlayerCannons = SaveJson.GetInt(combat, "playerCannons");
+                result.Combat.LoadedCount = SaveJson.GetInt(combat, "loadedCount");
+                result.Combat.EnemyCannons = SaveJson.GetInt(combat, "enemyCannons");
+                result.Combat.EnemyLoadedCount = SaveJson.GetInt(combat, "enemyLoadedCount");
+                result.Combat.EnemyCrew = SaveJson.GetInt(combat, "enemyCrew");
+                result.Combat.PlayerCrew = SaveJson.GetInt(combat, "playerCrew");
+                result.Combat.Turn = SaveJson.GetInt(combat, "turn");
+                result.Combat.BoardingScore = SaveJson.GetInt(combat, "boardingScore");
+                Enum.TryParse(SaveJson.GetStr(combat, "status", "Idle"), true, out result.Combat.Status);
+                Enum.TryParse(SaveJson.GetStr(combat, "weapon", "RoundShot"), true, out result.Combat.Weapon);
+            }
+
+            var ecology = Nested(obj, "ecology");
+            if (ecology != null)
+            {
+                result.Ecology.HabitatId = SaveJson.GetStr(ecology, "habitatId", "");
+                result.Ecology.CollectionCount = SaveJson.GetInt(ecology, "collectionCount");
+                foreach (var animalObj in ObjectList(ecology, "animals"))
+                {
+                    var animal = new AnimalState
+                    {
+                        AnimalId = SaveJson.GetStr(animalObj, "animalId", ""),
+                        Health = SaveJson.GetInt(animalObj, "health", 100),
+                        Observed = Convert.ToBoolean(animalObj.ContainsKey("observed") ? animalObj["observed"] : false),
+                        CollectionValue = SaveJson.GetInt(animalObj, "collectionValue"),
+                    };
+                    Enum.TryParse(SaveJson.GetStr(animalObj, "behavior", "Foraging"), true, out animal.Behavior);
+                    result.Ecology.Animals.Add(animal);
+                }
+            }
+
+            var health = Nested(obj, "health");
+            if (health != null)
+            {
+                result.Health.MedicalSupplies = SaveJson.GetInt(health, "medicalSupplies");
+                foreach (var crewObj in ObjectList(health, "crew"))
+                {
+                    var crew = new CrewHealthState
+                    {
+                        CrewId = SaveJson.GetStr(crewObj, "crewId", ""),
+                        Health = SaveJson.GetInt(crewObj, "health", 100),
+                        Fatigue = SaveJson.GetInt(crewObj, "fatigue"),
+                    };
+                    ReadStringListObject(crew.Diseases, crewObj, "diseases");
+                    result.Health.Crew.Add(crew);
+                }
+            }
+
+            var mainline = Nested(obj, "mainline");
+            if (mainline != null)
+            {
+                result.Mainline.Chapter = SaveJson.GetInt(mainline, "chapter", 1);
+                result.Mainline.MissionIndex = SaveJson.GetInt(mainline, "missionIndex");
+                ReadStringListObject(result.Mainline.CompletedMissions, mainline, "completedMissions");
+                var flags = Nested(mainline, "flags");
+                if (flags != null)
+                    foreach (var pair in flags) result.Mainline.Flags[pair.Key] = Convert.ToBoolean(pair.Value);
+            }
+
+            foreach (var logObj in ObjectList(obj, "routeLog"))
+            {
+                var entry = new RouteLogEntry
+                {
+                    Id = SaveJson.GetStr(logObj, "id", ""), Day = SaveJson.GetInt(logObj, "day"),
+                    OriginId = SaveJson.GetStr(logObj, "originId", null), DestinationId = SaveJson.GetStr(logObj, "destinationId", null),
+                    Text = SaveJson.GetStr(logObj, "text", ""),
+                };
+                Enum.TryParse(SaveJson.GetStr(logObj, "kind", "Voyage"), true, out entry.Kind);
+                result.RouteLog.Add(entry);
+            }
+            return result;
+        }
+
+        private static Dictionary<string, object> Nested(Dictionary<string, object> source, string key)
+        {
+            if (source == null || !source.TryGetValue(key, out object value)) return null;
+            return value as Dictionary<string, object>;
+        }
+
+        private static List<Dictionary<string, object>> ObjectList(Dictionary<string, object> source, string key)
+        {
+            var result = new List<Dictionary<string, object>>();
+            if (source == null || !source.TryGetValue(key, out object value) || !(value is List<object> list)) return result;
+            foreach (var item in list)
+                if (item is Dictionary<string, object> dict) result.Add(dict);
+            return result;
+        }
+
+        private static List<object> StringListToObjects(List<string> values)
+        {
+            var result = new List<object>();
+            if (values != null) foreach (var value in values) result.Add(value ?? "");
             return result;
         }
 

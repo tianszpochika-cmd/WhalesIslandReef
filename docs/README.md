@@ -7,6 +7,7 @@
 - D1：工程底座与初始港口，已由用户完成验收。
 - D2：航行与对话闭环，D2-01 至 D2-10 已完成，自动化验收 23/23 通过。
 - D3：贸易与完整航程可玩环，已完成；范围与验收见 [D3 范围冻结](game/design/D3_SCOPE.md) 和 [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)。
+- D4：内容扩充，已完成；范围与验收见 [D4 范围冻结](game/design/D4_SCOPE.md) 和 [D4 最终验收报告](game/design/D4_ACCEPTANCE_REPORT.md)。
 
 ## D2 入口
 
@@ -29,3 +30,10 @@
 - [D3 范围冻结与验收门](game/design/D3_SCOPE.md)
 - [D3 贸易/航程契约](../contracts/d3-trade.schema.json)
 - [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)
+
+## D4 入口
+
+- [D4 任务总览与依赖图](game/prompts/D4/README.md)
+- [D4 范围冻结与验收门](game/design/D4_SCOPE.md)
+- [D4 内容契约](../contracts/d4-content.schema.json)
+- [D4 最终验收报告](game/design/D4_ACCEPTANCE_REPORT.md)
