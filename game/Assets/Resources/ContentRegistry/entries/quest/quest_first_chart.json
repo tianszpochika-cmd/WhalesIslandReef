@@ -1,0 +1,42 @@
+{
+  "id": "quest_first_chart",
+  "schema_version": 1,
+  "name": "第一张海图",
+  "display_name_key": "content.quest.quest_first_chart.name",
+  "category": "quest",
+  "tags": ["vertical_slice", "exploration", "starter"],
+  "description": "从港口传闻和潮线可靠度开始，携带海图罗盘登陆圣玛丽海图湾；失败可回港、等低潮或寻求村落向导，不需要猜谜。",
+  "gameplay_role": "starter_treasure_recovery_quest",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["harbor", "nearshore"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [],
+  "references": ["ship_moonwake", "island_saint_marys", "crew_isaac_reed", "reward_first_chart", "item_chart_compass"],
+  "asset_refs": [],
+  "site_ref": "landmark:saint_marys_chart_cove",
+  "required_equipment": ["item_chart_compass"],
+  "danger_tags": ["surf_break", "unstable_shore"],
+  "recovery_routes": ["route_buy_chart_kit", "route_wait_tide", "route_village_guide", "route_return_to_harbor"],
+  "puzzle_gate": false,
+  "source_refs": ["docs/game/design/quests/01_QUEST_OVERVIEW.md", "docs/game/design/gameplay/10_EXPLORATION_TREASURE.md"],
+  "source_note": "项目自有代表任务定义；任务只提出奖励请求，实际奖励仍由 RewardSystem 裁决。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/quests/01_QUEST_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "QuestSystem",
+  "test_id": "D8-A02-QUEST-001",
+  "reviewer": "D8-A02"
+}

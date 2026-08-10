@@ -14,6 +14,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Whalebone.Gameplay.D2;
+using Whalebone.Gameplay.D7;
 using Whalebone.Gameplay.UI;
 using Whalebone.Systems.D5;
 using Whalebone.Systems.Save;
@@ -48,31 +50,51 @@ namespace Whalebone.Gameplay.D5
         private int _presetIndex;
         private string _message = "D5 正在等待场景对象…";
 
+        public bool IsReady => _ready;
+        public int SaveRevision { get; private set; }
+
         private Text _statusText;
         private Text _detailText;
         private Text _hintText;
         private Text _mapTitle;
         private readonly Dictionary<string, Image> _markerImages = new Dictionary<string, Image>();
+        private readonly Dictionary<string, D5ButtonLabel> _buttonLabels = new Dictionary<string, D5ButtonLabel>();
+
+        private sealed class D5ButtonLabel
+        {
+            public readonly Text Text;
+            public readonly string Chinese;
+            public readonly string English;
+
+            public D5ButtonLabel(Text text, string chinese, string english)
+            {
+                Text = text;
+                Chinese = chinese;
+                English = english;
+            }
+        }
 
         private void Awake()
         {
             EnsureEventSystem();
             BuildUi();
+            RuntimeHudCoordinator.ApplyNow();
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
         }
 
         private void Update()
         {
-            if (!_ready)
+            if (!_ready || _performance == null || _world == null || _character == null || _steam == null)
             {
+                _ready = false;
                 TryBuildRuntime();
                 return;
             }
 
             _performance.RecordFrame(Time.unscaledDeltaTime);
             var keyboard = Keyboard.current;
-            if (keyboard != null && Time.timeScale > 0f)
+            if (keyboard != null && Time.timeScale > 0f && D7ControlCoordinator.GameplayInputAllowed)
             {
                 if (keyboard.iKey.wasPressedThisFrame) DiscoverNextIsland();
                 else if (keyboard.vKey.wasPressedThisFrame) VisitCurrentIsland();
@@ -124,6 +146,7 @@ namespace Whalebone.Gameplay.D5
         {
             if (!_ready) return;
             _snapshot.Language = _snapshot.Language == "en" ? "zh" : "en";
+            Localization.SetLanguage(_snapshot.Language);
             _message = _snapshot.Language == "en" ? "Language switched to English." : "语言已切换为简体中文。";
             RefreshHud();
         }
@@ -152,12 +175,15 @@ namespace Whalebone.Gameplay.D5
         public void SaveProgress()
         {
             if (!_ready || _snapshot == null) return;
+            // D7 的 F5 是首航全量保存入口；各模块仍只写自己的快照。
+            D7SaveCoordinator.SaveFoundationState();
             SyncSnapshot();
             try
             {
                 _steam.QueueCloudUpload();
                 SyncSnapshot();
                 SaveSystem.SaveD5Runtime(_snapshot);
+                SaveRevision++;
                 _message = "D5 状态已保存，云存档已进入待同步队列。";
                 Debug.Log("[D5/Save] 世界、特质、预设、性能和 Steam 状态已保存");
             }
@@ -166,6 +192,29 @@ namespace Whalebone.Gameplay.D5
                 _message = "D5 保存失败：" + ex.Message;
                 Debug.LogWarning("[D5/Save] " + ex.Message);
             }
+        }
+
+        public void ToggleShipControl()
+        {
+            var router = FindFirstObjectByType<D2ControlRouter>(FindObjectsInactive.Include);
+            if (router == null)
+            {
+                _message = "人物控制尚未就绪，请稍候再试。";
+                RefreshHud();
+                return;
+            }
+
+            if (!router.TryToggleShip())
+            {
+                _message = router.Hint;
+                RefreshHud();
+                return;
+            }
+
+            _message = router.Mode == Whalebone.Systems.D2.D2ControlMode.Ship
+                ? "已登船：现在可以用 W/S 航行、A/D 转向。"
+                : "已下船：现在可以用 WASD 移动人物。";
+            RefreshHud();
         }
 
         private void TryBuildRuntime()
@@ -229,15 +278,40 @@ namespace Whalebone.Gameplay.D5
             var preset = _character.CurrentPreset;
             if (preset == null) return;
             _player.localScale = _basePlayerScale * preset.BodyScale;
-            var renderer = _player.GetComponent<Renderer>();
-            if (renderer == null) return;
-            var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
-            if (shader == null) return;
-            var material = new Material(shader);
+            var renderers = _player.GetComponentsInChildren<Renderer>(true);
+            if (renderers.Length == 0) return;
             var color = new Color32((byte)((preset.AccentColor >> 16) & 0xff), (byte)((preset.AccentColor >> 8) & 0xff), (byte)(preset.AccentColor & 0xff), 255);
-            if (material.HasProperty("_BaseColor")) material.SetColor("_BaseColor", color);
-            if (material.HasProperty("_Color")) material.SetColor("_Color", color);
-            renderer.sharedMaterial = material;
+            foreach (var renderer in renderers)
+            {
+                var sources = renderer.sharedMaterials;
+                for (int i = 0; i < sources.Length; i++)
+                {
+                    var material = sources[i] == null
+                        ? CreateCharacterFallbackMaterial(renderer.name)
+                        : new Material(sources[i]);
+                    material.name = "D7CharacterPreset_" + renderer.name + "_" + i;
+                    if (material.HasProperty("_BaseColor"))
+                    {
+                        var baseColor = material.GetColor("_BaseColor");
+                        // 有贴图时只轻微染色，避免角色预设把衣服和皮肤变成纯色块。
+                        Color tint = material.mainTexture == null
+                            ? color
+                            : Color.Lerp(Color.white, color, 0.16f);
+                        baseColor = new Color(baseColor.r * tint.r, baseColor.g * tint.g,
+                            baseColor.b * tint.b, baseColor.a);
+                        material.SetColor("_BaseColor", baseColor);
+                    }
+                    if (material.HasProperty("_Color")) material.SetColor("_Color", color);
+                    sources[i] = material;
+                }
+                renderer.sharedMaterials = sources;
+            }
+        }
+
+        private static Material CreateCharacterFallbackMaterial(string rendererName)
+        {
+            var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+            return new Material(shader) { name = "D7CharacterFallback_" + rendererName };
         }
 
         private void ApplyQualityToUnity(D5QualityLevel quality)
@@ -294,6 +368,8 @@ namespace Whalebone.Gameplay.D5
             var character = _character.Snapshot;
             var performance = _performance.Report();
             var preset = D5CharacterCatalog.Find(character.PresetId);
+            foreach (var buttonLabel in _buttonLabels.Values)
+                buttonLabel.Text.text = Localized(buttonLabel.Chinese, buttonLabel.English);
             _statusText.text = Localized("D5 打磨上架", "D5 Release Polish") + "  |  " +
                 Localized("海图 " + world.DiscoveredIslands.Count + "/12", "Chart " + world.DiscoveredIslands.Count + "/12") +
                 "  |  " + LocalizedIsland(world.CurrentIslandId);
@@ -304,7 +380,9 @@ namespace Whalebone.Gameplay.D5
             detail.Append("\n").Append(Localized("性能：", "Performance: ")).Append(performance.LastFps.ToString("0.0")).Append(" FPS / ").Append(performance.MinFps.ToString("0.0"));
             detail.Append("  ").Append(performance.MeetsTarget ? "✓" : "…").Append("  ").Append(_steam.StatusText());
             _detailText.text = detail.ToString();
-            _hintText.text = _message + "    I发现  V访问  P预设  L语言  F1画质  F2成就  F5保存";
+            _hintText.text = _message + (language == "en"
+                ? "    I discover  V visit  P preset  L language  F1 quality  F2 achievement  F5 save  |  WASD move  right/middle drag camera  F3 view  Shift run  Space jump  E board/leave  B/T/N/G/L trade/voyage  F/K/R/U/A/M/J content"
+                : "    I发现  V访问  P预设  L语言  F1画质  F2成就  F5保存  |  WASD移动  右键/中键拖动视角  F3切换视角  Shift奔跑  Space跳跃  E上船/下船  B/T/N/G/L贸易与航行  F/K/R/U/A/M/J内容");
             _mapTitle.text = D5LocalizationSystem.Get("d5_world", language) + "  ·  " + world.DiscoveredIslands.Count + "/12";
             foreach (var island in D5IslandCatalog.All)
             {
@@ -356,16 +434,17 @@ namespace Whalebone.Gameplay.D5
             controls.transform.SetParent(canvasGo.transform, false);
             var controlsRect = (RectTransform)controls.transform;
             controlsRect.anchorMin = new Vector2(1f, 0f); controlsRect.anchorMax = new Vector2(1f, 0f); controlsRect.pivot = new Vector2(1f, 0f);
-            controlsRect.sizeDelta = new Vector2(360f, 290f); controlsRect.anchoredPosition = new Vector2(-28f, 88f);
+            controlsRect.sizeDelta = new Vector2(360f, 350f); controlsRect.anchoredPosition = new Vector2(-28f, 88f);
             controls.GetComponent<Image>().sprite = UiSprites.White;
             controls.GetComponent<Image>().color = new Color(0.02f, 0.05f, 0.08f, 0.92f);
-            CreateButton(controls, "D5Discover", "发现下一个岛 [I]", new Vector2(0f, -28f), DiscoverNextIsland);
-            CreateButton(controls, "D5Visit", "驶向当前岛 [V]", new Vector2(0f, -68f), VisitCurrentIsland);
-            CreateButton(controls, "D5Preset", "角色预设 [P]", new Vector2(0f, -108f), NextPreset);
-            CreateButton(controls, "D5Language", "中英切换 [L]", new Vector2(0f, -148f), ToggleLanguage);
-            CreateButton(controls, "D5Quality", "画质档位 [F1]", new Vector2(0f, -188f), CycleQuality);
-            CreateButton(controls, "D5Achievement", "解锁成就 [F2]", new Vector2(0f, -228f), UnlockAchievement);
-            CreateButton(controls, "D5Save", "保存状态 [F5]", new Vector2(0f, -268f), SaveProgress);
+            CreateButton(controls, "D5Ship", "上船/下船 [E]", "Board/Leave ship [E]", new Vector2(0f, -28f), ToggleShipControl);
+            CreateButton(controls, "D5Discover", "发现下一个岛 [I]", "Discover next island [I]", new Vector2(0f, -68f), DiscoverNextIsland);
+            CreateButton(controls, "D5Visit", "驶向当前岛 [V]", "Visit current island [V]", new Vector2(0f, -108f), VisitCurrentIsland);
+            CreateButton(controls, "D5Preset", "角色预设 [P]", "Character preset [P]", new Vector2(0f, -148f), NextPreset);
+            CreateButton(controls, "D5Language", "中英切换 [L]", "Switch language [L]", new Vector2(0f, -188f), ToggleLanguage);
+            CreateButton(controls, "D5Quality", "画质档位 [F1]", "Quality [F1]", new Vector2(0f, -228f), CycleQuality);
+            CreateButton(controls, "D5Achievement", "解锁成就 [F2]", "Unlock achievement [F2]", new Vector2(0f, -268f), UnlockAchievement);
+            CreateButton(controls, "D5Save", "保存状态 [F5]", "Save state [F5]", new Vector2(0f, -308f), SaveProgress);
         }
 
         private static Text CreateText(GameObject parent, string name, string content, int size, Vector2 position, Vector2 sizeDelta, TextAnchor anchor)
@@ -378,6 +457,7 @@ namespace Whalebone.Gameplay.D5
             var text = go.GetComponent<Text>();
             text.font = Fonts.Default; text.fontSize = size; text.color = Color.white; text.alignment = anchor; text.text = content;
             text.horizontalOverflow = HorizontalWrapMode.Wrap; text.verticalOverflow = VerticalWrapMode.Overflow;
+            text.raycastTarget = false;
             return text;
         }
 
@@ -391,7 +471,7 @@ namespace Whalebone.Gameplay.D5
             rect.anchorMin = new Vector2(0f, 0f); rect.anchorMax = new Vector2(0f, 0f); rect.pivot = new Vector2(0f, 0f); rect.anchoredPosition = position;
         }
 
-        private static Button CreateButton(GameObject parent, string name, string label, Vector2 position, UnityEngine.Events.UnityAction onClick)
+        private void CreateButton(GameObject parent, string name, string chinese, string english, Vector2 position, UnityEngine.Events.UnityAction onClick)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent.transform, false);
@@ -399,10 +479,10 @@ namespace Whalebone.Gameplay.D5
             rect.anchorMin = new Vector2(0.5f, 1f); rect.anchorMax = new Vector2(0.5f, 1f); rect.pivot = new Vector2(0.5f, 1f);
             rect.sizeDelta = new Vector2(300f, 34f); rect.anchoredPosition = position;
             var image = go.GetComponent<Image>(); image.sprite = UiSprites.White; image.color = new Color(0.12f, 0.36f, 0.58f, 0.95f);
-            var button = go.GetComponent<Button>(); button.onClick.AddListener(onClick);
-            var text = CreateText(go, "Label", label, 17, Vector2.zero, new Vector2(300f, 34f), TextAnchor.MiddleCenter);
+            var button = go.GetComponent<Button>(); button.targetGraphic = image; button.onClick.AddListener(onClick);
+            var text = CreateText(go, "Label", chinese, 17, Vector2.zero, new Vector2(300f, 34f), TextAnchor.MiddleCenter);
             text.rectTransform.anchorMin = Vector2.zero; text.rectTransform.anchorMax = Vector2.one; text.rectTransform.pivot = new Vector2(0.5f, 0.5f); text.rectTransform.anchoredPosition = Vector2.zero;
-            return button;
+            _buttonLabels[name] = new D5ButtonLabel(text, chinese, english);
         }
 
         private static void EnsureEventSystem()

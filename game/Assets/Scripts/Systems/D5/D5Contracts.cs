@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using Whalebone.Systems.D10;
 
 namespace Whalebone.Systems.D5
 {
@@ -202,6 +203,8 @@ namespace Whalebone.Systems.D5
         public D5CharacterState Character = new D5CharacterState();
         public D5PerformanceState Performance = new D5PerformanceState();
         public D5SteamState Steam = new D5SteamState();
+        // D5 保留角色预设兼容字段；D10 外观由 AppearanceSystem 写入该独立快照。
+        public D10AppearanceSnapshot Appearance = new D10AppearanceSnapshot();
         public string Language = "zh";
         public List<string> PlayerTraitIds = new List<string>();
         public Dictionary<string, List<string>> CrewTraitIds = new Dictionary<string, List<string>>();
@@ -214,6 +217,7 @@ namespace Whalebone.Systems.D5
                 Character = Character == null ? new D5CharacterState() : Character.Clone(),
                 Performance = Performance == null ? new D5PerformanceState() : Performance.Clone(),
                 Steam = Steam == null ? new D5SteamState() : Steam.Clone(),
+                Appearance = Appearance == null ? new D10AppearanceSnapshot() : Appearance.Clone(),
                 Language = Language == "en" ? "en" : "zh",
                 PlayerTraitIds = new List<string>(),
                 CrewTraitIds = new Dictionary<string, List<string>>(),

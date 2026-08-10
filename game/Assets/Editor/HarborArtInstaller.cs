@@ -78,6 +78,8 @@ namespace Whalebone.EditorTools
             // 从 FBX 自动生成 Prefab 到 Prefabs/Placeholder/，避免 LoadAssetAtPath 返回 null
             EnsurePrefabFromFbx(ShipFbx, LegacyShipPrefab);
             EnsurePrefabFromFbx(CrewFbx, LegacyCrewPrefab);
+            // 角色 FBX 本身没有 AnimationClip；港口资产落地后同步生成 D6 的 Unity 动作资源。
+            D6AnimationAssetInstaller.EnsureAfterHarborInstall();
 
             Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             BuildScene(scene, mats);

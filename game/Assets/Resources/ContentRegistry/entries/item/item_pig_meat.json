@@ -1,0 +1,16 @@
+{
+  "id": "item_pig_meat",
+  "schema_version": 1,
+  "name": "家猪肉",
+  "display_name_key": "content.item.item_pig_meat.name",
+  "category": "item",
+  "tags": ["cargo", "food", "meat", "livestock", "ranch_product"],
+  "description": "完成家猪单周期后领取的肉品；数量由 Inventory/Cargo 写入。",
+  "gameplay_role": "ranch_product_meat",
+  "valid_regions": ["island_saint_marys"], "valid_habitats": ["ranch", "market", "ship_hold"], "valid_weather": ["clear", "rain"],
+  "dependencies": [], "references": ["animal_domestic_pig"], "asset_refs": [],
+  "source_refs": ["docs/game/design/common/D13_RANCH_LIVESTOCK.md"], "source_note": "项目自有 D13-A04 养殖产物定义。",
+  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D13_RANCH_LIVESTOCK.md"},
+  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "historical_tag": "inferred", "phase": "D13", "status": "prototyped", "owner_system": "ItemCatalog", "test_id": "D8-A02-D13-A04-ITEM-005", "reviewer": "D13-A04"
+}

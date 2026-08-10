@@ -1,3 +1,5 @@
+using Whalebone.Game.Config;
+
 namespace Whalebone.Agent
 {
     // ============================================================
@@ -44,7 +46,7 @@ namespace Whalebone.Agent
             switch (branchKey)
             {
                 case "plead":      // 求情/挽回：好感过低时无效
-                    return _stats.Affinity < -50f;
+                    return _stats.Affinity < (float)NumericConfiguration.Default.MutinyAffinityThreshold.DefaultValue;
                 case "intimidate": // 威胁：忠诚高于 70 才可能奏效
                     return _stats.Loyalty > 70f;
                 default:

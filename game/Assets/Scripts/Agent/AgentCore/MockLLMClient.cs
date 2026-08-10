@@ -11,7 +11,7 @@ namespace Whalebone.Agent
         public MockLLMClient(params string[] responses)
         {
             _responses = responses == null || responses.Length == 0
-                ? new[] { "{\"speech\":\"海风正好，船长。\",\"emotion\":\"neutral\",\"affinity_change\":0,\"action\":\"none\"}" }
+                ? new[] { AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "海风正好，船长。") }
                 : responses;
         }
 

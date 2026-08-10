@@ -1,6 +1,6 @@
 # 项目总体架构与文件层级设计
 
-> 项目：纯 Agent 3D 航海游戏《鲸骨航线》（暂定）｜ 更新：2026-08-07
+> 项目：纯 Agent 3D 航海游戏《鲸骨航线》（暂定）｜ 更新：2026-08-09
 > 定位：**游戏客户端 + AI 服务端 + 官网** 三端一体的完整工程。
 > 关键决策：游戏涉及 AI（LLM）就必须有自有服务器，负责 **账号注册、token 配额计量、LLM 网关**——LLM Key 绝不能进客户端。
 
@@ -30,12 +30,12 @@ first01/                                  # 项目根（本工作区）
 docs/
 ├── README.md                 # 文档地图：各文档一句话定位
 ├── game/
-│   ├── GAME_PLAN.md          # ★ 已就位：上架合规 + 游戏计划（原根目录移入）
-│   ├── SETUP.md              # ★ 已就位：环境搭建 + 测试 + 素材
-│   ├── REQUIREMENTS.md       # ◌ 待用户编写：需求文档（见 README 第 6 节契约约定）
-│   ├── SYSTEMS.md            # ◌ 6 大强逻辑系统详细设计（经济/状态机/事件/声望/船只/天气）
-│   ├── PERSONAS.md           # ◌ 船员人格库（角色/性格 Traits/背景/口吻）
-│   └── ACTIONS.md            # ◌ 动作清单（结构化输出 action 字段的注册表）
+│   ├── REQUIREMENTS.md       # ★ 统一产品需求与完整玩法目录
+│   ├── DEV_ROADMAP.md        # ★ D7 后唯一开发路线与工作包
+│   ├── SETUP.md              # 环境搭建 + 测试 + 素材
+│   ├── DESIGN_PILLARS.md     # 设计支柱与时代边界
+│   ├── design/               # 领域、玩法、边界、数据和 QA 设计
+│   └── ACTIONS.md            # P2A 动作注册表
 ├── server/
 │   ├── ARCHITECTURE.md       # ◌ 服务端架构与选型
 │   ├── API.md                # ◌ REST/WS 接口定义（与 contracts/ 同步）
@@ -50,7 +50,7 @@ docs/
     └── MONITORING.md         # ◌ 日志与指标
 ```
 
-> ★ = 已存在　◌ = 待创建。文档先行：**写代码前先写对应文档**。
+> ★ = 当前入口　◌ = 后续模块文档。文档先行：**写代码前先写对应文档**。
 
 ---
 
@@ -172,7 +172,7 @@ quotas           user_tier, rpm_limit, tpm_limit, daily_points, monthly_points
 
 - 服务端：**Node.js (NestJS)** 或 **Python (FastAPI)** —— 个人项目二选一，推荐 Node；
 - 数据库：**PostgreSQL**（用户/流水）+ **Redis**（限流/会话缓存）；
-- 部署：Docker Compose → 海外 VPS（合规前提，见 GAME_PLAN Part H）。
+- 部署：Docker Compose → 海外 VPS；具体部署和隐私政策在发布阶段单独审核。
 
 ---
 
@@ -267,7 +267,7 @@ assets/                       # 全局共享素材库（git-lfs 跟踪）
 
 | 原位置 | 新位置 | 说明 |
 |---|---|---|
-| `GAME_PLAN.md`（根） | `docs/game/GAME_PLAN.md` | 游戏计划 + 上架合规 |
+| 旧版游戏计划 | `docs/archive/legacy/GAME_PLAN-legacy-2026-08-09.md` | 只读历史资料，不作为当前入口 |
 | `SETUP.md`（根） | `docs/game/SETUP.md` | 环境/测试/素材 |
 | `AgentCore/`（根） | `game/AgentCore/` | Agent 核心库归入游戏模块 |
 
@@ -294,12 +294,12 @@ assets/                       # 全局共享素材库（git-lfs 跟踪）
 
 ## 11. 建议的下一步（按序，当前状态）
 
-1. ✅ 需求文档 v1.0（过审）→ `docs/game/REQUIREMENTS.md`
+1. ✅ 统一需求文档 v3.0 → `docs/game/REQUIREMENTS.md`
 2. ✅ 服务器选型定案 → `docs/server/ARCHITECTURE.md`（NestJS + TS）
 3. ✅ **token 商业模型定案**（DeepSeek 双轨）→ `docs/server/TOKEN_SYSTEM.md`
 4. ✅ 契约基础（agent-reply.schema.json + openapi/v1.yaml）
-5. ✅ **M0 数据模型定稿**（Player/Ship/CrewAgent/TraitDef/ShipTypeDef）→ `docs/game/design/DATA_MODELS.md`
-6. ⬜ Unity 工程初始化 → 按 SETUP.md 开工（M0 验证段；AgentCore 扩展 traits/culture/role 随工程进行）
+5. ✅ **统一数据模型 v3.0**（玩家/船/船员/世界/经济/生态/任务/奖励）→ `docs/game/design/DATA_MODELS.md`
+6. ⬜ D8 数据、契约、存档和内容 ID 统一 → `docs/game/DEV_ROADMAP.md`
 
 ---
 

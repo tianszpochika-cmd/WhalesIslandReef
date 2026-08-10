@@ -1,0 +1,37 @@
+{
+  "id": "island_saint_marys",
+  "schema_version": 1,
+  "name": "圣玛丽岛",
+  "display_name_key": "content.island.island_saint_marys.name",
+  "category": "island",
+  "tags": ["harbor", "starter_region", "caribbean"],
+  "description": "D9 近海切片的起始岛屿代表定义。",
+  "gameplay_role": "starter_harbor",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["coast", "mangrove", "nearshore"],
+  "valid_weather": ["clear", "rain", "storm_watch"],
+  "dependencies": [],
+  "references": ["building_saint_marys_dock", "building_santa_marys_north_warehouse", "building_santa_marys_shipyard", "animal_green_turtle", "plant_red_mangrove", "plant_shallow_seaweed", "plant_conch_bed", "plant_orchard_guava_v1", "plant_farm_cassava_mature", "plant_dry_aloe_medicinal", "plant_coast_agave_fiber", "plant_rainforest_mahogany_v1", "plant_rainforest_pine_resin_v1", "plant_farm_indigo_mature", "plant_dry_datura_toxin_v1", "fish_mackerel_school", "fish_snapper_school", "fish_sardine_school", "item_gear_fish_trap", "item_gear_shellfish_rake", "item_gear_seaweed_hook", "item_dried_mackerel", "item_dried_sardine", "item_dried_snapper", "item_fish_oil", "item_salted_sardine", "item_salted_snapper"],
+  "asset_refs": [],
+  "source_refs": ["docs/game/design/islands/01_ISLAND_OVERVIEW.md", "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md"],
+  "source_note": "项目自有代表岛屿定义；不代表需求目标中的 50 座岛已批量完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-ISLAND-001",
+  "reviewer": "D8-A02"
+}

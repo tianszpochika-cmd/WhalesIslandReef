@@ -1,0 +1,37 @@
+{
+  "id": "fish_mackerel_school",
+  "schema_version": 1,
+  "name": "鲭鱼鱼群",
+  "display_name_key": "content.fish.fish_mackerel_school.name",
+  "category": "fish",
+  "tags": ["nearshore", "school", "fishing"],
+  "description": "用于验证 FishSchool 与旧 fish_school marker 分离的代表条目。",
+  "gameplay_role": "fish_school_observation",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["nearshore", "reef_edge"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [],
+  "references": ["island_saint_marys", "item_gear_handline_basic", "item_fresh_mackerel"],
+  "asset_refs": [],
+  "source_refs": ["docs/game/design/animals/04_AQUATIC_LIFE.md", "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md"],
+  "source_note": "项目自有 FishSchool 代表条目；D4 的 fish_school 仅保留为 legacy marker，不在本条目中伪造数量。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/animals/04_AQUATIC_LIFE.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-FISH-001",
+  "reviewer": "D8-A02"
+}

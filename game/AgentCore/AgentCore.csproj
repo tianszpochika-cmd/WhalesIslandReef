@@ -10,4 +10,17 @@
     <AssemblyName>Whalebone.AgentCore</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="..\Assets\Scripts\Agent\AgentCore\NumericEnumConfiguration.cs"
+             Link="Config\NumericEnumConfiguration.cs" />
+    <Compile Include="..\Assets\Scripts\Agent\AgentCore\D9CrewAgentVerticalSlice.cs"
+             Link="Agent\D9CrewAgentVerticalSlice.cs" />
+    <Compile Include="..\Assets\Scripts\Agent\AgentCore\D9CrewAgentVerticalSliceTests.cs"
+             Link="Tests\D9CrewAgentVerticalSliceTests.cs" />
+    <Compile Include="..\Assets\Scripts\Agent\AgentCore\D10CrewBehaviorState.cs"
+             Link="Agent\D10CrewBehaviorState.cs" />
+    <Compile Include="..\Assets\Scripts\Agent\AgentCore\D10CrewBehaviorStateTests.cs"
+             Link="Tests\D10CrewBehaviorStateTests.cs" />
+  </ItemGroup>
+
 </Project>

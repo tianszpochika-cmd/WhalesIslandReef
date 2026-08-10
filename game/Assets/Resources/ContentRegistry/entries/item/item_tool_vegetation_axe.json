@@ -1,0 +1,16 @@
+{
+  "id": "item_tool_vegetation_axe",
+  "schema_version": 1,
+  "name": "短柄斧",
+  "display_name_key": "content.item.item_tool_vegetation_axe.name",
+  "category": "item",
+  "tags": ["tool", "vegetation", "timber", "axe"],
+  "description": "用于木材采集的短柄斧；保护区和受保护物种仍优先于工具检查。",
+  "gameplay_role": "vegetation_tool",
+  "valid_regions": ["island_saint_marys"], "valid_habitats": ["mangrove", "rainforest"], "valid_weather": ["clear", "rain"],
+  "dependencies": [], "references": [], "asset_refs": [],
+  "source_refs": ["docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"], "source_note": "项目自有 D11-A07 工具条目；工具匹配由采集系统确定性裁决。",
+  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"},
+  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "historical_tag": "inferred", "phase": "D11", "status": "prototyped", "owner_system": "ItemCatalog", "test_id": "D8-A02-D11-TOOL-005", "reviewer": "D11-A07"
+}

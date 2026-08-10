@@ -1,4 +1,5 @@
 using System;
+using Whalebone.Game.Config;
 
 namespace Whalebone.Systems.D4
 {
@@ -27,7 +28,12 @@ namespace Whalebone.Systems.D4
         public void EnsureCrew(string crewId)
         {
             if (string.IsNullOrEmpty(crewId) || Find(crewId) != null) return;
-            _state.Crew.Add(new CrewHealthState { CrewId = crewId, Health = 100, Fatigue = 0 });
+            _state.Crew.Add(new CrewHealthState
+            {
+                CrewId = crewId,
+                Health = (int)NumericConfiguration.Default.Health.DefaultValue,
+                Fatigue = (int)NumericConfiguration.Default.Fatigue.DefaultValue
+            });
         }
 
         public HealthState CreateInitial(string[] crewIds, int medicalSupplies)
@@ -42,7 +48,7 @@ namespace Whalebone.Systems.D4
         {
             var crew = Find(crewId);
             if (crew == null) return;
-            crew.Health = Math.Max(0, crew.Health - Math.Max(0, damage));
+            crew.Health = (int)NumericConfiguration.ClampHealth(crew.Health - Math.Max(0, damage));
         }
 
         public HealthResult TickDay(bool freshFood, bool mosquitoZone, bool pollutedWater, int seed)
@@ -50,7 +56,7 @@ namespace Whalebone.Systems.D4
             HealthResult last = new HealthResult { Accepted = true, Message = "健康状态稳定。" };
             foreach (var crew in _state.Crew)
             {
-                crew.Fatigue = Math.Min(100, crew.Fatigue + (freshFood ? 2 : 6));
+                crew.Fatigue = (int)NumericConfiguration.ClampFatigue(crew.Fatigue + (freshFood ? 2 : 6));
                 foreach (var disease in D4DiseaseCatalog.All)
                 {
                     bool sourceActive = disease.Id == "scurvy" ? !freshFood :
@@ -63,7 +69,7 @@ namespace Whalebone.Systems.D4
                     }
                     if (HasDisease(crew, disease.Id))
                     {
-                        crew.Health = Math.Max(0, crew.Health - disease.DailyDamage);
+                        crew.Health = (int)NumericConfiguration.ClampHealth(crew.Health - disease.DailyDamage);
                         last.Damage += disease.DailyDamage;
                     }
                 }
@@ -90,7 +96,7 @@ namespace Whalebone.Systems.D4
             if (_state.MedicalSupplies < cost) return new HealthResult { Message = "医疗物资不足。" };
             _state.MedicalSupplies -= cost;
             int recovery = disease.TreatmentPower + Math.Max(0, medicineSkill) * 3;
-            crew.Health = Math.Min(100, crew.Health + recovery);
+            crew.Health = (int)NumericConfiguration.ClampHealth(crew.Health + recovery);
             if (recovery >= disease.TreatmentPower) crew.Diseases.Remove(disease.Id);
             return new HealthResult { Accepted = true, SuppliesUsed = cost, DiseaseId = disease.Id, Message = disease.Name + "治疗完成。" };
         }

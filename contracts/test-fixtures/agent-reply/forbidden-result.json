@@ -1,0 +1,24 @@
+{
+  "schema_version": "agent_reply.v1.1",
+  "speech": "最终结果不应由 Agent 给出。",
+  "dialogue_intent": "report",
+  "emotion": "concerned",
+  "affinity_change": 0,
+  "relation_proposal": {
+    "kind": "none",
+    "target_ref": "none",
+    "stance": "none",
+    "basis": "无关系提议"
+  },
+  "negotiation_tone": "neutral",
+  "refusal_reason": "none",
+  "action_intent": {
+    "name": "report",
+    "actor_ref": "crew:lookout-1",
+    "target_ref": "ship:active",
+    "parameters": {
+      "weather": "storm",
+      "topic": "weather_signs"
+    }
+  }
+}

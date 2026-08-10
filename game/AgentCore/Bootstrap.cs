@@ -14,6 +14,21 @@ namespace Whalebone.Agent
     {
         public static async Task<int> Main(string[] args)
         {
+            bool configCheck = false;
+            bool d9Check = false;
+            foreach (var argument in args)
+            {
+                if (argument == "--config-check") configCheck = true;
+                if (argument == "--d9-check") d9Check = true;
+            }
+            if (configCheck)
+            {
+                int configFailures = Whalebone.Game.Config.NumericConfigurationTests.RunAll();
+                return configFailures == 0 ? 0 : 1;
+            }
+            if (d9Check)
+                return D9CrewAgentVerticalSliceTests.RunAll() == 0 ? 0 : 1;
+
             Console.WriteLine("=== 鲸骨航线 · 纯 Agent 骨架自检 ===");
             int failed = AgentCoreTests.RunAll();
             Console.WriteLine(failed == 0 ? ">> 全部自测通过" : ">> 有 " + failed + " 项自测失败！");
@@ -99,10 +114,10 @@ namespace Whalebone.Agent
         private int _n = 0;
         private static readonly string[] Replies =
         {
-            "{\"speech\":\"海风腥得很，这趟怕是要来风暴。\",\"emotion\":\"suspicious\",\"affinity_change\":1,\"action\":\"none\"}",
-            "{\"speech\":\"船长待我不薄，这杯酒我先敬您。\",\"emotion\":\"happy\",\"affinity_change\":3,\"action\":\"toast\"}",
-            "{\"speech\":\"拖欠的饷银要是再不给，兄弟们可要说话了。\",\"emotion\":\"angry\",\"affinity_change\":-5,\"action\":\"warn_pay\"}",
-            "{\"speech\":\"风浪再大，我老耗子也不会丢下船。\",\"emotion\":\"sad\",\"affinity_change\":0,\"action\":\"none\"}"
+            AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "海风腥得很，这趟怕是要来风暴。").Replace("happy", "suspicious").Replace("inform", "warn"),
+            AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "船长待我不薄，这杯酒我先敬您。"),
+            AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "拖欠的饷银要是再不给，兄弟们可要说话了。").Replace("happy", "angry").Replace("inform", "warn"),
+            AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "风浪再大，我老耗子也不会丢下船。")
         };
         public Task<string> CompleteAsync(string system, string user)
         {

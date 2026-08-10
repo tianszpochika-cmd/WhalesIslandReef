@@ -1,0 +1,37 @@
+{
+  "id": "pet_harbor_dog",
+  "schema_version": 1,
+  "name": "港口犬",
+  "display_name_key": "content.pet.pet_harbor_dog.name",
+  "category": "pet",
+  "tags": ["harbor", "companion", "care", "warning"],
+  "description": "港口收容所可登记来源的犬类宠物定义；领养后的状态由 AnimalCareSystem 裁决。",
+  "gameplay_role": "harbor_companion",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["harbor", "ship_deck", "ship_cabin"],
+  "valid_weather": ["clear", "rain", "storm"],
+  "dependencies": [],
+  "references": ["item_pet_feed"],
+  "asset_refs": [],
+  "source_refs": ["docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md", "docs/game/design/DATA_MODELS.md"],
+  "source_note": "项目自有宠物代表定义；来源、健康、走失、检疫和预警事实由 AnimalCareSystem 写入。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D11",
+  "status": "prototyped",
+  "owner_system": "AnimalCareSystem",
+  "test_id": "D8-A02-PET-002",
+  "reviewer": "D11-A06"
+}

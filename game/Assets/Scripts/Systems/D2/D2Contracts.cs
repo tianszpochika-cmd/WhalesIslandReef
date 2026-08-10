@@ -7,6 +7,7 @@
 // ============================================================
 
 using System;
+using Whalebone.Game.Config;
 
 namespace Whalebone.Systems.D2
 {
@@ -90,10 +91,11 @@ namespace Whalebone.Systems.D2
 
         private static float NormalizeTime(float value)
         {
-            if (float.IsNaN(value) || float.IsInfinity(value)) return 0f;
+            if (float.IsNaN(value) || float.IsInfinity(value))
+                return (float)NumericConfiguration.Default.TimeOfDay.DefaultValue;
             value %= 1f;
             if (value < 0f) value += 1f;
-            return value;
+            return NumericConfiguration.ClampTimeOfDay(value);
         }
     }
 

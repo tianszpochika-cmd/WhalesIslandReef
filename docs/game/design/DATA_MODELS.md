@@ -1,108 +1,149 @@
-# 数据模型（DATA_MODELS）— M0 定稿
+# 统一数据模型 v3.0
 
-> 状态：**M0 最小集已定稿**（2026-08-08）｜ M1/M2 实体为骨架待填。
-> 约定：字段类型与归属遵循 DESIGN_BOUNDARIES 裁决权表；存档映射 SQLite 表（第 7 节）。
-> 与 AgentCore 的关系：`CrewStats` 已在代码中；`Traits/Culture/Role` 为本定稿新增字段，**待 Unity 阶段扩展代码**。
+> 本文件是跨领域实体和存档形状的唯一设计事实源。领域文档可以补充语义，但不能私自新增同名字段、写者或状态。
 
----
+## 1. 通用字段
 
-## 1. Player（玩家角色）— 归属 Core
+所有可保存内容至少包含：
 
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `id` | string PK | 玩家实例 ID（与服务端 user_id 关联） |
-| `name` | string | 显示名 |
-| `money` | int | 金币（经济系统唯一写者） |
-| `skills` | dict\<SkillType,int\> | 玩家技能：领航/贸易/格斗/医术/木工/魅力（默认 1） |
-| `traits` | TraitId[] | 玩家特质 3-4 条（引用 TraitDef） |
-| `reputation` | dict\<FactionId,int\> | 声望（M1 启用，M0 预留空表） |
-| `inventory` | ItemId→count | 随身物品（工具/装备/食材） |
-| `shipId` | string FK | 当前拥有的船 |
-| `location` | Location | 所在港口 id 或海域坐标 |
-| `playSeconds` | int | 累计时长（成就/统计用） |
-
-## 2. Ship（船实例）— 归属 5 船只系统
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `id` | string PK | |
-| `shipTypeId` | string FK | 引用 ShipTypeDef |
-| `name` | string | 船名（玩家可改） |
-| `hull` / `hullMax` | int | 当前/最大耐久（破损→进水→倾斜→沉船链路） |
-| `cargo` | dict\<ItemId,int\> | 货舱（商品/货物）；容量受 cargoMax 约束 |
-| `cannons` | int | 炮数；装填状态简化：`loadedCount` int |
-| `supplies` | { water:int, food:int } | 淡水/食物（生存系统消耗） |
-| `crew` | { capacity:int, list:CrewId[] } | 船员槽位 |
-| `upgrades` | dict\<Slot,level\> | 改装等级（hull/sail/cannon/medBay/galley/cabin）——M2 启用，M0 留默认 0 |
-| `state` | { tilt:float, flooding:int } | 倾斜角/进水——M2 简化物理启用 |
-| `shipLog` | LogEntry[] | 航线日志（自动 + AI 摘要） |
-
-## 3. CrewAgent（船员）— 归属 2 船员系统
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `id` | string PK | |
-| `name` / `role` | string / RoleId | 姓名 / 岗位（舵手·瞭望·炮手·厨师·医生·木工·普通水手） |
-| `culture` | CultureId | 文化群：eng/spa/fra/por/carib |
-| `traits` | TraitId[] | 3-4 条（引用 TraitDef，含数值修正） |
-| `stats` | CrewStats | ✅ 已在 AgentCore：morale/loyalty/health/fatigue/affinity/skills |
-| `persona` | PersonaDef | ✅ 已在 AgentCore：role/traits/backstory/constraints |
-| `memory` | AgentMemory | ✅ 已在 AgentCore：三层记忆 + IMemoryStore |
-| `relations` | dict\<CrewId\|player,int\> | 关系值（-100~100）；爱情标记 M1 启用 |
-
-> ⚠️ AgentCore 扩展清单（Unity 阶段实施）：`CrewStats` 保持数值；`Persona.Traits` 从 `List<string>` 改为 `TraitId[]` 引用 + 数值修正注入；新增 `culture`、`role`、`relations`。
-
-## 4. TraitDef（特质定义表，纯数据）— 归属 2 船员系统
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `id` | string PK | `trait_lung_disease` |
-| `name` / `category` | string / enum | 名称 / 身体·性格·经历·疾病 |
-| `desc` | string | 展示文案 |
-| `statMods` | dict\<stat,float\> | 数值修正（如 `fatigue_max:-0.2`） |
-| `personaNote` | string | 注入 Persona 的文本（"你时常咳嗽…"） |
-| `eventMods` | dict\<eventId,float\> | 事件概率修正（如贪婪 `mutiny:+0.05`） |
-
-M0 首批 20 条（身体 8 + 性格 8 + 经历 4）；M1 扩至 50（含疾病 5：坏血病/疟疾/黄热病/痢疾/肺痨）。
-
-## 5. ShipTypeDef（船型定义表，纯数据）— 归属 5 船只系统
-
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `id` / `name` | string | `small_fishing` 小渔船 / `sloop` 单桅纵帆船 |
-| `speed` / `turn` | float | 航速 / 转向 |
-| `cargoMax` / `crewMax` | int | 载重 / 船员上限 |
-| `cannonMax` / `hullMax` | int | 炮位 / 耐久 |
-| `draft` | float | 吃水（近岸/浅滩判定） |
-| `price` | int | 造价（史实锚定，BALANCE 填充） |
-
-M0 首批 2 种；M1 增至 5 种（双桅纵帆/横帆快船/小型盖伦）；M3 全 8 种。
-
-## 6. 支撑类型
-
-```
-Location   = { type: "port"|"open_sea", portId?: string, x?: float, y?: float }
-ItemId     = string（商品/工具/食材统一 ID 表，BALANCE 填充）
-RoleId     = "helmsman"|"lookout"|"gunner"|"cook"|"medic"|"carpenter"|"deckhand"
-CultureId  = "eng"|"spa"|"fra"|"por"|"carib"
-FactionId  = "england"|"spain"|"france"|"portugal"|"pirates"|"tribes"|"smugglers"
-SkillType  = ✅ AgentCore 已定义（Sailing/Navigation/Gunnery/Carpentry/Medicine/Cookery/Trading/Combat）
+```text
+id: string
+schema_version: int
+display_name_key: string
+source_note: string
+historical_tag: historical | inferred | fictional
+phase: D7 | D8 | D9 | ... | D16
+owner_system: string
+test_id: string
 ```
 
-## 7. 存档映射（SQLite，本地 + 后续 Steam Cloud）
+所有世界实例另外包含 `created_day`、`updated_day`、`location_ref`、`state_flags` 和 `revision`。内容定义与运行时实例分离：Def 不因玩家行为改变，Instance 可以改变。
 
-```sql
-players(id, name, money, skills_json, traits_json, reputation_json, inventory_json, ship_id, location_json, play_seconds)
-ships(id, ship_type_id, name, hull, cargo_json, cannons, loaded_count, supplies_json, crew_json, upgrades_json, state_json, ship_log_json)
-crew_agents(id, name, role, culture, traits_json, stats_json, persona_json, memory_json, relations_json)
-trait_defs(id, name, category, desc, stat_mods_json, persona_note, event_mods_json)   -- 种子数据
-ship_type_defs(id, name, speed, turn, cargo_max, crew_max, cannon_max, hull_max, draft, price) -- 种子数据
+## 2. 核心实体
+
+### 2.1 PlayerProfile
+
+| 字段 | 说明 | 写者 |
+|---|---|---|
+| `id` | 玩家 ID | Core |
+| `name` / `pronouns` | 姓名、称谓和表达 | Character |
+| `identity_history` | 法律身份和变更记录 | Character/Legal |
+| `appearance_loadout_id` | 当前外观 | Character |
+| `skills` | 航海、贸易、战斗、医术、木工、厨艺、生态等 | Progression |
+| `money` / `credit` | 现金和信用引用 | Economy/Finance |
+| `reputation` | 各势力声望 | Faction |
+| `ship_ids` | 拥有或管理的船 | Property |
+| `estate_ids` | 岛屿/地块/建筑资产 | Property |
+| `inventory_id` | 随身物品 | Inventory |
+| `known_map` / `collection_book` | 地图和图鉴 | Discovery/Collection |
+
+### 2.2 ShipInstance
+
+核心旧字段必须兼容：`id`、`ship_type_id`、`name`、`hull`、`cargo`、`cannons`、`supplies`、`crew`、`upgrades`、`state`、`ship_log`。
+
+新增字段：
+
+- `hull_sections`：船首、船中、船尾、甲板、桅杆、舵、炮位和舱室损伤；
+- `mass_state`：空船、货物、人员、补给、模块、吃水；
+- `room_instances`：货舱、厨房、医务、住所、活鱼舱、炮药舱等；
+- `function_points`：锚机、缆桩、泵、炮位、渔具点、维修点；
+- `anchor_state` / `mooring_state`：锚、锚链、缆绳、泊位和走锚；
+- `maintenance_orders`：材料、工期、承包商、费用和进度；
+- `appearance`：船体涂装、帆、旗帜和装饰，不直接写强逻辑；
+- `ownership`：所有、租赁、抵押、船队归属和法律限制。
+
+写者：ShipSystem 写航行/船体/舱室；CargoSystem 写货物；CrewSystem 写岗位；Economy/Finance 写费用和抵押；AppearanceSystem 写外观。
+
+### 2.3 CrewAgent
+
+包含：
+
+- `role`、`skills`、`traits`、`culture`、`religion`、`legal_status`、`occupation`；
+- `health`、`fatigue`、`hunger`、`thirst`、`injury`、`disease`；
+- `morale`、`loyalty`、`affinity`、`trust`、`fear`、`respect`、`attachment`、`jealousy`；
+- `persona`、`memory`、`goals`、`promises`、`debts`、`current_task`、`work_shift`；
+- `appearance_loadout_id`、`equipment_ids`、`pet_id`、`personal_inventory_id`。
+
+LLM 只能读取经过筛选的角色快照和记忆摘要；CrewSystem 写关系和状态。
+
+### 2.4 RelationEdge
+
+```text
+source_id, target_id, relation_type,
+value, confidence, cause_event_ids[],
+last_changed_day, locked_by_story, visibility
 ```
 
-## 8. 契约影响
+`relation_type` 包含 affinity、trust、loyalty、fear、respect、attachment、jealousy、debt、kinship、romance。关系变化必须绑定事实事件。
 
-M0 无跨端契约变更（Player/Ship/CrewAgent 为客户端本地实体；云端仅存 `user/wallet/usage`，已在 TOKEN_SYSTEM 定稿）。若后续做云存档，再扩展 openapi。
+### 2.5 World and Economy
 
-## 9. M1/M2 待定稿实体（骨架）
+| 实体 | 关键字段 | 写者 |
+|---|---|---|
+| `IslandInstance` | 地貌、气候、水源、生境、控制者、人口、生态指标、资产 | Island/Ecology |
+| `LandParcel` | 用途、肥力、水源、租约、所有者、风险 | Property/Island |
+| `BuildingInstance` | 功能、等级、库存、工人、损伤、开放、产权 | Building |
+| `MarketState` | 库存、需求、价格、关税、封锁、恢复 | Economy |
+| `FinanceAccount` | 本金、利息、担保、抵押、到期、违约 | Finance |
+| `OwnershipClaim` | 资产、权利类型、证明、期限、争议 | Property/Legal |
+| `FarmCycle` | 地块、作物/动物、阶段、水、劳力、病虫害、产出 | Farming |
 
-Trader（底价区间/库存/关税）→ M1｜Island（类型/资源/动物/藏宝）→ M1｜EventTemplate（触发/后果）→ M1｜Faction（声望/政策）→ M2｜Animal（物种/行为机/危险度）→ M2｜Item 表 → M1
+### 2.6 Ecology and Collection
+
+| 实体 | 关键字段 |
+|---|---|
+| `VegetationInstance` | 物种、阶段、成熟度、采集、恢复、生境 |
+| `AnimalRecord` | 物种、年龄/性别/变体、状态、生境、行为、法律 |
+| `FishSchool` | 鱼种、数量、深度、迁徙、捕捞压力、恢复 |
+| `PetInstance` | 品种、健康、饥饿、清洁、依恋、位置、照料 |
+| `CatchRecord` | 工具、地点、时间、物种、品质、重量、处理 |
+| `CollectionEntry` | 证据、首次发现、季节、地点、处理方式、奖励 |
+
+### 2.7 内容、任务与奖励
+
+- `QuestInstance`：状态、目标、前置、选择、失败、恢复、奖励请求和事实日志；
+- `WorldEvent`：触发条件、概率、冷却、区域、天气、势力、输入事件、后果和种子；
+- `RewardGrant`：奖励 ID、来源、数量、唯一性、领取记录、回收/恢复路径；
+- `AppearanceLoadout`：身体、发型、服装、配饰、装备、耐久和来源；
+- `MiniGameSession`：牌局规则、下注上限、玩家、种子、结算和债务。
+
+QuestSystem 可以提出 `RewardRequest`，RewardSystem/EconomySystem 才能实际写入奖励。
+
+## 3. 统一事件包
+
+```json
+{
+  "event_id": "event_fishing_catch_001",
+  "schema_version": 1,
+  "world_day": 42,
+  "location_ref": "reef_014",
+  "actor_ids": ["player_001", "crew_003"],
+  "input_facts": ["fish_school_014_active", "gear_net_01"],
+  "owner_system": "EcologySystem",
+  "proposal": null,
+  "result": { "catch_id": "catch_042" },
+  "cause_ids": [],
+  "save_revision": 88
+}
+```
+
+事件事实先落盘，Agent 摘要只能引用事实；重复事件必须通过 `event_id + save_revision` 防重。
+
+## 4. 存档分层
+
+| 层 | 内容 | 频率 |
+|---|---|---|
+| 会话 | 输入、临时 UI、当前交互 | 不保证持久 |
+| 航程 | 航线、天气、船体、船员岗位、货物 | 每个关键节点 |
+| 世界 | 资产、市场、生态、势力、任务、建筑 | 结算/离开区域 |
+| 记忆 | 角色摘要、关系原因、日志引用 | 事件后 |
+
+每次保存写 `save_version`、`world_revision`、`last_event_id` 和迁移标记。读取旧版本时先迁移再进入玩法，禁止让 UI 或 Agent 猜字段。
+
+## 5. 版本迁移原则
+
+- 新增字段必须有默认值和来源；
+- 枚举改名必须保留旧值映射；
+- 删除字段先停止写入，至少跨一个版本只读迁移；
+- 不可迁移的资产必须转为“历史记录/补偿任务”，不能静默消失；
+- 每个版本有迁移测试：空档、D7 档、半途事件档、资产负债档和损伤船档。

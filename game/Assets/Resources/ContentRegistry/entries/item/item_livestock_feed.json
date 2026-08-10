@@ -1,0 +1,19 @@
+{
+  "id": "item_livestock_feed",
+  "schema_version": 1,
+  "name": "家畜饲料",
+  "display_name_key": "content.item.item_livestock_feed.name",
+  "category": "item",
+  "tags": ["cargo", "feed", "livestock", "poultry", "ranch"],
+  "description": "牧场登记饲料；消耗由 Inventory/Cargo 写入。",
+  "gameplay_role": "livestock_feed",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["ranch", "market", "ship_hold"],
+  "valid_weather": ["clear", "rain", "storm"],
+  "dependencies": [], "references": [], "asset_refs": [],
+  "source_refs": ["docs/game/design/common/D13_RANCH_LIVESTOCK.md"],
+  "source_note": "项目自有 D13-A04 牧场饲料物品定义。",
+  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D13_RANCH_LIVESTOCK.md"},
+  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "historical_tag": "inferred", "phase": "D13", "status": "prototyped", "owner_system": "ItemCatalog", "test_id": "D8-A02-D13-A04-ITEM-001", "reviewer": "D13-A04"
+}

@@ -32,9 +32,12 @@
 | `docs/game/DESIGN_PILLARS.md` | 设计宪法（方向，6 支柱） |
 | `docs/game/design/DESIGN_BOUNDARIES.md` | 边界总纲（玩家/船员/AI/NPC/动物/系统间权限） |
 | `docs/DEVELOPMENT_STANDARDS.md` | ★ 本规范的完整版（所有权/拆分/耦合/DoD） |
-| `docs/game/REQUIREMENTS.md` | 需求 v1.0（8 大系统 + 量化指标 + MVP 分级） |
-| `docs/game/IDEA_BANK.md` | 创意池（新想法先登记，不直接进代码） |
-| `docs/game/design/DATA_MODELS.md` | 数据模型（实体与字段） |
+| `docs/game/REQUIREMENTS.md` | 统一需求 v3.0（完整玩法、内容目标、完成定义） |
+| `docs/game/IDEA_BANK.md` | 创意入口（新想法先登记，不直接进代码） |
+| `docs/game/design/gameplay/README.md` | 玩法总目录（玩家循环和跨系统后果） |
+| `docs/game/design/DATA_MODELS.md` | 统一数据模型（实体、事件与存档） |
+| `docs/game/DEV_ROADMAP.md` | D7 后唯一开发路线 |
+| `docs/game/AGENT_DEVELOPMENT_TASKS.md` | Agent 开发任务总索引；实际提示词在 D8—D16 独立章节文件中 |
 | `contracts/` | 跨端契约（单一事实源） |
 
 ## 快速否决（看到即停）

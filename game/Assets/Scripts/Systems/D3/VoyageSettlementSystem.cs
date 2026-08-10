@@ -3,16 +3,20 @@
 // ============================================================
 
 using System;
+using System.Collections.Generic;
+using Whalebone.Systems.Events;
 
 namespace Whalebone.Systems.D3
 {
     public sealed class VoyageSettlementSystem
     {
         private readonly VoyageEventSystem _events;
+        private readonly EventLog _eventLog;
 
-        public VoyageSettlementSystem(VoyageEventSystem events = null)
+        public VoyageSettlementSystem(VoyageEventSystem events = null, EventLog eventLog = null)
         {
             _events = events ?? new VoyageEventSystem();
+            _eventLog = eventLog;
         }
 
         public bool TryBegin(string originId, string destinationId, float shipSpeed, int seed,
@@ -114,6 +118,34 @@ namespace Whalebone.Systems.D3
                     state.CurrentDay, state.Water, state.Food, state.Hull);
 
             state.Status = D3VoyageStatus.InPort;
+            if (_eventLog != null)
+            {
+                _eventLog.Append(new WorldEvent(
+                    "event_d9_returned_to_harbor",
+                    Math.Max(0, state.CurrentDay),
+                    state.DestinationId ?? state.OriginId ?? "santa_margarita",
+                    "ShipSystem",
+                    new EventResult
+                    {
+                        ResultCode = "returned_to_harbor",
+                        Summary = "航程已抵达港口并完成返港结算。",
+                        FactIds = new List<string>
+                        {
+                            "voyage:" + (state.OriginId ?? string.Empty),
+                            "port:" + (state.DestinationId ?? string.Empty),
+                        },
+                        Values = new Dictionary<string, string>
+                        {
+                            ["origin_id"] = state.OriginId ?? string.Empty,
+                            ["destination_id"] = state.DestinationId ?? string.Empty,
+                            ["days_elapsed"] = state.CurrentDay.ToString(),
+                        },
+                    },
+                    new[] { "player" },
+                    new[] { "voyage:" + (state.OriginId ?? string.Empty) },
+                    new[] { "event_d9_departure" },
+                    Math.Max(0, state.CurrentDay)));
+            }
             return new VoyageSettlement
             {
                 Succeeded = true,

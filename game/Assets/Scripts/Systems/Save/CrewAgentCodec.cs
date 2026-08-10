@@ -6,6 +6,8 @@
 // M0 已知限制（记录在案，P2 解除）：
 //   - AgentMemory 内部状态（短期上下文/摘要/事件）为私有，M0 不做还原，
 //     Load 后以空记忆重建（memory_json 仅存骨架占位）；
+//   - D10CrewBehaviorState 作为 stats_json.behavior 嵌套对象持久化，
+//     不新增表列，仍由 CrewSystem/D10 行为系统负责恢复后的裁决；
 //   - traits_json 存 TraitId[]；AgentCore 的 Persona.Traits 存对应中文名（展示/LLM 用），
 //     两者由 GameState.CrewAgentTraitIds 桥接（见 GameState.cs 注释）。
 // ============================================================
@@ -44,6 +46,8 @@ namespace Whalebone.Systems.Save
                 ["health"] = stats.Health,
                 ["fatigue"] = stats.Fatigue,
                 ["affinity"] = stats.Affinity,
+                ["behavior"] = agent.BehaviorState == null
+                    ? new D10CrewBehaviorState().ToSnapshot() : agent.BehaviorState.ToSnapshot(),
             };
             var skillsObj = new Dictionary<string, object>();
             foreach (var kv in stats.Skills) skillsObj[kv.Key.ToString()] = kv.Value;
@@ -57,13 +61,15 @@ namespace Whalebone.Systems.Save
                 ["constraints"] = ToList(persona.Constraints),
                 ["backstory"] = persona.Backstory ?? "",
                 ["speech_style"] = persona.SpeechStyle ?? "",
+                ["primary_duty"] = persona.PrimaryDuty.ToString(),
+                ["qualified_duties"] = DutiesToList(persona.QualifiedDuties),
             };
 
             return new Dictionary<string, object>
             {
                 ["id"] = agent.Id,
                 ["name"] = persona.Name,
-                ["role"] = RoleFor(),   // RoleId 存档列
+                ["role"] = RoleFor(agent),   // RoleId 存档列；D7 旧值仍映射为 deckhand
                 ["culture"] = CultureFor(),
                 ["traits_json"] = SaveJson.Stringify(traitIds ?? new List<string>()),
                 ["stats_json"] = SaveJson.Stringify(statsObj),
@@ -93,9 +99,17 @@ namespace Whalebone.Systems.Save
             persona.Traits.AddRange(ReadStringList(personaJson, "traits"));
             persona.Backstory = SaveJson.GetStr(personaJson, "backstory", "");
             persona.SpeechStyle = SaveJson.GetStr(personaJson, "speech_style", "");
+            persona.PrimaryDuty = ReadEnum(personaJson, "primary_duty", CrewDuty.Deckhand);
+            persona.QualifiedDuties.Clear();
+            foreach (var duty in ReadStringList(personaJson, "qualified_duties"))
+                if (Enum.TryParse(duty, true, out CrewDuty parsedDuty)
+                    && parsedDuty != CrewDuty.None && !persona.QualifiedDuties.Contains(parsedDuty))
+                    persona.QualifiedDuties.Add(parsedDuty);
+            if (persona.QualifiedDuties.Count == 0) persona.QualifiedDuties.Add(persona.PrimaryDuty);
 
             var agent = new CrewAgent(id, persona, new InMemoryStore());
             RestoreStats(agent.Stats, statsJson);
+            RestoreBehavior(agent.BehaviorState, statsJson);
             return agent;
         }
 
@@ -127,10 +141,30 @@ namespace Whalebone.Systems.Save
             }
         }
 
-        /// <summary>RoleId（DATA_MODELS §6）；M0 初始船员统一 deckhand，P2 由船员系统接管维护。</summary>
-        private static string RoleFor()
+        private static void RestoreBehavior(D10CrewBehaviorState state, Dictionary<string, object> json)
         {
-            return RoleDeckhand;
+            if (state == null || json == null) return;
+            if (json.TryGetValue("behavior", out object value)
+                && value is Dictionary<string, object> behavior)
+                state.Restore(behavior);
+        }
+
+        /// <summary>RoleId（DATA_MODELS §6）；M0 初始船员统一 deckhand，P2 由船员系统接管维护。</summary>
+        private static string RoleFor(CrewAgent agent)
+        {
+            if (agent == null || agent.BehaviorState == null || agent.BehaviorState.CurrentDuty == CrewDuty.None)
+                return RoleDeckhand;
+            switch (agent.BehaviorState.CurrentDuty)
+            {
+                case CrewDuty.Helm: return "helm";
+                case CrewDuty.Navigator: return "navigator";
+                case CrewDuty.Lookout: return "lookout";
+                case CrewDuty.Gunner: return "gunner";
+                case CrewDuty.Repair: return "repair";
+                case CrewDuty.Cook: return "cook";
+                case CrewDuty.Medic: return "medic";
+                default: return RoleDeckhand;
+            }
         }
 
         /// <summary>CultureId（DATA_MODELS §6）；M0 初始船员固定 eng，P2 由船员系统接管维护。</summary>
@@ -147,12 +181,28 @@ namespace Whalebone.Systems.Save
             return list;
         }
 
+        private static List<object> DutiesToList(List<CrewDuty> source)
+        {
+            var list = new List<object>();
+            if (source != null)
+                foreach (var duty in source) list.Add(duty.ToString());
+            return list;
+        }
+
         private static List<string> ReadStringList(Dictionary<string, object> json, string key)
         {
             var result = new List<string>();
             if (json == null || !json.TryGetValue(key, out object v) || !(v is List<object> list)) return result;
             foreach (var o in list) result.Add(Convert.ToString(o));
             return result;
+        }
+
+        private static T ReadEnum<T>(Dictionary<string, object> json, string key, T fallback)
+            where T : struct
+        {
+            string value = SaveJson.GetStr(json, key, string.Empty);
+            return Enum.TryParse(value, true, out T parsed) && Enum.IsDefined(typeof(T), parsed)
+                ? parsed : fallback;
         }
     }
 }

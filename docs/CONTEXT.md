@@ -9,11 +9,13 @@
 
 ## 必读文档（按序，缺一不可）
 
-1. `docs/ARCHITECTURE.md` — 三端架构与目录层级（先懂全局）
-2. `docs/game/DESIGN_PILLARS.md` — 设计宪法（6 根支柱，方向）
-3. `docs/game/design/DESIGN_BOUNDARIES.md` — 边界总纲（谁有权做什么）
-4. `docs/DEVELOPMENT_STANDARDS.md` — ★ 本规范（工程约束，怎么写）
-5. 所属模块文档（game / server / web / design 下对应文件）
+1. `docs/game/REQUIREMENTS.md` — 统一需求与玩法目录
+2. `docs/game/DESIGN_PILLARS.md` — 设计支柱和时代边界
+3. `docs/game/design/DESIGN_BOUNDARIES.md` — 系统所有权和 Agent 边界
+4. `docs/game/design/DATA_MODELS.md` — 核心实体、事件和存档
+5. `docs/game/DEV_ROADMAP.md` — D7 后开发工作包
+6. `docs/game/AGENT_DEVELOPMENT_TASKS.md` 与其 D8—D16 章节文件 — 当前 Agent 任务索引、执行顺序和可复制提示词
+7. `docs/ARCHITECTURE.md`、`docs/DEVELOPMENT_STANDARDS.md` — 工程约束
 
 ## 项目速览
 
@@ -23,7 +25,7 @@
 | AI 服务端 | NestJS + TypeScript（账号/token/LLM 网关） | `server/` |
 | 官网 | Next.js（待建） | `web/` |
 | 契约 | JSON Schema + OpenAPI | `contracts/` |
-| 文档 | 设计宪法/边界/规范/创意池 | `docs/` |
+| 文档 | 需求/玩法/设计/路线/规范/历史证据 | `docs/` |
 
 ## 铁律 5 条（违反即不合格）
 
@@ -35,15 +37,22 @@
 
 ## 当前进度指针
 
-- ✅ 需求 v1.0 过审｜设计边界总纲 v1.0｜服务器骨架可运行｜契约基础落地
+- ✅ 统一需求 v3.0、统一设计 v3.0 和 D7 后路线图已建立；历史版本移入归档
+- ✅ 设计边界/数据模型/玩法总目录已统一；服务器骨架可运行；契约基础落地
 - ✅ D1 工程底座与 InitialHarbor 已通过用户验收
 - ✅ D2 航行与对话闭环已完成：Unity 6 编译通过，EditMode 23/23 通过，AgentCore/server 检查通过
 - ✅ D3 贸易与完整航程可玩环已完成：10 商品、3 地点、5 天气、8 事件；Unity 40/40 测试与运行时冒烟通过，D2 接口保持稳定
 - ✅ D4 内容扩充已完成：5 船型/改装、炮战、7 势力、15 动物、5 疾病医疗、三章主线和航线日志；Unity 55/55 测试与运行时冒烟通过
 - ✅ D5 打磨上架技术阶段已完成：12 岛、50 特质、8 个基础角色预设、中英本地化、1080p/60 目标监控、Steam 离线 Bridge 与发布清单；Unity 63/63 测试与 D5 运行时冒烟通过
+- ✅ D6 首次航程体验层、D6.1 物理落地补强、D6.2 角色姿态基线、D6.3 动作/视角增强与 D6.4 相机遮挡保护已完成技术与用户手动验收：角色重力/落地、港口碰撞、上下船碰撞状态、平滑动作、三种视角、相机遮挡收缩、三轴动画姿态、港口品质、交互稳定化、新手引导；Unity D5 运行时冒烟通过
+- ✅ D7 首航体验质量版开发与自动化验收完成：控制状态统一、人物动作/落地质量、舵位上下船、首航保存恢复、材质/音频/回归测试；人工复测作为交接证据保留
+
+## 当前开发入口
+
+下一项是 D8 数据、契约、存档和内容 ID 统一；不要从归档的 D1—D7 提示词继续派生新任务。
 
 ## 开工自检
 
-- [ ] 我读了 4 份必读文档？
+- [ ] 我读了需求、支柱、边界、数据、路线、Agent 任务索引/对应章节提示词和工程规范？
 - [ ] 我知道我的任务只动哪个模块（单一写者）？
 - [ ] 我知道产出要过哪个验收清单（DoD）？

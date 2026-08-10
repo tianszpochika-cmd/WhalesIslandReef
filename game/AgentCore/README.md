@@ -12,7 +12,8 @@
 | `AgentMemory.cs` | Agent 层 | 三层记忆：短期上下文(8 轮) / 会话摘要(10 轮触发) / 长期事件(重要性加权)；`IMemoryStore` 接口（骨架为内存实现，Unity 阶段接 SQLite） |
 | `CrewAgent.cs` | Agent 层 | 船员聚合体：人格 + 数值 + 记忆 |
 | `DialogueSession.cs` | 交互闭环 | 玩家输入 → 组装 prompt → LLM → D2 结构化校验/降级 → 合法提议 → 写记忆 |
-| `AgentReplyValidator.cs` | 契约边界 | 校验必填字段、情绪枚举、好感整数范围与 D2 `action=none` |
+| `AgentReplyValidator.cs` | 契约边界 | 校验 AgentReply v1.1、对话/情绪/关系/谈判字段、P2A 动作注册信息、参数、权限、前置和拒绝原因 |
+| `P2AActionRegistry.cs` | 动作边界 | 60 个 P2A Action 的注册名、参数约束、权限、前置、失败码和执行者投影 |
 | `MockLLMClient.cs` | 离线兜底 | 无 Ollama/网络时返回确定性合法回复 |
 | `MutinyMonitor.cs` | 强逻辑层 | 数值边界示例：叛变预警 + 分支锁（低好感锁"求情"，LLM 无权限绕过） |
 | `Bootstrap.cs` | 本地演示 | CLI 交互入口（仅验证用，Unity 内由 UI 替代） |
@@ -36,8 +37,8 @@ dotnet run -- --deepseek=<api_key>      # 本地优先，DeepSeek 云端兜底
 
 1. 把 `AgentCore` 下的 `.cs` 文件复制到 `Assets/Scripts/Agent/`（**csproj 和 Bootstrap.cs 不需要**——那是本地 CLI 用的；Unity 用自己的编译系统）；
 2. `DialogueSession.SpeakAsync` 是 `async Task`，Unity 里用协程/`async void` 包装，或调用同步版 `Speak()`；
-3. 对话 UI（输入框/气泡/打字机）接到 `Speak()` 的返回值 `AgentReply`（含 Speech/Emotion/Action）；
-4. `Action` 字段对接游戏侧已注册的动作系统（P2A，需求文档阶段定义动作清单）；
+3. 对话 UI（输入框/气泡/打字机）接到 `Speak()` 的返回值 `AgentReply`（含 Speech/Emotion/ActionIntent）；
+4. `ActionIntent` 只能对接 `contracts/p2a-action-registry.json` 注册的动作；执行前必须再次通过运行时授权、目标和前置校验；
 5. 记忆持久化：把 `InMemoryStore` 换成 SQLite 实现（骨架已定义 `IMemoryStore` 接口，直接实现即可）；
 6. 原 `MiniJson` 若在正式版想换 Newtonsoft / System.Text.Json，只改 `AgentReplyValidator` 的边界适配处。
 
@@ -61,7 +62,8 @@ dotnet run -- --deepseek=<api_key>      # 本地优先，DeepSeek 云端兜底
 骨架已锁定的契约（需求文档围绕这些扩展即可）：
 
 - **数值模型**：`CrewStats` 字段（Morale/Loyalty/Health/Fatigue/Affinity/Skills）+ 叛变风险公式参数 —— 需求文档定义各数值的初始值、上下限、成长规则；
-- **结构化输出 Schema**：`{ speech, emotion, affinity_change(-10~10), action, action_args }` —— 需求文档定义 action 清单（游戏侧注册的动作名）；
+- **结构化输出 Schema**：`contracts/agent-reply.schema.json` 的 AgentReply v1.1；动作清单和参数约束以 `contracts/p2a-action-registry.json` 及 [D8 P2A Action 注册表](../../docs/game/design/common/D8_P2A_ACTION_REGISTRY.md) 为准；
+- **强逻辑裁决**：AgentReply 只提出意图，不携带最终 money、price、damage、reward、weather 或 relation 数值结果；最终结果由所属 Systems 裁决；
 - **Persona 约束模板**：`PersonaDefinition.Constraints` —— 需求文档定义船员人格库（角色、性格 Traits、背景、口吻）；
 - **记忆**：`IMemoryStore` + 三层策略 —— 需求文档定义哪些事件该进长期记忆、重要性如何评定；
 - **分支锁**：`MutinyMonitor.IsBranchLocked` —— 需求文档定义各对话分支的锁定数值阈值；

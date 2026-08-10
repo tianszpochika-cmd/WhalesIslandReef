@@ -1,48 +1,52 @@
 # 项目文档索引
 
-本目录保存项目的设计、开发规范、阶段路线图、验收记录与 Agent 任务提示词。
+本目录采用“需求 → 设计 → 开发计划 → 历史证据”的单向结构。新任务只从当前权威入口派生，归档区只读。
 
-## 当前阶段
+## 当前权威入口
 
-- D1：工程底座与初始港口，已由用户完成验收。
-- D2：航行与对话闭环，D2-01 至 D2-10 已完成，自动化验收 23/23 通过。
-- D3：贸易与完整航程可玩环，已完成；范围与验收见 [D3 范围冻结](game/design/D3_SCOPE.md) 和 [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)。
-- D4：内容扩充，已完成；范围与验收见 [D4 范围冻结](game/design/D4_SCOPE.md) 和 [D4 最终验收报告](game/design/D4_ACCEPTANCE_REPORT.md)。
-- D5：打磨上架技术阶段，已完成；外部 Steam 发布动作见 [D5 发布清单](game/design/D5_RELEASE_CHECKLIST.md)，技术验收见 [D5 最终验收报告](game/design/D5_ACCEPTANCE_REPORT.md)。
+- [统一需求总纲 v3.0](game/REQUIREMENTS.md)：所有系统、玩法、数量和完成定义；
+- [统一设计总览](game/design/README.md)：领域结构、数据、边界和设计流程；
+- [玩法设计总目录](game/design/gameplay/README.md)：经营、捕捞、动物、牌局、关系、装扮、探索和奖励；
+- [D7 后统一开发路线](game/DEV_ROADMAP.md)：D8—D16 工作包和 DoD；
+- [Agent 开发任务总索引](game/AGENT_DEVELOPMENT_TASKS.md)：列出全部章节、编号和执行顺序；实际提示词位于 D8—D16 独立章节文件；
+- [技术架构](ARCHITECTURE.md)：三端、契约和目录规则；
+- [开发规范](DEVELOPMENT_STANDARDS.md)：工程边界和验收要求；
+- [D8 数值与枚举统一配置](game/design/common/D8_NUMERIC_ENUM_CONFIG.md)：统一单位、范围、枚举、所有权和配置检查入口；
+- [D9 船员 Agent 垂直切片](game/design/common/D9_CREW_AGENT_VERTICAL_SLICE.md)：核心船员 Persona、记忆、提议、关系因果裁决和离线模板；
+- [D10 船员岗位与行为状态](game/design/common/D10_CREW_BEHAVIOR_STATE.md)：轮班、岗位效率、疲劳健康、拒绝/怠工、请假调岗、离队和叛变前兆；
+- [D10 同步集成验收报告](game/design/common/D10_ACCEPTANCE_REPORT.md)：工资、救援、偏袒、关系因果、行为、港口身份外观与读档一致性验收；
+- [D11 钓鱼与海上采集](game/design/common/D11_FISHING_HARVESTING.md)：鱼种、深度、时间、潮汐、渔具、浅水贝类/海草、处理品、市场反馈与幂等读档；
+- [D12 海图、测深与发现系统](game/design/common/D12_MAP_DISCOVERY.md)：海图分层、未知海岸、暗礁/浅滩/鱼场、工具、可信度、证据和存档边界；
+- [D12 线索与寻宝任务](game/design/common/D12_TREASURE_CLUES.md)：多来源线索、可靠度、交叉验证、时间窗、装备前置、替代路线和奖励追溯；
+- [D12 沉船、洞穴与打捞系统](game/design/common/D12_WRECK_CAVE_SALVAGE.md)：沉船/洞穴位置、潮汐、装备、风险、竞争者、法律裁决、失败恢复和奖励请求幂等；
+- [D13 产权与资产交易](game/design/common/D13_PROPERTY_ASSET_MARKET.md)：岛屿、地块、房屋、仓库、工坊、酒馆、船坞、农地与渔场的调查、估值、权利交易、共同治理、抵押、继承和争议；
+- [D13 金融、信用与保险](game/design/common/D13_FINANCE_CREDIT_INSURANCE.md)：现金、赊账、贷款、担保、利息、展期、保险证据、拒赔、违约、催收、查封与破产保护；
+- [D13 农业、果园与蔬菜](game/design/common/D13_FARMING_ORCHARDS.md)：地块、种子、土壤、水源、季节、播种、病虫害、风暴、收获、轮作、加工与销售；
+- [环境搭建](game/SETUP.md)：本机运行与测试；
+- [契约目录](../contracts/)。
 
-## D2 入口
+## 已完成基线
 
-- [D2 任务总览与依赖图](game/prompts/D2/README.md)
-- [D2 同步任务 01：范围与接口冻结](game/prompts/D2/01_SYNC_D2_SCOPE_FREEZE.md)
-- [D2 同步任务 02：契约与测试门](game/prompts/D2/02_SYNC_CONTRACT_TEST_GATE.md)
-- [D2 异步任务 03：航行核心](game/prompts/D2/03_ASYNC_SAILING_CORE.md)
-- [D2 异步任务 04：海洋与昼夜](game/prompts/D2/04_ASYNC_OCEAN_DAY_NIGHT.md)
-- [D2 异步任务 05：AgentCore 对话](game/prompts/D2/05_ASYNC_AGENTCORE_DIALOGUE.md)
-- [D2 异步任务 06：对话 UI](game/prompts/D2/06_ASYNC_DIALOGUE_UI.md)
-- [D2 异步任务 07：服务端网关](game/prompts/D2/07_ASYNC_SERVER_GATEWAY.md)
-- [D2 同步任务 08：运行时集成](game/prompts/D2/08_SYNC_RUNTIME_INTEGRATION.md)
-- [D2 同步任务 09：好感与存档闭环](game/prompts/D2/09_SYNC_AFFINITY_SAVE_E2E.md)
-- [D2 同步任务 10：最终验收](game/prompts/D2/10_SYNC_D2_ACCEPTANCE.md)
-- [D2 最终验收报告](game/design/D2_ACCEPTANCE_REPORT.md)
+D1—D7 的范围、提示词和验收文件已经移入 [历史归档](archive/README.md)。它们用于追溯已完成事实，不再作为未来需求或开发入口。
 
-## D3 入口
+## 设计领域
 
-- [D3 任务总览与依赖图](game/prompts/D3/README.md)
-- [D3 范围冻结与验收门](game/design/D3_SCOPE.md)
-- [D3 贸易/航程契约](../contracts/d3-trade.schema.json)
-- [D3 最终验收报告](game/design/D3_ACCEPTANCE_REPORT.md)
+- [船舶](game/design/ship/README.md)
+- [玩法](game/design/gameplay/README.md)
+- [角色](game/design/character/README.md)
+- [植被](game/design/vegetation/README.md)
+- [动物](game/design/animals/README.md)
+- [岛屿](game/design/islands/README.md)
+- [环境](game/design/environment/README.md)
+- [建筑](game/design/buildings/README.md)
+- [道具](game/design/items/README.md)
+- [经济与金融](game/design/economy/README.md)
+- [势力、宗教与法律](game/design/factions/README.md)
+- [战斗](game/design/combat/README.md)
+- [任务与事件](game/design/quests/README.md)
+- [UI](game/design/ui/README.md)
+- [音频](game/design/audio/README.md)
 
-## D4 入口
+## 归档原则
 
-- [D4 任务总览与依赖图](game/prompts/D4/README.md)
-- [D4 范围冻结与验收门](game/design/D4_SCOPE.md)
-- [D4 内容契约](../contracts/d4-content.schema.json)
-- [D4 最终验收报告](game/design/D4_ACCEPTANCE_REPORT.md)
-
-## D5 入口
-
-- [D5 任务总览与依赖图](game/prompts/D5/README.md)
-- [D5 范围冻结与验收门](game/design/D5_SCOPE.md)
-- [D5 发布清单](game/design/D5_RELEASE_CHECKLIST.md)
-- [D5 发布契约](../contracts/d5-release.schema.json)
-- [D5 最终验收报告](game/design/D5_ACCEPTANCE_REPORT.md)
+归档文件不可作为新需求的事实源。若归档内容与当前文档冲突，以 `REQUIREMENTS.md`、`design/` 和 `DEV_ROADMAP.md` 为准。

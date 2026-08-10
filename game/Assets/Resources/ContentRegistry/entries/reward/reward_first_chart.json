@@ -1,0 +1,37 @@
+{
+  "id": "reward_first_chart",
+  "schema_version": 1,
+  "name": "第一张海图奖励",
+  "display_name_key": "content.reward.reward_first_chart.name",
+  "category": "reward",
+  "tags": ["quest_request", "unique_candidate", "starter"],
+  "description": "用于验证任务奖励请求与物品/装扮引用的代表奖励定义。",
+  "gameplay_role": "quest_reward_request",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": [],
+  "valid_weather": [],
+  "dependencies": [],
+  "references": ["item_salted_cod", "outfit_weathered_deckhand"],
+  "asset_refs": [],
+  "source_refs": ["docs/game/design/gameplay/11_REWARDS_SPECIAL_WEAPONS.md", "docs/game/design/DATA_MODELS.md"],
+  "source_note": "仅为 RewardRequest/目录代表样例；D8 不创建实际发放结果或金钱奖励。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/gameplay/11_REWARDS_SPECIAL_WEAPONS.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "RewardSystem",
+  "test_id": "D8-A02-REWARD-001",
+  "reviewer": "D8-A02"
+}

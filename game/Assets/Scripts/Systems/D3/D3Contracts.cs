@@ -8,6 +8,9 @@
 
 using System;
 using System.Collections.Generic;
+using Whalebone.Game.Config;
+using Whalebone.Systems.D9;
+using Whalebone.Systems.Events;
 
 namespace Whalebone.Systems.D3
 {
@@ -48,14 +51,105 @@ namespace Whalebone.Systems.D3
         public string Id;
         public string DisplayName;
         public int BasePrice;
+        public int UnitWeight;
         public int CargoVolume;
+        public int DemandTarget;
+
+        public int Weight { get { return UnitWeight; } }
+        public int Volume { get { return CargoVolume; } }
 
         public CommodityDefinition(string id, string displayName, int basePrice, int cargoVolume)
+            : this(id, displayName, basePrice, cargoVolume, cargoVolume, 50)
+        {
+        }
+
+        public CommodityDefinition(string id, string displayName, int basePrice,
+            int unitWeight, int cargoVolume, int demandTarget)
         {
             Id = id ?? string.Empty;
             DisplayName = displayName ?? string.Empty;
             BasePrice = Math.Max(1, basePrice);
-            CargoVolume = Math.Max(1, cargoVolume);
+            UnitWeight = Math.Max(1, unitWeight);
+            CargoVolume = NumericConfiguration.ClampItemUnitVolume(cargoVolume);
+            DemandTarget = Math.Max(1, demandTarget);
+        }
+    }
+
+    /// <summary>
+    /// 不扩张 D3 冻结的十种基础商品目录的可交易货物定义。
+    /// D9 鱼获使用此形态接入 EconomySystem，价格仍由 TradeEconomySystem 裁决。
+    /// </summary>
+    [Serializable]
+    public sealed class D3MarketItemDefinition
+    {
+        public string Id;
+        public string DisplayName;
+        public int BasePrice;
+        public int UnitWeight;
+        public int CargoVolume;
+        public int DemandTarget;
+
+        public D3MarketItemDefinition(string id, string displayName, int basePrice,
+            int unitWeight, int cargoVolume, int demandTarget = 50)
+        {
+            Id = id ?? string.Empty;
+            DisplayName = displayName ?? string.Empty;
+            BasePrice = Math.Max(1, basePrice);
+            UnitWeight = Math.Max(1, unitWeight);
+            CargoVolume = NumericConfiguration.ClampItemUnitVolume(cargoVolume);
+            DemandTarget = Math.Max(1, demandTarget);
+        }
+    }
+
+    public enum PriceReasonKind
+    {
+        Inventory,
+        Demand,
+        Weather,
+        PlayerTradeVolume,
+        FactionPolicy,
+        Tax,
+    }
+
+    /// <summary>EconomySystem 生成的可解释价格因子；表现层只能读取。</summary>
+    [Serializable]
+    public sealed class PriceReason
+    {
+        public PriceReasonKind Kind;
+        public string Code;
+        public string Explanation;
+        public float Coefficient;
+
+        public PriceReason Clone()
+        {
+            return new PriceReason
+            {
+                Kind = Kind,
+                Code = Code,
+                Explanation = Explanation,
+                Coefficient = Coefficient,
+            };
+        }
+    }
+
+    /// <summary>只读传入 EconomySystem 的市场环境；不承载任何领域写操作。</summary>
+    [Serializable]
+    public sealed class TradePriceContext
+    {
+        public int WorldDay;
+        public D3WeatherType Weather = D3WeatherType.Calm;
+        public string FactionPolicyId = "neutral";
+        public float FactionPolicyCoefficient = 1f;
+
+        public TradePriceContext Clone()
+        {
+            return new TradePriceContext
+            {
+                WorldDay = WorldDay,
+                Weather = Weather,
+                FactionPolicyId = FactionPolicyId,
+                FactionPolicyCoefficient = FactionPolicyCoefficient,
+            };
         }
     }
 
@@ -150,17 +244,24 @@ namespace Whalebone.Systems.D3
     public sealed class D3InventoryState
     {
         public int CargoCapacity;
+        public int CargoWeightCapacity;
         public Dictionary<string, int> Cargo = new Dictionary<string, int>();
         public Dictionary<string, int> PersonalItems = new Dictionary<string, int>();
 
         public D3InventoryState(int cargoCapacity)
+            : this(cargoCapacity, int.MaxValue)
+        {
+        }
+
+        public D3InventoryState(int cargoCapacity, int cargoWeightCapacity)
         {
             CargoCapacity = Math.Max(0, cargoCapacity);
+            CargoWeightCapacity = cargoWeightCapacity <= 0 ? int.MaxValue : cargoWeightCapacity;
         }
 
         public D3InventoryState Clone()
         {
-            var copy = new D3InventoryState(CargoCapacity);
+            var copy = new D3InventoryState(CargoCapacity, CargoWeightCapacity);
             foreach (var item in Cargo) copy.Cargo[item.Key] = item.Value;
             foreach (var item in PersonalItems) copy.PersonalItems[item.Key] = item.Value;
             return copy;
@@ -172,11 +273,23 @@ namespace Whalebone.Systems.D3
     public sealed class D3MarketState
     {
         public Dictionary<string, int> Stock = new Dictionary<string, int>();
+        public Dictionary<string, int> Demand = new Dictionary<string, int>();
+        public Dictionary<string, int> PlayerTradeVolume = new Dictionary<string, int>();
+        public int WorldDay;
+        public D3WeatherType Weather = D3WeatherType.Calm;
+        public string FactionPolicyId = "neutral";
+        public float FactionPolicyCoefficient = 1f;
 
         public D3MarketState Clone()
         {
             var copy = new D3MarketState();
             foreach (var item in Stock) copy.Stock[item.Key] = item.Value;
+            foreach (var item in Demand) copy.Demand[item.Key] = item.Value;
+            foreach (var item in PlayerTradeVolume) copy.PlayerTradeVolume[item.Key] = item.Value;
+            copy.WorldDay = WorldDay;
+            copy.Weather = Weather;
+            copy.FactionPolicyId = FactionPolicyId;
+            copy.FactionPolicyCoefficient = FactionPolicyCoefficient;
             return copy;
         }
     }
@@ -190,7 +303,7 @@ namespace Whalebone.Systems.D3
 
         public D3TradeState(int money, int cargoCapacity)
         {
-            Money = Math.Max(0, money);
+            Money = NumericConfiguration.ClampCash(money);
             Inventory = new D3InventoryState(cargoCapacity);
             Market = new D3MarketState();
         }
@@ -203,22 +316,45 @@ namespace Whalebone.Systems.D3
         public string CommodityId;
         public int BuyUnitPrice;
         public int SellUnitPrice;
+        public int Stock;
+        public int Demand;
+        public int PlayerTradeVolume;
         public float SupplyCoefficient;
+        public float DemandCoefficient;
+        public float WeatherCoefficient;
+        public float PlayerTradeVolumeCoefficient;
+        public float FactionPolicyCoefficient;
         public float TariffCoefficient;
         public float EventCoefficient;
+        public float BuyTaxRate;
+        public float SellTaxRate;
+        public List<PriceReason> PriceReasons = new List<PriceReason>();
+        public bool IsOutOfStock { get { return Stock <= 0; } }
 
         public MarketQuote Clone()
         {
-            return new MarketQuote
+            var copy = new MarketQuote
             {
                 PortId = PortId,
                 CommodityId = CommodityId,
                 BuyUnitPrice = BuyUnitPrice,
                 SellUnitPrice = SellUnitPrice,
+                Stock = Stock,
+                Demand = Demand,
+                PlayerTradeVolume = PlayerTradeVolume,
                 SupplyCoefficient = SupplyCoefficient,
+                DemandCoefficient = DemandCoefficient,
+                WeatherCoefficient = WeatherCoefficient,
+                PlayerTradeVolumeCoefficient = PlayerTradeVolumeCoefficient,
+                FactionPolicyCoefficient = FactionPolicyCoefficient,
                 TariffCoefficient = TariffCoefficient,
                 EventCoefficient = EventCoefficient,
+                BuyTaxRate = BuyTaxRate,
+                SellTaxRate = SellTaxRate,
             };
+            foreach (var reason in PriceReasons)
+                if (reason != null) copy.PriceReasons.Add(reason.Clone());
+            return copy;
         }
     }
 
@@ -232,6 +368,15 @@ namespace Whalebone.Systems.D3
         public int UnitPrice;
         public int TotalPrice;
         public int MoneyAfter;
+        public int TaxAmount;
+        public int WeightAfter;
+        public int VolumeAfter;
+        public string EventId;
+        public string CommodityId;
+        public long SaveRevision;
+        public bool FactLogged;
+        public bool DuplicateSettlement;
+        public List<PriceReason> PriceReasons = new List<PriceReason>();
 
         public static TradeResult Fail(string code, string message, int money)
         {
@@ -240,7 +385,7 @@ namespace Whalebone.Systems.D3
                 Succeeded = false,
                 Code = code ?? "trade_failed",
                 Message = message ?? string.Empty,
-                MoneyAfter = Math.Max(0, money),
+                MoneyAfter = NumericConfiguration.ClampCash(money),
             };
         }
     }
@@ -271,7 +416,8 @@ namespace Whalebone.Systems.D3
         public string OriginId;
         public string DestinationId;
         public D3VoyageStatus Status = D3VoyageStatus.InPort;
-        public D3WeatherType Weather = D3WeatherType.Calm;
+        public D3WeatherType Weather = (D3WeatherType)NumericConfiguration.LegacyD3WeatherIndex(
+            NumericConfiguration.Default.DefaultWeather);
         public int CurrentDay;
         public int TotalDays;
         public int Seed;
@@ -350,7 +496,10 @@ namespace Whalebone.Systems.D3
         public string CurrentLocationId;
         public string DestinationId;
         public D3VoyageStatus VoyageStatus = D3VoyageStatus.InPort;
-        public D3WeatherType Weather = D3WeatherType.Calm;
+        public D3WeatherType Weather = (D3WeatherType)NumericConfiguration.LegacyD3WeatherIndex(
+            NumericConfiguration.Default.DefaultWeather);
+        /// <summary>D9 天气/海况扩展；旧 D3 存档没有此字段时保持 null。</summary>
+        public D9WeatherSeaSnapshot WeatherSea;
         public int CurrentDay;
         public int TotalDays;
         public int VoyageSeed;
@@ -359,11 +508,17 @@ namespace Whalebone.Systems.D3
         public int Hull;
         public int HullMax;
         public int Money;
+        public long SaveRevision;
         public Dictionary<string, int> Cargo = new Dictionary<string, int>();
         public Dictionary<string, int> PersonalItems = new Dictionary<string, int>();
         public Dictionary<string, int> MarketStock = new Dictionary<string, int>();
+        public Dictionary<string, int> MarketDemand = new Dictionary<string, int>();
+        public Dictionary<string, int> PlayerTradeVolume = new Dictionary<string, int>();
+        public string FactionPolicyId = "neutral";
+        public float FactionPolicyCoefficient = 1f;
         public Dictionary<string, int> GatheredThisVisit = new Dictionary<string, int>();
         public List<string> EventIds = new List<string>();
+        public EventLogSnapshot EventLog;
 
         public D3RuntimeSnapshot Clone()
         {
@@ -373,6 +528,7 @@ namespace Whalebone.Systems.D3
                 DestinationId = DestinationId,
                 VoyageStatus = VoyageStatus,
                 Weather = Weather,
+                WeatherSea = WeatherSea == null ? null : WeatherSea.Clone(),
                 CurrentDay = CurrentDay,
                 TotalDays = TotalDays,
                 VoyageSeed = VoyageSeed,
@@ -381,12 +537,18 @@ namespace Whalebone.Systems.D3
                 Hull = Hull,
                 HullMax = HullMax,
                 Money = Money,
+                SaveRevision = SaveRevision,
             };
             foreach (var item in Cargo) copy.Cargo[item.Key] = item.Value;
             foreach (var item in PersonalItems) copy.PersonalItems[item.Key] = item.Value;
             foreach (var item in MarketStock) copy.MarketStock[item.Key] = item.Value;
+            foreach (var item in MarketDemand) copy.MarketDemand[item.Key] = item.Value;
+            foreach (var item in PlayerTradeVolume) copy.PlayerTradeVolume[item.Key] = item.Value;
+            copy.FactionPolicyId = FactionPolicyId;
+            copy.FactionPolicyCoefficient = FactionPolicyCoefficient;
             foreach (var item in GatheredThisVisit) copy.GatheredThisVisit[item.Key] = item.Value;
             copy.EventIds.AddRange(EventIds);
+            copy.EventLog = EventLog == null ? null : EventLog.Clone();
             return copy;
         }
     }

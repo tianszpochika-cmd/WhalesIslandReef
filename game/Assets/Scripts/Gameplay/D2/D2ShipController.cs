@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Whalebone.Systems.D2;
 using Whalebone.Systems.Save;
+using Whalebone.Gameplay.D7;
 
 namespace Whalebone.Gameplay.D2
 {
@@ -48,7 +49,8 @@ namespace Whalebone.Gameplay.D2
 
         private void Update()
         {
-            if (_sailing == null || _mode != D2ControlMode.Ship || Time.timeScale <= 0f) return;
+            if (_sailing == null || _mode != D2ControlMode.Ship || Time.timeScale <= 0f ||
+                !D7ControlCoordinator.GameplayInputAllowed) return;
             var keyboard = Keyboard.current;
             if (keyboard == null) return;
 

@@ -225,6 +225,45 @@ namespace Save.Tests
         }
 
         [Test]
+        public void D9FishingState_SaveLoad_RestoresFishCargoAndSchool()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "D9 捕捞船长" });
+            var d3 = new D3RuntimeSnapshot
+            {
+                CurrentLocationId = PortCatalog.StartingPortId,
+                VoyageStatus = D3VoyageStatus.InPort,
+                Money = 518,
+            };
+            d3.Cargo["item_fresh_mackerel"] = 2;
+            d3.MarketStock["item_salted_mackerel"] = 48;
+            var d4 = new D4RuntimeSnapshot();
+            d4.Ecology.FishSchools.Add(new FishSchoolState
+            {
+                FishSchoolId = "fish_mackerel_school",
+                FishingSpotId = "nearshore_saint_marys",
+                WorldX = -4.25f,
+                WorldZ = 8.75f,
+                Biomass = 10,
+                FishingPressure = 2,
+                LastMovedDay = 1,
+            });
+
+            SaveSystem.SaveD3Runtime(d3);
+            SaveSystem.SaveD4Runtime(d4);
+            GameState.Reset();
+            Assert.IsTrue(SaveSystem.Load());
+
+            var loadedD3 = SaveSystem.LoadD3Runtime();
+            var loadedD4 = SaveSystem.LoadD4Runtime();
+            Assert.AreEqual(2, loadedD3.Cargo["item_fresh_mackerel"]);
+            Assert.AreEqual(48, loadedD3.MarketStock["item_salted_mackerel"]);
+            Assert.AreEqual(1, loadedD4.Ecology.FishSchools.Count);
+            Assert.AreEqual("fish_mackerel_school", loadedD4.Ecology.FishSchools[0].FishSchoolId);
+            Assert.AreEqual(10, loadedD4.Ecology.FishSchools[0].Biomass);
+            Assert.AreEqual(2, loadedD4.Ecology.FishSchools[0].FishingPressure);
+        }
+
+        [Test]
         public void D4Runtime_SaveLoad_RestoresContentState()
         {
             SaveSystem.NewGame(new NewGameParams { CaptainName = "D4 船长" });
@@ -295,6 +334,240 @@ namespace Save.Tests
                 Assert.AreEqual(20, traits);
                 Assert.AreEqual(2, ships);
             }
+        }
+
+        [Test]
+        public void D8A05_EmptyArchive_ReturnsEmptyWithoutCreatingFile()
+        {
+            var result = SaveSystem.MigrateToV3();
+
+            Assert.AreEqual(SaveMigrationStatus.Empty, result.Status);
+            Assert.IsTrue(result.OriginalPreserved);
+            Assert.IsFalse(File.Exists(_dbPath), "空档迁移不得创建数据库文件");
+        }
+
+        [Test]
+        public void D8A05_D7Archive_MigratesCoreEntitiesAndMetadata()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "D7 船长" });
+            string playerId = GameState.CurrentPlayer.Id;
+            string shipId = GameState.CurrentShip.Id;
+
+            var result = SaveSystem.MigrateToV3();
+
+            Assert.AreEqual(SaveMigrationStatus.Migrated, result.Status);
+            Assert.AreEqual(1, result.SourceUserVersion);
+            Assert.AreEqual(3, result.SaveVersion);
+            using (var db = new SqliteDb(_dbPath))
+            {
+                var metadata = db.Query("SELECT * FROM save_metadata WHERE id=1")[0];
+                Assert.AreEqual(3, SaveJson.GetInt(metadata, "save_version"));
+                Assert.AreEqual(0, SaveJson.GetInt(metadata, "world_revision"));
+                Assert.AreEqual("", SaveJson.GetStr(metadata, "last_event_id", ""));
+                Assert.IsNotEmpty(SaveJson.GetStr(metadata, "migration_flags", "[]"));
+                Assert.AreEqual(1, SaveJson.GetInt(metadata, "source_user_version"));
+                Assert.AreEqual(3, Convert.ToInt64(db.Query("SELECT COUNT(*) AS c FROM v3_entities")[0]["c"]));
+
+                var oldPlayer = db.Query("SELECT money, ship_id FROM players WHERE id=?", playerId)[0];
+                Assert.AreEqual(500, SaveJson.GetInt(oldPlayer, "money"));
+                Assert.AreEqual(shipId, SaveJson.GetStr(oldPlayer, "ship_id"));
+                var player = ReadV3Entity(db, "Player", playerId);
+                Assert.AreEqual(1, SaveJson.GetInt(player, "schema_version"));
+                Assert.IsTrue(player.ContainsKey("legacy_d7"));
+                Assert.IsTrue(player.ContainsKey("balance"));
+            }
+        }
+
+        [Test]
+        public void D8A05_SailingArchive_PreservesLocationAndEvent()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "航行中船长" });
+            var d3 = new D3RuntimeSnapshot();
+            d3.EventIds.Add("d7_event_0007");
+            SaveSystem.SaveD3Runtime(d3);
+            SaveSystem.SaveD2Runtime(
+                new SailingSnapshot
+                {
+                    ShipId = GameState.CurrentShip.Id,
+                    PositionX = 32.5f,
+                    PositionZ = -4.25f,
+                    Heading = 180f,
+                    Speed = 2f,
+                    MaxSpeed = 4f,
+                    ControlMode = D2ControlMode.Character,
+                },
+                new DayNightSnapshot(9, 0.35f));
+
+            var result = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.Migrated, result.Status);
+            Assert.AreEqual("d7_event_0007", result.LastEventId);
+            using (var db = new SqliteDb(_dbPath))
+            {
+                var player = ReadV3Entity(db, "Player", GameState.CurrentPlayer.Id);
+                var legacy = (Dictionary<string, object>)player["legacy_d7"];
+                var location = (Dictionary<string, object>)legacy["location"];
+                Assert.AreEqual("open_sea", SaveJson.GetStr(location, "type"));
+                Assert.AreEqual(9, SaveJson.GetInt(location, "day_index"));
+                Assert.IsNotEmpty(SaveJson.GetStr(legacy, "d3_runtime_json", ""));
+            }
+        }
+
+        [Test]
+        public void D8A05_DamagedShip_PreservesHullAndAddsIntegrity()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "损伤船长" });
+            GameState.CurrentShip.Hull = 42;
+            SaveSystem.Save();
+
+            var result = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.Migrated, result.Status);
+            using (var db = new SqliteDb(_dbPath))
+            {
+                var oldShip = db.Query("SELECT hull FROM ships WHERE id=?", GameState.CurrentShip.Id)[0];
+                Assert.AreEqual(42, SaveJson.GetInt(oldShip, "hull"));
+                var ship = ReadV3Entity(db, "Ship", GameState.CurrentShip.Id);
+                var legacy = (Dictionary<string, object>)ship["legacy_d7"];
+                Assert.AreEqual(42, SaveJson.GetInt(legacy, "hull"));
+                var integrity = (Dictionary<string, object>)ship["hull_integrity"];
+                Assert.AreEqual(70, SaveJson.GetInt(integrity, "value"));
+            }
+        }
+
+        [Test]
+        public void D8A05_DebtArchive_UsesSafeFinanceDefaults()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "负债船长" });
+            GameState.CurrentPlayer.Money = -250;
+            SaveSystem.Save();
+
+            var result = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.Migrated, result.Status);
+            Assert.IsTrue(result.MigrationFlags.Contains("finance_account_defaulted"));
+            using (var db = new SqliteDb(_dbPath))
+            {
+                var player = ReadV3Entity(db, "Player", GameState.CurrentPlayer.Id);
+                Assert.AreEqual(-250, SaveJson.GetInt((Dictionary<string, object>)player["balance"], "value"));
+                Assert.AreEqual(0, SaveJson.GetInt((Dictionary<string, object>)player["credit"], "value"));
+            }
+        }
+
+        [Test]
+        public void D8A05_InProgressQuest_LeavesLegacyRuntimeAndDefaultsQuest()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "任务中船长" });
+            var d4 = new D4RuntimeSnapshot();
+            d4.Mainline.Chapter = 2;
+            d4.Mainline.MissionIndex = 1;
+            d4.Mainline.Flags["mission_in_progress"] = true;
+            SaveSystem.SaveD4Runtime(d4);
+
+            var result = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.Migrated, result.Status);
+            Assert.IsTrue(result.MigrationFlags.Contains("quest_defaulted"));
+            using (var db = new SqliteDb(_dbPath))
+            {
+                var player = ReadV3Entity(db, "Player", GameState.CurrentPlayer.Id);
+                Assert.IsNotEmpty(SaveJson.GetStr((Dictionary<string, object>)player["legacy_d7"], "d4_runtime_json", ""));
+                Assert.AreEqual(0, ((List<object>)player["quest_ids"]).Count);
+            }
+        }
+
+        [Test]
+        public void D8A05_RepeatedMigration_IsNoOp()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "幂等船长" });
+            var first = SaveMigration.Migrate(_dbPath);
+            Assert.AreEqual(SaveMigrationStatus.Migrated, first.Status);
+            string playerId = GameState.CurrentPlayer.Id;
+            string beforePayload;
+            long beforeCount;
+            using (var db = new SqliteDb(_dbPath))
+            {
+                beforePayload = SaveJson.Stringify(ReadV3Entity(db, "Player", playerId));
+                beforeCount = Convert.ToInt64(db.Query("SELECT COUNT(*) AS c FROM v3_entities")[0]["c"]);
+            }
+
+            var second = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.AlreadyMigrated, second.Status);
+            using (var db = new SqliteDb(_dbPath))
+            {
+                Assert.AreEqual(beforeCount, Convert.ToInt64(db.Query("SELECT COUNT(*) AS c FROM v3_entities")[0]["c"]));
+                Assert.AreEqual(beforePayload, SaveJson.Stringify(ReadV3Entity(db, "Player", playerId)));
+            }
+        }
+
+        [Test]
+        public void D8A05_FailedMigration_RollsBackAndPreservesD7()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "中断船长" });
+            GameState.CurrentShip.Hull = 42;
+            SaveSystem.Save();
+            string playerId = GameState.CurrentPlayer.Id;
+            string shipId = GameState.CurrentShip.Id;
+            var result = SaveMigration.Migrate(_dbPath, new SaveMigrationOptions { FaultPoint = SaveMigrationFaultPoint.BeforeCommit });
+            Assert.AreEqual(SaveMigrationStatus.Failed, result.Status);
+            Assert.AreEqual("migration_interrupted", result.ErrorCode);
+            Assert.IsTrue(result.OriginalPreserved);
+            using (var db = new SqliteDb(_dbPath))
+                Assert.AreEqual(0, db.Query("SELECT name FROM sqlite_master WHERE type='table' AND name='save_metadata'").Count);
+            using (var db = new SqliteDb(_dbPath))
+            {
+                Assert.AreEqual(500, SaveJson.GetInt(db.Query("SELECT money FROM players WHERE id=?", playerId)[0], "money"));
+                Assert.AreEqual(shipId, SaveJson.GetStr(db.Query("SELECT ship_id FROM players WHERE id=?", playerId)[0], "ship_id"));
+                Assert.AreEqual(42, SaveJson.GetInt(db.Query("SELECT hull FROM ships WHERE id=?", shipId)[0], "hull"));
+            }
+            Assert.IsTrue(SaveSystem.Load(), "回滚后原始 D7 存档仍应能加载");
+        }
+
+        [Test]
+        public void D8A05_UnknownVersion_IsRejectedWithoutWrites()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "未知版本船长" });
+            using (var db = new SqliteDb(_dbPath)) db.Execute("PRAGMA user_version=99");
+
+            var result = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.UnsupportedVersion, result.Status);
+            Assert.AreEqual("unsupported_version", result.ErrorCode);
+            using (var db = new SqliteDb(_dbPath))
+            {
+                Assert.AreEqual(0, db.Query("SELECT name FROM sqlite_master WHERE type='table' AND name='save_metadata'").Count);
+                Assert.AreEqual(500, SaveJson.GetInt(db.Query("SELECT money FROM players LIMIT 1")[0], "money"));
+            }
+            Assert.IsTrue(SaveSystem.Load(), "未知版本拒绝迁移不应破坏 D7 读取");
+        }
+
+        [Test]
+        public void D8A05_PartialCorruption_DefaultsNewFieldsWithoutDroppingD7()
+        {
+            SaveSystem.NewGame(new NewGameParams { CaptainName = "部分损坏船长" });
+            string playerId = GameState.CurrentPlayer.Id;
+            using (var db = new SqliteDb(_dbPath)) db.Execute("UPDATE players SET inventory_json=? WHERE id=?", "{broken", playerId);
+
+            var result = SaveMigration.Migrate(_dbPath);
+
+            Assert.AreEqual(SaveMigrationStatus.Migrated, result.Status);
+            Assert.IsTrue(result.MigrationFlags.Contains("partial_recovery:players.inventory_json"));
+            using (var db = new SqliteDb(_dbPath))
+            {
+                var oldRow = db.Query("SELECT inventory_json FROM players WHERE id=?", playerId)[0];
+                Assert.AreEqual("{broken", SaveJson.GetStr(oldRow, "inventory_json"));
+                var player = ReadV3Entity(db, "Player", playerId);
+                var legacy = (Dictionary<string, object>)player["legacy_d7"];
+                Assert.AreEqual(0, ((Dictionary<string, object>)legacy["inventory"]).Count);
+            }
+        }
+
+        private static Dictionary<string, object> ReadV3Entity(SqliteDb db, string entityType, string entityId)
+        {
+            var rows = db.Query("SELECT payload_json FROM v3_entities WHERE entity_type=? AND entity_id=?", entityType, entityId);
+            Assert.AreEqual(1, rows.Count, "v3 实体应存在：" + entityType + "/" + entityId);
+            return SaveJson.ParseDict(SaveJson.GetStr(rows[0], "payload_json", "{}"));
         }
     }
 }

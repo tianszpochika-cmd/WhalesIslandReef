@@ -14,6 +14,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Gameplay.UI;
+using Whalebone.Gameplay.D7;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.Save;
 
@@ -38,7 +39,7 @@ namespace Whalebone.Gameplay.D3
 
         private readonly TradeEconomySystem _economy = new TradeEconomySystem();
         private readonly GatheringSystem _gathering = new GatheringSystem();
-        private readonly VoyageSettlementSystem _voyageSystem = new VoyageSettlementSystem();
+        private VoyageSettlementSystem _voyageSystem;
 
         private Transform _player;
         private Transform _ship;
@@ -59,8 +60,40 @@ namespace Whalebone.Gameplay.D3
         private GameObject _controlPanel;
         private string _lastMessage = "D3 已就绪。";
 
+        public bool IsReady => _ready;
+        public bool IsTradeOpen => _tradeOpen;
+        public D3RuntimeSnapshot Snapshot => _snapshot;
+        /// <summary>D9 整备页提交意图的 D3 owner 状态；调用方不得直接改 Player/Ship。</summary>
+        public D3TradeState TradeState => _trade;
+        /// <summary>D9-A02 使用与 D3 交易页相同的 EconomySystem 实例。</summary>
+        public TradeEconomySystem EconomySystem => _economy;
+
+        /// <summary>D9 离港按钮的表现层入口，航线仍由 D3 Voyage owner 裁决。</summary>
+        public bool RequestDeparture()
+        {
+            if (!_ready) return false;
+            StartVoyage();
+            return _snapshot != null && _snapshot.VoyageStatus == D3VoyageStatus.Sailing;
+        }
+
+        /// <summary>把 D9 船舶整备 owner 修改的船体/补给提交给 D3 快照后保存。</summary>
+        public void CommitPreparationState()
+        {
+            if (!_ready || _snapshot == null || _trade == null) return;
+            var ship = GameState.CurrentShip;
+            if (ship != null)
+            {
+                _snapshot.Hull = ship.Hull;
+                _snapshot.HullMax = ship.HullMax;
+                _snapshot.Water = ReadSupply(ship, "water", _snapshot.Water);
+                _snapshot.Food = ReadSupply(ship, "food", _snapshot.Food);
+            }
+            SaveProgress();
+        }
+
         private void Awake()
         {
+            _voyageSystem = new VoyageSettlementSystem(null, _economy.EventLog);
             EnsureEventSystem();
             BuildUi();
             CreatePortMarkers();
@@ -81,6 +114,7 @@ namespace Whalebone.Gameplay.D3
                 if (keyboard.escapeKey.wasPressedThisFrame) CloseTrade();
                 return;
             }
+            if (!D7ControlCoordinator.GameplayInputAllowed) return;
             if (Time.timeScale <= 0f) return;
 
             if (keyboard.bKey.wasPressedThisFrame) OpenTrade();
@@ -96,8 +130,13 @@ namespace Whalebone.Gameplay.D3
         {
             if (!_ready || _snapshot == null || _trade == null) return;
             SyncSnapshotFromRuntime();
+            SyncPlayerLocationFromRuntime();
             try
             {
+                long checkpointRevision = Math.Max(_snapshot.SaveRevision, _economy.EventLog.NextSequence + 1);
+                SaveSystem.AppendD9SaveCheckpoint(_economy.EventLog, _snapshot.CurrentDay,
+                    _snapshot.CurrentLocationId, checkpointRevision);
+                _snapshot.EventLog = SaveSystem.CaptureD3TradeEventLog(_economy.EventLog);
                 SaveSystem.SaveD3Runtime(_snapshot);
                 Debug.Log("[D3/Save] 贸易、库存和航程快照已保存");
             }
@@ -105,6 +144,24 @@ namespace Whalebone.Gameplay.D3
             {
                 Debug.LogWarning("[D3/Save] 快照保存失败，保留上一次有效存档：" + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// D2 快照先保存船的位置；当 D3 已明确处于港内时，D3 的港口状态拥有
+        /// 位置类型的最终写权，避免返回主菜单后继续游戏被错误恢复到海上。
+        /// </summary>
+        private void SyncPlayerLocationFromRuntime()
+        {
+            if (_snapshot == null || _snapshot.VoyageStatus != D3VoyageStatus.InPort ||
+                string.IsNullOrEmpty(_snapshot.CurrentLocationId)) return;
+
+            var player = GameState.CurrentPlayer;
+            if (player == null) return;
+            var location = player.Location ?? new LocationRef();
+            location.Type = "port";
+            location.PortId = _snapshot.CurrentLocationId;
+            location.Speed = 0f;
+            player.Location = location;
         }
 
         private void TryBuildRuntime()
@@ -139,7 +196,16 @@ namespace Whalebone.Gameplay.D3
             Copy(_snapshot.Cargo, _trade.Inventory.Cargo);
             Copy(_snapshot.PersonalItems, _trade.Inventory.PersonalItems);
             Copy(_snapshot.MarketStock, _trade.Market.Stock);
+            Copy(_snapshot.MarketDemand, _trade.Market.Demand);
+            Copy(_snapshot.PlayerTradeVolume, _trade.Market.PlayerTradeVolume);
+            _trade.Market.WorldDay = _snapshot.CurrentDay;
+            _trade.Market.Weather = _snapshot.Weather;
+            _trade.Market.FactionPolicyId = string.IsNullOrEmpty(_snapshot.FactionPolicyId)
+                ? "neutral" : _snapshot.FactionPolicyId;
+            _trade.Market.FactionPolicyCoefficient = _snapshot.FactionPolicyCoefficient;
             if (_trade.Market.Stock.Count == 0) CommodityCatalog.SeedMarket(_trade.Market);
+            if (_snapshot.EventLog != null)
+                _economy.RestoreEventLog(SaveSystem.RestoreD3TradeEventLog().CaptureSnapshot());
 
             if (_snapshot.VoyageStatus == D3VoyageStatus.Sailing)
             {
@@ -313,6 +379,7 @@ namespace Whalebone.Gameplay.D3
             _tradeOpen = true;
             _controlPanel.SetActive(false);
             _tradePanel.SetActive(true);
+            RuntimeHudCoordinator.ShowTemporaryCanvas("D3Canvas");
             RefreshTradePanel();
         }
 
@@ -321,7 +388,14 @@ namespace Whalebone.Gameplay.D3
             _tradeOpen = false;
             _tradePanel.SetActive(false);
             _controlPanel.SetActive(true);
+            RuntimeHudCoordinator.RestorePrimaryHud();
             RefreshHud();
+        }
+
+        /// <summary>D7 输入协调器使用的模态关闭入口，避免 ESC 同帧穿透到暂停或航行。</summary>
+        public void CloseTradeFromCoordinator()
+        {
+            if (_tradeOpen) CloseTrade();
         }
 
         private void BuyOne()
@@ -369,6 +443,13 @@ namespace Whalebone.Gameplay.D3
             _snapshot.Cargo = CopyOf(_trade.Inventory.Cargo);
             _snapshot.PersonalItems = CopyOf(_trade.Inventory.PersonalItems);
             _snapshot.MarketStock = CopyOf(_trade.Market.Stock);
+            _snapshot.MarketDemand = CopyOf(_trade.Market.Demand);
+            _snapshot.PlayerTradeVolume = CopyOf(_trade.Market.PlayerTradeVolume);
+            _snapshot.FactionPolicyId = _trade.Market.FactionPolicyId;
+            _snapshot.FactionPolicyCoefficient = _trade.Market.FactionPolicyCoefficient;
+            _trade.Market.WorldDay = _snapshot.CurrentDay;
+            _snapshot.SaveRevision = _economy.CurrentSaveRevision;
+            _snapshot.EventLog = SaveSystem.CaptureD3TradeEventLog(_economy.EventLog);
             if (_voyage != null)
             {
                 _snapshot.Water = _voyage.Water;
@@ -422,6 +503,7 @@ namespace Whalebone.Gameplay.D3
         private void RefreshHud()
         {
             if (!_ready || _statusText == null) return;
+            RefreshButtonLabels();
             var port = PortCatalog.Find(_snapshot.CurrentLocationId);
             string location = port == null ? "未知海域" : port.DisplayName;
             string voyage = _snapshot.VoyageStatus == D3VoyageStatus.Sailing
@@ -435,16 +517,44 @@ namespace Whalebone.Gameplay.D3
             _hintText.text = "WASD 移动 | 右键/中键调整视角 | B 贸易 | T 出航 | N 推进一天 | G 采集 | L 靠港结算 | C 保存 | ESC 暂停";
         }
 
+        private void RefreshButtonLabels()
+        {
+            SetButtonLabel(_controlPanel, "Trade", "贸易 [B]", "Trade [B]");
+            SetButtonLabel(_controlPanel, "Destination", "切换目的地", "Change destination");
+            SetButtonLabel(_controlPanel, "Voyage", "出航 [T]", "Set sail [T]");
+            SetButtonLabel(_controlPanel, "Advance", "推进航程 [N]", "Advance voyage [N]");
+            SetButtonLabel(_controlPanel, "Gather", "登岛采集 [G]", "Gather [G]");
+            SetButtonLabel(_controlPanel, "Land", "靠港结算 [L]", "Land and settle [L]");
+            SetButtonLabel(_tradePanel, "Previous", "上一种", "Previous");
+            SetButtonLabel(_tradePanel, "Buy", "买入 1 件", "Buy 1");
+            SetButtonLabel(_tradePanel, "Sell", "卖出 1 件", "Sell 1");
+            SetButtonLabel(_tradePanel, "Next", "下一种", "Next");
+            SetButtonLabel(_tradePanel, "Close", "关闭贸易", "Close trade");
+        }
+
+        private static void SetButtonLabel(GameObject parent, string buttonName, string chinese, string english)
+        {
+            if (parent == null) return;
+            var button = parent.transform.Find(buttonName);
+            if (button == null) return;
+            var label = button.Find("Label");
+            var text = label == null ? null : label.GetComponent<Text>();
+            if (text != null) text.text = Localization.IsEnglish ? english : chinese;
+        }
+
         private void RefreshTradePanel()
         {
             var port = PortCatalog.Find(_snapshot.CurrentLocationId);
             var item = CommodityCatalog.All[_commodityIndex];
             var quote = _economy.Quote(_snapshot.CurrentLocationId, item.Id, _trade.Market);
             int stock = _trade.Market.Stock.TryGetValue(item.Id, out int amount) ? amount : 0;
+            string reasons = quote == null || quote.PriceReasons == null ? "暂无价格原因。" :
+                string.Join("；", quote.PriceReasons.ConvertAll(reason => reason.Explanation).ToArray());
             _tradeTitle.text = "贸易：" + (port == null ? "未知港口" : port.DisplayName);
             _tradeInfo.text = item.DisplayName + "  | 货舱 " + D3InventorySystem.CountCargo(_trade.Inventory, item.Id) +
                 " | 市场库存 " + stock + "\n买入 " + (quote == null ? 0 : quote.BuyUnitPrice) +
-                " 金币/件 | 卖出 " + (quote == null ? 0 : quote.SellUnitPrice) + " 金币/件\n当前金币：" + _trade.Money;
+                " 金币/件 | 卖出 " + (quote == null ? 0 : quote.SellUnitPrice) + " 金币/件\n当前金币：" + _trade.Money +
+                "\n价格原因：" + reasons + (quote != null && quote.IsOutOfStock ? "\n状态：缺货" : "");
         }
 
         private void SetResult(string message)

@@ -3,6 +3,7 @@
 // ============================================================
 
 using System;
+using Whalebone.Game.Config;
 
 namespace Whalebone.Systems.D2
 {
@@ -11,10 +12,15 @@ namespace Whalebone.Systems.D2
         private readonly float _secondsPerDay;
         private DayNightSnapshot _state;
 
-        public DayNightSystem(float secondsPerDay = 600f, DayNightSnapshot? initial = null)
+        public DayNightSystem(float? secondsPerDay = null, DayNightSnapshot? initial = null)
         {
-            _secondsPerDay = IsPositive(secondsPerDay) ? secondsPerDay : 600f;
-            _state = (initial ?? new DayNightSnapshot(0, 0.25f)).Normalized();
+            float configuredSeconds = secondsPerDay ?? (float)NumericConfiguration.Default.SecondsPerWorldDay.DefaultValue;
+            _secondsPerDay = IsPositive(configuredSeconds)
+                ? NumericConfiguration.ClampSecondsPerWorldDay(configuredSeconds)
+                : (float)NumericConfiguration.Default.SecondsPerWorldDay.DefaultValue;
+            _state = (initial ?? new DayNightSnapshot(
+                (int)NumericConfiguration.Default.WorldDay.DefaultValue,
+                (float)NumericConfiguration.Default.TimeOfDay.DefaultValue)).Normalized();
         }
 
         public DayNightSnapshot Snapshot => _state.Normalized();
@@ -36,7 +42,15 @@ namespace Whalebone.Systems.D2
             _state.Paused = paused;
         }
 
-        public void Reset(int dayIndex = 0, float normalizedTime = 0.25f)
+        public void Reset()
+        {
+            _state = new DayNightSnapshot(
+                (int)NumericConfiguration.Default.WorldDay.DefaultValue,
+                (float)NumericConfiguration.Default.TimeOfDay.DefaultValue,
+                false);
+        }
+
+        public void Reset(int dayIndex, float normalizedTime)
         {
             _state = new DayNightSnapshot(dayIndex, normalizedTime, false);
         }

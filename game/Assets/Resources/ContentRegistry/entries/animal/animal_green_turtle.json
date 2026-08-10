@@ -1,0 +1,37 @@
+{
+  "id": "animal_green_turtle",
+  "schema_version": 1,
+  "name": "绿海龟",
+  "display_name_key": "content.animal.animal_green_turtle.name",
+  "category": "animal",
+  "tags": ["marine", "observation", "protected_candidate"],
+  "description": "用于验证动物观察与生态引用的代表物种记录。",
+  "gameplay_role": "wildlife_observation",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["nearshore", "mangrove"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [],
+  "references": ["island_saint_marys", "plant_red_mangrove"],
+  "asset_refs": [],
+  "source_refs": ["docs/game/design/animals/01_ANIMAL_OVERVIEW.md", "docs/game/design/animals/05_ECOLOGY_LINKS.md"],
+  "source_note": "项目自有代表生态条目；行为、数量和法律状态由 EcologySystem 裁决。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/animals/01_ANIMAL_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-ANIMAL-001",
+  "reviewer": "D8-A02"
+}

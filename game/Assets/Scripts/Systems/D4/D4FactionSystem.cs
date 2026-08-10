@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Whalebone.Game.Config;
 
 namespace Whalebone.Systems.D4
 {
@@ -44,7 +44,7 @@ namespace Whalebone.Systems.D4
             if (D4FactionCatalog.Find(factionId) == null)
                 return new FactionActionResult { Message = "未知势力。" };
             int before = GetReputation(factionId);
-            _state.Reputation[factionId] = Clamp(before + delta, -100, 100);
+            _state.Reputation[factionId] = NumericConfiguration.ClampRelation(before + delta);
             return new FactionActionResult
             {
                 Accepted = true,
@@ -115,7 +115,7 @@ namespace Whalebone.Systems.D4
             if (!illegal && !blocked)
                 return new InspectionResult { Allowed = true, Message = "登船检查通过。" };
             int fine = illegal ? 50 + _state.WantedLevel : 25;
-            _state.WantedLevel = Clamp(_state.WantedLevel + (illegal ? 8 : 3), 0, 100);
+            _state.WantedLevel = NumericConfiguration.ClampWantedLevel(_state.WantedLevel + (illegal ? 8 : 3));
             return new InspectionResult
             {
                 Allowed = false,
@@ -137,9 +137,22 @@ namespace Whalebone.Systems.D4
             var issuer = ApplyReputation(issuerFactionId, issuerDelta, hadPermit ? "合法私掠战果得到认可。" : "未经许可攻击商船，声望受损。");
             if (D4FactionCatalog.Find(targetFactionId) != null)
                 ApplyReputation(targetFactionId, -4, "敌对商船损失造成关系恶化。");
-            _state.WantedLevel = Clamp(_state.WantedLevel + wanted, 0, 100);
+            _state.WantedLevel = NumericConfiguration.ClampWantedLevel(_state.WantedLevel + wanted);
             issuer.WantedDelta = wanted;
             return issuer;
+        }
+
+        /// <summary>D11 野生动物非法捕捉/交易的法律后果唯一写入口。</summary>
+        public FactionActionResult RecordWildlifeOffense(string controllingFactionId, string animalId)
+        {
+            string factionId = D4FactionCatalog.Find(controllingFactionId) == null ? "england" : controllingFactionId;
+            var reputation = ApplyReputation(factionId, -12,
+                "非法野生动物交易被记录，保护区声望下降。");
+            int before = _state.WantedLevel;
+            _state.WantedLevel = NumericConfiguration.ClampWantedLevel(before + 15);
+            reputation.WantedDelta = _state.WantedLevel - before;
+            reputation.Message = "非法野生动物交易已进入法律追责，目标动物未被系统生成。";
+            return reputation;
         }
 
         private static string WarKey(string a, string b)
@@ -148,6 +161,5 @@ namespace Whalebone.Systems.D4
             return string.CompareOrdinal(a, b) < 0 ? a + ":" + b : b + ":" + a;
         }
 
-        private static int Clamp(int value, int min, int max) { return Math.Max(min, Math.Min(max, value)); }
     }
 }

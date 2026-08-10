@@ -2,36 +2,224 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://whalebone.local/contracts/agent-reply.schema.json",
   "title": "AgentReply",
-  "description": "LLM 结构化输出契约：游戏客户端解析与服务端校验共用。与 game/AgentCore/AgentModels.cs 的 AgentReply 一一对应。",
+  "description": "AgentReply v1.1：LLM 只能提出对话、情绪、关系姿态和 P2A 动作意图；所属强逻辑系统负责最终裁决。禁止 money、price、damage、reward、weather 或 relation 数值结果。",
   "type": "object",
-  "required": ["speech", "emotion", "affinity_change", "action"],
+  "required": [
+    "schema_version",
+    "speech",
+    "dialogue_intent",
+    "emotion",
+    "affinity_change",
+    "relation_proposal",
+    "negotiation_tone",
+    "refusal_reason",
+    "action_intent"
+  ],
   "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "agent_reply.v1.1"
+    },
     "speech": {
       "type": "string",
       "minLength": 1,
-      "description": "船员说话内容（1-2 句，≤30 汉字，由 Persona 约束）"
+      "maxLength": 240,
+      "description": "船员对白；表现层可按 Persona 再限制句数和长度。"
+    },
+    "dialogue_intent": {
+      "type": "string",
+      "enum": [
+        "greet",
+        "inform",
+        "ask",
+        "answer",
+        "warn",
+        "suggest",
+        "negotiate",
+        "refuse",
+        "apologize",
+        "report",
+        "confirm",
+        "farewell"
+      ],
+      "description": "对白的语用意图，不等同于动作执行结果。"
     },
     "emotion": {
       "type": "string",
-      "enum": ["neutral", "suspicious", "happy", "angry", "sad", "afraid"],
+      "enum": [
+        "neutral",
+        "suspicious",
+        "happy",
+        "angry",
+        "sad",
+        "afraid",
+        "calm",
+        "concerned",
+        "determined",
+        "relieved",
+        "disgusted",
+        "hopeful"
+      ],
       "description": "情绪，驱动表情/语音语调/UI 表现"
     },
     "affinity_change": {
       "type": "integer",
       "minimum": -10,
       "maximum": 10,
-      "description": "对船长好感变化量，强逻辑层据此更新 CrewStats.Affinity"
+      "description": "关系提议的有界变化意图；不是最终关系结果，必须由 CrewSystem 裁决。"
     },
-    "action": {
+    "relation_proposal": {
+      "type": "object",
+      "required": ["kind", "target_ref", "stance", "basis"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["none", "trust", "respect", "affinity", "loyalty", "fear", "rivalry", "romance", "professional"]
+        },
+        "target_ref": {
+          "type": "string",
+          "pattern": "^(none|[a-z][a-z0-9_]*:[A-Za-z0-9._:-]+)$"
+        },
+        "stance": {
+          "type": "string",
+          "enum": ["none", "build", "maintain", "repair", "challenge", "avoid", "request_mediation", "offer_cooperation", "accept", "decline"]
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      },
+      "additionalProperties": false
+    },
+    "negotiation_tone": {
       "type": "string",
-      "default": "none",
-      "description": "动作名（P2A），游戏侧注册表；none 表示无动作。动作清单见 docs/game/ACTIONS.md（待需求文档定稿）"
+      "enum": ["neutral", "cooperative", "firm", "conciliatory", "guarded", "competitive", "formal", "urgent"]
     },
-    "action_args": {
-      "type": "array",
-      "items": { "type": "string" },
-      "default": [],
-      "description": "动作参数，如 [\"main\", \"fast\"]"
+    "refusal_reason": {
+      "type": "string",
+      "enum": [
+        "none",
+        "unknown_request",
+        "insufficient_authority",
+        "unsafe_target",
+        "missing_prerequisite",
+        "conflicting_order",
+        "personal_boundary",
+        "legal_restriction",
+        "resource_unavailable",
+        "out_of_scope",
+        "not_in_character",
+        "ambiguous_intent"
+      ]
+    },
+    "action_intent": {
+      "type": "object",
+      "required": ["name", "actor_ref", "target_ref", "parameters"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "none",
+            "trim_sail",
+            "steer",
+            "set_course",
+            "drop_anchor",
+            "weigh_anchor",
+            "stop_ship",
+            "set_watch",
+            "report",
+            "heave_to",
+            "change_speed",
+            "fire_cannon",
+            "repair",
+            "bilge_pump",
+            "ration",
+            "hold_below",
+            "reward_crew",
+            "launch_boat",
+            "board",
+            "extinguish_fire",
+            "secure_cargo",
+            "assemble_crew",
+            "gather",
+            "scout",
+            "treat",
+            "trade",
+            "cook_meal",
+            "distribute_rations",
+            "assign_duty",
+            "call_meeting",
+            "request_leave",
+            "greet_contact",
+            "ask_information",
+            "propose_trade",
+            "propose_alliance",
+            "request_passage",
+            "request_mediation",
+            "offer_apology",
+            "negotiate_terms",
+            "accept_offer",
+            "end_talk",
+            "survey_coast",
+            "inspect_wreck",
+            "map_landmark",
+            "observe_animal",
+            "rescue_animal",
+            "release_animal",
+            "fish",
+            "collect_water",
+            "collect_firewood",
+            "enter_cave",
+            "buy_supplies",
+            "sell_cargo",
+            "visit_shipyard",
+            "request_upgrade",
+            "hire_crew",
+            "dismiss_crew",
+            "store_cargo",
+            "retrieve_cargo",
+            "submit_quest",
+            "tend_garden"
+          ]
+        },
+        "actor_ref": {
+          "type": "string",
+          "pattern": "^(none|[a-z][a-z0-9_]*:[A-Za-z0-9._:-]+)$"
+        },
+        "target_ref": {
+          "type": "string",
+          "pattern": "^(none|[a-z][a-z0-9_]*:[A-Za-z0-9._:-]+)$"
+        },
+        "parameters": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z0-9_]*$": {
+              "type": ["string", "integer", "number", "boolean", "array", "null"]
+            }
+          },
+          "additionalProperties": false,
+          "not": {
+            "anyOf": [
+              { "required": ["money"] },
+              { "required": ["price"] },
+              { "required": ["damage"] },
+              { "required": ["reward"] },
+              { "required": ["weather"] },
+              { "required": ["relation_result"] },
+              { "required": ["relation_value"] },
+              { "required": ["affinity_result"] },
+              { "required": ["final_money"] },
+              { "required": ["final_price"] },
+              { "required": ["final_damage"] },
+              { "required": ["final_reward"] },
+              { "required": ["final_weather"] },
+              { "required": ["final_relation"] }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

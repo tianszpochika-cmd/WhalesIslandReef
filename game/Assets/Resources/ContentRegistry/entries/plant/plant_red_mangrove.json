@@ -1,0 +1,37 @@
+{
+  "id": "plant_red_mangrove",
+  "schema_version": 1,
+  "name": "红树",
+  "display_name_key": "content.plant.plant_red_mangrove.name",
+  "category": "plant",
+  "tags": ["mangrove", "coastal", "habitat"],
+  "description": "用于验证植被、生境和资源引用的代表条目。",
+  "gameplay_role": "habitat_resource",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["mangrove", "coast"],
+  "valid_weather": ["clear", "rain", "storm_watch"],
+  "dependencies": [],
+  "references": ["island_saint_marys"],
+  "asset_refs": ["asset_ph_palm_leaves"],
+  "source_refs": ["docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md", "docs/game/design/vegetation/03_VEGETATION_HABITATS.md"],
+  "source_note": "项目自有代表植被条目；未宣称已经完成需求目标中的 1,000—2,000 条植被生产。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-PLANT-001",
+  "reviewer": "D8-A02"
+}

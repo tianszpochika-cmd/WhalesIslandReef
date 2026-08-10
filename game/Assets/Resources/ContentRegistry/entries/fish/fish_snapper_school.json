@@ -1,0 +1,13 @@
+{
+  "id": "fish_snapper_school", "schema_version": 1, "name": "笛鲷鱼群",
+  "display_name_key": "content.fish.fish_snapper_school.name", "category": "fish",
+  "tags": ["reef_edge", "school", "fishing"], "description": "珊瑚礁边缘的深水笛鲷鱼群。",
+  "gameplay_role": "fish_school_harvest", "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["reef_edge"], "valid_weather": ["clear", "rain"], "dependencies": [],
+  "references": ["island_saint_marys", "item_gear_shore_rod", "item_fresh_snapper"], "asset_refs": [],
+  "source_refs": ["docs/game/design/common/D11_FISHING_HARVESTING.md"],
+  "source_note": "项目自有 D11-A02 代表鱼种；数量与压力由 EcologySystem 写入。",
+  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D11_FISHING_HARVESTING.md"},
+  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "D8_CONTENT_ID_REGISTRY.md", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "historical_tag": "inferred", "phase": "D11", "status": "prototyped", "owner_system": "EcologySystem", "test_id":"D8-A02-D11FISH-FISH-101", "reviewer": "D11-A02"
+}

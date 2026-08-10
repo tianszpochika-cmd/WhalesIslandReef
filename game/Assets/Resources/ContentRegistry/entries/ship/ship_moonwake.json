@@ -1,0 +1,37 @@
+{
+  "id": "ship_moonwake",
+  "schema_version": 1,
+  "name": "月醒号",
+  "display_name_key": "content.ship.ship_moonwake.name",
+  "category": "ship",
+  "tags": ["starter", "schooner", "coastal"],
+  "description": "用于 D9 近海垂直切片的代表船体定义。",
+  "gameplay_role": "starter_vessel",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["coastal_water"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [],
+  "references": ["crew_isaac_reed", "island_saint_marys"],
+  "asset_refs": ["asset_ph_ship_fishing"],
+  "source_refs": ["docs/game/design/ship/02_SHIP_TYPES.md", "docs/game/design/ship/10_SHIP_DATA_MODEL.md"],
+  "source_note": "项目自有代表定义；船型语义承接 D5 船舶基线，具体参数由 D9 船舶切片补齐。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/ship/02_SHIP_TYPES.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "ShipSystem",
+  "test_id": "D8-A02-SHIP-001",
+  "reviewer": "D8-A02"
+}

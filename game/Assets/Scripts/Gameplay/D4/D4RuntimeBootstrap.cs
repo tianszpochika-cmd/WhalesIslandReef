@@ -13,6 +13,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 using Whalebone.Gameplay.UI;
+using Whalebone.Gameplay.D3;
+using Whalebone.Gameplay.D7;
 using Whalebone.Systems.D4;
 using Whalebone.Systems.Save;
 
@@ -45,6 +47,7 @@ namespace Whalebone.Gameplay.D4
         private D4LogSystem _log;
         private Transform _player;
         private Transform _ship;
+        private D3RuntimeBootstrap _d3;
         private bool _ready;
         private string _message = "D4 内容层正在等待 D2 场景对象…";
 
@@ -60,14 +63,15 @@ namespace Whalebone.Gameplay.D4
 
         private void Update()
         {
-            if (!_ready)
+            if (!_ready || _factions == null || _shipyard == null || _combat == null || _ecology == null || _medical == null || _mainline == null || _log == null)
             {
+                _ready = false;
                 TryBuildRuntime();
                 return;
             }
 
             var keyboard = Keyboard.current;
-            if (keyboard == null || Time.timeScale <= 0f) return;
+            if (keyboard == null || Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed) return;
             if (keyboard.fKey.wasPressedThisFrame) FactionAction();
             else if (keyboard.kKey.wasPressedThisFrame) StartCombat();
             else if (keyboard.rKey.wasPressedThisFrame) Reload();
@@ -162,6 +166,14 @@ namespace Whalebone.Gameplay.D4
             AddLog(D4LogKind.Combat, result.Message);
         }
 
+        /// <summary>D9 船坞页面读取既有 D4 船坞裁决器，不复制改装公式。</summary>
+        public bool IsReady => _ready;
+        /// <summary>D9 表现层读取 D4 内容快照；不暴露可写引用。</summary>
+        public D4RuntimeSnapshot Snapshot => _snapshot == null ? null : _snapshot.Clone();
+        public D4ShipyardSystem ShipyardSystem => _shipyard;
+        /// <summary>D9-A02 通过既有 EcologySystem 写鱼群位置、生物量和压力。</summary>
+        public D4EcologySystem EcologySystem => _ecology;
+
         public void UpgradeHull()
         {
             if (!_ready || GameState.CurrentPlayer == null) return;
@@ -241,12 +253,14 @@ namespace Whalebone.Gameplay.D4
             var player = GameObject.Find("D2_PlayerAvatar");
             var ship = GameObject.Find("ph_ship_fishing");
             if (player == null || ship == null) return;
+            if (_d3 == null) _d3 = FindFirstObjectByType<D3RuntimeBootstrap>(FindObjectsInactive.Include);
+            if (_d3 == null || !_d3.IsReady || _d3.EconomySystem == null) return;
             _player = player.transform;
             _ship = ship.transform;
             _snapshot = SaveSystem.LoadD4Runtime() ?? new D4RuntimeSnapshot();
             _factions = new D4FactionSystem(_snapshot.Factions);
             _shipyard = new D4ShipyardSystem(_snapshot.Shipyard);
-            _combat = new D4CombatSystem(_snapshot.Combat);
+            _combat = new D4CombatSystem(_snapshot.Combat, _d3.EconomySystem.EventLog);
             _ecology = new D4EcologySystem(_snapshot.Ecology);
             _medical = new D4SurvivalSystem(_snapshot.Health);
             _mainline = new D4MainlineSystem(_snapshot.Mainline);
@@ -298,6 +312,7 @@ namespace Whalebone.Gameplay.D4
         private void RefreshHud()
         {
             if (!_ready || _statusText == null) return;
+            RefreshButtonLabels();
             SyncSnapshot();
             var current = _mainline.CurrentMission;
             _statusText.text = "D4 内容层\n" +
@@ -316,6 +331,29 @@ namespace Whalebone.Gameplay.D4
             detail.Append("\n最新日志：").Append(_log.BuildSummary(2));
             _detailText.text = detail.ToString();
             _hintText.text = _message + "    F势力  K炮战  R装填  1/2/3选弹  Space开炮  B接舷  E脱离  U改装  A观察  M医疗  J主线  C保存";
+        }
+
+        private void RefreshButtonLabels()
+        {
+            SetButtonLabel("Faction", "势力任务 [F]", "Faction task [F]");
+            SetButtonLabel("Combat", "开始炮战 [K]", "Start combat [K]");
+            SetButtonLabel("Reload", "装填炮弹 [R]", "Reload [R]");
+            SetButtonLabel("Fire", "开炮 [Space]", "Fire [Space]");
+            SetButtonLabel("Upgrade", "船体改装 [U]", "Upgrade hull [U]");
+            SetButtonLabel("Animal", "观察动物 [A]", "Observe animals [A]");
+            SetButtonLabel("Medical", "医疗 [M]", "Medical [M]");
+            SetButtonLabel("Mainline", "推进主线 [J]", "Advance mainline [J]");
+        }
+
+        private static void SetButtonLabel(string buttonName, string chinese, string english)
+        {
+            var canvas = GameObject.Find("D4Canvas");
+            if (canvas == null) return;
+            var button = canvas.transform.Find("D4Controls/" + buttonName);
+            if (button == null) return;
+            var label = button.transform.Find("Label");
+            var text = label == null ? null : label.GetComponent<Text>();
+            if (text != null) text.text = Localization.IsEnglish ? english : chinese;
         }
 
         private void BuildUi()

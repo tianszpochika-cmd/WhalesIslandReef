@@ -1,0 +1,19 @@
+{
+  "id": "item_resin_pine",
+  "schema_version": 1,
+  "name": "松脂",
+  "display_name_key": "content.item.item_resin_pine.name",
+  "category": "item",
+  "tags": ["cargo", "resin", "crafting_material", "vegetation_harvest"],
+  "description": "用刮刀和容器从雨林松类采集的树脂。",
+  "gameplay_role": "resin_cargo",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["ship_hold", "market", "workshop"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [], "references": [], "asset_refs": [],
+  "source_refs": ["docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"],
+  "source_note": "项目自有 D11-A07 采集产物；数量由 D3InventorySystem 写入。",
+  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"},
+  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "historical_tag": "inferred", "phase": "D11", "status": "prototyped", "owner_system": "ItemCatalog", "test_id": "D8-A02-D11-ITEM-004", "reviewer": "D11-A07"
+}

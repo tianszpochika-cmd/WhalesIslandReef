@@ -19,7 +19,15 @@ namespace Whalebone.Agent
             failed += Check("好感度夹取 ±100", TestAffinityClamp);
             failed += Check("Persona prompt 包含 JSON 指令与约束", TestPersonaPrompt);
             failed += Check("分支锁：低好感锁求情分支", TestBranchLock);
+            failed += Check("D8-A04 注册表包含 60 个动作", TestP2ARegistryCount);
+            failed += Check("D8-A04 未授权对象和越权目标被拒绝", TestP2AAuthorizationBoundary);
+            failed += Check("D8-A04 非法参数和最终结果字段被拒绝", TestP2AParameterBoundary);
+            failed += Check("事实摘要只进入 Agent 记忆，不改变领域结果", TestFactSummaryRead);
             failed += D2DialogueTests.RunAll();
+            failed += Whalebone.Game.Config.NumericConfigurationTests.RunAll();
+            failed += V3.V3EntityModelTests.RunAll();
+            failed += D9CrewAgentVerticalSliceTests.RunAll();
+            failed += D10CrewBehaviorStateTests.RunAll();
             return failed;
         }
 
@@ -34,21 +42,47 @@ namespace Whalebone.Agent
 
         private static bool TestMiniJsonParse()
         {
-            string json = "{\"speech\":\"起风了，收帆！\",\"emotion\":\"afraid\",\"affinity_change\":-3,\"action\":\"trim_sail\",\"action_args\":[\"main\",\"fast\"]}";
+            string json = AgentReplyTestFixtures.ValidTrimSail;
             var r = AgentReply.FromJson(json);
             return r.IsValid
                 && r.Speech == "起风了，收帆！"
                 && r.Emotion == Emotion.Afraid
                 && r.AffinityChange == -3f
                 && r.Action == "trim_sail"
-                && r.ActionArgs.Length == 2 && r.ActionArgs[1] == "fast";
+                && r.ActionIntent.TargetRef == "ship:active"
+                && (string)r.ActionIntent.Parameters["setting"] == "full";
         }
 
         private static bool TestMiniJsonEscape()
         {
-            string json = "{\"speech\":\"他说\\\"今天\\\"不走，\\\\反斜杠\\\\\",\"action\":\"none\"}";
+            string json = AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "他说\\\"今天\\\"不走，\\\\反斜杠\\\\");
             var r = AgentReply.FromJson(json);
             return r.Speech == "他说\"今天\"不走，\\反斜杠\\" && r.Action == "none";
+        }
+
+        private static bool TestP2ARegistryCount()
+        {
+            return P2AActionRegistry.All.Count == 60 && P2AActionRegistry.TryGet("trim_sail", out _)
+                && P2AActionRegistry.TryGet("tend_garden", out _);
+        }
+
+        private static bool TestP2AAuthorizationBoundary()
+        {
+            var context = new ActionValidationContext();
+            context.AuthorizedActorRefs.Add("crew:deckhand-1");
+            context.AuthorizedTargetRefs.Add("ship:active");
+            context.Permissions.Add("ship.sail");
+            context.SatisfiedPrerequisites.Add("ship.present");
+            context.SatisfiedPrerequisites.Add("crew.on_duty");
+            if (!AgentReplyValidator.TryValidate(AgentReplyTestFixtures.ValidTrimSail, context, out _, out _)) return false;
+            context.AuthorizedTargetRefs.Clear();
+            return !AgentReplyValidator.TryValidate(AgentReplyTestFixtures.ValidTrimSail, context, out _, out var error) && error == "unauthorized_target";
+        }
+
+        private static bool TestP2AParameterBoundary()
+        {
+            if (AgentReplyValidator.TryParse(AgentReplyTestFixtures.InvalidDuration, out _, out _)) return false;
+            return !AgentReplyValidator.TryParse(AgentReplyTestFixtures.ForbiddenResult, out _, out var error) && error == "forbidden_result_field";
         }
 
         private static bool TestMutinyRisk()
@@ -87,6 +121,18 @@ namespace Whalebone.Agent
             if (m.IsBranchLocked("intimidate")) return false;  // 忠诚低 → 威胁未锁（可试）
             s.Affinity = 10f; s.Loyalty = 90f;
             return !m.IsBranchLocked("plead") && m.IsBranchLocked("intimidate");
+        }
+
+        private static bool TestFactSummaryRead()
+        {
+            var store = new InMemoryStore();
+            var memory = new AgentMemory(store);
+            memory.RecordFactSummary("event_fog_001", "雾中航行被迫中断，可沿灯塔路线恢复。", 0.8f);
+            var facts = store.Top(3);
+            return facts.Count == 1
+                && facts[0].Kind == "fact:event_fog_001"
+                && facts[0].Text.Contains("灯塔路线")
+                && memory.BuildMemorySection().Contains("雾中航行");
         }
     }
 }

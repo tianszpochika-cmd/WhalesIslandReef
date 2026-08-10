@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Whalebone.Game.Config;
+using Whalebone.Systems.Events;
 
 namespace Whalebone.Systems.D4
 {
@@ -6,10 +9,14 @@ namespace Whalebone.Systems.D4
     public sealed class D4CombatSystem
     {
         private readonly CombatState _state;
+        private readonly EventLog _eventLog;
+        private long _encounterEventRevision;
 
-        public D4CombatSystem(CombatState initial = null)
+        public D4CombatSystem(CombatState initial = null, EventLog eventLog = null)
         {
             _state = initial == null ? new CombatState() : initial.Clone();
+            _eventLog = eventLog;
+            _encounterEventRevision = _eventLog == null ? 0 : _eventLog.NextSequence;
         }
 
         public CombatState Snapshot => _state.Clone();
@@ -23,7 +30,7 @@ namespace Whalebone.Systems.D4
             _state.PlayerHull = Clamp(playerHull, 0, _state.PlayerHullMax);
             _state.EnemyHullMax = Math.Max(1, enemyHullMax);
             _state.EnemyHull = Clamp(enemyHull, 0, _state.EnemyHullMax);
-            _state.Distance = Clamp(distance, 10f, 100f);
+            _state.Distance = NumericConfiguration.ClampCombatDistance(distance);
             _state.Wind = Clamp(wind, -1f, 1f);
             _state.PlayerCannons = Math.Max(1, playerCannons);
             _state.PlayerCrew = Math.Max(1, playerCrew);
@@ -34,6 +41,7 @@ namespace Whalebone.Systems.D4
             _state.Weapon = D4WeaponId.RoundShot;
             _state.Turn = 0;
             _state.BoardingScore = 0;
+            AppendPatrolFact();
         }
 
         public bool SelectWeapon(D4WeaponId weapon)
@@ -59,7 +67,10 @@ namespace Whalebone.Systems.D4
 
             int volley = Math.Min(_state.LoadedCount, _state.PlayerCannons);
             float weaponAccuracy = AccuracyFor(_state.Weapon);
-            float distanceFactor = 1f - Math.Abs(_state.Distance - 35f) / 90f;
+            float distanceSpan = (float)(NumericConfiguration.Default.CombatDistance.Maximum
+                - NumericConfiguration.Default.CombatDistance.Minimum);
+            float distanceFactor = 1f - Math.Abs(_state.Distance
+                - (float)NumericConfiguration.Default.CombatDistance.DefaultValue) / distanceSpan;
             float chance = Clamp(0.25f + weaponAccuracy + gunnerySkill * 0.035f + distanceFactor * 0.18f + (windAdvantage ? 0.08f : 0f), 0.10f, 0.92f);
             bool hit = Stable01(_state.EnemyId + ":" + _state.Turn + ":" + _state.Weapon) <= chance;
             bool critical = hit && Stable01("critical:" + _state.EnemyId + ":" + _state.Turn) > 0.87f;
@@ -92,7 +103,8 @@ namespace Whalebone.Systems.D4
         public CombatResult Board()
         {
             if (_state.Status != D4CombatStatus.Engaged) return Reject("当前不能接舷。");
-            if (_state.Distance > 28f) return Reject("距离太远，无法接舷。", false);
+            if (_state.Distance > (float)NumericConfiguration.Default.BoardingDistance.DefaultValue)
+                return Reject("距离太远，无法接舷。", false);
             int score = _state.PlayerCrew * 4 + (int)(Stable01("board:" + _state.EnemyId + ":" + _state.Turn) * 20f);
             int resistance = _state.EnemyCrew * 3 + 12;
             _state.BoardingScore = score - resistance;
@@ -116,12 +128,67 @@ namespace Whalebone.Systems.D4
             if (escaped)
             {
                 _state.Status = D4CombatStatus.Escaped;
+                AppendRetreatFact(false, 0);
                 return new CombatResult { Accepted = true, Status = _state.Status, Message = "成功脱离敌舰。" };
             }
             int damage = Math.Max(1, _state.EnemyCannons / 2);
             _state.PlayerHull = Math.Max(0, _state.PlayerHull - damage);
             if (_state.PlayerHull <= 0) _state.Status = D4CombatStatus.Defeat;
+            AppendRetreatFact(true, damage);
             return new CombatResult { Accepted = true, PlayerDamage = damage, Status = _state.Status, Message = "脱离失败，敌舰追击造成损伤。" };
+        }
+
+        private void AppendPatrolFact()
+        {
+            if (_eventLog == null) return;
+            _encounterEventRevision = Math.Max(_encounterEventRevision + 1, _eventLog.NextSequence + 1);
+            _eventLog.Append(new WorldEvent(
+                "event_d9_nearshore_patrol",
+                0,
+                "nearshore_saint_marys",
+                "CombatSystem",
+                new EventResult
+                {
+                    ResultCode = "patrol_encounter_started",
+                    Summary = "近海发现西班牙巡逻船，进入可撤退海战。",
+                    FactIds = new List<string> { "enemy:" + (_state.EnemyId ?? string.Empty) },
+                    Values = new Dictionary<string, string>
+                    {
+                        ["enemy_id"] = _state.EnemyId ?? string.Empty,
+                        ["combat_status"] = _state.Status.ToString(),
+                    },
+                },
+                new[] { "player" },
+                new[] { "nearshore_saint_marys", "enemy:" + (_state.EnemyId ?? string.Empty) },
+                new string[0],
+                _encounterEventRevision));
+        }
+
+        private void AppendRetreatFact(bool tookDamage, int damage)
+        {
+            if (_eventLog == null) return;
+            _eventLog.Append(new WorldEvent(
+                "event_d9_nearshore_retreat",
+                0,
+                "nearshore_saint_marys",
+                "CombatSystem",
+                new EventResult
+                {
+                    ResultCode = _state.Status == D4CombatStatus.Escaped ? "combat_retreat" : "combat_retreat_damaged",
+                    Summary = _state.Status == D4CombatStatus.Escaped ? "船只已从近海巡逻战中撤退。" : "撤退受阻，船只承受追击损伤。",
+                    FactIds = new List<string> { "enemy:" + (_state.EnemyId ?? string.Empty) },
+                    Values = new Dictionary<string, string>
+                    {
+                        ["enemy_id"] = _state.EnemyId ?? string.Empty,
+                        ["combat_status"] = _state.Status.ToString(),
+                        ["took_damage"] = tookDamage.ToString().ToLowerInvariant(),
+                        ["player_damage"] = damage.ToString(),
+                    },
+                },
+                new[] { "player" },
+                new[] { "event_d9_nearshore_patrol" },
+                new string[0],
+                Math.Max(0, _encounterEventRevision)));
         }
 
         private int EnemyFire()

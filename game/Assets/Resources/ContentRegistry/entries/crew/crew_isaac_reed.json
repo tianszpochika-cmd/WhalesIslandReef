@@ -1,0 +1,37 @@
+{
+  "id": "crew_isaac_reed",
+  "schema_version": 1,
+  "name": "艾萨克·里德",
+  "display_name_key": "content.crew.crew_isaac_reed.name",
+  "category": "crew",
+  "tags": ["deckhand", "vertical_slice", "agent_candidate"],
+  "description": "用于 D9 船员 Agent 垂直切片的代表船员定义。",
+  "gameplay_role": "deckhand_agent",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["ship_deck", "harbor"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [],
+  "references": ["outfit_weathered_deckhand", "pet_cabin_cat"],
+  "asset_refs": ["asset_ph_crew_male"],
+  "source_refs": ["docs/game/design/character/02_CREW_AGENT.md", "docs/game/design/character/03_TRAITS_CULTURE.md"],
+  "source_note": "项目自有代表角色；人格、关系和数值由 CrewSystem/AgentCore 裁决，不由目录条目写入。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/character/02_CREW_AGENT.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "CrewSystem",
+  "test_id": "D8-A02-CREW-001",
+  "reviewer": "D8-A02"
+}

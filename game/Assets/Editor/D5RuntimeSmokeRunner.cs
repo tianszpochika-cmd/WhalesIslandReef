@@ -2,6 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Whalebone.EditorTools;
 
 namespace Save.Tests
 {
@@ -17,6 +18,9 @@ namespace Save.Tests
                 EditorApplication.Exit(1);
                 return;
             }
+            // 批处理验收不依赖用户先手动点击港口安装菜单，确保正式动作资源先生成。
+            D6AnimationAssetInstaller.EnsureAfterHarborInstall();
+            AssetDatabase.Refresh();
             EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
             EditorApplication.isPlaying = true;
         }

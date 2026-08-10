@@ -1,0 +1,37 @@
+{
+  "id": "outfit_weathered_deckhand",
+  "schema_version": 1,
+  "name": "旧帆布水手装",
+  "display_name_key": "content.outfit.outfit_weathered_deckhand.name",
+  "category": "outfit",
+  "tags": ["deckhand", "weather_ready", "appearance"],
+  "description": "用于验证外观组合与已有占位角色素材引用的代表装扮。",
+  "gameplay_role": "crew_appearance_loadout",
+  "valid_regions": ["island_saint_marys"],
+  "valid_habitats": ["ship_deck", "harbor"],
+  "valid_weather": ["clear", "rain"],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": ["asset_ph_crew_male"],
+  "source_refs": ["docs/game/design/character/06_CHARACTER_PRESENTATION.md", "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"],
+  "source_note": "项目自有装扮定义；D5 preset 仍是兼容投影，外观写入权属于 AppearanceSystem。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D8",
+  "status": "prototyped",
+  "owner_system": "AppearanceSystem",
+  "test_id": "D8-A02-OUTFIT-001",
+  "reviewer": "D8-A02"
+}

@@ -1,6 +1,6 @@
 # 开发环境搭建 · 本地测试 · 素材获取清单
 
-> 配套《GAME_PLAN.md》使用。目标：个人在 Windows 上从零搭好 Unity 6 开发环境，开始 P0 原型。
+> 配套 `REQUIREMENTS.md`、`DEV_ROADMAP.md` 和 `docs/DEVELOPMENT_STANDARDS.md` 使用。目标：在 Windows 上运行 D7 基线并进入 D8。
 > 更新：2026-08-07 ｜ 前提：目标先做单机（架构预留多人，本阶段不装多人框架）
 
 ---
@@ -21,11 +21,11 @@
 
 | 包 | 来源 | 用途 | 阶段 |
 |---|---|---|---|
-| **Crest Ocean**（≈$90） | Unity Asset Store | 海洋渲染 + 波浪 + 浮力 | P0 必装 |
-| **Unity Test Framework** | Package Manager（引擎自带） | 单元测试 | P0 必装 |
-| **Input System**（新版） | Package Manager（自带） | 键盘/手柄/未来语音输入统一入口 | P0 必装 |
-| Cinemachine | Package Manager（自带） | 摄像机（第三人称跟船、舰桥视角） | P0 建议 |
-| TextMeshPro | Package Manager（自带） | 对话 UI 文本 | P0 建议 |
+| **Crest Ocean**（≈$90） | Unity Asset Store | 海洋渲染 + 波浪 + 浮力 | D9 按垂直切片接入 |
+| **Unity Test Framework** | Package Manager（引擎自带） | 单元测试 | D8 必须可用 |
+| **Input System**（新版） | Package Manager（自带） | 键盘/手柄/未来语音输入统一入口 | D8 必须可用 |
+| Cinemachine | Package Manager（自带） | 摄像机（第三人称跟船、舰桥视角） | D9 按需接入 |
+| TextMeshPro | Package Manager（自带） | 对话 UI 文本 | D9 按需接入 |
 | ParrelSync | GitHub 开源（**多人阶段再装**） | 本地多开编辑器联机测试 | 将来 |
 | FMOD / Wwise | 第三方（可选，后期音频量大了再引入） | 音频中间件 | 可后置 |
 
@@ -125,6 +125,6 @@ Assets/
 
 1. 装完第 1–4 项软件，确认 Unity 6 能建项目、Ollama 能跑通 qwen2.5:3b；
 2. Unity Hub 建项目 → git init + LFS → 建 Assets 目录规范；
-3. 导入 Crest Ocean，搭"一艘船 + 海洋"场景，实现开船 + 视角切换（P0 第一个里程碑）；
+3. 以 D7 基线为起点，先完成 D8 数据/契约/存档检查，再在 D9 垂直切片接入海洋和玩法；
 4. 写一个最小 Agent 对话脚本（本地 Ollama → 对话 → 好感度变化 → 写 SQLite），跑通"强逻辑 × 重交互"的最小闭环；
 5. 打开 Test Runner，给经济/状态机类写第一批单元测试，形成"边写边测"习惯。

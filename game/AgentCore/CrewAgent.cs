@@ -30,6 +30,8 @@ namespace Whalebone.Agent
             return new Dictionary<string, object>
             {
                 ["id"] = Id,
+                ["role"] = Persona == null ? string.Empty : Persona.Role,
+                ["primary_duty"] = Persona == null ? CrewDuty.None.ToString() : Persona.PrimaryDuty.ToString(),
                 ["morale"] = Stats.Morale,
                 ["loyalty"] = Stats.Loyalty,
                 ["health"] = Stats.Health,

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 namespace Whalebone.Agent
@@ -11,14 +12,34 @@ namespace Whalebone.Agent
         private readonly CrewAgent _agent;
         private readonly ILLMClient _llm;
         private readonly MutinyMonitor _monitor;
+        private readonly ActionValidationContext _validationContext;
+        private readonly bool _allowActionProposals;
+        private readonly Func<string, AgentReply> _templateFallback;
 
         public int MaxRetry = 1;               // JSON 解析失败重试次数
 
         public DialogueSession(CrewAgent agent, ILLMClient llm, MutinyMonitor monitor)
+            : this(agent, llm, monitor, ActionValidationContext.SchemaOnly(), false, null)
+        {
+        }
+
+        /// <summary>D9 入口：允许经授权快照校验的命令提议，仍不执行任何动作。</summary>
+        public DialogueSession(CrewAgent agent, ILLMClient llm, MutinyMonitor monitor,
+            ActionValidationContext validationContext, Func<string, AgentReply> templateFallback)
+            : this(agent, llm, monitor, validationContext, true, templateFallback)
+        {
+        }
+
+        private DialogueSession(CrewAgent agent, ILLMClient llm, MutinyMonitor monitor,
+            ActionValidationContext validationContext, bool allowActionProposals,
+            Func<string, AgentReply> templateFallback)
         {
             _agent = agent;
             _llm = llm;
             _monitor = monitor;
+            _validationContext = validationContext ?? ActionValidationContext.SchemaOnly();
+            _allowActionProposals = allowActionProposals;
+            _templateFallback = templateFallback;
         }
 
         /// <summary>
@@ -44,12 +65,18 @@ namespace Whalebone.Agent
                 try { raw = await _llm.CompleteAsync(system, playerInput); }
                 catch { break; } // 模型不可用，走模板兜底
 
-                if (AgentReplyValidator.TryParseD2(raw, out reply, out _)) break;
+                bool accepted = _allowActionProposals
+                    ? AgentReplyValidator.TryValidate(raw, _validationContext, out reply, out _)
+                    : AgentReplyValidator.TryParseD2(raw, out reply, out _);
+                if (accepted) break;
                 reply = null;
             }
 
             // 4) 模板兜底：任何模型都失败时保证可玩
-            if (reply == null) reply = TemplateFallback.Reply(_agent.Persona, playerInput);
+            if (reply == null)
+                reply = _templateFallback == null
+                    ? TemplateFallback.Reply(_agent.Persona, playerInput)
+                    : _templateFallback(playerInput);
 
             // 5) 只记录对话内容。好感提议由 Crew 关系系统单独裁决并应用一次。
             _agent.Memory.RecordDialogue(playerInput, reply.Speech);

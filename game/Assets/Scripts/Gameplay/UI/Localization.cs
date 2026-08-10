@@ -63,6 +63,12 @@ namespace Whalebone.Gameplay.UI
                 {"about_dev", "独立开发者（鲸骨航线）"},
                 {"about_compliance", "素材授权：原创/已授权资产；\n适龄提示：本游戏含轻度暴力与酒精描写，适合 12 岁以上。\n若使用 AI 生成素材，将在此列明授权记录。"},
                 {"about_exit", "退出"},
+                {"pause_title", "游戏暂停"},
+                {"pause_resume", "继续游戏"},
+                {"pause_main_menu", "返回主菜单"},
+                {"pause_exit", "退出游戏"},
+                {"dialogue_send", "发送"},
+                {"dialogue_close", "关闭"},
             };
 
         // 英文表
@@ -102,12 +108,25 @@ namespace Whalebone.Gameplay.UI
                 {"about_dev", "Solo Developer (Whalebone)"},
                 {"about_compliance", "Assets: original/licensed.\nAge rating: mild violence & alcohol, 12+.\nAI-generated assets will be listed here with licenses."},
                 {"about_exit", "Quit"},
+                {"pause_title", "Game Paused"},
+                {"pause_resume", "Resume"},
+                {"pause_main_menu", "Main Menu"},
+                {"pause_exit", "Quit Game"},
+                {"dialogue_send", "Send"},
+                {"dialogue_close", "Close"},
             };
 
         /// <summary>当前语言（由 wb_lang 决定）。</summary>
         public static bool IsEnglish
         {
             get { return PlayerPrefs.GetString(LangPrefsKey, "zh") == "en"; }
+        }
+
+        /// <summary>统一设置语言，供运行时 HUD 与主菜单共用。</summary>
+        public static void SetLanguage(string language)
+        {
+            PlayerPrefs.SetString(LangPrefsKey, language == "en" ? "en" : "zh");
+            PlayerPrefs.Save();
         }
 
         /// <summary>按 key 取文案（无对应 key 时返回 key 本身，便于排查漏配）。</summary>

@@ -7,12 +7,13 @@
 
 using UnityEngine;
 using Whalebone.Systems.D2;
+using Whalebone.Game.Config;
 
 namespace Whalebone.Gameplay.World
 {
     public sealed class DayNightController : MonoBehaviour
     {
-        [SerializeField] private float secondsPerDay = 600f;
+        [SerializeField] private float secondsPerDay = (float)NumericConfiguration.Default.SecondsPerWorldDay.DefaultValue;
         [SerializeField] private Light sun;
         [SerializeField] private Camera targetCamera;
 
@@ -20,7 +21,9 @@ namespace Whalebone.Gameplay.World
         private bool _externalPause;
 
         public DayNightSnapshot Snapshot => _clock == null
-            ? new DayNightSnapshot(0, 0.25f, true)
+            ? new DayNightSnapshot(
+                (int)NumericConfiguration.Default.WorldDay.DefaultValue,
+                (float)NumericConfiguration.Default.TimeOfDay.DefaultValue, true)
             : _clock.Snapshot;
 
         private void Awake()

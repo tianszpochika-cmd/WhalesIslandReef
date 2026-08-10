@@ -19,8 +19,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Core;
-using Whalebone.Gameplay.D2;
-using Whalebone.Gameplay.D3;
+using Whalebone.Gameplay.D7;
 
 namespace Whalebone.Gameplay.UI
 {
@@ -53,6 +52,8 @@ namespace Whalebone.Gameplay.UI
         private bool _sceneChangeRequested;
         private float _previousTimeScale = 1f;
 
+        public bool IsPaused => _paused;
+
         private void Awake()
         {
             Time.timeScale = 1f;
@@ -64,6 +65,7 @@ namespace Whalebone.Gameplay.UI
 
         private void Update()
         {
+            if (D7ControlCoordinator.EscapeHandledThisFrame) return;
             if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
                 TogglePause();
         }
@@ -88,6 +90,7 @@ namespace Whalebone.Gameplay.UI
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             _panel.SetActive(true);
+            RuntimeHudCoordinator.SetPaused(true);
             Canvas.ForceUpdateCanvases();
             Debug.Log("[HarborPause] 游戏已暂停");
 
@@ -100,6 +103,7 @@ namespace Whalebone.Gameplay.UI
             _paused = false;
             Time.timeScale = _previousTimeScale <= 0f ? 1f : _previousTimeScale;
             _panel.SetActive(false);
+            RuntimeHudCoordinator.SetPaused(false);
             Debug.Log("[HarborPause] 游戏已恢复");
             if (EventSystem.current != null)
                 EventSystem.current.SetSelectedGameObject(null);
@@ -112,12 +116,10 @@ namespace Whalebone.Gameplay.UI
 
             _sceneChangeRequested = true;
             Debug.Log("[HarborPause] 返回主菜单按钮被点击");
-            var d2 = FindFirstObjectByType<D2RuntimeBootstrap>(FindObjectsInactive.Include);
-            if (d2 != null) d2.SaveProgress();
-            var d3 = FindFirstObjectByType<D3RuntimeBootstrap>(FindObjectsInactive.Include);
-            if (d3 != null) d3.SaveProgress();
+            D7SaveCoordinator.SaveAllRuntimeState();
             _paused = false;
             Time.timeScale = 1f;
+            RuntimeHudCoordinator.SetPaused(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
@@ -180,7 +182,8 @@ namespace Whalebone.Gameplay.UI
 
             var canvas = _canvasGo.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvas.sortingOrder = 100;
+            // 暂停菜单必须压在运行时 HUD 之上，否则 D5 控件会拦截鼠标。
+            canvas.sortingOrder = 500;
 
             var scaler = _canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
@@ -198,10 +201,10 @@ namespace Whalebone.Gameplay.UI
             panelImage.sprite = UiSprites.White;
             panelImage.color = new Color(0.02f, 0.04f, 0.07f, 0.82f);
 
-            CreateText(_panel, "Title", "游戏暂停", 64, new Vector2(0f, 180f));
-            _resumeButton = CreateButton(_panel, "Resume", "继续游戏", new Vector2(0f, 40f), ResumeGame);
-            CreateButton(_panel, "MainMenu", "返回主菜单", new Vector2(0f, -50f), ReturnToMainMenu);
-            CreateButton(_panel, "Exit", "退出游戏", new Vector2(0f, -140f), ExitGame);
+            CreateText(_panel, "Title", Localization.Get("pause_title"), 64, new Vector2(0f, 180f));
+            _resumeButton = CreateButton(_panel, "Resume", Localization.Get("pause_resume"), new Vector2(0f, 40f), ResumeGame);
+            CreateButton(_panel, "MainMenu", Localization.Get("pause_main_menu"), new Vector2(0f, -50f), ReturnToMainMenu);
+            CreateButton(_panel, "Exit", Localization.Get("pause_exit"), new Vector2(0f, -140f), ExitGame);
 
             _panel.SetActive(false);
         }

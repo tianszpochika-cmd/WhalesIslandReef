@@ -73,16 +73,33 @@ namespace Whalebone.Agent
             _store.Append(new MemoryEvent(kind, text, importance));
         }
 
+        /// <summary>
+        /// 记录来自已落盘事实日志的摘要。AgentCore 只保存摘要，不拥有 WorldEvent 的写权限，
+        /// 也不从摘要反推或修改任何领域数值。
+        /// </summary>
+        public void RecordFactSummary(string eventId, string summary, float importance)
+        {
+            if (string.IsNullOrWhiteSpace(eventId) || string.IsNullOrWhiteSpace(summary)) return;
+            RecordEvent("fact:" + eventId, summary, importance);
+        }
+
         public bool ShouldSummarize => _turnCount > 0 && _turnCount % SummarizeEvery == 0;
 
         /// <summary>把三层记忆拼进 system prompt（长记忆只取重要 Top 3）。</summary>
         public string BuildMemorySection()
         {
             var parts = new List<string>();
+            if (_shortContext.Count > 0)
+                parts.Add("近期对话：" + string.Join(" | ", new List<string>(_shortContext).ToArray()));
             if (_sessionSummary.Length > 0) parts.Add("本轮航程摘要：" + _sessionSummary);
             foreach (var e in _store.Top(3))
                 parts.Add(e.Kind + "：「" + e.Text + "」");
             return parts.Count > 0 ? string.Join(" ", parts) : "";
+        }
+
+        public IReadOnlyList<string> GetShortTermContext()
+        {
+            return new List<string>(_shortContext).AsReadOnly();
         }
 
         /// <summary>触发摘要压缩（由 LLM 生成）。骨架里做文本拼接占位。</summary>

@@ -1,8 +1,8 @@
-# 动作清单（ACTIONS）— P2A 命令注册表草案
+# 动作清单（ACTIONS）— P2A 入口
 
-> 对应 `contracts/agent-reply.schema.json` 的 `action` 字段与 `docs/game/REQUIREMENTS.md` 3.5.4。
-> 机制：玩家语音/文字命令 → LLM 映射到动作名 + 参数 → 游戏侧注册表执行。
-> 状态：🟡 草案（首批 20 个），随需求文档定稿调整。
+> D8-A04 已将旧草案升级为 60 个结构化 P2A Action。完整注册名、参数 Schema、权限、前置、失败码和执行者以 [`D8_P2A_ACTION_REGISTRY.md`](design/common/D8_P2A_ACTION_REGISTRY.md) 与 `contracts/p2a-action-registry.json` 为准。
+> 机制：玩家语音/文字命令 → LLM 映射到 `action_intent` → Schema/边界校验 → 所属强逻辑系统执行和裁决。
+> 本文件保留玩法分类入口，不再作为独立的动作事实源。
 
 ## 航行类
 | 动作名 | 参数 | 说明 |

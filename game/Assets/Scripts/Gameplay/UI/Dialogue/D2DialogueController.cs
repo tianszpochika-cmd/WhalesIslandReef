@@ -28,14 +28,18 @@ namespace Whalebone.Gameplay.UI.Dialogue
         private Text _statusText;
         private InputField _input;
         private Button _sendButton;
+        private Button _closeButton;
         private CrewAgent _agent;
         private DialogueSession _session;
         private OllamaClient _local;
+        private AgentReply _lastReply;
         private bool _open;
         private bool _busy;
 
         public bool IsOpen => _open;
         public CrewAgent CurrentAgent => _agent;
+        /// <summary>D9 对话页只读最近一次已校验回复；不包含任何裁决后的关系结果。</summary>
+        public AgentReply LastReply => _lastReply;
 
         private void Awake()
         {
@@ -58,6 +62,7 @@ namespace Whalebone.Gameplay.UI.Dialogue
             _open = true;
             _busy = false;
             _canvas.SetActive(true);
+            RefreshLocalizedButtons();
             _speakerText.text = agent.DisplayName;
             _replyText.text = "老水手看向你，等你开口。";
             _statusText.text = "本地 AI 优先；不可用时自动使用模板回复。";
@@ -85,9 +90,9 @@ namespace Whalebone.Gameplay.UI.Dialogue
 
             _local = new OllamaClient();
             var mock = new MockLLMClient(
-                "{\"speech\":\"海风正好，船长。\",\"emotion\":\"happy\",\"affinity_change\":1,\"action\":\"none\"}",
-                "{\"speech\":\"这片海我熟得很，跟紧潮流。\",\"emotion\":\"neutral\",\"affinity_change\":0,\"action\":\"none\"}",
-                "{\"speech\":\"你愿意听老人的话，我很欣慰。\",\"emotion\":\"happy\",\"affinity_change\":2,\"action\":\"none\"}");
+                AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "海风正好，船长。"),
+                AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "这片海我熟得很，跟紧潮流。").Replace("happy", "neutral"),
+                AgentReplyTestFixtures.ValidNone.Replace("海风正好。", "你愿意听老人的话，我很欣慰。"));
             var router = new LLMRouter(_local, mock);
             _session = new DialogueSession(agent, router, new MutinyMonitor(agent.Stats));
 
@@ -115,6 +120,7 @@ namespace Whalebone.Gameplay.UI.Dialogue
             try
             {
                 var reply = await _session.SpeakAsync(playerInput);
+                _lastReply = reply;
                 _replyText.text = reply.Speech;
                 string delta = reply.AffinityChange == 0f
                     ? "好感无变化"
@@ -184,8 +190,21 @@ namespace Whalebone.Gameplay.UI.Dialogue
             _replyText = CreateText(_panel, "Reply", "", 28, new Vector2(0f, 55f), TextAnchor.MiddleCenter);
             _statusText = CreateText(_panel, "Status", "", 20, new Vector2(0f, -12f), TextAnchor.MiddleCenter);
             _input = CreateInput(_panel, new Vector2(-145f, -82f));
-            _sendButton = CreateButton(_panel, "Send", "发送", new Vector2(300f, -82f), Submit);
-            CreateButton(_panel, "Close", "关闭", new Vector2(440f, -82f), Close);
+            _sendButton = CreateButton(_panel, "Send", Localization.Get("dialogue_send"), new Vector2(300f, -82f), Submit);
+            _closeButton = CreateButton(_panel, "Close", Localization.Get("dialogue_close"), new Vector2(440f, -82f), Close);
+        }
+
+        private void RefreshLocalizedButtons()
+        {
+            SetButtonLabel(_sendButton, "dialogue_send");
+            SetButtonLabel(_closeButton, "dialogue_close");
+        }
+
+        private static void SetButtonLabel(Button button, string key)
+        {
+            if (button == null) return;
+            var text = button.GetComponentInChildren<Text>(true);
+            if (text != null) text.text = Localization.Get(key);
         }
 
         private static Text CreateText(GameObject parent, string name, string content, int size,
