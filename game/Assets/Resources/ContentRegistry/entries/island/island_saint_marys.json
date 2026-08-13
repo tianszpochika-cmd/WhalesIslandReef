@@ -2,19 +2,57 @@
   "id": "island_saint_marys",
   "schema_version": 1,
   "name": "圣玛丽岛",
+  "name_en": "Saint Mary's Island",
   "display_name_key": "content.island.island_saint_marys.name",
   "category": "island",
-  "tags": ["harbor", "starter_region", "caribbean"],
-  "description": "D9 近海切片的起始岛屿代表定义。",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "kar",
+    "template_kar",
+    "coast",
+    "karst_ridge"
+  ],
+  "description": "D15-A01 石灰岩与喀斯特岛代表档案：海底石灰岩隆起并经雨水溶蚀，形成峰林、落水洞、地下河和白色断崖。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
   "gameplay_role": "starter_harbor",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["coast", "mangrove", "nearshore"],
-  "valid_weather": ["clear", "rain", "storm_watch"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "coast",
+    "karst_ridge",
+    "dry_shrub",
+    "cave"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
   "dependencies": [],
-  "references": ["building_saint_marys_dock", "building_santa_marys_north_warehouse", "building_santa_marys_shipyard", "animal_green_turtle", "plant_red_mangrove", "plant_shallow_seaweed", "plant_conch_bed", "plant_orchard_guava_v1", "plant_farm_cassava_mature", "plant_dry_aloe_medicinal", "plant_coast_agave_fiber", "plant_rainforest_mahogany_v1", "plant_rainforest_pine_resin_v1", "plant_farm_indigo_mature", "plant_dry_datura_toxin_v1", "fish_mackerel_school", "fish_snapper_school", "fish_sardine_school", "item_gear_fish_trap", "item_gear_shellfish_rake", "item_gear_seaweed_hook", "item_dried_mackerel", "item_dried_sardine", "item_dried_snapper", "item_fish_oil", "item_salted_sardine", "item_salted_snapper"],
-  "asset_refs": [],
-  "source_refs": ["docs/game/design/islands/01_ISLAND_OVERVIEW.md", "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md"],
-  "source_note": "项目自有代表岛屿定义；不代表需求目标中的 50 座岛已批量完成。",
+  "references": [
+    "plant_coast_agave_fiber",
+    "plant_dry_datura_toxin_v1",
+    "plant_orchard_guava_v1",
+    "fish_mackerel_school",
+    "animal_green_turtle",
+    "building_saint_marys_dock",
+    "building_santa_marys_north_warehouse",
+    "plant_farm_indigo_mature",
+    "item_dried_mackerel",
+    "item_fish_oil",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 石灰岩与喀斯特岛 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
   "source": {
     "kind": "project-authored",
     "author": "Whalebone team",
@@ -29,9 +67,413 @@
     "modification_allowed": true
   },
   "historical_tag": "fictional",
-  "phase": "D8",
-  "status": "prototyped",
+  "phase": "D15",
+  "status": "production",
   "owner_system": "IslandSystem",
-  "test_id": "D8-A02-ISLAND-001",
-  "reviewer": "D8-A02"
+  "test_id": "D8-A02-D15-A01-ISLAND-009",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_saint_marys",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_kar",
+  "collision_ref": "collision_island_saint_marys",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-009",
+    "D15-A01-SAVE-009",
+    "D15-A01-RESTORE-009"
+  ],
+  "quality_level": "Q3",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "limestone_karst_island",
+    "template_label": "石灰岩与喀斯特岛",
+    "variant_code": "KAR-01",
+    "historical_names": [
+      "Saint Mary's Island",
+      "Saint Mary's Island chart name"
+    ],
+    "formation": "海底石灰岩隆起并经雨水溶蚀，形成峰林、落水洞、地下河和白色断崖。",
+    "geology": "limestone",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "迎风坡暴雨更集中",
+      "coast_type": "limestone_coast",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "背风面较干燥",
+      "coast_type": "sea_erosion_cliff",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "limestone_coast",
+      "sea_erosion_cliff"
+    ],
+    "freshwater": {
+      "source_kind": "sinkhole_pool",
+      "availability": "seasonal_variable",
+      "capacity_band": "medium",
+      "dry_season_rule": "recovery_owner_profile",
+      "water_points": [
+        "water_point_saint_marys_01",
+        "water_point_saint_marys_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "karst_pinnacle",
+      "elevation": "ridge",
+      "slope": "broken",
+      "max_m": 310,
+      "maximum_elevation_m": 310,
+      "profile_variant": "karst_pinnacle_1",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_saint_marys_01",
+        "cave_type": "limestone_dry_cave",
+        "entrance_zone": "saint_marys_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "cave_flood"
+      },
+      {
+        "cave_id": "cave_saint_marys_02",
+        "cave_type": "sinkhole_cave",
+        "entrance_zone": "saint_marys_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "freshwater_shortage"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_saint_marys_1",
+        "feature": "limestone_shoal",
+        "chart_access": "primary",
+        "depth_band": "shallow",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_saint_marys_2",
+        "feature": "tidal_rock_pool",
+        "chart_access": "alternate",
+        "depth_band": "medium",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "coast",
+      "karst_ridge",
+      "dry_shrub",
+      "cave"
+    ],
+    "zones": [
+      {
+        "region_id": "saint_marys_coast",
+        "parent_region": "island_saint_marys",
+        "geology": "limestone",
+        "habitat": "coast",
+        "elevation": "coastal",
+        "water_sources": [
+          "sinkhole_pool"
+        ],
+        "coast_access": "limestone_coast",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "cliff_edge"
+        ],
+        "plant_tags": [
+          "plant_coast_agave_fiber"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_coast_agave_fiber"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "port_authority",
+          "community_council"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "saint_marys_coast"
+      },
+      {
+        "region_id": "saint_marys_inland",
+        "parent_region": "island_saint_marys",
+        "geology": "limestone",
+        "habitat": "karst_ridge",
+        "elevation": "foothill",
+        "water_sources": [
+          "sinkhole_pool"
+        ],
+        "coast_access": "limestone_dry_cave",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "cave_flood"
+        ],
+        "plant_tags": [
+          "plant_dry_datura_toxin_v1"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_dry_datura_toxin_v1"
+        ],
+        "building_tags": [
+          "building_santa_marys_north_warehouse"
+        ],
+        "faction_tags": [
+          "port_authority",
+          "community_council"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "saint_marys_inland"
+      },
+      {
+        "region_id": "saint_marys_upper",
+        "parent_region": "island_saint_marys",
+        "geology": "limestone",
+        "habitat": "dry_shrub",
+        "elevation": "ridge",
+        "water_sources": [
+          "sinkhole_pool"
+        ],
+        "coast_access": "limestone_dry_cave",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "freshwater_shortage"
+        ],
+        "plant_tags": [
+          "plant_orchard_guava_v1"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_orchard_guava_v1"
+        ],
+        "building_tags": [
+          "building_santa_marys_north_warehouse"
+        ],
+        "faction_tags": [
+          "port_authority",
+          "community_council"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "saint_marys_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_saint_marys_1",
+        "content_id": "plant_coast_agave_fiber",
+        "node_type": "common_refresh",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saint_marys.resource.1"
+      },
+      {
+        "node_id": "resource_node_saint_marys_2",
+        "content_id": "plant_dry_datura_toxin_v1",
+        "node_type": "rare_observation",
+        "habitat": "karst_ridge",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saint_marys.resource.2"
+      },
+      {
+        "node_id": "resource_node_saint_marys_3",
+        "content_id": "plant_orchard_guava_v1",
+        "node_type": "community_managed",
+        "habitat": "dry_shrub",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saint_marys.resource.3"
+      },
+      {
+        "node_id": "resource_node_saint_marys_4",
+        "content_id": "fish_mackerel_school",
+        "node_type": "ecology_key",
+        "habitat": "cave",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saint_marys.resource.4"
+      },
+      {
+        "node_id": "resource_node_saint_marys_5",
+        "content_id": "animal_green_turtle",
+        "node_type": "dangerous_environment",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saint_marys.resource.5"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_saint_marys_dock",
+        "instance_anchor": "saint_marys_building_anchor_1",
+        "placement_zone": "saint_marys_coast",
+        "access_route": "coast_survey",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_santa_marys_north_warehouse",
+        "instance_anchor": "saint_marys_building_anchor_2",
+        "placement_zone": "saint_marys_inland",
+        "access_route": "karst_ridge",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_saint_marys_01",
+        "zone_id": "saint_marys_coast",
+        "access_route": "coast_survey",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_saint_marys_primary",
+      "alternate_landing": "landing_saint_marys_alternate",
+      "primary_coast": "limestone_coast",
+      "alternate_coast": "sea_erosion_cliff",
+      "boat_route": "sinkhole_cave",
+      "tide_window": "low_tide",
+      "navigation_risk": "cliff_edge",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_saint_marys_coast",
+        "route_type": "coast",
+        "access": "coast_survey",
+        "fallback": "sinkhole_cave"
+      },
+      {
+        "route_id": "route_saint_marys_inland",
+        "route_type": "inland",
+        "access": "karst_ridge",
+        "fallback": "coast_survey"
+      },
+      {
+        "route_id": "route_saint_marys_upper",
+        "route_type": "highland_or_cave",
+        "access": "sinkhole_cave",
+        "fallback": "karst_ridge"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_saint_marys_1",
+        "tag": "cliff_edge",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_saint_marys.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_saint_marys_2",
+        "tag": "cave_flood",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_saint_marys.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_saint_marys_3",
+        "tag": "freshwater_shortage",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_saint_marys.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "starter_harbor",
+      "faction_tags": [
+        "port_authority",
+        "community_council"
+      ],
+      "human_modification": "managed",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "saint_marys_coast",
+        "saint_marys_inland",
+        "saint_marys_upper"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_saint_marys",
+      "stable_id": "island_saint_marys",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
 }

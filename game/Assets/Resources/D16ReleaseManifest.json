@@ -1,0 +1,53 @@
+{
+  "manifest_version": 1,
+  "release_status": "blocked",
+  "product_name": "WhalesIslandReef",
+  "company_name": "Whalebone Studio",
+  "unity_version": "6000.0.80f1",
+  "target_platform": "StandaloneWindows64",
+  "required_scenes": [
+    "Assets/Scenes/MainMenu.unity",
+    "Assets/Scenes/InitialHarbor.unity"
+  ],
+  "content_registry": {
+    "path": "Assets/Resources/ContentRegistry/registry.json",
+    "qa_status": "D15-S02-PASS",
+    "asset_authorization_status": "PENDING"
+  },
+  "localization": ["zh-CN", "en-US"],
+  "save_compatibility": {
+    "current_version": 3,
+    "file_backup_required": true,
+    "migration_failure_preserves_original": true
+  },
+  "offline_mode": true,
+  "crash_reporting": {
+    "external_upload": false,
+    "privacy_review": "IMPLEMENTED_LOCAL_REDACTED_PENDING_REVIEW",
+    "local_opt_in": true,
+    "raw_message_collection": false,
+    "raw_stack_collection": false,
+    "storage_scope": "Application.persistentDataPath/D16Diagnostics",
+    "rotation_max_bytes": 524288,
+    "unclean_session_marker": "redacted_local_marker_with_clean_exit_cleanup",
+    "delete_entrypoint": "D16LocalDiagnostics.RevokeConsentAndClear"
+  },
+  "installer": {
+    "install_test": "PASS",
+    "uninstall_test": "PASS",
+    "update_test": "PASS"
+  },
+  "steam": {
+    "upload_authorized": false,
+    "upload_executed": false
+  },
+  "blocking_reasons": [
+    "D16-A01 target-device performance evidence pending",
+    "D16-A02 physical power-loss and cross-platform save evidence pending",
+    "D16-A03 real-device accessibility and focus evidence pending",
+    "D16-A04 manual history, sensitive-content and rights review pending",
+    "D16-A05 placeholder assets remain",
+    "D16-A06 target-device/native-crash and final privacy review pending",
+    "Steam upload not authorized"
+  ]
+}

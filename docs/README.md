@@ -20,6 +20,7 @@
 - [D12 线索与寻宝任务](game/design/common/D12_TREASURE_CLUES.md)：多来源线索、可靠度、交叉验证、时间窗、装备前置、替代路线和奖励追溯；
 - [D12 沉船、洞穴与打捞系统](game/design/common/D12_WRECK_CAVE_SALVAGE.md)：沉船/洞穴位置、潮汐、装备、风险、竞争者、法律裁决、失败恢复和奖励请求幂等；
 - [D13 产权与资产交易](game/design/common/D13_PROPERTY_ASSET_MARKET.md)：岛屿、地块、房屋、仓库、工坊、酒馆、船坞、农地与渔场的调查、估值、权利交易、共同治理、抵押、继承和争议；
+- [D15 植被批量目录](game/design/common/D15_VEGETATION_BATCH_CATALOG.md)：1,000—2,000 植物条目的分类、模型/材质占位状态、LOD、风场、生境、用途、来源/授权和抽样加载门禁；
 - [D13 金融、信用与保险](game/design/common/D13_FINANCE_CREDIT_INSURANCE.md)：现金、赊账、贷款、担保、利息、展期、保险证据、拒赔、违约、催收、查封与破产保护；
 - [D13 农业、果园与蔬菜](game/design/common/D13_FARMING_ORCHARDS.md)：地块、种子、土壤、水源、季节、播种、病虫害、风暴、收获、轮作、加工与销售；
 - [环境搭建](game/SETUP.md)：本机运行与测试；

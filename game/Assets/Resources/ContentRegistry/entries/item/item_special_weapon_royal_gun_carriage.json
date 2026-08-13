@@ -4,24 +4,58 @@
   "name": "加固旋转炮架",
   "display_name_key": "content.item.item_special_weapon_royal_gun_carriage.name",
   "category": "item",
-  "tags": ["special_weapon", "gun_mount", "ship_module"],
+  "tags": [
+    "special_weapon",
+    "gun_mount",
+    "ship_module"
+  ],
   "description": "受强度边界约束的特殊炮架；装配和耐久由 ShipSystem/CombatSystem 裁决。",
   "gameplay_role": "special_gun_mount",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["harbor", "ship_deck"],
-  "valid_weather": ["clear", "rain", "storm"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "harbor",
+    "ship_deck"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
   "dependencies": [],
-  "references": ["ship_moonwake"],
+  "references": [
+    "ship_moonwake"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"],
+  "source_refs": [
+    "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  ],
   "source_note": "D14-A03 项目自有特殊炮架代表条目。",
-  "source": { "kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md" },
-  "license": { "status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true },
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "inferred",
   "review_status": "approved",
   "phase": "D14",
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-D14-ITEM-002",
-  "reviewer": "D14-A03"
+  "reviewer": "D14-A03",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

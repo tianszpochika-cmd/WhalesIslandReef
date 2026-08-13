@@ -71,6 +71,47 @@ git diff --check
 
 Unity Editor 当前已有实例占用项目，未在本轮强制关闭或抢占编辑器执行 EditMode Runner；因此 Unity 测试本轮以 `Save.Tests.csproj` 编译作为工程侧验证，打开当前 Unity 6 工程后可直接运行 `D10CrewBehaviorSystemTests`。
 
+2026-08-11 前置复验补充：`Whalebone.Agent.Runtime.csproj` 已显式包含 `D10CrewBehaviorState.cs`；`Whalebone.Systems.csproj` 已同步当前 asmdef 中缺失的 D10/D13 源文件。AgentCore、Systems、Save.Tests 三个 standalone build 均为 0 warning / 0 error。该工程引用修复不改变 D10 规则与系统所有权。
+
+## 2026-08-11 最终验收任务前置复验
+
+状态：PASS（工程编译依赖门禁）。
+
+本轮没有修改 D10 规则或新增重复类型；复核确认 `D10CrewBehaviorState.cs` 已被 `Whalebone.Agent.Runtime.csproj` 正确纳入，`CrewAgent` 的行为状态所有权不变。首次 `Save.Tests --no-restore` 的失败原因为本机缺少 NuGet `project.assets.json`，执行一次受控 restore 后重新构建通过。
+
+验证命令：
+
+```text
+dotnet build game/AgentCore/AgentCore.csproj --no-restore -v:minimal
+dotnet restore game/Save.Tests.csproj --ignore-failed-sources -v:minimal
+dotnet build game/Save.Tests.csproj --no-restore -v:minimal
+```
+
+原始结果：AgentCore、Whalebone.Agent.Runtime、Whalebone.Systems、Content 依赖和 Save.Tests 全部 0 warning / 0 error。下游任务：继续 D15 内容 QA；D10 数据所有权、契约和规则保持冻结。
+
 ## 接入约定
 
 运行时创建 `D10CrewBehaviorSystem` 时注入当前共享 `EventLog`，并把上游事实 ID 传入 `causeEventIds`。Agent 只可展示 `D10CrewBehaviorState` 快照或生成表达；所有 Request/Approve/Tick/ApplyHealthChange 必须经 CrewSystem 入口，禁止 UI 直接写 `Stats` 或 `BehaviorState`。
+
+## 2026-08-12 当前工程编译复验
+
+- Unity 刷新造成的 `Temp/obj` 资产缺失先通过受限 `dotnet restore --ignore-failed-sources` 恢复，再执行 `--no-restore`；没有降低测试范围或复制 D10 类型。
+- `dotnet build game/AgentCore/AgentCore.csproj --no-restore`、`dotnet build game/Save.Tests.csproj --no-restore`、`dotnet build game/Assembly-CSharp.csproj --no-restore`：均 **0 warning / 0 error**。
+
+## 2026-08-12 总纲顺序复验
+
+- AgentCore：`dotnet build game/AgentCore/AgentCore.csproj --no-restore -v:minimal`，0 warning / 0 error。
+- Save.Tests：首次 no-restore 仅缺临时 assets；受控 `dotnet restore game/Save.Tests.csproj --ignore-failed-sources` 后，`dotnet build ... --no-restore` 为 0 warning / 0 error。
+- 交接结论：D10 依赖门禁 PASS；未复制 `D10CrewBehaviorState`，未改变 CrewAgent 数据所有权；下游继续执行 D15 内容 QA。
+
+## 2026-08-12 Unity 派生依赖恢复复验
+
+Unity 6 刷新工程后，`Save.Tests.csproj` 所需的 Test Runner/UI 派生程序集暂时不在 `game/Library/ScriptAssemblies`。本轮用 Unity 6000.0.80f1 无界面重新导入工程，再执行受控 restore；没有修改生成的 `.csproj`，没有复制或伪造程序集。
+
+```text
+Unity batch reimport：exit 0
+dotnet restore game/Save.Tests.csproj -v:minimal：成功
+dotnet build game/Save.Tests.csproj --no-restore -v:minimal：0 warning / 0 error
+```
+
+交接结论：D10 工程依赖门禁继续 PASS；该修复仅恢复 Unity 的派生编译产物，不改变 D10 规则、状态所有权、存档格式或测试覆盖范围。

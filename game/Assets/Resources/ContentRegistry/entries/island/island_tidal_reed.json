@@ -1,0 +1,465 @@
+{
+  "id": "island_tidal_reed",
+  "schema_version": 1,
+  "name": "潮芦岛",
+  "name_en": "Tidal Reed",
+  "display_name_key": "content.island.island_tidal_reed.name",
+  "category": "island",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "man",
+    "template_man",
+    "mangrove",
+    "mudflat"
+  ],
+  "description": "D15-A01 红树林潮汐岛代表档案：河口泥沙和红树林根系共同固定岸线，形成潮汐水道、泥滩和盐沼。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
+  "gameplay_role": "landing_resource_island",
+  "valid_regions": [
+    "island_tidal_reed"
+  ],
+  "valid_habitats": [
+    "mangrove",
+    "mudflat",
+    "estuary",
+    "seagrass"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_red_mangrove",
+    "plant_shallow_seaweed",
+    "fish_sardine_school",
+    "animal_green_turtle",
+    "building_green_cay_water_well",
+    "building_saint_marys_dock",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 红树林潮汐岛 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-D15-A01-ISLAND-030",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_saint_marys",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_man",
+  "collision_ref": "collision_island_tidal_reed",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-030",
+    "D15-A01-SAVE-030",
+    "D15-A01-RESTORE-030"
+  ],
+  "quality_level": "Q2",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "mangrove_tidal_island",
+    "template_label": "红树林潮汐岛",
+    "variant_code": "MAN-04",
+    "historical_names": [
+      "Tidal Reed",
+      "Tidal Reed chart name"
+    ],
+    "formation": "河口泥沙和红树林根系共同固定岸线，形成潮汐水道、泥滩和盐沼。",
+    "geology": "alluvial_sediment",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "暴风前云墙遮挡高地",
+      "coast_type": "mangrove_tidal_channel",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "背风岸线保留潮间带",
+      "coast_type": "mudflat_saltmarsh",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "mangrove_tidal_channel",
+      "mudflat_saltmarsh"
+    ],
+    "freshwater": {
+      "source_kind": "brackish_spring",
+      "availability": "seasonal_variable",
+      "capacity_band": "small",
+      "dry_season_rule": "recovery_owner_profile",
+      "water_points": [
+        "water_point_tidal_reed_01",
+        "water_point_tidal_reed_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "mangrove_sand_ridge",
+      "elevation": "lowland",
+      "slope": "flat",
+      "max_m": 32,
+      "maximum_elevation_m": 143,
+      "profile_variant": "mangrove_sand_ridge_1",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_tidal_reed_01",
+        "cave_type": "sea_erosion_cave",
+        "entrance_zone": "tidal_reed_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "mosquitoes"
+      },
+      {
+        "cave_id": "cave_tidal_reed_02",
+        "cave_type": "root_tunnel",
+        "entrance_zone": "tidal_reed_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "tide_reversal"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_tidal_reed_1",
+        "feature": "mangrove_edge",
+        "chart_access": "primary",
+        "depth_band": "shallow",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_tidal_reed_2",
+        "feature": "seagrass_channel",
+        "chart_access": "alternate",
+        "depth_band": "medium",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "mangrove",
+      "mudflat",
+      "estuary",
+      "seagrass"
+    ],
+    "zones": [
+      {
+        "region_id": "tidal_reed_coast",
+        "parent_region": "island_tidal_reed",
+        "geology": "alluvial_sediment",
+        "habitat": "mangrove",
+        "elevation": "coastal",
+        "water_sources": [
+          "brackish_spring"
+        ],
+        "coast_access": "mangrove_tidal_channel",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "mudflat_sink"
+        ],
+        "plant_tags": [
+          "plant_red_mangrove"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_red_mangrove",
+          "plant_shallow_seaweed"
+        ],
+        "building_tags": [
+          "building_green_cay_water_well"
+        ],
+        "faction_tags": [
+          "community_council",
+          "mangrove_keepers"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "tidal_reed_coast"
+      },
+      {
+        "region_id": "tidal_reed_inland",
+        "parent_region": "island_tidal_reed",
+        "geology": "alluvial_sediment",
+        "habitat": "mudflat",
+        "elevation": "foothill",
+        "water_sources": [
+          "brackish_spring"
+        ],
+        "coast_access": "connected_by_path",
+        "walkability": "path_network",
+        "hazard_tags": [
+          "mosquitoes"
+        ],
+        "plant_tags": [
+          "plant_shallow_seaweed"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_shallow_seaweed"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "community_council",
+          "mangrove_keepers"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "tidal_reed_inland"
+      },
+      {
+        "region_id": "tidal_reed_upper",
+        "parent_region": "island_tidal_reed",
+        "geology": "alluvial_sediment",
+        "habitat": "estuary",
+        "elevation": "lowland",
+        "water_sources": [
+          "brackish_spring"
+        ],
+        "coast_access": "sea_erosion_cave",
+        "walkability": "limited_path",
+        "hazard_tags": [
+          "tide_reversal"
+        ],
+        "plant_tags": [
+          "fish_sardine_school"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "fish_sardine_school"
+        ],
+        "building_tags": [
+          "building_green_cay_water_well"
+        ],
+        "faction_tags": [
+          "community_council",
+          "mangrove_keepers"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "tidal_reed_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_tidal_reed_1",
+        "content_id": "plant_red_mangrove",
+        "node_type": "ecology_key",
+        "habitat": "mangrove",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_tidal_reed.resource.1"
+      },
+      {
+        "node_id": "resource_node_tidal_reed_2",
+        "content_id": "plant_shallow_seaweed",
+        "node_type": "dangerous_environment",
+        "habitat": "mudflat",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_tidal_reed.resource.2"
+      },
+      {
+        "node_id": "resource_node_tidal_reed_3",
+        "content_id": "fish_sardine_school",
+        "node_type": "common_refresh",
+        "habitat": "estuary",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_tidal_reed.resource.3"
+      },
+      {
+        "node_id": "resource_node_tidal_reed_4",
+        "content_id": "animal_green_turtle",
+        "node_type": "rare_observation",
+        "habitat": "seagrass",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_tidal_reed.resource.4"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_green_cay_water_well",
+        "instance_anchor": "tidal_reed_building_anchor_1",
+        "placement_zone": "tidal_reed_coast",
+        "access_route": "mangrove_boardwalk",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_saint_marys_dock",
+        "instance_anchor": "tidal_reed_building_anchor_2",
+        "placement_zone": "tidal_reed_inland",
+        "access_route": "tidal_channel",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_tidal_reed_01",
+        "zone_id": "tidal_reed_coast",
+        "access_route": "mangrove_boardwalk",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_tidal_reed_primary",
+      "alternate_landing": "landing_tidal_reed_alternate",
+      "primary_coast": "mangrove_tidal_channel",
+      "alternate_coast": "mudflat_saltmarsh",
+      "boat_route": "community_permit",
+      "tide_window": "low_tide",
+      "navigation_risk": "mudflat_sink",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_tidal_reed_coast",
+        "route_type": "coast",
+        "access": "mangrove_boardwalk",
+        "fallback": "community_permit"
+      },
+      {
+        "route_id": "route_tidal_reed_inland",
+        "route_type": "inland",
+        "access": "tidal_channel",
+        "fallback": "mangrove_boardwalk"
+      },
+      {
+        "route_id": "route_tidal_reed_upper",
+        "route_type": "highland_or_cave",
+        "access": "community_permit",
+        "fallback": "tidal_channel"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_tidal_reed_1",
+        "tag": "mudflat_sink",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_tidal_reed.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_tidal_reed_2",
+        "tag": "mosquitoes",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_tidal_reed.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_tidal_reed_3",
+        "tag": "tide_reversal",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_tidal_reed.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "潮汐村社",
+      "faction_tags": [
+        "community_council",
+        "mangrove_keepers"
+      ],
+      "human_modification": "none",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "tidal_reed_coast",
+        "tidal_reed_inland",
+        "tidal_reed_highland"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_tidal_reed",
+      "stable_id": "island_tidal_reed",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
+}

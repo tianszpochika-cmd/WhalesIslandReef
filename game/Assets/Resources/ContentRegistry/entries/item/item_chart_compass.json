@@ -4,16 +4,32 @@
   "name": "海图罗盘",
   "display_name_key": "content.item.item_chart_compass.name",
   "category": "item",
-  "tags": ["tool", "exploration", "treasure"],
+  "tags": [
+    "tool",
+    "exploration",
+    "treasure"
+  ],
   "description": "用于核对潮线和岸线方向的基础探索装备；不替玩家回答谜题。",
   "gameplay_role": "treasure_landing_equipment",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["nearshore", "shore"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "nearshore",
+    "shore"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
-  "references": ["quest_first_chart"],
+  "references": [
+    "quest_first_chart"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/common/D9_TREASURE_VERTICAL_SLICE.md"],
+  "source_refs": [
+    "docs/game/design/common/D9_TREASURE_VERTICAL_SLICE.md"
+  ],
   "source_note": "D9-A06 项目自有探索装备定义；持有、耐久和消耗由 Item/Inventory 所属系统裁决。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +49,11 @@
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-ITEM-002",
-  "reviewer": "D9-A06"
+  "reviewer": "D9-A06",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D9_TREASURE_VERTICAL_SLICE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

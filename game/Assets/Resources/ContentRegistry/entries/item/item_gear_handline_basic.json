@@ -4,16 +4,33 @@
   "name": "基础手线",
   "display_name_key": "content.item.item_gear_handline_basic.name",
   "category": "item",
-  "tags": ["gear", "fishing", "nearshore"],
+  "tags": [
+    "gear",
+    "fishing",
+    "nearshore"
+  ],
   "description": "D9 近海捕捞代表渔具的正式目录条目；运行时逻辑引用为 gear_handline_basic。",
   "gameplay_role": "fishing_gear",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["nearshore", "reef_edge"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "nearshore",
+    "reef_edge"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
-  "references": ["item_fresh_mackerel"],
+  "references": [
+    "item_fresh_mackerel"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md", "docs/game/design/common/D9_VERTICAL_SLICE_FREEZE.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md",
+    "docs/game/design/common/D9_VERTICAL_SLICE_FREEZE.md"
+  ],
   "source_note": "项目自有渔具代表条目；gear_handline_basic 是运行时逻辑引用，D8 正式内容 ID 保留 item_ 前缀。",
   "source": {
     "kind": "project-authored",
@@ -34,5 +51,12 @@
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-ITEM-006",
   "reviewer": "D9-A02",
-  "logic_ref": "gear_handline_basic"
+  "logic_ref": "gear_handline_basic",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md",
+    "docs/game/design/common/D9_VERTICAL_SLICE_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

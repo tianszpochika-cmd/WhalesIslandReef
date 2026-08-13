@@ -15,7 +15,9 @@ using UnityEngine.UI;
 using Whalebone.Gameplay.UI;
 using Whalebone.Gameplay.D3;
 using Whalebone.Gameplay.D7;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D4;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
 
 namespace Whalebone.Gameplay.D4
@@ -70,22 +72,21 @@ namespace Whalebone.Gameplay.D4
                 return;
             }
 
-            var keyboard = Keyboard.current;
-            if (keyboard == null || Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed) return;
-            if (keyboard.fKey.wasPressedThisFrame) FactionAction();
-            else if (keyboard.kKey.wasPressedThisFrame) StartCombat();
-            else if (keyboard.rKey.wasPressedThisFrame) Reload();
-            else if (keyboard.digit1Key.wasPressedThisFrame) SelectWeapon(D4WeaponId.RoundShot);
-            else if (keyboard.digit2Key.wasPressedThisFrame) SelectWeapon(D4WeaponId.ChainShot);
-            else if (keyboard.digit3Key.wasPressedThisFrame) SelectWeapon(D4WeaponId.GrapeShot);
-            else if (keyboard.spaceKey.wasPressedThisFrame) Fire();
-            else if (keyboard.bKey.wasPressedThisFrame) Board();
-            else if (keyboard.eKey.wasPressedThisFrame) EscapeCombat();
-            else if (keyboard.uKey.wasPressedThisFrame) UpgradeHull();
-            else if (keyboard.aKey.wasPressedThisFrame) ObserveAnimal();
-            else if (keyboard.mKey.wasPressedThisFrame) TreatCrew();
-            else if (keyboard.jKey.wasPressedThisFrame) AdvanceMainline();
-            else if (keyboard.cKey.wasPressedThisFrame) SaveProgress();
+            if (Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed) return;
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Faction)) FactionAction();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4StartCombat)) StartCombat();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Reload)) Reload();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4SelectRoundShot)) SelectWeapon(D4WeaponId.RoundShot);
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4SelectChainShot)) SelectWeapon(D4WeaponId.ChainShot);
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4SelectGrapeShot)) SelectWeapon(D4WeaponId.GrapeShot);
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Fire)) Fire();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Board)) Board();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4EscapeCombat)) EscapeCombat();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Upgrade)) UpgradeHull();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4ObserveAnimal)) ObserveAnimal();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4TreatCrew)) TreatCrew();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4AdvanceMainline)) AdvanceMainline();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Save)) SaveProgress();
             RefreshHud();
         }
 

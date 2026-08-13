@@ -22,7 +22,7 @@
 
 | 批次 | 冻结代表样例 | 覆盖的样例证据 | 当前门禁 |
 |---|---|---|---|
-| `D15-A01*` 岛屿 | `island_saint_marys`、`island_driftwood_isle` | D8 岛屿注册表、D11 生态、D13 建筑/资产切片 | 通过代表内容门禁；批量仍待生产 |
+| `D15-A01*` 岛屿 | `island_saint_marys`、`island_driftwood_isle` | D8 岛屿注册表、D11 生态、D13 建筑/资产切片 | 代表内容门禁通过；已按冻结口径生产 50 条，待 D15-S02 批量 QA |
 | `D15-A02*` 植被 | `plant_red_mangrove`、`plant_coast_agave_fiber`、`plant_farm_cassava_mature` | D11 植被目录、采集、恢复、农地样例 | 通过代表内容门禁；批量仍待生产 |
 | `D15-A03*` 动物 | `animal_green_turtle`、`animal_domestic_chicken`、`fish_mackerel_school` | D11 动物/宠物/鱼群行为和生态接口 | 通过代表内容门禁；批量仍待生产 |
 | `D15-A04*` 建筑/港口 | `building_saint_marys_dock`、`building_green_cay_water_well` | D13 建筑、仓库、水井、服务与保存接口 | 通过代表内容门禁；批量仍待生产 |

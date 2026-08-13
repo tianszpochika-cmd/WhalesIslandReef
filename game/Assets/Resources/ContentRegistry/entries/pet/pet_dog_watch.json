@@ -1,0 +1,94 @@
+{
+  "id": "pet_dog_watch",
+  "schema_version": 1,
+  "name": "D15 dog variant 005",
+  "display_name_key": "content.pet.pet_dog_watch.name",
+  "tags": [
+    "d15_a07",
+    "dog",
+    "appearance_variant",
+    "source_traced"
+  ],
+  "description": "D15-A07 项目自有D15 dog variant 005定义；运行时照料、生态和状态结果由 AnimalCareSystem 接管。",
+  "gameplay_role": "care_companion_definition",
+  "valid_regions": [
+    "island_saint_marys",
+    "green_cay"
+  ],
+  "valid_habitats": [
+    "harbor",
+    "ship_deck",
+    "ship_cabin"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [
+    "item_pet_feed"
+  ],
+  "references": [
+    "item_pet_feed"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "项目自有 D15-A07 D15 dog variant 005；AnimalCareSystem 唯一写入运行时状态，内容资产不包含状态结果。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CHARACTER_PET_BATCH_CATALOG.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "AnimalCareSystem",
+  "test_id": "D8-A02-D15-LEGACY-PET-DOG-WATCH",
+  "reviewer": "D15-A07",
+  "culture_id": "caribbean_shipboard",
+  "career_id": "watch_companion",
+  "source_ref": "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md",
+  "authorization_id": "auth_d15_a07_internal_authored_20260811",
+  "appearance_combo_id": "pet_appearance_d15_a07_dog_02",
+  "appearance_profile": {
+    "family": "dog",
+    "pattern_id": "dog_pattern_2",
+    "visual_differentiator": "watch_dog_coat_or_feather_pattern",
+    "asset_refs": []
+  },
+  "behavior_profile": "AnimalCareSystem:LoadDefinition",
+  "production_batch": "D15-A07*",
+  "representative_sample": "pet_harbor_dog",
+  "production_stage": "integrated",
+  "quality_level": "Q2",
+  "asset_state": "placeholder",
+  "model_ref": "placeholder:dog_proxy",
+  "material_ref": "placeholder:dog_material",
+  "collision_ref": "prefab:dog_proxy:CapsuleCollider",
+  "lod_profile": "d15_a07_character_lod3",
+  "test_cases": [
+    "D15-A07-LOAD-DOG-005",
+    "D15-A07-OWNER-DOG-005",
+    "D15-A07-SAVE-DOG-005",
+    "D15-A07-RESTORE-DOG-005"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "D15-A07-AUTH-001",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "category": "pet"
+}

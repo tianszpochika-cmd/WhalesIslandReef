@@ -1,0 +1,91 @@
+{
+  "runner": "C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d16_a02_runner\\bin\\Debug\\net9.0\\D16A02Runner.dll",
+  "atomic_abort_before_replace": {
+    "exit_code": 73,
+    "old_file_preserved": true,
+    "temporary_file_seen_before_cleanup": true,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  "atomic_abort_after_replace": {
+    "exit_code": 74,
+    "new_file_complete": true,
+    "temporary_file_left": false,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  "migration_abort_before_commit": {
+    "exit_code": 75,
+    "sqlite_integrity": "ok",
+    "user_version": 1,
+    "v3_tables_present": false,
+    "legacy_player": {
+      "name": "进程中止验收船长",
+      "money": 500
+    },
+    "backup_count": 1,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  "force_kill_after_flush": {
+    "exit_code": 1,
+    "ready_seen": true,
+    "force_kill_sent": true,
+    "terminated_after_ready": true,
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "old_file_preserved": true,
+    "temporary_file_seen_before_cleanup": true
+  },
+  "force_kill_after_replace": {
+    "exit_code": 1,
+    "ready_seen": true,
+    "force_kill_sent": true,
+    "terminated_after_ready": true,
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "new_file_complete": true,
+    "temporary_file_left": false
+  },
+  "force_kill_during_migration": {
+    "exit_code": 1,
+    "ready_seen": true,
+    "force_kill_sent": true,
+    "terminated_after_ready": true,
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "sqlite_integrity": "ok",
+    "user_version": 1,
+    "v3_tables_present": false,
+    "legacy_player": {
+      "name": "强制终止验收船长",
+      "money": 500
+    },
+    "backup_count": 1
+  },
+  "force_kill_during_save_after_player": {
+    "exit_code": 1,
+    "ready_seen": true,
+    "force_kill_sent": true,
+    "terminated_after_ready": true,
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "sqlite_integrity": "ok",
+    "player": {
+      "name": "保存中断验收船长",
+      "money": 500
+    },
+    "ship_count": 1,
+    "crew_count": 1
+  },
+  "controlled_process_abort_passed": true,
+  "real_force_kill_passed": true,
+  "passed": true
+}

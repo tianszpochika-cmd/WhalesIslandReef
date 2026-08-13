@@ -1,0 +1,196 @@
+{
+  "id": "plant_farm_papaya_storm_damaged_v0886",
+  "schema_version": 1,
+  "name": "papaya·果树·风暴损伤·0886",
+  "display_name_key": "content.plant.plant_farm_papaya_storm_damaged_v0886.name",
+  "category": "plant",
+  "tags": [
+    "d15_a02",
+    "fruit_tree",
+    "farm",
+    "fruit_and_food",
+    "storm_damaged"
+  ],
+  "description": "果树内容条目：papaya的风暴损伤形态，适用于farm生境；资源量、成熟度与采集结果由 EcologySystem/D11 owner 裁决。",
+  "gameplay_role": "fruit_and_food",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_driftwood_isle"
+  ],
+  "valid_habitats": [
+    "orchard",
+    "farm",
+    "coast",
+    "lowland_rainforest"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_saint_marys"
+  ],
+  "asset_refs": [
+    "asset_vegetation_profile_fruit_tree"
+  ],
+  "source_refs": [
+    "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md",
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/vegetation/03_VEGETATION_HABITATS.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A02 项目自有批量目录；形态、阶段和用途为可审计设计推断，不宣称新增外部史实或外部素材。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-D15-VEG-0886",
+  "reviewer": "D15-A02*",
+  "plant_class": "fruit_tree",
+  "scientific_or_historical_note": "加勒比 1675 语境下的生态/形态推断；非外部物种鉴定结论。",
+  "soil_tags": [
+    "managed_loam",
+    "sandy_loam",
+    "deep_loam"
+  ],
+  "salt_tolerance": "medium",
+  "drought_tolerance": "medium",
+  "water_need": "medium",
+  "altitude_range": [
+    0,
+    420
+  ],
+  "season_tags": [
+    "dry",
+    "wet"
+  ],
+  "growth_stage": "storm_damaged",
+  "harvest_parts": [
+    "fruit",
+    "leaf",
+    "seed"
+  ],
+  "resource_outputs": [
+    "fruit",
+    "seed"
+  ],
+  "toxicity": "non_toxic_or_contextual",
+  "fire_fuel": "medium",
+  "animal_relationships": [
+    "fruit_bird_food"
+  ],
+  "human_cultivation": "cultivated_or_escaped",
+  "introduced_status": "introduced_or_escaped_cultivar",
+  "production_batch": "D15-A02*",
+  "representative_sample": "plant_orchard_guava_v1",
+  "production_stage": "cataloged",
+  "behavior_profile": "EcologySystem:plant_resource_profile:fruit_tree",
+  "asset_state": "placeholder",
+  "quality_level": "Q2",
+  "model_ref": "unity-primitive://vegetation/fruit_tree/lod2",
+  "model_status": "placeholder_primitive_ready",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_palm_leaf.mat",
+  "material_status": "source_ready",
+  "collision_ref": "placeholder://vegetation/harvest-proximity-collider",
+  "collision_status": "shared_interaction_proxy",
+  "lod_profile": {
+    "name": "plant_lod2",
+    "minimum_lod": "LOD2",
+    "lod0_triangles": 6000,
+    "lod1_triangles": 2000,
+    "lod2_triangles": 600,
+    "far_representation": "cluster_proxy"
+  },
+  "wind_profile": {
+    "id": "coast_strong",
+    "zone": "farm",
+    "frequency_band": "low_to_medium",
+    "amplitude_band": "profiled_by_habitat",
+    "gust_response": "deterministic_environment_input"
+  },
+  "habitat_profile": {
+    "primary": "farm",
+    "soil": "deep_loam",
+    "salt_tolerance": "medium",
+    "drought_tolerance": "medium",
+    "water_need": "medium",
+    "altitude_range_m": [
+      0,
+      420
+    ]
+  },
+  "use_profile": {
+    "primary": "fruit_and_food",
+    "harvest_parts": [
+      "fruit",
+      "leaf",
+      "seed"
+    ],
+    "resource_outputs": [
+      "fruit",
+      "seed"
+    ],
+    "toxicity": "non_toxic_or_contextual",
+    "fire_fuel": "medium",
+    "animal_relationship": "fruit_bird_food",
+    "human_cultivation": "cultivated_or_escaped"
+  },
+  "growth_profile": {
+    "stage": "storm_damaged",
+    "season_tags": [
+      "dry",
+      "wet"
+    ],
+    "cycle_days": 23,
+    "mature_window_days": 9,
+    "recovery_profile": "EcologySystem:habitat_recovery_profile"
+  },
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md",
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/common/D11_VEGETATION_HARVEST.md"
+  ],
+  "content_warning_ids": [],
+  "context_note_key": "content.plant.context.standard",
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full"
+  ],
+  "test_cases": [
+    "D15-A02-LOAD-0005",
+    "D15-A02-ASSET-0005",
+    "D15-A02-HARVEST-OWNER-0005",
+    "D15-A02-SAVE-RESTORE-0005"
+  ],
+  "authorization": {
+    "authorization_id": "auth_internal_d15_vegetation_catalog",
+    "rights_holder": "Whalebone project",
+    "license_ref": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "source_url_or_path": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "perpetual; project authored data and placeholder references",
+    "evidence_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-来源授权和历史审查"
+  },
+  "asset_profile_id": "asset_vegetation_profile_fruit_tree",
+  "generation_source": "D15-A02 deterministic batch generator",
+  "generation_digest": "aa0e8778"
+}

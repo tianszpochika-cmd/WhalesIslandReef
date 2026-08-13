@@ -4,16 +4,30 @@
   "name": "熟鲭鱼",
   "display_name_key": "content.item.item_cooked_mackerel.name",
   "category": "item",
-  "tags": ["food", "fish", "cooked", "personal"],
+  "tags": [
+    "food",
+    "fish",
+    "cooked",
+    "personal"
+  ],
   "description": "港口厨房将鲜鲭鱼烹饪后的随身食物。",
   "gameplay_role": "cooked_fish_food",
-  "valid_regions": ["santa_margarita", "green_cay"],
-  "valid_habitats": ["galley", "personal_inventory"],
+  "valid_regions": [
+    "santa_margarita",
+    "green_cay"
+  ],
+  "valid_habitats": [
+    "galley",
+    "personal_inventory"
+  ],
   "valid_weather": [],
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md", "docs/game/design/items/01_ITEM_OVERVIEW.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md",
+    "docs/game/design/items/01_ITEM_OVERVIEW.md"
+  ],
   "source_note": "项目自有烹饪鱼食代表条目；随身数量由 D3InventorySystem 写入。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +47,12 @@
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-ITEM-009",
-  "reviewer": "D9-A02"
+  "reviewer": "D9-A02",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md",
+    "docs/game/design/items/01_ITEM_OVERVIEW.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

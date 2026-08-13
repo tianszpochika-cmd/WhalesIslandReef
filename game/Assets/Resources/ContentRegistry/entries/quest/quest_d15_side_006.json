@@ -1,0 +1,156 @@
+{
+  "id": "quest_d15_side_006",
+  "schema_version": 1,
+  "name": "潮线测绘 06",
+  "name_en": "Tide Survey 06",
+  "display_name_key": "content.quest.quest_d15_side_006.name",
+  "category": "quest",
+  "tags": [
+    "D15",
+    "D15-A08",
+    "side",
+    "survey",
+    "template",
+    "event_driven"
+  ],
+  "description": "潮线测绘 06 模板要求事实事件完成目标；失败可恢复，替代路线由所属系统和 RewardSystem 裁决。",
+  "gameplay_role": "side_template",
+  "valid_regions": [
+    "open_sea",
+    "harbor"
+  ],
+  "valid_habitats": [
+    "nearshore"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_ashfall_bay",
+    "building_archive",
+    "item_adze_small"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/common/D12_DYNAMIC_QUEST_LOG.md"
+  ],
+  "source_note": "D15-A08 内容模板；任务只拥有任务状态，事实来自统一事件，奖励仅请求 RewardSystem 裁决。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#D15-A08"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "QuestSystem",
+  "test_id": "D8-A02-D15-A08-QUEST-SIDE-006",
+  "reviewer": "D15-A08",
+  "production_batch": "D15-A08*",
+  "production_stage": "cataloged",
+  "quality_level": "Q2",
+  "quest_track": "side",
+  "chapter": null,
+  "template_number": 6,
+  "target_systems": [
+    "ExplorationSystem"
+  ],
+  "objectives": [
+    {
+      "objective_id": "quest_d15_side_006_objective_01",
+      "description": "记录潮线测绘的第一条事实 / Record the first fact for Tide Survey",
+      "description_key": "content.quest.quest_d15_side_006.objective_01",
+      "target_owner_system": "ExplorationSystem",
+      "accepted_fact_codes": [
+        "survey_marker_recorded"
+      ],
+      "required_count": 1,
+      "match": {
+        "key": "island_id",
+        "value": "island_ashfall_bay"
+      }
+    },
+    {
+      "objective_id": "quest_d15_side_006_objective_02",
+      "description": "完成潮线测绘的第二条事实 / Complete the second fact for Tide Survey",
+      "description_key": "content.quest.quest_d15_side_006.objective_02",
+      "target_owner_system": "ExplorationSystem",
+      "accepted_fact_codes": [
+        "survey_depth_verified"
+      ],
+      "required_count": 1,
+      "match": {
+        "key": "content_route",
+        "value": "survey"
+      }
+    }
+  ],
+  "failure_result_codes": [
+    "side_survey_06_blocked",
+    "side_survey_06_failed"
+  ],
+  "recovery_result_codes": [
+    "route_d15_a08_quest_d15_side_006_return",
+    "route_d15_a08_quest_d15_side_006_wait",
+    "route_d15_a08_quest_d15_side_006_ask_for_help"
+  ],
+  "default_recovery_route_id": "route_d15_a08_quest_d15_side_006_return",
+  "alternative_routes": [
+    {
+      "route_id": "route_d15_a08_quest_d15_side_006_wait",
+      "accepted_event_code": "side_survey_06_deferred",
+      "target_owner_system": "ExplorationSystem",
+      "cause": "time_or_weather_window"
+    },
+    {
+      "route_id": "route_d15_a08_quest_d15_side_006_ask_for_help",
+      "accepted_event_code": "side_survey_06_assisted",
+      "target_owner_system": "CommunitySystem",
+      "cause": "community_or_crew_assistance"
+    }
+  ],
+  "event_prefixes": {
+    "accepted": "event_d15_a08_quest_d15_side_006_accepted",
+    "progress": "event_d15_a08_quest_d15_side_006_progress",
+    "completed": "event_d15_a08_quest_d15_side_006_completed",
+    "failed": "event_d15_a08_quest_d15_side_006_failed",
+    "recovered": "event_d15_a08_quest_d15_side_006_recovered"
+  },
+  "reward_request": {
+    "request_id_policy": "quest_d15_side_006:completion:{save_revision}",
+    "requested_reward_id": "reward_d14_ordinary_supply",
+    "owner_system": "RewardSystem",
+    "source_fact_required": true,
+    "contains_final_values": false,
+    "final_reward_written_by": "RewardSystem",
+    "audit_event_required": true
+  },
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_RELIGION_HISTORY_REVIEW.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full"
+  ],
+  "asset_state": "data_only",
+  "lod_profile": "LOD-N/A",
+  "test_cases": [
+    "quest_d15_side_006-load",
+    "quest_d15_side_006-trigger-interaction",
+    "quest_d15_side_006-save-restore"
+  ]
+}

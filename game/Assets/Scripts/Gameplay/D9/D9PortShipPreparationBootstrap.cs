@@ -15,9 +15,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Gameplay.D3;
 using Whalebone.Gameplay.UI;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.D4;
 using Whalebone.Systems.D9;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
 
 namespace Whalebone.Gameplay.D9
@@ -71,22 +73,22 @@ namespace Whalebone.Gameplay.D9
                 return;
             }
 
-            var keyboard = Keyboard.current;
-            if (keyboard != null && keyboard.pKey.wasPressedThisFrame)
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9OpenPortPreparation))
                 _pageOpen = !_pageOpen;
             if (_panel != null) _panel.SetActive(_pageOpen);
-            if (keyboard != null && _pageOpen && D7InputAllowed())
+            if (_pageOpen && D7InputAllowed())
             {
-                if (keyboard.bKey.wasPressedThisFrame) EnterAndBerth();
-                else if (keyboard.mKey.wasPressedThisFrame) BuySalt();
-                else if (keyboard.xKey.wasPressedThisFrame) BuyTimber();
-                else if (keyboard.tKey.wasPressedThisFrame) VisitTavern();
-                else if (keyboard.sKey.wasPressedThisFrame) BuyWater();
-                else if (keyboard.rKey.wasPressedThisFrame) RepairHull();
-                else if (keyboard.qKey.wasPressedThisFrame) RecruitIsaac();
-                else if (keyboard.wKey.wasPressedThisFrame) SettleWages();
-                else if (keyboard.uKey.wasPressedThisFrame) UpgradeHull();
-                else if (keyboard.dKey.wasPressedThisFrame) Depart();
+                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9ClosePortPreparation)) _pageOpen = false;
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9EnterBerth)) EnterAndBerth();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9BuySalt)) BuySalt();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9BuyTimber)) BuyTimber();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9VisitTavern)) VisitTavern();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9BuyWater)) BuyWater();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9RepairHull)) RepairHull();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9RecruitCrew)) RecruitIsaac();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9SettleWages)) SettleWages();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9Upgrade)) UpgradeHull();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9Depart)) Depart();
             }
             Refresh();
         }
@@ -248,28 +250,38 @@ namespace Whalebone.Gameplay.D9
             _snapshot = _preparation.BuildSnapshot(_d3.Snapshot, _d3.TradeState, _ship,
                 _d4 == null ? null : _d4.ShipyardSystem, GameState.CrewAgents);
             if (_statusText != null)
-                _statusText.text = "D9 港口整备\n" + _snapshot.PortDisplayName + " | 金币 " + _snapshot.Money +
+                _statusText.text = "D9 港口整备\n" + _snapshot.PortDisplayName + " | 金币 " + DisplayNumber(_snapshot.Money) +
                     " | 泊位 " + (_snapshot.Moored ? "已靠泊" : "未靠泊");
             if (_detailText != null)
             {
                 var ship = _snapshot.Ship;
                 var cargo = new StringBuilder();
-                foreach (var pair in ship.Cargo) cargo.Append(pair.Key).Append("×").Append(pair.Value).Append(" ");
+                foreach (var pair in ship.Cargo) cargo.Append(pair.Key).Append("×").Append(DisplayNumber(pair.Value)).Append(" ");
                 var upgrades = new StringBuilder();
-                foreach (var pair in ship.Upgrades) upgrades.Append(pair.Key).Append(" ").Append(pair.Value).Append("级 ");
+                foreach (var pair in ship.Upgrades) upgrades.Append(pair.Key).Append(" ").Append(DisplayNumber(pair.Value)).Append("级 ");
                 _detailText.text = "船舶 " + ship.ShipTypeId +
-                    " | 重量 " + ship.Weight + "/" + ship.CargoCapacity +
-                    " | 吃水 " + ship.Draft.ToString("0.0") + "m" +
-                    "\n船员 " + ship.CrewCount + "/" + ship.CrewCapacity +
+                    " | 重量 " + DisplayNumber(ship.Weight) + "/" + DisplayNumber(ship.CargoCapacity) +
+                    " | 吃水 " + DisplayNumber((decimal)ship.Draft, 1) + "m" +
+                    "\n船员 " + DisplayNumber(ship.CrewCount) + "/" + DisplayNumber(ship.CrewCapacity) +
                     " | 货物 " + (cargo.Length == 0 ? "空" : cargo.ToString()) +
-                    "\n补给 水 " + ship.Water + " 食物 " + ship.Food +
-                    " | 损伤 " + ship.Damage + "（船体 " + ship.Hull + "/" + ship.HullMax + "）" +
+                    "\n补给 水 " + DisplayNumber(ship.Water) + " 食物 " + DisplayNumber(ship.Food) +
+                    " | 损伤 " + DisplayNumber(ship.Damage) + "（船体 " + DisplayNumber(ship.Hull) + "/" + DisplayNumber(ship.HullMax) + "）" +
                     "\n锚泊 " + (ship.Moored ? "是" : "否") + " | 泊位 " +
                     (string.IsNullOrEmpty(ship.BerthId) ? "无" : ship.BerthId) +
                     "\n改装 " + (upgrades.Length == 0 ? "尚无" : upgrades.ToString());
             }
             if (_hintText != null)
                 _hintText.text = _lastMessage + " | P整备页 B泊位 M买盐 T酒馆 S补给 R修船 X木材 Q招募 W工资 U船坞 D离港";
+        }
+
+        private static string DisplayNumber(int value)
+        {
+            return D16DisplayFormatter.Number(value, Localization.IsEnglish ? "en-US" : "zh-CN");
+        }
+
+        private static string DisplayNumber(decimal value, int decimals)
+        {
+            return D16DisplayFormatter.Number(value, Localization.IsEnglish ? "en-US" : "zh-CN", decimals);
         }
 
         private bool D7InputAllowed()

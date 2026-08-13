@@ -1,0 +1,1362 @@
+{
+  "task": "D16-A04",
+  "status": "DRY_RUN",
+  "root": "game",
+  "eligible_count": 11,
+  "eligible_ids": [
+    "asset_historical_saint_marys_log",
+    "crew_isaac_reed",
+    "item_pet_feed",
+    "item_special_weapon_moonwake_cutlass",
+    "outfit_missing_tailor_placeholder",
+    "pet_cabin_cat",
+    "pet_harbor_dog",
+    "quest_first_chart",
+    "reward_d14_ordinary_supply",
+    "reward_d14_unique_moonwake_armory",
+    "reward_first_chart"
+  ],
+  "changed_count": 0,
+  "changed_ids": [],
+  "ineligible_pending_count": 267,
+  "ineligible_pending": [
+    {
+      "id": "asset_d15_a06_anchor_profiles",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_anchor_profiles.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_animation_profiles",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_animation_profiles.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_audio_profiles",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_audio_profiles.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_collision_profiles",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_collision_profiles.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_material_profiles",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_material_profiles.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_blackreef_brig",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_blackreef_brig.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_bluewater_cutter",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_bluewater_cutter.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_coastal_bark",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_coastal_bark.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_cocoa_brigantine",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_cocoa_brigantine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_deepwater_frigate",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_deepwater_frigate.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_free_cove_catboat",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_free_cove_catboat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_aft_mast",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_aft_mast.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_anchor_chain_guide",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_anchor_chain_guide.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_anchor_chain_locker",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_anchor_chain_locker.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_anchor_winch",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_anchor_winch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_bilge_pump_access",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_bilge_pump_access.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_boarding_net",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_boarding_net.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_boarding_rail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_boarding_rail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_boat_hook_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_boat_hook_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_bow_bollard",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_bow_bollard.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_breast_line_point",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_breast_line_point.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_captains_cabin",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_captains_cabin.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_cargo_davit",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_cargo_davit.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_cargo_hatch",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_cargo_hatch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_carpenter_workbench",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_carpenter_workbench.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_chart_table",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_chart_table.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_compass_stand",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_compass_stand.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_cook_workbench",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_cook_workbench.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_dry_goods_shelf",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_dry_goods_shelf.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_fire_bucket_station",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fire_bucket_station.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_fish_hold",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fish_hold.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_food_larder",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_food_larder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_fore_mast",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fore_mast.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_fore_sail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fore_sail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_freshwater_barrel_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_freshwater_barrel_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_galley_stove",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_galley_stove.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_gangplank",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gangplank.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_gun_carriage",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gun_carriage.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_gunner_workbench",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gunner_workbench.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_gunport",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gunport.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_hand_winch",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_hand_winch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_helm_wheel",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_helm_wheel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_log_line",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_log_line.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_lookout_platform",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_lookout_platform.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_main_cargo_hold",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_main_cargo_hold.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_main_mast",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_main_mast.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_main_sail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_main_sail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_medical_berth",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_medical_berth.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_medicine_cabinet",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_medicine_cabinet.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_port_anchor",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_port_anchor.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_powder_magazine",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_powder_magazine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_rigging_locker",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_rigging_locker.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_rudder",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_rudder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_sail_trim",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sail_trim.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_sailor_berth",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sailor_berth.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_sandglass",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sandglass.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_ship_bell_alarm",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_ship_bell_alarm.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_shot_locker",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_shot_locker.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_signal_flag_locker",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_signal_flag_locker.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_signal_gun",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_signal_gun.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_sounding_lead",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sounding_lead.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_starboard_anchor",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_starboard_anchor.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_staysail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_staysail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_steering_transmission",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_steering_transmission.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_stern_bollard",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_stern_bollard.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_temporary_deck_cargo",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_temporary_deck_cargo.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_tiller",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_tiller.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_tool_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_tool_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_valuables_locker",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_valuables_locker.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_waste_treatment_point",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_waste_treatment_point.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_function_weapon_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_weapon_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_harbor_brig",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_harbor_brig.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_island_packet_sloop",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_island_packet_sloop.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_longwake_barque",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_longwake_barque.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_mangrove_punt",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_mangrove_punt.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_privateer_brigantine",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_privateer_brigantine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_raincrown_schooner",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_raincrown_schooner.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_reef_runner_sloop",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_reef_runner_sloop.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_sable_fin_skiff",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_sable_fin_skiff.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_saint_marys_ketch",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_saint_marys_ketch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_saltwind_schooner",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_saltwind_schooner.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_auxiliary_staysail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_auxiliary_staysail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_ballast_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_ballast_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_bilge_drain_pump",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_bilge_drain_pump.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_boarding_net",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_boarding_net.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_braced_cargo_shelves",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_cargo_shelves.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_braced_frames",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_frames.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_braced_gun_carriage",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_gun_carriage.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_braced_mast",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_mast.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_captains_cabin_refit",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_captains_cabin_refit.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_cargo_davit",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_cargo_davit.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_cargo_winch",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_cargo_winch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_carpenter_workbench",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_carpenter_workbench.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_chain_shot_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_chain_shot_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_concealed_cargo_compartment",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_concealed_cargo_compartment.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_confinement_isolation_cabin",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_confinement_isolation_cabin.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_council_table",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_council_table.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_crew_rest_area",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_crew_rest_area.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_crew_storage_lockers",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_crew_storage_lockers.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_deck_catch_area",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_deck_catch_area.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_dinghy_davit",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dinghy_davit.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_disguise_flag_mount",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_disguise_flag_mount.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_dry_cargo_hold",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dry_cargo_hold.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_dry_medicine_cabinet",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dry_medicine_cabinet.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_dry_powder_locker",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dry_powder_locker.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_enlarged_main_sail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_enlarged_main_sail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_expanded_cargo_hold",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_expanded_cargo_hold.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_extra_crew_berths",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_extra_crew_berths.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_fire_bucket_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_fire_bucket_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_fire_bulkhead",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_fire_bulkhead.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_fire_sand_box",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_fire_sand_box.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_flag_signal_set",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_flag_signal_set.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_food_preservation_cabinet",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_food_preservation_cabinet.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_freshwater_tank",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_freshwater_tank.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_grape_shot_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_grape_shot_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_heavy_gun_mount",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_heavy_gun_mount.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_high_lookout_platform",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_high_lookout_platform.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_hull_paint_layer",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_hull_paint_layer.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_improved_fore_sail",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_improved_fore_sail.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_improved_galley_stove",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_improved_galley_stove.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_improved_helm_wheel",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_improved_helm_wheel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_isolation_partition",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_isolation_partition.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_light_canvas",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_light_canvas.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_light_cargo_dividers",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_light_cargo_dividers.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_light_gun_mount",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_light_gun_mount.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_locked_valuables_case",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_locked_valuables_case.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_long_voyage_granary",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_long_voyage_granary.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_name_and_crest_board",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_name_and_crest_board.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_navigation_compass",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_navigation_compass.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_night_signal_lamp",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_night_signal_lamp.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_professional_sailor_platform",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_professional_sailor_platform.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_quick_release_rigging",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_quick_release_rigging.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_quiet_rigging",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_quiet_rigging.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_raised_freeboard",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_raised_freeboard.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_rapid_loading_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_rapid_loading_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_rapid_patch_layer",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_rapid_patch_layer.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_reinforced_dinghy",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_dinghy.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_reinforced_keel",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_keel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_reinforced_planking",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_planking.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_reinforced_rudder",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_rudder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_rescue_rope_and_float",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_rescue_rope_and_float.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_shallow_draft_conversion",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_shallow_draft_conversion.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_ship_sickbay",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_ship_sickbay.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_shot_sorting_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_shot_sorting_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_simple_medical_berth",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_simple_medical_berth.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_sounding_gear_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_sounding_gear_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_spare_anchor_chain_set",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_anchor_chain_set.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_spare_bucket_line",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_bucket_line.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_spare_mast_kit",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_mast_kit.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_spare_rope_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_rope_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_spare_tiller_assembly",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_tiller_assembly.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_spare_timber_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_timber_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_stability_sponson",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_stability_sponson.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_storm_canvas",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_storm_canvas.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_twin_rudder_linkage",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_twin_rudder_linkage.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_ventilation_hatch",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_ventilation_hatch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_washing_and_hygiene_point",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_washing_and_hygiene_point.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_water_saving_kitchen",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_water_saving_kitchen.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_watertight_bulkhead",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_watertight_bulkhead.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_weapon_and_firearm_rack",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_weapon_and_firearm_rack.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_ship_module_weatherproof_chart_case",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_weatherproof_chart_case.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_sugar_route_schooner",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_sugar_route_schooner.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_tideglass_cutter",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_tideglass_cutter.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_model_windward_pinnace",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_windward_pinnace.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_a06_ui_profiles",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_d15_a06_ui_profiles.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_ph_ship_fishing",
+      "path": "game/Assets/Content/D15/A06/entries/assets/asset_ph_ship_fishing.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "animal_domestic_cattle",
+      "path": "game/Assets/Resources/ContentRegistry/entries/animal/animal_domestic_cattle.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "animal_domestic_goat",
+      "path": "game/Assets/Resources/ContentRegistry/entries/animal/animal_domestic_goat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "animal_domestic_pig",
+      "path": "game/Assets/Resources/ContentRegistry/entries/animal/animal_domestic_pig.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_blockade_order",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_blockade_order.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_cargo_seizure_writ",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_cargo_seizure_writ.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_item_prop_placeholder",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_d15_item_prop_placeholder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_outfit_placeholder",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_d15_outfit_placeholder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_ph_crew_male",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_ph_crew_male.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_ph_palm_leaves",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_ph_palm_leaves.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_privateer_letter_of_marque",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_privateer_letter_of_marque.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_coastal",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_coastal.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_crop",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_crop.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_epiphyte",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_epiphyte.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_fern",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_fern.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_fruit_tree",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_fruit_tree.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_herb",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_herb.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_medicinal",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_medicinal.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_moss",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_moss.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_shrub",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_shrub.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_spice",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_spice.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_tree",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_tree.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_variant",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_variant.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_wetland",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_wetland.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cassava_flour",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cassava_flour.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cattle_leather",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cattle_leather.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_chart_compass",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_chart_compass.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_chicken_egg",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_chicken_egg.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cocoa_cured",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cocoa_cured.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_coffee_roasted",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_coffee_roasted.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_conch",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_conch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cooked_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cooked_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cured_shellfish",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cured_shellfish.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_sardine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_sardine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_seaweed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_seaweed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_snapper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_snapper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dye_indigo",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dye_indigo.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_farm_pest_treatment",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_farm_pest_treatment.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fiber_agave",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fiber_agave.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_firearm_matchlock_carbine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_firearm_matchlock_carbine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fish_oil",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fish_oil.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fresh_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fresh_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fresh_sardine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fresh_sardine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fresh_snapper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fresh_snapper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fruit_guava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fruit_guava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_cast_net",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_cast_net.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_fish_trap",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_fish_trap.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_handline_basic",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_handline_basic.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_seaweed_hook",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_seaweed_hook.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_shellfish_rake",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_shellfish_rake.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_shore_rod",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_shore_rod.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_goat_milk",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_goat_milk.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_guava_preserve",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_guava_preserve.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_herb_prepared",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_herb_prepared.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_livestock_feed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_livestock_feed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_livestock_medicine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_livestock_medicine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_pig_meat",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_pig_meat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_resin_pine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_resin_pine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_cod",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_cod.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_sardine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_sardine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_snapper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_snapper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seaweed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seaweed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_cassava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_cassava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_cocoa",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_cocoa.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_coffee",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_coffee.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_guava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_guava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_herb",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_herb.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_spice",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_spice.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_sugarcane",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_sugarcane.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_tobacco",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_tobacco.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_signal_lantern_amber",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_signal_lantern_amber.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_special_weapon_royal_gun_carriage",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_special_weapon_royal_gun_carriage.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_spices_dried",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_spices_dried.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tobacco_cured",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tobacco_cured.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_rescue_grapnel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_rescue_grapnel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_axe",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_axe.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_basket",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_basket.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_harvesting_knife",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_harvesting_knife.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_herb_knife",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_herb_knife.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_machete",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_machete.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_resin_scraper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_resin_scraper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_toxin_datura",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_toxin_datura.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_vegetable_cassava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_vegetable_cassava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_accessory_compass_badge",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_accessory_compass_badge.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_body_sun_bronzed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_body_sun_bronzed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_bottom_canvas_trousers",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_bottom_canvas_trousers.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_career_fisher_handline",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_career_fisher_handline.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_ceremonial_silk_coat",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_ceremonial_silk_coat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_coat_rain_oilskin",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_coat_rain_oilskin.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_gloves_ropework",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_gloves_ropework.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_hair_short_brown",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_hair_short_brown.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_hat_straw_deck",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_hat_straw_deck.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_injury_bandaged_arm",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_injury_bandaged_arm.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_injury_old_leg",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_injury_old_leg.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_shoes_deck_boots",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_shoes_deck_boots.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_top_linen_deckhand",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_top_linen_deckhand.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_weathered_deckhand",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_weathered_deckhand.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "reward_d14_professional_rescue",
+      "path": "game/Assets/Resources/ContentRegistry/entries/reward/reward_d14_professional_rescue.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "reward_d14_rare_indigo_dye",
+      "path": "game/Assets/Resources/ContentRegistry/entries/reward/reward_d14_rare_indigo_dye.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "reward_d14_worldclass_reinforced_keel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/reward/reward_d14_worldclass_reinforced_keel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    }
+  ],
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "review_date": "2026-08-12",
+  "policy": "Only explicit fictional project-authored records are eligible; no historical or external claim is approved."
+}

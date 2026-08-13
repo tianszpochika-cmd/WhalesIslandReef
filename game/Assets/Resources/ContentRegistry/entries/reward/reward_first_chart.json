@@ -4,16 +4,28 @@
   "name": "第一张海图奖励",
   "display_name_key": "content.reward.reward_first_chart.name",
   "category": "reward",
-  "tags": ["quest_request", "unique_candidate", "starter"],
+  "tags": [
+    "quest_request",
+    "unique_candidate",
+    "starter"
+  ],
   "description": "用于验证任务奖励请求与物品/装扮引用的代表奖励定义。",
   "gameplay_role": "quest_reward_request",
-  "valid_regions": ["island_saint_marys"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
   "valid_habitats": [],
   "valid_weather": [],
   "dependencies": [],
-  "references": ["item_salted_cod", "outfit_weathered_deckhand"],
+  "references": [
+    "item_salted_cod",
+    "outfit_weathered_deckhand"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/11_REWARDS_SPECIAL_WEAPONS.md", "docs/game/design/DATA_MODELS.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/11_REWARDS_SPECIAL_WEAPONS.md",
+    "docs/game/design/DATA_MODELS.md"
+  ],
   "source_note": "仅为 RewardRequest/目录代表样例；D8 不创建实际发放结果或金钱奖励。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +45,19 @@
   "status": "prototyped",
   "owner_system": "RewardSystem",
   "test_id": "D8-A02-REWARD-001",
-  "reviewer": "D8-A02"
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/11_REWARDS_SPECIAL_WEAPONS.md",
+    "docs/game/design/DATA_MODELS.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "scope": "fictional_content_only",
+    "decision": "Approved",
+    "reason": "Explicitly fictional, project-authored content with internal license, existing evidence files, no sensitive tags, and no content warnings.",
+    "reviewed_at": "2026-08-12",
+    "not_a_historical_fact_claim": true
+  }
 }

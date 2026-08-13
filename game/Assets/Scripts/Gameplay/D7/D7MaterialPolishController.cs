@@ -6,6 +6,7 @@
 // ============================================================
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +14,14 @@ namespace Whalebone.Gameplay.D7
 {
     public sealed class D7MaterialPolishController : MonoBehaviour
     {
+        private const int RenderersPerFrame = 8;
         private float _nextApply;
         private int _polishedTotal;
         private int _preservedTextureTotal;
+        private readonly List<Renderer> _pendingRenderers = new List<Renderer>();
+        private readonly HashSet<int> _queuedRendererIds = new HashSet<int>();
+        private int _nextRendererIndex;
+        private bool _hasScanned;
 
         public bool IsReady { get; private set; }
         public int PolishedRendererCount => _polishedTotal;
@@ -23,47 +29,87 @@ namespace Whalebone.Gameplay.D7
 
         private void Update()
         {
-            if (Time.unscaledTime < _nextApply) return;
-            _nextApply = Time.unscaledTime + 0.75f;
-            Apply();
+            if (Time.unscaledTime >= _nextApply)
+            {
+                _nextApply = Time.unscaledTime + 0.75f;
+                Apply();
+            }
+            ProcessPendingRenderers();
         }
 
         public void Apply()
         {
-            int changedRendererCount = 0;
-            int preservedTextureCount = 0;
+            QueueUnpolishedRenderers();
+        }
+
+        private void QueueUnpolishedRenderers()
+        {
+            _hasScanned = true;
             foreach (var renderer in FindObjectsByType<Renderer>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
                 if (renderer == null || renderer.GetComponentInParent<Canvas>() != null) continue;
-                var materials = renderer.sharedMaterials;
-                bool changed = false;
-                for (int i = 0; i < materials.Length; i++)
-                {
-                    var source = materials[i];
-                    if (source != null && source.name.StartsWith("D7Polish_", StringComparison.Ordinal)) continue;
+                if (!NeedsPolish(renderer)) continue;
+                if (_queuedRendererIds.Add(renderer.GetInstanceID())) _pendingRenderers.Add(renderer);
+            }
+            if (_pendingRenderers.Count > _nextRendererIndex) IsReady = false;
+            if (_pendingRenderers.Count == 0 && _hasScanned) IsReady = true;
+        }
 
-                    var material = source == null ? CreateFallbackMaterial(renderer.name) : new Material(source);
-                    material.name = "D7Polish_" + renderer.name + "_" + i;
-                    bool hasTexture = material.mainTexture != null;
-                    if (hasTexture) preservedTextureCount++;
-                    ApplyReadableSurface(material, renderer.name, hasTexture);
-                    materials[i] = material;
-                    changed = true;
-                }
-
-                if (changed)
-                {
-                    renderer.sharedMaterials = materials;
-                    changedRendererCount++;
-                }
+        private void ProcessPendingRenderers()
+        {
+            int processed = 0;
+            while (_nextRendererIndex < _pendingRenderers.Count && processed < RenderersPerFrame)
+            {
+                var renderer = _pendingRenderers[_nextRendererIndex++];
+                _queuedRendererIds.Remove(renderer == null ? 0 : renderer.GetInstanceID());
+                ProcessRenderer(renderer);
+                processed++;
             }
 
-            _polishedTotal += changedRendererCount;
+            if (_nextRendererIndex < _pendingRenderers.Count) return;
+
+            _pendingRenderers.Clear();
+            _nextRendererIndex = 0;
+            IsReady = _hasScanned;
+        }
+
+        private void ProcessRenderer(Renderer renderer)
+        {
+            if (renderer == null || renderer.GetComponentInParent<Canvas>() != null) return;
+
+            var materials = renderer.sharedMaterials;
+            int preservedTextureCount = 0;
+            bool changed = false;
+            for (int i = 0; i < materials.Length; i++)
+            {
+                var source = materials[i];
+                if (source != null && source.name.StartsWith("D7Polish_", StringComparison.Ordinal)) continue;
+
+                var material = source == null ? CreateFallbackMaterial(renderer.name) : new Material(source);
+                material.name = "D7Polish_" + renderer.name + "_" + i;
+                bool hasTexture = material.mainTexture != null;
+                if (hasTexture) preservedTextureCount++;
+                ApplyReadableSurface(material, renderer.name, hasTexture);
+                materials[i] = material;
+                changed = true;
+            }
+
+            if (!changed) return;
+            renderer.sharedMaterials = materials;
+            _polishedTotal++;
             _preservedTextureTotal += preservedTextureCount;
-            IsReady = true;
-            if (changedRendererCount > 0)
-                Debug.Log("[D7/Material] 材质保真层已应用：渲染器=" + changedRendererCount +
-                          "，保留贴图材质=" + preservedTextureCount);
+        }
+
+        private static bool NeedsPolish(Renderer renderer)
+        {
+            var materials = renderer.sharedMaterials;
+            if (materials == null || materials.Length == 0) return false;
+            foreach (var material in materials)
+            {
+                if (material == null || !material.name.StartsWith("D7Polish_", StringComparison.Ordinal))
+                    return true;
+            }
+            return false;
         }
 
         private static Material CreateFallbackMaterial(string name)

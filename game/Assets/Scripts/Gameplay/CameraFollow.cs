@@ -228,14 +228,12 @@ namespace Whalebone.Gameplay
                 value.w * inverseLength);
         }
 
-        /// <summary>读取输入：右键/中键拖动旋转，滚轮缩放。</summary>
+        /// <summary>读取输入：鼠标右键/中键拖动、手柄右摇杆旋转，滚轮缩放。</summary>
         private void HandleInput()
         {
             if (!D7ControlCoordinator.CameraInputAllowed) return;
             var mouse = Mouse.current;
-            if (mouse == null) return; // 无鼠标设备（纯触屏/手柄环境）时保持静止
-
-            if (mouse.rightButton.isPressed || mouse.middleButton.isPressed)
+            if (mouse != null && (mouse.rightButton.isPressed || mouse.middleButton.isPressed))
             {
                 // Mouse delta 是本帧事件像素，不是每秒速度；按帧率再乘 deltaTime
                 // 会让低帧率和 Game 视图焦点切换时镜头手感明显失真。
@@ -243,14 +241,31 @@ namespace Whalebone.Gameplay
                 yaw += delta.x * rotateSpeed * 0.02f;
                 pitch -= delta.y * rotateSpeed * 0.02f;
             }
+
+            // 手柄不依赖鼠标按键，右摇杆直接提供相对视角输入；保留死区，
+            // 避免摇杆回中抖动，并继续复用 D7 的模态输入锁。
+            var gamepad = Gamepad.current;
+            if (gamepad != null)
+            {
+                Vector2 look = gamepad.rightStick.ReadValue();
+                if (look.sqrMagnitude > 0.01f)
+                {
+                    yaw += look.x * rotateSpeed * Time.deltaTime;
+                    pitch -= look.y * rotateSpeed * Time.deltaTime;
+                }
+            }
+
             pitch = Mathf.Clamp(pitch, 5f, 80f);
 
-            float scroll = mouse.scroll.ReadValue().y;
-            if (Mathf.Abs(scroll) > 0.0001f)
+            if (mouse != null)
             {
-                // 鼠标滚轮是事件增量，不是每秒速度；不乘 Time.deltaTime，避免缩放几乎无感。
-                // 不同鼠标的滚轮单位不同，0.01f 将常见的 120/格与触控板小增量统一到可用范围。
-                distance = Mathf.Clamp(distance - scroll * zoomSpeed * 0.01f, minDistance, maxDistance);
+                float scroll = mouse.scroll.ReadValue().y;
+                if (Mathf.Abs(scroll) > 0.0001f)
+                {
+                    // 鼠标滚轮是事件增量，不是每秒速度；不乘 Time.deltaTime，避免缩放几乎无感。
+                    // 不同鼠标的滚轮单位不同，0.01f 将常见的 120/格与触控板小增量统一到可用范围。
+                    distance = Mathf.Clamp(distance - scroll * zoomSpeed * 0.01f, minDistance, maxDistance);
+                }
             }
         }
 

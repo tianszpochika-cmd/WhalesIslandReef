@@ -4,16 +4,38 @@
   "name": "宠物饲料",
   "display_name_key": "content.item.item_pet_feed.name",
   "category": "item",
-  "tags": ["pet", "food", "care", "cargo"],
+  "tags": [
+    "pet",
+    "food",
+    "care",
+    "cargo"
+  ],
   "description": "可由港口杂货商登记的基础宠物饲料；数量由 Inventory/Cargo 写入。",
   "gameplay_role": "pet_feed",
-  "valid_regions": ["island_saint_marys", "santa_margarita"],
-  "valid_habitats": ["harbor", "ship_cabin", "market"],
-  "valid_weather": ["clear", "rain", "storm"],
+  "valid_regions": [
+    "island_saint_marys",
+    "santa_margarita"
+  ],
+  "valid_habitats": [
+    "harbor",
+    "ship_cabin",
+    "market"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
   "dependencies": [],
-  "references": ["pet_cabin_cat", "pet_harbor_dog"],
+  "references": [
+    "pet_cabin_cat",
+    "pet_harbor_dog"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md", "docs/game/design/DATA_MODELS.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md",
+    "docs/game/design/DATA_MODELS.md"
+  ],
   "source_note": "项目自有宠物照料物品定义；AnimalCareSystem 只提交扣除请求，Inventory/Cargo 写入数量。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +55,19 @@
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-ITEM-016",
-  "reviewer": "D11-A06"
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md",
+    "docs/game/design/DATA_MODELS.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "scope": "fictional_content_only",
+    "decision": "Approved",
+    "reason": "Explicitly fictional, project-authored content with internal license, existing evidence files, no sensitive tags, and no content warnings.",
+    "reviewed_at": "2026-08-12",
+    "not_a_historical_fact_claim": true
+  }
 }

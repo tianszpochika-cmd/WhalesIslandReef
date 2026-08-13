@@ -52,17 +52,75 @@ namespace Whalebone.Systems.Save
     public static class SaveSystem
     {
         private const string DbFileName = "save.db";
+        private const string LegacyProductName = "Whalebone";
         private const int SchemaVersion = 1;
+        private static bool _legacySaveMigrationChecked;
+        private static readonly object LegacySaveMigrationLock = new object();
 
         /// <summary>
         /// 数据库路径覆盖（null = 使用默认 persistentDataPath）。仅测试 / 工具使用。
         /// </summary>
         internal static string DbPath { get; set; }
 
+        /// <summary>
+        /// 保存事务边界测试钩子。生产运行时保持 null；仅用于模拟进程在事务尚未提交时被终止。
+        /// </summary>
+        internal static Action<string> TestTransactionBoundaryHook { get; set; }
+
         internal static string ResolveDbPath()
         {
             if (!string.IsNullOrEmpty(DbPath)) return DbPath;
-            return Path.Combine(Application.persistentDataPath, DbFileName);
+
+            string currentPath = Path.Combine(Application.persistentDataPath, DbFileName);
+            TryMigrateLegacyProductSave(currentPath);
+            return currentPath;
+        }
+
+        /// <summary>
+        /// 产品名从旧的 Whalebone 改为公开项目名 WhalesIslandReef 后，Unity 会改变
+        /// Windows/macOS/Linux 的 persistentDataPath 末级目录。只迁移一次、只在新路径
+        /// 尚无存档且旧库可读时执行；旧库及其备份始终保留，迁移失败不会阻断启动。
+        /// </summary>
+        private static void TryMigrateLegacyProductSave(string currentPath)
+        {
+            if (_legacySaveMigrationChecked) return;
+
+            lock (LegacySaveMigrationLock)
+            {
+                if (_legacySaveMigrationChecked) return;
+                _legacySaveMigrationChecked = true;
+
+                try
+                {
+                    if (File.Exists(currentPath)) return;
+
+                    string currentDirectory = Path.GetDirectoryName(Path.GetFullPath(currentPath));
+                    DirectoryInfo companyDirectory = string.IsNullOrWhiteSpace(currentDirectory)
+                        ? null
+                        : Directory.GetParent(currentDirectory);
+                    if (companyDirectory == null) return;
+
+                    string legacyPath = Path.Combine(companyDirectory.FullName, LegacyProductName, DbFileName);
+                    if (string.Equals(Path.GetFullPath(legacyPath), Path.GetFullPath(currentPath),
+                                      StringComparison.OrdinalIgnoreCase) ||
+                        !File.Exists(legacyPath) || !HasReadableSaveFile(legacyPath))
+                    {
+                        return;
+                    }
+
+                    var backup = SaveFileSafety.CreateBackup(legacyPath);
+                    if (backup == null) return;
+
+                    SaveFileSafety.RestoreBackup(currentPath, backup.BackupPath);
+                    Debug.Log("[SaveSystem] 已将旧产品名目录中的可读存档迁移到 WhalesIslandReef；旧存档和备份保留：" + legacyPath);
+                }
+                catch (Exception ex)
+                {
+                    // 存档迁移属于兼容性增强，不能让主菜单因为权限/占用/文件系统差异卡死。
+                    // 下一次正式保存仍会写入新目录；旧目录不被删除，便于人工恢复。
+                    Debug.LogWarning("[SaveSystem] 旧产品名存档迁移未完成，已保留原文件并继续启动：" + ex.Message);
+                }
+            }
         }
 
         /// <summary>
@@ -71,7 +129,11 @@ namespace Whalebone.Systems.Save
         /// </summary>
         public static SaveMigrationResult MigrateToV3()
         {
-            return SaveMigration.Migrate(ResolveDbPath());
+            string path = ResolveDbPath();
+            var backup = SaveFileSafety.CreateBackup(path);
+            var result = SaveMigration.Migrate(path);
+            if (result != null && backup != null) result.BackupPath = backup.BackupPath;
+            return result;
         }
 
         // ============================================================
@@ -81,19 +143,75 @@ namespace Whalebone.Systems.Save
         /// <summary>是否存在可读取的存档（players 表存在且有玩家行）。</summary>
         public static bool HasSave()
         {
-            if (!File.Exists(ResolveDbPath())) return false;
+            string path = ResolveDbPath();
+            SaveFileSafety.CleanupTemporaryArtifacts(path);
+            if (HasReadableSaveFile(path)) return true;
+
+            // 写入中断可能已经把主文件替换成不可读内容，但文件级备份仍然完整。
+            // 读档入口负责尝试恢复最近一个“可读且包含玩家/船”的备份，
+            // 失败时继续返回 false，让上层显示新游戏/恢复提示，而不是抛异常卡死。
+            return TryRecoverLatestValidBackup(path);
+        }
+
+        private static bool HasReadableSaveFile(string path)
+        {
+            if (!File.Exists(path)) return false;
             try
             {
-                using (var db = OpenDb())
+                using (var db = new SqliteDb(path))
                 {
-                    var rows = db.Query("SELECT COUNT(*) AS c FROM players");
-                    return rows.Count > 0 && Convert.ToInt64(rows[0]["c"]) > 0;
+                    var integrityRows = db.Query("PRAGMA integrity_check");
+                    string integrity = integrityRows.Count == 0
+                        ? string.Empty
+                        : SaveJson.GetStr(integrityRows[0], "integrity_check", string.Empty);
+                    if (!string.Equals(integrity, "ok", StringComparison.OrdinalIgnoreCase))
+                        return false;
+
+                    var playerRows = db.Query("SELECT id, ship_id FROM players LIMIT 1");
+                    if (playerRows.Count == 0) return false;
+                    string shipId = SaveJson.GetStr(playerRows[0], "ship_id", string.Empty);
+                    return !string.IsNullOrEmpty(shipId) &&
+                        db.Query("SELECT id FROM ships WHERE id = ?", shipId).Count > 0;
                 }
             }
             catch
             {
-                return false; // 数据库损坏/不可读时视为无存档，不抛出（保证主菜单可用）
+                return false;
             }
+        }
+
+        private static bool TryRecoverLatestValidBackup(string path)
+        {
+            var backups = SaveFileSafety.FindBackups(path);
+            for (int i = backups.Count - 1; i >= 0; i--)
+            {
+                string backupPath = backups[i];
+                try
+                {
+                    var restored = SaveFileSafety.RestoreBackup(path, backupPath);
+                    if (!restored.SourceReplacedAtomically || !HasReadableSaveFile(path))
+                        continue;
+
+                    LogRecoveryWarning("[SaveSystem/Recovery] 当前存档不可读，已从最近有效备份恢复：" +
+                                       backupPath + "；恢复前文件已保留为回滚副本。");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    LogRecoveryWarning("[SaveSystem/Recovery] 备份不可用，继续尝试更早备份：" +
+                                       backupPath + "；原因=" + ex.Message);
+                }
+            }
+
+            return false;
+        }
+
+        private static void LogRecoveryWarning(string message)
+        {
+            // Save.Tests 以 Unity 生成的程序集常量编译，但独立 runner 并不运行
+            // Unity player；统一写入 stderr 可同时保留编辑器/玩家日志与 runner 证据，
+            // 避免在无 Unity runtime 的恢复路径中触发 Debug 的原生 ECall。
+            Console.Error.WriteLine(message);
         }
 
         /// <summary>
@@ -101,6 +219,11 @@ namespace Whalebone.Systems.Save
         /// + Ship（small_fishing，满耐久）+ 初始船员老水手，全部落库。
         /// </summary>
         public static void NewGame(NewGameParams p)
+        {
+            ExecuteWithBackup("NewGame", () => NewGameCore(p));
+        }
+
+        private static void NewGameCore(NewGameParams p)
         {
             string captainName = string.IsNullOrEmpty(p.CaptainName) ? "无名船长" : p.CaptainName;
             string shipTypeId = string.IsNullOrEmpty(p.ShipTypeId) ? "small_fishing" : p.ShipTypeId;
@@ -110,21 +233,6 @@ namespace Whalebone.Systems.Save
             var rng = new System.Random();
 
             EnsureSchemaAndSeed();
-
-            // 新游戏 = 覆盖旧档：清空三张存档表（trait_defs / ship_type_defs 种子表保留）
-            using (var db = OpenDb())
-            {
-                db.Execute("DELETE FROM players");
-                db.Execute("DELETE FROM ships");
-                db.Execute("DELETE FROM crew_agents");
-
-                // D8-A05 迁移表属于同一 save.db；“新游戏 = 覆盖旧档”时不能保留旧存档的 v3 投影。
-                // 旧 D7 数据库没有这些表，因此只在表存在时清理，保持 D7 首次启动兼容。
-                if (db.Query("SELECT name FROM sqlite_master WHERE type='table' AND name='v3_entities'").Count > 0)
-                    db.Execute("DELETE FROM v3_entities");
-                if (db.Query("SELECT name FROM sqlite_master WHERE type='table' AND name='save_metadata'").Count > 0)
-                    db.Execute("DELETE FROM save_metadata");
-            }
 
             // --- 生成实体（全部数值初始化为默认值，后续由各系统裁决修改）---
             var player = PlayerState.CreateNew(NewId("player"), captainName, identityCreation);
@@ -147,22 +255,46 @@ namespace Whalebone.Systems.Save
             GameState.CrewAgents.Add(sailor);
             GameState.CrewAgentTraitIds[sailor.Id] = sailorTraitIds; // 见 CrewAgentCodec 注释（桥接占位）
 
-            // --- 落库 ---
-            WritePlayer(player);
-            WriteShip(ship);
-            WriteCrew(sailor);
+            // --- 原子覆盖旧档并落库 ---
+            // 新游戏 = 覆盖旧档：清空三张存档表（trait_defs / ship_type_defs 种子表保留），
+            // 同时移除旧的 D8 v3 投影，再写入新生成的 Player/Ship/Crew。所有动作必须处于
+            // 同一 SQLite 事务中，避免进程中断后出现“新玩家 + 旧船员”这样的混合快照。
+            ExecuteInTransaction(db =>
+            {
+                db.Execute("DELETE FROM players");
+                db.Execute("DELETE FROM ships");
+                db.Execute("DELETE FROM crew_agents");
+
+                // 只删除表内行会留下空的 save_metadata，下一次迁移会被正确地判定为
+                // metadata_incomplete，导致新游戏无法再次迁移。
+                db.Execute("DROP TABLE IF EXISTS save_metadata");
+                db.Execute("DROP TABLE IF EXISTS v3_entities");
+
+                WritePlayer(db, player);
+                WriteShip(db, ship);
+                WriteCrew(db, sailor);
+            });
         }
 
         /// <summary>把内存状态（Player/Ship/CrewAgent）序列化回三表。</summary>
         public static void Save()
         {
+            ExecuteWithBackup("Save", SaveCore);
+        }
+
+        private static void SaveCore()
+        {
             if (GameState.CurrentPlayer == null)
                 throw new InvalidOperationException("[SaveSystem] 无进行中的游戏，无法保存（请先 NewGame 或 Load）。");
 
             EnsureSchemaAndSeed();
-            WritePlayer(GameState.CurrentPlayer);
-            if (GameState.CurrentShip != null) WriteShip(GameState.CurrentShip);
-            foreach (var c in GameState.CrewAgents) WriteCrew(c);
+            ExecuteInTransaction(db =>
+            {
+                WritePlayer(db, GameState.CurrentPlayer);
+                TestTransactionBoundaryHook?.Invoke("after_player");
+                if (GameState.CurrentShip != null) WriteShip(db, GameState.CurrentShip);
+                foreach (var c in GameState.CrewAgents) WriteCrew(db, c);
+            });
         }
 
         /// <summary>
@@ -936,11 +1068,70 @@ PRAGMA user_version = " + SchemaVersion + @";
             return new SqliteDb(ResolveDbPath());
         }
 
+        private static void ExecuteWithBackup(string operation, Action body)
+        {
+            string path = ResolveDbPath();
+            var backup = SaveFileSafety.CreateBackup(path);
+            try
+            {
+                body();
+            }
+            catch (Exception ex)
+            {
+                if (backup != null)
+                {
+                    try
+                    {
+                        SaveFileSafety.RestoreBackup(path, backup.BackupPath);
+                    }
+                    catch (Exception restoreError)
+                    {
+                        throw new InvalidOperationException(
+                            "[SaveSystem] " + operation + " 失败，且无法从备份恢复；原始错误=" + ex.Message,
+                            restoreError);
+                    }
+                }
+                throw new InvalidOperationException(
+                    "[SaveSystem] " + operation + " 失败；" +
+                    (backup == null ? "没有可用的旧档备份。" : "已尝试恢复旧档备份：" + backup.BackupPath), ex);
+            }
+        }
+
+        private static void ExecuteInTransaction(Action<SqliteDb> body)
+        {
+            if (body == null) throw new ArgumentNullException(nameof(body));
+
+            using (var db = OpenDb())
+            {
+                db.Execute("BEGIN IMMEDIATE");
+                try
+                {
+                    body(db);
+                    db.Execute("COMMIT");
+                }
+                catch (Exception error)
+                {
+                    try
+                    {
+                        db.Execute("ROLLBACK");
+                    }
+                    catch (Exception rollbackError)
+                    {
+                        throw new InvalidOperationException(
+                            "[SaveSystem] 存档事务回滚失败。",
+                            new AggregateException(error, rollbackError));
+                    }
+
+                    throw;
+                }
+            }
+        }
+
         // ============================================================
         // Player 行读写
         // ============================================================
 
-        private static void WritePlayer(PlayerState p)
+        private static void WritePlayer(SqliteDb db, PlayerState p)
         {
             if (p.Identity == null)
                 p.Identity = D10PlayerIdentityState.CreateDefault(p.Id, p.Name);
@@ -948,19 +1139,16 @@ PRAGMA user_version = " + SchemaVersion + @";
                 throw new InvalidOperationException("[SaveSystem] Player identity owner mismatch, refusing to save.");
             p.Identity.Validate();
             p.Name = p.Identity.Name;
-            using (var db = OpenDb())
-            {
-                db.Execute(
-                    "INSERT OR REPLACE INTO players(id,name,money,skills_json,traits_json,reputation_json,inventory_json,ship_id,location_json,play_seconds) VALUES(?,?,?,?,?,?,?,?,?,?)",
-                    p.Id, p.Name, p.Money,
-                    SaveJson.Stringify(EnumDictToStrings(p.Skills)),
-                    SaveJson.Stringify(p.Traits),
-                    SaveJson.Stringify(p.Reputation),
-                    SaveJson.Stringify(p.Inventory),
-                    p.ShipId,
-                    SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime, p.D4Runtime, p.D5Runtime, p.D9Runtime, p.D10Runtime, p.D11Runtime, p.Identity, p.D11PetRuntime, p.D11AquacultureRuntime, p.D12Runtime, p.D12PokerRuntime, p.D13Runtime, p.D13FinanceRuntime, p.D13FarmingRuntime, p.D13RanchRuntime, p.D13GovernanceRuntime, p.D13BuildingRuntime, p.D13DynamicMarketRuntime, p.D14Runtime, p.D14AftercareRuntime, p.D14SpecialEquipmentRuntime, p.D14RewardRuntime, p.D14FactionLegalRuntime, p.D14ReligionCommunityRuntime, p.D14S01IntegrationRuntime)),
-                    p.PlaySeconds);
-            }
+            db.Execute(
+                "INSERT OR REPLACE INTO players(id,name,money,skills_json,traits_json,reputation_json,inventory_json,ship_id,location_json,play_seconds) VALUES(?,?,?,?,?,?,?,?,?,?)",
+                p.Id, p.Name, p.Money,
+                SaveJson.Stringify(EnumDictToStrings(p.Skills)),
+                SaveJson.Stringify(p.Traits),
+                SaveJson.Stringify(p.Reputation),
+                SaveJson.Stringify(p.Inventory),
+                p.ShipId,
+                SaveJson.Stringify(LocationToObj(p.Location, p.D3Runtime, p.D4Runtime, p.D5Runtime, p.D9Runtime, p.D10Runtime, p.D11Runtime, p.Identity, p.D11PetRuntime, p.D11AquacultureRuntime, p.D12Runtime, p.D12PokerRuntime, p.D13Runtime, p.D13FinanceRuntime, p.D13FarmingRuntime, p.D13RanchRuntime, p.D13GovernanceRuntime, p.D13BuildingRuntime, p.D13DynamicMarketRuntime, p.D14Runtime, p.D14AftercareRuntime, p.D14SpecialEquipmentRuntime, p.D14RewardRuntime, p.D14FactionLegalRuntime, p.D14ReligionCommunityRuntime, p.D14S01IntegrationRuntime)),
+                p.PlaySeconds);
         }
 
         private static PlayerState ReadPlayer(Dictionary<string, object> row)
@@ -1073,25 +1261,22 @@ PRAGMA user_version = " + SchemaVersion + @";
         // Ship 行读写
         // ============================================================
 
-        private static void WriteShip(ShipState s)
+        private static void WriteShip(SqliteDb db, ShipState s)
         {
-            using (var db = OpenDb())
-            {
-                var logList = new List<object>();
-                foreach (var e in s.ShipLog)
-                    logList.Add(new Dictionary<string, object> { ["time"] = e.Time, ["kind"] = e.Kind, ["text"] = e.Text });
+            var logList = new List<object>();
+            foreach (var e in s.ShipLog)
+                logList.Add(new Dictionary<string, object> { ["time"] = e.Time, ["kind"] = e.Kind, ["text"] = e.Text });
 
-                db.Execute(
-                    "INSERT OR REPLACE INTO ships(id,ship_type_id,name,hull,cargo_json,cannons,loaded_count,supplies_json,crew_json,upgrades_json,state_json,ship_log_json) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
-                    s.Id, s.ShipTypeId, s.Name, s.Hull,
-                    SaveJson.Stringify(s.Cargo),
-                    s.Cannons, s.LoadedCount,
-                    SaveJson.Stringify(s.Supplies),
-                    SaveJson.Stringify(s.CrewIds),
-                    SaveJson.Stringify(s.Upgrades),
-                    SaveJson.Stringify(s.State),
-                    SaveJson.Stringify(logList));
-            }
+            db.Execute(
+                "INSERT OR REPLACE INTO ships(id,ship_type_id,name,hull,cargo_json,cannons,loaded_count,supplies_json,crew_json,upgrades_json,state_json,ship_log_json) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                s.Id, s.ShipTypeId, s.Name, s.Hull,
+                SaveJson.Stringify(s.Cargo),
+                s.Cannons, s.LoadedCount,
+                SaveJson.Stringify(s.Supplies),
+                SaveJson.Stringify(s.CrewIds),
+                SaveJson.Stringify(s.Upgrades),
+                SaveJson.Stringify(s.State),
+                SaveJson.Stringify(logList));
         }
 
         private static ShipState ReadShip(Dictionary<string, object> row, SqliteDb db)
@@ -1140,18 +1325,15 @@ PRAGMA user_version = " + SchemaVersion + @";
         // CrewAgent 行读写
         // ============================================================
 
-        private static void WriteCrew(CrewAgent agent)
+        private static void WriteCrew(SqliteDb db, CrewAgent agent)
         {
             GameState.CrewAgentTraitIds.TryGetValue(agent.Id, out List<string> traitIds);
-            using (var db = OpenDb())
-            {
-                var row = CrewAgentCodec.ToRow(agent, traitIds ?? new List<string>());
-                db.Execute(
-                    "INSERT OR REPLACE INTO crew_agents(id,name,role,culture,traits_json,stats_json,persona_json,memory_json,relations_json) VALUES(?,?,?,?,?,?,?,?,?)",
-                    row["id"], row["name"], row["role"], row["culture"],
-                    row["traits_json"], row["stats_json"], row["persona_json"],
-                    row["memory_json"], row["relations_json"]);
-            }
+            var row = CrewAgentCodec.ToRow(agent, traitIds ?? new List<string>());
+            db.Execute(
+                "INSERT OR REPLACE INTO crew_agents(id,name,role,culture,traits_json,stats_json,persona_json,memory_json,relations_json) VALUES(?,?,?,?,?,?,?,?,?)",
+                row["id"], row["name"], row["role"], row["culture"],
+                row["traits_json"], row["stats_json"], row["persona_json"],
+                row["memory_json"], row["relations_json"]);
         }
 
         // ============================================================

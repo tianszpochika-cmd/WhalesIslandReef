@@ -1,0 +1,45 @@
+{
+  "tool": "D16-A01 hardware baseline",
+  "captured_at_utc": "2026-08-12T04:19:09.512456+00:00",
+  "measurement_kind": "host_hardware_snapshot",
+  "scope": "local_host_only",
+  "is_target_device_evidence": false,
+  "is_low_end_device_evidence": false,
+  "does_not_measure": [
+    "game_frame_gpu_time",
+    "target_or_low_end_performance",
+    "large_scene_load_time",
+    "long_run_stability"
+  ],
+  "os": {
+    "system": "Windows",
+    "release": "10",
+    "version": "10.0.26200",
+    "machine": "AMD64"
+  },
+  "cpu": {
+    "logical_processors": 20,
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel"
+  },
+  "memory": {
+    "total_bytes": 34134740992
+  },
+  "gpu": {
+    "source": "nvidia-smi",
+    "sample_available": true,
+    "query_error": null,
+    "devices": [
+      {
+        "name": "NVIDIA GeForce RTX 4070 Ti",
+        "driver_version": "596.36",
+        "utilization_gpu_percent": 9,
+        "memory_used_mb": 4773,
+        "memory_total_mb": 12282,
+        "temperature_c": 44
+      }
+    ]
+  },
+  "disk": {
+    "workspace_free_bytes": 715921195008
+  }
+}

@@ -4,24 +4,57 @@
   "name": "火绳短枪",
   "display_name_key": "content.item.item_firearm_matchlock_carbine.name",
   "category": "item",
-  "tags": ["firearm", "historical_weapon", "restricted"],
+  "tags": [
+    "firearm",
+    "historical_weapon",
+    "restricted"
+  ],
   "description": "历史武器代表条目；持有、授权和强度必须经过审查与所属系统裁决。",
   "gameplay_role": "special_firearm",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["armory", "ship_deck"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "armory",
+    "ship_deck"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
-  "references": ["ship_moonwake"],
+  "references": [
+    "ship_moonwake"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"],
+  "source_refs": [
+    "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  ],
   "source_note": "D14-A03 历史武器代表条目，内容警告和历史审查状态不可省略。",
-  "source": { "kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md" },
-  "license": { "status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true },
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "historical",
   "review_status": "approved_with_warning",
   "phase": "D14",
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-D14-ITEM-003",
-  "reviewer": "D14-A03"
+  "reviewer": "D14-A03",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

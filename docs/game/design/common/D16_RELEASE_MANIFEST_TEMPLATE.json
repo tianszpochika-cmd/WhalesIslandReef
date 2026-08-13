@@ -1,0 +1,45 @@
+{
+  "manifest_version": 1,
+  "release_status": "blocked",
+  "product_name": "WhalesIslandReef",
+  "company_name": "Whalebone Studio",
+  "unity_version": "6000.0.80f1",
+  "target_platform": "StandaloneWindows64",
+  "required_scenes": [
+    "Assets/Scenes/MainMenu.unity",
+    "Assets/Scenes/InitialHarbor.unity"
+  ],
+  "content_registry": {
+    "path": "game/Assets/Resources/ContentRegistry/registry.json",
+    "qa_status": "D15-S02-PASS",
+    "asset_authorization_status": "PENDING"
+  },
+  "localization": ["zh-CN", "en-US"],
+  "save_compatibility": {
+    "current_version": 3,
+    "file_backup_required": true,
+    "migration_failure_preserves_original": true
+  },
+  "offline_mode": true,
+  "crash_reporting": {
+    "external_upload": false,
+    "privacy_review": "PENDING"
+  },
+  "installer": {
+    "install_test": "PENDING",
+    "uninstall_test": "PENDING",
+    "update_test": "PENDING"
+  },
+  "steam": {
+    "upload_authorized": false,
+    "upload_executed": false
+  },
+  "blocking_reasons": [
+    "D16-A01 runtime performance evidence pending",
+    "D16-A02 power-loss and full save matrix pending",
+    "D16-A03 device and Unity runtime accessibility evidence pending",
+    "D16-A04 history and rights closure pending",
+    "D16-A05 placeholder assets remain",
+    "D16-A06 build/install/update evidence pending"
+  ]
+}

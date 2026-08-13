@@ -1,0 +1,520 @@
+{
+  "task": "D16-A04",
+  "status": "DRY_RUN",
+  "root": "game/Assets/Resources/ContentRegistry",
+  "eligible_count": 0,
+  "eligible_ids": [],
+  "changed_count": 0,
+  "changed_ids": [],
+  "ineligible_pending_count": 101,
+  "ineligible_pending": [
+    {
+      "id": "animal_domestic_cattle",
+      "path": "game/Assets/Resources/ContentRegistry/entries/animal/animal_domestic_cattle.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "animal_domestic_goat",
+      "path": "game/Assets/Resources/ContentRegistry/entries/animal/animal_domestic_goat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "animal_domestic_pig",
+      "path": "game/Assets/Resources/ContentRegistry/entries/animal/animal_domestic_pig.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_blockade_order",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_blockade_order.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_cargo_seizure_writ",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_cargo_seizure_writ.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_item_prop_placeholder",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_d15_item_prop_placeholder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_d15_outfit_placeholder",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_d15_outfit_placeholder.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_ph_crew_male",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_ph_crew_male.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_ph_palm_leaves",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_ph_palm_leaves.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_privateer_letter_of_marque",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_privateer_letter_of_marque.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_coastal",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_coastal.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_crop",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_crop.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_epiphyte",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_epiphyte.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_fern",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_fern.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_fruit_tree",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_fruit_tree.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_herb",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_herb.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_medicinal",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_medicinal.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_moss",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_moss.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_shrub",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_shrub.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_spice",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_spice.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_tree",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_tree.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_variant",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_variant.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "asset_vegetation_profile_wetland",
+      "path": "game/Assets/Resources/ContentRegistry/entries/asset/asset_vegetation_profile_wetland.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cassava_flour",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cassava_flour.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cattle_leather",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cattle_leather.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_chart_compass",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_chart_compass.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_chicken_egg",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_chicken_egg.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cocoa_cured",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cocoa_cured.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_coffee_roasted",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_coffee_roasted.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_conch",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_conch.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cooked_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cooked_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_cured_shellfish",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_cured_shellfish.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_sardine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_sardine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_seaweed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_seaweed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dried_snapper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dried_snapper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_dye_indigo",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_dye_indigo.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_farm_pest_treatment",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_farm_pest_treatment.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fiber_agave",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fiber_agave.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_firearm_matchlock_carbine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_firearm_matchlock_carbine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fish_oil",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fish_oil.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fresh_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fresh_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fresh_sardine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fresh_sardine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fresh_snapper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fresh_snapper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_fruit_guava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_fruit_guava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_cast_net",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_cast_net.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_fish_trap",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_fish_trap.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_handline_basic",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_handline_basic.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_seaweed_hook",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_seaweed_hook.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_shellfish_rake",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_shellfish_rake.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_gear_shore_rod",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_gear_shore_rod.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_goat_milk",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_goat_milk.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_guava_preserve",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_guava_preserve.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_herb_prepared",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_herb_prepared.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_livestock_feed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_livestock_feed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_livestock_medicine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_livestock_medicine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_pig_meat",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_pig_meat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_resin_pine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_resin_pine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_cod",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_cod.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_mackerel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_mackerel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_sardine",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_sardine.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_salted_snapper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_salted_snapper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seaweed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seaweed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_cassava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_cassava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_cocoa",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_cocoa.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_coffee",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_coffee.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_guava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_guava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_herb",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_herb.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_spice",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_spice.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_sugarcane",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_sugarcane.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_seed_tobacco",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_seed_tobacco.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_signal_lantern_amber",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_signal_lantern_amber.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_special_weapon_royal_gun_carriage",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_special_weapon_royal_gun_carriage.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_spices_dried",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_spices_dried.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tobacco_cured",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tobacco_cured.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_rescue_grapnel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_rescue_grapnel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_axe",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_axe.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_basket",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_basket.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_harvesting_knife",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_harvesting_knife.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_herb_knife",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_herb_knife.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_machete",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_machete.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_tool_vegetation_resin_scraper",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_tool_vegetation_resin_scraper.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_toxin_datura",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_toxin_datura.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "item_vegetable_cassava",
+      "path": "game/Assets/Resources/ContentRegistry/entries/item/item_vegetable_cassava.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_accessory_compass_badge",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_accessory_compass_badge.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_body_sun_bronzed",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_body_sun_bronzed.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_bottom_canvas_trousers",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_bottom_canvas_trousers.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_career_fisher_handline",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_career_fisher_handline.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_ceremonial_silk_coat",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_ceremonial_silk_coat.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_coat_rain_oilskin",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_coat_rain_oilskin.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_gloves_ropework",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_gloves_ropework.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_hair_short_brown",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_hair_short_brown.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_hat_straw_deck",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_hat_straw_deck.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_injury_bandaged_arm",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_injury_bandaged_arm.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_injury_old_leg",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_injury_old_leg.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_shoes_deck_boots",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_shoes_deck_boots.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_top_linen_deckhand",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_top_linen_deckhand.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "outfit_weathered_deckhand",
+      "path": "game/Assets/Resources/ContentRegistry/entries/outfit/outfit_weathered_deckhand.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "reward_d14_professional_rescue",
+      "path": "game/Assets/Resources/ContentRegistry/entries/reward/reward_d14_professional_rescue.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "reward_d14_rare_indigo_dye",
+      "path": "game/Assets/Resources/ContentRegistry/entries/reward/reward_d14_rare_indigo_dye.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    },
+    {
+      "id": "reward_d14_worldclass_reinforced_keel",
+      "path": "game/Assets/Resources/ContentRegistry/entries/reward/reward_d14_worldclass_reinforced_keel.json",
+      "reason": "historical_tag_is_not_explicitly_fictional"
+    }
+  ],
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "review_date": "2026-08-12",
+  "policy": "Only explicit fictional project-authored records are eligible; no historical or external claim is approved."
+}

@@ -1,0 +1,140 @@
+{
+  "id": "ship_coastal_bark",
+  "schema_version": 1,
+  "name": "近岸巴克船",
+  "display_name_key": "content.ship.ship_coastal_bark.name",
+  "category": "ship",
+  "tags": [
+    "d15_a06",
+    "hull",
+    "bark",
+    "ship_system"
+  ],
+  "description": "A ship hull presentation and interaction definition for coastal bark.",
+  "gameplay_role": "ship_hull_content",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "coastal_water",
+    "ship_deck",
+    "ship_hold"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_saint_marys"
+  ],
+  "asset_refs": [
+    "asset_d15_a06_model_coastal_bark",
+    "asset_d15_a06_collision_profiles",
+    "asset_d15_a06_anchor_profiles",
+    "asset_d15_a06_animation_profiles",
+    "asset_d15_a06_audio_profiles",
+    "asset_d15_a06_ui_profiles",
+    "asset_d15_a06_material_profiles"
+  ],
+  "source_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/ship/10_SHIP_DATA_MODEL.md"
+  ],
+  "source_note": "D15-A06 project-authored content definition; runtime values remain with the owning ship or inventory system.",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#d15-a06"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "ShipSystem",
+  "test_id": "D8-A02-D15-A06-HULL-012",
+  "reviewer": "D15-A06*",
+  "production_batch": "D15-A06*",
+  "representative_sample": false,
+  "production_stage": "integrated",
+  "behavior_profile": "ship_content.d15_a06.hull",
+  "asset_state": "integrated",
+  "model_ref": "asset_d15_a06_model_coastal_bark",
+  "model_path": "game/Assets/Content/D15/A06/assets/models/hulls/ship_coastal_bark.obj",
+  "material_ref": "asset_d15_a06_material_profiles",
+  "collision_ref": "asset_d15_a06_collision_profiles",
+  "collision_profile_id": "collision_ship_coastal_bark",
+  "anchor_refs": [
+    "anchor_bow",
+    "anchor_stern",
+    "anchor_helm",
+    "anchor_boarding",
+    "anchor_cargo",
+    "anchor_lookout",
+    "anchor_camera"
+  ],
+  "anchor_data_ref": "asset_d15_a06_anchor_profiles",
+  "animation_refs": [
+    "asset_d15_a06_animation_profiles"
+  ],
+  "animation_profile_id": "animation_ship_coastal_bark",
+  "audio_refs": [
+    "asset_d15_a06_audio_profiles"
+  ],
+  "audio_profile_id": "audio_ship_coastal_bark",
+  "ui_ref": "asset_d15_a06_ui_profiles",
+  "ui_profile_id": "ui_ship_coastal_bark",
+  "ui_localization_key": "content.ship.ship_coastal_bark.name",
+  "lod_profile": {
+    "lod0_triangles_max": 35000,
+    "lod1_triangles_max": 18000,
+    "lod2_triangles_max": 7000,
+    "lod3_triangles_max": 2000
+  },
+  "test_cases": [
+    "ship-hull-012-load",
+    "ship-hull-012-interact",
+    "ship-hull-012-save-restore",
+    "ship-hull-012-owner-handoff"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "review:d15-a06:project-authored",
+    "authorization:d15-a06:internal-authored"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "hull_layout_profile": {
+    "deck_zones": [
+      "bow",
+      "main_deck",
+      "stern"
+    ],
+    "compartment_profile": "ship_compartments_d15_a06",
+    "damage_anchor_profile": "ship_damage_anchors_d15_a06"
+  },
+  "functional_point_slots": [
+    "ship_function_helm_wheel",
+    "ship_function_port_anchor",
+    "ship_function_chart_table",
+    "ship_function_main_cargo_hold"
+  ],
+  "compatible_module_tags": [
+    "hull",
+    "rigging",
+    "navigation",
+    "cargo",
+    "safety",
+    "living",
+    "support"
+  ],
+  "incompatible_module_tags": []
+}

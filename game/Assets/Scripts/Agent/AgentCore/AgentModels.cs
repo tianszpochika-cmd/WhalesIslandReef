@@ -548,12 +548,17 @@ namespace Whalebone.Agent
             private readonly string _json;
             private int _index;
             public string Error;
-            public bool IsAtEnd { get { SkipWhitespace(); return _index == (_json == null ? 0 : _json.Length); } }
+            public bool IsAtEnd
+            {
+                get { SkipWhitespace(); return _index == (_json == null ? 0 : _json.Length); }
+            }
+
             public JsonReader(string json) { _json = json ?? string.Empty; }
 
             public bool TryReadValue(out object value)
             {
-                value = null; SkipWhitespace();
+                value = null;
+                SkipWhitespace();
                 if (_index >= _json.Length) return Fail("unexpected_end");
                 char next = _json[_index];
                 if (next == '{') return TryReadObject(out value);
@@ -567,71 +572,136 @@ namespace Whalebone.Agent
 
             private bool TryReadObject(out object value)
             {
-                var result = new Dictionary<string, object>(StringComparer.Ordinal); value = result; _index++; SkipWhitespace();
+                var result = new Dictionary<string, object>(StringComparer.Ordinal);
+                value = result;
+                _index++;
+                SkipWhitespace();
                 if (ConsumeChar('}')) return true;
                 while (_index < _json.Length)
                 {
-                    object keyValue; if (!TryReadString(out keyValue)) return false; string key = keyValue as string;
-                    if (key == null) return Fail("object_key_not_string"); if (result.ContainsKey(key)) return Fail("duplicate_key");
-                    SkipWhitespace(); if (!ConsumeChar(':')) return Fail("missing_colon"); object child;
-                    if (!TryReadValue(out child)) return false; result.Add(key, child); SkipWhitespace();
-                    if (ConsumeChar('}')) return true; if (!ConsumeChar(',')) return Fail("missing_comma"); SkipWhitespace();
+                    object keyValue;
+                    if (!TryReadString(out keyValue)) return false;
+                    string key = keyValue as string;
+                    if (key == null) return Fail("object_key_not_string");
+                    if (result.ContainsKey(key)) return Fail("duplicate_key");
+                    SkipWhitespace();
+                    if (!ConsumeChar(':')) return Fail("missing_colon");
+                    object child;
+                    if (!TryReadValue(out child)) return false;
+                    result.Add(key, child);
+                    SkipWhitespace();
+                    if (ConsumeChar('}')) return true;
+                    if (!ConsumeChar(',')) return Fail("missing_comma");
+                    SkipWhitespace();
                 }
                 return Fail("unterminated_object");
             }
 
             private bool TryReadArray(out object value)
             {
-                var result = new List<object>(); value = result; _index++; SkipWhitespace();
+                var result = new List<object>();
+                value = result;
+                _index++;
+                SkipWhitespace();
                 if (ConsumeChar(']')) return true;
                 while (_index < _json.Length)
                 {
-                    object child; if (!TryReadValue(out child)) return false; result.Add(child); SkipWhitespace();
-                    if (ConsumeChar(']')) return true; if (!ConsumeChar(',')) return Fail("missing_comma"); SkipWhitespace();
+                    object child;
+                    if (!TryReadValue(out child)) return false;
+                    result.Add(child);
+                    SkipWhitespace();
+                    if (ConsumeChar(']')) return true;
+                    if (!ConsumeChar(',')) return Fail("missing_comma");
+                    SkipWhitespace();
                 }
                 return Fail("unterminated_array");
             }
 
             private bool TryReadString(out object value)
             {
-                value = null; if (!ConsumeChar('"')) return Fail("expected_string"); var builder = new StringBuilder();
+                value = null;
+                if (!ConsumeChar('"')) return Fail("expected_string");
+                var builder = new StringBuilder();
                 while (_index < _json.Length)
                 {
-                    char c = _json[_index++]; if (c == '"') { value = builder.ToString(); return true; }
+                    char c = _json[_index++];
+                    if (c == '"') { value = builder.ToString(); return true; }
                     if (c == '\\')
                     {
-                        if (_index >= _json.Length) return Fail("unterminated_escape"); char escaped = _json[_index++];
+                        if (_index >= _json.Length) return Fail("unterminated_escape");
+                        char escaped = _json[_index++];
                         switch (escaped)
                         {
-                            case '"': builder.Append('"'); break; case '\\': builder.Append('\\'); break; case '/': builder.Append('/'); break;
-                            case 'b': builder.Append('\b'); break; case 'f': builder.Append('\f'); break; case 'n': builder.Append('\n'); break;
+                            case '"': builder.Append('"'); break; case '\\': builder.Append('\\'); break;
+                            case '/': builder.Append('/'); break; case 'b': builder.Append('\b'); break;
+                            case 'f': builder.Append('\f'); break; case 'n': builder.Append('\n'); break;
                             case 'r': builder.Append('\r'); break; case 't': builder.Append('\t'); break;
-                            case 'u': if (_index + 4 > _json.Length) return Fail("invalid_unicode_escape"); string hex = _json.Substring(_index, 4); int code;
+                            case 'u':
+                                if (_index + 4 > _json.Length) return Fail("invalid_unicode_escape");
+                                string hex = _json.Substring(_index, 4);
+                                int code;
                                 if (!int.TryParse(hex, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out code)) return Fail("invalid_unicode_escape");
                                 builder.Append((char)code); _index += 4; break;
                             default: return Fail("invalid_escape");
                         }
                     }
-                    else { if (c < 0x20) return Fail("control_character_in_string"); builder.Append(c); }
+                    else
+                    {
+                        if (c < 0x20) return Fail("control_character_in_string");
+                        builder.Append(c);
+                    }
                 }
                 return Fail("unterminated_string");
             }
 
             private bool TryReadNumber(out object value)
             {
-                value = null; int start = _index; if (_json[_index] == '-') _index++;
+                value = null;
+                int start = _index;
+                if (_json[_index] == '-') _index++;
                 while (_index < _json.Length && char.IsDigit(_json[_index])) _index++;
-                if (_index < _json.Length && _json[_index] == '.') { _index++; while (_index < _json.Length && char.IsDigit(_json[_index])) _index++; }
-                if (_index < _json.Length && (_json[_index] == 'e' || _json[_index] == 'E')) { _index++; if (_index < _json.Length && (_json[_index] == '+' || _json[_index] == '-')) _index++; while (_index < _json.Length && char.IsDigit(_json[_index])) _index++; }
-                string text = _json.Substring(start, _index - start); double number;
-                if (text.Length == 0 || !double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out number)) return Fail("invalid_number");
-                value = number; return true;
+                if (_index < _json.Length && _json[_index] == '.')
+                {
+                    _index++;
+                    while (_index < _json.Length && char.IsDigit(_json[_index])) _index++;
+                }
+                if (_index < _json.Length && (_json[_index] == 'e' || _json[_index] == 'E'))
+                {
+                    _index++;
+                    if (_index < _json.Length && (_json[_index] == '+' || _json[_index] == '-')) _index++;
+                    while (_index < _json.Length && char.IsDigit(_json[_index])) _index++;
+                }
+                string numberText = _json.Substring(start, _index - start);
+                double number;
+                if (numberText.Length == 0 || !double.TryParse(numberText, NumberStyles.Float, CultureInfo.InvariantCulture, out number)) return Fail("invalid_number");
+                value = number;
+                return true;
             }
 
-            private bool Consume(string text) { if (_index + text.Length > _json.Length || !string.Equals(_json.Substring(_index, text.Length), text, StringComparison.Ordinal)) return false; _index += text.Length; return true; }
-            private bool ConsumeChar(char expected) { if (_index >= _json.Length || _json[_index] != expected) return false; _index++; return true; }
-            private void SkipWhitespace() { while (_index < _json.Length && char.IsWhiteSpace(_json[_index])) _index++; }
-            private bool Fail(string error) { Error = error; return false; }
+            private bool Consume(string text)
+            {
+                if (_index + text.Length > _json.Length || !string.Equals(_json.Substring(_index, text.Length), text, StringComparison.Ordinal)) return false;
+                _index += text.Length;
+                return true;
+            }
+
+            private bool ConsumeChar(char expected)
+            {
+                if (_index >= _json.Length || _json[_index] != expected) return false;
+                _index++;
+                return true;
+            }
+
+            private void SkipWhitespace()
+            {
+                while (_index < _json.Length && char.IsWhiteSpace(_json[_index])) _index++;
+            }
+
+            private bool Fail(string error)
+            {
+                Error = error;
+                return false;
+            }
         }
     }
 }

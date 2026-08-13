@@ -41,6 +41,15 @@ namespace Whalebone.EditorTools
             api.Execute(new ExecutionSettings(new Filter { testMode = TestMode.EditMode }));
         }
 
+        /// <summary>
+        /// D16 本地批处理入口：只运行 Save.Tests，不触发 D1 美化或场景切换。
+        /// 放在已被 Unity 识别的 Editor 程序集中，供无界面验收使用。
+        /// </summary>
+        public static void RunD16SaveTests()
+        {
+            Save.Tests.D2BatchTestRunner.RunD2();
+        }
+
         /// <summary>安全读取 ITestResultAdaptor 整数属性（属性不存在时返回 0，避免版本差异编译错）。</summary>
         private static int SafeGetInt(object obj, string propName)
         {

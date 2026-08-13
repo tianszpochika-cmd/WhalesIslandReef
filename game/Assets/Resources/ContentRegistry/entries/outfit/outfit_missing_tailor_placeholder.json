@@ -4,23 +4,61 @@
   "name": "缺失资源占位饰品",
   "display_name_key": "content.outfit.outfit_missing_tailor_placeholder.name",
   "category": "outfit",
-  "tags": ["accessory", "placeholder", "missing_resource"],
+  "tags": [
+    "accessory",
+    "placeholder",
+    "missing_resource"
+  ],
   "description": "正式目录中的占位样例；资源未就绪时必须显示明确错误而不是静默丢失。",
   "gameplay_role": "appearance_missing_resource_sample",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["harbor"],
-  "valid_weather": ["clear"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear"
+  ],
   "dependencies": [],
   "references": [],
-  "asset_refs": ["asset_ph_crew_male"],
-  "source_refs": ["docs/game/design/common/D8_CONTENT_ID_REGISTRY.md"],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md"
+  ],
   "source_note": "仅作为仓库内的占位验证条目；不引入未授权外部资源。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "fictional",
   "phase": "D10",
   "status": "prototyped",
   "owner_system": "AppearanceSystem",
   "test_id": "D8-A02-D10-OUTFIT-014",
-  "reviewer": "D10-A05"
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "scope": "fictional_content_only",
+    "decision": "Approved",
+    "reason": "Explicitly fictional, project-authored content with internal license, existing evidence files, no sensitive tags, and no content warnings.",
+    "reviewed_at": "2026-08-12",
+    "not_a_historical_fact_claim": true
+  }
 }

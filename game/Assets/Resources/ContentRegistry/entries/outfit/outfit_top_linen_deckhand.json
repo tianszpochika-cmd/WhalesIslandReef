@@ -4,23 +4,57 @@
   "name": "水手亚麻上衣",
   "display_name_key": "content.outfit.outfit_top_linen_deckhand.name",
   "category": "outfit",
-  "tags": ["top", "deckhand", "weather_clear", "dyeable"],
+  "tags": [
+    "top",
+    "deckhand",
+    "weather_clear",
+    "dyeable"
+  ],
   "description": "可维修和染色的上衣样例。",
   "gameplay_role": "appearance_top_layer",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_deck", "harbor"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_deck",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
   "references": [],
-  "asset_refs": ["asset_ph_crew_male"],
-  "source_refs": ["docs/game/design/character/06_CHARACTER_PRESENTATION.md"],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  ],
   "source_note": "项目自有装扮定义；不新增外部资源。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/character/06_CHARACTER_PRESENTATION.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "historical",
   "phase": "D10",
   "status": "prototyped",
   "owner_system": "AppearanceSystem",
   "test_id": "D8-A02-D10-OUTFIT-004",
-  "reviewer": "D10-A05"
+  "reviewer": "D10-A05",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

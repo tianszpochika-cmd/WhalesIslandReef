@@ -6,7 +6,6 @@
 // ============================================================
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Whalebone.Gameplay;
 using Whalebone.Gameplay.D2;
@@ -14,8 +13,10 @@ using Whalebone.Gameplay.D3;
 using Whalebone.Gameplay.D5;
 using Whalebone.Gameplay.Harbor;
 using Whalebone.Gameplay.UI;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Gameplay.UI.Dialogue;
 using Whalebone.Systems.D2;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.D7;
 
 namespace Whalebone.Gameplay.D7
@@ -31,8 +32,12 @@ namespace Whalebone.Gameplay.D7
         public static bool EscapeHandledThisFrame { get; private set; }
 
         /// <summary>没有协调器时保持旧逻辑可运行；协调器存在后统一阻止模态穿透。</summary>
-        public static bool GameplayInputAllowed => Instance == null || Instance.Snapshot.GameplayInputAllowed;
-        public static bool CameraInputAllowed => Instance == null || Instance.Snapshot.CameraInputAllowed;
+        public static bool GameplayInputAllowed =>
+            !D16InputRouter.GameplayInputBlocked &&
+            (Instance == null || Instance.Snapshot.GameplayInputAllowed);
+        public static bool CameraInputAllowed =>
+            !D16InputRouter.GameplayInputBlocked &&
+            (Instance == null || Instance.Snapshot.CameraInputAllowed);
 
         private readonly D7ControlStateMachine _state = new D7ControlStateMachine();
         private D2ControlRouter _router;
@@ -93,6 +98,8 @@ namespace Whalebone.Gameplay.D7
             if (SceneManager.GetActiveScene().name != "InitialHarbor") return;
 
             BindRuntimeObjects();
+            if (D16InputRouter.GameplayInputBlocked)
+                return;
             HandleModalEscape();
             if (Time.unscaledTime >= _nextReconcile)
             {
@@ -152,8 +159,7 @@ namespace Whalebone.Gameplay.D7
 
         private void HandleModalEscape()
         {
-            var keyboard = Keyboard.current;
-            if (keyboard == null || !keyboard.escapeKey.wasPressedThisFrame) return;
+            if (!D16InputRouter.WasPressedThisFrame(D16InputAction.Pause)) return;
 
             // 模态窗口优先被关闭；本帧不再让暂停菜单重复响应同一个 ESC。
             if (_dialogue != null && _dialogue.IsOpen)

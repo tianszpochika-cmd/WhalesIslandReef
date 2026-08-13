@@ -1,0 +1,87 @@
+{
+  "source": "tools\\results\\d16_a02_save_tests_after_sidecar_rollback_20260812.xml",
+  "manifest": "C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d16_a02_archive_matrix_manifest.json",
+  "test_case_count": 304,
+  "failed_or_inconclusive_count": 0,
+  "required_categories": [
+    "D7 基础档",
+    "D8 迁移与重复迁移",
+    "D9 航行/任务/贸易",
+    "完整资产与 D5 状态",
+    "岛屿经营",
+    "负债与金融",
+    "战斗与特殊奖励",
+    "生态与动物",
+    "船员关系",
+    "损坏档与迁移失败"
+  ],
+  "required_test_count": 31,
+  "matched_counts": {
+    "D7 基础档": 2,
+    "D8 迁移与重复迁移": 3,
+    "D9 航行/任务/贸易": 4,
+    "完整资产与 D5 状态": 2,
+    "岛屿经营": 4,
+    "负债与金融": 3,
+    "战斗与特殊奖励": 3,
+    "生态与动物": 4,
+    "船员关系": 3,
+    "损坏档与迁移失败": 3
+  },
+  "matched_tests": {
+    "D7 基础档": [
+      "Save_Then_Load_RestoresAllFields",
+      "D2Runtime_SaveLoad_RestoresLocationClockAndAffinity"
+    ],
+    "D8 迁移与重复迁移": [
+      "D8A05_D7Archive_MigratesCoreEntitiesAndMetadata",
+      "D8A05_RepeatedMigration_IsNoOp",
+      "DuplicateSettlement_IsProtectedAfterSnapshotRestore"
+    ],
+    "D9 航行/任务/贸易": [
+      "D9RuntimeSaveLoad_PreservesQuestSnapshotAndSharedEventLog",
+      "TradeSnapshot_SaveLoad_PreservesMarketDriversAndFactLog",
+      "D9FishingState_SaveLoad_RestoresFishCargoAndSchool",
+      "SaveRestorePreservesCauseChainAndDoesNotRepeatDiscovery"
+    ],
+    "完整资产与 D5 状态": [
+      "D5Snapshot_SaveAndLoadRestoresReleaseState",
+      "D4Runtime_SaveLoad_RestoresContentState"
+    ],
+    "岛屿经营": [
+      "PropertyWellFarmMarketLoanInsuranceTaxAndSaveRestoreAreConsistent",
+      "ConstructionMaterialsWorkersProductionAndSaveRestoreAreTraceable",
+      "FullCycle_StormPestHarvestProcessSellAndSaveRestoreIsIdempotent",
+      "PopulationGovernanceAndSaveRestoreKeepAuthoritySourcesAndIdempotency"
+    ],
+    "负债与金融": [
+      "D8A05_DebtArchive_UsesSafeFinanceDefaults",
+      "LoanInterestRenewalDefaultCollectionSeizureAndBankruptcyAreDeterministic",
+      "FullLifecycle_UsesLegalAndEconomyAuthorities_AndRestoresWithoutDuplicateSettlement"
+    ],
+    "战斗与特殊奖励": [
+      "KinematicsDamageFireFloodingAndSaveRestoreAreDeterministic",
+      "FiveRaritiesRequestGrantClaimAndSaveRestoreAreIdempotent",
+      "CombatAftercareEquipmentLegalAndRewardChainIsFactDrivenAndSaveIdempotent"
+    ],
+    "生态与动物": [
+      "EcologyAndAnimalSnapshotsRestoreWithFacts",
+      "LiveFishHoldRestoreDoesNotDuplicateSettlement",
+      "EventAndEcologySnapshotPreventDuplicateCargoAfterRestore",
+      "TransportMortalityIsDeterministicAcrossRuntimeSnapshotRestore"
+    ],
+    "船员关系": [
+      "CanonicalRelationGraphSurvivesSaveAndLoad",
+      "DuplicateAndSaveRestoreDoNotReplayRelationEffects",
+      "FullAcceptance_WageArrearsRescueFavoritismBehaviorIdentityAndSaveLoad"
+    ],
+    "损坏档与迁移失败": [
+      "D8A05_FailedMigration_RollsBackAndPreservesD7",
+      "D8A05_PartialCorruption_DefaultsNewFieldsWithoutDroppingD7",
+      "CorruptImpactSnapshotIsRejectedBeforeRestore"
+    ]
+  },
+  "missing_tests": {},
+  "missing_categories": {},
+  "passed": true
+}

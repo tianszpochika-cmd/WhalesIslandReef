@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "task": "D16-S01",
+  "status": "BLOCKED",
+  "captured_at": "2026-08-13",
+  "required_external_gates": [
+    "D16-A01",
+    "D16-A02",
+    "D16-A03",
+    "D16-A04",
+    "D16-A05",
+    "D16-A06"
+  ],
+  "external_gate_status": {
+    "D16-A01": "BLOCKED",
+    "D16-A02": "BLOCKED",
+    "D16-A03": "BLOCKED",
+    "D16-A04": "BLOCKED",
+    "D16-A05": "BLOCKED",
+    "D16-A06": "BLOCKED"
+  },
+  "blocking_reasons": [
+    "D16-A01:errors_present",
+    "D16-A01:status_BLOCKED",
+    "D16-A02:errors_present",
+    "D16-A02:status_BLOCKED",
+    "D16-A03:errors_present",
+    "D16-A03:status_BLOCKED",
+    "D16-A04:errors_present",
+    "D16-A04:pending_review_count_267",
+    "D16-A04:status_BLOCKED",
+    "D16-A05:errors_present",
+    "D16-A05:placeholder_count_2264",
+    "D16-A05:status_BLOCKED",
+    "D16-A06:errors_present",
+    "D16-A06:status_BLOCKED"
+  ],
+  "steam_upload_authorized": false,
+  "steam_policy_note": "Steam upload is not required for local D16-S01 readiness and remains unexecuted unless explicitly authorized.",
+  "story_executed": false,
+  "policy": {
+    "read_only": true,
+    "does_not_start_story": true,
+    "does_not_change_registry": true,
+    "does_not_approve_content": true,
+    "does_not_upload": true
+  }
+}

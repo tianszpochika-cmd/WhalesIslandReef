@@ -1,0 +1,120 @@
+{
+  "id": "item_ship_module_watertight_bulkhead",
+  "schema_version": 1,
+  "name": "防漏隔舱",
+  "display_name_key": "content.item.item_ship_module_watertight_bulkhead.name",
+  "category": "item",
+  "tags": [
+    "d15_a06",
+    "ship_module",
+    "hull",
+    "ship_system"
+  ],
+  "description": "A refit module definition; final installation and effects belong to ShipSystem and D14 owners.",
+  "gameplay_role": "ship_module_content",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "coastal_water",
+    "ship_deck",
+    "ship_hold"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [
+    "ship_moonwake",
+    "ship_function_main_cargo_hold"
+  ],
+  "asset_refs": [
+    "asset_d15_a06_model_ship_module_watertight_bulkhead",
+    "asset_d15_a06_collision_profiles",
+    "asset_d15_a06_anchor_profiles",
+    "asset_d15_a06_animation_profiles",
+    "asset_d15_a06_audio_profiles",
+    "asset_d15_a06_ui_profiles",
+    "asset_d15_a06_material_profiles"
+  ],
+  "source_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/ship/10_SHIP_DATA_MODEL.md"
+  ],
+  "source_note": "D15-A06 project-authored content definition; runtime values remain with the owning ship or inventory system.",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#d15-a06"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "ItemCatalog",
+  "test_id": "D8-A02-D15-A06-MODULE-004",
+  "reviewer": "D15-A06*",
+  "production_batch": "D15-A06*",
+  "representative_sample": false,
+  "production_stage": "integrated",
+  "behavior_profile": "ship_content.d15_a06.module",
+  "asset_state": "integrated",
+  "model_ref": "asset_d15_a06_model_ship_module_watertight_bulkhead",
+  "model_path": "game/Assets/Content/D15/A06/assets/models/modules/item_ship_module_watertight_bulkhead.obj",
+  "material_ref": "asset_d15_a06_material_profiles",
+  "collision_ref": "asset_d15_a06_collision_profiles",
+  "collision_profile_id": "collision_item_ship_module_watertight_bulkhead",
+  "anchor_refs": [
+    "anchor_module_mount_05",
+    "anchor_module_service_05"
+  ],
+  "anchor_data_ref": "asset_d15_a06_anchor_profiles",
+  "animation_refs": [
+    "asset_d15_a06_animation_profiles"
+  ],
+  "animation_profile_id": "animation_item_ship_module_watertight_bulkhead",
+  "audio_refs": [
+    "asset_d15_a06_audio_profiles"
+  ],
+  "audio_profile_id": "audio_item_ship_module_watertight_bulkhead",
+  "ui_ref": "asset_d15_a06_ui_profiles",
+  "ui_profile_id": "ui_item_ship_module_watertight_bulkhead",
+  "ui_localization_key": "content.item.item_ship_module_watertight_bulkhead.name",
+  "lod_profile": {
+    "lod0_triangles_max": 8000,
+    "lod1_triangles_max": 3000,
+    "lod2_triangles_max": 1000,
+    "lod3_triangles_max": 0
+  },
+  "test_cases": [
+    "ship-module-004-load",
+    "ship-module-004-interact",
+    "ship-module-004-save-restore",
+    "ship-module-004-owner-handoff"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "review:d15-a06:project-authored",
+    "authorization:d15-a06:internal-authored"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "module_group": "hull",
+  "required_functional_point": "ship_function_main_cargo_hold",
+  "module_role": "visual_and_assembly_slot",
+  "slot_tags": [
+    "hull",
+    "ship_module"
+  ],
+  "mutual_exclusion_group": "d15_a06_hull_slot",
+  "removable": true
+}

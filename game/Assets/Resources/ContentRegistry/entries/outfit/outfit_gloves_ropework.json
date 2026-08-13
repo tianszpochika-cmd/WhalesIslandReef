@@ -4,23 +4,57 @@
   "name": "缆绳作业手套",
   "display_name_key": "content.outfit.outfit_gloves_ropework.name",
   "category": "outfit",
-  "tags": ["gloves", "deckhand", "weather_rain", "dyeable"],
+  "tags": [
+    "gloves",
+    "deckhand",
+    "weather_rain",
+    "dyeable"
+  ],
   "description": "职业作业手套样例。",
   "gameplay_role": "appearance_gloves_layer",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_deck", "harbor"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_deck",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
   "references": [],
-  "asset_refs": ["asset_ph_crew_male"],
-  "source_refs": ["docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"
+  ],
   "source_note": "项目自有装扮定义；不新增外部资源。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "historical",
   "phase": "D10",
   "status": "prototyped",
   "owner_system": "AppearanceSystem",
   "test_id": "D8-A02-D10-OUTFIT-008",
-  "reviewer": "D10-A05"
+  "reviewer": "D10-A05",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

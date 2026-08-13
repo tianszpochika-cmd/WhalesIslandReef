@@ -11,6 +11,7 @@ using Whalebone.Agent;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.D4;
 using Whalebone.Systems.D9;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Events;
 
 namespace Whalebone.Gameplay.D9
@@ -103,12 +104,13 @@ namespace Whalebone.Gameplay.D9
             D4RuntimeSnapshot d4,
             D9PortShipPreparationSnapshot preparation,
             EventLog eventLog,
-            AgentReply reply)
+            AgentReply reply,
+            string locale = "zh-CN")
         {
             var result = new D9VoyagePresentationSnapshot();
-            BuildVoyage(result, d3);
-            BuildShip(result, preparation);
-            BuildMarket(result, d3);
+            BuildVoyage(result, d3, locale);
+            BuildShip(result, preparation, locale);
+            BuildMarket(result, d3, locale);
             BuildFacts(result, eventLog);
             BuildCrewDialogue(result, reply);
             BuildQuest(result, d4);
@@ -116,37 +118,39 @@ namespace Whalebone.Gameplay.D9
             return result;
         }
 
-        private static void BuildVoyage(D9VoyagePresentationSnapshot result, D3RuntimeSnapshot snapshot)
+        private static void BuildVoyage(D9VoyagePresentationSnapshot result, D3RuntimeSnapshot snapshot, string locale)
         {
             if (snapshot == null) return;
             result.Location = DisplayLocation(snapshot.CurrentLocationId);
             result.Destination = DisplayLocation(snapshot.DestinationId);
-            result.VoyageStatus = DisplayVoyageStatus(snapshot.VoyageStatus);
+            result.VoyageStatus = DisplayVoyageStatus(snapshot.VoyageStatus) +
+                " | 航程 " + FormatNumber(snapshot.CurrentDay, locale) + "/" +
+                FormatNumber(snapshot.TotalDays, locale) + " 天";
             result.Weather = DisplayWeather(snapshot.Weather);
             result.WeatherPrompt = WeatherPrompt(snapshot.Weather);
         }
 
-        private static void BuildShip(D9VoyagePresentationSnapshot result, D9PortShipPreparationSnapshot preparation)
+        private static void BuildShip(D9VoyagePresentationSnapshot result, D9PortShipPreparationSnapshot preparation, string locale)
         {
             if (preparation == null || preparation.Ship == null) return;
             var ship = preparation.Ship;
-            result.Money = "金币 " + preparation.Money;
-            result.Ship = "重量 " + ship.Weight + "/" + ship.CargoCapacity +
-                " | 吃水 " + ship.Draft.ToString("0.0") + "m" +
-                " | 货物 " + CargoSummary(ship.Cargo) +
-                " | 补给 水 " + ship.Water + " 食物 " + ship.Food +
-                " | 损伤 " + ship.Damage +
+            result.Money = "金币 " + FormatNumber(preparation.Money, locale);
+            result.Ship = "重量 " + FormatNumber(ship.Weight, locale) + "/" + FormatNumber(ship.CargoCapacity, locale) +
+                " | 吃水 " + FormatNumber((decimal)ship.Draft, locale, 1) + "m" +
+                " | 货物 " + CargoSummary(ship.Cargo, locale) +
+                " | 补给 水 " + FormatNumber(ship.Water, locale) + " 食物 " + FormatNumber(ship.Food, locale) +
+                " | 损伤 " + FormatNumber(ship.Damage, locale) +
                 " | 锚泊 " + (ship.Moored ? "是" : "否") +
-                " | 改装 " + UpgradeSummary(ship.Upgrades);
-            result.Crew = "船员 " + ship.CrewCount + "/" + ship.CrewCapacity;
+                " | 改装 " + UpgradeSummary(ship.Upgrades, locale);
+            result.Crew = "船员 " + FormatNumber(ship.CrewCount, locale) + "/" + FormatNumber(ship.CrewCapacity, locale);
         }
 
-        private static void BuildMarket(D9VoyagePresentationSnapshot result, D3RuntimeSnapshot snapshot)
+        private static void BuildMarket(D9VoyagePresentationSnapshot result, D3RuntimeSnapshot snapshot, string locale)
         {
             if (snapshot == null || snapshot.MarketStock == null) return;
             var lines = new List<string>();
             foreach (var pair in snapshot.MarketStock)
-                lines.Add(pair.Key + " 库存 " + pair.Value);
+                lines.Add(pair.Key + " 库存 " + FormatNumber(pair.Value, locale));
             result.Market = lines.Count == 0 ? "市场暂无库存事实。" : string.Join("；", lines.ToArray());
         }
 
@@ -212,20 +216,30 @@ namespace Whalebone.Gameplay.D9
                 " | 敌船 " + (string.IsNullOrEmpty(snapshot.Combat.EnemyId) ? "无" : snapshot.Combat.EnemyId);
         }
 
-        private static string CargoSummary(Dictionary<string, int> cargo)
+        private static string CargoSummary(Dictionary<string, int> cargo, string locale)
         {
             if (cargo == null || cargo.Count == 0) return "空";
             var lines = new List<string>();
-            foreach (var pair in cargo) lines.Add(pair.Key + "×" + pair.Value);
+            foreach (var pair in cargo) lines.Add(pair.Key + "×" + FormatNumber(pair.Value, locale));
             return string.Join(" ", lines.ToArray());
         }
 
-        private static string UpgradeSummary(Dictionary<string, int> upgrades)
+        private static string UpgradeSummary(Dictionary<string, int> upgrades, string locale)
         {
             if (upgrades == null || upgrades.Count == 0) return "无";
             var lines = new List<string>();
-            foreach (var pair in upgrades) lines.Add(pair.Key + " " + pair.Value + "级");
+            foreach (var pair in upgrades) lines.Add(pair.Key + " " + FormatNumber(pair.Value, locale) + "级");
             return string.Join(" ", lines.ToArray());
+        }
+
+        private static string FormatNumber(int value, string locale)
+        {
+            return D16DisplayFormatter.Number(value, locale);
+        }
+
+        private static string FormatNumber(decimal value, string locale, int decimals = 0)
+        {
+            return D16DisplayFormatter.Number(value, locale, decimals);
         }
 
         private static string DisplayLocation(string id)

@@ -47,12 +47,61 @@
 - ✅ D6 首次航程体验层、D6.1 物理落地补强、D6.2 角色姿态基线、D6.3 动作/视角增强与 D6.4 相机遮挡保护已完成技术与用户手动验收：角色重力/落地、港口碰撞、上下船碰撞状态、平滑动作、三种视角、相机遮挡收缩、三轴动画姿态、港口品质、交互稳定化、新手引导；Unity D5 运行时冒烟通过
 - ✅ D7 首航体验质量版开发与自动化验收完成：控制状态统一、人物动作/落地质量、舵位上下船、首航保存恢复、材质/音频/回归测试；人工复测作为交接证据保留
 
+## 2026-08-12 当前验收快照
+
+- ✅ D15-S02 内容 QA 已通过：8 批次、2,700 个批次条目、Content Registry 2,812 条；统一 QA `errors=0 warnings=0`。
+- ⏳ D16-A01—A06 的本机代码/自动化子门禁已复验，但总体仍未完成：目标设备、跨平台/断电、真机可访问性、267 条人工审查、2,264 个 placeholder 和目标机原生崩溃/隐私证据仍缺；D16-S01/S02 保持未完成。
+- ✅ D17 本机垂直切片基线已完成：D17-S02 本机十循环 **1/1 PASS**，Unity PlayMode **60/60 PASS**，工具测试 **77/77 PASS**；这不是正式 D17-S01/S02，也不绕过 D16 外部门禁。
+
+- ✅ 项目公开产品名已统一为 `WhalesIslandReef`，并完成旧 `Whalebone` 存档目录的保留式迁移保护；这项本地发布技术缺口已用 Unity 全量回归验证。
+- ✅ D16 外部门禁已有保守证据入口：`tools/d16_external_gate_audit.py`；当前 A01—A06 六个真实证据 envelope 均缺失，审计保持 BLOCKED，不以本机回归替代目标设备/人工/授权证据。
+
 ## 当前开发入口
 
-下一项是 D8 数据、契约、存档和内容 ID 统一；不要从归档的 D1—D7 提示词继续派生新任务。
+当前入口是 `docs/game/D17_POST_D16_DEVELOPMENT_PLAN.md` 的 v9 执行版：先完成 D16-R01/R02/R03/R04/R05/R06 的真实外部门禁，再执行 D16-S01 → D16-S02；D17 本机基线只作为后续正式验收夹具，不从归档的 D1—D7 或已完成的 D8—D15 重新开工。
+
+### 2026-08-12 最新本机快照
+
+- 工具测试已纳入物理设备预检后更新为 **84/84 PASS**；Unity D17 本机连续基线仍为 **60/60 PASS**。
+- Windows PnP 预检识别到 Xbox Wireless Controller、Bluetooth LE XINPUT compatible input device、3840x2160 显示配置和 RTX 4070 Ti；预检仍明确为 `IN_PROGRESS/PENDING_MANUAL`，不等于真机验收。
+- XInput 只读探针当前为 `NO_ACTIVE_XINPUT_USER`：API 可用但用户 0—3 均返回 `1167`，设备存在不等于活动 XInput 输入；后续真机验收必须实际确认手柄唤醒、按钮/摇杆输入和 Unity 枚举。
+- D16-A01—A06 真实外部门禁、D16-S01/S02、正式 D17 和 D18+ 状态不变。
+
+### 2026-08-13 当前最终本机快照
+
+- 工具全量回归为 **88/88 PASS**；A04/A05/A06 聚焦回归为 **28/28 PASS**，A05 资源包预检为 **4/4 PASS**，D15-S02 QA 为 8 batches / 24 samples / 0 errors / 0 warnings。
+- A04 当前为 3,139 entries、结构错误 0、授权记录 2,918/2,918、Pending 267；A05 为 2,918 visual、654 integrated、2,264 placeholder、声明路径断链 0；A06 本机/安装器技术检查 19/19 PASS。
+- D16 外部门禁仍为 **BLOCKED**：A01—A06 六个真实 evidence envelope 缺失，发布清单保留 7 条外部/政策阻断；D16-S01/S02、正式 D17 和 D18+ 不提前启动。
+- 当前工作区仍有未提交变更；本快照不代表已提交或推送到 GitHub。
+
+### 2026-08-13 A04 逐条复核包快照
+
+- 新增 `tools/d16_a04_review_packet.py` 与 `docs/game/design/common/D16_A04_REVIEW_PACKET_CURRENT.md`，覆盖当前 267 条 Pending、12 批；状态为 `HUMAN_DECISION_REQUIRED`，引用缺口 0，267/267 条已有本地文件型复核入口。
+- 专项测试 **4/4 PASS**；填写包默认全部保持 `Pending`，不会自动批准或修改 Registry。
+- A04 人工决定仍未完成，D16-S01/S02、正式 D17 和 D18+ 继续等待真实责任审核与其余外部门禁。
+
+### 2026-08-13 A04 复核包最终回归快照
+
+- 工具全量回归更新为 **96/96 PASS**（新增 A04 复核包专项 4/4、D16-S01 启动预检专项 4/4）；`git diff --check` 通过。
+- 权威状态未改变：A04 3,139 entries / 授权 2,918 / Pending 267 / 结构错误 0；A05 2,918 visual / integrated 654 / placeholder 2,264 / 声明路径断链 0；A06 本机技术准备 19/19 PASS。
+- 外部门禁仍 `BLOCKED`，A01—A06 六个真实 evidence envelope 缺失且 Steam 未授权；D16-S01/S02、正式 D17 和 D18+ 继续未完成。
 
 ## 开工自检
 
 - [ ] 我读了需求、支柱、边界、数据、路线、Agent 任务索引/对应章节提示词和工程规范？
 - [ ] 我知道我的任务只动哪个模块（单一写者）？
 - [ ] 我知道产出要过哪个验收清单（DoD）？
+
+### 2026-08-13 D16-A05 第一批候选资源快照
+
+- 新增 Kenney CC0 候选包：`docs/game/design/common/D16_A05_KENNEY_CANDIDATE_PACKET_01.md`；机器清单为 `tools/results/d16_a05_candidate_packet_01_20260813.json`。
+- 候选资源放在 `game/Assets/Art/Candidates/Kenney/`，当前状态为 `CANDIDATE_PENDING_REVIEW`，人工决定仍为 `Pending`，没有 Registry 或 `asset_state` 写入。
+- A05 权威统计未被候选文件改变：2,918 visual、data_only 125、integrated 654、placeholder 2,264；声明路径断链 0。候选包专项 **2/2 PASS**，工具全量回归更新为 **98/98 PASS**。
+- 这只补齐第一批真实来源候选和许可证留痕，不等于最终资源接入；A04 Pending 267、六项外部门禁缺失、D16-S01/S02 及正式 D17/D18+ 状态均不变。
+- Unity 导入级复核 `tools/results/d16_a05_candidate_import_current_20260813.json` 为 7/7 PASS；候选包与导入证据专项合计 4/4 PASS。另修正 D10 行为状态源码 `.meta`，Unity 批处理脚本编译已通过；这不改变 A05 最终资源门禁。
+
+### 2026-08-13 最终当前回归
+
+- 工具全量回归更新为 **100/100 PASS**；候选包/Unity 导入证据专项 **4/4 PASS**；`git diff --check` 通过。
+- A04 仍为 3,139 entries、Pending 267、结构错误 0；A05 仍为 2,918 visual、654 integrated、2,264 placeholder、声明路径断链 0；A06 本机技术准备仍为 19/19 PASS。
+- 外部门禁复核结果仍 `BLOCKED`：A01—A06 六个真实 evidence envelope 缺失，Steam 未授权；D16-S01/S02、正式 D17 和 D18+ 未完成。

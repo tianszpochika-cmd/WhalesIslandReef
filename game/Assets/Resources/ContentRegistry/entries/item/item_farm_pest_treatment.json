@@ -1,2 +1,61 @@
-{"id":"item_farm_pest_treatment","schema_version":1,"name":"农地病虫害处理剂","display_name_key":"content.item.item_farm_pest_treatment.name","category":"item","tags":["farming","pest_control","treatment"],"description":"用于压低作物病虫害的处理物资；使用会留下生态压力记录。","gameplay_role":"farming_pest_treatment","valid_regions":["island_saint_marys"],"valid_habitats":["farm","orchard","workshop"],"valid_weather":["clear","rain"],"dependencies":[],"references":["plant_farm_cassava_mature","plant_orchard_guava_v1"],"asset_refs":[],"source_refs":["docs/game/design/common/D13_FARMING_ORCHARDS.md"],"source_note":"D13-A03 项目自有农业处理物资；库存由 D3InventorySystem 写入，EcologySystem 记录污染压力。","source":{"kind":"project-authored","author":"Whalebone team","reference":"docs/game/design/common/D13_FARMING_ORCHARDS.md"},"license":{"status":"internal-authored","holder":"Whalebone project","reference":"docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing","commercial_use":true,"attribution_required":false,"modification_allowed":true},"historical_tag":"inferred","phase":"D13","status":"prototyped","owner_system":"ItemCatalog","test_id":"D8-A02-D13-TOOL-001","reviewer":"D13-A03"}
-
+{
+  "id": "item_farm_pest_treatment",
+  "schema_version": 1,
+  "name": "农地病虫害处理剂",
+  "display_name_key": "content.item.item_farm_pest_treatment.name",
+  "category": "item",
+  "tags": [
+    "farming",
+    "pest_control",
+    "treatment"
+  ],
+  "description": "用于压低作物病虫害的处理物资；使用会留下生态压力记录。",
+  "gameplay_role": "farming_pest_treatment",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "farm",
+    "orchard",
+    "workshop"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_farm_cassava_mature",
+    "plant_orchard_guava_v1"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D13_FARMING_ORCHARDS.md"
+  ],
+  "source_note": "D13-A03 项目自有农业处理物资；库存由 D3InventorySystem 写入，EcologySystem 记录污染压力。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D13_FARMING_ORCHARDS.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D13",
+  "status": "prototyped",
+  "owner_system": "ItemCatalog",
+  "test_id": "D8-A02-D13-TOOL-001",
+  "reviewer": "D13-A03",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D13_FARMING_ORCHARDS.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
+}

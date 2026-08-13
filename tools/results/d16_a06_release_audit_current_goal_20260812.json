@@ -1,0 +1,61 @@
+{
+  "task": "D16-A06",
+  "status": "IN_PROGRESS",
+  "project": "game",
+  "checks": {
+    "project_version_present": true,
+    "windows_product_identity_present": true,
+    "required_scenes_enabled": true,
+    "crash_report_api_not_enabled_by_default": true,
+    "offline_steam_bridge_present": true,
+    "template_fallback_present": true,
+    "file_level_save_safety_present": true,
+    "local_redacted_diagnostics_present": true,
+    "release_manifest_present": true,
+    "release_manifest_runtime_contract_complete": true,
+    "release_manifest_installer_status_aligned": true,
+    "release_manifest_blocked_and_complete": true,
+    "steam_upload_policy_safe": true,
+    "unity_windows_build_evidence": true,
+    "workspace_install_update_smoke_evidence": true,
+    "installer_or_update_script_present": true,
+    "workspace_deployment_script_present": true,
+    "formal_installer_artifact_present": true,
+    "formal_installer_smoke_evidence": true
+  },
+  "missing_static_evidence": [],
+  "blocking_reasons": [
+    "D16-A01 target-device performance evidence pending",
+    "D16-A02 physical power-loss and cross-platform save evidence pending",
+    "D16-A03 real-device accessibility and focus evidence pending",
+    "D16-A04 manual history, sensitive-content and rights review pending",
+    "D16-A05 placeholder assets remain",
+    "D16-A06 target-device/native-crash and final privacy review pending",
+    "Steam upload not authorized"
+  ],
+  "local_blocking_reasons": [],
+  "release_manifest_blocking_reasons": [
+    "D16-A01 target-device performance evidence pending",
+    "D16-A02 physical power-loss and cross-platform save evidence pending",
+    "D16-A03 real-device accessibility and focus evidence pending",
+    "D16-A04 manual history, sensitive-content and rights review pending",
+    "D16-A05 placeholder assets remain",
+    "D16-A06 target-device/native-crash and final privacy review pending",
+    "Steam upload not authorized"
+  ],
+  "policy_blocking_reasons": [
+    "steam_upload_not_authorized"
+  ],
+  "technical_preparation_status": "PASS",
+  "release_manifest_status": "blocked",
+  "release_manifest_blocking_reason_count": 7,
+  "release_manifest_parse_error": "",
+  "policy": {
+    "external_upload_performed": false,
+    "steam_upload_performed": false,
+    "destructive_install_test_performed": false,
+    "workspace_staging_install_update_test_performed": true,
+    "formal_os_installer_test_performed": true
+  },
+  "note": "工作区 staging 部署入口与正式便携 Windows 安装器分开统计；正式安装器的本机安装/负向更新/合法更新/卸载烟测已实测，Steam 上传仍未授权、未执行。"
+}

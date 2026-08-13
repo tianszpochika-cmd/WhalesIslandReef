@@ -4,23 +4,54 @@
   "name": "靛蓝染料",
   "display_name_key": "content.item.item_dye_indigo.name",
   "category": "item",
-  "tags": ["dye", "tailor_service", "indigo"],
+  "tags": [
+    "dye",
+    "tailor_service",
+    "indigo"
+  ],
   "description": "裁缝染色服务使用的代表染料条目。",
   "gameplay_role": "appearance_dye_material",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["harbor", "tailor_shop"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "harbor",
+    "tailor_shop"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"
+  ],
   "source_note": "项目自有染色服务定义；不新增外部素材。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "inferred",
   "phase": "D10",
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-D10-ITEM-001",
-  "reviewer": "D10-A05"
+  "reviewer": "D10-A05",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/09_CHARACTER_CUSTOMIZATION.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "description": "D16-A02 存档覆盖矩阵。每条记录必须对应 Unity XML 中精确同名且 result=Passed 的真实测试。",
+  "categories": [
+    {
+      "id": "d7_core",
+      "label": "D7 基础档",
+      "required_tests": [
+        "Save_Then_Load_RestoresAllFields",
+        "D2Runtime_SaveLoad_RestoresLocationClockAndAffinity"
+      ]
+    },
+    {
+      "id": "d8_migration",
+      "label": "D8 迁移与重复迁移",
+      "required_tests": [
+        "D8A05_D7Archive_MigratesCoreEntitiesAndMetadata",
+        "D8A05_RepeatedMigration_IsNoOp",
+        "DuplicateSettlement_IsProtectedAfterSnapshotRestore"
+      ]
+    },
+    {
+      "id": "d9_voyage_trade_quest",
+      "label": "D9 航行/任务/贸易",
+      "required_tests": [
+        "D9RuntimeSaveLoad_PreservesQuestSnapshotAndSharedEventLog",
+        "TradeSnapshot_SaveLoad_PreservesMarketDriversAndFactLog",
+        "D9FishingState_SaveLoad_RestoresFishCargoAndSchool",
+        "SaveRestorePreservesCauseChainAndDoesNotRepeatDiscovery"
+      ]
+    },
+    {
+      "id": "complete_assets_d5",
+      "label": "完整资产与 D5 状态",
+      "required_tests": [
+        "D5Snapshot_SaveAndLoadRestoresReleaseState",
+        "D4Runtime_SaveLoad_RestoresContentState"
+      ]
+    },
+    {
+      "id": "island_operations",
+      "label": "岛屿经营",
+      "required_tests": [
+        "PropertyWellFarmMarketLoanInsuranceTaxAndSaveRestoreAreConsistent",
+        "ConstructionMaterialsWorkersProductionAndSaveRestoreAreTraceable",
+        "FullCycle_StormPestHarvestProcessSellAndSaveRestoreIsIdempotent",
+        "PopulationGovernanceAndSaveRestoreKeepAuthoritySourcesAndIdempotency"
+      ]
+    },
+    {
+      "id": "debt_finance",
+      "label": "负债与金融",
+      "required_tests": [
+        "D8A05_DebtArchive_UsesSafeFinanceDefaults",
+        "LoanInterestRenewalDefaultCollectionSeizureAndBankruptcyAreDeterministic",
+        "FullLifecycle_UsesLegalAndEconomyAuthorities_AndRestoresWithoutDuplicateSettlement"
+      ]
+    },
+    {
+      "id": "combat_rewards",
+      "label": "战斗与特殊奖励",
+      "required_tests": [
+        "KinematicsDamageFireFloodingAndSaveRestoreAreDeterministic",
+        "FiveRaritiesRequestGrantClaimAndSaveRestoreAreIdempotent",
+        "CombatAftercareEquipmentLegalAndRewardChainIsFactDrivenAndSaveIdempotent"
+      ]
+    },
+    {
+      "id": "ecology_animals",
+      "label": "生态与动物",
+      "required_tests": [
+        "EcologyAndAnimalSnapshotsRestoreWithFacts",
+        "LiveFishHoldRestoreDoesNotDuplicateSettlement",
+        "EventAndEcologySnapshotPreventDuplicateCargoAfterRestore",
+        "TransportMortalityIsDeterministicAcrossRuntimeSnapshotRestore"
+      ]
+    },
+    {
+      "id": "crew_relations",
+      "label": "船员关系",
+      "required_tests": [
+        "CanonicalRelationGraphSurvivesSaveAndLoad",
+        "DuplicateAndSaveRestoreDoNotReplayRelationEffects",
+        "FullAcceptance_WageArrearsRescueFavoritismBehaviorIdentityAndSaveLoad"
+      ]
+    },
+    {
+      "id": "corrupt_and_failed_migration",
+      "label": "损坏档与迁移失败",
+      "required_tests": [
+        "D8A05_FailedMigration_RollsBackAndPreservesD7",
+        "D8A05_PartialCorruption_DefaultsNewFieldsWithoutDroppingD7",
+        "CorruptImpactSnapshotIsRejectedBeforeRestore"
+      ]
+    }
+  ]
+}

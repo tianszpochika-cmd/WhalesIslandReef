@@ -1,0 +1,78 @@
+{
+  "id": "asset_d15_a06_model_function_cargo_hatch",
+  "schema_version": 1,
+  "name": "Cargo Hatch model",
+  "display_name_key": "content.asset.asset_d15_a06_model_function_cargo_hatch.name",
+  "category": "asset",
+  "tags": [
+    "d15_a06",
+    "functional_point",
+    "model"
+  ],
+  "description": "D15-A06 project-authored asset data resource.",
+  "gameplay_role": "d15_a06_asset_resource",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "coastal_water",
+    "ship_deck",
+    "ship_hold"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "game/Assets/Content/D15/A06",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "Project-authored resource or deterministic placeholder geometry; no external download is required.",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#d15-a06"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "AssetRegistry",
+  "test_id": "D8-A02-D15-A06-MODEL-FUNCTION-036",
+  "reviewer": "D15-A06*",
+  "resource_path": "game/Assets/Content/D15/A06/assets/models/functional_points/ship_function_cargo_hatch.obj",
+  "asset_state": "integrated",
+  "production_batch": "D15-A06*",
+  "production_stage": "integrated",
+  "test_cases": [
+    "d8-a02-d15-a06-model-function-036-load",
+    "d8-a02-d15-a06-model-function-036-reference",
+    "asset_d15_a06_model_function_cargo_hatch-load",
+    "asset_d15_a06_model_function_cargo_hatch-reference",
+    "asset_d15_a06_model_function_cargo_hatch-save-restore"
+  ],
+  "lod_profile": {
+    "lod0": "source",
+    "lod1": "generated",
+    "lod2": "generated",
+    "lod3": "generated"
+  },
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-来源授权和历史审查",
+    "docs/game/design/common/D15_SHIP_HULL_MODULE_BATCH_CATALOG.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
+}

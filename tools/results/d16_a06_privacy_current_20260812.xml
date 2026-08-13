@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.755315">
+  <test-suite type="TestSuite" id="1068" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.755315" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1060" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.748316" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="12732" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1061" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.747502" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1062" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.746951" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1064" name="D16" fullname="Whalebone.Tests.D16" runstate="Runnable" testcasecount="52" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.746398" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1014" name="D16LocalDiagnosticsPanelTests" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests" classname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:56Z" duration="0.237698" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1015" name="D16A06PanelSupportsOptInDeleteAndClose" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests.D16A06PanelSupportsOptInDeleteAndClose" methodname="D16A06PanelSupportsOptInDeleteAndClose" classname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests" runstate="Runnable" seed="1993308764" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:56Z" duration="0.230002" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] 无障碍设置面板已关闭：玩法输入已恢复到打开前状态
+[D16/A06] 本地诊断隐私面板已打开：默认关闭、仅本地脱敏记录
+[D16/A06] 本地诊断隐私面板已关闭：玩法输入已恢复
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1016" name="D16LocalDiagnosticsTests" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.507531" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1021" name="ClassifierKeepsUsefulCategoryWithoutCopyingMessage" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.ClassifierKeepsUsefulCategoryWithoutCopyingMessage" methodname="ClassifierKeepsUsefulCategoryWithoutCopyingMessage" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="1412921224" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:56Z" duration="0.002811" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1022" name="DiagnosticsContractUsesBoundedTokensAndCounts" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.DiagnosticsContractUsesBoundedTokensAndCounts" methodname="DiagnosticsContractUsesBoundedTokensAndCounts" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="1635232808" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:56Z" duration="0.000916" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1017" name="DiagnosticsWritesOnlyAfterConsentAndDeleteRemovesLocalFile" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.DiagnosticsWritesOnlyAfterConsentAndDeleteRemovesLocalFile" methodname="DiagnosticsWritesOnlyAfterConsentAndDeleteRemovesLocalFile" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="184137553" result="Passed" start-time="2026-08-12 10:00:56Z" end-time="2026-08-12 10:00:57Z" duration="0.156787" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+]]></output>
+              </test-case>
+              <test-case id="1020" name="RedactedRecordOmitsRawMessageAndStack" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.RedactedRecordOmitsRawMessageAndStack" methodname="RedactedRecordOmitsRawMessageAndStack" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="1933354038" result="Passed" start-time="2026-08-12 10:00:57Z" end-time="2026-08-12 10:00:57Z" duration="0.000372" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1018" name="ThreadedDiagnosticsAreQueuedAndRedactedBeforeMainThreadWrite" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.ThreadedDiagnosticsAreQueuedAndRedactedBeforeMainThreadWrite" methodname="ThreadedDiagnosticsAreQueuedAndRedactedBeforeMainThreadWrite" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="1141423866" result="Passed" start-time="2026-08-12 10:00:57Z" end-time="2026-08-12 10:00:57Z" duration="0.179580" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1019" name="UnexpectedSessionMarkerIsRedactedAndCleanExitRemovesMarker" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.UnexpectedSessionMarkerIsRedactedAndCleanExitRemovesMarker" methodname="UnexpectedSessionMarkerIsRedactedAndCleanExitRemovesMarker" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="2052197107" result="Passed" start-time="2026-08-12 10:00:57Z" end-time="2026-08-12 10:00:57Z" duration="0.165327" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,198 @@
+{
+  "id": "plant_rainforest_ginger_storm_damaged_v0986",
+  "schema_version": 1,
+  "name": "ginger·药材·风暴损伤·0986",
+  "display_name_key": "content.plant.plant_rainforest_ginger_storm_damaged_v0986.name",
+  "category": "plant",
+  "tags": [
+    "d15_a02",
+    "medicinal",
+    "rainforest",
+    "medicinal_or_toxic",
+    "storm_damaged"
+  ],
+  "description": "药材内容条目：ginger的风暴损伤形态，适用于rainforest生境；资源量、成熟度与采集结果由 EcologySystem/D11 owner 裁决。",
+  "gameplay_role": "medicinal_or_toxic",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_driftwood_isle"
+  ],
+  "valid_habitats": [
+    "dry_shrub",
+    "rainforest",
+    "cloud_forest",
+    "river_wetland"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_saint_marys"
+  ],
+  "asset_refs": [
+    "asset_vegetation_profile_medicinal"
+  ],
+  "source_refs": [
+    "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md",
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/vegetation/03_VEGETATION_HABITATS.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A02 项目自有批量目录；形态、阶段和用途为可审计设计推断，不宣称新增外部史实或外部素材。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-D15-VEG-0986",
+  "reviewer": "D15-A02*",
+  "plant_class": "medicinal",
+  "scientific_or_historical_note": "加勒比 1675 语境下的生态/形态推断；非外部物种鉴定结论。",
+  "soil_tags": [
+    "dry_sandy",
+    "wet_loam",
+    "mossy_rock"
+  ],
+  "salt_tolerance": "medium",
+  "drought_tolerance": "medium",
+  "water_need": "high",
+  "altitude_range": [
+    0,
+    420
+  ],
+  "season_tags": [
+    "dry",
+    "wet"
+  ],
+  "growth_stage": "storm_damaged",
+  "harvest_parts": [
+    "leaf",
+    "bark",
+    "root",
+    "flower"
+  ],
+  "resource_outputs": [
+    "medicine",
+    "herb"
+  ],
+  "toxicity": "non_toxic_or_contextual",
+  "fire_fuel": "medium",
+  "animal_relationships": [
+    "pollinator_food"
+  ],
+  "human_cultivation": "wild_harvest_or_cultivated",
+  "introduced_status": "native_or_inferred",
+  "production_batch": "D15-A02*",
+  "representative_sample": "plant_dry_aloe_medicinal",
+  "production_stage": "cataloged",
+  "behavior_profile": "EcologySystem:plant_resource_profile:medicinal",
+  "asset_state": "placeholder",
+  "quality_level": "Q2",
+  "model_ref": "unity-primitive://vegetation/medicinal/lod2",
+  "model_status": "placeholder_primitive_ready",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_flower.mat",
+  "material_status": "source_ready",
+  "collision_ref": "placeholder://vegetation/harvest-proximity-collider",
+  "collision_status": "shared_interaction_proxy",
+  "lod_profile": {
+    "name": "plant_lod2",
+    "minimum_lod": "LOD2",
+    "lod0_triangles": 6000,
+    "lod1_triangles": 2000,
+    "lod2_triangles": 600,
+    "far_representation": "cluster_proxy"
+  },
+  "wind_profile": {
+    "id": "rainforest_low",
+    "zone": "rainforest",
+    "frequency_band": "low_to_medium",
+    "amplitude_band": "profiled_by_habitat",
+    "gust_response": "deterministic_environment_input"
+  },
+  "habitat_profile": {
+    "primary": "rainforest",
+    "soil": "mossy_rock",
+    "salt_tolerance": "medium",
+    "drought_tolerance": "medium",
+    "water_need": "high",
+    "altitude_range_m": [
+      0,
+      420
+    ]
+  },
+  "use_profile": {
+    "primary": "medicinal_or_toxic",
+    "harvest_parts": [
+      "leaf",
+      "bark",
+      "root",
+      "flower"
+    ],
+    "resource_outputs": [
+      "medicine",
+      "herb"
+    ],
+    "toxicity": "non_toxic_or_contextual",
+    "fire_fuel": "medium",
+    "animal_relationship": "pollinator_food",
+    "human_cultivation": "wild_harvest_or_cultivated"
+  },
+  "growth_profile": {
+    "stage": "storm_damaged",
+    "season_tags": [
+      "dry",
+      "wet"
+    ],
+    "cycle_days": 23,
+    "mature_window_days": 9,
+    "recovery_profile": "EcologySystem:habitat_recovery_profile"
+  },
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md",
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/common/D11_VEGETATION_HARVEST.md"
+  ],
+  "content_warning_ids": [],
+  "context_note_key": "content.plant.context.standard",
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full"
+  ],
+  "test_cases": [
+    "D15-A02-LOAD-0005",
+    "D15-A02-ASSET-0005",
+    "D15-A02-HARVEST-OWNER-0005",
+    "D15-A02-SAVE-RESTORE-0005"
+  ],
+  "authorization": {
+    "authorization_id": "auth_internal_d15_vegetation_catalog",
+    "rights_holder": "Whalebone project",
+    "license_ref": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "source_url_or_path": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "perpetual; project authored data and placeholder references",
+    "evidence_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-来源授权和历史审查"
+  },
+  "asset_profile_id": "asset_vegetation_profile_medicinal",
+  "generation_source": "D15-A02 deterministic batch generator",
+  "generation_digest": "1afbc527"
+}

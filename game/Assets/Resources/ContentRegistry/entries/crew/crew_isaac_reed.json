@@ -4,16 +4,36 @@
   "name": "艾萨克·里德",
   "display_name_key": "content.crew.crew_isaac_reed.name",
   "category": "crew",
-  "tags": ["deckhand", "vertical_slice", "agent_candidate"],
+  "tags": [
+    "deckhand",
+    "vertical_slice",
+    "agent_candidate"
+  ],
   "description": "用于 D9 船员 Agent 垂直切片的代表船员定义。",
   "gameplay_role": "deckhand_agent",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_deck", "harbor"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_deck",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
-  "references": ["outfit_weathered_deckhand", "pet_cabin_cat"],
-  "asset_refs": ["asset_ph_crew_male"],
-  "source_refs": ["docs/game/design/character/02_CREW_AGENT.md", "docs/game/design/character/03_TRAITS_CULTURE.md"],
+  "references": [
+    "outfit_weathered_deckhand",
+    "pet_cabin_cat"
+  ],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "docs/game/design/character/02_CREW_AGENT.md",
+    "docs/game/design/character/03_TRAITS_CULTURE.md"
+  ],
   "source_note": "项目自有代表角色；人格、关系和数值由 CrewSystem/AgentCore 裁决，不由目录条目写入。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +53,19 @@
   "status": "prototyped",
   "owner_system": "CrewSystem",
   "test_id": "D8-A02-CREW-001",
-  "reviewer": "D8-A02"
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/character/02_CREW_AGENT.md",
+    "docs/game/design/character/03_TRAITS_CULTURE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "scope": "fictional_content_only",
+    "decision": "Approved",
+    "reason": "Explicitly fictional, project-authored content with internal license, existing evidence files, no sensitive tags, and no content warnings.",
+    "reviewed_at": "2026-08-12",
+    "not_a_historical_fact_claim": true
+  }
 }

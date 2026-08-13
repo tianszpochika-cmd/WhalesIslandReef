@@ -2,6 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Whalebone.Gameplay.D5
 {
@@ -28,6 +29,11 @@ namespace Whalebone.Gameplay.D5
         private static void Install()
         {
             if (!Application.isBatchMode || !HasArgument("-d5Smoke")) return;
+            // 正式 Player 的首场景是 MainMenu。D5 冒烟探针只属于
+            // InitialHarbor；若在主菜单启动就创建探针，会等待港口对象超时，
+            // 把正常的主菜单启动误报为失败。
+            if (!string.Equals(SceneManager.GetActiveScene().name, "InitialHarbor",
+                System.StringComparison.Ordinal)) return;
             new GameObject("D5RuntimeSmokeProbe").AddComponent<D5RuntimeSmokeProbe>();
         }
 

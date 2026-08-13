@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.02664">
+  <test-suite type="TestSuite" id="1020" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.026640" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1013" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.021359" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="21332" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1014" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.020913" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1015" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.020661" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1016" name="D16" fullname="Whalebone.Tests.D16" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.020408" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1001" name="D16LocalDiagnosticsTests" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.019647" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1003" name="ClassifierKeepsUsefulCategoryWithoutCopyingMessage" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.ClassifierKeepsUsefulCategoryWithoutCopyingMessage" methodname="ClassifierKeepsUsefulCategoryWithoutCopyingMessage" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="865782178" result="Failed" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.009123" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected string length 6 but was 5. Strings differ at index 0.
+  Expected: "camera"
+  But was:  "error"
+  -----------^
+]]></message>
+                  <stack-trace><![CDATA[at Whalebone.Tests.D16.D16LocalDiagnosticsTests.ClassifierKeepsUsefulCategoryWithoutCopyingMessage () [0x00019] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D16LocalDiagnosticsTests.cs:33
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1004" name="DiagnosticsContractUsesBoundedTokensAndCounts" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.DiagnosticsContractUsesBoundedTokensAndCounts" methodname="DiagnosticsContractUsesBoundedTokensAndCounts" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="258358374" result="Passed" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.002733" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1002" name="RedactedRecordOmitsRawMessageAndStack" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.RedactedRecordOmitsRawMessageAndStack" methodname="RedactedRecordOmitsRawMessageAndStack" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="231251459" result="Passed" start-time="2026-08-11 16:28:12Z" end-time="2026-08-11 16:28:12Z" duration="0.000154" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

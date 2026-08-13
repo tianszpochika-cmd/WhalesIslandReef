@@ -1,0 +1,146 @@
+{
+  "id": "animal_killifish_marsh",
+  "schema_version": 1,
+  "name": "Killifish Marsh",
+  "display_name_key": "content.animal.animal_killifish_marsh.name",
+  "category": "animal",
+  "tags": [
+    "d15_a03",
+    "freshwater_estuary",
+    "river",
+    "l2"
+  ],
+  "description": "D15-A03 freshwater_estuary content definition; immutable data only, behavior is delegated to EcologySystem.",
+  "gameplay_role": "ecology_content_definition",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_driftwood_isle"
+  ],
+  "valid_habitats": [
+    "river",
+    "estuary"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/animals/04_AQUATIC_LIFE.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "Project-authored ecology content record. Runtime quantity, legal result, danger result and behavior state remain owned by EcologySystem.",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/animals/04_AQUATIC_LIFE.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-1",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "prototyped",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-D15-A03-118",
+  "reviewer": "D15-A03",
+  "production_batch": "D15-A03*",
+  "representative_sample": "animal_green_turtle",
+  "production_stage": "integrated",
+  "d15_category": "freshwater_estuary",
+  "behavior_level": "L2",
+  "behavior_profile": "ecology.d15.freshwater_estuary.l2",
+  "habitat_profile": {
+    "primary": "river",
+    "secondary": [
+      "mangrove",
+      "wetland"
+    ],
+    "min_depth_m": 0,
+    "max_depth_m": 4,
+    "zone": "fresh_brackish"
+  },
+  "refresh_profile": {
+    "mode": "tidal_reach",
+    "interval_days": 1,
+    "seed_domain": "d15.a03.freshwater_estuary",
+    "window": "flood_ebb"
+  },
+  "food_chain_profile": {
+    "role": "omnivore",
+    "prey_tags": [
+      "insects",
+      "detritus",
+      "small_fish"
+    ],
+    "predator_tags": [
+      "crocodile",
+      "larger_fish"
+    ]
+  },
+  "danger_profile": {
+    "level": "low",
+    "tags": [
+      "water_edge"
+    ],
+    "telegraph": "splash_or_submerge"
+  },
+  "legal_profile": {
+    "status": "regulated",
+    "rule_id": "d15_a03_regulated_baseline",
+    "permit_required": true,
+    "source_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-2"
+  },
+  "performance_budget": {
+    "lod0_triangles": 10000,
+    "lod1_triangles": 4500,
+    "lod2_triangles": 1400,
+    "lod3_triangles": 400,
+    "active_distance_m": 45,
+    "update_hz": 5,
+    "max_active": 24
+  },
+  "asset_state": "placeholder",
+  "model_ref": "placeholder_animal_lowpoly_lod2",
+  "material_ref": "placeholder_biome_material_shared",
+  "collision_ref": "placeholder_animal_capsule",
+  "lod_profile": "animal_lod2",
+  "test_cases": [
+    "D15-A03-LOAD",
+    "D15-A03-ECOLOGY-TAKEOVER",
+    "D15-A03-SAVE-RESTORE"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "D15-A03-REVIEW-PROJECT-AUTHORED",
+    "D15-A03-LEGAL-BASELINE"
+  ],
+  "content_warning_ids": [],
+  "context_note_key": "content.d15.a03.ecology_context",
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full",
+    "LowIntensity"
+  ],
+  "quality_level": "Q2",
+  "authorization": {
+    "authorization_id": "auth_d15_a03_project_authored",
+    "rights_holder": "Whalebone project",
+    "license_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-1",
+    "source_url_or_path": "docs/game/design/animals/04_AQUATIC_LIFE.md",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "Project-authored content; commercial game use",
+    "evidence_ref": "D15-A03-REVIEW-PROJECT-AUTHORED"
+  }
+}

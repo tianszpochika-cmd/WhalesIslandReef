@@ -31,6 +31,7 @@ namespace Whalebone.Systems.Save
         public List<string> MigrationFlags { get; internal set; }
         public string ErrorCode { get; internal set; }
         public string Message { get; internal set; }
+        public string BackupPath { get; internal set; }
         public bool OriginalPreserved { get; internal set; }
 
         public bool Succeeded
@@ -58,6 +59,7 @@ namespace Whalebone.Systems.Save
     {
         None,
         BeforeCommit,
+        ProcessAbortBeforeCommit,
     }
 
     internal sealed class SaveMigrationOptions
@@ -72,6 +74,9 @@ namespace Whalebone.Systems.Save
 
         private const string MetadataTable = "save_metadata";
         private const string EntityTable = "v3_entities";
+
+        // 仅供 Save.Tests 的子进程故障注入使用；普通迁移永远保持 null。
+        internal static Action TestProcessAbortHook { get; set; }
 
         public static SaveMigrationResult Migrate(string dbPath)
         {
@@ -161,6 +166,12 @@ namespace Whalebone.Systems.Save
 
                         if (options != null && options.FaultPoint == SaveMigrationFaultPoint.BeforeCommit)
                             throw new SaveMigrationException("测试注入：提交前中断迁移。");
+
+                        if (options != null && options.FaultPoint == SaveMigrationFaultPoint.ProcessAbortBeforeCommit)
+                        {
+                            if (TestProcessAbortHook != null) TestProcessAbortHook();
+                            throw new SaveMigrationException("测试注入：进程在提交前中止迁移。");
+                        }
 
                         db.Execute("COMMIT");
                         transactionStarted = false;

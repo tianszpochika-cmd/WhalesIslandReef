@@ -22,7 +22,14 @@ namespace Whalebone.Agent
             failed += Check("D8-A04 注册表包含 60 个动作", TestP2ARegistryCount);
             failed += Check("D8-A04 未授权对象和越权目标被拒绝", TestP2AAuthorizationBoundary);
             failed += Check("D8-A04 非法参数和最终结果字段被拒绝", TestP2AParameterBoundary);
+            failed += Check("事实摘要只进入 Agent 记忆，不改变领域结果", TestFactSummaryRead);
             failed += D2DialogueTests.RunAll();
+#if !UNITY_2021_1_OR_NEWER
+            failed += Whalebone.Game.Config.NumericConfigurationTests.RunAll();
+            failed += V3.V3EntityModelTests.RunAll();
+#endif
+            failed += D9CrewAgentVerticalSliceTests.RunAll();
+            failed += D10CrewBehaviorStateTests.RunAll();
             return failed;
         }
 
@@ -116,6 +123,18 @@ namespace Whalebone.Agent
             if (m.IsBranchLocked("intimidate")) return false;  // 忠诚低 → 威胁未锁（可试）
             s.Affinity = 10f; s.Loyalty = 90f;
             return !m.IsBranchLocked("plead") && m.IsBranchLocked("intimidate");
+        }
+
+        private static bool TestFactSummaryRead()
+        {
+            var store = new InMemoryStore();
+            var memory = new AgentMemory(store);
+            memory.RecordFactSummary("event_fog_001", "雾中航行被迫中断，可沿灯塔路线恢复。", 0.8f);
+            var facts = store.Top(3);
+            return facts.Count == 1
+                && facts[0].Kind == "fact:event_fog_001"
+                && facts[0].Text.Contains("灯塔路线")
+                && memory.BuildMemorySection().Contains("雾中航行");
         }
     }
 }

@@ -4,23 +4,57 @@
   "name": "旧伤腿部表现",
   "display_name_key": "content.outfit.outfit_injury_old_leg.name",
   "category": "outfit",
-  "tags": ["injury", "old_wound", "history_preserved"],
+  "tags": [
+    "injury",
+    "old_wound",
+    "history_preserved"
+  ],
   "description": "旧伤叠加层样例。",
   "gameplay_role": "appearance_injury_overlay",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_deck", "harbor"],
-  "valid_weather": ["clear", "rain", "storm"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_deck",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
   "dependencies": [],
   "references": [],
-  "asset_refs": ["asset_ph_crew_male"],
-  "source_refs": ["docs/game/design/character/06_CHARACTER_PRESENTATION.md"],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  ],
   "source_note": "项目自有伤病表现定义；历史标签不会因换装被清除。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/character/06_CHARACTER_PRESENTATION.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "inferred",
   "phase": "D10",
   "status": "prototyped",
   "owner_system": "AppearanceSystem",
   "test_id": "D8-A02-D10-OUTFIT-012",
-  "reviewer": "D10-A05"
+  "reviewer": "D10-A05",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/character/06_CHARACTER_PRESENTATION.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

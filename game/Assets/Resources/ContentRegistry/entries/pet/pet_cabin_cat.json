@@ -4,16 +4,35 @@
   "name": "船舱猫",
   "display_name_key": "content.pet.pet_cabin_cat.name",
   "category": "pet",
-  "tags": ["shipboard", "companion", "care"],
+  "tags": [
+    "shipboard",
+    "companion",
+    "care"
+  ],
   "description": "用于验证宠物实例引用和船员关联的代表内容定义。",
   "gameplay_role": "shipboard_companion",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_cabin", "harbor"],
-  "valid_weather": ["clear", "rain"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_cabin",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
   "dependencies": [],
-  "references": ["crew_isaac_reed", "pet_harbor_dog", "item_pet_feed"],
+  "references": [
+    "crew_isaac_reed",
+    "pet_harbor_dog",
+    "item_pet_feed"
+  ],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md", "docs/game/design/DATA_MODELS.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md",
+    "docs/game/design/DATA_MODELS.md"
+  ],
   "source_note": "项目自有宠物代表定义；健康、饥饿、清洁和照料状态由 AnimalCareSystem 裁决。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +52,19 @@
   "status": "prototyped",
   "owner_system": "AnimalCareSystem",
   "test_id": "D8-A02-PET-001",
-  "reviewer": "D8-A02"
+  "reviewer": "D16-A04-SAFE-FICTIONAL-GATE",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/04_RARE_ANIMALS_PETS.md",
+    "docs/game/design/DATA_MODELS.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "scope": "fictional_content_only",
+    "decision": "Approved",
+    "reason": "Explicitly fictional, project-authored content with internal license, existing evidence files, no sensitive tags, and no content warnings.",
+    "reviewed_at": "2026-08-12",
+    "not_a_historical_fact_claim": true
+  }
 }

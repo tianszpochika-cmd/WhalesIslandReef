@@ -2,6 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Whalebone.Gameplay.D3
 {
@@ -18,7 +19,13 @@ namespace Whalebone.Gameplay.D3
         private static void Install()
         {
             if (Application.isBatchMode && !HasArgument("-d4Smoke") && !HasArgument("-d5Smoke"))
-                new GameObject("D3RuntimeSmokeProbe").AddComponent<D3RuntimeSmokeProbe>();
+            {
+                // 正式 Player 的首场景是 MainMenu。D3 冒烟探针只属于 InitialHarbor，
+                // 不应在普通 batchmode 启动时等待港口对象并把正常退出判成失败。
+                if (string.Equals(SceneManager.GetActiveScene().name, "InitialHarbor",
+                    System.StringComparison.Ordinal))
+                    new GameObject("D3RuntimeSmokeProbe").AddComponent<D3RuntimeSmokeProbe>();
+            }
         }
 
         private static bool HasArgument(string argument)

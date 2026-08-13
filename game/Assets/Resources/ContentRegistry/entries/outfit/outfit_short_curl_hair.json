@@ -1,0 +1,91 @@
+{
+  "id": "outfit_short_curl_hair",
+  "schema_version": 1,
+  "name": "短卷发型",
+  "display_name_key": "content.outfit.outfit_short_curl_hair.name",
+  "category": "outfit",
+  "tags": [
+    "hair",
+    "functional",
+    "d15",
+    "placeholder_ready"
+  ],
+  "description": "短卷发型的 D15 目录定义；视觉资源使用可替换共享占位，运行时状态由 AppearanceSystem 写入。",
+  "gameplay_role": "functional_hair",
+  "valid_regions": [
+    "island_saint_marys",
+    "green_cay",
+    "santa_margarita"
+  ],
+  "valid_habitats": [
+    "ship_deck",
+    "ship_cabin",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [
+    "asset_d15_outfit_placeholder"
+  ],
+  "source_refs": [
+    "docs/game/design/common/D10_APPEARANCE_OUTFIT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "项目自有 D15 批量内容；不包含价格、伤害、奖励、耐久或装备裁决，所属系统只读取定义和入口标签。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "AppearanceSystem",
+  "test_id": "D8-A02-D15-A05-FUNCTIONAL-HAIR-SHORT-CURL-HAIR",
+  "reviewer": "D15-A05*",
+  "logic_ref": "D10AppearanceSystem/hair_slot",
+  "production_batch": "D15-A05*",
+  "representative_sample": "outfit_weathered_deckhand",
+  "production_stage": "integrated",
+  "batch_role": "functional",
+  "content_category": "hair",
+  "behavior_profile": "static_definition_owner_canonical",
+  "asset_state": "placeholder",
+  "quality_level": "Q2",
+  "model_ref": "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_crew_cloth.mat",
+  "collision_ref": "none:wearable_skinned_layer_uses_character_body_collision",
+  "lod_profile": "A05_outfit_lod2_shared_placeholder",
+  "interaction_entry": "AppearanceSystem/try_on_or_equip",
+  "function_entry": "D10AppearanceSystem/hair_slot",
+  "test_cases": [
+    "D15-A05-load-short_curl_hair",
+    "D15-A05-interact-short_curl_hair",
+    "D15-A05-owner-short_curl_hair"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D10_APPEARANCE_OUTFIT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "integration": {
+    "system": "AppearanceSystem",
+    "entrypoint": "AppearanceSystem.ContentRegistryEntry",
+    "canonical_write_owner": "AppearanceSystem"
+  }
+}

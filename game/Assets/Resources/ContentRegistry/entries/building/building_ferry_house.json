@@ -1,0 +1,102 @@
+{
+  "id": "building_ferry_house",
+  "schema_version": 1,
+  "name": "渡船所",
+  "name_en": "Ferry House",
+  "display_name_key": "content.building.building_ferry_house.name",
+  "category": "building",
+  "tags": [
+    "d15_a04",
+    "port",
+    "shore",
+    "functional_building"
+  ],
+  "description": "D15-A04 渡船所（Ferry House）功能建筑定义；目录只登记功能入口和可替换资产，位置、产权、库存、损伤、开放与运行时状态由 BuildingSystem/对应 owner 写入。",
+  "gameplay_role": "shore_ferry_crossing",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_driftwood_isle",
+    "island_green_cay"
+  ],
+  "valid_habitats": [
+    "shore"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_saint_marys"
+  ],
+  "asset_refs": [
+    "asset_ph_building_modular_placeholder",
+    "asset_ph_building_collision_placeholder",
+    "asset_ph_building_audio_placeholder"
+  ],
+  "source_refs": [
+    "docs/game/design/buildings/01_BUILDING_OVERVIEW.md",
+    "docs/game/design/buildings/02_PORT_SHIPYARD.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A04 项目自有功能建筑批量定义；模型、碰撞、锚点和音频暂以可替换占位引用登记，运行时状态不写入目录。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/buildings/01_BUILDING_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "BuildingSystem",
+  "test_id": "D8-A02-D15-A04-BUILDING-015",
+  "reviewer": "D15-A04",
+  "production_batch": "D15-A04*",
+  "representative_sample": "building_green_cay_water_well",
+  "production_stage": "cataloged",
+  "behavior_profile": "building_behavior_profile_shore_ferry_crossing",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_building_modular_placeholder",
+  "material_ref": "placeholder_building_material_port",
+  "collision_ref": "asset_ph_building_collision_placeholder",
+  "lod_profile": "building_functional_lod3",
+  "anchor_refs": [
+    "anchor_building_ferry_house_entry",
+    "anchor_building_ferry_house_service",
+    "anchor_building_ferry_house_state"
+  ],
+  "audio_profile": "asset_ph_building_audio_placeholder",
+  "function_tags": [
+    "port",
+    "shore_ferry_crossing",
+    "building_system_owned"
+  ],
+  "default_open_rule_ref": "open_rule_shore_ferry_crossing",
+  "test_cases": [
+    "D15-A04-LOAD-015",
+    "D15-A04-INTERACT-015",
+    "D15-A04-SAVE-015",
+    "D15-A04-RESTORE-015"
+  ],
+  "quality_level": "Q2",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "context_note_key": "",
+  "skip_allowed": true,
+  "presentation_levels": [
+    "Full",
+    "LowIntensity"
+  ]
+}

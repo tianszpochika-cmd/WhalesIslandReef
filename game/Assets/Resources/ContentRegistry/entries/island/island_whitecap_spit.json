@@ -1,0 +1,465 @@
+{
+  "id": "island_whitecap_spit",
+  "schema_version": 1,
+  "name": "白沫沙嘴",
+  "name_en": "Whitecap Spit",
+  "display_name_key": "content.island.island_whitecap_spit.name",
+  "category": "island",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "cor",
+    "template_cor",
+    "coast",
+    "coral_shoal"
+  ],
+  "description": "D15-A01 低矮珊瑚沙洲代表档案：珊瑚碎屑在潮流和风暴中堆积，形成低矮沙脊、泻湖、礁口与潮间带。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
+  "gameplay_role": "coastal_navigation_island",
+  "valid_regions": [
+    "island_whitecap_spit"
+  ],
+  "valid_habitats": [
+    "coast",
+    "coral_shoal",
+    "lagoon",
+    "tidal_flat"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_shallow_seaweed",
+    "plant_conch_bed",
+    "fish_sardine_school",
+    "animal_green_turtle",
+    "building_saint_marys_dock",
+    "building_driftwood_ropewalk_workshop",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 低矮珊瑚沙洲 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-D15-A01-ISLAND-026",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_saint_marys",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_cor",
+  "collision_ref": "collision_island_whitecap_spit",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-026",
+    "D15-A01-SAVE-026",
+    "D15-A01-RESTORE-026"
+  ],
+  "quality_level": "Q2",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "coral_sandbar_island",
+    "template_label": "低矮珊瑚沙洲",
+    "variant_code": "COR-08",
+    "historical_names": [
+      "Whitecap Spit",
+      "Whitecap Spit chart name"
+    ],
+    "formation": "珊瑚碎屑在潮流和风暴中堆积，形成低矮沙脊、泻湖、礁口与潮间带。",
+    "geology": "coral_deposit",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "暴风前云墙遮挡高地",
+      "coast_type": "coral_reef",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "背风岸线保留潮间带",
+      "coast_type": "lagoon_inlet",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "coral_reef",
+      "lagoon_inlet"
+    ],
+    "freshwater": {
+      "source_kind": "shallow_lens",
+      "availability": "rain_dependent",
+      "capacity_band": "medium",
+      "dry_season_rule": "recovery_owner_profile",
+      "water_points": [
+        "water_point_whitecap_spit_01",
+        "water_point_whitecap_spit_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "sand_ridge",
+      "elevation": "lowland",
+      "slope": "gentle",
+      "max_m": 18,
+      "maximum_elevation_m": 51,
+      "profile_variant": "sand_ridge_2",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_whitecap_spit_01",
+        "cave_type": "reef_crevice",
+        "entrance_zone": "whitecap_spit_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "freshwater_shortage"
+      },
+      {
+        "cave_id": "cave_whitecap_spit_02",
+        "cave_type": "sea_erosion_cave",
+        "entrance_zone": "whitecap_spit_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "grounding"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_whitecap_spit_1",
+        "feature": "coral_reef",
+        "chart_access": "primary",
+        "depth_band": "medium",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_whitecap_spit_2",
+        "feature": "reef_inlet",
+        "chart_access": "alternate",
+        "depth_band": "deep",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "coast",
+      "coral_shoal",
+      "lagoon",
+      "tidal_flat"
+    ],
+    "zones": [
+      {
+        "region_id": "whitecap_spit_coast",
+        "parent_region": "island_whitecap_spit",
+        "geology": "coral_deposit",
+        "habitat": "coast",
+        "elevation": "coastal",
+        "water_sources": [
+          "shallow_lens"
+        ],
+        "coast_access": "coral_reef",
+        "walkability": "mostly_walkable",
+        "hazard_tags": [
+          "storm_surge"
+        ],
+        "plant_tags": [
+          "plant_shallow_seaweed"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_shallow_seaweed",
+          "plant_conch_bed"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "coastal_fishers"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "whitecap_spit_coast"
+      },
+      {
+        "region_id": "whitecap_spit_inland",
+        "parent_region": "island_whitecap_spit",
+        "geology": "coral_deposit",
+        "habitat": "coral_shoal",
+        "elevation": "sand_ridge",
+        "water_sources": [
+          "shallow_lens"
+        ],
+        "coast_access": "connected_by_path",
+        "walkability": "path_network",
+        "hazard_tags": [
+          "freshwater_shortage"
+        ],
+        "plant_tags": [
+          "plant_conch_bed"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_conch_bed"
+        ],
+        "building_tags": [
+          "building_driftwood_ropewalk_workshop"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "coastal_fishers"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "whitecap_spit_inland"
+      },
+      {
+        "region_id": "whitecap_spit_upper",
+        "parent_region": "island_whitecap_spit",
+        "geology": "coral_deposit",
+        "habitat": "lagoon",
+        "elevation": "lowland",
+        "water_sources": [
+          "shallow_lens"
+        ],
+        "coast_access": "reef_crevice",
+        "walkability": "sand_ridge_only",
+        "hazard_tags": [
+          "grounding"
+        ],
+        "plant_tags": [
+          "fish_sardine_school"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "fish_sardine_school"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "coastal_fishers"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "whitecap_spit_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_whitecap_spit_1",
+        "content_id": "plant_shallow_seaweed",
+        "node_type": "community_managed",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_whitecap_spit.resource.1"
+      },
+      {
+        "node_id": "resource_node_whitecap_spit_2",
+        "content_id": "plant_conch_bed",
+        "node_type": "ecology_key",
+        "habitat": "coral_shoal",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_whitecap_spit.resource.2"
+      },
+      {
+        "node_id": "resource_node_whitecap_spit_3",
+        "content_id": "fish_sardine_school",
+        "node_type": "dangerous_environment",
+        "habitat": "lagoon",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_whitecap_spit.resource.3"
+      },
+      {
+        "node_id": "resource_node_whitecap_spit_4",
+        "content_id": "animal_green_turtle",
+        "node_type": "common_refresh",
+        "habitat": "tidal_flat",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_whitecap_spit.resource.4"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_saint_marys_dock",
+        "instance_anchor": "whitecap_spit_building_anchor_1",
+        "placement_zone": "whitecap_spit_coast",
+        "access_route": "beach_walk",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_driftwood_ropewalk_workshop",
+        "instance_anchor": "whitecap_spit_building_anchor_2",
+        "placement_zone": "whitecap_spit_inland",
+        "access_route": "lagoon_route",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_whitecap_spit_01",
+        "zone_id": "whitecap_spit_inland",
+        "access_route": "beach_walk",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_whitecap_spit_primary",
+      "alternate_landing": "landing_whitecap_spit_alternate",
+      "primary_coast": "coral_reef",
+      "alternate_coast": "lagoon_inlet",
+      "boat_route": "small_boat_channel",
+      "tide_window": "rising_tide",
+      "navigation_risk": "storm_surge",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_whitecap_spit_coast",
+        "route_type": "coast",
+        "access": "beach_walk",
+        "fallback": "small_boat_channel"
+      },
+      {
+        "route_id": "route_whitecap_spit_inland",
+        "route_type": "inland",
+        "access": "lagoon_route",
+        "fallback": "beach_walk"
+      },
+      {
+        "route_id": "route_whitecap_spit_upper",
+        "route_type": "highland_or_cave",
+        "access": "small_boat_channel",
+        "fallback": "lagoon_route"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_whitecap_spit_1",
+        "tag": "grounding",
+        "deterministic_owner": "ShipSystem",
+        "warning_key": "content.island.island_whitecap_spit.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_whitecap_spit_2",
+        "tag": "storm_surge",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_whitecap_spit.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_whitecap_spit_3",
+        "tag": "freshwater_shortage",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_whitecap_spit.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "沙洲锚地",
+      "faction_tags": [
+        "free_settlement",
+        "coastal_fishers"
+      ],
+      "human_modification": "light",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "whitecap_spit_coast",
+        "whitecap_spit_inland",
+        "whitecap_spit_highland"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_whitecap_spit",
+      "stable_id": "island_whitecap_spit",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
+}

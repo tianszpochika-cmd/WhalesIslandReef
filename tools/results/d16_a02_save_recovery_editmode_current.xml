@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Passed" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:52Z" duration="1.1246245">
+  <test-suite type="TestSuite" id="1000" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="306" result="Passed" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:52Z" duration="1.124625" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1385" name="Save.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/Save.Tests.dll" runstate="Runnable" testcasecount="302" result="Passed" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:52Z" duration="1.116625" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="49940" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1400" name="Save" fullname="Save" runstate="Runnable" testcasecount="121" result="Passed" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:52Z" duration="1.114063" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1401" name="Tests" fullname="Save.Tests" runstate="Runnable" testcasecount="121" result="Passed" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:52Z" duration="1.112908" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1220" name="D16SaveSafetyTests" fullname="Save.Tests.D16SaveSafetyTests" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:52Z" duration="1.110902" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1222" name="AtomicBytesWriteLeavesNoTemporaryFile" fullname="Save.Tests.D16SaveSafetyTests.AtomicBytesWriteLeavesNoTemporaryFile" methodname="AtomicBytesWriteLeavesNoTemporaryFile" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="568215849" result="Passed" start-time="2026-08-12 00:42:50Z" end-time="2026-08-12 00:42:51Z" duration="0.022521" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1221" name="BackupAndRestoreKeepOriginalAndCreateRollback" fullname="Save.Tests.D16SaveSafetyTests.BackupAndRestoreKeepOriginalAndCreateRollback" methodname="BackupAndRestoreKeepOriginalAndCreateRollback" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="422758358" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:51Z" duration="0.031959" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1225" name="CorruptedLiveDatabaseRestoresLatestValidArchiveAndLoads" fullname="Save.Tests.D16SaveSafetyTests.CorruptedLiveDatabaseRestoresLatestValidArchiveAndLoads" methodname="CorruptedLiveDatabaseRestoresLatestValidArchiveAndLoads" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="857479400" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:51Z" duration="0.209158" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1226" name="MigrationExposesPreMigrationBackupAndRemainsIdempotent" fullname="Save.Tests.D16SaveSafetyTests.MigrationExposesPreMigrationBackupAndRemainsIdempotent" methodname="MigrationExposesPreMigrationBackupAndRemainsIdempotent" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="672062206" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:51Z" duration="0.148449" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1223" name="NewGameCreatesBackupBeforeReplacingExistingSave" fullname="Save.Tests.D16SaveSafetyTests.NewGameCreatesBackupBeforeReplacingExistingSave" methodname="NewGameCreatesBackupBeforeReplacingExistingSave" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="899002009" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:51Z" duration="0.154324" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1224" name="SaveFailureDoesNotOverwritePreviousValidFile" fullname="Save.Tests.D16SaveSafetyTests.SaveFailureDoesNotOverwritePreviousValidFile" methodname="SaveFailureDoesNotOverwritePreviousValidFile" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="59150339" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:51Z" duration="0.131894" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1228" name="SettlementClaimsRemainIdempotentAcrossRepeatedSaveRoundTrips" fullname="Save.Tests.D16SaveSafetyTests.SettlementClaimsRemainIdempotentAcrossRepeatedSaveRoundTrips" methodname="SettlementClaimsRemainIdempotentAcrossRepeatedSaveRoundTrips" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="2064329626" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:51Z" duration="0.227717" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1227" name="SettlementClaimSurvivesSaveRoundTripAndCannotRepeat" fullname="Save.Tests.D16SaveSafetyTests.SettlementClaimSurvivesSaveRoundTripAndCannotRepeat" methodname="SettlementClaimSurvivesSaveRoundTripAndCannotRepeat" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="1650185915" result="Passed" start-time="2026-08-12 00:42:51Z" end-time="2026-08-12 00:42:52Z" duration="0.138291" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1229" name="UnicodeAndSidecarBackupRestorePreservePortablePathSemantics" fullname="Save.Tests.D16SaveSafetyTests.UnicodeAndSidecarBackupRestorePreservePortablePathSemantics" methodname="UnicodeAndSidecarBackupRestorePreservePortablePathSemantics" classname="Save.Tests.D16SaveSafetyTests" runstate="Runnable" seed="243602937" result="Passed" start-time="2026-08-12 00:42:52Z" end-time="2026-08-12 00:42:52Z" duration="0.034444" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

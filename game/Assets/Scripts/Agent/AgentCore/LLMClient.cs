@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Whalebone.Agent
@@ -153,13 +154,18 @@ namespace Whalebone.Agent
 
         public static AgentReply Reply(PersonaDefinition persona, string playerInput)
         {
-            string text = Replies[_idx % Replies.Length];
-            _idx++;
+            int index = Interlocked.Increment(ref _idx) - 1;
+            string text = Replies[index % Replies.Length];
             return new AgentReply
             {
+                SchemaVersion = AgentReply.CurrentSchemaVersion,
                 Speech = text,
                 Emotion = Emotion.Neutral,
                 AffinityChange = 0f,
+                RelationProposal = RelationProposal.Empty(),
+                NegotiationTone = NegotiationTone.Neutral,
+                RefusalReason = RefusalReason.None,
+                ActionIntent = ActionIntent.Empty(),
                 Action = "none",
                 ActionArgs = new string[0]
             };

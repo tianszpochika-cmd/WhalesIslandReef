@@ -1,0 +1,63 @@
+{
+  "id": "asset_ph_building_collision_placeholder",
+  "schema_version": 1,
+  "name": "功能建筑碰撞占位体",
+  "display_name_key": "content.asset.asset_ph_building_collision_placeholder.name",
+  "category": "asset",
+  "tags": [
+    "placeholder",
+    "building",
+    "d15_a04"
+  ],
+  "description": "D15-A04 功能建筑碰撞占位体；仅作为可替换占位资源引用，不表示最终美术完成。",
+  "gameplay_role": "building_collision_placeholder",
+  "valid_regions": [],
+  "valid_habitats": [],
+  "valid_weather": [],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  ],
+  "source_note": "沿用仓库现有占位素材授权清单；没有新增外部下载，正式资源替换前保持 placeholder。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "cataloged",
+  "owner_system": "AssetRegistry",
+  "test_id": "D8-A02-D15-LEGACY-ASSET-BUILDING-COLLISION",
+  "reviewer": "D15-A04",
+  "production_batch": "D15-A04*",
+  "production_stage": "cataloged",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_building_collision_placeholder",
+  "material_ref": "placeholder",
+  "collision_ref": "asset_ph_building_collision_placeholder",
+  "lod_profile": "LOD-N/A",
+  "test_cases": [
+    "D15-A04-ASSET-LOAD",
+    "D15-A04-ASSET-REPLACE"
+  ],
+  "quality_level": "Q1",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "source_path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md#码头/沙滩/海面"
+}

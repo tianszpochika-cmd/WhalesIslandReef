@@ -1,0 +1,465 @@
+{
+  "id": "island_ashfall_bay",
+  "schema_version": 1,
+  "name": "灰落湾岛",
+  "name_en": "Ashfall Bay",
+  "display_name_key": "content.island.island_ashfall_bay.name",
+  "category": "island",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "vol",
+    "template_vol",
+    "coast",
+    "volcanic_slope"
+  ],
+  "description": "D15-A01 火山高岛代表档案：火山弧喷发形成的主火山锥与熔岩台地，海岸由黑色火山砾和深水湾切开。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
+  "gameplay_role": "exploration_island",
+  "valid_regions": [
+    "island_ashfall_bay"
+  ],
+  "valid_habitats": [
+    "coast",
+    "volcanic_slope",
+    "rainforest",
+    "cave"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_rainforest_pine_resin_v1",
+    "plant_dry_aloe_medicinal",
+    "fish_snapper_school",
+    "animal_green_turtle",
+    "building_saint_marys_dock",
+    "building_santa_marys_shipyard",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 火山高岛 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-D15-A01-ISLAND-002",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_ashfall_bay",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_vol",
+  "collision_ref": "collision_island_ashfall_bay",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-002",
+    "D15-A01-SAVE-002",
+    "D15-A01-RESTORE-002"
+  ],
+  "quality_level": "Q3",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "volcanic_high_island",
+    "template_label": "火山高岛",
+    "variant_code": "VOL-02",
+    "historical_names": [
+      "Ashfall Bay",
+      "Ashfall Bay chart name"
+    ],
+    "formation": "火山弧喷发形成的主火山锥与熔岩台地，海岸由黑色火山砾和深水湾切开。",
+    "geology": "volcanic_rock",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "侧风面浪涌明显",
+      "coast_type": "windward_sand_beach",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "背风湾适合短暂停泊",
+      "coast_type": "deep_water_bay",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "windward_sand_beach",
+      "deep_water_bay"
+    ],
+    "freshwater": {
+      "source_kind": "spring",
+      "availability": "seasonal_variable",
+      "capacity_band": "medium",
+      "dry_season_rule": "recovery_owner_profile",
+      "water_points": [
+        "water_point_ashfall_bay_01",
+        "water_point_ashfall_bay_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "volcanic_cone",
+      "elevation": "highland",
+      "slope": "steep",
+      "max_m": 720,
+      "maximum_elevation_m": 757,
+      "profile_variant": "volcanic_cone_2",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_ashfall_bay_01",
+        "cave_type": "ash_cave",
+        "entrance_zone": "ashfall_bay_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "deep_water_surge"
+      },
+      {
+        "cave_id": "cave_ashfall_bay_02",
+        "cave_type": "lava_tube",
+        "entrance_zone": "ashfall_bay_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "rockfall"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_ashfall_bay_1",
+        "feature": "deep_water_bay",
+        "chart_access": "primary",
+        "depth_band": "medium",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_ashfall_bay_2",
+        "feature": "volcanic_reef_edge",
+        "chart_access": "alternate",
+        "depth_band": "deep",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "coast",
+      "volcanic_slope",
+      "rainforest",
+      "cave"
+    ],
+    "zones": [
+      {
+        "region_id": "ashfall_bay_coast",
+        "parent_region": "island_ashfall_bay",
+        "geology": "volcanic_rock",
+        "habitat": "coast",
+        "elevation": "coastal",
+        "water_sources": [
+          "spring"
+        ],
+        "coast_access": "windward_sand_beach",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "ash_visibility"
+        ],
+        "plant_tags": [
+          "plant_rainforest_pine_resin_v1"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_rainforest_pine_resin_v1",
+          "plant_dry_aloe_medicinal"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "sailors_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "ashfall_bay_coast"
+      },
+      {
+        "region_id": "ashfall_bay_inland",
+        "parent_region": "island_ashfall_bay",
+        "geology": "volcanic_rock",
+        "habitat": "volcanic_slope",
+        "elevation": "foothill",
+        "water_sources": [
+          "spring"
+        ],
+        "coast_access": "connected_by_path",
+        "walkability": "path_network",
+        "hazard_tags": [
+          "deep_water_surge"
+        ],
+        "plant_tags": [
+          "plant_dry_aloe_medicinal"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_dry_aloe_medicinal"
+        ],
+        "building_tags": [
+          "building_santa_marys_shipyard"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "sailors_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "ashfall_bay_inland"
+      },
+      {
+        "region_id": "ashfall_bay_upper",
+        "parent_region": "island_ashfall_bay",
+        "geology": "volcanic_rock",
+        "habitat": "rainforest",
+        "elevation": "highland",
+        "water_sources": [
+          "spring"
+        ],
+        "coast_access": "ash_cave",
+        "walkability": "limited_path",
+        "hazard_tags": [
+          "rockfall"
+        ],
+        "plant_tags": [
+          "fish_snapper_school"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "fish_snapper_school"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "sailors_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "ashfall_bay_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_ashfall_bay_1",
+        "content_id": "plant_rainforest_pine_resin_v1",
+        "node_type": "rare_observation",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_ashfall_bay.resource.1"
+      },
+      {
+        "node_id": "resource_node_ashfall_bay_2",
+        "content_id": "plant_dry_aloe_medicinal",
+        "node_type": "community_managed",
+        "habitat": "volcanic_slope",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_ashfall_bay.resource.2"
+      },
+      {
+        "node_id": "resource_node_ashfall_bay_3",
+        "content_id": "fish_snapper_school",
+        "node_type": "ecology_key",
+        "habitat": "rainforest",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_ashfall_bay.resource.3"
+      },
+      {
+        "node_id": "resource_node_ashfall_bay_4",
+        "content_id": "animal_green_turtle",
+        "node_type": "dangerous_environment",
+        "habitat": "cave",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_ashfall_bay.resource.4"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_saint_marys_dock",
+        "instance_anchor": "ashfall_bay_building_anchor_1",
+        "placement_zone": "ashfall_bay_coast",
+        "access_route": "coast_survey",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_santa_marys_shipyard",
+        "instance_anchor": "ashfall_bay_building_anchor_2",
+        "placement_zone": "ashfall_bay_inland",
+        "access_route": "lava_ridge",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_ashfall_bay_01",
+        "zone_id": "ashfall_bay_inland",
+        "access_route": "coast_survey",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_ashfall_bay_primary",
+      "alternate_landing": "landing_ashfall_bay_alternate",
+      "primary_coast": "windward_sand_beach",
+      "alternate_coast": "deep_water_bay",
+      "boat_route": "tube_cave",
+      "tide_window": "rising_tide",
+      "navigation_risk": "ash_visibility",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_ashfall_bay_coast",
+        "route_type": "coast",
+        "access": "coast_survey",
+        "fallback": "tube_cave"
+      },
+      {
+        "route_id": "route_ashfall_bay_inland",
+        "route_type": "inland",
+        "access": "lava_ridge",
+        "fallback": "coast_survey"
+      },
+      {
+        "route_id": "route_ashfall_bay_upper",
+        "route_type": "highland_or_cave",
+        "access": "tube_cave",
+        "fallback": "lava_ridge"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_ashfall_bay_1",
+        "tag": "rockfall",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_ashfall_bay.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_ashfall_bay_2",
+        "tag": "ash_visibility",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_ashfall_bay.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_ashfall_bay_3",
+        "tag": "deep_water_surge",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_ashfall_bay.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "火山湾补给点",
+      "faction_tags": [
+        "free_settlement",
+        "sailors_guild"
+      ],
+      "human_modification": "light",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "ashfall_bay_coast",
+        "ashfall_bay_inland",
+        "ashfall_bay_highland"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_ashfall_bay",
+      "stable_id": "island_ashfall_bay",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
+}

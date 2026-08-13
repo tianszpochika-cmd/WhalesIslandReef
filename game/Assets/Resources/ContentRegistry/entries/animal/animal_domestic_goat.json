@@ -4,14 +4,61 @@
   "name": "加勒比山羊",
   "display_name_key": "content.animal.animal_domestic_goat.name",
   "category": "animal",
-  "tags": ["domestic", "livestock", "ranch", "dairy", "quarantine_required"],
+  "tags": [
+    "domestic",
+    "livestock",
+    "ranch",
+    "dairy",
+    "quarantine_required"
+  ],
   "description": "来源、检疫和健康由 AnimalCare/来源 authority 提供，单周期产出由 RanchSystem 写入。",
   "gameplay_role": "ranch_livestock_source",
-  "valid_regions": ["island_saint_marys"], "valid_habitats": ["ranch", "smallholding"], "valid_weather": ["clear", "rain", "storm"],
-  "dependencies": [], "references": ["island_saint_marys"], "asset_refs": [],
-  "source_refs": ["docs/game/design/animals/01_ANIMAL_OVERVIEW.md", "docs/game/design/common/D13_RANCH_LIVESTOCK.md"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ranch",
+    "smallholding"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_saint_marys"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/animals/01_ANIMAL_OVERVIEW.md",
+    "docs/game/design/common/D13_RANCH_LIVESTOCK.md"
+  ],
   "source_note": "项目自有 D13-A04 牲畜来源条目；疾病检查是确定性规则。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D13_RANCH_LIVESTOCK.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
-  "historical_tag": "inferred", "phase": "D13", "status": "prototyped", "owner_system": "EcologySystem", "test_id": "D8-A02-D13-A04-ANIMAL-002", "reviewer": "D13-A04"
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D13_RANCH_LIVESTOCK.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D13",
+  "status": "prototyped",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-D13-A04-ANIMAL-002",
+  "reviewer": "D13-A04",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/animals/01_ANIMAL_OVERVIEW.md",
+    "docs/game/design/common/D13_RANCH_LIVESTOCK.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

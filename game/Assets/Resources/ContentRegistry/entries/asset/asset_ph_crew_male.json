@@ -4,7 +4,11 @@
   "name": "老水手占位模型",
   "display_name_key": "content.asset.asset_ph_crew_male.name",
   "category": "asset",
-  "tags": ["placeholder", "crew", "model"],
+  "tags": [
+    "placeholder",
+    "crew",
+    "model"
+  ],
   "description": "已有 Unity 占位船员模型的正式目录引用。",
   "gameplay_role": "crew_visual_placeholder",
   "valid_regions": [],
@@ -13,7 +17,10 @@
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md", "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"],
+  "source_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  ],
   "source_note": "仅登记仓库已有占位素材；不新增外部下载内容。",
   "source": {
     "kind": "external-asset",
@@ -28,10 +35,40 @@
     "attribution_required": false,
     "modification_allowed": true
   },
+  "authorization": {
+    "authorization_id": "auth_quaternius_cc0_crew_male",
+    "rights_holder": "Quaternius",
+    "license_ref": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "source_url_or_path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md#老水手模型",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "CC0-1.0; project placeholder crew model",
+    "evidence_ref": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  },
   "historical_tag": "inferred",
   "phase": "D8",
   "status": "prototyped",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-ASSET-002",
-  "reviewer": "D8-A02"
+  "reviewer": "D8-A02",
+  "resource_path": "game/Assets/Art/Placeholder/Models/Crew/ph_crew_male.fbx",
+  "runtime_prefab_path": "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
+  "asset_state": "placeholder",
+  "production_stage": "prototype_placeholder",
+  "test_cases": [
+    "d16-a05-asset-ph-crew-male-load",
+    "d16-a05-asset-ph-crew-male-runtime-prefab-reference",
+    "d16-a05-asset-ph-crew-male-placeholder-state",
+    "d16-a05-asset-ph-crew-male-save-restore"
+  ],
+  "lod_profile": "d16_a05_placeholder_crew_lod_na",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

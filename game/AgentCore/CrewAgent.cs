@@ -14,6 +14,8 @@ namespace Whalebone.Agent
         public CrewStats Stats;
         public PersonaDefinition Persona;
         public AgentMemory Memory;
+        /// <summary>D10 行为状态载体；只有 CrewSystem/D10 行为系统可以写入。</summary>
+        public D10CrewBehaviorState BehaviorState;
         public DialogueSession Session;   // 注入
 
         public CrewAgent(string id, PersonaDefinition persona, IMemoryStore store)
@@ -22,6 +24,7 @@ namespace Whalebone.Agent
             Persona = persona;
             Stats = new CrewStats(id);
             Memory = new AgentMemory(store);
+            BehaviorState = new D10CrewBehaviorState();
         }
 
         /// <summary>快照/状态导出（需求文档阶段可扩展为存档 Schema）。</summary>
@@ -37,7 +40,14 @@ namespace Whalebone.Agent
                 ["health"] = Stats.Health,
                 ["fatigue"] = Stats.Fatigue,
                 ["affinity"] = Stats.Affinity,
-                ["mutiny_risk"] = Stats.GetMutinyRisk()
+                ["mutiny_risk"] = Stats.GetMutinyRisk(),
+                ["behavior_status"] = BehaviorState == null
+                    ? CrewBehaviorStatus.Unassigned.ToString() : BehaviorState.Status.ToString(),
+                ["current_duty"] = BehaviorState == null
+                    ? CrewDuty.None.ToString() : BehaviorState.CurrentDuty.ToString(),
+                ["assigned_shift"] = BehaviorState == null
+                    ? CrewShift.OffDuty.ToString() : BehaviorState.AssignedShift.ToString(),
+                ["efficiency_percent"] = BehaviorState == null ? 0f : BehaviorState.CurrentEfficiencyPercent,
             };
         }
     }

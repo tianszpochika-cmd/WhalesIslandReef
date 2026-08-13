@@ -1,3 +1,53 @@
 {
-  "id":"reward_d14_professional_rescue","schema_version":1,"name":"专业救援工具","display_name_key":"content.reward.reward_d14_professional_rescue.name","category":"reward","tags":["professional","rescue","d14"],"description":"由战后处理或任务事实触发的专业工具奖励。","gameplay_role":"reward_request","valid_regions":["island_saint_marys"],"valid_habitats":[],"valid_weather":[],"dependencies":[],"references":["item_tool_rescue_grapnel"],"asset_refs":[],"source_refs":["docs/game/design/common/D14_REWARD_SYSTEM.md"],"source_note":"奖励记录不复制 Inventory 数量，实际工具由所属系统结算。","source":{"kind":"project-authored","author":"Whalebone team","reference":"docs/game/design/common/D14_REWARD_SYSTEM.md"},"license":{"status":"internal-authored","holder":"Whalebone project","reference":"docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing","commercial_use":true,"attribution_required":false,"modification_allowed":true},"historical_tag":"inferred","phase":"D14","status":"prototyped","owner_system":"RewardSystem","test_id":"D8-A02-D14-REWARD-002","reviewer":"D14-A04"
+  "id": "reward_d14_professional_rescue",
+  "schema_version": 1,
+  "name": "专业救援工具",
+  "display_name_key": "content.reward.reward_d14_professional_rescue.name",
+  "category": "reward",
+  "tags": [
+    "professional",
+    "rescue",
+    "d14"
+  ],
+  "description": "由战后处理或任务事实触发的专业工具奖励。",
+  "gameplay_role": "reward_request",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [],
+  "valid_weather": [],
+  "dependencies": [],
+  "references": [
+    "item_tool_rescue_grapnel"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D14_REWARD_SYSTEM.md"
+  ],
+  "source_note": "奖励记录不复制 Inventory 数量，实际工具由所属系统结算。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D14_REWARD_SYSTEM.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D14",
+  "status": "prototyped",
+  "owner_system": "RewardSystem",
+  "test_id": "D8-A02-D14-REWARD-002",
+  "reviewer": "D14-A04",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_REWARD_SYSTEM.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

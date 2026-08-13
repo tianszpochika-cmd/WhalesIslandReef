@@ -975,10 +975,15 @@ namespace Whalebone.Systems.D9
             }
 
             var values = BuildResolutionValues(request, selectedClue, missing, failureCode, route);
+            // 失败事实已经通过 input_facts / result_values 记录本次尝试；恢复链只需要
+            // 直接指向失败的 resolved 事实，避免把失败前的线索传闻再次展开成恢复原因。
+            var causeEventIds = outcomeStatus == WorldEventStatus.Failed
+                ? new string[0]
+                : new[] { EventIdFromRef(selectedClue.FactEventRef) };
             var fact = AppendFact(
                 D9TreasureEventIds.Resolved, worldDay, saveRevision, request.ActorRef,
                 inputFacts, resultCode, summary, values, outcomeStatus, route,
-                new[] { EventIdFromRef(selectedClue.FactEventRef) });
+                causeEventIds);
             AddFact(fact);
             _state.LastResolutionEventRef = FactRef(fact);
 
@@ -998,7 +1003,13 @@ namespace Whalebone.Systems.D9
                 _state.RewardRequest = rewardRequest.Clone();
             }
 
-            return D9TreasureQuestOutcome.Recorded(_state.Status, resultCode, summary, fact, rewardRequest, route);
+            var outcome = D9TreasureQuestOutcome.Recorded(_state.Status, resultCode, summary, fact, rewardRequest, route);
+            outcome.MissingEquipment = missing;
+            // D12 的显式线索请求使用 canonical failure code；保留 D9 旧路线请求的
+            // result code，兼容既有 UI/脚本对“尝试结果”的显示契约。
+            if (outcomeStatus == WorldEventStatus.Failed && !string.IsNullOrWhiteSpace(request.ClueId))
+                outcome.Code = failureCode;
+            return outcome;
         }
 
         public D9TreasureQuestOutcome Recover(D9TreasureRecoveryRequest request, int worldDay, long saveRevision)

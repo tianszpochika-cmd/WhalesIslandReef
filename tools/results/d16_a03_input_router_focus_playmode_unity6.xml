@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="10" result="Failed(Child)" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.8288617">
+  <test-suite type="TestSuite" id="1054" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="39" result="Failed" site="Child" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.828862" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1046" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="39" result="Failed" site="Child" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.823093" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="43376" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1047" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="39" result="Failed" site="Child" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.822350" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1048" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="39" result="Failed" site="Child" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.821899" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1050" name="D16" fullname="Whalebone.Tests.D16" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.821414" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1003" name="D16InputRouterPlayModeTests" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.820147" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1010" name="D16A03D10ContextBindingPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03D10ContextBindingPersistsAndRoutesTheChangedIntent" methodname="D16A03D10ContextBindingPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="602862306" result="Passed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:30Z" duration="0.081784" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1006" name="D16A03D3ContextBindingPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03D3ContextBindingPersistsAndRoutesTheChangedIntent" methodname="D16A03D3ContextBindingPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="901217854" result="Passed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:30Z" duration="0.017705" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1007" name="D16A03D4ContextBindingPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03D4ContextBindingPersistsAndRoutesTheChangedIntent" methodname="D16A03D4ContextBindingPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="68858717" result="Passed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:30Z" duration="0.019331" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1008" name="D16A03D5ContextBindingPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03D5ContextBindingPersistsAndRoutesTheChangedIntent" methodname="D16A03D5ContextBindingPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="671373714" result="Passed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:30Z" duration="0.018631" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1009" name="D16A03D9ContextBindingPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03D9ContextBindingPersistsAndRoutesTheChangedIntent" methodname="D16A03D9ContextBindingPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="32775780" result="Passed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:30Z" duration="0.017683" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1011" name="D16A03GamepadRebindPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03GamepadRebindPersistsAndRoutesTheChangedIntent" methodname="D16A03GamepadRebindPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="1843927865" result="Passed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:30Z" duration="0.040221" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1013" name="D16A03InitialHarborKeyboardCameraAndBoardingLoopWorks" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03InitialHarborKeyboardCameraAndBoardingLoopWorks" methodname="D16A03InitialHarborKeyboardCameraAndBoardingLoopWorks" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="16309396" result="Failed" start-time="2026-08-12 03:36:30Z" end-time="2026-08-12 03:36:39Z" duration="8.251336" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  InitialHarbor D2 运行时接线未完成。
+  Expected: True
+  But was:  False
+]]></message>
+                  <stack-trace><![CDATA[at Whalebone.Tests.D16.D16InputRouterPlayModeTests+<D16A03InitialHarborKeyboardCameraAndBoardingLoopWorks>d__11.MoveNext () [0x00246] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D16InputRouterPlayModeTests.cs:614
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@082c24152fd4\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=GangplankGround, surfaceY=0.54, playerY=0.61
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+]]></output>
+              </test-case>
+              <test-case id="1005" name="D16A03KeyboardRebindPersistsAndRoutesTheChangedIntent" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03KeyboardRebindPersistsAndRoutesTheChangedIntent" methodname="D16A03KeyboardRebindPersistsAndRoutesTheChangedIntent" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="1250332310" result="Passed" start-time="2026-08-12 03:36:39Z" end-time="2026-08-12 03:36:39Z" duration="0.043688" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1012" name="D16A03SyntheticEscapeTogglesHarborPauseThroughController" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03SyntheticEscapeTogglesHarborPauseThroughController" methodname="D16A03SyntheticEscapeTogglesHarborPauseThroughController" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="983609346" result="Passed" start-time="2026-08-12 03:36:39Z" end-time="2026-08-12 03:36:39Z" duration="0.277650" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[HarborPause] 游戏已暂停
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=GangplankGround, surfaceY=0.54, playerY=0.61
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[HarborPause] 游戏已恢复
+]]></output>
+              </test-case>
+              <test-case id="1004" name="D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter" methodname="D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="941751466" result="Passed" start-time="2026-08-12 03:36:39Z" end-time="2026-08-12 03:36:39Z" duration="0.041666" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

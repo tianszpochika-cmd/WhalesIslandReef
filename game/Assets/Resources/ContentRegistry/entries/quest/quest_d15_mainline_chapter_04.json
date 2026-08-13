@@ -1,0 +1,158 @@
+{
+  "id": "quest_d15_mainline_chapter_04",
+  "schema_version": 1,
+  "name": "第四章：有生命的岸线",
+  "name_en": "Chapter IV: The Living Shore",
+  "display_name_key": "content.quest.quest_d15_mainline_chapter_04.name",
+  "category": "quest",
+  "tags": [
+    "D15",
+    "D15-A08",
+    "mainline",
+    "ecology",
+    "template",
+    "event_driven"
+  ],
+  "description": "保护一处生境并记录可恢复的资源变化，避免把生态结果交给叙述者裁决。",
+  "gameplay_role": "mainline_chapter",
+  "valid_regions": [
+    "open_sea",
+    "harbor"
+  ],
+  "valid_habitats": [
+    "rainforest"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [
+    "quest_d15_mainline_chapter_03"
+  ],
+  "references": [
+    "island_blackmud_delta",
+    "building_archive",
+    "item_adze_small"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/common/D12_DYNAMIC_QUEST_LOG.md"
+  ],
+  "source_note": "D15-A08 内容模板；任务只拥有任务状态，事实来自统一事件，奖励仅请求 RewardSystem 裁决。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#D15-A08"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "QuestSystem",
+  "test_id": "D8-A02-D15-A08-QUEST-MAIN-004",
+  "reviewer": "D15-A08",
+  "production_batch": "D15-A08*",
+  "production_stage": "cataloged",
+  "quality_level": "Q3",
+  "quest_track": "mainline",
+  "chapter": 4,
+  "template_number": 4,
+  "target_systems": [
+    "EcologySystem"
+  ],
+  "objectives": [
+    {
+      "objective_id": "quest_d15_mainline_chapter_04_objective_01",
+      "description": "ecology_observation_recorded / ecology_observation_recorded",
+      "description_key": "content.quest.quest_d15_mainline_chapter_04.objective_01",
+      "target_owner_system": "EcologySystem",
+      "accepted_fact_codes": [
+        "ecology_observation_recorded"
+      ],
+      "required_count": 1,
+      "match": {
+        "key": "island_id",
+        "value": "island_blackmud_delta"
+      }
+    },
+    {
+      "objective_id": "quest_d15_mainline_chapter_04_objective_02",
+      "description": "resource_recovery_recorded / resource_recovery_recorded",
+      "description_key": "content.quest.quest_d15_mainline_chapter_04.objective_02",
+      "target_owner_system": "EcologySystem",
+      "accepted_fact_codes": [
+        "resource_recovery_recorded"
+      ],
+      "required_count": 1,
+      "match": {
+        "key": "content_route",
+        "value": "ecology"
+      }
+    }
+  ],
+  "failure_result_codes": [
+    "mainline_chapter_04_blocked",
+    "mainline_chapter_04_failed"
+  ],
+  "recovery_result_codes": [
+    "route_d15_a08_quest_d15_mainline_chapter_04_return",
+    "route_d15_a08_quest_d15_mainline_chapter_04_wait",
+    "route_d15_a08_quest_d15_mainline_chapter_04_ask_for_help"
+  ],
+  "default_recovery_route_id": "route_d15_a08_quest_d15_mainline_chapter_04_return",
+  "alternative_routes": [
+    {
+      "route_id": "route_d15_a08_quest_d15_mainline_chapter_04_wait",
+      "accepted_event_code": "mainline_chapter_04_deferred",
+      "target_owner_system": "EcologySystem",
+      "cause": "time_or_weather_window"
+    },
+    {
+      "route_id": "route_d15_a08_quest_d15_mainline_chapter_04_ask_for_help",
+      "accepted_event_code": "mainline_chapter_04_assisted",
+      "target_owner_system": "CommunitySystem",
+      "cause": "community_or_crew_assistance"
+    }
+  ],
+  "event_prefixes": {
+    "accepted": "event_d15_a08_quest_d15_mainline_chapter_04_accepted",
+    "progress": "event_d15_a08_quest_d15_mainline_chapter_04_progress",
+    "completed": "event_d15_a08_quest_d15_mainline_chapter_04_completed",
+    "failed": "event_d15_a08_quest_d15_mainline_chapter_04_failed",
+    "recovered": "event_d15_a08_quest_d15_mainline_chapter_04_recovered"
+  },
+  "reward_request": {
+    "request_id_policy": "quest_d15_mainline_chapter_04:completion:{save_revision}",
+    "requested_reward_id": "reward_d14_unique_moonwake_armory",
+    "owner_system": "RewardSystem",
+    "source_fact_required": true,
+    "contains_final_values": false,
+    "final_reward_written_by": "RewardSystem",
+    "audit_event_required": true
+  },
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_RELIGION_HISTORY_REVIEW.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full"
+  ],
+  "asset_state": "data_only",
+  "lod_profile": "LOD-N/A",
+  "test_cases": [
+    "quest_d15_mainline_chapter_04-load",
+    "quest_d15_mainline_chapter_04-trigger-interaction",
+    "quest_d15_mainline_chapter_04-save-restore"
+  ]
+}

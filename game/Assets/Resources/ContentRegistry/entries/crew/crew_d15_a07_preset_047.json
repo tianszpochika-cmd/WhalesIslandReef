@@ -1,0 +1,98 @@
+{
+  "id": "crew_d15_a07_preset_047",
+  "schema_version": 1,
+  "name": "D15 船员预设 047 · 领航员",
+  "display_name_key": "content.crew.crew_d15_a07_preset_047.name",
+  "category": "crew",
+  "tags": [
+    "d15_a07",
+    "crew_preset",
+    "culture_merchant_diaspora",
+    "career_navigator",
+    "appearance_composed"
+  ],
+  "description": "项目自有的角色外观与文化/职业组合预设；关系、工资、健康和其他运行时状态由 CrewSystem 接管。",
+  "gameplay_role": "crew_preset",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_green_cay"
+  ],
+  "valid_habitats": [
+    "ship_deck",
+    "harbor",
+    "ship_cabin"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [
+    "outfit_short_curl_hair",
+    "outfit_top_linen_deckhand",
+    "outfit_bottom_canvas_trousers",
+    "outfit_coat_rain_oilskin",
+    "outfit_career_fisher_handline"
+  ],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "docs/game/design/character/02_CREW_AGENT.md",
+    "docs/game/design/character/03_TRAITS_CULTURE.md",
+    "docs/game/design/character/06_CHARACTER_PRESENTATION.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "项目自有 D15-A07 船员预设；本条目只声明可加载的内容、文化/职业标签和外观组合，不写运行时关系、工资、健康、奖励或战斗结果。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CHARACTER_PET_BATCH_CATALOG.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "CrewSystem",
+  "test_id": "D8-A02-D15-A07-CREW-047",
+  "reviewer": "D15-A07",
+  "culture_id": "merchant_diaspora",
+  "culture_label_key": "content.culture.merchant_diaspora.name",
+  "career_id": "navigator",
+  "career_label_key": "content.career.navigator.name",
+  "source_ref": "docs/game/design/common/D15_CHARACTER_PET_BATCH_CATALOG.md#source",
+  "authorization_id": "auth_d15_a07_internal_authored_20260811",
+  "appearance_combo_id": "appearance_combo_d15_a07_023",
+  "behavior_profile": "CrewSystem:LoadPreset",
+  "production_batch": "D15-A07*",
+  "representative_sample": "crew_isaac_reed",
+  "production_stage": "integrated",
+  "quality_level": "Q2",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_crew_male",
+  "material_ref": "placeholder:ph_mat_crew_cloth",
+  "collision_ref": "prefab:ph_crew_male:CapsuleCollider",
+  "lod_profile": "d15_a07_character_lod3",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/character/07_CHARACTER_QA.md",
+    "D15-A07-AUTH-001"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "test_cases": [
+    "D15-A07-LOAD-CREW-047",
+    "D15-A07-OWNER-CREW-047",
+    "D15-A07-SAVE-CREW-047",
+    "D15-A07-RESTORE-CREW-047"
+  ]
+}

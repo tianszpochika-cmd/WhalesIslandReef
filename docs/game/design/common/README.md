@@ -37,5 +37,6 @@
 - [D12_MAP_DISCOVERY.md](D12_MAP_DISCOVERY.md)：D12-A01 海图分层、发现来源、可信度、测深/望远镜和存档边界
 - [D12_WRECK_CAVE_SALVAGE.md](D12_WRECK_CAVE_SALVAGE.md)：D12-A02 沉船/洞穴位置、潮汐、装备、风险、竞争者、法律裁决、失败恢复和奖励请求
 - [D12_TAROT_DIVINATION.md](D12_TAROT_DIVINATION.md)：D12-A06 非超自然牌面、占卜信任、解释偏差、软线索、求证和错误后果
+- [D15_SHIP_HULL_MODULE_BATCH_CATALOG.md](D15_SHIP_HULL_MODULE_BATCH_CATALOG.md)：D15-A06* 20 船体、80 改装模块、60 功能点及资产表现/交互目录
 
 设计宪法 `../DESIGN_PILLARS.md`、权限边界 `../DESIGN_BOUNDARIES.md` 和数据模型 `../DATA_MODELS.md` 是根级权威文件；旧的数值、战斗、成长和存档入口已经归档，避免多个文件同时声称自己是事实源。

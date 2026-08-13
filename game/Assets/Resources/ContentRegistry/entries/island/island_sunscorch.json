@@ -1,0 +1,477 @@
+{
+  "id": "island_sunscorch",
+  "schema_version": 1,
+  "name": "灼日岛",
+  "name_en": "Sunscorch",
+  "display_name_key": "content.island.island_sunscorch.name",
+  "category": "island",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "dry",
+    "template_dry",
+    "coast",
+    "dry_shrub"
+  ],
+  "description": "D15-A01 背风干旱灌丛岛代表档案：背风面雨影与薄土共同形成干旱灌丛、仙人掌坡和季节性水道。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
+  "gameplay_role": "landing_resource_island",
+  "valid_regions": [
+    "island_sunscorch"
+  ],
+  "valid_habitats": [
+    "coast",
+    "dry_shrub",
+    "thorn_scrub",
+    "karst_ridge"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_dry_aloe_medicinal",
+    "plant_coast_agave_fiber",
+    "plant_dry_datura_toxin_v1",
+    "fish_snapper_school",
+    "animal_green_turtle",
+    "building_green_cay_water_well",
+    "building_santa_marys_north_warehouse",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 背风干旱灌丛岛 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-D15-A01-ISLAND-043",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_saint_marys",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_dry",
+  "collision_ref": "collision_island_sunscorch",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-043",
+    "D15-A01-SAVE-043",
+    "D15-A01-RESTORE-043"
+  ],
+  "quality_level": "Q2",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "leeward_dry_shrub_island",
+    "template_label": "背风干旱灌丛岛",
+    "variant_code": "DRY-03",
+    "historical_names": [
+      "Sunscorch",
+      "Sunscorch chart name"
+    ],
+    "formation": "背风面雨影与薄土共同形成干旱灌丛、仙人掌坡和季节性水道。",
+    "geology": "limestone",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "季风改变浅滩能见度",
+      "coast_type": "tidal_rock_pool",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "雨影使淡水恢复较慢",
+      "coast_type": "backwind_white_bay",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "tidal_rock_pool",
+      "backwind_white_bay"
+    ],
+    "freshwater": {
+      "source_kind": "rain_catchment",
+      "availability": "seasonal_limited",
+      "capacity_band": "large",
+      "dry_season_rule": "recovery_slow",
+      "water_points": [
+        "water_point_sunscorch_01",
+        "water_point_sunscorch_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "dry_ridge",
+      "elevation": "ridge",
+      "slope": "broken",
+      "max_m": 180,
+      "maximum_elevation_m": 254,
+      "profile_variant": "dry_ridge_3",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_sunscorch_01",
+        "cave_type": "limestone_dry_cave",
+        "entrance_zone": "sunscorch_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "heat_exposure"
+      },
+      {
+        "cave_id": "cave_sunscorch_02",
+        "cave_type": "sinkhole_cave",
+        "entrance_zone": "sunscorch_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "water_shortage"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_sunscorch_1",
+        "feature": "limestone_shoal",
+        "chart_access": "primary",
+        "depth_band": "deep",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_sunscorch_2",
+        "feature": "windward_reef",
+        "chart_access": "alternate",
+        "depth_band": "shallow",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "coast",
+      "dry_shrub",
+      "thorn_scrub",
+      "karst_ridge"
+    ],
+    "zones": [
+      {
+        "region_id": "sunscorch_coast",
+        "parent_region": "island_sunscorch",
+        "geology": "limestone",
+        "habitat": "coast",
+        "elevation": "coastal",
+        "water_sources": [
+          "rain_catchment"
+        ],
+        "coast_access": "tidal_rock_pool",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "flash_storm"
+        ],
+        "plant_tags": [
+          "plant_dry_aloe_medicinal"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_dry_aloe_medicinal",
+          "plant_coast_agave_fiber"
+        ],
+        "building_tags": [
+          "building_green_cay_water_well"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "traders_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "sunscorch_coast"
+      },
+      {
+        "region_id": "sunscorch_inland",
+        "parent_region": "island_sunscorch",
+        "geology": "limestone",
+        "habitat": "dry_shrub",
+        "elevation": "foothill",
+        "water_sources": [
+          "rain_catchment"
+        ],
+        "coast_access": "connected_by_path",
+        "walkability": "path_network",
+        "hazard_tags": [
+          "heat_exposure"
+        ],
+        "plant_tags": [
+          "plant_coast_agave_fiber"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_coast_agave_fiber"
+        ],
+        "building_tags": [
+          "building_santa_marys_north_warehouse"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "traders_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "sunscorch_inland"
+      },
+      {
+        "region_id": "sunscorch_upper",
+        "parent_region": "island_sunscorch",
+        "geology": "limestone",
+        "habitat": "thorn_scrub",
+        "elevation": "ridge",
+        "water_sources": [
+          "rain_catchment"
+        ],
+        "coast_access": "limestone_dry_cave",
+        "walkability": "limited_path",
+        "hazard_tags": [
+          "water_shortage"
+        ],
+        "plant_tags": [
+          "plant_dry_datura_toxin_v1"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_dry_datura_toxin_v1"
+        ],
+        "building_tags": [
+          "building_green_cay_water_well"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "traders_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "sunscorch_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_sunscorch_1",
+        "content_id": "plant_dry_aloe_medicinal",
+        "node_type": "community_managed",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_sunscorch.resource.1"
+      },
+      {
+        "node_id": "resource_node_sunscorch_2",
+        "content_id": "plant_coast_agave_fiber",
+        "node_type": "ecology_key",
+        "habitat": "dry_shrub",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_sunscorch.resource.2"
+      },
+      {
+        "node_id": "resource_node_sunscorch_3",
+        "content_id": "plant_dry_datura_toxin_v1",
+        "node_type": "dangerous_environment",
+        "habitat": "thorn_scrub",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_sunscorch.resource.3"
+      },
+      {
+        "node_id": "resource_node_sunscorch_4",
+        "content_id": "fish_snapper_school",
+        "node_type": "common_refresh",
+        "habitat": "karst_ridge",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_sunscorch.resource.4"
+      },
+      {
+        "node_id": "resource_node_sunscorch_5",
+        "content_id": "animal_green_turtle",
+        "node_type": "rare_observation",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_sunscorch.resource.5"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_green_cay_water_well",
+        "instance_anchor": "sunscorch_building_anchor_1",
+        "placement_zone": "sunscorch_coast",
+        "access_route": "coast_survey",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_santa_marys_north_warehouse",
+        "instance_anchor": "sunscorch_building_anchor_2",
+        "placement_zone": "sunscorch_inland",
+        "access_route": "thorn_scrub",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_sunscorch_01",
+        "zone_id": "sunscorch_upper",
+        "access_route": "coast_survey",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_sunscorch_primary",
+      "alternate_landing": "landing_sunscorch_alternate",
+      "primary_coast": "tidal_rock_pool",
+      "alternate_coast": "backwind_white_bay",
+      "boat_route": "dry_cave",
+      "tide_window": "high_tide",
+      "navigation_risk": "flash_storm",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_sunscorch_coast",
+        "route_type": "coast",
+        "access": "coast_survey",
+        "fallback": "dry_cave"
+      },
+      {
+        "route_id": "route_sunscorch_inland",
+        "route_type": "inland",
+        "access": "thorn_scrub",
+        "fallback": "coast_survey"
+      },
+      {
+        "route_id": "route_sunscorch_upper",
+        "route_type": "highland_or_cave",
+        "access": "dry_cave",
+        "fallback": "thorn_scrub"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_sunscorch_1",
+        "tag": "heat_exposure",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_sunscorch.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_sunscorch_2",
+        "tag": "water_shortage",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_sunscorch.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_sunscorch_3",
+        "tag": "flash_storm",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_sunscorch.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "背风补水站",
+      "faction_tags": [
+        "free_settlement",
+        "traders_guild"
+      ],
+      "human_modification": "managed",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "sunscorch_coast",
+        "sunscorch_inland",
+        "sunscorch_highland"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_sunscorch",
+      "stable_id": "island_sunscorch",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
+}

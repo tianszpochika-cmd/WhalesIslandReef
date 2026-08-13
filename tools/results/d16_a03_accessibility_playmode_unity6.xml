@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="18" result="Passed" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:46:00Z" duration="64.5323303">
+  <test-suite type="TestSuite" id="1030" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:46:00Z" duration="64.532330" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1023" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:46:00Z" duration="64.526936" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="10080" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1024" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:46:00Z" duration="64.526347" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1025" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:46:00Z" duration="64.525942" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1026" name="D16" fullname="Whalebone.Tests.D16" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:46:00Z" duration="64.525566" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="D16InputRouterPlayModeTests" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:44:56Z" duration="0.542360" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1003" name="D16A03SyntheticEscapeTogglesHarborPauseThroughController" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03SyntheticEscapeTogglesHarborPauseThroughController" methodname="D16A03SyntheticEscapeTogglesHarborPauseThroughController" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="905819063" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:44:56Z" duration="0.479476" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[HarborPause] 游戏已暂停
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[HarborPause] 游戏已恢复
+]]></output>
+              </test-case>
+              <test-case id="1002" name="D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter" fullname="Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter" methodname="D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter" classname="Whalebone.Tests.D16.D16InputRouterPlayModeTests" runstate="Runnable" seed="996927410" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:44:56Z" duration="0.052197" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1004" name="D16LocalDiagnosticsPanelTests" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests" classname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:44:57Z" duration="0.292152" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              <test-case id="1005" name="D16A06PanelSupportsOptInDeleteAndClose" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests.D16A06PanelSupportsOptInDeleteAndClose" methodname="D16A06PanelSupportsOptInDeleteAndClose" classname="Whalebone.Tests.D16.D16LocalDiagnosticsPanelTests" runstate="Runnable" seed="1112694800" result="Passed" start-time="2026-08-11 19:44:56Z" end-time="2026-08-11 19:44:57Z" duration="0.277790" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A06] 本地诊断隐私面板已打开：默认关闭、仅本地脱敏记录
+[D16/A06] 本地诊断隐私面板已关闭：玩法输入已恢复
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1006" name="D16LocalDiagnosticsTests" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:44:57Z" duration="0.019434" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1008" name="ClassifierKeepsUsefulCategoryWithoutCopyingMessage" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.ClassifierKeepsUsefulCategoryWithoutCopyingMessage" methodname="ClassifierKeepsUsefulCategoryWithoutCopyingMessage" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="533803765" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:44:57Z" duration="0.001722" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1009" name="DiagnosticsContractUsesBoundedTokensAndCounts" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.DiagnosticsContractUsesBoundedTokensAndCounts" methodname="DiagnosticsContractUsesBoundedTokensAndCounts" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="699324390" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:44:57Z" duration="0.000940" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1007" name="RedactedRecordOmitsRawMessageAndStack" fullname="Whalebone.Tests.D16.D16LocalDiagnosticsTests.RedactedRecordOmitsRawMessageAndStack" methodname="RedactedRecordOmitsRawMessageAndStack" classname="Whalebone.Tests.D16.D16LocalDiagnosticsTests" runstate="Runnable" seed="1357035811" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:44:57Z" duration="0.000143" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1010" name="D16RuntimeAcceptanceTests" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:46:00Z" duration="63.670226" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1021" name="D16A01RuntimeBudgetCapsHighLoadWithoutFreezingProtectedObjects" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A01RuntimeBudgetCapsHighLoadWithoutFreezingProtectedObjects" methodname="D16A01RuntimeBudgetCapsHighLoadWithoutFreezingProtectedObjects" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1069821922" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:44:57Z" duration="0.255760" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A01] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_budget_stress_report.json
+]]></output>
+              </test-case>
+              <test-case id="1022" name="D16A01RuntimeFixtureExercisesStreamingLodAndPool" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A01RuntimeFixtureExercisesStreamingLodAndPool" methodname="D16A01RuntimeFixtureExercisesStreamingLodAndPool" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1872395711" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:44:57Z" duration="0.443582" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Material] 材质保真层已应用：渲染器=100，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A01] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_runtime_fixture_report.json
+]]></output>
+              </test-case>
+              <test-case id="1014" name="D16A01RuntimePerformanceWindowSamplesContinuously" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A01RuntimePerformanceWindowSamplesContinuously" methodname="D16A01RuntimePerformanceWindowSamplesContinuously" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1962793190" result="Passed" start-time="2026-08-11 19:44:57Z" end-time="2026-08-11 19:45:58Z" duration="60.235561" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A01] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_performance_window_report.json
+]]></output>
+              </test-case>
+              <test-case id="1015" name="D16A03AccessibilityPanelOpensAndClosesFromMainMenu" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03AccessibilityPanelOpensAndClosesFromMainMenu" methodname="D16A03AccessibilityPanelOpensAndClosesFromMainMenu" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="338107169" result="Passed" start-time="2026-08-11 19:45:58Z" end-time="2026-08-11 19:45:58Z" duration="0.232973" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] 无障碍设置面板已打开：玩法输入已锁定
+[D16/A03] 无障碍设置面板已关闭：玩法输入已恢复
+]]></output>
+              </test-case>
+              <test-case id="1012" name="D16A03AccessibilityRuntimeAppliesLongTextFontScaleAndColorModes" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03AccessibilityRuntimeAppliesLongTextFontScaleAndColorModes" methodname="D16A03AccessibilityRuntimeAppliesLongTextFontScaleAndColorModes" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1199175548" result="Passed" start-time="2026-08-11 19:45:58Z" end-time="2026-08-11 19:45:58Z" duration="0.217348" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=2, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=Deuteranopia, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a03_accessibility_runtime_report.json
+]]></output>
+              </test-case>
+              <test-case id="1020" name="D16A03AllD9EventsPublishAudioCueAndSubtitle" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03AllD9EventsPublishAudioCueAndSubtitle" methodname="D16A03AllD9EventsPublishAudioCueAndSubtitle" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1408137435" result="Passed" start-time="2026-08-11 19:45:58Z" end-time="2026-08-11 19:45:58Z" duration="0.517321" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a03_d9_cue_coverage_report.json
+]]></output>
+              </test-case>
+              <test-case id="1019" name="D16A03D9EventPublishesAudioCueAndSubtitle" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03D9EventPublishesAudioCueAndSubtitle" methodname="D16A03D9EventPublishesAudioCueAndSubtitle" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="969778193" result="Passed" start-time="2026-08-11 19:45:58Z" end-time="2026-08-11 19:45:59Z" duration="0.274288" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a03_d9_subtitle_runtime_report.json
+]]></output>
+              </test-case>
+              <test-case id="1017" name="D16A03MainMenuPanelVisibilityIsExclusiveAcrossNavigation" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03MainMenuPanelVisibilityIsExclusiveAcrossNavigation" methodname="D16A03MainMenuPanelVisibilityIsExclusiveAcrossNavigation" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1724808430" result="Passed" start-time="2026-08-11 19:45:59Z" end-time="2026-08-11 19:45:59Z" duration="0.286799" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+]]></output>
+              </test-case>
+              <test-case id="1018" name="D16A03PauseMenuKeepsFocusAcrossAccessibilityAndDiagnostics" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03PauseMenuKeepsFocusAcrossAccessibilityAndDiagnostics" methodname="D16A03PauseMenuKeepsFocusAcrossAccessibilityAndDiagnostics" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="465951182" result="Passed" start-time="2026-08-11 19:45:59Z" end-time="2026-08-11 19:45:59Z" duration="0.318867" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[HarborPause] 游戏已暂停
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Input] 状态=人物，模态=暂停
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] 无障碍设置面板已打开：玩法输入已锁定
+[D16/A03] 无障碍设置面板已关闭：玩法输入已恢复
+[D16/A06] 本地诊断隐私面板已打开：默认关闭、仅本地脱敏记录
+[D16/A06] 本地诊断隐私面板已关闭：玩法输入已恢复
+[HarborPause] 游戏已恢复
+]]></output>
+              </test-case>
+              <test-case id="1016" name="D16A03SettingsButtonsHaveUsableHitTargetsAndOpenRealModals" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03SettingsButtonsHaveUsableHitTargetsAndOpenRealModals" methodname="D16A03SettingsButtonsHaveUsableHitTargetsAndOpenRealModals" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="485200062" result="Passed" start-time="2026-08-11 19:45:59Z" end-time="2026-08-11 19:46:00Z" duration="0.279530" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D7/Input] 状态=人物，模态=无
+[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/A03] 无障碍设置面板已打开：玩法输入已锁定
+[D16/A03] 无障碍设置面板已关闭：玩法输入已恢复
+[D16/A06] 本地诊断隐私面板已打开：默认关闭、仅本地脱敏记录
+[D16/A06] 本地诊断隐私面板已关闭：玩法输入已恢复
+]]></output>
+              </test-case>
+              <test-case id="1011" name="D16A03StaticUiLocalizationTablesAreSymmetricAndNonEmpty" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A03StaticUiLocalizationTablesAreSymmetricAndNonEmpty" methodname="D16A03StaticUiLocalizationTablesAreSymmetricAndNonEmpty" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1514327293" result="Passed" start-time="2026-08-11 19:46:00Z" end-time="2026-08-11 19:46:00Z" duration="0.001427" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="InitialHarborBootstrapsD16AndSamplesRuntime" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.InitialHarborBootstrapsD16AndSamplesRuntime" methodname="InitialHarborBootstrapsD16AndSamplesRuntime" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="271024863" result="Passed" start-time="2026-08-11 19:46:00Z" end-time="2026-08-11 19:46:00Z" duration="0.591890" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D16/PlayMode] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_runtime_playmode_report.json
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

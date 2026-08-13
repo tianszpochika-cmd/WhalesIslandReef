@@ -15,7 +15,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Gameplay.UI;
 using Whalebone.Gameplay.D7;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D3;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
 
 namespace Whalebone.Gameplay.D3
@@ -107,22 +109,20 @@ namespace Whalebone.Gameplay.D3
                 return;
             }
 
-            var keyboard = Keyboard.current;
-            if (keyboard == null) return;
             if (_tradeOpen)
             {
-                if (keyboard.escapeKey.wasPressedThisFrame) CloseTrade();
+                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3CloseTrade)) CloseTrade();
                 return;
             }
             if (!D7ControlCoordinator.GameplayInputAllowed) return;
             if (Time.timeScale <= 0f) return;
 
-            if (keyboard.bKey.wasPressedThisFrame) OpenTrade();
-            else if (keyboard.tKey.wasPressedThisFrame) StartVoyage();
-            else if (keyboard.nKey.wasPressedThisFrame) AdvanceVoyage();
-            else if (keyboard.gKey.wasPressedThisFrame) GatherOne();
-            else if (keyboard.lKey.wasPressedThisFrame) LandAndSettle();
-            else if (keyboard.cKey.wasPressedThisFrame) SaveProgress();
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.Trade)) OpenTrade();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3StartVoyage)) StartVoyage();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3AdvanceVoyage)) AdvanceVoyage();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3Gather)) GatherOne();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3LandAndSettle)) LandAndSettle();
+            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Save)) SaveProgress();
             RefreshHud();
         }
 
@@ -290,7 +290,10 @@ namespace Whalebone.Gameplay.D3
             _snapshot.Food = _voyage.Food;
             _snapshot.Hull = _voyage.Hull;
             _snapshot.EventIds = new List<string>(_voyage.EventIds);
-            if (result.MoneyDelta != 0) SetResult(result.Message + " 金币变化：" + result.MoneyDelta);
+            if (result.MoneyDelta != 0)
+                SetResult(result.Message + " 金币变化：" +
+                    D16DisplayFormatter.SignedNumber(result.MoneyDelta,
+                        Localization.IsEnglish ? "en-US" : "zh-CN"));
             else SetResult(result.Message);
 
             if (!result.Succeeded)
@@ -497,7 +500,20 @@ namespace Whalebone.Gameplay.D3
             var port = PortCatalog.Find(_snapshot.CurrentLocationId);
             if (port == null || _ship == null || _player == null) return;
             _ship.position = new Vector3(port.WorldX, _ship.position.y, port.WorldZ);
-            _player.position = _ship.position - _ship.forward * 5f + Vector3.up;
+            // D3 只决定船在港口的世界位置；玩家位置由 D2 角色物理层接管。
+            // 旧的 -5f + Vector3.up 会把人物放回船体/跳板接缝，首帧被
+            // CharacterController 抬高后丢失接地，动作层就会误判为 Jump。
+            Vector3 playerSpawn = _ship.position - _ship.forward * 6.5f + Vector3.up * 1.1f;
+            var character = _player.GetComponent<Whalebone.Gameplay.D2.D2CharacterController>();
+            if (character != null)
+            {
+                character.SetWorldPosition(playerSpawn);
+                character.SnapToGround();
+            }
+            else
+            {
+                _player.position = playerSpawn;
+            }
         }
 
         private void RefreshHud()
@@ -507,12 +523,12 @@ namespace Whalebone.Gameplay.D3
             var port = PortCatalog.Find(_snapshot.CurrentLocationId);
             string location = port == null ? "未知海域" : port.DisplayName;
             string voyage = _snapshot.VoyageStatus == D3VoyageStatus.Sailing
-                ? "航行中 " + _snapshot.CurrentDay + "/" + _snapshot.TotalDays + " → " +
+                ? "航行中 " + DisplayNumber(_snapshot.CurrentDay) + "/" + DisplayNumber(_snapshot.TotalDays) + " → " +
                   (PortCatalog.Find(_snapshot.DestinationId)?.DisplayName ?? "未知")
                 : _snapshot.VoyageStatus.ToString();
-            _statusText.text = "D3 可玩环\n位置：" + location + " | 金币：" + _snapshot.Money +
-                " | 货舱：" + D3InventorySystem.UsedCargo(_trade.Inventory) + "/" + _trade.Inventory.CargoCapacity +
-                "\n补给 水 " + _snapshot.Water + " / 食物 " + _snapshot.Food + " | 船体 " + _snapshot.Hull + "/" + _snapshot.HullMax +
+            _statusText.text = "D3 可玩环\n位置：" + location + " | 金币：" + DisplayNumber(_snapshot.Money) +
+                " | 货舱：" + DisplayNumber(D3InventorySystem.UsedCargo(_trade.Inventory)) + "/" + DisplayNumber(_trade.Inventory.CargoCapacity) +
+                "\n补给 水 " + DisplayNumber(_snapshot.Water) + " / 食物 " + DisplayNumber(_snapshot.Food) + " | 船体 " + DisplayNumber(_snapshot.Hull) + "/" + DisplayNumber(_snapshot.HullMax) +
                 "\n状态：" + voyage + "\n提示：" + _lastMessage;
             _hintText.text = "WASD 移动 | 右键/中键调整视角 | B 贸易 | T 出航 | N 推进一天 | G 采集 | L 靠港结算 | C 保存 | ESC 暂停";
         }
@@ -551,10 +567,15 @@ namespace Whalebone.Gameplay.D3
             string reasons = quote == null || quote.PriceReasons == null ? "暂无价格原因。" :
                 string.Join("；", quote.PriceReasons.ConvertAll(reason => reason.Explanation).ToArray());
             _tradeTitle.text = "贸易：" + (port == null ? "未知港口" : port.DisplayName);
-            _tradeInfo.text = item.DisplayName + "  | 货舱 " + D3InventorySystem.CountCargo(_trade.Inventory, item.Id) +
-                " | 市场库存 " + stock + "\n买入 " + (quote == null ? 0 : quote.BuyUnitPrice) +
-                " 金币/件 | 卖出 " + (quote == null ? 0 : quote.SellUnitPrice) + " 金币/件\n当前金币：" + _trade.Money +
+            _tradeInfo.text = item.DisplayName + "  | 货舱 " + DisplayNumber(D3InventorySystem.CountCargo(_trade.Inventory, item.Id)) +
+                " | 市场库存 " + DisplayNumber(stock) + "\n买入 " + DisplayNumber(quote == null ? 0 : quote.BuyUnitPrice) +
+                " 金币/件 | 卖出 " + DisplayNumber(quote == null ? 0 : quote.SellUnitPrice) + " 金币/件\n当前金币：" + DisplayNumber(_trade.Money) +
                 "\n价格原因：" + reasons + (quote != null && quote.IsOutOfStock ? "\n状态：缺货" : "");
+        }
+
+        private static string DisplayNumber(int value)
+        {
+            return D16DisplayFormatter.Number(value, Localization.IsEnglish ? "en-US" : "zh-CN");
         }
 
         private void SetResult(string message)

@@ -1,0 +1,146 @@
+{
+  "id": "animal_armadillo_nine_banded",
+  "schema_version": 1,
+  "name": "Armadillo Nine Banded",
+  "display_name_key": "content.animal.animal_armadillo_nine_banded.name",
+  "category": "animal",
+  "tags": [
+    "d15_a03",
+    "terrestrial",
+    "jungle",
+    "l4"
+  ],
+  "description": "D15-A03 terrestrial content definition; immutable data only, behavior is delegated to EcologySystem.",
+  "gameplay_role": "ecology_content_definition",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_driftwood_isle"
+  ],
+  "valid_habitats": [
+    "jungle",
+    "lowland_forest"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/animals/03_ANIMAL_BEHAVIOR.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "Project-authored ecology content record. Runtime quantity, legal result, danger result and behavior state remain owned by EcologySystem.",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/animals/03_ANIMAL_BEHAVIOR.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-1",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "prototyped",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-D15-A03-015",
+  "reviewer": "D15-A03",
+  "production_batch": "D15-A03*",
+  "representative_sample": "animal_green_turtle",
+  "production_stage": "integrated",
+  "d15_category": "terrestrial",
+  "behavior_level": "L4",
+  "behavior_profile": "ecology.d15.terrestrial.l4",
+  "habitat_profile": {
+    "primary": "jungle",
+    "secondary": [
+      "river_edge",
+      "dry_forest"
+    ],
+    "min_depth_m": 0,
+    "max_depth_m": 0,
+    "zone": "land"
+  },
+  "refresh_profile": {
+    "mode": "seasonal",
+    "interval_days": 3,
+    "seed_domain": "d15.a03.terrestrial",
+    "window": "dawn_day"
+  },
+  "food_chain_profile": {
+    "role": "herbivore",
+    "prey_tags": [
+      "leaves",
+      "fruit",
+      "seeds"
+    ],
+    "predator_tags": [
+      "jaguar",
+      "raptor"
+    ]
+  },
+  "danger_profile": {
+    "level": "low",
+    "tags": [
+      "startle"
+    ],
+    "telegraph": "rustle_or_flee"
+  },
+  "legal_profile": {
+    "status": "legal",
+    "rule_id": "d15_a03_legal_baseline",
+    "permit_required": false,
+    "source_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-2"
+  },
+  "performance_budget": {
+    "lod0_triangles": 10000,
+    "lod1_triangles": 4500,
+    "lod2_triangles": 1400,
+    "lod3_triangles": 400,
+    "active_distance_m": 45,
+    "update_hz": 5,
+    "max_active": 24
+  },
+  "asset_state": "placeholder",
+  "model_ref": "placeholder_animal_lowpoly_lod2",
+  "material_ref": "placeholder_biome_material_shared",
+  "collision_ref": "placeholder_animal_capsule",
+  "lod_profile": "animal_lod2",
+  "test_cases": [
+    "D15-A03-LOAD",
+    "D15-A03-ECOLOGY-TAKEOVER",
+    "D15-A03-SAVE-RESTORE"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "D15-A03-REVIEW-PROJECT-AUTHORED",
+    "D15-A03-LEGAL-BASELINE"
+  ],
+  "content_warning_ids": [],
+  "context_note_key": "content.d15.a03.ecology_context",
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full",
+    "LowIntensity"
+  ],
+  "quality_level": "Q2",
+  "authorization": {
+    "authorization_id": "auth_d15_a03_project_authored",
+    "rights_holder": "Whalebone project",
+    "license_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-1",
+    "source_url_or_path": "docs/game/design/animals/03_ANIMAL_BEHAVIOR.md",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "Project-authored content; commercial game use",
+    "evidence_ref": "D15-A03-REVIEW-PROJECT-AUTHORED"
+  }
+}

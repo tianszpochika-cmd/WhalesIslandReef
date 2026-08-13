@@ -13,7 +13,9 @@
 | D7 | 开发完成 | 控制状态、舵位、上下船、保存恢复、表现与回归；人工复测以最新验收报告为准 |
 | 需求统一 | 本次重构 | 见 `REQUIREMENTS.md` |
 | 设计统一 | 本次重构 | 见 `design/README.md` 和 `design/gameplay/` |
-| 下一开发入口 | D8 | 数据、契约、存档和内容 ID 统一 |
+| 当前验收状态 | D15-S02 PASS；D16-A01—A06 IN_PROGRESS；D16-S01/S02 未完成 | D15 内容门禁已通过；A01/A02 有实现但缺 Unity/故障实测，A03 已接输入/设置底座，A04—A06 已有静态审计；按 A01 → A06 → S01 → S02 继续，未完成前不得进入最终发布交接 |
+
+2026-08-11 已补充 Unity 6 PlayMode 运行时基础证据：InitialHarbor/D2/D16 接线 1/1 PASS，A01 生产回归 2/2 PASS；A02 已补进程中止 3/3、档案矩阵 10/10 和 EditMode 291/291 证据。这些只关闭 A01/A02 的部分运行时子门禁，不改变 D16-A01—A06 的总体状态。下一步仍按 A01 目标设备性能 → A02 真实断电/跨平台与长线存档 → A03 真机无障碍 → A04—A06 静态缺口闭合 → S01 长线验收 → S02 最终交接执行。
 
 ## 2. 开发纪律
 
@@ -141,3 +143,392 @@ D16 完整版 QA、迁移、本地化和发布
 ## 6. 不再作为未来入口的文件
 
 旧版 `REQUIREMENTS.md`、旧版 `DEV_ROADMAP.md`、旧版 `GAME_PLAN.md` 已移入 `docs/archive/legacy/`。D1—D7 范围、提示词和验收文件只作为历史证据，不再派生新的开发任务。
+
+## 2026-08-11 D16 运行时推进记录
+
+D16-A03 已完成可操作基础链：主菜单/暂停菜单无障碍入口、键鼠/手柄重绑定捕获与冲突拒绝、文字和视觉辅助消费、字幕承载层均已接入；Unity 6 PlayMode 为 3/3，EditMode 为 292/292，纯逻辑测试为 6/6。A03 不标记为 PASS，仍需真实设备、音频字幕触发、字体覆盖、色觉/低刺激和长文本场景验证。
+
+后续严格按门禁推进：先补 A01 目标设备性能与长线采样，再补 A02 跨平台/中断恢复与完整存档矩阵，随后关闭 A03 真机与字幕门禁；A04—A06 的人工审查、最终表现和发布实测完成后，才进入 D16-S01/S02。任何缺少真实证据的项目继续保持 IN_PROGRESS/BLOCKED。
+
+## 2026-08-11 最新执行结果
+
+A01 已增加 8 秒连续采样窗口：本机 RTX 4070 Ti 上 32 个样本、平均 59.98 FPS、最低 59.72 FPS、预算满足；A03 已通过代表性 D9 事件→音频→字幕链；A06 已落地明确为 blocked 的发布清单。A02 新增 Windows 真实强制终止 3/3、最新 Unity EditMode 296/296 和档案矩阵 10/10 证据，但物理断电、跨平台与长线存档仍未关闭。Unity 6 PlayMode 当前 5/5 PASS，A04—A06 静态审计已复跑。下一步仍是目标/低端设备、14 cue 全量事件抽样、长线存档与人工审查闭包，然后才进入最终表现替换、发布实测和 D16-S01/S02。
+
+本轮 A02 长线压力又通过 100 次真实 SaveSystem 循环，并修复了新游戏遗留空 v3 投影表导致后续迁移失败的缺陷；这只关闭本地重复迁移/有限压力子门禁，不改变 A02 的 IN_PROGRESS 状态。
+
+## 2026-08-12 当前 D16 门禁快照
+
+当前权威状态以本节和各专项报告中的最新证据为准：
+
+- D10/D15-S02：工程依赖已恢复；D15-A01—A08 专项退出码均为 0，D15-S02 PASS；
+- D16-A01：本机岛屿数据流和生命周期代码回归通过，但当前仍为 12 个 data-only、0 个视觉表现根，缺真实岛屿/海域最终资源、目标/低端设备和长线证据；
+- D16-A02：Save.Tests 303/303、严格档案矩阵 10/10 类别/31/31 精确用例、故障注入 6/6、100 次长线通过；仍缺物理断电、Linux/macOS/跨平台文件系统和目标设备证据；
+- D16-A03：本机输入、字体、敏感内容、焦点和设置回归已通过；仍缺真机、目标分辨率、色觉/低刺激人工复核与长线证据；
+- D16-A04：267 条人工历史/敏感/权利 Pending，禁止自动批准；
+- D16-A05：2,264 个 placeholder，真实资源替换队列保持 BLOCKED，第一批按真人/码头/岛屿垂直切片排序；
+- D16-A06：19/19 本机与安装器检查为 true，技术准备 PASS，但发布清单仍 blocked，7 条项目级阻断保持真实记录，Steam 未授权且未执行。
+
+必须串行执行：`D16-A01—A06 全部真实 PASS → D16-S01 → D16-S02 → D17-S01`。在此之前不把 D16 或 D17 标记完成，不把本机证据扩大解释为目标设备/跨平台通过。
+
+## 2026-08-11 A01 长时性能推进
+
+A01 已补充本机 60 秒连续性能窗口：234 个样本、平均 59.96 FPS、最低 54.88 FPS、预算满足，Unity PlayMode 5/5 通过。该证据只关闭本机长时采样子门禁；下一步仍需目标/低端设备基准、真实大场景和最终资产规模验证，再与 A03 真机/字幕、A04—A06 人工与发布门禁合并进入 D16-S01/S02。
+
+A03 已补充 14 个 D9 事件的真实 EventLog→音频→字幕逐条抽样，14/14 通过，Unity PlayMode 最新为 6/6。下一步转向 A03 真机/字体/色觉与多场景焦点门禁，同时并行处理 A04 历史敏感/授权缺口；未取得目标设备或人工审查证据前，不提前关闭 A03/A04。
+
+A05 已关闭两个 integrated 资源的登记测试字段缺口，审计剩余唯一静态阻断为 2262 个 placeholder。后续只接受真实授权资产替换与 Unity 场景抽样，不把共享程序几何、OBJ 输入或材质 fallback 直接升级为最终资源。
+
+A04 已将机器审计收口为结构错误 0、授权记录 2590/2590，但保留 112 条 Pending 历史复核。下一步是人工逐条核验时间线/敏感表现并生成可追溯批准或警告记录；在此之前不关闭 A04。
+
+A06 已完成一次本地 Windows 构建和 15 秒启动烟测，下一步是可回收目录内的安装/卸载/覆盖更新与文件级存档恢复测试；Steam 上传继续保持未授权，不进入外部发布。
+
+A06 审计器已接入构建日志/exe 证据，避免把已完成的本地构建重复报为未运行；当前只剩安装/更新实测和 Steam 授权阻断。
+
+A06 已完成工作区 staging 的安装→覆盖更新→卸载烟测并验证存档哨兵保留；后续若进入发布阶段，需要制作并验证真正的 OS installer/update 包，不能以 staging 脚本替代。
+
+## 2026-08-11 最终回归与 A04 源记录补齐
+
+- 当前工作区 Unity 6 EditMode 全量回归为 296/296，工具测试全集为 44/44；证据分别为 `tools/results/d16_final_editmode_unity6.xml` 和测试输出记录。
+- A04 已覆盖 D15-A06 的源目录副本：全项目审计为 3139 条记录、2916/2916 可视资源权利闭合、结构错误 0、Pending 278。源记录保持 Pending，不把候选证据写成 Approved。
+- 后续顺序调整为：先完成 A04 的人工核验与 A06 正式安装包，再安排目标设备性能/真机无障碍测试，随后完成 A05 真实资产替换和 D16-S01/S02；未关闭门禁继续保持 IN_PROGRESS。
+
+## 后续开发计划入口
+
+D16 收口后进入 D17 真人角色—船舶垂直切片。任务拆分、同步/异步边界、依赖和验收故事已写入 [D17 后续开发计划](D17_POST_D16_DEVELOPMENT_PLAN.md)。D17 不绕过 D16 门禁：当前优先完成 D16-R01—R05，再执行 D16-S01/S02，随后按 D17-S01 → D17-A01 → D17-A03 → D17-A04 → D17-A06 → D17-S02 串行推进，角色/环境/船舶资源批次可异步准备。
+
+## 2026-08-12 当前下一步执行计划
+
+本轮已完成 D16-A06 本地隐私诊断子门禁与用户可见入口：Unity `D16LocalDiagnosticsTests` 3/3、隐私面板点击链 1/1、D16 PlayMode 全量 11/11、Assembly-CSharp 0 warning / 0 error；静态发布审计所有检查为 true，manifest 仍明确 `blocked`，Steam 未授权、未执行。
+
+后续按以下顺序推进，不跳过真实证据：
+
+1. D16-A04：由有责任的人工审核者逐条处理剩余 267 条 Pending；机器只提供队列，不能代替历史、敏感内容和外部授权决定。
+2. D16-A05：只接入有真实来源和授权记录的第一批最终角色、船体、码头/沙滩资源；placeholder 保持 placeholder，并完成材质、LOD、碰撞、锚点和相机抽样。
+3. D16-A01/A02/A03：准备目标/低端设备与真机输入环境，实测性能、字体、字幕、手柄、色觉/低刺激和多场景焦点；同时补物理断电等价演练、跨平台恢复和长线存档证据；本机 Null Device/RTX 证据不替代真机门禁。
+4. D16-A06：补正式 OS installer/update、原生崩溃行为、目标构建和最终人工隐私审查；用户可见的本地诊断同意/删除入口已接入并通过 11/11 回归；不执行 Steam 上传，不接入外部崩溃服务。
+5. 只有 A01—A06 全部 PASS 后，才执行 D16-S01 全量长线验收，再执行 D16-S02 最终交接。
+6. D16 收口后进入 D17：`D17-S01 → D17-A01 → D17-A03 → D17-A04 → D17-A06 → D17-S02`；角色动画和最终资源可异步准备，但必须串行接入验收。
+
+当前明确不能做的事：不能把 267 条 Pending 批量改成 Approved，不能把 2264 个 placeholder 改成最终资产，不能用本机性能代替目标设备数据，也不能因为有构建产物就宣称可发布。
+
+## 2026-08-12 后续开发任务权威刷新
+
+### 当前状态
+
+D15-S02 已通过；D16-A01—A06 的本机代码与自动化子门禁已复验，但六项总体仍未全部真实通过，因此 D16-S01/S02 和 D17 正式实现暂不启动。当前关键事实：A01 全量 Unity 54/54、60 秒窗口 233 samples / 平均 59.98 FPS / 最低 57.50 FPS；A02 runner 11/11、故障中止 6/6、100 次长线、304 用例矩阵；A03 纯逻辑 7/7、Unity 全量 54/54；A04 Pending 267；A05 placeholder 2,264；A06 技术准备 19/19 但发布清单 blocked。
+
+### 异步任务
+
+1. **D16-R01 人工内容复核**：逐条处理 A04 的 267 条 Pending，保留责任人、依据、warning/skip 和最终决定；禁止批量自动批准。
+2. **D16-R05 第一批最终资产**：优先角色、船体、码头、沙滩/地面和碰撞资源；每项必须有真实来源、授权、材质、LOD、碰撞、锚点和测试记录；禁止把 placeholder 改状态冒充最终资源。
+3. **D17-A02/A05 资源准备**：可准备走跑跳、待机、上下船动作和垂直切片资源，但只能在 D16-S02 后串行接入运行时验收。
+
+### 同步任务
+
+1. **D16-R03**：目标/低端设备性能、真实大场景、内存/GC/加载和降级策略实测。
+2. **D16-R04**：键盘/手柄、重绑定、暂停焦点、字体、字幕、色觉和低刺激实测。
+3. **D16-R06**：断电等价演练、跨平台恢复、迁移失败保留原档、重复结算保护。
+4. **D16-R02**：目标机器安装/更新/卸载、存档恢复、原生崩溃行为和最终隐私审查；Steam 上传保持未授权、未执行。
+
+### 串行门禁
+
+```text
+D16-R01/R02/R03/R04/R05/R06
+  → D16-A01—A06 全部真实 PASS
+  → D16-S01 全量长线故事
+  → D16-S02 最终交接与发布阻断决策
+  → D17-S01 冻结垂直切片
+  → D17-A01 真人角色物理/碰撞/走跑跳
+  → D17-A03 上下船/船舶控制
+  → D17-A04 第三人称视角/输入焦点/暂停菜单
+  → D17-A06 性能与失败恢复
+  → D17-S02 连续 10 次验收
+```
+
+当前不扩大内容数量；角色腿部朝上、柱体替身、没有真实碰撞、无法走到沙滩、上下船动作缺失和视角/菜单问题，统一作为 D17 垂直切片的验收问题处理。
+
+## 2026-08-12 当前工作区门禁复验
+
+- D15-S02 当前重新执行为 8 batches / 24 samples / 0 errors / 0 warnings PASS；全量工具测试 48/48 PASS。
+- D16-A01 本机 RTX 4070 Ti 60 秒窗口为 233 samples、平均 59.95 FPS、最低 57.09 FPS、预算满足；目标/低端设备和真实大场景仍待实测。
+- D16-A02 Unity Save.Tests 为 293/293 PASS，故障注入/Windows 强制终止、10 类档案矩阵和 100 次存档压力均通过；物理断电与跨平台仍待实测。
+- D16-A03 当前编辑器回归为 14/14 PASS，包含键鼠/手柄意图、Esc 暂停恢复和暂停多模态焦点；真实设备、字体、色觉/低刺激和目标环境仍待实测。
+- D16-A05 已修复 `asset_ph_ship_fishing` 源目录 LOD 元数据回归，集成资源缺 LOD/测试字段为 0；2264 个 placeholder 仍保持阻断。
+
+当前执行顺序不变：先处理 A04 人工 Pending、A05 真实授权最终资产，以及 A01/A03/A06 的外部实测证据；六个 A 门禁全部 PASS 后才执行 D16-S01/S02，之后才进入 D17 真人角色—船舶垂直切片。
+
+## 2026-08-12 A06 安装更新烟测复验
+
+已重新执行工作区限定的 Install→覆盖 Update→Uninstall 烟测：180/180 文件复制成功，更新和卸载后用户存档哨兵保留。A06 最新静态审计 `missing_static_evidence=[]`，本地构建与工作区部署证据完整；仍只保留 `steam_upload_not_authorized` 政策阻断。正式 OS installer、目标设备崩溃行为、最终人工隐私审查和 Steam 发布仍未执行，D16-S01/S02 继续等待全部真实门禁。
+
+## 2026-08-12 D16-A03 设置页 UI 命中区域复验
+
+设置页按钮不可点击问题已定位并修复：诊断/关闭按钮原先位于 1080 参考视口外，导致按钮视觉存在但不在有效命中区域。本轮重新排布设置面板并新增真实按钮链测试；Assembly-CSharp 构建 0 warning / 0 error，Unity 6 D16.PlayMode.Tests **15/15 PASS**，新增设置测试 **1/1 PASS**。证据：game/tools/results/d16_a03_settings_layout_full_playmode_unity6_final.xml。
+
+这只是 A03 的编辑器 UI 子门禁，不改变 D16 总门禁：目标设备、真实输入设备、字体/长文本、色觉/低刺激、人工资产审查、正式发布包和 Steam 授权仍未完成。
+
+## 2026-08-12 主菜单叠层回归复验
+
+新增面板互斥测试，覆盖主菜单→设置→返回、主菜单→新游戏→取消、主菜单→关于→返回，确认四个主菜单面板不会同时 active。Unity 6 D16.PlayMode.Tests 最新为 **16/16 PASS**，设置按钮命中区域与面板互斥测试均 **1/1 PASS**。这关闭了编辑器 UI 叠层子门禁，不改变 D16 外部验收条件。
+
+## 2026-08-12 D16-R02 安装更新安全回归
+
+已加固工作区限定的 `tools/d16_a06_install_update.ps1`：更新切换失败会回滚旧版本，首次安装不会覆盖已有目录；独立用户数据目录在更新和卸载后保留。PowerShell 合同测试 **1/1 PASS**，D16-A04/A06 专项测试 **13/13 PASS**，全量工具测试 **49/49 PASS**。
+
+发布审计现在明确区分 workspace deployment 与正式 Windows installer。当前 staging 部署证据为 PASS，但正式安装器产物/烟测仍缺失，A06 新增明确阻断 `formal_os_installer_missing`；没有创建未验证的 MSI/MSIX/签名 Setup，也没有执行 Steam 上传。D16-S01/S02 继续等待 A01—A06 的真实门禁。
+
+## 2026-08-12 A06 发布清单运行契约校验
+
+发布审计已补齐产品/公司身份、Unity 版本与 Windows 目标、内容目录 QA、zh-CN/en-US、离线模式、存档兼容/备份和安装状态字段校验；故意破坏清单的负例测试会被拦截。A06 专项测试 **14/14 PASS**，工具全量 **50/50 PASS**。
+
+这只关闭配置校验子门禁。正式 Windows installer/update、目标设备与人工审查仍未完成，Steam 未授权、未执行；D16-S01/S02 不提前启动。
+
+## 2026-08-12 Agent 兜底与 D5 离线回归
+
+- TemplateFallback 已固定为显式 v1.1 no-op 回复，模型不可用时不写关系、CrewStats 或任何强逻辑结果；Unity `Save.Tests` fallback 回归 **295/295 PASS**。
+- D5 默认离线桥接、成就本地状态、待同步队列及关闭云功能边界已通过回归；Unity `Save.Tests` 最新 **297/297 PASS**，D5 用例 **10/10 PASS**。
+- AgentCore 与 Unity 镜像的硬链接和 D10 CrewAgent 状态接线已恢复；AgentCore、Agent Runtime、Assembly-CSharp、Save.Tests 编译均 0 warning / 0 error。
+- 下一步仍是 A04 人工 Pending、A05 真实授权资产，以及 A01/A02/A03/A06 的目标设备/跨平台/正式发布证据；未全部 PASS 前不启动 D16-S01/S02，也不执行 Steam。
+
+## 2026-08-12 A06 正式便携 Windows 安装器证据更新
+
+已补齐并真实构建 `artifacts/d16_a06_formal_installer/WhalesIslandReefSetup.exe`。隔离烟测覆盖安装、非法更新拒绝且旧安装/用户存档保留、合法覆盖更新、卸载和用户存档保留；结果 `tools/results/d16_a06_formal_installer_smoke_result.json` 为 PASS。A06 审计已将 `formal_installer_artifact_present` 与 `formal_installer_smoke_evidence` 置为 true，剩余审计阻断为 `steam_upload_not_authorized`。
+
+此前“正式安装器缺失”的记录属于本轮之前的历史检查点，保留用于追溯；当前仍未宣称签名 MSI/MSIX、注册表/权限集成、目标设备兼容、原生崩溃、最终人工隐私审查或 Steam 发布完成。A01—A05 的真实门禁未全部通过前，D16-S01/S02 和 D17 正式验收仍不启动。
+
+最新复验还收紧了 A06 的证据定义：正式烟测必须包含非法更新拒绝并保留旧安装/用户存档的负向路径。A06 专项 **15/15 PASS**、工具全量 **52/52 PASS**；这不改变 Steam 未授权和 A01—A05 外部真实门禁的阻塞状态。
+
+A01 也已重新执行非 `-nographics` 图形模式窗口：RTX 4070 Ti、60.005 秒、234 samples、平均 59.893 FPS、最低 47.781 FPS，Unity PlayMode 17/17 PASS；GPU 毫秒不可用，目标/低端设备与真实大场景证据仍未取得。因此 A01 只关闭本机图形窗口子门禁，不改变 D16-S01/S02 的进入条件。
+
+## 2026-08-12 D16-A03 字体与视觉辅助运行时复验
+
+D16-A03 新增真实 UGUI 长文本夹具，覆盖中文字体资源、窄幅换行、Overflow、2 倍字号、高对比度和 Deuteranopia 颜色变换；Unity 6 图形 PlayMode `D16.PlayMode.Tests` 当前为 **18/18 PASS**，报告 `tools/results/d16_a03_accessibility_runtime_report.json` 全部字段通过。该证据关闭编辑器运行时的视觉辅助代码子门禁，但不替代目标设备、目标分辨率截图、真实手柄、色觉/低刺激人工复核、多场景焦点与长线稳定性。D16-A03 继续 **IN_PROGRESS**，D16-S01/S02 不启动。
+
+## 2026-08-12 D16-A06 本地诊断文件链复验
+
+D16-A06 新增真实 MainMenu 文件链回归：默认关闭不写入、显式同意后写入脱敏本地 ndjson、原始错误/堆栈/路径/存档文件名不落盘、撤回并删除后主文件与轮转文件均清除；Unity 6 D16 PlayMode 全量为 **19/19 PASS**。A06 静态审计 `missing_static_evidence=[]`，正式安装器证据与清单字段一致；原生崩溃转储、目标设备矩阵、人工隐私审查和 Steam 授权仍未完成，A06 继续 **IN_PROGRESS**。
+
+## 2026-08-12 D16-A03 低刺激运行时适配复验
+
+早期矩阵把低刺激列为 NOT FOUND；代码审查确认设置存储、面板开关和运行时颜色消费已经存在。本轮扩展真实 MainMenu UGUI 可访问性测试，保存 LowStimulus 设置并调用 `D16AccessibilityRuntime`，实际确认颜色被低刺激映射；`tools/results/d16_a03_accessibility_runtime_report.json` 的 `LowStimulusApplied=true`。
+
+Unity 6 D16.PlayMode.Tests **21/21 PASS**，证据为 `tools/results/d16_a03_low_stimulus_playmode_unity6.xml` 与 `.log`。该结果只关闭编辑器运行时低刺激代码子门禁；目标设备的亮度/动画/对比度人工复核、真实输入、多场景焦点和长线稳定性仍未完成，D16-S01/S02 不启动。
+
+## 2026-08-12 D16-A03 数字格式运行时 UI 复验
+
+新增 `D16A03RuntimeNumberFormattingFeedsUiText`，在真实 MainMenu 场景把 `D16DisplayFormatter` 的 `en-US`/`zh-CN` 数字、负数和百分比结果写入 UGUI `Text` 后断言显示值。Unity 6 D16.PlayMode.Tests 全量更新为 **21/21 PASS**，证据为 `tools/results/d16_a03_number_format_playmode_unity6.xml` 与 `.log`。这只关闭表现层数字格式化与 UGUI 消费门禁，债务/重量/时间/价格等具体领域接入仍需抽样，D16-S01/S02 不启动。
+
+## 2026-08-12 后续开发计划：D16 收口后进入 D17
+
+当前原则：D16-S01/S02 不提前启动；D17 玩家—船舶—港口垂直切片也不绕过 D16 的安全、可访问性、资产和发布门禁。以下任务可在没有外部授权的情况下继续做代码/测试，但真实证据项必须保持待验状态。
+
+### 可并行推进的 D16 收口任务
+
+1. **D16-A01 性能与流式**：继续补目标/低端设备采样、真实大场景、最终资产 LOD、音频卸载和长线事件/存档不丢失证据；当前 RTX 4070 Ti 60 秒窗口只作为本机子门禁。
+2. **D16-A02 存档与迁移**：继续补完整 D7—D14 业务矩阵、跨平台恢复和物理断电/写入中断证据；现有 Windows 强制终止、损坏档、备份和 100 次压力结果不扩大解释为物理断电。
+3. **D16-A03 本地化与可访问性**：继续补债务专用界面、真实物理手柄/目标设备、目标分辨率截图、字体覆盖/缺字回退、多场景焦点和长线稳定性；D9/D3 领域数字读模型接入已通过，编辑器代码子门禁当前为 22/22。
+4. **D16-A04 历史/敏感内容/授权**：按 `d16_a04_review_queue.json` 的 12 批、267 条 Pending 进行人工审查；禁止自动批准，禁止补造历史来源、授权或审查结论。
+5. **D16-A05 最终表现资产**：只接收有真实来源、授权、审查和可交付文件的最终资源；2264 个 placeholder 保持 placeholder，不能通过改状态清零。
+6. **D16-A06 发布技术准备**：继续目标机器安装/卸载/更新、原生崩溃与隐私人工复核、离线重启矩阵；正式便携安装器正/负向烟测已通过，但 Steam 仍保持未授权、未执行。
+
+### 必须串行的验收门禁
+
+`D16-A01—A06 全部 PASS` → `D16-S01` 新游戏完整长线流程（创建角色、初始船、航行、钓鱼、贸易、关系、探索、社群交易、资产金融、岛屿经营、战斗、保存、迁移、恢复）→ `D16-S02` 最终交接与发布阻断复核 → 才允许启动 `D17`。
+
+任何一项真实证据缺失，都只能关闭对应代码/编辑器子门禁，不能把 A 任务、S01、S02 或 D17 写成完成。
+
+## 2026-08-12 D16-A03 模态输入状态恢复修复
+
+`D16AccessibilityPanel` 已修复嵌套模态输入状态缺口：打开时保存当前玩法输入阻断状态，关闭或销毁时恢复原值，重复打开不会覆盖快照。新增 `D16A03AccessibilityPanelRestoresOuterInputBlockState`，覆盖外层已阻断时打开/关闭无障碍面板的回归链路。`Assembly-CSharp` 与 `D16.PlayMode.Tests` 代码构建均 0 warning / 0 error；Unity 专项仍受本机 `Licensing::Module` 阻断，未将未生成 XML 的运行结果计为 PASS。A03 总体、D16-S01/S02 和 D17 状态不变。
+
+同一增量已把 D16 模态锁接入 `D7ControlCoordinator` 的统一玩法/相机权限；旧 D3-D10 快捷键在模态面板打开期间不再穿透，D7 ESC 也不会先操作底层贸易/对话。该桥接只关闭输入权限穿透子缺口，不等同于所有历史快捷键已完成可重绑定迁移。
+
+## 2026-08-12 D16-A03 上下文输入契约扩展
+
+`D16InputAction` 已登记 D3/D4/D5/D9/D10 的上下文动作，`D16InputBinding.Scope` 允许不同页面复用同一物理键，同时保持同一页面内的重复绑定拒绝；Save 保留 F5 主键并兼容旧 C 副键。纯逻辑回归由 A03 runner **6/6** 扩展为 **7/7 PASS**，四个相关 C# 工程串行构建均 0 warning / 0 error。
+
+这只是输入契约准备，不是旧快捷键迁移完成。后续按 D3 → D4 → D5 → D9 → D10 单模块接入 `D16InputRouter`，再补面板全量标签、真实 Unity PlayMode 和真机证据；D16-A03、D16-S01/S02 状态不变。
+
+## 2026-08-12 D16-A03 旧快捷键统一路由收口
+
+- D9 港口整备页已迁移到 `D16InputRouter`，包含独立页面关闭意图和靠泊、交易、修船、招募、离港等上下文动作；源码扫描无设备直读，三套工程编译 0 warning / 0 error。
+- D10 酒馆社交页已迁移到 `D16InputRouter`，包含打开/关闭、社交行为、悬赏板、招募和敏感内容跳过；源码扫描无设备直读，三套工程编译 0 warning / 0 error。
+- D3/D4/D5/D9/D10 的代码级迁移现已完成，但 D16-A03 不能因此关闭：无障碍面板仍需展示全部上下文动作并补齐本地化标签，Unity 许可证恢复后还需重跑真实 PlayMode、滚动/导航/手柄和目标分辨率人工证据。
+- D16-S01、D16-S02 和 D17 继续不启动。
+
+### 2026-08-12 D16-A03 上下文动作面板全量化
+
+- 无障碍设置页现从 D16 默认绑定契约自动生成全部 61 个动作的键盘/手柄重绑定按钮，包含 D3/D4/D5/D9/D10 上下文入口；不再因漏写数组导致“有绑定、无 UI 入口”。
+- `ScrollRect` 内容高度按动作数量动态计算，底部状态提示、恢复默认和关闭按钮继续留在固定可命中区域；中英文标签已同步登记。
+- `D16RuntimeAcceptanceTests` 改为逐项检查默认契约动作的按钮存在且可交互；四套本机构建/runner 门禁通过，A03 runner 7/7 PASS。
+- Unity 许可证服务恢复前，不把本地无 XML 的启动结果写成运行时 PASS；D16-A03 的真机、目标分辨率、人工视觉与长线证据仍待，D16-S01/S02/D17 不启动。
+
+### 2026-08-12 D16-A03 Gameplay 输入审计补漏
+
+- 全 Gameplay 扫描发现 D7 模态协调器仍直接读取 Escape；已迁移到核心 `D16InputAction.Pause`，对话优先关闭、贸易其次关闭和本帧防穿透行为保持不变。
+- D3/D4/D5/D7/D9/D10 旧 Gameplay 入口已无直接键盘/手柄设备读取；D16 自有顶层模态监听保留用于关闭和重绑定采集。
+- 三套工程编译继续 0 warning / 0 error；Unity 许可证恢复前仍不启动 D16-S01/S02，也不把运行证据写成 PASS。
+
+## 2026-08-12 D16-A03 D3 输入迁移
+
+D3 贸易/航程入口已完成第一模块迁移：`D3RuntimeBootstrap` 的贸易、航程、采集、登陆结算、保存和贸易关闭均读取 D16 统一意图，源码不再直接读取 `Keyboard.current`。新增 D3 上下文重绑定 PlayMode 测试并完成 C# 三工程 0 warning / 0 error 构建；Unity focused PlayMode 等许可证服务恢复后执行。D4/D5/D9/D10 仍待按顺序迁移，A03 总体不变。
+
+D4 内容层入口随后完成同样迁移：势力、炮战、装填、弹种、开炮、接舷、脱离、改装、动物、医疗、主线和保存均读取 D16 上下文意图；三工程串行构建 0 warning / 0 error，D4 源码无旧键盘直读。D5/D9/D10 仍按顺序待迁移，Unity 运行证据等待许可证服务恢复。
+
+D5 岛屿/发布体验入口也已迁移：发现岛屿、访问岛屿使用 D5 上下文动作，预设/语言/画质/成就/保存使用核心动作；三工程串行构建 0 warning / 0 error，D5 源码无旧键盘直读。D9/D10 仍待迁移。
+
+## 2026-08-12 D16-A03 敏感内容警告与跳过复验
+
+D16-A03 新增 `D16SensitiveContentOverlay`，把现有敏感内容策略/偏好接入真实 UI：警告显示时阻断游戏输入，Continue 与 Skip 使用真实按钮回调，Esc/Start 走 Skip，关闭后恢复先前输入状态；敏感字幕的继续/清除也保持在表现层，不写入 Systems、存档或契约。`Localization.cs` 同步补齐 zh-CN/en-US 的标题、正文、继续、跳过文案。
+
+Unity 6 D16.PlayMode.Tests 全量 **20/20 PASS**，证据为 `tools/results/d16_a03_sensitive_warning_playmode_unity6.xml` 与 `.log`。本轮只关闭编辑器运行时敏感内容警告/继续/跳过代码子门禁；A03 仍需真实设备、目标分辨率、色觉/低刺激人工复核、多场景焦点和长线稳定性证据，D16-S01/S02 不启动。
+
+## 2026-08-12 D16-A03 Unity 许可证恢复与全量输入回归
+
+- 本机 Unity Hub 已从 3.3.3-c1 更新到 3.20.1，Licensing Client 更新为 1.17.4；Unity 6 batchmode 已实际连接 Unity Personal。此前的 `Licensing::Module` 阻断是版本协议不匹配，不是项目运行结果。
+- 无障碍面板滚动专项 **1/1 PASS**；D9、D10 上下文重绑定专项各 **1/1 PASS**。
+- 首次全量回归发现 D9/D10 测试夹具错误使用同作用域已占用的 Q，契约正确拒绝重复键；夹具改用未占用 Z 后，D16.PlayMode.Tests **34/34 PASS**（失败 0、跳过 0）。
+- `Assembly-CSharp` 与 `D16.PlayMode.Tests` 重新生成临时依赖索引后均 0 warning / 0 error；证据文件见 `tools/results/d16_a03_full_d16_playmode_unity6_retry_current_02.xml` 等。
+
+这只关闭 D16-A03 的编辑器/Unity 运行回归子门禁。下一步仍按既定顺序收集 A01/A02/A03/A04/A05/A06 的外部真实证据：先补 A01 目标/低端设备与真实大场景，再补 A02 断电/跨平台恢复、A03 真机与人工复核，随后处理 A04 Pending、A05 最终资产和 A06 目标机器/隐私；六项全部 PASS 前不启动 D16-S01/S02，也不进入 D17。
+
+## 2026-08-12 D16-A02 SQLite 损坏档恢复补强
+
+- A02 独立 Save/Storage runner 已纳入真实 SQLite 损坏主档恢复和结算跨存档用例，当前 **9/9 PASS**；Save.Tests 与 runner 构建均 0 warning / 0 error。
+- Unity 6 `Save.Tests` 全量本轮 **302/302 PASS**，档案矩阵基于本轮 XML 重新检查为 10/10 类别、0 failed/inconclusive。
+- 该结果只关闭 Windows/.NET 本机 SQLite 损坏恢复与 runner 覆盖子门禁；物理断电、跨平台恢复、目标设备和完整生产 D7—D14 组合仍未完成，A02 继续 IN_PROGRESS。
+- A04 仍有 267 条 Pending，A05 仍有 2,264 个 placeholder，A06 仍受 `steam_upload_not_authorized` 政策阻断；D16-S01/S02 与 D17 继续不启动。
+
+## 2026-08-12 当前后续执行计划（v8）
+
+本轮对 D16-A04 的明确虚构安全子集执行只读复验：`eligible_count=0`、`changed_count=0`。没有记录同时满足显式虚构标签、项目自创来源、内部许可证、本地证据且无敏感/警告的全部条件，因此没有自动批准任何条目。
+
+后续按以下顺序执行：
+
+1. **D16-R01（异步人工）**：处理 A04 剩余 267 条 Pending；每条必须有真实责任审核者、证据、决定依据、时间戳以及必要的 warning/skip，禁止脚本推断或补造历史/授权结论。
+2. **D16-R05（异步资产）**：按 `vertical_slice_first` 队列处理真人、船体、码头、小艇码头和圣玛格丽特岛的第一批最终资源；来源、授权、LOD、材质、碰撞、锚点、Prefab/场景回归缺一不可，placeholder 不得改状态冒充最终资产。
+3. **D16-R03/R04/R06（同步实测）**：分别完成目标/低端性能、真机输入与可访问性、断电等价/跨平台存档实测；本机 Unity 53/53 和工具 71/71 只作为代码基线，不替代外部证据。
+4. **D16-R02/A06（同步实测）**：在目标环境复核安装、非法更新拒绝、合法更新、卸载、用户存档、原生崩溃与隐私边界；Steam 继续未授权、未执行。
+5. **D16-S01 → D16-S02（同步验收）**：只有 A01—A06 全部真实 PASS 后，才做完整长线故事和最终交接；当前两者均保持未启动/阻断。
+6. **D17（后续阶段）**：D16-S02 通过后冻结一个港口垂直切片，再串行完成 `D17-A01 真人物理 → D17-A03 上下船/船控 → D17-A04 第三人称镜头/输入焦点 → D17-A06 失败恢复 → D17-S02 连续 10 次验收`。D17-A02 动作、D17-A05 最终资源可异步准备，但不能提前写成完成。
+
+## 2026-08-12 D16-A01 启动阶段归因推进
+
+在不改变玩法、存档、Systems 或数据所有权的前提下，新增 D5 Bootstrap 六阶段只读计时，并接入 D16 性能报告。Unity 6 D3D11 聚焦性能窗口 **1/1 PASS**，当前报告为 234 samples、平均 65.71 FPS、最低 3.49 FPS、最长全帧 286.43ms（启动后约 0.091s）；阶段数据 6/6 完整：D5 总构建 227.823ms，其中等待玩家 91.676ms，其余读档/系统/状态/表现/海图阶段分别为 0.006/1.200/0.518/0.681/2.407ms。GPU 计时仍 unavailable，长帧没有被改写或虚构归因。
+
+本轮 D16 PlayMode 全量 **54/54 PASS**，D16 Runtime、Assembly-CSharp、D16.PlayMode.Tests 构建 0 warning / 0 error；证据为 `tools/results/d16_a01_phase_attribution_current_unity6.xml` 与 `tools/results/d16_full_after_phase_attribution_20260812.xml`。A01 仍需目标/低端设备、真实大场景、最终资源、GPU/内存、跨平台和长线证据；A01—A06 全部真实 PASS 前不启动 D16-S01/S02。
+
+## 2026-08-12 D16-A01 D2 启动阶段归因推进
+
+新增 D2 六阶段只读启动计时并接入 A01 性能报告。Unity 6 D3D11 聚焦窗口 **1/1 PASS**，235 samples、平均 65.05 FPS、最低 3.56 FPS、最长全帧 280.86ms；D2 总构建 165.364ms，船/锚点/玩家/物理/控制/表现六阶段均有真实耗时，D5 六阶段也完整。最长帧原值保留，尚未完全归因；场景资源、其他 Bootstrap、目标/低端设备和最终资产证据仍是 A01 的后续门禁。
+
+## 2026-08-12 D16-A01 D3/D4/D9 启动链归因推进
+
+新增 D3/D4/D9 运行时入口的只读就绪时间观测。D3D11 聚焦测试 `tools/results/d16_a01_d3_d4_d9_readiness_graphics_current_unity6.xml` 为 **1/1 PASS**；全量 D16 回归 `tools/results/d16_full_after_d3_d4_d9_readiness_20260812.xml` 为 **54/54 PASS**，工具测试 **71/71 PASS**，相关工程构建 0 warning / 0 error。全量回归后的当前窗口为 233 samples、平均 59.98 FPS、最低 57.50 FPS、最长帧 181.47ms；D3/D4/D9 分别约 0.1025s 就绪，GPU 计时 unavailable。该增量只关闭本机启动链观测子缺口；目标/低端设备、真实大场景、最终资源、GPU/内存、跨平台和长线证据仍缺，A01 保持 IN_PROGRESS。
+
+## 2026-08-12 D17 本机连续流程基线刷新
+
+- 当前本机垂直切片回归从 `MainMenu` 真实新建游戏开始，连续覆盖人物落地/碰撞、上下船、船控、视角、保存、ESC 暂停/继续、返回主菜单、继续读取和重进，共 10 次；聚焦结果 `tools/results/d17_s02_local_story_ten_cycles_20260812.xml` 为 **1/1 PASS**，日志含 10/10 cycle 通过。
+- Unity 全量结果 `tools/results/d17_full_after_s02_local_20260812.xml` 为 **60/60 PASS**；工具测试为 **72/72 PASS**；`Assembly-CSharp`、`AgentCore`、`Save.Tests`、`D16.PlayMode.Tests` 均为 0 warning / 0 error。
+- 该证据只证明当前 Windows/Unity 编辑器的本机代码基线；D16-A01—A06 的目标/低端设备、断电/跨平台、真机可访问性、A04 267 条人工复核、A05 最终授权资源、A06 原生崩溃/隐私仍未关闭。D16-S01/S02 和正式 D17-S01/S02 不得改为 DONE。
+
+## 2026-08-12 项目身份与存档目录兼容性
+
+实际 Unity 工程的公开产品名已统一为 `WhalesIslandReef`，与仓库、安装器和发布文档一致；`Whalebone Studio` 仍作为公司名，内部命名空间不改。因 Unity 产品名会影响 `Application.persistentDataPath`，SaveSystem 已加入旧 `Whalebone` 目录的可读存档保留式迁移，迁移前建立备份、旧目录不删除、失败不阻断启动。
+
+验证证据：`tools/results/d17_full_after_project_identity_20260812.xml` 为 Unity PlayMode **60/60 PASS**；工具测试 **74/74 PASS**；Assembly-CSharp、AgentCore、Save.Tests、D16.PlayMode.Tests 均 0 warning / 0 error。D16-A06 技术准备仍 PASS，但发布清单仍 blocked，外部真实性门禁保持原状态。
+
+## 2026-08-12 最终一致性审计（当前工作区）
+
+本轮只读复核已完成：工具测试 **77/77 PASS**，Unity 6 本机长流程 **60/60 PASS**，四个关键 C# 工程构建 **0 warning / 0 error**。D16-A04 仍有 267 条人工 Pending，D16-A05 仍有 2,264 个 placeholder，D16-A06 本机技术准备为 19/19 PASS 但发布清单保留 7 条阻断；A01—A06 六个真实外部证据 envelope 仍缺失，整体保持 **BLOCKED**，Steam 未授权、未上传。代码/本机基线已收口，但 D16/D17 正式验收和全部后续任务尚未完成。
+
+## 2026-08-12 A03 物理设备预检与全量工具回归
+
+- `tools/d16_a03_device_probe.ps1` 已在当前 Windows 机器真实读取 PnP、显卡和显示配置，识别 `Xbox Wireless Controller`、`Bluetooth LE XINPUT compatible input device`、`3840x2160` 和 `NVIDIA GeForce RTX 4070 Ti`。
+- 预检摘要/原始记录分别为 `tools/results/d16_a03_device_probe_current.json` 与 `tools/results/d16_a03_device_probe_raw_current.json`；两者明确保持 `IN_PROGRESS/PENDING_MANUAL`，没有发送按钮输入或生成真机 PASS。
+- 原始 XInput 只读状态为 `NO_ACTIVE_XINPUT_USER`：API 可用但用户 0—3 均返回 `1167`，PnP 设备存在但当前没有活动 XInput 用户，不能把设备枚举当成游戏输入通过。
+- 新增探针测试后，全量工具测试为 **79/79 PASS**；Unity D17 本机连续流程仍为 **60/60 PASS**。
+- 外部真实门禁仍未关闭：A01 目标/低端性能、A02 断电/跨平台、A03 人工真机、A04 267 条 Pending、A05 2,264 placeholder、A06 目标机/native crash/隐私和 Steam 授权仍按原规则保持阻断。
+
+## 2026-08-13 D16 只读审计刷新
+
+- A04：`tools/results/d16_a04_review_audit_current_20260813.json` 和队列快照确认 3,139 条登记、结构错误 0、Pending 267、12 批，未发生自动批准。
+- A05：`tools/results/d16_a05_asset_audit_current_20260813.json` 确认 2,918 visual、placeholder 2,264、非法元数据 0、声明路径断链 0；没有未经授权的资源替换。
+- A06：`tools/results/d16_a06_release_audit_current_20260813.json` 确认本机技术准备 19/19、正式安装器烟测保持通过，发布清单仍 7 条阻断。
+- 全量工具测试为 **79/79 PASS**；外部证据审计仍 `BLOCKED`，D16-S01/S02、正式 D17 和 D18+ 不提前启动。
+
+## 2026-08-13 Unity 6 本机回归与工程复验
+
+- Unity 6 聚焦 D17 十循环：**1/1 PASS**，10/10 cycle 全部通过；全量 PlayMode：**60/60 PASS**，0 failed / 0 inconclusive / 0 skipped。结果分别为 `game/tools/results/d17_s02_local_story_ten_cycles_20260813_retry.xml` 和 `game/tools/results/d17_full_after_s02_local_20260813.xml`。
+- 补充依赖索引后，`Assembly-CSharp`、`Save.Tests`、`AgentCore`、`Whalebone.Systems`、`D16.PlayMode.Tests` 均为 **0 warning / 0 error**；服务端 build、5 项服务端测试和 3 项 AgentReply 契约测试均通过。
+- 本轮更正 Unity 路径记录：实际编辑器为 `C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe`。这些都是本机代码基线，不替代 D16-A01—A06 外部 evidence envelope、真实最终资源、人工审查或目标设备验收。
+- A04 仍 Pending 267，A05 仍 placeholder 2,264，A06 发布清单仍 7 条阻断；D16-S01/S02、正式 D17-S01/S02 和 D18+ 继续未完成。
+
+## 2026-08-13 D2 角色物理与动作闭环修复
+
+- 通过最终聚焦十循环 `game/tools/results/d17_s02_local_story_ten_cycles_20260813_final.xml`：**1/1 PASS**，10/10 cycle 全部通过。
+- 通过最终 Unity 全量回归 `game/tools/results/d17_playmode_full_final_20260813.xml`：**60/60 PASS**，0 failed / 0 inconclusive / 0 skipped。
+- 修复人物“像柱子/漂浮/脚底不稳”的实际原因：`ph_crew_male` 视觉高度从 0.84 归一到 1.80 世界单位，D2 物理根节点保持单位缩放；D3 安全出生与落地校准、D5 根缩放保护、世界步高和可行走面回吸已接入。
+- 修复动作误判：平地移动稳定进入 Walk/Run，真实跳跃才进入 Jump；上船/下船过渡和安全下船回归通过。
+- Unity/.NET 工程均 0 warning / 0 error，工具测试 **79/79 PASS**。
+- 这只是本机垂直切片基线修复，不改变 D16 外部真实性门禁：A04 Pending 267、A05 placeholder 2,264、A06 发布清单 7 条阻断，D16-S01/S02、正式 D17 和 D18+ 仍未完成。
+
+## 2026-08-13 D16-A02 保存多表事务补强
+
+- `SaveSystem` 已把 NewGame 的覆盖初始化和 Save 的 Player/Ship/Crew 快照写入收敛到单一 SQLite 事务，事务异常显式回滚，避免保存中断产生混合快照。
+- Unity 6 focused Save.Tests **12/12 PASS**；独立 A02 runner **12/12 PASS**；故障注入受控中止 3/3、Windows 强制终止 4/4；新增保存中断场景检查 SQLite integrity、旧玩家 money、船/船员数量均保持正确。
+- `Save.Tests`、`Assembly-CSharp`、A02 runner 构建均 0 warning / 0 error；工具测试需在本轮收尾复跑。
+- 该增量只关闭 Windows/.NET 代码级保存事务缺口，不替代物理断电、Linux/macOS/真实跨平台文件系统和目标设备证据。A02 仍 IN_PROGRESS；A04 Pending 267、A05 placeholder 2,264、A06 发布清单 7 条阻断不变，D16-S01/S02、正式 D17 和 D18+ 仍未完成。
+
+## 2026-08-13 Save 改动后的 D17 全量回归
+
+- `game/tools/results/d17_playmode_full_after_save_transaction_20260813.xml`：Unity 6 D17 PlayMode **60/60 PASS**，failed/inconclusive/skipped 均为 0。
+- 本次回归验证存档事务改动没有破坏当前人物、碰撞、上下船、船控、镜头、暂停/返回主菜单和连续流程本机基线。
+- 这只是回归证据，不是 D16-S01/S02 或正式 D17 通过；A04 Pending 267、A05 placeholder 2,264、A06 发布清单 7 条阻断及目标设备/跨平台/人工证据继续保持原状态。
+
+## 2026-08-13 A05 全量审计根目录纠正
+
+- A05 审计已按完整 `game` 项目根目录重新执行，权威结果为 2,918 visual entries；data_only 125、integrated 654、placeholder 2,264；非法元数据 0、集成视觉元数据缺口 0、声明路径断链 0。
+- 替换队列仍为 BLOCKED：2,264 个 placeholder、52 批，垂直切片第一批为真人角色、圣玛格丽特码头、小艇码头和圣玛格丽特岛。
+- 先前以 ContentRegistry 子目录作为根目录的局部统计已明确标记为非权威，不代表源资源发生回退。没有新增授权最终资源，因此 A05 最终资源门禁、D16-S01/S02、正式 D17 和 D18+ 状态不变。
+- A05 两个命令行工具已增加嵌套 Registry 根目录归一化和回归保护，防止后续只扫描子树而误报全量状态；本次 A04/A05/A06 聚焦回归 **26/26 PASS**。
+
+## 2026-08-13 A05 来源引用闭包修正
+
+- A05 替换队列新增来源/审查/授权本地引用存在性检查，并修正仓库根目录相对路径解析；逻辑证据 ID 与远程 URL 不再被误判为本地文件。
+- 修正 `plant_conch_bed`、`plant_shallow_seaweed` 两处许可证短路径；当前引用断链 0，A04 结构错误 0，D15-S02 QA 0 errors/0 warnings。
+- 工具全量回归 **84/84 PASS**；A04 Pending 267、A05 placeholder 2,264、D16 外部门禁及 D16-S01/S02 状态不变。
+
+## 2026-08-13 A05 最终资源包预检入口
+
+- 新增 `tools/d16_a05_replacement_preflight.py` 与 4 项回归测试；工具只读检查真实资源包的最终文件、Prefab/消费者、来源/授权、人工审核、LOD/碰撞/锚点、测试用例和本地原始材料。
+- 工具全量回归更新为 **88/88 PASS**；没有可接入的最终资源包，2,264 个 placeholder、D16 外部门禁和 D16-S01/S02 状态不变。
+
+## 2026-08-13 A04 逐条人工复核包
+
+- 新增只读逐条填写包 `tools/d16_a04_review_packet.py`，覆盖完整 `game` 根目录的 267 条 Pending，按 12 批稳定分组。
+- 当前包状态为 `HUMAN_DECISION_REQUIRED`，引用缺口 0，267/267 条已有本地文件型复核入口；不会自动批准，模板决定全部保持 `Pending`。
+- 专项测试 **4/4 PASS**；这只推进 D16-R01 材料交接，不关闭 A04，也不启动 D16-S01/S02。
+
+### 当前回归
+
+- 新增材料后的工具全量回归为 **96/96 PASS**；A04 仍 Pending 267，A05 仍 placeholder 2,264，外部门禁仍 `BLOCKED`。
+
+## 2026-08-13 D16-S01 启动前预检
+
+- 新增只读 `tools/d16_s01_readiness.py`，只有六项 external gate、A04/A05/A06 子条件全部真实满足时才输出 `READY_TO_START`；它不执行故事、不写 Registry、不上传 Steam。
+- 当前结果 `tools/results/d16_s01_readiness_current_20260813.json` 为 `BLOCKED`，原因包含六项真实 evidence 缺失、A04 Pending 267 和 A05 placeholder 2,264。
+- 专项测试 **4/4 PASS**；D16-S01/S02 仍未启动。
+
+## 2026-08-13 D16-A05 第一批真实候选资源包
+
+- 新增 Kenney Pirate Kit / Blocky Characters CC0 候选包，记录见 `docs/game/design/common/D16_A05_KENNEY_CANDIDATE_PACKET_01.md` 和 `tools/results/d16_a05_candidate_packet_01_20260813.json`。
+- 候选文件位于 `game/Assets/Art/Candidates/Kenney/`，只服务于真人角色、码头、泊位、岛屿自然物和小型船的第一批垂直切片准备；不被 Registry/运行时消费者引用。
+- 候选包仍为 `CANDIDATE_PENDING_REVIEW`，人工决定为 `Pending`，`registry_changes` 与 `asset_state_changes` 均为空。A05 审计仍为 2,264 placeholder，不能把候选资源计为最终资产。
+- 候选包专项 **2/2 PASS**，工具全量回归 **98/98 PASS**；本轮只增加来源/许可证/哈希/候选文件证据，不改变 D16 外部门禁、D16-S01/S02、正式 D17 或 D18+ 状态。
+- Unity 导入级审计 `tools/results/d16_a05_candidate_import_current_20260813.json` 为 7/7 PASS；候选包/导入专项合计 4/4 PASS。修正 D10 行为状态 `.meta` 后 Unity 批处理脚本编译通过，但最终资源表现门禁仍未关闭。
+
+### 当前最终回归
+
+- 工具全量回归更新为 **100/100 PASS**，Unity 候选导入级审计 7/7 PASS，`git diff --check` 通过。
+- A04 Pending 267、A05 placeholder 2,264、A06 发布清单 7 条阻断和外部门禁 BLOCKED 均保持不变；正式 D16-S01/S02、D17 和 D18+ 不启动。

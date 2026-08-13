@@ -1,3 +1,56 @@
 {
-  "id":"reward_d14_worldclass_reinforced_keel","schema_version":1,"name":"世界级加固龙骨","display_name_key":"content.reward.reward_d14_worldclass_reinforced_keel.name","category":"reward","tags":["world_class","unique","ship_module","d14"],"description":"世界级船体模块奖励；强度和装配边界由 Ship/Combat 裁决。","gameplay_role":"worldclass_reward_request","valid_regions":["island_saint_marys"],"valid_habitats":[],"valid_weather":[],"dependencies":[],"references":["item_ship_module_reinforced_keel"],"asset_refs":[],"source_refs":["docs/game/design/common/D14_REWARD_SYSTEM.md","docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"],"source_note":"奖励系统只记录唯一奖励与来源，模块强度不由 UI 或 Agent 改写。","source":{"kind":"project-authored","author":"Whalebone team","reference":"docs/game/design/common/D14_REWARD_SYSTEM.md"},"license":{"status":"internal-authored","holder":"Whalebone project","reference":"docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing","commercial_use":true,"attribution_required":false,"modification_allowed":true},"historical_tag":"inferred","phase":"D14","status":"prototyped","owner_system":"RewardSystem","test_id":"D8-A02-D14-REWARD-005","reviewer":"D14-A04"
+  "id": "reward_d14_worldclass_reinforced_keel",
+  "schema_version": 1,
+  "name": "世界级加固龙骨",
+  "display_name_key": "content.reward.reward_d14_worldclass_reinforced_keel.name",
+  "category": "reward",
+  "tags": [
+    "world_class",
+    "unique",
+    "ship_module",
+    "d14"
+  ],
+  "description": "世界级船体模块奖励；强度和装配边界由 Ship/Combat 裁决。",
+  "gameplay_role": "worldclass_reward_request",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [],
+  "valid_weather": [],
+  "dependencies": [],
+  "references": [
+    "item_ship_module_reinforced_keel"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D14_REWARD_SYSTEM.md",
+    "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  ],
+  "source_note": "奖励系统只记录唯一奖励与来源，模块强度不由 UI 或 Agent 改写。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D14_REWARD_SYSTEM.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D14",
+  "status": "prototyped",
+  "owner_system": "RewardSystem",
+  "test_id": "D8-A02-D14-REWARD-005",
+  "reviewer": "D14-A04",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_REWARD_SYSTEM.md",
+    "docs/game/design/common/D14_SPECIAL_WEAPONS_MODULES.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

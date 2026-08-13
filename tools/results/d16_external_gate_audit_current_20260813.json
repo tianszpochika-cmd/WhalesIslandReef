@@ -1,0 +1,66 @@
+{
+  "task": "D16-EXTERNAL-GATES",
+  "status": "BLOCKED",
+  "project": "game",
+  "evidence_root": "tools\\results\\external",
+  "gates": {
+    "D16-A01": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a01_target_device.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A02": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a02_power_cross_platform.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A03": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a03_device_accessibility.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A04": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a04_manual_review.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A05": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a05_final_assets.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A06": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a06_target_release_privacy.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    }
+  },
+  "all_external_gates_pass": false,
+  "steam_upload_authorized": false,
+  "blocking_reasons": [
+    "D16-A01",
+    "D16-A02",
+    "D16-A03",
+    "D16-A04",
+    "D16-A05",
+    "D16-A06",
+    "steam_upload_not_authorized"
+  ],
+  "policy": {
+    "this_tool_never_approves_content": true,
+    "this_tool_never_changes_registry": true,
+    "this_tool_never_uploads": true
+  }
+}

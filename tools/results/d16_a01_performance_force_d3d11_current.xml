@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.4595291">
+  <test-suite type="TestSuite" id="1068" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.459529" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1060" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.453084" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="34364" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1061" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.451800" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1062" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="53" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.450983" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1064" name="D16" fullname="Whalebone.Tests.D16" runstate="Runnable" testcasecount="52" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.450108" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1023" name="D16RuntimeAcceptanceTests" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.448578" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1032" name="D16A01RuntimePerformanceWindowSamplesContinuously" fullname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests.D16A01RuntimePerformanceWindowSamplesContinuously" methodname="D16A01RuntimePerformanceWindowSamplesContinuously" classname="Whalebone.Tests.D16.D16RuntimeAcceptanceTests" runstate="Runnable" seed="1486438781" result="Passed" start-time="2026-08-12 09:40:23Z" end-time="2026-08-12 09:41:24Z" duration="60.438295" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+[D2/Physics] 玩家已落地：surface=GangplankGround, surfaceY=0.54, playerY=0.61
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D16/A01] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_performance_window_report.json
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

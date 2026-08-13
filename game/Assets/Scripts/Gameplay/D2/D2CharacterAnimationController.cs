@@ -118,7 +118,14 @@ namespace Whalebone.Gameplay.D2
         private D2CharacterAction ResolveAction()
         {
             if (_transitionRemaining > 0f) return _transitionAction;
-            if (_character == null || !_character.IsGrounded) return D2CharacterAction.Jump;
+            // The presentation component can be attached one frame before the
+            // D2 physics component. That is a binding gap, not a jump. Treating
+            // it as Jump made newly-created characters briefly show an airborne
+            // pose and made the same fallback look like it was floating.
+            if (_character == null) return D2CharacterAction.Idle;
+            if (_character.IsJumping ||
+                (!_character.IsGrounded && _character.VerticalVelocity > 0.1f))
+                return D2CharacterAction.Jump;
             if (_character.IsMoving) return _character.IsRunning ? D2CharacterAction.Run : D2CharacterAction.Walk;
             return D2CharacterAction.Idle;
         }

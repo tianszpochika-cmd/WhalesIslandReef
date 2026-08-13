@@ -1,0 +1,74 @@
+{
+  "id": "asset_d15_outfit_placeholder",
+  "schema_version": 1,
+  "name": "D15 服装共享占位模型",
+  "display_name_key": "content.asset.asset_d15_outfit_placeholder.name",
+  "category": "asset",
+  "tags": [
+    "placeholder",
+    "d15",
+    "outfit",
+    "hair",
+    "accessory",
+    "skinned_model"
+  ],
+  "description": "复用已有船员模型承载服装、发型和饰品层；正式网格可按 outfit ID 替换。",
+  "gameplay_role": "d15_outfit_visual_layer_placeholder",
+  "valid_regions": [],
+  "valid_habitats": [
+    "ship_deck",
+    "ship_cabin",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [
+    "asset_ph_crew_male"
+  ],
+  "source_refs": [
+    "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md"
+  ],
+  "source_note": "复用已授权 Quaternius CC0 船员占位模型；服装层的碰撞由角色身体碰撞负责，不为穿戴层复制碰撞体。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab"
+  },
+  "license": {
+    "status": "internal-authored-plus-cc0",
+    "holder": "Whalebone project / Quaternius",
+    "reference": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "AssetRegistry",
+  "test_id": "D8-A02-D15-A05-ASSET-OUTFIT",
+  "reviewer": "D15-A05*",
+  "asset_state": "integrated",
+  "model_ref": "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_crew_cloth.mat",
+  "collision_ref": "none:wearable_skinned_layer_uses_character_body_collision",
+  "lod_profile": "A05_outfit_lod2_shared_placeholder",
+  "test_cases": [
+    "asset_d15_outfit_placeholder-load",
+    "asset_d15_outfit_placeholder-references-authorized-crew",
+    "asset_d15_outfit_placeholder-save-restore"
+  ],
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
+}

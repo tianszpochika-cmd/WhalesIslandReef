@@ -1,0 +1,91 @@
+{
+  "id": "item_stool_painted",
+  "schema_version": 1,
+  "name": "木凳（涂色）",
+  "display_name_key": "content.item.item_stool_painted.name",
+  "category": "item",
+  "tags": [
+    "furniture",
+    "decorative",
+    "d15",
+    "placeholder_ready"
+  ],
+  "description": "木凳（涂色）的 D15 目录定义；视觉资源使用可替换共享占位，运行时状态由 ItemCatalog 写入。",
+  "gameplay_role": "decorative_furniture",
+  "valid_regions": [
+    "island_saint_marys",
+    "green_cay",
+    "santa_margarita"
+  ],
+  "valid_habitats": [
+    "ship_cabin",
+    "harbor",
+    "workshop"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [
+    "asset_d15_item_prop_placeholder"
+  ],
+  "source_refs": [
+    "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "项目自有 D15 批量内容；不包含价格、伤害、奖励、耐久或装备裁决，所属系统只读取定义和入口标签。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "ItemCatalog",
+  "test_id": "D8-A02-D15-A05-DECORATIVE-FURNITURE-STOOL-PAINTED",
+  "reviewer": "D15-A05*",
+  "logic_ref": "D3InventorySystem/decoration_definition",
+  "production_batch": "D15-A05*",
+  "representative_sample": "item_chart_compass",
+  "production_stage": "integrated",
+  "batch_role": "decorative",
+  "content_category": "furniture",
+  "behavior_profile": "static_definition_owner_canonical",
+  "asset_state": "placeholder",
+  "quality_level": "Q2",
+  "model_ref": "game/Assets/Prefabs/D15/d15_item_prop_placeholder.prefab",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_dark_wood.mat",
+  "collision_ref": "game/Assets/Prefabs/D15/d15_item_prop_placeholder.prefab:BoxCollider",
+  "lod_profile": "A05_item_decor_lod2_shared_placeholder",
+  "interaction_entry": "D3InventorySystem/inspect_or_place",
+  "function_entry": "",
+  "test_cases": [
+    "D15-A05-load-stool_painted",
+    "D15-A05-interact-stool_painted",
+    "D15-A05-owner-stool_painted"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "integration": {
+    "system": "ItemCatalog",
+    "entrypoint": "ItemCatalog.ContentRegistryEntry",
+    "canonical_write_owner": "ItemCatalog"
+  }
+}

@@ -20,6 +20,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Core;
 using Whalebone.Gameplay.D7;
+using Whalebone.Gameplay.UI.D16;
+using Whalebone.Systems.D16;
 
 namespace Whalebone.Gameplay.UI
 {
@@ -66,7 +68,7 @@ namespace Whalebone.Gameplay.UI
         private void Update()
         {
             if (D7ControlCoordinator.EscapeHandledThisFrame) return;
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.Pause))
                 TogglePause();
         }
 
@@ -202,10 +204,17 @@ namespace Whalebone.Gameplay.UI
             panelImage.color = new Color(0.02f, 0.04f, 0.07f, 0.82f);
 
             CreateText(_panel, "Title", Localization.Get("pause_title"), 64, new Vector2(0f, 180f));
-            _resumeButton = CreateButton(_panel, "Resume", Localization.Get("pause_resume"), new Vector2(0f, 40f), ResumeGame);
-            CreateButton(_panel, "MainMenu", Localization.Get("pause_main_menu"), new Vector2(0f, -50f), ReturnToMainMenu);
-            CreateButton(_panel, "Exit", Localization.Get("pause_exit"), new Vector2(0f, -140f), ExitGame);
+            _resumeButton = CreateButton(_panel, "Resume", Localization.Get("pause_resume"), new Vector2(0f, 80f), ResumeGame);
+            CreateButton(_panel, "Accessibility", Localization.Get("pause_accessibility"), new Vector2(0f, -10f),
+                D16AccessibilityPanel.ShowPanel);
+            CreateButton(_panel, "Diagnostics", Localization.Get("pause_diagnostics"), new Vector2(0f, -100f),
+                D16LocalDiagnosticsPanel.ShowPanel);
+            CreateButton(_panel, "Finance", Localization.Get("pause_finance"), new Vector2(0f, -190f),
+                D16FinanceDebtPanel.ShowPanel);
+            CreateButton(_panel, "MainMenu", Localization.Get("pause_main_menu"), new Vector2(0f, -280f), ReturnToMainMenu);
+            CreateButton(_panel, "Exit", Localization.Get("pause_exit"), new Vector2(0f, -370f), ExitGame);
 
+            D16ModalFocusScope.Attach(_panel, _resumeButton == null ? null : _resumeButton.gameObject);
             _panel.SetActive(false);
         }
 

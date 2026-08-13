@@ -45,6 +45,85 @@ namespace Whalebone.Content
     }
 
     [Serializable]
+    public sealed class ContentIntegrationMetadata
+    {
+        public string system;
+        public string entrypoint;
+        public string canonical_write_owner;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalAuthorizationMetadata
+    {
+        public string authorization_id;
+        public string rights_holder;
+        public string license_ref;
+        public string source_url_or_path;
+        public string acquired_at;
+        public bool commercial_use;
+        public bool attribution_required;
+        public bool modification_allowed;
+        public string expiry_or_scope;
+        public string evidence_ref;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalHabitatProfile
+    {
+        public string primary;
+        public string[] secondary;
+        public float min_depth_m;
+        public float max_depth_m;
+        public string zone;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalRefreshProfile
+    {
+        public string mode;
+        public int interval_days;
+        public string seed_domain;
+        public string window;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalFoodChainProfile
+    {
+        public string role;
+        public string[] prey_tags;
+        public string[] predator_tags;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalDangerProfile
+    {
+        public string level;
+        public string[] tags;
+        public string telegraph;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalLegalProfile
+    {
+        public string status;
+        public string rule_id;
+        public bool permit_required;
+        public string source_ref;
+    }
+
+    [Serializable]
+    public sealed class D15AnimalPerformanceBudget
+    {
+        public int lod0_triangles;
+        public int lod1_triangles;
+        public int lod2_triangles;
+        public int lod3_triangles;
+        public int active_distance_m;
+        public int update_hz;
+        public int max_active;
+    }
+
+    [Serializable]
     public sealed class ContentRegistryEntry
     {
         public string id;
@@ -73,6 +152,41 @@ namespace Whalebone.Content
         public string reviewer;
         /// <summary>D9 逻辑别名；不是新的内容主键或前缀。</summary>
         public string logic_ref;
+
+        // D15-A03 immutable content metadata. These fields describe the
+        // handoff to EcologySystem; they do not contain runtime state or
+        // behavior formulas.
+        public string production_batch;
+        public string representative_sample;
+        public string production_stage;
+        public string d15_category;
+        public string content_category;
+        public string batch_role;
+        public string behavior_level;
+        public string behavior_profile;
+        public D15AnimalHabitatProfile habitat_profile;
+        public D15AnimalRefreshProfile refresh_profile;
+        public D15AnimalFoodChainProfile food_chain_profile;
+        public D15AnimalDangerProfile danger_profile;
+        public D15AnimalLegalProfile legal_profile;
+        public D15AnimalPerformanceBudget performance_budget;
+        public string asset_state;
+        public string model_ref;
+        public string material_ref;
+        public string collision_ref;
+        public string lod_profile;
+        public string[] test_cases;
+        public string historical_review;
+        public string[] review_evidence_refs;
+        public string[] content_warning_ids;
+        public string context_note_key;
+        public bool skip_allowed;
+        public string[] presentation_levels;
+        public string quality_level;
+        public string interaction_entry;
+        public string function_entry;
+        public ContentIntegrationMetadata integration;
+        public D15AnimalAuthorizationMetadata authorization;
     }
 
     public sealed class ContentRegistrySnapshot

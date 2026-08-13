@@ -4,16 +4,28 @@
   "name": "盐鳕鱼",
   "display_name_key": "content.item.item_salted_cod.name",
   "category": "item",
-  "tags": ["food", "cargo", "trade"],
+  "tags": [
+    "food",
+    "cargo",
+    "trade"
+  ],
   "description": "用于验证物品引用和交易投影的代表道具定义。",
   "gameplay_role": "food_cargo",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_hold", "market"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_hold",
+    "market"
+  ],
   "valid_weather": [],
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/items/01_ITEM_OVERVIEW.md", "docs/game/design/economy/01_ECONOMY_OVERVIEW.md"],
+  "source_refs": [
+    "docs/game/design/items/01_ITEM_OVERVIEW.md",
+    "docs/game/design/economy/01_ECONOMY_OVERVIEW.md"
+  ],
   "source_note": "项目自有代表道具定义；价格、数量、重量和耐久不由目录检查器裁决。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +45,12 @@
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-ITEM-001",
-  "reviewer": "D8-A02"
+  "reviewer": "D8-A02",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/items/01_ITEM_OVERVIEW.md",
+    "docs/game/design/economy/01_ECONOMY_OVERVIEW.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

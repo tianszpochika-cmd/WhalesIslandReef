@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "task": "D16-A05-CANDIDATE",
+  "packet_id": "D16-A05-KENNEY-01",
+  "captured_at": "2026-08-13",
+  "status": "CANDIDATE_PENDING_REVIEW",
+  "source_provider": "Kenney",
+  "license": {
+    "kind": "CC0-1.0",
+    "commercial_use": true,
+    "modification_allowed": true,
+    "attribution_required": false,
+    "verification": "Official source pages and downloaded License.txt files"
+  },
+  "raw_artifacts": [
+    "artifacts/external_sources/kenney_blocky-characters_20.zip",
+    "artifacts/external_sources/kenney_pirate-kit.zip"
+  ],
+  "source_urls": [
+    "https://kenney.nl/assets/blocky-characters",
+    "https://kenney.nl/assets/pirate-kit"
+  ],
+  "candidate_files": [
+    {
+      "target_id": "asset_ph_crew_male",
+      "path": "game/Assets/Art/Candidates/Kenney/BlockyCharacters/Models/character-a.fbx",
+      "role": "candidate_character_visual"
+    },
+    {
+      "target_id": "building_saint_marys_dock",
+      "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-dock-small.fbx",
+      "role": "candidate_dock_visual"
+    },
+    {
+      "target_id": "building_small_boat_pier",
+      "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-small.fbx",
+      "role": "candidate_small_pier_visual"
+    },
+    {
+      "target_id": "island_saint_marys",
+      "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/patch-sand.fbx",
+      "role": "candidate_sand_visual"
+    },
+    {
+      "target_id": "island_saint_marys",
+      "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/rocks-sand-a.fbx",
+      "role": "candidate_rock_visual"
+    },
+    {
+      "target_id": "island_saint_marys",
+      "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/palm-detailed-straight.fbx",
+      "role": "candidate_palm_visual"
+    },
+    {
+      "target_id": "candidate_ship_pirate_small",
+      "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/ship-pirate-small.fbx",
+      "role": "candidate_ship_visual"
+    }
+  ],
+  "registry_changes": [],
+  "asset_state_changes": [],
+  "manual_review": {
+    "required": true,
+    "decision": "Pending",
+    "reviewer": "",
+    "evidence_refs": []
+  },
+  "integration_policy": "Do not run the A05 replacement preflight as an approved packet until manual review, runtime prefab/consumer paths, LOD, collision, anchors and test cases are complete."
+}

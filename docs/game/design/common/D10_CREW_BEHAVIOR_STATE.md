@@ -126,3 +126,49 @@ dotnet build game/Save.Tests.csproj --no-restore -v:minimal
 ```
 
 纯 C# 测试覆盖状态往返、非法状态归一化、参数合法性和确定性规则；Unity EditMode 测试覆盖班次效率、怠工/拒绝/受伤、请假/调岗/离队、前兆因果和船员存档回读。
+
+## 8. 2026-08-11 standalone build 复验
+
+为解除 D15-S02 前置工程阻断，已将 D10 状态加入 `Whalebone.Agent.Runtime.csproj`，并把当前 Systems asmdef 中遗漏的 D10/D13 源文件同步加入 `Whalebone.Systems.csproj` 的显式编译清单。复验结果：
+
+```text
+dotnet build game/AgentCore/AgentCore.csproj --no-restore -v:minimal       0 warning / 0 error
+dotnet build game/Whalebone.Systems.csproj --no-restore -v:minimal          0 warning / 0 error
+dotnet build game/Save.Tests.csproj --no-restore -v:minimal                 0 warning / 0 error
+```
+
+该修复只同步 standalone 工程引用，不改变 D10 状态规则、数值裁决或 Unity Systems 所有权。
+
+## 9. 2026-08-11 工程依赖复验
+
+根据最终验收任务的第一阶段门禁重新核对：
+
+- `game/Assets/Scripts/Agent/AgentCore/D10CrewBehaviorState.cs` 是唯一 D10 状态载体；没有新增第二份类型。
+- `game/Whalebone.Agent.Runtime.csproj` 和 `game/AgentCore/AgentCore.csproj` 都显式包含该状态文件；`CrewAgent` 只持有 `BehaviorState`，没有改变数据所有权。
+- 本机第一次执行 `Save.Tests --no-restore` 时只因缺少 `game/Temp/obj/Save.Tests/project.assets.json` 失败，不是缺少 D10 类型；补执行 `dotnet restore game/Save.Tests.csproj --ignore-failed-sources` 后恢复正常。
+- 复验结果：`dotnet build game/AgentCore/AgentCore.csproj --no-restore -v:minimal`、`dotnet build game/Save.Tests.csproj --no-restore -v:minimal` 均为 0 warning / 0 error。
+
+## 10. 2026-08-12 当前工程编译复验
+
+- Unity 刷新后 `Save.Tests` 和 `Assembly-CSharp` 的 `Temp/obj/*/project.assets.json` 可能被清理；本轮先执行受限 `dotnet restore ... --ignore-failed-sources`，再按 `--no-restore` 编译，没有通过缩小测试范围规避问题。
+- `AgentCore`、`Save.Tests`、`Assembly-CSharp` 当前均为 **0 warning / 0 error**；D10 状态文件仍只有唯一主源，未新增重复类型。
+
+## 11. 2026-08-12 总纲顺序复验
+
+- `dotnet build game/AgentCore/AgentCore.csproj --no-restore -v:minimal`：0 warning / 0 error。
+- `Save.Tests --no-restore` 首次仅因 Unity 临时 `project.assets.json` 缺失失败；受控 `dotnet restore game/Save.Tests.csproj --ignore-failed-sources` 后再次构建：0 warning / 0 error。
+- 本轮没有修改 D10 类型、CrewAgent 数据所有权或测试范围；D10 工程依赖门禁继续 PASS。
+
+## 12. 2026-08-12 Unity 依赖重新生成复验
+
+Unity 刷新工程后，`game/Library/ScriptAssemblies` 中的 Test Runner/UI 程序集曾暂时缺失，导致 `Save.Tests.csproj` 无法解析 Unity 测试类型。这是生成工程产物缺失，不是 D10 源码或类型缺失。已通过 Unity 6 无界面重新导入工程，让 Unity 按 `Packages/manifest.json` 重新生成派生程序集；没有直接编辑生成的 `.csproj` 或复制 DLL。
+
+验证结果：
+
+```text
+Unity 6000.0.80f1 batch reimport：退出码 0
+dotnet restore game/Save.Tests.csproj -v:minimal：成功
+dotnet build game/Save.Tests.csproj --no-restore -v:minimal：0 warning / 0 error
+```
+
+生成的 `UnityEditor.TestRunner.dll`、`UnityEngine.TestRunner.dll`、`UnityEditor.UI.dll` 和 `UnityEngine.UI.dll` 已恢复，D10 规则、CrewAgent 数据所有权和测试范围未改变。该证据只解决本机工程依赖门禁，不扩大为 Unity 真机、目标设备或 D16 发布验收。

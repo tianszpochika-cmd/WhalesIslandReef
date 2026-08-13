@@ -1,2 +1,57 @@
-{"id":"item_seed_guava","schema_version":1,"name":"番石榴苗","display_name_key":"content.item.item_seed_guava.name","category":"item","tags":["seed","fruit","orchard"],"description":"用于番石榴果园的种苗。","gameplay_role":"farming_seed","valid_regions":["island_saint_marys"],"valid_habitats":["orchard","farm"],"valid_weather":["clear","rain"],"dependencies":[],"references":[],"asset_refs":[],"source_refs":["docs/game/design/common/D13_FARMING_ORCHARDS.md"],"source_note":"D13-A03 项目自有农业种苗；数量由 D3InventorySystem 写入。","source":{"kind":"project-authored","author":"Whalebone team","reference":"docs/game/design/common/D13_FARMING_ORCHARDS.md"},"license":{"status":"internal-authored","holder":"Whalebone project","reference":"docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing","commercial_use":true,"attribution_required":false,"modification_allowed":true},"historical_tag":"inferred","phase":"D13","status":"prototyped","owner_system":"ItemCatalog","test_id":"D8-A02-D13-SEED-001","reviewer":"D13-A03"}
-
+{
+  "id": "item_seed_guava",
+  "schema_version": 1,
+  "name": "番石榴苗",
+  "display_name_key": "content.item.item_seed_guava.name",
+  "category": "item",
+  "tags": [
+    "seed",
+    "fruit",
+    "orchard"
+  ],
+  "description": "用于番石榴果园的种苗。",
+  "gameplay_role": "farming_seed",
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "orchard",
+    "farm"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D13_FARMING_ORCHARDS.md"
+  ],
+  "source_note": "D13-A03 项目自有农业种苗；数量由 D3InventorySystem 写入。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D13_FARMING_ORCHARDS.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D13",
+  "status": "prototyped",
+  "owner_system": "ItemCatalog",
+  "test_id": "D8-A02-D13-SEED-001",
+  "reviewer": "D13-A03",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D13_FARMING_ORCHARDS.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
+}

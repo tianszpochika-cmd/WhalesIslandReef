@@ -17,7 +17,9 @@ using UnityEngine.UI;
 using Whalebone.Gameplay.D2;
 using Whalebone.Gameplay.D7;
 using Whalebone.Gameplay.UI;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D5;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
 
 namespace Whalebone.Gameplay.D5
@@ -49,9 +51,41 @@ namespace Whalebone.Gameplay.D5
         private bool _ready;
         private int _presetIndex;
         private string _message = "D5 正在等待场景对象…";
+        private RuntimeBuildPhase _runtimeBuildPhase = RuntimeBuildPhase.WaitingForPlayer;
+        private bool _characterVisualBuildStarted;
+        private const int CharacterRenderersPerFrame = 4;
+        private Renderer[] _pendingCharacterRenderers;
+        private int _pendingCharacterRendererIndex;
+        private Color _pendingCharacterColor;
+        private bool _characterVisualPending;
+        private float _runtimeBuildStartedAt;
+        private float _phaseStartedAt;
+        private bool _phaseTimerStarted;
+        private RuntimeBuildPhase _timedPhase;
+
+        private enum RuntimeBuildPhase
+        {
+            WaitingForPlayer,
+            LoadingSnapshot,
+            CreatingSystems,
+            InitializingState,
+            ApplyingCharacterVisual,
+            BuildingMap,
+            Complete,
+        }
 
         public bool IsReady => _ready;
         public int SaveRevision { get; private set; }
+        public float AwakeDurationMs { get; private set; }
+        public float RuntimeBuildElapsedMs { get; private set; }
+        public bool RuntimePhaseTimingsComplete { get; private set; }
+        public int CompletedRuntimePhaseCount { get; private set; }
+        public float WaitingForPlayerMs { get; private set; }
+        public float LoadingSnapshotMs { get; private set; }
+        public float CreatingSystemsMs { get; private set; }
+        public float InitializingStateMs { get; private set; }
+        public float ApplyingCharacterVisualMs { get; private set; }
+        public float BuildingMapMs { get; private set; }
 
         private Text _statusText;
         private Text _detailText;
@@ -76,11 +110,14 @@ namespace Whalebone.Gameplay.D5
 
         private void Awake()
         {
+            float startedAt = Time.realtimeSinceStartup;
+            _runtimeBuildStartedAt = startedAt;
             EnsureEventSystem();
             BuildUi();
             RuntimeHudCoordinator.ApplyNow();
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
+            AwakeDurationMs = (Time.realtimeSinceStartup - startedAt) * 1000f;
         }
 
         private void Update()
@@ -92,17 +129,17 @@ namespace Whalebone.Gameplay.D5
                 return;
             }
 
+            ApplyPendingCharacterVisuals();
             _performance.RecordFrame(Time.unscaledDeltaTime);
-            var keyboard = Keyboard.current;
-            if (keyboard != null && Time.timeScale > 0f && D7ControlCoordinator.GameplayInputAllowed)
+            if (Time.timeScale > 0f && D7ControlCoordinator.GameplayInputAllowed)
             {
-                if (keyboard.iKey.wasPressedThisFrame) DiscoverNextIsland();
-                else if (keyboard.vKey.wasPressedThisFrame) VisitCurrentIsland();
-                else if (keyboard.pKey.wasPressedThisFrame) NextPreset();
-                else if (keyboard.lKey.wasPressedThisFrame) ToggleLanguage();
-                else if (keyboard.f1Key.wasPressedThisFrame) CycleQuality();
-                else if (keyboard.f2Key.wasPressedThisFrame) UnlockAchievement();
-                else if (keyboard.f5Key.wasPressedThisFrame) SaveProgress();
+                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D5DiscoverIsland)) DiscoverNextIsland();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D5VisitIsland)) VisitCurrentIsland();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.CharacterPreset)) NextPreset();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Language)) ToggleLanguage();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Quality)) CycleQuality();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Achievement)) UnlockAchievement();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Save)) SaveProgress();
             }
             RefreshHud();
         }
@@ -219,25 +256,110 @@ namespace Whalebone.Gameplay.D5
 
         private void TryBuildRuntime()
         {
-            var player = GameObject.Find("D2_PlayerAvatar");
-            if (player == null) return;
-            _player = player.transform;
-            _basePlayerScale = _player.localScale;
-            _snapshot = SaveSystem.LoadD5Runtime() ?? new D5RuntimeSnapshot();
-            _world = new D5WorldSystem(_snapshot.World);
-            _character = new D5CharacterSystem(_snapshot.Character);
-            _performance = new D5PerformanceSystem(_snapshot.Performance);
-            _steam = new D5SteamSystem(_snapshot.Steam);
+            BeginPhaseTiming();
+            switch (_runtimeBuildPhase)
+            {
+                case RuntimeBuildPhase.WaitingForPlayer:
+                    var player = GameObject.Find("D2_PlayerAvatar");
+                    if (player == null) return;
+                    _player = player.transform;
+                    _basePlayerScale = _player.localScale;
+                    CompletePhaseTiming();
+                    _runtimeBuildPhase = RuntimeBuildPhase.LoadingSnapshot;
+                    return;
 
-            InitializeTraits();
-            _presetIndex = IndexOfPreset(_character.Snapshot.PresetId);
-            ApplyQualityToUnity(_performance.Snapshot.Quality);
-            ApplyCharacterVisual();
-            BuildIslandMap();
-            _ready = true;
-            SyncSnapshot();
-            RefreshHud();
-            Debug.Log("[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge");
+                case RuntimeBuildPhase.LoadingSnapshot:
+                    // 读档属于 D5 的持久化入口，单独占一帧，避免与场景表现构建叠加。
+                    _snapshot = SaveSystem.LoadD5Runtime() ?? new D5RuntimeSnapshot();
+                    CompletePhaseTiming();
+                    _runtimeBuildPhase = RuntimeBuildPhase.CreatingSystems;
+                    return;
+
+                case RuntimeBuildPhase.CreatingSystems:
+                    _world = new D5WorldSystem(_snapshot.World);
+                    _character = new D5CharacterSystem(_snapshot.Character);
+                    _performance = new D5PerformanceSystem(_snapshot.Performance);
+                    _steam = new D5SteamSystem(_snapshot.Steam);
+                    CompletePhaseTiming();
+                    _runtimeBuildPhase = RuntimeBuildPhase.InitializingState;
+                    return;
+
+                case RuntimeBuildPhase.InitializingState:
+                    InitializeTraits();
+                    _presetIndex = IndexOfPreset(_character.Snapshot.PresetId);
+                    ApplyQualityToUnity(_performance.Snapshot.Quality);
+                    CompletePhaseTiming();
+                    _runtimeBuildPhase = RuntimeBuildPhase.ApplyingCharacterVisual;
+                    return;
+
+                case RuntimeBuildPhase.ApplyingCharacterVisual:
+                    if (!_characterVisualBuildStarted)
+                    {
+                        ApplyCharacterVisual();
+                        _characterVisualBuildStarted = true;
+                    }
+                    else
+                    {
+                        ApplyPendingCharacterVisuals();
+                    }
+
+                    if (_characterVisualPending) return;
+                    CompletePhaseTiming();
+                    _runtimeBuildPhase = RuntimeBuildPhase.BuildingMap;
+                    return;
+
+                case RuntimeBuildPhase.BuildingMap:
+                    BuildIslandMap();
+                    _ready = true;
+                    CompletePhaseTiming();
+                    _runtimeBuildPhase = RuntimeBuildPhase.Complete;
+                    RuntimeBuildElapsedMs = (Time.realtimeSinceStartup - _runtimeBuildStartedAt) * 1000f;
+                    RuntimePhaseTimingsComplete = true;
+                    SyncSnapshot();
+                    RefreshHud();
+                    Debug.Log("[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge");
+                    return;
+
+                case RuntimeBuildPhase.Complete:
+                    return;
+            }
+        }
+
+        private void BeginPhaseTiming()
+        {
+            if (_phaseTimerStarted) return;
+            _timedPhase = _runtimeBuildPhase;
+            _phaseStartedAt = Time.realtimeSinceStartup;
+            _phaseTimerStarted = true;
+        }
+
+        private void CompletePhaseTiming()
+        {
+            if (!_phaseTimerStarted || _timedPhase != _runtimeBuildPhase) return;
+            float durationMs = Mathf.Max(0f, (Time.realtimeSinceStartup - _phaseStartedAt) * 1000f);
+            switch (_timedPhase)
+            {
+                case RuntimeBuildPhase.WaitingForPlayer:
+                    WaitingForPlayerMs = durationMs;
+                    break;
+                case RuntimeBuildPhase.LoadingSnapshot:
+                    LoadingSnapshotMs = durationMs;
+                    break;
+                case RuntimeBuildPhase.CreatingSystems:
+                    CreatingSystemsMs = durationMs;
+                    break;
+                case RuntimeBuildPhase.InitializingState:
+                    InitializingStateMs = durationMs;
+                    break;
+                case RuntimeBuildPhase.ApplyingCharacterVisual:
+                    ApplyingCharacterVisualMs = durationMs;
+                    break;
+                case RuntimeBuildPhase.BuildingMap:
+                    BuildingMapMs = durationMs;
+                    break;
+            }
+            CompletedRuntimePhaseCount++;
+            _phaseTimerStarted = false;
         }
 
         private void InitializeTraits()
@@ -277,12 +399,38 @@ namespace Whalebone.Gameplay.D5
             if (_player == null || _character == null) return;
             var preset = _character.CurrentPreset;
             if (preset == null) return;
-            _player.localScale = _basePlayerScale * preset.BodyScale;
-            var renderers = _player.GetComponentsInChildren<Renderer>(true);
-            if (renderers.Length == 0) return;
-            var color = new Color32((byte)((preset.AccentColor >> 16) & 0xff), (byte)((preset.AccentColor >> 8) & 0xff), (byte)(preset.AccentColor & 0xff), 255);
-            foreach (var renderer in renderers)
+            // D2CharacterController 统一拥有角色物理根节点和视觉归一化。
+            // D5 预设不能再改根节点缩放，否则会把 CharacterController 的
+            // 世界尺寸重新压回 FBX 原始比例，导致首帧抬升、漂浮和动作误判。
+            // 没有 D2 物理组件的纯表现对象才沿用旧的根节点缩放路径。
+            if (_player.GetComponent<D2CharacterController>() == null)
+                _player.localScale = _basePlayerScale * preset.BodyScale;
+            _pendingCharacterRenderers = _player.GetComponentsInChildren<Renderer>(true);
+            _pendingCharacterRendererIndex = 0;
+            _pendingCharacterColor = new Color32(
+                (byte)((preset.AccentColor >> 16) & 0xff),
+                (byte)((preset.AccentColor >> 8) & 0xff),
+                (byte)(preset.AccentColor & 0xff),
+                255);
+            _characterVisualPending = _pendingCharacterRenderers.Length > 0;
+            ApplyPendingCharacterVisuals();
+        }
+
+        /// <summary>
+        /// 角色表现只允许在 D5 表现层分帧处理；玩法状态和输入不会等待材质复制。
+        /// 这样首次进入 InitialHarbor 时不会把所有材质实例化集中到同一帧，
+        /// 但队列仍会在后续帧完整应用当前角色预设。
+        /// </summary>
+        private void ApplyPendingCharacterVisuals()
+        {
+            if (!_characterVisualPending || _pendingCharacterRenderers == null) return;
+
+            int processed = 0;
+            while (_pendingCharacterRendererIndex < _pendingCharacterRenderers.Length &&
+                   processed++ < CharacterRenderersPerFrame)
             {
+                var renderer = _pendingCharacterRenderers[_pendingCharacterRendererIndex++];
+                if (renderer == null) continue;
                 var sources = renderer.sharedMaterials;
                 for (int i = 0; i < sources.Length; i++)
                 {
@@ -295,16 +443,22 @@ namespace Whalebone.Gameplay.D5
                         var baseColor = material.GetColor("_BaseColor");
                         // 有贴图时只轻微染色，避免角色预设把衣服和皮肤变成纯色块。
                         Color tint = material.mainTexture == null
-                            ? color
-                            : Color.Lerp(Color.white, color, 0.16f);
+                            ? _pendingCharacterColor
+                            : Color.Lerp(Color.white, _pendingCharacterColor, 0.16f);
                         baseColor = new Color(baseColor.r * tint.r, baseColor.g * tint.g,
                             baseColor.b * tint.b, baseColor.a);
                         material.SetColor("_BaseColor", baseColor);
                     }
-                    if (material.HasProperty("_Color")) material.SetColor("_Color", color);
+                    if (material.HasProperty("_Color")) material.SetColor("_Color", _pendingCharacterColor);
                     sources[i] = material;
                 }
                 renderer.sharedMaterials = sources;
+            }
+
+            if (_pendingCharacterRendererIndex >= _pendingCharacterRenderers.Length)
+            {
+                _characterVisualPending = false;
+                _pendingCharacterRenderers = null;
             }
         }
 

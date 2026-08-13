@@ -1,8 +1,9 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Whalebone.Systems.D2;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
 using Whalebone.Gameplay.D7;
+using Whalebone.Gameplay.UI.D16;
 
 namespace Whalebone.Gameplay.D2
 {
@@ -51,15 +52,12 @@ namespace Whalebone.Gameplay.D2
         {
             if (_sailing == null || _mode != D2ControlMode.Ship || Time.timeScale <= 0f ||
                 !D7ControlCoordinator.GameplayInputAllowed) return;
-            var keyboard = Keyboard.current;
-            if (keyboard == null) return;
-
             float throttle = 0f;
             float rudder = 0f;
-            if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed) throttle += 1f;
-            if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed) throttle -= 1f;
-            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) rudder -= 1f;
-            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) rudder += 1f;
+            if (D16InputRouter.IsPressed(D16InputAction.MoveForward)) throttle += 1f;
+            if (D16InputRouter.IsPressed(D16InputAction.MoveBack)) throttle -= 1f;
+            if (D16InputRouter.IsPressed(D16InputAction.MoveLeft)) rudder -= 1f;
+            if (D16InputRouter.IsPressed(D16InputAction.MoveRight)) rudder += 1f;
             _sailing.Tick(new SailingInput(throttle, rudder), Time.deltaTime);
             ApplyTransform(_sailing.Snapshot);
         }

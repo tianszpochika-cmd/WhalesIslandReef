@@ -1,0 +1,105 @@
+{
+  "id": "asset_d15_a08_music_theme_11",
+  "schema_version": 1,
+  "name": "贸易港：秤盘与账册",
+  "name_en": "Trade Port: Scales and Ledgers",
+  "display_name_key": "content.asset.asset_d15_a08_music_theme_11.name",
+  "category": "asset",
+  "tags": [
+    "D15",
+    "D15-A08",
+    "audio",
+    "music",
+    "placeholder",
+    "port"
+  ],
+  "description": "Trade Port: Scales and Ledgers; deterministic trigger profile for trade_open.",
+  "gameplay_role": "music_theme",
+  "valid_regions": [
+    "open_sea",
+    "harbor"
+  ],
+  "valid_habitats": [
+    "shipboard",
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_ashfall_bay"
+  ],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/audio/01_AUDIO_OVERVIEW.md",
+    "docs/game/design/audio/03_MUSIC_QA.md"
+  ],
+  "source_note": "D15-A08 音乐主题目录；音频文件暂用可替换占位，触发和混音参数已冻结，正式录音前不得伪称完成。",
+  "source": {
+    "kind": "project-authored-placeholder",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/audio/03_MUSIC_QA.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "fictional",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "AssetRegistry",
+  "test_id": "D8-A02-D15-A08-ASSET-MUSIC-011",
+  "reviewer": "D15-A08",
+  "production_batch": "D15-A08*",
+  "production_stage": "cataloged",
+  "quality_level": "Q2",
+  "asset_state": "placeholder",
+  "placeholder_policy": "replace_before_Q3",
+  "audio_kind": "music_theme",
+  "audio_event_id": "audio.d15_a08.music.theme.11",
+  "theme_index": 11,
+  "theme_scope": "port",
+  "trigger_state": "trade_open",
+  "trigger_conditions": [
+    "port_state=trade",
+    "legal_status=clear"
+  ],
+  "intensity": "steady",
+  "mixer_bus": "Music",
+  "mix_tags": [
+    "Music",
+    "trade",
+    "diegetic"
+  ],
+  "distance": "global",
+  "directionality": "non_directional",
+  "loop": true,
+  "priority": 30,
+  "subtitle_key": "audio.d15_a08.asset_d15_a08_music_theme_11.subtitle",
+  "fallback": "ui_text_and_event_log",
+  "audio_file_ref": "game/Assets/Audio/Music/.gitkeep",
+  "streaming_profile": "music_stream_low_spike",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/audio/03_MUSIC_QA.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full"
+  ],
+  "lod_profile": "LOD-N/A",
+  "test_cases": [
+    "asset_d15_a08_music_theme_11-load",
+    "asset_d15_a08_music_theme_11-trigger-fallback",
+    "asset_d15_a08_music_theme_11-save-restore"
+  ]
+}

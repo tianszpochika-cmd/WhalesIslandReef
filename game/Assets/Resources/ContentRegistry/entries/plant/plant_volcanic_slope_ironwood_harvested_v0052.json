@@ -1,0 +1,194 @@
+{
+  "id": "plant_volcanic_slope_ironwood_harvested_v0052",
+  "schema_version": 1,
+  "name": "ironwood·乔木·采集后·0052",
+  "display_name_key": "content.plant.plant_volcanic_slope_ironwood_harvested_v0052.name",
+  "category": "plant",
+  "tags": [
+    "d15_a02",
+    "tree",
+    "volcanic_slope",
+    "timber",
+    "harvested"
+  ],
+  "description": "乔木内容条目：ironwood的采集后形态，适用于volcanic_slope生境；资源量、成熟度与采集结果由 EcologySystem/D11 owner 裁决。",
+  "gameplay_role": "timber",
+  "valid_regions": [
+    "island_saint_marys",
+    "island_driftwood_isle"
+  ],
+  "valid_habitats": [
+    "rainforest",
+    "lowland_rainforest",
+    "limestone_karst",
+    "volcanic_slope"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "island_saint_marys"
+  ],
+  "asset_refs": [
+    "asset_vegetation_profile_tree"
+  ],
+  "source_refs": [
+    "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md",
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/vegetation/03_VEGETATION_HABITATS.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A02 项目自有批量目录；形态、阶段和用途为可审计设计推断，不宣称新增外部史实或外部素材。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "EcologySystem",
+  "test_id": "D8-A02-D15-VEG-0052",
+  "reviewer": "D15-A02*",
+  "plant_class": "tree",
+  "scientific_or_historical_note": "加勒比 1675 语境下的生态/形态推断；非外部物种鉴定结论。",
+  "soil_tags": [
+    "deep_loam",
+    "red_laterite",
+    "shallow_limestone"
+  ],
+  "salt_tolerance": "medium",
+  "drought_tolerance": "medium",
+  "water_need": "medium",
+  "altitude_range": [
+    180,
+    900
+  ],
+  "season_tags": [
+    "dry",
+    "wet"
+  ],
+  "growth_stage": "harvested",
+  "harvest_parts": [
+    "trunk",
+    "bark",
+    "resin"
+  ],
+  "resource_outputs": [
+    "timber"
+  ],
+  "toxicity": "non_toxic_or_contextual",
+  "fire_fuel": "high",
+  "animal_relationships": [
+    "canopy_roost"
+  ],
+  "human_cultivation": "wild_harvest",
+  "introduced_status": "native_or_inferred",
+  "production_batch": "D15-A02*",
+  "representative_sample": "plant_red_mangrove",
+  "production_stage": "cataloged",
+  "behavior_profile": "EcologySystem:plant_resource_profile:tree",
+  "asset_state": "placeholder",
+  "quality_level": "Q2",
+  "model_ref": "unity-primitive://vegetation/tree/lod2",
+  "model_status": "placeholder_primitive_ready",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_palm_trunk.mat",
+  "material_status": "source_ready",
+  "collision_ref": "placeholder://vegetation/harvest-proximity-collider",
+  "collision_status": "shared_interaction_proxy",
+  "lod_profile": {
+    "name": "plant_lod2",
+    "minimum_lod": "LOD2",
+    "lod0_triangles": 6000,
+    "lod1_triangles": 2000,
+    "lod2_triangles": 600,
+    "far_representation": "cluster_proxy"
+  },
+  "wind_profile": {
+    "id": "ridge_gust",
+    "zone": "volcanic_slope",
+    "frequency_band": "low_to_medium",
+    "amplitude_band": "profiled_by_habitat",
+    "gust_response": "deterministic_environment_input"
+  },
+  "habitat_profile": {
+    "primary": "volcanic_slope",
+    "soil": "deep_loam",
+    "salt_tolerance": "medium",
+    "drought_tolerance": "medium",
+    "water_need": "medium",
+    "altitude_range_m": [
+      180,
+      900
+    ]
+  },
+  "use_profile": {
+    "primary": "timber",
+    "harvest_parts": [
+      "trunk",
+      "bark",
+      "resin"
+    ],
+    "resource_outputs": [
+      "timber"
+    ],
+    "toxicity": "non_toxic_or_contextual",
+    "fire_fuel": "high",
+    "animal_relationship": "canopy_roost",
+    "human_cultivation": "wild_harvest"
+  },
+  "growth_profile": {
+    "stage": "harvested",
+    "season_tags": [
+      "dry",
+      "wet"
+    ],
+    "cycle_days": 26,
+    "mature_window_days": 7,
+    "recovery_profile": "EcologySystem:habitat_recovery_profile"
+  },
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/vegetation/01_VEGETATION_OVERVIEW.md",
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/common/D11_VEGETATION_HARVEST.md"
+  ],
+  "content_warning_ids": [],
+  "context_note_key": "content.plant.context.standard",
+  "skip_allowed": false,
+  "presentation_levels": [
+    "Full"
+  ],
+  "test_cases": [
+    "D15-A02-LOAD-0051",
+    "D15-A02-ASSET-0051",
+    "D15-A02-HARVEST-OWNER-0051",
+    "D15-A02-SAVE-RESTORE-0051"
+  ],
+  "authorization": {
+    "authorization_id": "auth_internal_d15_vegetation_catalog",
+    "rights_holder": "Whalebone project",
+    "license_ref": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "source_url_or_path": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "perpetual; project authored data and placeholder references",
+    "evidence_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-来源授权和历史审查"
+  },
+  "asset_profile_id": "asset_vegetation_profile_tree",
+  "generation_source": "D15-A02 deterministic batch generator",
+  "generation_digest": "c3a7bd03"
+}

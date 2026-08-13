@@ -6,6 +6,7 @@
 // ============================================================
 
 using UnityEngine;
+using Whalebone.Gameplay.D2;
 
 namespace Whalebone.Gameplay.D7
 {
@@ -16,6 +17,7 @@ namespace Whalebone.Gameplay.D7
         private CharacterController _body;
         private bool _calibrated;
         private float _nextCalibration;
+        private bool _loggedReady;
 
         public bool IsReady { get; private set; }
         public bool HasHumanVisual { get; private set; }
@@ -24,23 +26,36 @@ namespace Whalebone.Gameplay.D7
 
         private void Awake()
         {
-            _body = GetComponent<CharacterController>();
-            _visualRoot = transform.childCount == 0 ? transform : transform.GetChild(0);
-            HasHumanVisual = GetComponentsInChildren<SkinnedMeshRenderer>(true).Length > 0;
-            if (!HasHumanVisual)
-            {
-                foreach (var renderer in GetComponentsInChildren<MeshRenderer>(true))
-                    if (renderer.transform != transform) { HasHumanVisual = true; break; }
-            }
-            IsReady = _body != null && HasHumanVisual;
+            TryBindRuntimeParts();
         }
 
         private void LateUpdate()
         {
+            // D7ControlCoordinator 的高优先级 Update 可能会在 D2RuntimeBootstrap
+            // 为玩家添加 CharacterController 的同一帧先创建本组件。不要把 Awake
+            // 时的瞬时缺失永久缓存成“未就绪”，否则表现层不会校准脚底和动作。
+            if (!IsReady) TryBindRuntimeParts();
             if (!IsReady || _body == null || !_body.enabled || !_body.isGrounded ||
                 Time.unscaledTime < _nextCalibration) return;
             _nextCalibration = Time.unscaledTime + 0.18f;
             CalibrateVisualGrounding();
+        }
+
+        private void TryBindRuntimeParts()
+        {
+            if (_body == null) _body = GetComponent<CharacterController>();
+            if (_visualRoot == null)
+                _visualRoot = transform.childCount == 0 ? transform : transform.GetChild(0);
+
+            HasHumanVisual = D2CharacterVisualProbe.HasCharacterVisual(gameObject);
+            bool wasReady = IsReady;
+            IsReady = _body != null && HasHumanVisual;
+            if (!wasReady && IsReady && !_loggedReady)
+            {
+                _loggedReady = true;
+                Debug.Log("[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=" +
+                          (_body != null) + ", humanVisual=" + HasHumanVisual);
+            }
         }
 
         private void CalibrateVisualGrounding()

@@ -43,7 +43,7 @@ namespace Whalebone.EditorTools
 
             // ---- 2. 产品信息 ----
             PlayerSettings.companyName = "Whalebone Studio";
-            PlayerSettings.productName = "Whalebone";
+            PlayerSettings.productName = "WhalesIslandReef";
             PlayerSettings.defaultScreenWidth = 1280;
             PlayerSettings.defaultScreenHeight = 720;
 

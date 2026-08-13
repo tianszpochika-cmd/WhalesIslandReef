@@ -273,22 +273,26 @@ namespace Whalebone.Systems.D11
                 definition.SpeciesId);
             var result = ApplyEvidenceAction(eventId, request.SaveRevision, request, definition,
                 D11EvidenceKind.IllegalTrade, "illegal_trade_attempt", "illegal_wildlife_trade",
-                decision, "非法交易被拒绝并进入法律与声望后果；没有生成动物或奖励。");
+                decision, "非法交易被拒绝并进入法律与声望后果；没有生成动物或奖励。", false);
             result.LegalConsequence = legal;
             return result;
         }
 
         private D11RareAnimalResult ApplyEvidenceAction(string eventId, long saveRevision,
             D11RareAnimalEvidenceInput request, D11RareAnimalDefinition definition, D11EvidenceKind kind,
-            string handling, string resultCode, D11AnimalEcologyDecision decision, string message)
+            string handling, string resultCode, D11AnimalEcologyDecision decision, string message,
+            bool addToCollectionBook = true)
         {
             var evidence = BuildEvidence(request, definition, kind, handling, decision, eventId);
-            var entry = UpsertBook(definition, request, handling, decision);
-            if (!Contains(entry.EvidenceIds, evidence.EvidenceId)) entry.EvidenceIds.Add(evidence.EvidenceId);
+            var entry = addToCollectionBook ? UpsertBook(definition, request, handling, decision) : null;
+            if (entry != null && !Contains(entry.EvidenceIds, evidence.EvidenceId))
+                entry.EvidenceIds.Add(evidence.EvidenceId);
             _state.Evidence.Add(evidence);
+            var factIds = new List<string> { evidence.EvidenceId };
+            if (entry != null) factIds.Add("codex:" + entry.EntryId);
             var result = CommitEvent(eventId, saveRevision, request.WorldDay, definition.SpeciesId,
                 definition.RuntimeAnimalId, resultCode, message,
-                new[] { evidence.EvidenceId, "codex:" + entry.EntryId },
+                factIds,
                 new Dictionary<string, string>
                 {
                     ["species_id"] = definition.SpeciesId,
@@ -301,7 +305,7 @@ namespace Whalebone.Systems.D11
             result.Applied = true;
             result.EvidenceId = evidence.EvidenceId;
             result.Evidence = evidence.Clone();
-            result.BookEntry = entry.Clone();
+            result.BookEntry = entry == null ? null : entry.Clone();
             result.SpeciesId = definition.SpeciesId;
             result.AnimalId = definition.RuntimeAnimalId;
             result.Lifecycle = decision.Lifecycle;

@@ -1,6 +1,8 @@
 # 统一数据模型 v3.0
 
 > 本文件是跨领域实体和存档形状的唯一设计事实源。领域文档可以补充语义，但不能私自新增同名字段、写者或状态。
+>
+> D16-S02 状态快照（2026-08-11）：D8 v3 数据模型、D7 兼容字段和 schema_version=1 事实保持不变；save_version=3、SQLite user_version=1 未改变。D16 文件级备份、断电恢复和完整长线存档尚未通过，不得把模型设计状态写成最终版本完成。详见 docs/game/design/common/D16_FINAL_HANDOFF_INDEX.md。
 
 ## 1. 通用字段
 

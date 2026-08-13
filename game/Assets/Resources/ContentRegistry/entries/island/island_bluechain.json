@@ -1,0 +1,477 @@
+{
+  "id": "island_bluechain",
+  "schema_version": 1,
+  "name": "蓝链礁群",
+  "name_en": "Bluechain",
+  "display_name_key": "content.island.island_bluechain.name",
+  "category": "island",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "ato",
+    "template_ato",
+    "coral_shoal",
+    "lagoon"
+  ],
+  "description": "D15-A01 环礁与礁环岛群代表档案：沉降中的火山基座被珊瑚环包围，形成礁环、浅滩、泻湖和狭窄礁口。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
+  "gameplay_role": "coastal_navigation_island",
+  "valid_regions": [
+    "island_bluechain"
+  ],
+  "valid_habitats": [
+    "coral_shoal",
+    "lagoon",
+    "seagrass",
+    "coast"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_shallow_seaweed",
+    "plant_conch_bed",
+    "fish_sardine_school",
+    "fish_mackerel_school",
+    "animal_green_turtle",
+    "building_saint_marys_dock",
+    "building_santa_marys_shipyard",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 环礁与礁环岛群 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-D15-A01-ISLAND-047",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_saint_marys",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_ato",
+  "collision_ref": "collision_island_bluechain",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-047",
+    "D15-A01-SAVE-047",
+    "D15-A01-RESTORE-047"
+  ],
+  "quality_level": "Q2",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "atoll_reef_ring",
+    "template_label": "环礁与礁环岛群",
+    "variant_code": "ATO-02",
+    "historical_names": [
+      "Bluechain",
+      "Bluechain chart name"
+    ],
+    "formation": "沉降中的火山基座被珊瑚环包围，形成礁环、浅滩、泻湖和狭窄礁口。",
+    "geology": "coral_deposit",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "侧风面浪涌明显",
+      "coast_type": "lagoon_inlet",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "背风湾适合短暂停泊",
+      "coast_type": "seagrass_shallow",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "lagoon_inlet",
+      "seagrass_shallow"
+    ],
+    "freshwater": {
+      "source_kind": "shallow_lens",
+      "availability": "rain_dependent",
+      "capacity_band": "medium",
+      "dry_season_rule": "recovery_owner_profile",
+      "water_points": [
+        "water_point_bluechain_01",
+        "water_point_bluechain_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "reef_sand_spine",
+      "elevation": "lowland",
+      "slope": "gentle",
+      "max_m": 11,
+      "maximum_elevation_m": 48,
+      "profile_variant": "reef_sand_spine_2",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_bluechain_01",
+        "cave_type": "sea_erosion_cave",
+        "entrance_zone": "bluechain_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "tide_reversal"
+      },
+      {
+        "cave_id": "cave_bluechain_02",
+        "cave_type": "reef_crevice",
+        "entrance_zone": "bluechain_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "grounding"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_bluechain_1",
+        "feature": "coral_reef",
+        "chart_access": "primary",
+        "depth_band": "medium",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_bluechain_2",
+        "feature": "reef_inlet",
+        "chart_access": "alternate",
+        "depth_band": "deep",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "coral_shoal",
+      "lagoon",
+      "seagrass",
+      "coast"
+    ],
+    "zones": [
+      {
+        "region_id": "bluechain_coast",
+        "parent_region": "island_bluechain",
+        "geology": "coral_deposit",
+        "habitat": "coral_shoal",
+        "elevation": "coastal",
+        "water_sources": [
+          "shallow_lens"
+        ],
+        "coast_access": "lagoon_inlet",
+        "walkability": "mostly_walkable",
+        "hazard_tags": [
+          "storm_surge"
+        ],
+        "plant_tags": [
+          "plant_shallow_seaweed"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_shallow_seaweed",
+          "plant_conch_bed"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "coastal_fishers",
+          "sailors_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "bluechain_coast"
+      },
+      {
+        "region_id": "bluechain_inland",
+        "parent_region": "island_bluechain",
+        "geology": "coral_deposit",
+        "habitat": "lagoon",
+        "elevation": "sand_ridge",
+        "water_sources": [
+          "shallow_lens"
+        ],
+        "coast_access": "connected_by_path",
+        "walkability": "path_network",
+        "hazard_tags": [
+          "tide_reversal"
+        ],
+        "plant_tags": [
+          "plant_conch_bed"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_conch_bed"
+        ],
+        "building_tags": [
+          "building_santa_marys_shipyard"
+        ],
+        "faction_tags": [
+          "coastal_fishers",
+          "sailors_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "bluechain_inland"
+      },
+      {
+        "region_id": "bluechain_upper",
+        "parent_region": "island_bluechain",
+        "geology": "coral_deposit",
+        "habitat": "seagrass",
+        "elevation": "lowland",
+        "water_sources": [
+          "shallow_lens"
+        ],
+        "coast_access": "sea_erosion_cave",
+        "walkability": "sand_ridge_only",
+        "hazard_tags": [
+          "grounding"
+        ],
+        "plant_tags": [
+          "fish_sardine_school"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "fish_sardine_school"
+        ],
+        "building_tags": [
+          "building_saint_marys_dock"
+        ],
+        "faction_tags": [
+          "coastal_fishers",
+          "sailors_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "bluechain_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_bluechain_1",
+        "content_id": "plant_shallow_seaweed",
+        "node_type": "rare_observation",
+        "habitat": "coral_shoal",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_bluechain.resource.1"
+      },
+      {
+        "node_id": "resource_node_bluechain_2",
+        "content_id": "plant_conch_bed",
+        "node_type": "community_managed",
+        "habitat": "lagoon",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_bluechain.resource.2"
+      },
+      {
+        "node_id": "resource_node_bluechain_3",
+        "content_id": "fish_sardine_school",
+        "node_type": "ecology_key",
+        "habitat": "seagrass",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_bluechain.resource.3"
+      },
+      {
+        "node_id": "resource_node_bluechain_4",
+        "content_id": "fish_mackerel_school",
+        "node_type": "dangerous_environment",
+        "habitat": "coast",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_bluechain.resource.4"
+      },
+      {
+        "node_id": "resource_node_bluechain_5",
+        "content_id": "animal_green_turtle",
+        "node_type": "common_refresh",
+        "habitat": "coral_shoal",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_bluechain.resource.5"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_saint_marys_dock",
+        "instance_anchor": "bluechain_building_anchor_1",
+        "placement_zone": "bluechain_coast",
+        "access_route": "reef_inlet",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_santa_marys_shipyard",
+        "instance_anchor": "bluechain_building_anchor_2",
+        "placement_zone": "bluechain_inland",
+        "access_route": "lagoon_route",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_bluechain_01",
+        "zone_id": "bluechain_inland",
+        "access_route": "reef_inlet",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_bluechain_primary",
+      "alternate_landing": "landing_bluechain_alternate",
+      "primary_coast": "lagoon_inlet",
+      "alternate_coast": "seagrass_shallow",
+      "boat_route": "small_boat_channel",
+      "tide_window": "rising_tide",
+      "navigation_risk": "storm_surge",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_bluechain_coast",
+        "route_type": "coast",
+        "access": "reef_inlet",
+        "fallback": "small_boat_channel"
+      },
+      {
+        "route_id": "route_bluechain_inland",
+        "route_type": "inland",
+        "access": "lagoon_route",
+        "fallback": "reef_inlet"
+      },
+      {
+        "route_id": "route_bluechain_upper",
+        "route_type": "highland_or_cave",
+        "access": "small_boat_channel",
+        "fallback": "lagoon_route"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_bluechain_1",
+        "tag": "grounding",
+        "deterministic_owner": "ShipSystem",
+        "warning_key": "content.island.island_bluechain.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_bluechain_2",
+        "tag": "storm_surge",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_bluechain.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_bluechain_3",
+        "tag": "tide_reversal",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_bluechain.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "礁口灯标站",
+      "faction_tags": [
+        "coastal_fishers",
+        "sailors_guild"
+      ],
+      "human_modification": "light",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "bluechain_coast",
+        "bluechain_inland",
+        "bluechain_highland"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_bluechain",
+      "stable_id": "island_bluechain",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
+}

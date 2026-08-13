@@ -157,7 +157,9 @@ namespace Whalebone.Gameplay.D9
             rect.anchoredPosition = new Vector2(28f, 26f);
             rect.sizeDelta = new Vector2(900f, 160f);
             _statusText = textObject.GetComponent<Text>();
-            _statusText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            // Unity 6 已移除 Arial.ttf 这个内置资源名；LegacyRuntime.ttf 是当前
+            // 仍受支持的运行时兜底字体，避免创建捕鱼状态 UI 时抛异常。
+            _statusText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _statusText.fontSize = 16;
             _statusText.alignment = TextAnchor.LowerLeft;
             _statusText.color = new Color(0.75f, 0.93f, 1f, 0.92f);

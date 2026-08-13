@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -110,6 +111,10 @@ namespace D9.EditorTests
             {
                 var hud = root.AddComponent<D9VoyageHudController>();
                 var audio = root.AddComponent<D9AudioPresentationController>();
+                // Unity 6 EditMode 下，临时 AddComponent 不保证自动派发私有 Awake；
+                // 这个测试验证的是组件能否挂载并完成只读表现初始化，因此显式补齐生命周期。
+                if (!hud.IsReady) InvokeAwakeForEditMode(hud);
+                if (!audio.IsReady) InvokeAwakeForEditMode(audio);
                 Assert.IsTrue(hud.IsReady);
                 Assert.IsTrue(audio.IsReady);
             }
@@ -117,6 +122,13 @@ namespace D9.EditorTests
             {
                 Object.DestroyImmediate(root);
             }
+        }
+
+        private static void InvokeAwakeForEditMode(MonoBehaviour component)
+        {
+            var method = component.GetType().GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.IsNotNull(method, component.GetType().Name + " must provide Awake for EditMode mounting.");
+            method.Invoke(component, null);
         }
 
         private static WorldEvent NewEvent(string id, string summary, long revision)

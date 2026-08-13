@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Whalebone.Gameplay.D3;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D3;
 using Whalebone.Systems.Events;
 
@@ -121,6 +122,8 @@ namespace Whalebone.Gameplay.D9
             _oneShot.PlayOneShot(clip);
             OneShotCount++;
             LastCue = cue;
+            // 字幕是表现层旁路：只读取 D16 的显示偏好，不写入事件、存档或领域状态。
+            D16SubtitleOverlay.PublishKey("subtitle_" + cue, null, 3f);
         }
 
         private AudioSource CreateSource(string name, float volume)

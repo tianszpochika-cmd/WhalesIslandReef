@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "content_batch_d15_a04_buildings_ports",
+  "production_batch": "D15-A04*",
+  "representative_samples": [
+    "building_saint_marys_dock",
+    "building_green_cay_water_well"
+  ],
+  "owner_system": "BuildingSystem",
+  "content_id_prefix": "building_",
+  "instance_id_prefix": "instance_",
+  "catalog_source": "game/Assets/Content/D15/D15BuildingPortBatchCatalog.cs",
+  "asset_registry_directory": "game/Assets/Resources/ContentRegistry/entries/asset",
+  "targets": {
+    "functional_building_types": 80,
+    "cultural_faction_material_variants": 180,
+    "instances_min": 600,
+    "instances_max": 1200,
+    "generated_instances": 640
+  },
+  "generation": {
+    "base_variants_per_type": 1,
+    "additional_variants": 100,
+    "instances_per_type": 8,
+    "location_pool": "D15BuildingPortBatchCatalog.LocationRefs"
+  },
+  "instance_required_fields": [
+    "instance_id",
+    "building_id",
+    "variant_id",
+    "location_ref",
+    "location_anchor_ref",
+    "owner_ref",
+    "function_profile_id",
+    "inventory_profile_id",
+    "inventory_binding_ref",
+    "damage_profile_id",
+    "damage_state_binding_ref",
+    "open_rule_id",
+    "open_rule_binding_ref",
+    "interaction_points",
+    "audio_profile",
+    "model_ref",
+    "collision_ref",
+    "asset_state",
+    "lod_profile",
+    "save_state_key",
+    "test_id"
+  ],
+  "owner_bindings": {
+    "location": "IslandSystem",
+    "ownership": "PropertySystem/FactionLegalSystem",
+    "inventory": "Inventory/Cargo",
+    "damage": "BuildingSystem",
+    "open_rules": "BuildingSystem",
+    "assets": "AssetRegistry"
+  },
+  "asset_state_policy": "missing assets are explicitly placeholder; placeholders do not claim final art completion",
+  "no_runtime_state_in_catalog": true,
+  "test_ids": [
+    "D15-A04-BUILDING-CATALOG",
+    "D15-A04-VARIANT-CATALOG",
+    "D15-A04-INSTANCE-CATALOG"
+  ]
+}

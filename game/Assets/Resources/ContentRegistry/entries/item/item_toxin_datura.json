@@ -4,16 +4,58 @@
   "name": "曼陀罗毒物",
   "display_name_key": "content.item.item_toxin_datura.name",
   "category": "item",
-  "tags": ["cargo", "toxin", "dangerous", "vegetation_harvest"],
+  "tags": [
+    "cargo",
+    "toxin",
+    "dangerous",
+    "vegetation_harvest"
+  ],
   "description": "从毒草中取得的危险货物；误采后果必须先留在事实日志中。",
   "gameplay_role": "toxin_cargo",
-  "valid_regions": ["island_saint_marys"],
-  "valid_habitats": ["ship_hold", "market", "laboratory"],
-  "valid_weather": ["clear", "rain"],
-  "dependencies": [], "references": [], "asset_refs": [],
-  "source_refs": ["docs/game/design/vegetation/02_VEGETATION_CATALOG.md", "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"],
+  "valid_regions": [
+    "island_saint_marys"
+  ],
+  "valid_habitats": [
+    "ship_hold",
+    "market",
+    "laboratory"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"
+  ],
   "source_note": "项目自有 D11-A07 毒物产物；毒性不是 UI 文案，采集事实记录 plant_poisoning 后果。",
-  "source": {"kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"},
-  "license": {"status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true},
-  "historical_tag": "historical", "phase": "D11", "status": "prototyped", "owner_system": "ItemCatalog", "test_id": "D8-A02-D11-ITEM-005", "reviewer": "D11-A07"
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "historical",
+  "phase": "D11",
+  "status": "prototyped",
+  "owner_system": "ItemCatalog",
+  "test_id": "D8-A02-D11-ITEM-005",
+  "reviewer": "D11-A07",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "docs/game/design/vegetation/05_VEGETATION_INTERACTION.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

@@ -159,8 +159,9 @@ namespace Save.Tests
         {
             SaveSystem.NewGame(new NewGameParams { CaptainName = "D2 船长" });
             var sailor = GameState.CrewAgents[0];
-            var proposal = new AgentReply { Speech = "记住这片海。", AffinityChange = 5f, Action = "none" };
-            Assert.IsTrue(CrewRelationSystem.ApplyAgentProposal(sailor, proposal));
+            // D10 起 AgentReply 不能直接写关系值；此测试只验证旧存档载体仍能
+            // 保存/恢复 legacy affinity 投影，关系裁决由 D10 RelationSystem 测试覆盖。
+            sailor.Stats.Affinity = 5f;
 
             SaveSystem.SaveD2Runtime(
                 new SailingSnapshot

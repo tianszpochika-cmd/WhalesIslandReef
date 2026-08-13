@@ -16,7 +16,9 @@ using UnityEngine.UI;
 using Whalebone.Gameplay.D3;
 using Whalebone.Gameplay.D7;
 using Whalebone.Gameplay.UI;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D3;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.D9;
 using Whalebone.Systems.D10;
 using Whalebone.Systems.Save;
@@ -74,24 +76,23 @@ namespace Whalebone.Gameplay.D10
                 return;
             }
 
-            var keyboard = Keyboard.current;
-            if (keyboard != null && keyboard.vKey.wasPressedThisFrame)
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10OpenTavern))
                 TogglePage();
             if (_panel != null) _panel.SetActive(_pageOpen);
-            if (keyboard != null && _pageOpen && D7ControlCoordinator.GameplayInputAllowed)
+            if (_pageOpen && D7ControlCoordinator.GameplayInputAllowed)
             {
-                if (keyboard.escapeKey.wasPressedThisFrame) _pageOpen = false;
-                else if (keyboard.jKey.wasPressedThisFrame) OpenBoard();
-                else if (keyboard.kKey.wasPressedThisFrame) TakeSecurityJob();
-                else if (keyboard.rKey.wasPressedThisFrame) Rest();
-                else if (keyboard.eKey.wasPressedThisFrame) Eat();
-                else if (keyboard.aKey.wasPressedThisFrame) Drink();
-                else if (keyboard.hKey.wasPressedThisFrame) HearRumor();
-                else if (keyboard.pKey.wasPressedThisFrame) Poker();
-                else if (keyboard.dKey.wasPressedThisFrame) Dance();
-                else if (keyboard.nKey.wasPressedThisFrame) NightTalk();
-                else if (keyboard.qKey.wasPressedThisFrame) Recruit();
-                else if (keyboard.xKey.wasPressedThisFrame) SkipSensitive();
+                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10CloseTavern)) _pageOpen = false;
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Board)) OpenBoard();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10SecurityJob)) TakeSecurityJob();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Rest)) Rest();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Eat)) Eat();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Drink)) Drink();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Rumor)) HearRumor();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Poker)) Poker();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Dance)) Dance();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10NightTalk)) NightTalk();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Recruit)) Recruit();
+                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10SkipSensitive)) SkipSensitive();
             }
             Refresh();
         }

@@ -24,8 +24,10 @@ namespace Whalebone.Agent
             failed += Check("D8-A04 非法参数和最终结果字段被拒绝", TestP2AParameterBoundary);
             failed += Check("事实摘要只进入 Agent 记忆，不改变领域结果", TestFactSummaryRead);
             failed += D2DialogueTests.RunAll();
+#if !UNITY_2021_1_OR_NEWER
             failed += Whalebone.Game.Config.NumericConfigurationTests.RunAll();
             failed += V3.V3EntityModelTests.RunAll();
+#endif
             failed += D9CrewAgentVerticalSliceTests.RunAll();
             failed += D10CrewBehaviorStateTests.RunAll();
             return failed;

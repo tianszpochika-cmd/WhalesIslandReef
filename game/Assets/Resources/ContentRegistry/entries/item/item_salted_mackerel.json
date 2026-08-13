@@ -4,16 +4,31 @@
   "name": "盐渍鲭鱼",
   "display_name_key": "content.item.item_salted_mackerel.name",
   "category": "item",
-  "tags": ["food", "fish", "processed", "cargo", "trade"],
+  "tags": [
+    "food",
+    "fish",
+    "processed",
+    "cargo",
+    "trade"
+  ],
   "description": "鲜鲭鱼处理后的耐储存鱼货，可在港口市场出售。",
   "gameplay_role": "processed_fish_cargo",
-  "valid_regions": ["santa_margarita", "green_cay"],
-  "valid_habitats": ["ship_hold", "market"],
+  "valid_regions": [
+    "santa_margarita",
+    "green_cay"
+  ],
+  "valid_habitats": [
+    "ship_hold",
+    "market"
+  ],
   "valid_weather": [],
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md", "docs/game/design/economy/01_ECONOMY_OVERVIEW.md"],
+  "source_refs": [
+    "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md",
+    "docs/game/design/economy/01_ECONOMY_OVERVIEW.md"
+  ],
   "source_note": "项目自有处理鱼货代表条目；价格由 TradeEconomySystem 写入，目录不保存价格结果。",
   "source": {
     "kind": "project-authored",
@@ -33,5 +48,12 @@
   "status": "prototyped",
   "owner_system": "ItemCatalog",
   "test_id": "D8-A02-ITEM-008",
-  "reviewer": "D9-A02"
+  "reviewer": "D9-A02",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/gameplay/03_FISHING_WHALING_AQUACULTURE.md",
+    "docs/game/design/economy/01_ECONOMY_OVERVIEW.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

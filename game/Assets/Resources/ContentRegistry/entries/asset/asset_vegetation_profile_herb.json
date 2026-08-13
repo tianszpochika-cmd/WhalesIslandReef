@@ -1,0 +1,97 @@
+{
+  "id": "asset_vegetation_profile_herb",
+  "schema_version": 1,
+  "name": "植被占位资产配置·草本",
+  "display_name_key": "content.asset.asset_vegetation_profile_herb.name",
+  "category": "asset",
+  "tags": [
+    "vegetation",
+    "placeholder",
+    "d15_a02",
+    "herb"
+  ],
+  "description": "可替换的植被模型/材质配置；当前使用 Unity 原生几何体与仓库内占位材质，不宣称最终美术完成。",
+  "gameplay_role": "vegetation_visual_profile",
+  "valid_regions": [],
+  "valid_habitats": [
+    "lowland_rainforest",
+    "abandoned_field",
+    "river_wetland",
+    "coast"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [],
+  "asset_refs": [],
+  "source_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  ],
+  "source_note": "仅复用仓库已有占位资源；不新增外部下载，不把占位配置标记为最终表现。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "AssetRegistry",
+  "test_id": "D8-A02-D15-ASSET-HERB",
+  "reviewer": "D15-A02*",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "authorization": {
+    "authorization_id": "auth_internal_d15_vegetation_catalog",
+    "rights_holder": "Whalebone project",
+    "license_ref": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "source_url_or_path": "docs/game/design/vegetation/02_VEGETATION_CATALOG.md",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "perpetual; project authored data and placeholder references",
+    "evidence_ref": "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-来源授权和历史审查"
+  },
+  "asset_state": "placeholder",
+  "model_ref": "unity-primitive://vegetation/herb/lod2",
+  "model_status": "placeholder_primitive_ready",
+  "material_ref": "game/Assets/Art/Placeholder/Materials/ph_mat_grass.mat",
+  "material_status": "source_ready",
+  "lod_profile": {
+    "name": "plant_lod2",
+    "minimum_lod": "LOD2",
+    "lod0_triangles": 6000,
+    "lod1_triangles": 2000,
+    "lod2_triangles": 600,
+    "far_representation": "cluster_proxy"
+  },
+  "wind_profile": {
+    "id": "field_open",
+    "zone": "lowland_rainforest",
+    "frequency_band": "low_to_medium",
+    "amplitude_band": "profiled_by_habitat",
+    "gust_response": "deterministic_environment_input"
+  },
+  "test_cases": [
+    "D15-A02-ASSET-LOAD-HERB",
+    "D15-A02-ASSET-MATERIAL-HERB"
+  ]
+}

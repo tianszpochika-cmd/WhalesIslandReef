@@ -4,7 +4,11 @@
   "name": "小渔船占位模型",
   "display_name_key": "content.asset.asset_ph_ship_fishing.name",
   "category": "asset",
-  "tags": ["placeholder", "ship", "model"],
+  "tags": [
+    "placeholder",
+    "ship",
+    "model"
+  ],
   "description": "已有 Unity 占位船模型的正式目录引用。",
   "gameplay_role": "ship_visual_placeholder",
   "valid_regions": [],
@@ -13,7 +17,10 @@
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md", "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"],
+  "source_refs": [
+    "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  ],
   "source_note": "仅登记仓库已有占位素材；不新增外部下载内容。",
   "source": {
     "kind": "external-asset",
@@ -28,10 +35,46 @@
     "attribution_required": false,
     "modification_allowed": true
   },
+  "authorization": {
+    "authorization_id": "auth_quaternius_cc0_ship_fishing",
+    "rights_holder": "Quaternius",
+    "license_ref": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "source_url_or_path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md#小渔船模型",
+    "acquired_at": "2026-08-11",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true,
+    "expiry_or_scope": "CC0-1.0; project placeholder ship model",
+    "evidence_ref": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+  },
   "historical_tag": "inferred",
   "phase": "D8",
   "status": "prototyped",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-ASSET-001",
-  "reviewer": "D8-A02"
+  "reviewer": "D8-A02",
+  "resource_path": "game/Assets/Art/Placeholder/Models/Ships/ph_ship_fishing.fbx",
+  "asset_state": "integrated",
+  "production_batch": "D15-A06*",
+  "production_stage": "integrated",
+  "test_cases": [
+    "d15-a06-existing-ship-model-load",
+    "d15-a06-existing-ship-model-reference",
+    "asset_ph_ship_fishing-load",
+    "asset_ph_ship_fishing-reference",
+    "asset_ph_ship_fishing-save-restore"
+  ],
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md#4-来源授权和历史审查",
+    "docs/game/design/common/D15_SHIP_HULL_MODULE_BATCH_CATALOG.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false,
+  "lod_profile": {
+    "lod0": "source",
+    "lod1": "generated",
+    "lod2": "generated",
+    "lod3": "generated"
+  }
 }

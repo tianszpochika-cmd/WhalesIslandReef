@@ -1,0 +1,477 @@
+{
+  "id": "island_saltbrush",
+  "schema_version": 1,
+  "name": "盐灌岛",
+  "name_en": "Saltbrush",
+  "display_name_key": "content.island.island_saltbrush.name",
+  "category": "island",
+  "tags": [
+    "d15_a01",
+    "island",
+    "caribbean",
+    "dry",
+    "template_dry",
+    "coast",
+    "dry_shrub"
+  ],
+  "description": "D15-A01 背风干旱灌丛岛代表档案：背风面雨影与薄土共同形成干旱灌丛、仙人掌坡和季节性水道。本条目是项目自有游戏化推断，不声明真实地理位置或完成最终美术。",
+  "gameplay_role": "landing_resource_island",
+  "valid_regions": [
+    "island_saltbrush"
+  ],
+  "valid_habitats": [
+    "coast",
+    "dry_shrub",
+    "thorn_scrub",
+    "karst_ridge"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm_watch"
+  ],
+  "dependencies": [],
+  "references": [
+    "plant_dry_aloe_medicinal",
+    "plant_coast_agave_fiber",
+    "plant_dry_datura_toxin_v1",
+    "fish_snapper_school",
+    "animal_green_turtle",
+    "building_green_cay_water_well",
+    "building_santa_marys_north_warehouse",
+    "quest_first_chart"
+  ],
+  "asset_refs": [
+    "asset_ph_palm_leaves"
+  ],
+  "source_refs": [
+    "docs/game/design/islands/01_ISLAND_OVERVIEW.md",
+    "docs/game/design/islands/05_ISLAND_CONTENT_PLACEMENT.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "source_note": "D15-A01 项目自有 背风干旱灌丛岛 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
+  "historical_tag": "inferred",
+  "phase": "D15",
+  "status": "production",
+  "owner_system": "IslandSystem",
+  "test_id": "D8-A02-D15-A01-ISLAND-042",
+  "reviewer": "D15-A01",
+  "production_batch": "D15-A01*",
+  "representative_sample": "island_saint_marys",
+  "production_stage": "integrated",
+  "behavior_profile": "island_natural_profile_deterministic",
+  "asset_state": "placeholder",
+  "model_ref": "asset_ph_palm_leaves",
+  "material_ref": "placeholder_terrain_material_dry",
+  "collision_ref": "collision_island_saltbrush",
+  "lod_profile": "island_terrain_lod3",
+  "test_cases": [
+    "D15-A01-LOAD-042",
+    "D15-A01-SAVE-042",
+    "D15-A01-RESTORE-042"
+  ],
+  "quality_level": "Q2",
+  "historical_review": "Approved",
+  "review_evidence_refs": [
+    "docs/game/design/islands/06_ISLAND_QA.md",
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": true,
+  "natural_archive": {
+    "template_id": "leeward_dry_shrub_island",
+    "template_label": "背风干旱灌丛岛",
+    "variant_code": "DRY-02",
+    "historical_names": [
+      "Saltbrush",
+      "Saltbrush chart name"
+    ],
+    "formation": "背风面雨影与薄土共同形成干旱灌丛、仙人掌坡和季节性水道。",
+    "geology": "limestone",
+    "windward_face": {
+      "exposure": "high",
+      "descriptor": "侧风面浪涌明显",
+      "coast_type": "limestone_coast",
+      "weather_effects": [
+        "rain_band",
+        "windward_swell"
+      ]
+    },
+    "leeward_face": {
+      "exposure": "low",
+      "descriptor": "背风湾适合短暂停泊",
+      "coast_type": "tidal_rock_pool",
+      "weather_effects": [
+        "rain_shadow",
+        "calmer_anchorage"
+      ]
+    },
+    "coast_types": [
+      "limestone_coast",
+      "tidal_rock_pool"
+    ],
+    "freshwater": {
+      "source_kind": "sinkhole_pool",
+      "availability": "seasonal_limited",
+      "capacity_band": "medium",
+      "dry_season_rule": "recovery_slow",
+      "water_points": [
+        "water_point_saltbrush_01",
+        "water_point_saltbrush_02"
+      ],
+      "owner_system": "EcologySystem"
+    },
+    "mountain": {
+      "profile": "dry_ridge",
+      "elevation": "ridge",
+      "slope": "broken",
+      "max_m": 180,
+      "maximum_elevation_m": 217,
+      "profile_variant": "dry_ridge_2",
+      "owner_system": "IslandSystem"
+    },
+    "caves": [
+      {
+        "cave_id": "cave_saltbrush_01",
+        "cave_type": "sinkhole_cave",
+        "entrance_zone": "saltbrush_upper",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "flash_storm"
+      },
+      {
+        "cave_id": "cave_saltbrush_02",
+        "cave_type": "limestone_dry_cave",
+        "entrance_zone": "saltbrush_coast",
+        "exit_or_closure": "mapped_exit_or_tide_gate",
+        "hazard": "heat_exposure"
+      }
+    ],
+    "reef_features": [
+      {
+        "reef_id": "reef_saltbrush_1",
+        "feature": "limestone_shoal",
+        "chart_access": "primary",
+        "depth_band": "medium",
+        "hazard": "navigation_owner_profile"
+      },
+      {
+        "reef_id": "reef_saltbrush_2",
+        "feature": "windward_reef",
+        "chart_access": "alternate",
+        "depth_band": "deep",
+        "hazard": "navigation_owner_profile"
+      }
+    ],
+    "habitats": [
+      "coast",
+      "dry_shrub",
+      "thorn_scrub",
+      "karst_ridge"
+    ],
+    "zones": [
+      {
+        "region_id": "saltbrush_coast",
+        "parent_region": "island_saltbrush",
+        "geology": "limestone",
+        "habitat": "coast",
+        "elevation": "coastal",
+        "water_sources": [
+          "sinkhole_pool"
+        ],
+        "coast_access": "limestone_coast",
+        "walkability": "mixed",
+        "hazard_tags": [
+          "water_shortage"
+        ],
+        "plant_tags": [
+          "plant_dry_aloe_medicinal"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_dry_aloe_medicinal",
+          "plant_coast_agave_fiber"
+        ],
+        "building_tags": [
+          "building_green_cay_water_well"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "traders_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "saltbrush_coast"
+      },
+      {
+        "region_id": "saltbrush_inland",
+        "parent_region": "island_saltbrush",
+        "geology": "limestone",
+        "habitat": "dry_shrub",
+        "elevation": "foothill",
+        "water_sources": [
+          "sinkhole_pool"
+        ],
+        "coast_access": "connected_by_path",
+        "walkability": "path_network",
+        "hazard_tags": [
+          "flash_storm"
+        ],
+        "plant_tags": [
+          "plant_coast_agave_fiber"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_coast_agave_fiber"
+        ],
+        "building_tags": [
+          "building_santa_marys_north_warehouse"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "traders_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "saltbrush_inland"
+      },
+      {
+        "region_id": "saltbrush_upper",
+        "parent_region": "island_saltbrush",
+        "geology": "limestone",
+        "habitat": "thorn_scrub",
+        "elevation": "ridge",
+        "water_sources": [
+          "sinkhole_pool"
+        ],
+        "coast_access": "sinkhole_cave",
+        "walkability": "limited_path",
+        "hazard_tags": [
+          "heat_exposure"
+        ],
+        "plant_tags": [
+          "plant_dry_datura_toxin_v1"
+        ],
+        "animal_tags": [
+          "animal_green_turtle"
+        ],
+        "resource_tags": [
+          "plant_dry_datura_toxin_v1"
+        ],
+        "building_tags": [
+          "building_green_cay_water_well"
+        ],
+        "faction_tags": [
+          "free_settlement",
+          "traders_guild"
+        ],
+        "quest_tags": [
+          "quest_first_chart"
+        ],
+        "streaming_cell": "saltbrush_upper"
+      }
+    ],
+    "resources": [
+      {
+        "node_id": "resource_node_saltbrush_1",
+        "content_id": "plant_dry_aloe_medicinal",
+        "node_type": "rare_observation",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saltbrush.resource.1"
+      },
+      {
+        "node_id": "resource_node_saltbrush_2",
+        "content_id": "plant_coast_agave_fiber",
+        "node_type": "community_managed",
+        "habitat": "dry_shrub",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saltbrush.resource.2"
+      },
+      {
+        "node_id": "resource_node_saltbrush_3",
+        "content_id": "plant_dry_datura_toxin_v1",
+        "node_type": "ecology_key",
+        "habitat": "thorn_scrub",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saltbrush.resource.3"
+      },
+      {
+        "node_id": "resource_node_saltbrush_4",
+        "content_id": "fish_snapper_school",
+        "node_type": "dangerous_environment",
+        "habitat": "karst_ridge",
+        "tool_profile": "harvest_tool_by_owner",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saltbrush.resource.4"
+      },
+      {
+        "node_id": "resource_node_saltbrush_5",
+        "content_id": "animal_green_turtle",
+        "node_type": "common_refresh",
+        "habitat": "coast",
+        "tool_profile": "observation_or_registered_tool",
+        "refresh_rule": "EcologySystem_profile",
+        "depletion_rule": "EcologySystem_profile",
+        "recovery_rule": "EcologySystem_recovery",
+        "player_feedback_key": "content.island.island_saltbrush.resource.5"
+      }
+    ],
+    "building_entrances": [
+      {
+        "building_id": "building_green_cay_water_well",
+        "instance_anchor": "saltbrush_building_anchor_1",
+        "placement_zone": "saltbrush_coast",
+        "access_route": "coast_survey",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      },
+      {
+        "building_id": "building_santa_marys_north_warehouse",
+        "instance_anchor": "saltbrush_building_anchor_2",
+        "placement_zone": "saltbrush_inland",
+        "access_route": "thorn_scrub",
+        "owner_state": "BuildingSystem_runtime",
+        "inventory_state": "InventoryCargo_runtime",
+        "damage_state": "BuildingSystem_runtime"
+      }
+    ],
+    "quest_entrances": [
+      {
+        "quest_id": "quest_first_chart",
+        "entrance_id": "quest_entrance_saltbrush_01",
+        "zone_id": "saltbrush_inland",
+        "access_route": "coast_survey",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "landing": {
+      "primary_landing": "landing_saltbrush_primary",
+      "alternate_landing": "landing_saltbrush_alternate",
+      "primary_coast": "limestone_coast",
+      "alternate_coast": "tidal_rock_pool",
+      "boat_route": "dry_cave",
+      "tide_window": "rising_tide",
+      "navigation_risk": "water_shortage",
+      "recovery_route": "route_return_to_harbor_and_retry"
+    },
+    "routes": [
+      {
+        "route_id": "route_saltbrush_coast",
+        "route_type": "coast",
+        "access": "coast_survey",
+        "fallback": "dry_cave"
+      },
+      {
+        "route_id": "route_saltbrush_inland",
+        "route_type": "inland",
+        "access": "thorn_scrub",
+        "fallback": "coast_survey"
+      },
+      {
+        "route_id": "route_saltbrush_upper",
+        "route_type": "highland_or_cave",
+        "access": "dry_cave",
+        "fallback": "thorn_scrub"
+      }
+    ],
+    "hazards": [
+      {
+        "hazard_id": "hazard_saltbrush_1",
+        "tag": "heat_exposure",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_saltbrush.hazard.1",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_saltbrush_2",
+        "tag": "water_shortage",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_saltbrush.hazard.2",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      },
+      {
+        "hazard_id": "hazard_saltbrush_3",
+        "tag": "flash_storm",
+        "deterministic_owner": "EcologySystem",
+        "warning_key": "content.island.island_saltbrush.hazard.3",
+        "recovery_route": "route_return_to_harbor_and_retry"
+      }
+    ],
+    "social_structure": {
+      "settlement_profile": "背风补水站",
+      "faction_tags": [
+        "free_settlement",
+        "traders_guild"
+      ],
+      "human_modification": "light",
+      "legal_state_owner": "FactionLegalSystem",
+      "governance_owner": "IslandGovernanceSystem"
+    },
+    "streaming": {
+      "cells": [
+        "saltbrush_coast",
+        "saltbrush_inland",
+        "saltbrush_highland"
+      ],
+      "load_policy": "near_cells_collision_mid_cells_audio_far_cells_proxy",
+      "unload_policy": "save_state_then_release_high_cost_objects",
+      "prefetch_policy": "primary_landing_and_quest_entrance",
+      "lod_profile": "island_terrain_lod3",
+      "stream_owner": "IslandSystem"
+    },
+    "save_contract": {
+      "snapshot_key": "location_json.island.island_saltbrush",
+      "stable_id": "island_saltbrush",
+      "preserve_fields": [
+        "visited",
+        "discovered",
+        "resource_node_state",
+        "building_projection",
+        "quest_entrance_projection",
+        "stream_cell_state"
+      ],
+      "restore_rule": "restore_by_stable_island_id_without_creating_runtime_facts",
+      "save_owner": "SaveSystem",
+      "state_owner": "IslandSystem"
+    },
+    "recovery": {
+      "weather_recovery": "world_weather_owner",
+      "ecology_recovery": "EcologySystem",
+      "building_recovery": "BuildingSystem",
+      "navigation_recovery": "ShipSystem",
+      "quest_recovery": "QuestSystem",
+      "no_permanent_island_lock": true
+    }
+  }
+}

@@ -84,6 +84,51 @@ namespace D5.Tests
         }
 
         [Test]
+        public void Steam_DefaultsToOfflineAndKeepsCloudWorkLocal()
+        {
+            var steam = new D5SteamSystem();
+            var initial = steam.Snapshot;
+
+            Assert.AreEqual("UNCONFIGURED", initial.AppId);
+            Assert.IsTrue(initial.OfflineMode);
+            Assert.IsTrue(initial.CloudEnabled);
+            Assert.AreEqual("never", initial.LastSync);
+            Assert.AreEqual("Steam Bridge 离线安全模式", steam.StatusText());
+
+            int revision = steam.QueueCloudUpload();
+            var queued = steam.Snapshot;
+            Assert.AreEqual(1, revision);
+            Assert.AreEqual(1, queued.PendingCloudRevision);
+            Assert.AreEqual("pending", queued.LastSync);
+            Assert.IsTrue(queued.OfflineMode);
+            Assert.AreEqual("UNCONFIGURED", queued.AppId);
+            Assert.AreEqual("Steam Bridge 离线安全模式", steam.StatusText());
+
+            Assert.IsTrue(steam.UnlockAchievement("first_voyage"));
+            Assert.IsTrue(steam.HasAchievement("first_voyage"));
+            Assert.IsTrue(steam.MarkCloudSynced(revision));
+            Assert.AreEqual(0, steam.Snapshot.PendingCloudRevision);
+            Assert.AreEqual("synced:1", steam.Snapshot.LastSync);
+        }
+
+        [Test]
+        public void Steam_DisabledCloudDoesNotCreateAnUploadRevision()
+        {
+            var steam = new D5SteamSystem(new D5SteamState
+            {
+                OfflineMode = true,
+                CloudEnabled = false,
+                PendingCloudRevision = 4,
+                LastSync = "never"
+            });
+
+            Assert.AreEqual(4, steam.QueueCloudUpload());
+            Assert.AreEqual(4, steam.Snapshot.PendingCloudRevision);
+            Assert.AreEqual("never", steam.Snapshot.LastSync);
+            Assert.AreEqual("Steam Bridge 离线安全模式", steam.StatusText());
+        }
+
+        [Test]
         public void Snapshot_CloneIsIndependent()
         {
             var snapshot = new D5RuntimeSnapshot();

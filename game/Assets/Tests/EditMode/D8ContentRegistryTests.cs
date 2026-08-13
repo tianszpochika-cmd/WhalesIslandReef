@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework;
 using Whalebone.Content;
 
@@ -11,7 +12,8 @@ namespace D8.Tests
             var registry = ContentRegistryReader.LoadFromResources();
 
             Assert.AreEqual(13, registry.Definition.prefixes.Length);
-            Assert.AreEqual(20, registry.Entries.Count);
+            Assert.GreaterOrEqual(registry.Entries.Count, 20);
+            Assert.GreaterOrEqual(registry.Entries.Count(entry => entry != null && entry.id.StartsWith("plant_")), 1000);
             Assert.IsNotNull(registry.Find("ship_moonwake"));
             Assert.IsNotNull(registry.Find("crew_isaac_reed"));
             Assert.IsNotNull(registry.Find("island_saint_marys"));

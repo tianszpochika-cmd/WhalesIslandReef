@@ -102,7 +102,8 @@ namespace Whalebone.Gameplay.D9
                 _d4 == null ? null : _d4.Snapshot,
                 _preparation == null ? null : _preparation.Snapshot,
                 eventLog,
-                _lastReply);
+                _lastReply,
+                Localization.IsEnglish ? "en-US" : "zh-CN");
 
             _header.text = "D9 航行 HUD  |  " + _snapshot.Location + " → " + _snapshot.Destination +
                 "  |  " + _snapshot.VoyageStatus + "  |  " + _snapshot.Weather +

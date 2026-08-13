@@ -1,10 +1,12 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Whalebone.Agent;
+using Whalebone.Gameplay.Harbor;
 using Whalebone.Gameplay.UI.Dialogue;
 using Whalebone.Gameplay.D7;
 using Whalebone.Systems.D2;
+using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
+using Whalebone.Gameplay.UI.D16;
 
 namespace Whalebone.Gameplay.D2
 {
@@ -46,16 +48,15 @@ namespace Whalebone.Gameplay.D2
 
         private void Update()
         {
-            if (_player == null || Time.timeScale <= 0f || Keyboard.current == null ||
-                !D7ControlCoordinator.GameplayInputAllowed) return;
+            if (_player == null || Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed) return;
             if (_dialogue != null && _dialogue.IsOpen) return;
-            if (Keyboard.current.f3Key.wasPressedThisFrame && _cameraFollow != null)
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.CameraCycle) && _cameraFollow != null)
             {
                 _cameraFollow.CycleViewMode();
                 Hint = "当前视角：" + _cameraFollow.ViewModeLabel + " | F3 切换视角 | 右键/中键拖动调整方向";
                 return;
             }
-            if (!Keyboard.current.eKey.wasPressedThisFrame) return;
+            if (!D16InputRouter.WasPressedThisFrame(D16InputAction.Interact)) return;
 
             // 老水手与船在初始港口相距很近；键盘 E 先处理 NPC 对话，
             // HUD 的上船按钮仍只调用 TryToggleShip，避免两个入口互相抢事件。
@@ -81,10 +82,7 @@ namespace Whalebone.Gameplay.D2
                 return false;
 
             if (_mode == D2ControlMode.Ship)
-            {
-                ExitShip();
-                return true;
-            }
+                return ExitShip();
 
             _shipDeck = _ship.GetComponent<D7ShipDeckController>();
             bool inRange = _shipDeck != null && _shipDeck.IsReady
@@ -133,8 +131,10 @@ namespace Whalebone.Gameplay.D2
             // 让玩家模型真正站到船上，并作为船的子物体跟随航行变换。
             if (_character != null) _character.SetCollisionEnabled(false);
             _player.transform.SetParent(_ship.transform, true);
-            Vector3 deckPosition = _ship.transform.position +
-                _ship.transform.up * 1.15f + _ship.transform.forward * 0.25f;
+            Vector3 deckPosition = _shipDeck != null && _shipDeck.HelmPoint != null
+                ? _shipDeck.HelmPoint.position
+                : _ship.transform.position + _ship.transform.up * 1.15f +
+                  _ship.transform.forward * 0.25f;
             if (_character != null) _character.SetWorldPosition(deckPosition);
             else _player.transform.position = deckPosition;
             _player.transform.rotation = _ship.transform.rotation;
@@ -144,23 +144,106 @@ namespace Whalebone.Gameplay.D2
             Debug.Log("[D2/Control] 已进入船只控制");
         }
 
-        private void ExitShip()
+        private bool ExitShip()
         {
-            if (_ship != null && _player != null)
+            if (_ship == null || _player == null)
+                return false;
+
+            // 下船前先解除父子关系并关闭 CharacterController；这样候选地面检测
+            // 不会把玩家自己的碰撞体或船体碰撞体当成可行走地面。
+            if (_character != null) _character.SetCollisionEnabled(false);
+            _player.transform.SetParent(null, true);
+
+            Vector3 exitPosition;
+            if (!TryFindSafeDisembarkPosition(out exitPosition))
             {
-                _player.transform.SetParent(null, true);
-                Vector3 away = _ship.transform.forward.sqrMagnitude < 0.01f
-                    ? Vector3.back
-                    : -_ship.transform.forward;
-                Vector3 exitPosition = _ship.transform.position + away * 5f + Vector3.up * 1.1f;
-                if (_character != null) _character.SetWorldPosition(exitPosition);
-                else _player.transform.position = exitPosition;
+                _player.transform.SetParent(_ship.transform, true);
+                Hint = "船已离开可下船区域，请靠岸后再按 E 下船";
+                Debug.LogWarning("[D2/Control] 下船被阻止：附近没有可行走的沙滩、码头或跳板");
+                return false;
             }
+
+            if (_character != null)
+            {
+                _character.SetWorldPosition(exitPosition);
+                _character.SetCollisionEnabled(true);
+            }
+            else
+            {
+                _player.transform.position = exitPosition;
+            }
+
             SetMode(D2ControlMode.Character);
-            if (_character != null) _character.SetCollisionEnabled(true);
             if (_character != null) _character.PlayTransition(D2CharacterAction.Disembarking);
             Hint = "WASD 移动 | Shift 奔跑 | Space 跳跃 | 当前视角：" + CurrentViewLabel() + " | F3 切换视角 | 靠近船按 E 上船 | 靠近老水手按 E 对话 | ESC 暂停";
             Debug.Log("[D2/Control] 已退出船只控制");
+            return true;
+        }
+
+        private bool TryFindSafeDisembarkPosition(out Vector3 position)
+        {
+            position = Vector3.zero;
+            if (_ship == null) return false;
+
+            Vector3 forward = _ship.transform.forward;
+            forward.y = 0f;
+            forward = forward.sqrMagnitude < 0.001f ? Vector3.forward : forward.normalized;
+            Vector3 right = new Vector3(forward.z, 0f, -forward.x);
+            Vector3 origin = _ship.transform.position;
+            Vector3[] candidates =
+            {
+                origin - forward * 4.5f,
+                origin + forward * 4.5f,
+                origin - right * 4.5f,
+                origin + right * 4.5f,
+                origin - forward * 7f,
+                origin + forward * 7f,
+                origin,
+            };
+
+            float nearest = float.PositiveInfinity;
+            bool found = false;
+            for (int i = 0; i < candidates.Length; i++)
+            {
+                RaycastHit[] hits = Physics.RaycastAll(
+                    candidates[i] + Vector3.up * 8f,
+                    Vector3.down,
+                    16f,
+                    Physics.DefaultRaycastLayers,
+                    QueryTriggerInteraction.Ignore);
+
+                for (int j = 0; j < hits.Length; j++)
+                {
+                    var hit = hits[j];
+                    if (!IsSafeDisembarkSurface(hit.collider))
+                        continue;
+
+                    float distance = Vector3.SqrMagnitude(hit.point - origin);
+                    if (distance >= nearest) continue;
+
+                    nearest = distance;
+                    position = hit.point + Vector3.up * 1.1f;
+                    found = true;
+                }
+            }
+
+            return found;
+        }
+
+        private bool IsSafeDisembarkSurface(Collider collider)
+        {
+            if (collider == null || _ship == null) return false;
+            if (collider.transform == _ship.transform ||
+                collider.transform.IsChildOf(_ship.transform))
+                return false;
+            if (HarborCollisionController.IsNavigationBoundary(collider))
+                return false;
+
+            // 装饰道具可以参与阻挡，但不能成为下船目标；只接受运行时
+            // 明确声明的行走面，避免把人物放到桶、木桩或船舷顶上。
+            return collider.name == "BeachGround" ||
+                   collider.name == "DockGround" ||
+                   collider.name == "GangplankGround";
         }
 
         private static float HorizontalDistance(Vector3 a, Vector3 b)

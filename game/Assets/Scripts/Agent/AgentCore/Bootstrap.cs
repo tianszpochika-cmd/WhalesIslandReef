@@ -14,6 +14,27 @@ namespace Whalebone.Agent
     {
         public static async Task<int> Main(string[] args)
         {
+#if !UNITY_2021_1_OR_NEWER
+            bool configCheck = false;
+#endif
+            bool d9Check = false;
+            foreach (var argument in args)
+            {
+#if !UNITY_2021_1_OR_NEWER
+                if (argument == "--config-check") configCheck = true;
+#endif
+                if (argument == "--d9-check") d9Check = true;
+            }
+#if !UNITY_2021_1_OR_NEWER
+            if (configCheck)
+            {
+                int configFailures = Whalebone.Game.Config.NumericConfigurationTests.RunAll();
+                return configFailures == 0 ? 0 : 1;
+            }
+#endif
+            if (d9Check)
+                return D9CrewAgentVerticalSliceTests.RunAll() == 0 ? 0 : 1;
+
             Console.WriteLine("=== 鲸骨航线 · 纯 Agent 骨架自检 ===");
             int failed = AgentCoreTests.RunAll();
             Console.WriteLine(failed == 0 ? ">> 全部自测通过" : ">> 有 " + failed + " 项自测失败！");

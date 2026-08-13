@@ -4,23 +4,56 @@
   "name": "私掠许可证书",
   "display_name_key": "content.asset.asset_privateer_letter_of_marque.name",
   "category": "asset",
-  "tags": ["historical", "legal", "privateer", "evidence"],
+  "tags": [
+    "historical",
+    "legal",
+    "privateer",
+    "evidence"
+  ],
   "description": "由发证势力和法律来源共同确认的私掠授权凭证。",
   "gameplay_role": "privateer_permit_evidence",
-  "valid_regions": ["harbor", "open_sea"],
-  "valid_habitats": ["harbor"],
-  "valid_weather": ["clear", "rain", "storm"],
+  "valid_regions": [
+    "harbor",
+    "open_sea"
+  ],
+  "valid_habitats": [
+    "harbor"
+  ],
+  "valid_weather": [
+    "clear",
+    "rain",
+    "storm"
+  ],
   "dependencies": [],
   "references": [],
   "asset_refs": [],
-  "source_refs": ["docs/game/design/common/D14_FACTION_PRIVATEERING_LAW.md"],
+  "source_refs": [
+    "docs/game/design/common/D14_FACTION_PRIVATEERING_LAW.md"
+  ],
   "source_note": "项目自有历史风格凭证样例；系统仍要求 EventLog 的发证与证据事实。",
-  "source": { "kind": "project-authored", "author": "Whalebone team", "reference": "docs/game/design/common/D14_FACTION_PRIVATEERING_LAW.md" },
-  "license": { "status": "internal-authored", "holder": "Whalebone project", "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing", "commercial_use": true, "attribution_required": false, "modification_allowed": true },
+  "source": {
+    "kind": "project-authored",
+    "author": "Whalebone team",
+    "reference": "docs/game/design/common/D14_FACTION_PRIVATEERING_LAW.md"
+  },
+  "license": {
+    "status": "internal-authored",
+    "holder": "Whalebone project",
+    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "commercial_use": true,
+    "attribution_required": false,
+    "modification_allowed": true
+  },
   "historical_tag": "inferred",
   "phase": "D14",
   "status": "prototyped",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-D14-LAW-001",
-  "reviewer": "D14-A05"
+  "reviewer": "D14-A05",
+  "historical_review": "Pending",
+  "review_evidence_refs": [
+    "docs/game/design/common/D14_FACTION_PRIVATEERING_LAW.md"
+  ],
+  "content_warning_ids": [],
+  "skip_allowed": false
 }

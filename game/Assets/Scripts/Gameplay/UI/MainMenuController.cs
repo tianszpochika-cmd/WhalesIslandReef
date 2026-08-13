@@ -21,6 +21,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Core;
+using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.Save;
 
 namespace Whalebone.Gameplay.UI
@@ -87,11 +88,25 @@ namespace Whalebone.Gameplay.UI
             BuildNewGamePanel();
             BuildSettingsPanel();
             BuildAboutPanel();
+            AttachPanelFocusScopes();
 
             SettingsStore.ApplyAll();   // 启动应用持久化设置
             RefreshAllTexts();          // 初始语言应用
             RefreshContinueState();     // 继续按钮初始状态
             Debug.Log("[MainMenu] UI 初始化完成：主菜单已显示");
+        }
+
+        private void AttachPanelFocusScopes()
+        {
+            D16ModalFocusScope.Attach(_mainMenuPanel,
+                _mainMenuPanel.transform.Find("BtnNewGame")?.gameObject);
+            D16ModalFocusScope.Attach(_newGamePanel,
+                _captainInput == null ? _newGamePanel.transform.Find("BtnConfirm")?.gameObject : _captainInput.gameObject);
+            D16ModalFocusScope.Attach(_settingsPanel,
+                _settingsPanel.transform.Find("settings_volume_master_Slider")?.gameObject ??
+                _settingsPanel.transform.Find("BtnClose")?.gameObject);
+            D16ModalFocusScope.Attach(_aboutPanel,
+                _aboutPanel.transform.Find("BtnClose")?.gameObject);
         }
 
         /// <summary>
@@ -336,15 +351,17 @@ namespace Whalebone.Gameplay.UI
         {
             _settingsPanel = CreatePanel("SettingsPanel");
 
-            CreateLocalizedText(_settingsPanel, "Title", "settings_title", 48, new Vector2(0, 220));
+            // 所有控件都必须落在 1920x1080 的参考视口内。此前诊断和返回按钮
+            // 使用 -430/-505 的坐标，按钮底部超出视口，表现为“看得到但点不到”。
+            CreateLocalizedText(_settingsPanel, "Title", "settings_title", 48, new Vector2(0, 250));
 
-            CreateSliderRow(_settingsPanel, "settings_volume_master", SettingsStore.MasterVolume, 110f, v => { SettingsStore.MasterVolume = v; AudioListener.volume = v; });
-            CreateSliderRow(_settingsPanel, "settings_volume_music", SettingsStore.MusicVolume, 40f, v => SettingsStore.MusicVolume = v);
-            CreateSliderRow(_settingsPanel, "settings_volume_sfx", SettingsStore.SfxVolume, -30f, v => SettingsStore.SfxVolume = v);
+            CreateSliderRow(_settingsPanel, "settings_volume_master", SettingsStore.MasterVolume, 160f, v => { SettingsStore.MasterVolume = v; AudioListener.volume = v; });
+            CreateSliderRow(_settingsPanel, "settings_volume_music", SettingsStore.MusicVolume, 110f, v => SettingsStore.MusicVolume = v);
+            CreateSliderRow(_settingsPanel, "settings_volume_sfx", SettingsStore.SfxVolume, 60f, v => SettingsStore.SfxVolume = v);
 
             // 画质
-            CreateLocalizedText(_settingsPanel, "QualityLabel", "settings_quality", 26, new Vector2(-330, -100));
-            var qualityDropdown = CreateDropdown(_settingsPanel, new Vector2(0, -100), new[] { "quality_low", "quality_medium", "quality_high" });
+            CreateLocalizedText(_settingsPanel, "QualityLabel", "settings_quality", 26, new Vector2(-330, 0));
+            var qualityDropdown = CreateDropdown(_settingsPanel, new Vector2(0, 0), new[] { "quality_low", "quality_medium", "quality_high" });
             qualityDropdown.Dropdown.value = SettingsStore.QualityLevel;
             qualityDropdown.Dropdown.onValueChanged.AddListener(v =>
             {
@@ -353,8 +370,8 @@ namespace Whalebone.Gameplay.UI
             });
 
             // 语言
-            CreateLocalizedText(_settingsPanel, "LangLabel", "settings_language", 26, new Vector2(-330, -170));
-            _langDropdown = CreateDropdown(_settingsPanel, new Vector2(0, -170), new[] { "lang_zh", "lang_en" }).Dropdown;
+            CreateLocalizedText(_settingsPanel, "LangLabel", "settings_language", 26, new Vector2(-330, -60));
+            _langDropdown = CreateDropdown(_settingsPanel, new Vector2(0, -60), new[] { "lang_zh", "lang_en" }).Dropdown;
             _langDropdown.value = SettingsStore.Lang == "en" ? 1 : 0;
             _langDropdown.onValueChanged.AddListener(v =>
             {
@@ -363,10 +380,18 @@ namespace Whalebone.Gameplay.UI
             });
 
             // 键位说明（只读）
-            CreateLocalizedText(_settingsPanel, "ControlsTitle", "settings_controls", 28, new Vector2(0, -240));
-            CreateLocalizedText(_settingsPanel, "ControlsBody", "controls_text", 22, new Vector2(0, -310));
+            CreateLocalizedButton(_settingsPanel, "BtnAccessibility", "settings_accessibility", new Vector2(0, -130),
+                D16AccessibilityPanel.ShowPanel);
 
-            CreateLocalizedButton(_settingsPanel, "BtnClose", "btn_back", new Vector2(0, -430), () => ClosePanel(_settingsPanel));
+            CreateLocalizedButton(_settingsPanel, "BtnDiagnostics", "settings_diagnostics", new Vector2(0, -315),
+                D16LocalDiagnosticsPanel.ShowPanel);
+
+            CreateLocalizedText(_settingsPanel, "ControlsTitle", "settings_controls", 28, new Vector2(0, -200));
+            var controlsBody = CreateLocalizedText(_settingsPanel, "ControlsBody", "controls_text", 22, new Vector2(0, -245));
+            controlsBody.horizontalOverflow = HorizontalWrapMode.Wrap;
+            controlsBody.verticalOverflow = VerticalWrapMode.Overflow;
+
+            CreateLocalizedButton(_settingsPanel, "BtnClose", "btn_back", new Vector2(0, -390), () => ClosePanel(_settingsPanel));
         }
 
         private void CreateSliderRow(GameObject parent, string labelKey, float initial, float y,
@@ -625,6 +650,7 @@ namespace Whalebone.Gameplay.UI
     internal static class Fonts
     {
         private static Font _default;
+        private static Font _fallback;
         public static Font Default
         {
             get
@@ -638,6 +664,63 @@ namespace Whalebone.Gameplay.UI
                 }
                 return _default;
             }
+        }
+
+        /// <summary>UGUI 的第二候选字体；只在主字体无法覆盖整段文本时使用。</summary>
+        public static Font Fallback
+        {
+            get
+            {
+                if (_fallback == null)
+                    _fallback = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                return _fallback;
+            }
+        }
+
+        /// <summary>
+        /// 判断字体是否能覆盖整段文本。空白和控制字符不参与判断，避免无意义的
+        /// 换行/制表符把文本错误地判定为缺字。
+        /// </summary>
+        internal static bool HasAllCharacters(Font font, string text)
+        {
+            if (string.IsNullOrEmpty(text)) return font != null;
+            if (font == null) return false;
+            for (int i = 0; i < text.Length; i++)
+            {
+                char character = text[i];
+                if (char.IsWhiteSpace(character) || char.IsControl(character)) continue;
+                if (!font.HasCharacter(character)) return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 为当前 UGUI 文本选择可覆盖整段内容的字体。没有任何候选完整覆盖时，
+        /// 保留调用方字体，避免为了“看起来有回退”而丢失更多中文字形。
+        /// </summary>
+        internal static Font ResolveForText(string text, Font preferred)
+        {
+            // Unity 编辑器中的 LegacyRuntime.ttf 可能通过宿主系统返回“似乎支持”
+            // 中文，但目标设备未必有同样的系统回退。项目已明确提供 CJK 主字体时，
+            // 中文文本必须优先使用它，保证中英文设备上的字形来源一致。
+            if (ContainsCjkCharacter(text) && HasAllCharacters(Default, text)) return Default;
+            if (HasAllCharacters(preferred, text)) return preferred;
+            if (HasAllCharacters(Default, text)) return Default;
+            if (HasAllCharacters(Fallback, text)) return Fallback;
+            return preferred ?? Default;
+        }
+
+        private static bool ContainsCjkCharacter(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return false;
+            for (int i = 0; i < text.Length; i++)
+            {
+                int code = text[i];
+                if ((code >= 0x3400 && code <= 0x4DBF) ||
+                    (code >= 0x4E00 && code <= 0x9FFF) ||
+                    (code >= 0xF900 && code <= 0xFAFF)) return true;
+            }
+            return false;
         }
     }
 
