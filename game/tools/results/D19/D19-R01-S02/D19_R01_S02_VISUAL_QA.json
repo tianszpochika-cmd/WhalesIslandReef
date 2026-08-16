@@ -1,0 +1,54 @@
+{
+  "task": "D19-R01-S02",
+  "status": "PARTIAL",
+  "player_mode_evidence": {
+    "valid_fullscreen_frame_count": 10,
+    "resolution": "1920x1080",
+    "directory": "game/tools/results/D19/D19-R01-S02/screenshots/",
+    "frames": "route_00_main_menu.png, route_01_spawn.png, route_02.png through route_09.png",
+    "external_debug_frames_excluded": ["route_external_debug.png", "route_external_debug2.png"]
+  },
+  "fixed_shot_contract": {
+    "required_player_fixed_shots": 14,
+    "current_player_fixed_shots_captured": 0,
+    "historical_editor_shots": 14,
+    "historical_editor_shot_source": "game/tools/results/D19/D19-R01-B/screenshots/",
+    "historical_shots_are_current_player_evidence": false,
+    "status": "NOT_RUN"
+  },
+  "manual_review": [
+    {
+      "frame": "route_01_spawn.png",
+      "area": "出生点/海滩入口",
+      "resolution": "1920x1080",
+      "findings": ["broad faceted terrain", "large debug/tutorial panels", "low-detail/blocky silhouettes"],
+      "status": "FAIL_VISUAL_GATE"
+    },
+    {
+      "frame": "route_02.png",
+      "area": "主街/市场方向",
+      "resolution": "1920x1080",
+      "findings": ["ground dominates view", "box-like building silhouettes", "overlapping HUD/status text", "camera close to geometry"],
+      "status": "FAIL_VISUAL_GATE"
+    },
+    {
+      "frame": "route_05.png",
+      "area": "市场/码头邻接视角",
+      "resolution": "1920x1080",
+      "findings": ["orange/green faceted ground", "boxy dock/building/prop silhouettes", "large development UI overlay", "readability obstruction"],
+      "status": "FAIL_VISUAL_GATE"
+    }
+  ],
+  "checks": {
+    "pink_missing_material_observed": false,
+    "pink_check_scope": "captured frames only; not a full-scene assertion",
+    "dominant_white_or_mint_plane_observed_in_current_sample": false,
+    "graybox_or_blocky_visual_debt_observed": true,
+    "development_overlay_default_off_proven_in_player": false,
+    "debug_overlay_visible_in_captured_player_frames": true,
+    "severe_intersection_or_collision_recovery_log": true,
+    "shoreline_nearshore_fixed_shot_review": "NOT_RUN",
+    "weather_variants": "NOT_RUN"
+  },
+  "visual_conclusion": "The current Player samples do not meet the 14-shot presentation gate: fixed Player shots and weather variants were not captured, and sampled frames visibly retain debug overlays and graybox/blocky composition. Historical R01-B editor captures remain intact but are not promoted to Player evidence."
+}

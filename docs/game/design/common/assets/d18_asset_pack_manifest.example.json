@@ -1,0 +1,35 @@
+{
+  "manifest_kind": "d18_asset_pack_manifest",
+  "schema_version": 1,
+  "source_id": "source_example_provider",
+  "pack_id": "pack_example_candidate_v1",
+  "title": "Example package — replace every placeholder before audit",
+  "author": "Example author",
+  "official_page": "https://example.invalid/official-pack-page",
+  "download_url": "https://example.invalid/official-pack-page",
+  "downloaded_at": null,
+  "archive_name": null,
+  "sha256": null,
+  "license_id": "PENDING_LICENSE_EVIDENCE",
+  "license_url": "https://example.invalid/license",
+  "license_evidence_path": null,
+  "attribution_required": false,
+  "commercial_use": false,
+  "modification_allowed": false,
+  "source_redistribution": "pending",
+  "build_distribution": "pending",
+  "category": ["models"],
+  "file_count": null,
+  "unity_object_count": null,
+  "review_status": "Candidate",
+  "import_status": "NotImported",
+  "candidate_files": [
+    {
+      "path": "game/Assets/Art/Candidates/<source>/<pack>/replace-me.fbx",
+      "role": "candidate_visual",
+      "target_id": "content_replace_me"
+    }
+  ],
+  "runtime_consumers": [],
+  "notes": "Template only. Null hash/counts and placeholder paths are intentional. Do not claim a download, license, review, or import until evidence exists."
+}

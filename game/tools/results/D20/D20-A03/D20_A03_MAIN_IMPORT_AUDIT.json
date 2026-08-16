@@ -1,0 +1,50 @@
+{
+  "task_id": "D20-A03",
+  "status": "PARTIAL",
+  "unity_version": "6000.0.80f1",
+  "main_project_test": {
+    "command": "Unity -batchmode -nographics -disable-assembly-updater -projectPath game -runTests -testPlatform editmode -assemblyNames D20.Wildlife.Tests -testFilter D20A03",
+    "result_file": "game/tools/results/D20/D20-A03/D20_A03_UNITY_TEST_RESULTS.xml",
+    "result": "Passed",
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "import_checks": {
+    "prefab_files": 12,
+    "prefab_meta_files": 12,
+    "material_files": 16,
+    "material_meta_files": 16,
+    "missing_material_references": 0,
+    "missing_shader_references": 0,
+    "pink_materials_observed": 0,
+    "nonzero_bounds_failures": 0,
+    "root_collision_failures": 0,
+    "lod_group_failures": 0,
+    "animator_failures": 0,
+    "anchor_failures": 0,
+    "modern_male_suit_source_used": false
+  },
+  "source_reuse": {
+    "independent_source_models": 3,
+    "prefab_visual_combinations": 12,
+    "source_usage": {
+      "crew_quaternius_male_casual_v01": 4,
+      "crew_quaternius_male_long_sleeve_v01": 5,
+      "crew_quaternius_male_shirt_v01": 3
+    },
+    "intake_rule": "Only D18 catalog entries with intake_eligible=true were used."
+  },
+  "runtime_boundary": {
+    "scene_or_generator_changed": false,
+    "npc_behavior_changed": false,
+    "registry_changed": false,
+    "save_or_identity_writer_added": false,
+    "promotion": "Candidate"
+  },
+  "evidence": [
+    "game/tools/results/D20/D20-A03/D20_A03_PREFAB_BUILD_REPORT.json",
+    "game/tools/results/D20/D20-A03/unity_d20_a03_main.log",
+    "game/tools/results/D20/D20-A03/D20_A03_UNITY_TEST_RESULTS.xml"
+  ]
+}

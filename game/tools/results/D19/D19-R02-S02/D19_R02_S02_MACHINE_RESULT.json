@@ -1,0 +1,221 @@
+{
+  "schema": "D19_R02_S02_MACHINE_RESULT_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "gate_pass": false,
+  "generated_at": "2026-08-15T17:30:00+08:00",
+  "historical_policy": {
+    "previous_reports_preserved": true,
+    "previous_d19_s02_partial_preserved": true,
+    "previous_d19_s02_r01_partial_preserved": true,
+    "this_result_is_current_gate_only": true
+  },
+  "preconditions": {
+    "d18_s02_r01": "PASS",
+    "d19_r02_a01": "PARTIAL",
+    "d19_r02_a02": "PARTIAL",
+    "d19_r02_a03": "PARTIAL",
+    "d19_r02_a04": "PARTIAL",
+    "d19_r02_a05": "PASS",
+    "d19_a04_stopped_editing_initial_harbor": true,
+    "d20_s02_r01_started": false
+  },
+  "scene_baseline": {
+    "scene": "game/Assets/Scenes/InitialHarbor.unity",
+    "sha256_current": "051830CED5E2DA9C85019991F76A361AF0DAF1015ECCCB7A4D6A2F3B4520015B",
+    "sha256_current_verified": true,
+    "scene_bytes": 168008,
+    "scene_lines": 4704,
+    "integration_prefab": "game/Assets/Prefabs/Environment/D19/Integration/R02/D19_R02_HarborPresentation.prefab",
+    "integration_prefab_sha256": "B0FB811CF957DF895DE5FD68FFEAAFA2460E1D277F77A8BCD27DE19811A49E8E",
+    "pre_integration_rollback": "game/tools/results/D19/D19-R02-A04/rollback_InitialHarbor_20260815_150433.unity",
+    "scene_modified_by_this_task": false
+  },
+  "player_runs": [
+    {
+      "run_id": "x86_new_game_failure",
+      "architecture": "x86",
+      "executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player.exe",
+      "result": "FAILED",
+      "failure": "System.DllNotFoundException: sqlite3",
+      "evidence": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_1920.log",
+      "preserved": true
+    },
+    {
+      "run_id": "x64_player_route",
+      "architecture": "x86_64",
+      "executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_x64.exe",
+      "build": "PASS",
+      "build_evidence": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_BUILD_X64.log",
+      "launch_arguments": [
+        "-screen-width",
+        "1920",
+        "-screen-height",
+        "1080",
+        "-screen-fullscreen",
+        "0",
+        "-force-d3d11"
+      ],
+      "route_session_wall_seconds_observed": 443,
+      "route_session_minimum_seconds": 300,
+      "capture_resolution_reported_by_computer_use": "1099x648 logical pixels",
+      "requested_resolution": "1920x1080",
+      "actual_1920x1080_backbuffer_proven": false,
+      "result": "PARTIAL"
+    }
+  ],
+  "route": {
+    "route_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_ROUTE_LOG.json",
+    "continuous_player_session_requirement_seconds": 300,
+    "continuous_player_session_observed_seconds": 443,
+    "player_input_used": true,
+    "main_menu_to_new_game": "PASS",
+    "spawn_and_landing": "OBSERVED",
+    "market": "PASS",
+    "warehouse": "NOT_VERIFIED",
+    "tavern": "NOT_VERIFIED",
+    "npc_dialogue_or_explainable_failure": "FAIL_NO_VISIBLE_FEEDBACK",
+    "dock_or_berth": "NOT_VERIFIED",
+    "boarding": "NOT_VERIFIED",
+    "departure": "D3_LOG_CONFIRMED",
+    "return_harbor": "D3_LOG_CONFIRMED",
+    "save": "D3_LOG_CONFIRMED",
+    "exit_and_continue_reload": "PASS",
+    "complete_required_route": false,
+    "recovery_observed": "Continue loaded harbor after relaunch; no duplicate reward evidence observed"
+  },
+  "fixed_shots": {
+    "required_count": 14,
+    "captured_count": 14,
+    "directory": "game/tools/results/D19/D19-R02-S02/screenshots",
+    "player_capture": true,
+    "player_capture_resolution": "1099x648 logical pixels",
+    "target_resolution": "1920x1080",
+    "target_resolution_verified": false,
+    "weather_variant_required": 3,
+    "weather_variant_captured": 0
+  },
+  "visual_findings": {
+    "visual_qa": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_VISUAL_QA.json",
+    "pink_or_missing_material_observed": false,
+    "large_white_plane_absent": true,
+    "graybox_or_blocky_terrain_absent": false,
+    "flat_green_orange_surface_absent": false,
+    "readable_port_layers_pass": false,
+    "debug_or_route_hud_visible_in_player_shots": true,
+    "manual_visual_conclusion": "PARTIAL: low-poly terrain and simple buildings remain visibly graybox/blocky in fixed Player views"
+  },
+  "performance": {
+    "summary": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P.json",
+    "warmup_seconds": 30,
+    "sample_seconds": 60,
+    "all_qualities_have_60_process_samples": true,
+    "frame_metrics_available": false,
+    "resolution_verified": false,
+    "budget_pass": false,
+    "quality_results": {
+      "Low": {
+        "sample_file": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_Low_PROCESS.json",
+        "samples": 60,
+        "alive_samples": 60,
+        "avg_working_set_mb": 330.69,
+        "max_working_set_mb": 331.39,
+        "avg_gpu_utilization_percent_global": 39.15,
+        "max_gpu_memory_used_mb_global": 3034,
+        "fps": null,
+        "one_percent_low": null,
+        "p95_frame_time_ms": null,
+        "status": "INCOMPLETE"
+      },
+      "Medium": {
+        "sample_file": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_Medium_PROCESS.json",
+        "samples": 60,
+        "alive_samples": 60,
+        "avg_working_set_mb": 322.36,
+        "max_working_set_mb": 325.73,
+        "avg_gpu_utilization_percent_global": 38.55,
+        "max_gpu_memory_used_mb_global": 3039,
+        "fps": null,
+        "one_percent_low": null,
+        "p95_frame_time_ms": null,
+        "status": "INCOMPLETE"
+      },
+      "High": {
+        "sample_file": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_High_PROCESS.json",
+        "samples": 60,
+        "alive_samples": 60,
+        "avg_working_set_mb": 323.10,
+        "max_working_set_mb": 323.82,
+        "avg_gpu_utilization_percent_global": 38.75,
+        "max_gpu_memory_used_mb_global": 3034,
+        "fps": null,
+        "one_percent_low": null,
+        "p95_frame_time_ms": null,
+        "status": "INCOMPLETE"
+      }
+    },
+    "budget_reference": "docs/game/design/common/D18_VISUAL_ART_DIRECTION_AND_BUDGET.md",
+    "budget_reason": "D18 requires 1920x1080, average 60 FPS, 1% low threshold, CPU/GPU frame time and GC evidence; process counters cannot substitute"
+  },
+  "regression": {
+    "d19_playmode": {"total": 9, "passed": 8, "failed": 0, "skipped": 1, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D19_PLAYMODE.xml"},
+    "d17_playmode": {"total": 7, "passed": 7, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D17_PLAYMODE.xml"},
+    "d19_editmode": {"total": 34, "passed": 34, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D19_EDITMODE.xml"},
+    "python_manifest_unit_tests": {"total": 11, "passed": 11, "failed": 0, "command": "python -m unittest -q tools.tests.test_d18_prefab_candidate_intake tools.tests.test_d18_asset_manifest_audit"},
+    "new_compilation_error_observed": false,
+    "known_runtime_conflict": "D2 logs repeatedly restore BeachGround after R02 terrain contact; retained as a cross-module scene/physics issue"
+  },
+  "resource_audit": {
+    "intake_catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "catalog_declared_manifest_total": 30,
+    "catalog_declared_candidate_file_total": 1895,
+    "catalog_declared_intake_eligible_file_total": 1865,
+    "catalog_status": "PASS",
+    "intake_audit": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_INTAKE_AUDIT.json",
+    "intake_audit_status": "PASS",
+    "manifest_audit": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PACK_MANIFEST_AUDIT.json",
+    "manifest_audit_status": "PASS",
+    "local_development_ready_count": 0,
+    "release_approved_count": 0,
+    "scene_resource_state_modified": false
+  },
+  "final_validation": {
+    "json_files_validated": 7,
+    "xml_files_validated": 3,
+    "git_diff_check_command": "git diff --check",
+    "git_diff_check_exit_code": 0,
+    "git_diff_check_error_output": [],
+    "unity_editor_or_player_left_running": false,
+    "unity_hub_left_running": true
+  },
+  "blocking_items": [
+    {
+      "id": "D19-R02-S02-B01",
+      "severity": "BLOCKING",
+      "owner": "D19-R02-A02/A03 or a new D19 route-fix task",
+      "reason": "Real W movement, NPC feedback, warehouse/tavern/dock/boarding route cannot be proven from the captured Player run"
+    },
+    {
+      "id": "D19-R02-S02-B02",
+      "severity": "BLOCKING",
+      "owner": "D19-R02-A04 or a new D19 visual repair task",
+      "reason": "14 fixed Player views still show blocky/flat graybox-like terrain and simple temporary building presentation"
+    },
+    {
+      "id": "D19-R02-S02-B03",
+      "severity": "BLOCKING",
+      "owner": "D19 performance repair / sampler owner",
+      "reason": "No true FPS, 1% low, CPU/GPU frame time, GC or independently proven 1920x1080 backbuffer"
+    },
+    {
+      "id": "D19-R02-S02-B04",
+      "severity": "HIGH",
+      "owner": "D19-A01/D19-R02-A04 with D17 physics owner",
+      "reason": "R02 terrain contact is followed by legacy BeachGround recovery in D2 log"
+    }
+  ],
+  "d20_s02_r01_release": {
+    "allowed": false,
+    "reason": "D19-R02-S02 is PARTIAL; hard gate requires PASS"
+  }
+}

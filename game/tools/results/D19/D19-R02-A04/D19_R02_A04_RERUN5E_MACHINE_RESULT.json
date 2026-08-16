@@ -1,0 +1,130 @@
+{
+  "task_id": "D19-R02-A04",
+  "attempt": "RERUN5E",
+  "conclusion": "PARTIAL",
+  "historical_results_preserved": [
+    "D19_R02_A04_MACHINE_RESULT.json",
+    "D19_R02_A04_RERUN4_MACHINE_RESULT.json",
+    "D19_R02_A04_RERUN4_VISUAL_QA.json",
+    "D19_R02_A04_RERUN4_PERFORMANCE_1080P.json"
+  ],
+  "scope": "A04 Integration-only presentation repair; no gameplay, save, Registry, intake or D20 ownership changes.",
+  "scene": {
+    "path": "game/Assets/Scenes/InitialHarbor.unity",
+    "integration_root": "D19_R02_HarborPresentation",
+    "latest_scene_sha256": "B22A005F58EC19C8B3A95BB8D6BAE935C04B9A0FF849E0703E24293C815981EC",
+    "pre_rerun5_sha256": "53861A681D9C59C4635CC3D037868C37F1D06CB54A9F22B6DE88F12B2026DCEB",
+    "rollback_snapshot": "game/tools/results/D19/D19-R02-A04/rollback_InitialHarbor_20260815_2015_pre_rerun5_intake_detail.unity",
+    "latest_editor_audit": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITOR_AUDIT.json",
+    "renderer_count": 105,
+    "collider_count": 1,
+    "terrain_mesh_vertices": 1936,
+    "world_bounds_size_m": [39.6, 4.884323, 39.6],
+    "scene_renderer_dump": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_SCENE_RENDERER_DUMP_RERUN4.txt"
+  },
+  "targeted_repairs": {
+    "candidate_detail_layer": {
+      "prefab_child": "D19_R02_A04_IntakeDetail",
+      "used_models": [
+        {
+          "content_id": "env_kenney_nature_tree_default",
+          "candidate_file": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_default.fbx",
+          "manifest_id": "pack_kenney_nature_kit_d18_a03_v1",
+          "intake_id": "intake_050684ba928ca7a49772",
+          "material_policy": "mapped to project-owned D19_R02_Wood/D19_R02_Leaf/D19_R02_Stone/D19_R02_GrassLight"
+        },
+        {
+          "content_id": "env_kenney_nature_tree_detailed_dark",
+          "candidate_file": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_detailed_dark.fbx",
+          "manifest_id": "pack_kenney_nature_kit_d18_a03_v1",
+          "intake_id": "intake_10e3a624e4da4115b0f3",
+          "material_policy": "mapped to project-owned D19_R02_Wood/D19_R02_Leaf/D19_R02_Stone/D19_R02_GrassLight"
+        },
+        {
+          "content_id": "env_kenney_nature_cliff_large_rock",
+          "candidate_file": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_large_rock.fbx",
+          "manifest_id": "pack_kenney_nature_kit_d18_a03_v1",
+          "intake_id": "intake_fd9eba4c989388f8afaa",
+          "material_policy": "mapped to project-owned D19_R02_Stone"
+        },
+        {
+          "content_id": "env_kenney_nature_rock_large_f",
+          "candidate_file": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_largeF.fbx",
+          "manifest_id": "pack_kenney_nature_kit_d18_a03_v1",
+          "intake_id": "intake_09dd73004f04ab6f6ddd",
+          "material_policy": "mapped to project-owned D19_R02_Stone/D19_R02_GrassLight"
+        }
+      ],
+      "audited_but_not_used": {
+        "content_id": "env_kenney_nature_bridge_wood",
+        "candidate_file": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/bridge_wood.fbx",
+        "manifest_id": "pack_kenney_nature_kit_d18_a03_v1",
+        "intake_id": "intake_01c72108beb5c0ac4023",
+        "reason": "Removed from the detail layer after Player observation showed the bridge silhouette was too large for the fixed spawn composition; it remains only in the read-only audit."
+      },
+      "audit": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_INTAKE_MODEL_AUDIT_RERUN5.json"
+    },
+    "legacy_visuals": {
+      "hidden_by_build_log": 324,
+      "subtree": "D19_R01_B_HarborVisualRepair",
+      "post_build_renderer_state": "all 351 dump entries under the compatibility subtree are enabled=false",
+      "stable_nodes_preserved": true,
+      "red_rope_visual": "old R01 rope renderers are disabled; R02 DockRopeLine remains an inactive GameObject"
+    },
+    "status_changes": {
+      "external_resource_state_changed": false,
+      "intake_catalog_changed": false,
+      "local_development_ready_changed": false,
+      "release_approved_changed": false,
+      "systems_changed": false,
+      "save_schema_changed": false
+    }
+  },
+  "verification": {
+    "builder_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_BUILD_RERUN5C.log",
+    "builder_result": "PASS",
+    "editor_audit_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITOR_AUDIT_RERUN5E.log",
+    "editmode_xml": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITMODE_TESTS_RERUN5E.xml",
+    "editmode_total": 3,
+    "editmode_passed": 3,
+    "editmode_failed": 0,
+    "git_diff_check": "PASS after removing two pre-existing trailing whitespace markers in the scene modification block"
+  },
+  "real_player": {
+    "player_binary": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_Player_RERUN5E.exe",
+    "player_build_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PLAYER_BUILD_RERUN5E.log",
+    "input_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PLAYER_RERUN5E_INPUT.log",
+    "build_architecture": "Windows x64",
+    "requested_resolution": [1920, 1080],
+    "new_game": "PASS_OBSERVED",
+    "spawn_landing": "PASS_OBSERVED",
+    "board_input": "PASS_OBSERVED",
+    "visual_capture": [
+      "game/tools/results/D19/D19-R02-A04/D19_R02_A04_MENU_RERUN5D.jpg",
+      "game/tools/results/D19/D19-R02-A04/D19_R02_A04_SPAWN_RERUN5E.jpg",
+      "game/tools/results/D19/D19-R02-A04/D19_R02_A04_BOARD_RERUN5E.jpg"
+    ],
+    "observed_visual_state": {
+      "pink_or_missing_material": "not observed in these frames",
+      "old_red_rope": "not observed after compatibility subtree renderer disable",
+      "terrain_quality": "still low-detail and flat in the observed Player composition",
+      "candidate_model_materials": "project-owned palette visible; source embedded turquoise/peach colors no longer used",
+      "fixed_shots_verified": 0,
+      "weather_variants_verified": 0
+    },
+    "route": "NOT_RUN",
+    "save_reload": "NOT_RUN"
+  },
+  "performance": {
+    "fresh_low_medium_high": "NOT_RUN",
+    "prior_samples_preserved": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PERFORMANCE_1080P_RERUN3.json",
+    "exact_backbuffer_proven": false,
+    "reason": "A04 repair evidence is limited to a real x64 Player spawn/boarding observation; D19-R02-S02 remains the final route and performance gate."
+  },
+  "unresolved": [
+    "The observed Player still has broad low-detail terrain and simple block silhouettes; no claim of visual PASS.",
+    "The D2 landing recovery chain, complete 5-10 minute route, warehouse/tavern/NPC feedback and save/reload remain downstream evidence.",
+    "14 fixed Player shots, weather variants, and Low/Medium/High 1080p identity/performance evidence remain incomplete.",
+    "The x86 build failure caused by missing sqlite3.dll is preserved in D19_R02_A04_PLAYER_BUILD_RERUN5B.log; x64 is the valid rerun build path."
+  ]
+}

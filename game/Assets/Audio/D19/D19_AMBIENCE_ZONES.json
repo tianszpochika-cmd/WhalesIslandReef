@@ -1,0 +1,100 @@
+{
+  "schema": "d19_ambience_zone_graph.v1",
+  "task": "D19-A06",
+  "status": "WorkSceneCandidate",
+  "mixer_policy": {
+    "mixer_asset": null,
+    "existing_consumers": ["D7AudioController", "D9AudioPresentation"],
+    "buses": ["Environment", "Diegetic", "UI"],
+    "source_policy": "No direct AudioSource in this task; consumers request event IDs through the existing audio presentation layer.",
+    "settings_gate": "SettingsStore master volume/mute; subtitle and visual event fallback are mandatory",
+    "runtime_promotion": "D18-S03 only"
+  },
+  "zone_layers": [
+    {
+      "zone_id": "zone_port_entrance",
+      "region": "port",
+      "bounds_center_m": [0, 0, 112],
+      "bounds_half_extents_m": [24, 2, 12],
+      "layers": {"base": "missing_legal_candidate", "near": "missing_legal_candidate", "far": "missing_legal_candidate", "directional": "missing_legal_candidate"},
+      "missing_layers": ["waves", "wind", "wood_structure", "distant_people", "birds"],
+      "events": [
+        {"audio_event_id": "audio.d19.port.cargo_prompt", "clip": "d19_candidate_click_001.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.port.cargo_prompt.subtitle", "visual_fallback": "event_icon_cargo"},
+        {"audio_event_id": "audio.d19.port.bollard_feedback", "clip": "d19_candidate_bong_001.ogg", "mixer_bus": "Diegetic", "loop": false, "subtitle_key": "audio.d19.port.bollard_feedback.subtitle", "visual_fallback": "event_icon_dock"},
+        {"audio_event_id": "audio.d19.port.footstep_proxy_wood", "clip": "d19_candidate_footstep_concrete_000.ogg", "mixer_bus": "Environment", "loop": false, "semantic_fit": "proxy_only", "subtitle_key": "audio.d19.port.footstep.subtitle", "visual_fallback": "footstep_marker"},
+        {"audio_event_id": "audio.d19.port.menu_back", "clip": "d19_candidate_back_001.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.port.menu_back.subtitle", "visual_fallback": "ui_back_icon"},
+        {"audio_event_id": "audio.d19.port.menu_click", "clip": "d19_candidate_click_002.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.port.menu_click.subtitle", "visual_fallback": "ui_click_icon"},
+        {"audio_event_id": "audio.d19.port.prompt_rollover", "clip": "d19_candidate_rollover1.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.port.prompt_rollover.subtitle", "visual_fallback": "ui_focus_ring"}
+      ]
+    },
+    {
+      "zone_id": "zone_market",
+      "region": "market",
+      "bounds_center_m": [26, 0.2, 62],
+      "bounds_half_extents_m": [18, 5, 14],
+      "layers": {"base": "missing_legal_candidate", "near": "missing_legal_candidate", "far": "missing_legal_candidate", "directional": "missing_legal_candidate"},
+      "missing_layers": ["market_people", "cloth_flap", "wood_structure", "birds"],
+      "events": [
+        {"audio_event_id": "audio.d19.market.open_prompt", "clip": "d19_candidate_click_003.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.market.open_prompt.subtitle", "visual_fallback": "event_icon_market"},
+        {"audio_event_id": "audio.d19.market.trade_confirm", "clip": "d19_candidate_click_004.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.market.trade_confirm.subtitle", "visual_fallback": "event_icon_trade"},
+        {"audio_event_id": "audio.d19.market.trade_cancel", "clip": "d19_candidate_back_002.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.market.trade_cancel.subtitle", "visual_fallback": "event_icon_cancel"},
+        {"audio_event_id": "audio.d19.market.step_proxy", "clip": "d19_candidate_footstep_carpet_000.ogg", "mixer_bus": "Environment", "loop": false, "semantic_fit": "proxy_only", "subtitle_key": "audio.d19.market.step.subtitle", "visual_fallback": "footstep_marker"},
+        {"audio_event_id": "audio.d19.market.focus_next", "clip": "d19_candidate_rollover2.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.market.focus_next.subtitle", "visual_fallback": "ui_focus_ring"},
+        {"audio_event_id": "audio.d19.market.focus_previous", "clip": "d19_candidate_rollover3.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.market.focus_previous.subtitle", "visual_fallback": "ui_focus_ring"}
+      ]
+    },
+    {
+      "zone_id": "zone_beach",
+      "region": "coast",
+      "bounds_center_m": [-58, 0, -8],
+      "bounds_half_extents_m": [32, 2, 22],
+      "layers": {"base": "missing_legal_candidate", "near": "missing_legal_candidate", "far": "missing_legal_candidate", "directional": "missing_legal_candidate"},
+      "missing_layers": ["waves", "light_splash", "wind", "seabirds"],
+      "events": [
+        {"audio_event_id": "audio.d19.coast.landing_feedback", "clip": "d19_candidate_footstep_concrete_001.ogg", "mixer_bus": "Environment", "loop": false, "semantic_fit": "proxy_only", "subtitle_key": "audio.d19.coast.landing_feedback.subtitle", "visual_fallback": "shoreline_marker"},
+        {"audio_event_id": "audio.d19.coast.anchor_prompt", "clip": "d19_candidate_click_005.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.coast.anchor_prompt.subtitle", "visual_fallback": "event_icon_anchor"},
+        {"audio_event_id": "audio.d19.coast.reef_notice", "clip": "d19_candidate_bong_001.ogg", "mixer_bus": "Diegetic", "loop": false, "subtitle_key": "audio.d19.coast.reef_notice.subtitle", "visual_fallback": "event_icon_reef"},
+        {"audio_event_id": "audio.d19.coast.menu_back", "clip": "d19_candidate_back_003.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.coast.menu_back.subtitle", "visual_fallback": "ui_back_icon"},
+        {"audio_event_id": "audio.d19.coast.step_proxy_2", "clip": "d19_candidate_footstep_concrete_002.ogg", "mixer_bus": "Environment", "loop": false, "semantic_fit": "proxy_only", "subtitle_key": "audio.d19.coast.step_2.subtitle", "visual_fallback": "footstep_marker"},
+        {"audio_event_id": "audio.d19.coast.ui_click", "clip": "d19_candidate_click_003.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.coast.ui_click.subtitle", "visual_fallback": "ui_click_icon"}
+      ]
+    },
+    {
+      "zone_id": "zone_shipyard",
+      "region": "shipyard",
+      "bounds_center_m": [60, 0.2, 8],
+      "bounds_half_extents_m": [18, 5, 14],
+      "layers": {"base": "missing_legal_candidate", "near": "missing_legal_candidate", "far": "missing_legal_candidate", "directional": "missing_legal_candidate"},
+      "missing_layers": ["timber", "rope_creak", "hammer", "yard_people"],
+      "events": [
+        {"audio_event_id": "audio.d19.shipyard.repair_open", "clip": "d19_candidate_click4.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.shipyard.repair_open.subtitle", "visual_fallback": "event_icon_repair"},
+        {"audio_event_id": "audio.d19.shipyard.repair_confirm", "clip": "d19_candidate_click5.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.shipyard.repair_confirm.subtitle", "visual_fallback": "event_icon_repair"},
+        {"audio_event_id": "audio.d19.shipyard.repair_cancel", "clip": "d19_candidate_back_004.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.shipyard.repair_cancel.subtitle", "visual_fallback": "event_icon_cancel"},
+        {"audio_event_id": "audio.d19.shipyard.tool_proxy", "clip": "d19_candidate_footstep_concrete_003.ogg", "mixer_bus": "Environment", "loop": false, "semantic_fit": "proxy_only", "subtitle_key": "audio.d19.shipyard.tool_proxy.subtitle", "visual_fallback": "tool_marker"},
+        {"audio_event_id": "audio.d19.shipyard.focus_next", "clip": "d19_candidate_mouseclick1.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.shipyard.focus_next.subtitle", "visual_fallback": "ui_focus_ring"},
+        {"audio_event_id": "audio.d19.shipyard.focus_release", "clip": "d19_candidate_mouserelease1.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.shipyard.focus_release.subtitle", "visual_fallback": "ui_focus_ring"}
+      ]
+    },
+    {
+      "zone_id": "zone_night_overlay",
+      "region": "night",
+      "bounds_center_m": [0, 0.2, 50],
+      "bounds_half_extents_m": [75, 4, 75],
+      "layers": {"base": "missing_legal_candidate", "near": "missing_legal_candidate", "far": "missing_legal_candidate", "directional": "missing_legal_candidate"},
+      "missing_layers": ["night_wind", "night_waves", "insects", "distant_birds", "lamp_hum"],
+      "events": [
+        {"audio_event_id": "audio.d19.night.lamp_toggle", "clip": "d19_candidate_click4.ogg", "mixer_bus": "Diegetic", "loop": false, "subtitle_key": "audio.d19.night.lamp_toggle.subtitle", "visual_fallback": "lamp_glow"},
+        {"audio_event_id": "audio.d19.night.tavern_entry", "clip": "d19_candidate_click_004.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.night.tavern_entry.subtitle", "visual_fallback": "event_icon_tavern"},
+        {"audio_event_id": "audio.d19.night.talk_skip", "clip": "d19_candidate_back_001.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.night.talk_skip.subtitle", "visual_fallback": "skip_badge"},
+        {"audio_event_id": "audio.d19.night.night_step_proxy", "clip": "d19_candidate_footstep_carpet_001.ogg", "mixer_bus": "Environment", "loop": false, "semantic_fit": "proxy_only", "subtitle_key": "audio.d19.night.step.subtitle", "visual_fallback": "footstep_marker"},
+        {"audio_event_id": "audio.d19.night.menu_click", "clip": "d19_candidate_click2.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.night.menu_click.subtitle", "visual_fallback": "ui_click_icon"},
+        {"audio_event_id": "audio.d19.night.menu_release", "clip": "d19_candidate_mouserelease1.ogg", "mixer_bus": "UI", "loop": false, "subtitle_key": "audio.d19.night.menu_release.subtitle", "visual_fallback": "ui_focus_ring"}
+      ]
+    }
+  ],
+  "fallback_contract": {
+    "muted": "subtitle_key + event log + visual indicator",
+    "unavailable_clip": "do not synthesize or substitute an unlicensed environmental recording",
+    "alert_ducking": "environment and diegetic layers must duck for combat/dialogue alerts"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "task_id": "D19-R02-A04",
+  "attempt": "R02",
+  "conclusion": "PARTIAL",
+  "conclusion_scope": "正式场景表现层与可复核的场景结构证据；不是 D19 最终路线或发布放行",
+  "timestamp_local": "2026-08-15",
+  "historical_reports_preserved": [
+    "D19-R01-S02",
+    "D19-R02-A01",
+    "D19-R02-A02",
+    "D19-R02-A03"
+  ],
+  "allowed_write_scope": [
+    "game/Assets/Scenes/InitialHarbor.unity",
+    "game/Assets/Prefabs/Environment/D19/Integration/R02/",
+    "game/Assets/Art/Materials/D19/R02/",
+    "game/Assets/Editor/D19R02/",
+    "game/Assets/Tests/EditMode/D19R02Scene/",
+    "game/tools/results/D19/D19-R02-A04/",
+    "docs/game/design/common/D19_R02_HARBOR_VISUAL_PERFORMANCE_REPAIR.md",
+    "docs/game/design/common/handoffs/D19/D19-R02-A04_HANDOFF.md",
+    ".workbuddy/memory/2026-08-15.md"
+  ],
+  "scene_evidence": {
+    "scene_path": "Assets/Scenes/InitialHarbor.unity",
+    "scene_sha256_after": "051830CED5E2DA9C85019991F76A361AF0DAF1015ECCCB7A4D6A2F3B4520015B",
+    "scene_bytes_after": 168008,
+    "rollback_snapshot": "game/tools/results/D19/D19-R02-A04/rollback_InitialHarbor_20260815_150433.unity",
+    "rollback_snapshot_sha256": "4C45779C7B5A020583E9F11F9F8F61642C12F1EC3920E8001F4752EF626D7E9D",
+    "integration_root": "D19_R02_HarborPresentation",
+    "integration_prefab": "Assets/Prefabs/Environment/D19/Integration/R02/D19_R02_HarborPresentation.prefab",
+    "integration_prefab_sha256": "B0FB811CF957DF895DE5FD68FFEAAFA2460E1D277F77A8BCD27DE19811A49E8E",
+    "integration_prefab_bytes": 237612,
+    "editor_audit": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITOR_AUDIT.json",
+    "editor_audit_summary": {
+      "renderer_count": 80,
+      "collider_count": 1,
+      "terrain_mesh_vertices": 1936,
+      "world_bounds_size": [39.6, 4.66, 39.6],
+      "root_position": [0.0, 0.58, 0.0]
+    }
+  },
+  "implementation": {
+    "project_owned_materials": [
+      "D19_R02_Grass",
+      "D19_R02_GrassLight",
+      "D19_R02_Sand",
+      "D19_R02_SandLight",
+      "D19_R02_Stone",
+      "D19_R02_StoneLight",
+      "D19_R02_Wood",
+      "D19_R02_WoodLight",
+      "D19_R02_Roof",
+      "D19_R02_Plaster",
+      "D19_R02_Water",
+      "D19_R02_Foam",
+      "D19_R02_Leaf"
+    ],
+    "external_intake_resources_added": false,
+    "asset_state_changed": false,
+    "local_development_ready_changed": false,
+    "release_approved_changed": false,
+    "systems_changed": false,
+    "save_schema_changed": false
+  },
+  "automated_verification": {
+    "scene_editmode_test_xml": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITMODE_TESTS_RERUN.xml",
+    "scene_editmode_result": "PASS",
+    "scene_editmode_total": 3,
+    "scene_editmode_passed": 3,
+    "scene_editmode_failed": 0,
+    "player_build_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PLAYER_BUILD_V3_RERUN.log",
+    "player_build_result": "PASS",
+    "git_diff_check": "NOT_YET_RECORDED_IN_THIS_RESULT"
+  },
+  "real_player_visual_evidence": {
+    "status": "PARTIAL",
+    "player_binary": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_Player_V3.exe",
+    "capture_count": 14,
+    "capture_directory": "game/tools/results/D19/D19-R02-A04/screenshots/",
+    "reported_capture_resolution": [2194, 1234],
+    "requested_player_resolution": [1920, 1080],
+    "exact_1920x1080_backbuffer_proven": false,
+    "fixed_shots_verified": 0,
+    "fixed_shots_required": 14,
+    "player_input_was_used": true,
+    "visual_findings": [
+      "R02 terrain and foliage render in the real Player, but the old red dock/temporary structures remain visible.",
+      "Large palm foliage can occlude the camera during input captures.",
+      "Broad orange/green low-poly surfaces and block-like legacy props remain in the player-visible route.",
+      "The frame set is evidence of the integration state, not proof that the D19 fixed camera contract passed."
+    ]
+  },
+  "runtime_route": {
+    "status": "NOT_RUN_AS_COMPLETE_ROUTE",
+    "spawn_landing_observed": true,
+    "r02_surface_landing_log": "[D2] 玩家已落地: surface=D19_R02_TerrainSurface, surfaceY=0.61, playerY=0.76",
+    "legacy_surface_recovery_observed": true,
+    "legacy_surface_recovery_log": "[D2] 玩家已恢复可行走接地: surface=BeachGround, surfaceY=0.28",
+    "route_5_to_10_minutes": "NOT_RUN",
+    "market_dock_board_depart_return_save_load": "NOT_RUN",
+    "interpretation": "R02 terrain is physically present, but the existing D2 recovery path moves the player to BeachGround; this integration conflict is recorded for a later owner and was not changed in A04."
+  },
+  "performance_1080p": {
+    "status": "NOT_RUN",
+    "result_file": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PERFORMANCE_1080P.json",
+    "reason": "No in-player frame-time/GC/CPU/GPU telemetry was available in the A04 Player build, and the captured window reported 2194x1234 rather than a proven 1920x1080 backbuffer.",
+    "quality_levels": ["Low", "Medium", "High"],
+    "weather_variants": "NOT_RUN"
+  },
+  "final_reason": "Static scene integration and build evidence pass, but the real Player still shows visible graybox/temporary legacy geometry, fixed-camera verification is incomplete, the D2 ground recovery conflict remains, weather variants and 1080p performance telemetry were not run."
+}

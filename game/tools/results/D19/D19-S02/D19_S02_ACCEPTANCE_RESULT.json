@@ -1,0 +1,48 @@
+{
+  "task": "D19-S02",
+  "conclusion": "PARTIAL",
+  "generated_on": "2026-08-14",
+  "scene": "game/Assets/Scenes/InitialHarbor.unity",
+  "integration_prefab": "game/Assets/Prefabs/Environment/D19/Integration/D19_SaintMargaret_Root.prefab",
+  "rollback_point_id": "d19-s02-preintegration-baseline",
+  "preconditions": {
+    "d19_s01_attempt_2": "PASS",
+    "d18_s02_v2": "PASS",
+    "d18_s03": "NOT_RUN_BY_TASK_RULE"
+  },
+  "gates": [
+    { "id": "serial_prefab_integration", "status": "PASS", "evidence": "D19_S02_INTEGRATION_RESULT.json" },
+    { "id": "compatibility_nodes_and_stable_ids", "status": "PASS", "evidence": "D19_S02_EDITMODE_TESTS_FINAL.xml; D19_S02_PLAYMODE_SMOKE.json" },
+    { "id": "material_and_missing_reference_audit", "status": "PASS", "evidence": "Preflight/D19_S02_MATERIAL_AUDIT.json: 436 renderers, 0 missing materials, 0 missing shaders, 0 error shaders" },
+    { "id": "fixed_shots", "status": "PASS", "evidence": "screenshots/: 16 files, 14 fixed-shot contract positions plus 3 weather variants; magenta pixel audit 0" },
+    { "id": "d19_playmode_smoke", "status": "PASS", "evidence": "Preflight/D19_S02_PLAYMODE_TESTS_FINAL3.xml: 1/1 passed" },
+    { "id": "d16_d17_playmode_regression", "status": "PASS_WITH_ONE_INTENTIONAL_SKIP", "evidence": "Preflight/D16_D17_PLAYMODE_REGRESSION_FINAL.xml: 61 passed, 0 failed, 1 skipped (D19-A01 work-scene-only probe)" },
+    { "id": "manual_route_5_to_10_minutes", "status": "NOT_RUN", "evidence": "Requires human-controlled route; PlayMode anchor smoke is not a substitute" },
+    { "id": "1080p_target_device_performance", "status": "NOT_RUN", "evidence": "D19_S02_PERFORMANCE_1080P.json is editor Camera.Render only: average 20.182ms, p95 295.704ms" },
+    { "id": "visual_fidelity_final_assets", "status": "PARTIAL", "evidence": "Project-owned low-poly A02 building proxies remain; no missing-material/pink error remains" }
+  ],
+  "counts": {
+    "integrated_prefab_instances": 594,
+    "integrated_renderers": 436,
+    "integrated_colliders": 145,
+    "integrated_lod_groups": 66,
+    "stable_interaction_anchors": 20,
+    "weather_profiles_checked": 3,
+    "screenshots": 16
+  },
+  "scope_guards": {
+    "systems_modified": false,
+    "contracts_modified": false,
+    "registry_modified": false,
+    "save_schema_modified": false,
+    "external_asset_state_promoted": false,
+    "dev_overlay_default_off": true,
+    "legacy_compatibility_nodes_preserved": true
+  },
+  "known_bounds": [
+    "No human 5-10 minute walk/board/depart/return/save route was executed in this automation run.",
+    "No target-device or PlayMode frame-time/GC/memory budget sample was captured.",
+    "D18-S03 remains a later task; no asset was promoted to LocalDevelopmentReady or ReleaseApproved.",
+    "A02 architectural modules are visually low-poly proxies and need a later art-fidelity pass."
+  ]
+}

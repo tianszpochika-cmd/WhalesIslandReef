@@ -1,0 +1,53 @@
+{
+  "task": "D18-S02-R02",
+  "status": "PASS",
+  "generated_on": "2026-08-15",
+  "player_humanoid_candidate_available": true,
+  "humanoid_valid_avatar_count": 1,
+  "candidates": [
+    {
+      "content_id": "candidate_superhero_female_fullbody_r03p",
+      "manifest_id": "pack_quaternius_universal_base_characters_standard_v01",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+      "intake_id": "intake_a99050649c3cc24cb8a7",
+      "avatar_is_human": true,
+      "avatar_valid": true,
+      "import_evidence": "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+      "allowed_work_tasks": [
+        "D20-A01-R01",
+        "D20-A03"
+      ],
+      "not_runtime_ready": true
+    }
+  ],
+  "d20_a01_r01": {
+    "allowed_to_start": true,
+    "condition": "controlled work Prefab only; D20-A01 must produce a real rig_interface_ready result before D20-A02"
+  },
+  "d20_a02_r01": {
+    "allowed_to_start": false,
+    "reason": "D20-A01-R01 rig_interface_ready is not yet proven"
+  },
+  "female_gap": {
+    "intake_eligible_count": 1,
+    "status": "INTAKE_AVAILABLE_PARTIAL",
+    "reason": "One isolated female source has a real Humanoid + valid Avatar; historical four-file female FBX set remains non-human, and 1675 clothing/scale/Prefab evidence is open.",
+    "owner_tasks": [
+      "D20-A01-R01",
+      "D20-A03",
+      "D18-S03"
+    ]
+  },
+  "excluded_historical_female_candidates": {
+    "count": 4,
+    "reason": "D18-A04-R02-F-R01 real Unity evidence is non-human Avatar; see machine result",
+    "evidence": "game/tools/results/D18/D18-A04-R02-F-R01/D18_A04_R02_F_R01_MACHINE_RESULT.json"
+  },
+  "state_boundaries": {
+    "local_development_ready_count": 0,
+    "release_approved_count": 0,
+    "formal_scene_consumers": 0,
+    "d18_s03_required": true
+  },
+  "source_catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json"
+}

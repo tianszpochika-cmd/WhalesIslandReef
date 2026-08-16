@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "task": "D20-A01",
+  "status": "PARTIAL",
+  "read_only_contract": true,
+  "consumer": "D20-A02",
+  "consumer_must_not_write_back": true,
+  "rig_interface_ready": false,
+  "base_prefab_path": "Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_Neutral.prefab",
+  "repository_prefab_path": "game/Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_Neutral.prefab",
+  "physical_root_contract": {
+    "owner": "D17/D2RuntimeBootstrap",
+    "runtime_root_name": "D2_PlayerAvatar",
+    "root_scale": [1, 1, 1],
+    "root_has_renderer": false,
+    "root_has_character_controller": false,
+    "visual_normalization_owner": "D2CharacterController",
+    "target_visual_height_m": 1.8,
+    "height_tolerance_m": 0.03,
+    "character_controller_reference": {
+      "height_m": 1.8,
+      "radius_m": 0.32,
+      "center_y_m": 0.9
+    },
+    "camera_target_name": "CameraTarget",
+    "camera_target_y_m": 1.1,
+    "interaction_anchor_names": [
+      "Head",
+      "Hand_L",
+      "Hand_R",
+      "Foot_L",
+      "Foot_R",
+      "Carry",
+      "Fish",
+      "Boarding",
+      "Disembark",
+      "Helm"
+    ],
+    "anchor_status": "D17_runtime_owned_not_embedded_in_candidate_prefab"
+  },
+  "skeleton_avatar": {
+    "source_manifest_id": "pack_kenney_blocky_characters_d18_a04_v1",
+    "source_intake_id": "intake_3469c541b7a7968018ba",
+    "content_id": "asset_kenney_blocky_character_a_v01",
+    "candidate_path": "game/Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/Models/character-a.fbx",
+    "animation_type": "Generic",
+    "avatar_setup": "NoAvatar",
+    "avatar_present": false,
+    "source_bone_count": 8,
+    "source_mesh_count": 6,
+    "source_animation_clip_count": 27,
+    "source_material_count": 1,
+    "source_bounds_valid": true,
+    "source_max_dimension_m": 9.0,
+    "prefab_scale": [1, 1, 1],
+    "runtime_scale_normalization_required": true,
+    "humanoid_mapping_status": "OPEN_GENERIC_NO_AVATAR",
+    "root_motion": false
+  },
+  "usable_resource_keys": [
+    {
+      "resource_key": "asset_kenney_blocky_character_a_v01",
+      "kind": "model",
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/Models/character-a.fbx",
+      "manifest_id": "pack_kenney_blocky_characters_d18_a04_v1",
+      "intake_eligible": true,
+      "status": "candidate_work_prefab_only"
+    }
+  ],
+  "candidate_material_keys": [
+    {
+      "resource_key": "asset_d20_player_skin_neutral_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerSkin_Neutral.mat",
+      "status": "created_candidate_not_bound_until_unity_renderer_audit"
+    },
+    {
+      "resource_key": "asset_d20_player_skin_warm_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerSkin_Warm.mat",
+      "status": "created_candidate_not_bound_until_unity_renderer_audit"
+    },
+    {
+      "resource_key": "asset_d20_player_hair_brown_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerHair_Brown.mat",
+      "status": "created_candidate_not_bound_until_unity_renderer_audit"
+    },
+    {
+      "resource_key": "asset_d20_player_hair_black_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerHair_Black.mat",
+      "status": "created_candidate_not_bound_until_unity_renderer_audit"
+    }
+  ],
+  "appearance_resource_interface": {
+    "writer": "D10AppearanceSystem",
+    "request_entry": "D10AppearanceRuntimeBootstrap",
+    "supported_slot_enum": [
+      "Body",
+      "Hair",
+      "Hat",
+      "Top",
+      "Bottom",
+      "Coat",
+      "Shoes",
+      "Gloves",
+      "Accessory",
+      "CareerEquipment",
+      "Injury"
+    ],
+    "logical_keys_seen": [
+      "outfit_body_sun_bronzed",
+      "outfit_hair_short_brown",
+      "outfit_hat_straw_deck",
+      "outfit_top_linen_deckhand",
+      "outfit_bottom_canvas_trousers",
+      "outfit_coat_rain_oilskin",
+      "outfit_shoes_deck_boots",
+      "outfit_gloves_ropework",
+      "outfit_accessory_compass_badge",
+      "outfit_career_fisher_handline",
+      "outfit_injury_bandaged_arm"
+    ],
+    "state_preservation": "appearance_selection_must_not_reset_D2_or_save_state",
+    "missing_resource_behavior": "D10 MissingResourcePlaceholder with concrete asset ID; then stable D17 fallback"
+  },
+  "variant_counts": {
+    "independent_body_directions_verified": 1,
+    "independent_body_directions_target": 2,
+    "independent_hair_geometry_verified": 0,
+    "hair_slots_target": 6,
+    "era_reasonable_outfit_combinations_verified": 0,
+    "outfit_combinations_target": 8,
+    "controlled_skin_material_candidates": 2,
+    "controlled_hair_material_candidates": 2
+  },
+  "available_variants": [
+    {
+      "variant_id": "player_visual_neutral_blocky_a_v01",
+      "resource_key": "asset_kenney_blocky_character_a_v01",
+      "prefab_path": "Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_Neutral.prefab",
+      "independent_model": true,
+      "avatar_ready": false,
+      "era_ready": false
+    }
+  ],
+  "missing_variants": [
+    {
+      "kind": "second_body_or_gender_direction",
+      "reason": "D18-S02-R01 catalog records zero intake_eligible female_or_neutral_human_gap entries; the four D18-A04-R02-F candidates remain NotImported and cannot be used as a second direction."
+    },
+    {
+      "kind": "hair_geometry",
+      "reason": "D10 logical hair keys exist, but no six independently switchable hair meshes are in the admitted player_visual_core resource set."
+    },
+    {
+      "kind": "era_outfit_geometry",
+      "reason": "D10 has logical 1675-tagged outfit IDs, but the admitted Kenney base has one imported material and no proven modular clothing meshes."
+    },
+    {
+      "kind": "humanoid_avatar",
+      "reason": "The only admitted player base is Generic/NoAvatar; D20 Humanoid retargeting remains open."
+    },
+    {
+      "kind": "anchors_and_lod",
+      "reason": "Candidate source has no consumer-owned interaction anchors or LODGroup; D17 runtime owns physics/camera and this task did not embed system logic."
+    }
+  ],
+  "stable_fallback": {
+    "kind": "D17_programmatic_fallback",
+    "owner": "D2FallbackHumanoidBuilder/D2CharacterController",
+    "trigger": "missing_resource_or_unverified_avatar",
+    "preserves_gameplay_state": true,
+    "preserves_appearance_history": true,
+    "writes_save_or_identity": false
+  },
+  "forbidden_changes_made": [],
+  "promotion_status": "Candidate_only_D18-S03_required"
+}
+
+

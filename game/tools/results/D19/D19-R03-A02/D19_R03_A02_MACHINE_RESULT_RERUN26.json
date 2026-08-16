@@ -1,0 +1,71 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_RERUN26_V1",
+  "task": "D19-R03-A02",
+  "attempt": "RERUN26_INTAKE_CANDIDATE_PRESENTATION_REFRESH",
+  "conclusion": "PARTIAL",
+  "historical_results_preserved": true,
+  "scope": {
+    "changed": [
+      "R03 presentation builder audit list now records all eight referenced NatureKit candidate files",
+      "R03 presentation builder retains generated fallback and places eight intake-eligible environment candidates"
+    ],
+    "not_changed": [
+      "Systems, AgentCore, Registry, Save Schema, contracts/server/web",
+      "D19-A01—A06 work scenes and source prefabs",
+      "resource state machine, LocalDevelopmentReady, ReleaseApproved"
+    ]
+  },
+  "intake_candidates": {
+    "count": 8,
+    "files": [
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_default.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_small_dark.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_largeF.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_large_rock.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/grass_large.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/ground_pathBend.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_stepsCorner_stone.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_tallF.fbx"
+    ],
+    "catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "allowed_scope": ["D19-A01", "D19-A03"]
+  },
+  "unity": {
+    "version": "6000.0.80f1",
+    "audit_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_AUDIT_RERUN26_CANDIDATES_REFRESH.log",
+    "audit_exit_code": 0,
+    "editor_audit": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json",
+    "renderer_count": 315,
+    "enabled_renderer_count": 314,
+    "mesh_vertex_sum": 6457,
+    "presentation_colliders": 0
+  },
+  "real_player": {
+    "executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN26.exe",
+    "resolution": "1920x1080",
+    "screenshots": [
+      "game/tools/results/D19/D19-R03-A02/RERUN26_PLAYER_MAINMENU_AFTER_CANDIDATES.jpg",
+      "game/tools/results/D19/D19-R03-A02/RERUN26_PLAYER_HARBOR_AFTER_CANDIDATES.jpg",
+      "game/tools/results/D19/D19-R03-A02/RERUN26_PLAYER_PORT_AFTER_CANDIDATES.jpg"
+    ],
+    "screenshot_count": 3,
+    "purpose": "candidate visual smoke check only; not fixed-shot or route acceptance"
+  },
+  "manual_visual_review": {
+    "pink_missing_material_observed": false,
+    "candidate_models_visible": true,
+    "remaining_findings": [
+      "blocky building silhouettes",
+      "flat ground and dock planes",
+      "bottom development route HUD remains visible"
+    ]
+  },
+  "gate_checks": {
+    "candidate_references_traceable": true,
+    "resource_state_promoted": false,
+    "local_development_ready_promoted": false,
+    "release_approved_promoted": false,
+    "visual_gate_passed": false,
+    "d19_r03_a02_pass": false
+  }
+}

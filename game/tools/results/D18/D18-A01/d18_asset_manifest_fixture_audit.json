@@ -1,0 +1,131 @@
+{
+  "task": "D18-A01",
+  "tool": "tools/d18_asset_manifest_audit.py",
+  "read_only": true,
+  "registry_modified": false,
+  "status": "BLOCKED",
+  "manifest_count": 7,
+  "manifest_files": [
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\conflict\\source_a.json",
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\conflict\\source_b.json",
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\missing_field\\missing_sha256.json",
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\path_escape\\escape.json",
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\runtime_reference\\unapproved.json",
+    "tools\\tests\\fixtures\\d18_asset_manifest_audit\\state_transition\\illegal.json"
+  ],
+  "error_count": 14,
+  "issue_count": 14,
+  "issue_counts": {
+    "candidate_path_escape": 1,
+    "illegal_state_transition": 1,
+    "invalid_date": 1,
+    "invalid_or_missing_sha256": 1,
+    "license_evidence_missing": 1,
+    "missing_field": 1,
+    "missing_human_reviewer": 1,
+    "missing_release_evidence": 1,
+    "same_file_multiple_sources": 5,
+    "unapproved_runtime_reference": 1
+  },
+  "issues": [
+    {
+      "code": "license_evidence_missing",
+      "message": "license evidence file does not exist or is empty",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+      "pack_id": "pack_fixture_broken_evidence_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_fixture:pack_fixture_broken_evidence_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\conflict\\source_a.json",
+      "pack_id": "pack_fixture_source_a_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_fixture:pack_fixture_broken_evidence_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\conflict\\source_b.json",
+      "pack_id": "pack_fixture_source_b_v1"
+    },
+    {
+      "code": "missing_field",
+      "message": "required field is missing: sha256",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\missing_field\\missing_sha256.json",
+      "pack_id": "pack_fixture_missing_sha_v1"
+    },
+    {
+      "code": "invalid_or_missing_sha256",
+      "message": "sha256 must be the real 64-hex archive digest",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\missing_field\\missing_sha256.json",
+      "pack_id": "pack_fixture_missing_sha_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_fixture:pack_fixture_broken_evidence_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\missing_field\\missing_sha256.json",
+      "pack_id": "pack_fixture_missing_sha_v1"
+    },
+    {
+      "code": "candidate_path_escape",
+      "message": "candidate file path is unsafe: ../../outside/escape.fbx",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\path_escape\\escape.json",
+      "pack_id": "pack_fixture_escape_v1"
+    },
+    {
+      "code": "unapproved_runtime_reference",
+      "message": "a non-approved manifest must not declare runtime consumers",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\runtime_reference\\unapproved.json",
+      "pack_id": "pack_fixture_runtime_ref_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_fixture:pack_fixture_broken_evidence_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\runtime_reference\\unapproved.json",
+      "pack_id": "pack_fixture_runtime_ref_v1"
+    },
+    {
+      "code": "illegal_state_transition",
+      "message": "Candidate -> ReleaseApproved is not allowed",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\state_transition\\illegal.json",
+      "pack_id": "pack_fixture_illegal_state_v1"
+    },
+    {
+      "code": "missing_human_reviewer",
+      "message": "ReleaseApproved requires a responsible human reviewer",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\state_transition\\illegal.json",
+      "pack_id": "pack_fixture_illegal_state_v1"
+    },
+    {
+      "code": "invalid_date",
+      "message": "human_review_date must be an ISO date",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\state_transition\\illegal.json",
+      "pack_id": "pack_fixture_illegal_state_v1"
+    },
+    {
+      "code": "missing_release_evidence",
+      "message": "ReleaseApproved requires a local human review evidence path",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\state_transition\\illegal.json",
+      "pack_id": "pack_fixture_illegal_state_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_fixture:pack_fixture_broken_evidence_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\tests\\fixtures\\d18_asset_manifest_audit\\broken_evidence\\missing_license.json",
+      "severity": "error",
+      "manifest": "tools\\tests\\fixtures\\d18_asset_manifest_audit\\state_transition\\illegal.json",
+      "pack_id": "pack_fixture_illegal_state_v1"
+    }
+  ]
+}

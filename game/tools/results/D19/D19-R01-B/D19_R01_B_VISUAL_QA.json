@@ -1,0 +1,32 @@
+{
+  "task": "D19-R01-B",
+  "review_date": "2026-08-15",
+  "review_mode": "human inspection of Unity visual regression PNGs; not Player/PlayMode acceptance",
+  "criteria": ["pink_or_error_shader", "large_white_or_mint_placeholder_plane", "blockout_or_box_like_silhouette", "shoreline_and_water_readability", "lighting_and_sky", "occlusion_or_intersection"],
+  "summary": {
+    "screenshots_reviewed": 14,
+    "resolution": "1920x1080",
+    "formal_scene_integration_instances": 1,
+    "pink_or_error_shader_found": false,
+    "large_white_or_mint_placeholder_plane_found": false,
+    "visual_quality_conclusion": "PARTIAL",
+    "reason": "The repair removes the dominant white/mint placeholder treatment and adds terrain color separation, roofs, openings, awnings, roads, dock details and shoreline bands. Broad faceted terrain, sparse nearshore composition and box-like low-poly building silhouettes remain visible in the fixed shots."
+  },
+  "shot_results": [
+    {"shot_id":"d19_shot_main_menu","status":"PARTIAL","finding":"Warm ground and port building readable; open ground remains sparse."},
+    {"shot_id":"d19_shot_spawn","status":"PARTIAL","finding":"Dark terrain and palm/building silhouette present; foreground remains broad and low-detail."},
+    {"shot_id":"d19_shot_market","status":"PARTIAL","finding":"Market roof, walls, awning/opening details and props present; close composition still box-like."},
+    {"shot_id":"d19_shot_dock_overview","status":"PARTIAL","finding":"Dock, rails, posts, palms, storage props and water visible; candidate planks remain bright."},
+    {"shot_id":"d19_shot_tavern_entry","status":"PARTIAL","finding":"Door, window, shutters, awning and gabled roof visible; wall scale remains heavy."},
+    {"shot_id":"d19_shot_coastline","status":"PARTIAL","finding":"Dark land, warm shore strip and water boundary visible; distant composition sparse."},
+    {"shot_id":"d19_shot_boarding","status":"PARTIAL","finding":"Boarding surface and collision-proxy visuals readable; flat dockland remains."},
+    {"shot_id":"d19_shot_on_ship","status":"PARTIAL","finding":"Port context, buildings, props and route visible; not a full ship presentation proof."},
+    {"shot_id":"d19_shot_departure","status":"PARTIAL","finding":"Water/sky/reef read without missing-material pink; ocean view is sparse."},
+    {"shot_id":"d19_shot_nearshore","status":"PARTIAL","finding":"Water and reef band visible; lacks richer nearshore detail."},
+    {"shot_id":"d19_shot_weather","status":"PARTIAL","finding":"Harbor, water, sky and lighting context visible; weather presentation remains limited."},
+    {"shot_id":"d19_shot_return_harbor","status":"PARTIAL","finding":"Harbor, dock, buildings, roads and water visible; low-poly terrain remains."},
+    {"shot_id":"d19_shot_settings_accessibility","status":"REGRESSION_CAPTURE_ONLY","finding":"No UI refactor in R01-B; empty visual is not evidence for D22 UI acceptance."},
+    {"shot_id":"d19_shot_debug_boundary","status":"DEBUG_CAPTURE_ONLY","finding":"Boundary view proves coverage framing only; not a player-facing quality claim."}
+  ],
+  "unresolved_visual_debt": ["D19-R01-S02 must reassess camera/ground relationship in real Player", "D19-R01-S02 must validate route-facing dock/boarding assets and ship transition", "D22 owns full HUD/settings readability; R01-B did not change main Canvas", "D18-S03 still owns any LocalDevelopmentReady promotion"]
+}

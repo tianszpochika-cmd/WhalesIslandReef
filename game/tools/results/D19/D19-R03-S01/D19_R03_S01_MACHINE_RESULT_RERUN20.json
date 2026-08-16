@@ -1,0 +1,84 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_RERUN20_V1",
+  "task": "D19-R03-S01",
+  "attempt": "RERUN20_AFTER_NONPOPUP_REAL_PLAYER_RERUN10",
+  "conclusion": "BLOCKED",
+  "historical_results_preserved": [
+    "game/tools/results/D19/D19-R03-S01/D19_R03_S01_MACHINE_RESULT_RERUN19.json",
+    "docs/game/design/common/D19_R03_S01_PREFLIGHT.md"
+  ],
+  "purpose": "汇总最新真实 Player 路线/保存重载证据与既有视觉、性能证据；不启动正式 D19-R02-S02。",
+  "inputs": {
+    "route_machine_result": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN10_MACHINE_RESULT.json",
+    "route_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN10_ROUTE_LOG.json",
+    "route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN10.json (后续短运行覆盖；不作为独立证据)",
+    "reload_player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RELOAD_AFTER_SAVE_RERUN10_PLAYER.log",
+    "visual_machine_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN17.json",
+    "visual_qa": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_VISUAL_QA_RERUN17.json",
+    "performance_machine_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN17.json"
+  },
+  "gate_checks": {
+    "real_player_duration_seconds": 704.296936,
+    "real_player_duration_requirement_met": true,
+    "real_player_resolution": "1920x1080",
+    "movement_observed": true,
+    "character_and_ship_control_observed": true,
+    "interaction_input_observed": true,
+    "save_input_observed": true,
+    "complete_market_warehouse_tavern_dock_board_depart_return_route": false,
+    "route_landmarks_reached": [
+      "anchor.player.spawn",
+      "anchor.dock.primary",
+      "anchor.berth.primary",
+      "building:tavern_santa_margarita"
+    ],
+    "route_landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "save_reload_verified": true,
+    "save_reload_scope": "Continue 在新 Player 中加载成功，InitialHarbor 重建并记录 D19_TerrainRoot 落地；未证明完整离港-返港后保存闭环。",
+    "fixed_player_cameras": "14/14",
+    "fixed_player_cameras_1920x1080": true,
+    "weather_variants": "0/3",
+    "visual_debt_closed": false,
+    "performance_runs": 3,
+    "performance_quality_names": ["Low", "Medium", "High"],
+    "static_regression": {
+      "d19_editmode_passed": 34,
+      "d19_editmode_failed": 0,
+      "d19_playmode_passed": 8,
+      "d19_playmode_failed": 0,
+      "d19_playmode_skipped": 1,
+      "d17_playmode_passed": 7,
+      "d17_playmode_failed": 0,
+      "d18_python_tests_passed": 11,
+      "d18_python_tests_failed": 0
+    },
+    "resource_state_unchanged": true,
+    "systems_or_save_schema_modified": false
+  },
+  "decision": {
+    "formal_d19_r02_s02_allowed": false,
+    "d20_a01_r02_allowed": false,
+    "d20_a02_r02_allowed": false,
+    "d20_s02_r01_allowed": false,
+    "reason": "真实 Player 已证明连续运行、移动、船控、交互输入、保存输入和退出后 Continue 重载，但市场/仓库/船坞/返港完整路线未闭合；A02 的视觉债务与 Rain/Storm 证据仍未闭合。"
+  },
+  "blocking_reasons": [
+    "关键路线仍受不可行走碰撞体恢复警告影响，市场、仓库、船坞、返港未到达。",
+    "保存/重载已通过独立 Continue 恢复检查，但不是完整离港-返港后存档闭环。",
+    "A02 14 个镜头虽有真实文件，但人工视觉仍记录平坦地表/码头、块状建筑和近岸代理几何。",
+    "Rain/Storm 真实玩家镜头为 0/3。"
+  ],
+  "validation": {
+    "route_player": "真实非弹窗 Windows Player；键鼠输入；704.296936 秒；16 张 1920x1080 PNG",
+    "reload_player": "真实新 Player；MainMenu Continue；日志记录 save load success、InitialHarbor 重建和落地",
+    "json_validation": "本结果、RERUN10 路线/机器 JSON 与 RERUN11 短运行归档可解析",
+    "evidence_integrity_note": "RERUN10 原始 runtime probe 被后续误复用参数的短运行覆盖；704 秒事实仍由已保存路线日志、Player 日志、16 张截图、机器结果和 Continue 重载日志支撑。",
+    "scoped_git_diff_check": "待本轮文件写入后执行",
+    "full_git_diff_check": "历史受 InitialHarbor 既有换行/尾随空白影响，不清理无关场景"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "task_id": "D19-R02-A04",
+  "attempt": "RERUN4",
+  "conclusion": "PARTIAL",
+  "historical_result_preserved": true,
+  "scene": {
+    "path": "game/Assets/Scenes/InitialHarbor.unity",
+    "integration_root": "D19_R02_HarborPresentation",
+    "latest_scene_sha256": "53861A681D9C59C4635CC3D037868C37F1D06CB54A9F22B6DE88F12B2026DCEB",
+    "rollback_snapshot": "game/tools/results/D19/D19-R02-A04/rollback_InitialHarbor_20260815_180000_pre_rerun2.unity",
+    "latest_editor_audit": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITOR_AUDIT.json",
+    "renderer_count": 101,
+    "collider_count": 1,
+    "terrain_mesh_vertices": 1936,
+    "world_bounds_size_m": [39.6, 4.41, 39.6]
+  },
+  "targeted_change": {
+    "legacy_visual_subtrees_hidden": [
+      "D19_R01_B_DockMarketProps_Approved",
+      "D19_R01_B_PortModules_Approved"
+    ],
+    "hidden_renderer_count_from_build_log": 16,
+    "stable_interaction_anchors_preserved": true,
+    "external_resource_status_changed": false,
+    "local_development_ready_changed": false,
+    "release_approved_changed": false,
+    "systems_changed": false,
+    "save_schema_changed": false
+  },
+  "automated_verification": {
+    "editmode_xml": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITMODE_TESTS_RERUN4.xml",
+    "editmode_total": 3,
+    "editmode_passed": 3,
+    "editmode_failed": 0,
+    "builder_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_BUILD_RERUN4.log",
+    "builder_result": "PASS",
+    "editor_audit_rerun_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_EDITOR_AUDIT_RERUN4.log",
+    "git_diff_check": "NOT_YET_RECORDED_IN_THIS_RESULT"
+  },
+  "real_player": {
+    "visual_capture": "game/tools/results/D19/D19-R02-A04/screenshots/rerun4_spawn_after_subtree_hide_medium_request.jpg",
+    "player_binary": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_Player_RERUN4.exe",
+    "input_log": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PLAYER_RERUN4_MEDIUM_INPUT.log",
+    "requested_resolution": [1920, 1080],
+    "exact_backbuffer_proven": false,
+    "spawn_landing": "PASS_OBSERVED",
+    "landing_log": "[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68",
+    "complete_route": "NOT_RUN",
+    "fixed_shots": {"verified": 0, "required": 14},
+    "visual_conclusion": "PARTIAL",
+    "visual_findings": [
+      "legacy colormap subtrees are disabled in the latest scene dump",
+      "the real Player still reads as low-poly/temporary in the observed spawn composition",
+      "a red rope/line and dark dock posts remain visually prominent",
+      "broad low-detail terrain and incomplete fixed-camera/weather evidence remain"
+    ]
+  },
+  "performance": {
+    "rerun3": {
+      "file": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PERFORMANCE_1080P_RERUN3.json",
+      "sample_count": 495,
+      "average_fps": 59.82585144042969,
+      "min_fps": 17.067583084106447,
+      "average_frame_ms": 16.824934005737306,
+      "average_main_thread_ms": 4.300500869750977,
+      "gpu_time_ms": 0.7660397887229919,
+      "peak_reserved_bytes": 202190848,
+      "quality_tier": "not_proven"
+    },
+    "rerun4_medium_requested": {
+      "file": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_PERFORMANCE_1080P_RERUN4_MEDIUM_REQUEST.json",
+      "sample_count": 1235,
+      "average_fps": 59.93788146972656,
+      "min_fps": 19.423625946044923,
+      "average_frame_ms": 16.71027374267578,
+      "average_main_thread_ms": 4.892550468444824,
+      "gpu_time_ms": 0.731995165348053,
+      "peak_reserved_bytes": 206385152,
+      "quality_tier": "requested_medium_not_runtime_proven"
+    },
+    "low_medium_high_complete": false,
+    "weather_variants_complete": false
+  },
+  "unresolved": [
+    "visual quality is not a fixed-shot PASS",
+    "the 5-10 minute player route and save/reload were not run in A04",
+    "1920x1080 Low/Medium/High tier identity is not proven",
+    "D2 recovery/route integration and weather variants remain downstream evidence"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "task_id": "D19-R02-A02",
+  "rerun_id": "RERUN5",
+  "status": "PARTIAL",
+  "steps": [
+    {
+      "step": "main_menu_new_game",
+      "input": "Real Player window: New Game click, then Confirm click",
+      "result": "PASS",
+      "evidence": "D19_R02_A02_PLAYER_RERUN5_INPUT.log; 01_rerun5_menu.jpg; 02_rerun5_new.jpg"
+    },
+    {
+      "step": "initial_harbor_and_ground",
+      "input": "Real Player loaded at 1920x1080 arguments; no inspector call",
+      "result": "PASS",
+      "observed": "InitialHarbor loaded and Player.log records D19_TerrainRoot grounding",
+      "evidence": "D19_R02_A02_PLAYER_RERUN5_INPUT.log; 03_rerun5_spawn.jpg"
+    },
+    {
+      "step": "market_b",
+      "input": "Real Player B input",
+      "result": "PASS",
+      "observed": "Trade panel opened and was closed by real mouse click",
+      "evidence": "D19_R02_A02_PLAYER_RERUN5_INPUT.log; 09_rerun5_after_b.jpg"
+    },
+    {
+      "step": "repeated_left_movement",
+      "input": "80 repeated real Player A key events at approximately 25ms spacing",
+      "result": "PASS_OBSERVED",
+      "observed": "Player pose/orientation and view composition changed relative to the before-input frame; no direct transform injection was used",
+      "evidence": "04_rerun5_before_move.jpg; 10_rerun5_repeated_a.jpg"
+    },
+    {
+      "step": "repeated_forward_movement",
+      "input": "120 repeated real Player W key events at approximately 25ms spacing",
+      "result": "PASS_OBSERVED",
+      "observed": "Player/view composition changed again after the movement sequence",
+      "evidence": "10_rerun5_repeated_a.jpg; 11_rerun5_repeated_w.jpg"
+    },
+    {
+      "step": "player_shutdown",
+      "input": "Real Player Alt+F4",
+      "result": "PASS",
+      "observed": "Player process stopped; no Unity/Player process remained",
+      "evidence": "D19_R02_A02_PLAYER_RERUN5_INPUT.log; process check recorded in session output"
+    }
+  ],
+  "automated_regression": {
+    "editmode": "3/3 PASS",
+    "playmode": "2/2 PASS",
+    "historical_board_disembark_cycles": "10/10 PASS retained",
+    "historical_unsafe_disembark": "1/1 rejection retained"
+  },
+  "not_claimed": [
+    "No 300-second final D19 route PASS",
+    "No warehouse/tavern/NPC/boarding/return/save-reload route PASS",
+    "No 1920x1080 Low/Medium/High performance PASS",
+    "No 14 fixed Player camera matrix or weather matrix PASS"
+  ]
+}

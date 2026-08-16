@@ -1,0 +1,44 @@
+{
+  "task_id": "D19-R02-A01",
+  "status": "PARTIAL",
+  "owner": "RuntimeHudCoordinator_and_D19RouteHud",
+  "version": "r02-a01-v1",
+  "default_player_mode": {
+    "primary_canvas": "D19RouteHud",
+    "screen_anchor": "bottom_center",
+    "temporary_canvas_policy": "mutually_exclusive"
+  },
+  "public_entries": [
+    { "name": "ApplyNow", "kind": "display_policy_refresh", "writes_gameplay_facts": false },
+    { "name": "ShowTemporaryCanvas", "kind": "temporary_focus_request", "allowed_values": ["D2HintCanvas", "D3Canvas"], "writes_gameplay_facts": false },
+    { "name": "RestorePrimaryHud", "kind": "focus_restore", "writes_gameplay_facts": false },
+    { "name": "SetPaused", "kind": "pause_visual_state", "writes_gameplay_facts": false }
+  ],
+  "canvas_rules": [
+    { "canvas": "D19RouteHud", "default": "visible", "interactive": false, "owner": "D19-R02-A01" },
+    { "canvas": "D2HintCanvas", "default": "hidden", "visible_only_when": "temporary_focus=D2HintCanvas", "owner": "D2" },
+    { "canvas": "D3Canvas", "default": "hidden", "visible_only_when": "temporary_focus=D3Canvas", "owner": "D3" },
+    { "canvas": "D5Canvas", "default": "hidden", "owner": "D5" },
+    { "canvas": "D6TutorialCanvas", "default": "hidden", "owner": "D6" },
+    { "canvas": "D7StatusCanvas", "default": "hidden", "owner": "D7" },
+    { "canvas": "D9VoyageHud", "default": "hidden", "owner": "D9" },
+    { "canvas": "D9PortServicePage", "default": "hidden", "owner": "D9" },
+    { "canvas": "D10TavernSocialPage", "default": "hidden", "owner": "D10" }
+  ],
+  "read_only_sources": [
+    "D2ControlRouter.Hint",
+    "D3RuntimeBootstrap availability",
+    "D19RouteHud status and feedback strings"
+  ],
+  "feedback_policy": {
+    "placeholder_success_or_failure_text": false,
+    "feedback_writer": "D2/D3 owning system through its existing public route",
+    "hud_behavior_when_no_feedback": "empty_feedback_line"
+  },
+  "compatibility": {
+    "legacy_canvas_names_preserved": true,
+    "stable_gameplay_ids_changed": false,
+    "system_ownership_changed": false,
+    "formal_scene_changed": false
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "task": "D20-A02",
+  "status": "BLOCKED",
+  "read_only": true,
+  "implementation_started": false,
+  "implementation_allowed": false,
+  "a01_interface_path": "game/tools/results/D20/D20-A01/D20_A01_PLAYER_VISUAL_INTERFACE.json",
+  "a01_observed": {
+    "status": "PARTIAL",
+    "rig_interface_ready": false,
+    "base_prefab_path": "game/Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_Neutral.prefab",
+    "skeleton_avatar": {
+      "source_manifest_id": "pack_kenney_blocky_characters_d18_a04_v1",
+      "source_intake_id": "intake_3469c541b7a7968018ba",
+      "content_id": "asset_kenney_blocky_character_a_v01",
+      "candidate_path": "game/Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/Models/character-a.fbx",
+      "animation_type": "Generic",
+      "avatar_setup": "NoAvatar",
+      "avatar_present": false,
+      "source_bone_count": 8,
+      "source_mesh_count": 6,
+      "source_animation_clip_count": 27,
+      "source_material_count": 1,
+      "source_bounds_valid": true,
+      "source_max_dimension_m": 9.0,
+      "prefab_scale": [
+        1,
+        1,
+        1
+      ],
+      "runtime_scale_normalization_required": true,
+      "humanoid_mapping_status": "OPEN_GENERIC_NO_AVATAR",
+      "root_motion": false
+    },
+    "stable_fallback": {
+      "kind": "D17_programmatic_fallback",
+      "owner": "D2FallbackHumanoidBuilder/D2CharacterController",
+      "trigger": "missing_resource_or_unverified_avatar",
+      "preserves_gameplay_state": true,
+      "preserves_appearance_history": true,
+      "writes_save_or_identity": false
+    }
+  },
+  "d18_legal_action_candidate_summary": {
+    "eligible_entry_count_for_d20_a02": 5,
+    "manifest_ids": [
+      "pack_kenney_blocky_characters_d18_a04_v1",
+      "pack_quaternius_animated_men_d18_a04_v1"
+    ],
+    "evidence_handoff": "docs/game/design/common/handoffs/D18/D18-A04-R01_HANDOFF.md",
+    "known_evidence": "24 imported FBX candidates and 228 source clips; no Avatar/Animator consumer evidence."
+  },
+  "checks": {
+    "a01_interface_exists": true,
+    "a01_interface_json_valid": true,
+    "a01_rig_interface_ready": false,
+    "a01_base_prefab_exists": true,
+    "a01_avatar_present": false,
+    "a01_not_generic_no_avatar": false,
+    "a01_fallback_declared": true,
+    "d18_action_evidence_present": true,
+    "d20_standard_present": true,
+    "legacy_controller_present": true
+  },
+  "blockers": [
+    {
+      "id": "D20-A01-RIG-INTERFACE-NOT-READY",
+      "reason": "D20-A01 interface explicitly sets rig_interface_ready=false.",
+      "observed": false
+    },
+    {
+      "id": "D20-A01-AVATAR-UNVERIFIED",
+      "reason": "The admitted player source is Generic/NoAvatar and has no Avatar; A02 cannot safely retarget player actions.",
+      "animation_type": "Generic",
+      "avatar_setup": "NoAvatar",
+      "avatar_present": false
+    }
+  ],
+  "planned_action_mapping_not_implemented": {
+    "locomotion": [
+      "Idle",
+      "Walk",
+      "Run"
+    ],
+    "airborne": [
+      "Jump",
+      "Fall",
+      "Land"
+    ],
+    "interaction": [
+      "Interact",
+      "Talk",
+      "Carry",
+      "Fish",
+      "Helm"
+    ],
+    "ship": [
+      "Board",
+      "Disembark"
+    ],
+    "optional": [
+      "Hit",
+      "Recover"
+    ],
+    "snapshot_inputs": [
+      "grounded",
+      "speed01",
+      "vertical_speed",
+      "control_mode",
+      "interaction_kind",
+      "action_intent",
+      "health_band_or_hit_event",
+      "lod_band"
+    ],
+    "root_motion": "false; D17 CharacterController remains the only movement writer"
+  },
+  "artifacts_not_created_due_to_gate": [
+    "game/Assets/Animations/D20/Player/ Animator Controller or Override",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/ runtime adapter",
+    "D20-A02 Unity/PlayMode screenshots and action regression evidence"
+  ],
+  "next_gate": "D20-A01 must publish rig_interface_ready=true with verified Avatar/skeleton/Prefab evidence before rerunning D20-A02."
+}

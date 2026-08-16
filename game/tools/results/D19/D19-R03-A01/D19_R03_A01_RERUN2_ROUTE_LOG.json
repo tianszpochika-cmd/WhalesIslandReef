@@ -1,0 +1,92 @@
+{
+  "schema": "D19_R03_A01_RERUN2_ROUTE_LOG_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN2",
+  "conclusion": "PARTIAL",
+  "capture": {
+    "started_at_local": "2026-08-16",
+    "player_build": "D19_R03_A01_Player_RERUN2.exe",
+    "scene": "InitialHarbor",
+    "resolution": "1920x1080 launch arguments",
+    "input_mode": "real Player window keyboard taps via computer-use",
+    "duration_seconds": 584.5516357421875,
+    "continuous_held_wasd_proven": false,
+    "screenshots": 12,
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN2.json"
+  },
+  "steps": [
+    {
+      "step": "new_game",
+      "stable_id": "flow.new_game",
+      "input": "click New Game; type R03RouteRerun2; click confirm",
+      "result": "PASS",
+      "feedback": "Real Player loaded InitialHarbor and created D2_PlayerAvatar.",
+      "screenshot": "route_rerun2_menu_00.jpg"
+    },
+    {
+      "step": "spawn_and_ground",
+      "stable_id": "anchor.player.spawn",
+      "input": "none",
+      "result": "PASS",
+      "feedback": "Runtime probe observed player/controller/router and grounded=true observations.",
+      "screenshot": "route_rerun2_spawn_03.jpg"
+    },
+    {
+      "step": "movement",
+      "stable_id": "route.movement",
+      "input": "repeated real W/A/S/Escape-free key taps",
+      "result": "PARTIAL",
+      "feedback": "Movement and displacement were observed; continuous held-WASD was not proven.",
+      "screenshot": "route_rerun2_market_01.jpg"
+    },
+    {
+      "step": "market",
+      "stable_id": "building:market_santa_margarita",
+      "input": "movement taps toward the market area",
+      "result": "NOT_REACHED",
+      "feedback": "The runtime coordinate landmark was not reached and the named object lookup was false.",
+      "screenshot": "route_rerun2_market_01.jpg"
+    },
+    {
+      "step": "warehouse",
+      "stable_id": "building:warehouse_santa_margarita",
+      "input": "not completed",
+      "result": "NOT_RUN",
+      "feedback": "No verified warehouse interaction or object resolution.",
+      "screenshot": null
+    },
+    {
+      "step": "tavern_and_npc",
+      "stable_id": "building:tavern_santa_margarita",
+      "input": "movement taps and E interaction",
+      "result": "OBSERVED_PARTIAL",
+      "feedback": "Coordinate proximity and interaction input were observed; no durable dialogue outcome was captured.",
+      "screenshot": "route_rerun2_tavern_05.jpg"
+    },
+    {
+      "step": "dock_and_berth",
+      "stable_id": "anchor.dock.primary",
+      "input": "real Player movement taps and E",
+      "result": "OBSERVED",
+      "feedback": "Dock and berth proximity events were recorded; ship control mode and boarding feedback were visible in the Player.",
+      "screenshot": "route_rerun2_dock_interaction_07.jpg"
+    },
+    {
+      "step": "board_disembark",
+      "stable_id": "flow.board_depart_return",
+      "input": "E in the dock/ship area",
+      "result": "OBSERVED_PARTIAL",
+      "feedback": "Ship control and later disembark feedback were visible; departure and return-to-harbor were not proven.",
+      "screenshots": ["route_rerun2_dock_06.jpg", "route_rerun2_disembark_04.jpg"]
+    },
+    {
+      "step": "save_reload",
+      "stable_id": "flow.save_reload",
+      "input": "F5 taps were attempted; Player was then closed",
+      "result": "NOT_PROVEN",
+      "feedback": "Probe save_input_observed=false and no subsequent reload verification was performed.",
+      "screenshot": "route_rerun2_save_03.jpg"
+    }
+  ],
+  "route_assessment": "This is valid real-Player movement/interation evidence and a duration gate, not a complete route/save-reload PASS."
+}

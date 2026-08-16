@@ -1,0 +1,81 @@
+{
+  "task_id": "D19-R02-A05",
+  "conclusion": "PASS",
+  "scope": "主项目 D19 PlayMode 测试执行链健康；不代表 D19 最终 Player 路线、视觉或性能放行",
+  "date_local": "2026-08-15",
+  "historical_timeout_preserved": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_PLAYMODE_TIMEOUT.json",
+  "historical_timeout_status": "NOT_REPRODUCED",
+  "runner": {
+    "unity_version": "6000.0.80f1",
+    "test_framework": "com.unity.test-framework 1.4.5",
+    "performance_testing_package_observed": "com.unity.test-framework.performance 3.0.3 (transitive)",
+    "prebuild_callback_observed": "Unity.PerformanceTesting.Editor.TestRunBuilder completed",
+    "postbuild_callback_observed": "Unity.PerformanceTesting.Editor.TestRunBuilder completed",
+    "xml_generation": "PASS",
+    "source_runner_change": false,
+    "test_deletion_or_skip_injection": false,
+    "isolated_project_used_to_hide_failure": false
+  },
+  "reproduction": {
+    "command_file": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_COMMANDS.txt",
+    "log": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_REPRO_SINGLE.log",
+    "xml": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_REPRO_SINGLE.xml",
+    "filter": "Whalebone.Tests.D19Hud.D19R02A01HudPlayModeTests.InitialHarborKeepsOnePrimaryHudAndSuppressesLegacyPages",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "result": "PASS"
+  },
+  "d19_playmode": {
+    "log": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_PLAYMODE.log",
+    "xml": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_PLAYMODE.xml",
+    "filter": "D19",
+    "total": 9,
+    "passed": 8,
+    "failed": 0,
+    "skipped": 1,
+    "ignored_test": "WhalesIslandReef.Tests.D19A01.D19A01TerrainPlayModeTests.WorkSceneProbeReportsGroundAndNavMesh",
+    "ignored_reason": "该用例要求先打开 D19_Terrain_Work；主项目 InitialHarbor 测试运行未伪造该工作场景条件。",
+    "result": "PASS_WITH_DECLARED_IGNORED_WORK_SCENE_TEST"
+  },
+  "d17_playmode": {
+    "log": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_D17_PLAYMODE.log",
+    "xml": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_D17_PLAYMODE.xml",
+    "filter": "D17",
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "result": "PASS"
+  },
+  "d19_editmode": {
+    "log": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_EDITMODE.log",
+    "xml": "game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_EDITMODE.xml",
+    "assembly": "Save.Tests",
+    "filter": "D19",
+    "total": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "result": "PASS"
+  },
+  "compile_diagnostics": {
+    "d20_presentation_missing_namespace_in_current_logs": false,
+    "error_cs_count_in_task_logs": 0,
+    "runner_completion_count": 4,
+    "note": "历史报告中的 D20 Presentation 缺失错误在本轮主项目测试日志中没有复现；未删除或修改 D20 测试来得到该结果。"
+  },
+  "root_cause_assessment": {
+    "status": "NOT_REPRODUCED",
+    "supported_observation": "同一主项目、同一 PerformanceTestRunBuilder 路径已完成 prebuild、测试、postbuild 并生成 XML。",
+    "not_proven": "不能仅凭本轮成功把历史 timeout 归因于某一个资产、脚本或 Unity 缓存；历史启动/编译状态仍保留为待追溯信息。",
+    "action_taken": "没有禁用 PerformanceTesting、修改 Packages、删除测试、改用隔离项目或伪造超时为通过。"
+  },
+  "remaining_limits": [
+    "D19A01 工作场景探针在主项目运行中保持 Ignore，这是测试自身前置条件而非 runner 故障。",
+    "本结果不包含真实 Player 300 秒路线、14 个固定 Player 镜头或 Low/Medium/High 目标设备性能。",
+    "D19-R02-S02 仍需按其门禁重新完成真实路线、保存恢复、性能与视觉验收。"
+  ],
+  "git_diff_check": "RECORDED_IN_HANDOFF"
+}

@@ -1,0 +1,77 @@
+{
+  "task_id": "D20-A03",
+  "npc_visual_interface_ready": true,
+  "read_only_consumer": "D20-A04",
+  "review_status": "Candidate",
+  "catalog_source": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+  "catalog_status_required": "PASS",
+  "external_resource_rule": "Only the catalog's intake_eligible human entries were used.",
+  "prefab_root_rule": "Each root is an NPC visual object only; NPC behavior, identity, relation, economy, dialogue and spawn ownership remain outside this packet.",
+  "skeleton_compatibility": {
+    "source_rig": "Generic",
+    "humanoid_avatar_present": false,
+    "d20_forward": "+Z",
+    "d20_up": "+Y",
+    "visual_target_height_m": 1.8,
+    "visual_scale_applied": 34.63,
+    "root_scale": [1, 1, 1],
+    "root_motion": false,
+    "animator_culling": "CullUpdateTransforms",
+    "compatibility": "Generic imported source; Humanoid retargeting remains a later review boundary."
+  },
+  "base_models": [
+    {
+      "content_id": "crew_quaternius_male_casual_v01",
+      "intake_id": "intake_5d107817ad7b175e314f",
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Casual.fbx",
+      "role": "candidate_port_civilian_visual",
+      "intake_eligible": true,
+      "used_by_prefabs": ["npc_d20_dock_clerk_01", "npc_d20_net_mender_01", "npc_d20_tavern_cook_01", "npc_d20_common_resident_01"]
+    },
+    {
+      "content_id": "crew_quaternius_male_long_sleeve_v01",
+      "intake_id": "intake_056788df3277d7e0e895",
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_LongSleeve.fbx",
+      "role": "candidate_port_merchant_visual",
+      "intake_eligible": true,
+      "used_by_prefabs": ["npc_d20_shore_trader_01", "npc_d20_shore_trader_02", "npc_d20_boatbuilder_01", "npc_d20_sailmaker_01", "npc_d20_harbor_watch_proxy"]
+    },
+    {
+      "content_id": "crew_quaternius_male_shirt_v01",
+      "intake_id": "intake_d11f95bb5ad82fa1ef4e",
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Shirt.fbx",
+      "role": "candidate_sailor_visual",
+      "intake_eligible": true,
+      "used_by_prefabs": ["npc_d20_deckhand_01", "npc_d20_rigger_01", "npc_d20_fisher_01"]
+    }
+  ],
+  "npc_visuals": [
+    { "npc_id": "npc_d15_a07_instance_0001", "resource_key": "npc_d20_deckhand_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_deckhand_01.prefab", "role": "deckhand", "source_content_id": "crew_quaternius_male_shirt_v01", "cloth": "cloth_ochre", "skin": "skin_warm", "headwear": "straw_hat", "tool": "rope_coil", "era_review": "period_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0002", "resource_key": "npc_d20_rigger_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_rigger_01.prefab", "role": "rigger", "source_content_id": "crew_quaternius_male_shirt_v01", "cloth": "cloth_sea_green", "skin": "skin_medium", "headwear": "headwrap", "tool": "rope_coil", "era_review": "period_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0008", "resource_key": "npc_d20_shore_trader_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_shore_trader_01.prefab", "role": "shore_trader", "source_content_id": "crew_quaternius_male_long_sleeve_v01", "cloth": "cloth_navy", "skin": "skin_warm", "headwear": "broad_hat", "tool": "ledger", "era_review": "merchant_silhouette_review_required" },
+    { "npc_id": "npc_d15_a07_instance_0028", "resource_key": "npc_d20_shore_trader_02", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_shore_trader_02.prefab", "role": "shore_trader", "source_content_id": "crew_quaternius_male_long_sleeve_v01", "cloth": "cloth_burgundy", "skin": "skin_deep", "headwear": "broad_hat", "tool": "ledger", "era_review": "merchant_silhouette_review_required" },
+    { "npc_id": "npc_d15_a07_instance_0006", "resource_key": "npc_d20_dock_clerk_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_dock_clerk_01.prefab", "role": "dock_clerk", "source_content_id": "crew_quaternius_male_casual_v01", "cloth": "cloth_russet", "skin": "skin_medium", "headwear": "straw_hat", "tool": "dock_hook", "era_review": "period_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0020", "resource_key": "npc_d20_net_mender_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_net_mender_01.prefab", "role": "net_mender", "source_content_id": "crew_quaternius_male_casual_v01", "cloth": "cloth_cream", "skin": "skin_deep", "headwear": "headwrap", "tool": "net_needle", "era_review": "period_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0004", "resource_key": "npc_d20_fisher_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_fisher_01.prefab", "role": "fisher", "source_content_id": "crew_quaternius_male_shirt_v01", "cloth": "cloth_sea_green", "skin": "skin_deep", "headwear": "straw_hat", "tool": "fishing_pole", "era_review": "period_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0010", "resource_key": "npc_d20_tavern_cook_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_tavern_cook_01.prefab", "role": "cook", "source_content_id": "crew_quaternius_male_casual_v01", "cloth": "cloth_burgundy", "skin": "skin_warm", "headwear": "headwrap", "tool": "serving_tray", "era_review": "tavern_role_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0005", "resource_key": "npc_d20_boatbuilder_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_boatbuilder_01.prefab", "role": "boatbuilder", "source_content_id": "crew_quaternius_male_long_sleeve_v01", "cloth": "cloth_ochre", "skin": "skin_medium", "headwear": "headwrap", "tool": "mallet", "era_review": "shipyard_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0014", "resource_key": "npc_d20_sailmaker_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_sailmaker_01.prefab", "role": "sailmaker", "source_content_id": "crew_quaternius_male_long_sleeve_v01", "cloth": "cloth_cream", "skin": "skin_deep", "headwear": "straw_hat", "tool": "sail_needle", "era_review": "shipyard_workwear_candidate" },
+    { "npc_id": "npc_d15_a07_instance_0018", "resource_key": "npc_d20_harbor_watch_proxy", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_harbor_watch_proxy.prefab", "role": "harbor_watch_official_proxy", "source_content_id": "crew_quaternius_male_long_sleeve_v01", "cloth": "cloth_indigo", "skin": "skin_deep", "headwear": "broad_hat", "tool": "staff", "era_review": "official_identity_human_review_required" },
+    { "npc_id": "npc_d15_a07_instance_0009", "resource_key": "npc_d20_common_resident_01", "prefab_path": "Assets/Prefabs/Characters/D20/NPC/npc_d20_common_resident_01.prefab", "role": "common_resident", "source_content_id": "crew_quaternius_male_casual_v01", "cloth": "cloth_russet", "skin": "skin_warm", "headwear": "none", "tool": "basket", "era_review": "common_resident_candidate" }
+  ],
+  "readable_role_set": ["deckhand", "rigger", "shore_trader", "dock_clerk", "net_mender", "fisher", "cook", "boatbuilder", "sailmaker", "harbor_watch_official_proxy", "common_resident"],
+  "far_distance_fallback": {
+    "near": "full source renderers plus role silhouette modules",
+    "mid": "same renderers under LODGroup; Animator culls transforms",
+    "far": "low-detail capsule FarProxy, no gameplay collision or interaction semantics",
+    "culling_distance_guidance_m": [0, 12, 32, 80]
+  },
+  "real_gaps": [
+    "All selected human sources are Generic/NoAvatar; Humanoid retargeting is not asserted.",
+    "Only three independent human source models are used; 12 entries are controlled material/prop combinations, not 12 independent meshes.",
+    "Male_Suit was excluded because D18 review rejected direct 1675 clothing use.",
+    "No dedicated historical guard/official source exists; harbor_watch_official_proxy is a visual placeholder requiring human history review.",
+    "No female or fully reviewed 1675-era human base is present in this task's intake scope.",
+    "No formal runtime consumer, scene placement, NPC behavior, dialogue, identity, faction, relation or save write is included."
+  ]
+}

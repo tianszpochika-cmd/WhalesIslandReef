@@ -1,0 +1,636 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-15T19:53:16.7229763Z"
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-15T19:53:16Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder.BuildFromMenu
+-logFile
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D20\D20-A01-R02\D20_A01_R02_BUILD_RERUN1.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [39336]  Target information:
+
+Player connection [39336]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 2456056049 [EditorId] 2456056049 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [39336] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [39336] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 24864, path: "C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              1f29702c4d604e88b7fb200cb5b4ff2e
+  Correlation Id:          32f54cd3b0b42de4a0f8c4a66011e94d
+  External correlation Id: 3989683527285432759
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.00s, validation: 0.00s, handshake: 0.03s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-15T19:53:16.7519769Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T20:21:21Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T20:21:21Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 0.03s
+[Package Manager] Connected to IPC stream "Upm-37648" after 0.2 seconds.
+Library Redirect Path: Library/
+FMOD initialized on nosound output
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.31 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Ti (ID=0x2782)
+    Vendor:   NVIDIA
+    VRAM:     11996 MB
+    Driver:   32.0.15.9636
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56648
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001502 seconds.
+- Loaded All Assemblies, in  0.227 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.212 seconds
+Domain Reload Profiling: 439ms
+	BeginReloadAssembly (58ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (106ms)
+		LoadAssemblies (56ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (104ms)
+			TypeCache.Refresh (102ms)
+				TypeCache.ScanAssembly (91ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (213ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (182ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (90ms)
+			ProcessInitializeOnLoadMethodAttributes (37ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T20:21:21Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Assembly for Assembly Definition File 'Assets/Tests/EditMode/D19/D19A02.Tests.asmdef' will not be compiled, because it has no scripts associated with it.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:LogFormat (UnityEngine.LogType,string,object[])
+UnityEngine.Debug:LogWarningFormat (string,object[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:WarnIfThereAreAssembliesWithoutAnyScripts (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings,UnityEditor.Scripting.ScriptCompilation.ScriptAssembly[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScriptsWithSettings (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface/<>c__DisplayClass21_0:<CompileScripts>b__0 ()
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:EmitExceptionAsError<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus> (System.Func`1<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus>,UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 2s100ms
+[ 773/1009  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1005/1009  0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+Assets\Editor\D19Water\D19WaterWorkBuilder.cs(343,42): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Editor\D19A01\D19A01TerrainBuilder.cs(389,93): warning CS0618: 'StaticEditorFlags.NavigationStatic' is obsolete: 'Enum member StaticEditorFlags.NavigationStatic has been deprecated. The precise selection of the objects is now done using NavMeshBuilder.CollectSources() and NavMeshBuildMarkup.'
+[1006/1009  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 130 defines and 325 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[1007/1009  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[1008/1009  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (2.08 seconds), 5 items updated, 1009 evaluated
+Assets\Editor\D19Water\D19WaterWorkBuilder.cs(343,42): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Editor\D19A01\D19A01TerrainBuilder.cs(389,93): warning CS0618: 'StaticEditorFlags.NavigationStatic' is obsolete: 'Enum member StaticEditorFlags.NavigationStatic has been deprecated. The precise selection of the objects is now done using NavMeshBuilder.CollectSources() and NavMeshBuildMarkup.'
+AssetDatabase: script compilation time: 2.466666s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.224 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Start importing Assets/Editor/D20A01R02 using Guid(b1c25bd6d6c11ae438f103f1ccf626ff) (DefaultImporter) -> (artifact id: 'cba304ae449ae457ac98ceb1d4ec55ca') in 0.0197212 seconds
+Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.902 seconds
+Domain Reload Profiling: 3124ms
+	BeginReloadAssembly (209ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (123ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (963ms)
+		LoadAssemblies (864ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (149ms)
+			TypeCache.Refresh (94ms)
+				TypeCache.ScanAssembly (86ms)
+			BuildScriptInfoCaches (45ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (1903ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1751ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (87ms)
+			ProcessInitializeOnLoadAttributes (1614ms)
+			ProcessInitializeOnLoadMethodAttributes (36ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=c0b5624902984054fb9d20451ec95d79): Total: 6.308 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=2 ms, native=2347 ms
+		Asset DB Callback time: managed=207 ms, native=21 ms
+		Scripting: domain reloads=1, domain reload time=1224 ms, compile time=2468 ms, other=35 ms
+		Project Asset Count: scripts=1485, non-scripts=7894
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 19.604ms
+	ApplyChangesToAssetFolders: 0.442ms
+	Scan: 188.053ms
+	OnSourceAssetsModified: 0.660ms
+	CategorizeAssetsWithTransientArtifact: 33.086ms
+	ProcessAssetsWithTransientArtifactChanges: 48.431ms
+	CategorizeAssets: 60.149ms
+	ImportOutOfDateAssets: 1932.477ms (-560.715ms without children)
+		ImportManagerImport: 23.202ms (3.189ms without children)
+			ImportInProcess: 19.995ms
+			UpdateCategorizedAssets: 0.018ms
+		CompileScripts: 2467.856ms
+		ReloadNativeAssets: 0.018ms
+		UnloadImportedAssets: 0.562ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.895ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.657ms
+	PostProcessAllAssets: 208.938ms
+	Hotreload: 1.660ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 1.198ms
+	PersistCurrentRevisions: 0.326ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 3.942ms
+	Untracked: 3813.164ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.004ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-WhalesIslandReef
+Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6249 unused Assets / (4.9 MB). Loaded Objects now: 6950.
+Memory consumption went from 208.0 MB to 203.1 MB.
+Total: 7.444400 ms (FindLiveObjects: 0.555700 ms CreateObjectMapping: 0.649000 ms MarkObjects: 4.437500 ms  DeleteObjects: 1.799900 ms)
+
+Asset Pipeline Refresh (id=707ec25b11ad4ba459c6d68037463596): Total: 0.061 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02 using Guid(643006489efd84d41867396204e53965) (DefaultImporter) -> (artifact id: '36febf655d280062a1228d32c47654fe') in 0.0089684 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=1af892d66e4c393439e3838f25a5d802): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance using Guid(0697dd652ebe1a846a240d24c1ddbf4b) (DefaultImporter) -> (artifact id: '96d1cca1d671ee624f9d71d4d023127d') in 0.008864 seconds
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f89bdf214a398aa48bc89b874cae4e20): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D20 using Guid(81d9036747023f846b8a0aed08bca8d1) (DefaultImporter) -> (artifact id: '8ec603d8a61212fc8405f81210cc6e52') in 0.0084075 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=3902e634c6379cc4791a9be1f129f7b0): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D20/R02 using Guid(85f2826c8a83aeb4bacd16394332233b) (DefaultImporter) -> (artifact id: '9c9b7702a1acd558ad2da998ab033de6') in 0.009985 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b3181a9004d058745b1ba8f5cd134354): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D20/R02/Work using Guid(72708b4434516f8479922edf3782c5fb) (DefaultImporter) -> (artifact id: '70e066f4117ba9be4676cbcc46158c77') in 0.0092946 seconds
+Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=bc9b138e27a46474f8457559db0c7d7e): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerVisual_Female.prefab using Guid(d64eebfd5380e80489be5a6414c3e2b7) (PrefabImporter) -> (artifact id: '72aa0b8cbe5c439e10791b4813a3d59e') in 0.0123193 seconds
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b43d156f2c988bb418d35d626459ad6d): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerVisual_Male.prefab using Guid(8722addcaf5ff65489039dd0d44e2f5c) (PrefabImporter) -> (artifact id: 'aa99972685cf4e4b9cbdb22fcf101737') in 0.010755 seconds
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=043951d4a84e2b745860670fc2d69907): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_01.prefab using Guid(75a945ef276f7f140b78a998fdbde09a) (PrefabImporter) -> (artifact id: '9a01ef4ced97d120a1f07054a842e12b') in 0.0090529 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=16d18d1ab0814364b8dba3dcd6b309a0): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_02.prefab using Guid(b2a5153370ed526438063dd6fc10806e) (PrefabImporter) -> (artifact id: '39b3603a4943619eda6e1a63fc4e6b13') in 0.013145 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=d8a25905656fd2144bc693e43e0c4abb): Total: 0.042 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_03.prefab using Guid(8c87ed2ec32a5e64089a6ef53624acde) (PrefabImporter) -> (artifact id: '77387adadd3cdeb5c2fe7fffd0893296') in 0.0116102 seconds
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=88acc3e5db4219647b97c92aa113a8d9): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_04.prefab using Guid(8c6ce57bdbd8a7c489d4a6101ef733de) (PrefabImporter) -> (artifact id: '5d43923b19dc3a04181f306f527480e7') in 0.0121906 seconds
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=72e1b6c04cf2ba940b8044fc1b3a9fe8): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_05.prefab using Guid(12278dd620fbace498161c9944d600c4) (PrefabImporter) -> (artifact id: '9ed0f02cbc8a77339462c1c140c87cb5') in 0.0141918 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=82b60dcad03d673408357a07f0bf12ab): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_05' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.LODGroup:SetLODs (UnityEngine.LOD[])
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildHairPrefab (string,int) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:223)
+System.Linq.Enumerable/<SelectIterator>d__154`2<string, string>:MoveNext ()
+System.Collections.Generic.LargeArrayBuilder`1<string>:AddRange (System.Collections.Generic.IEnumerable`1<string>)
+System.Collections.Generic.EnumerableHelpers:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+System.Linq.Enumerable:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:117)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 223]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_05' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.LODGroup:SetLODs (UnityEngine.LOD[])
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildHairPrefab (string,int) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:223)
+System.Linq.Enumerable/<SelectIterator>d__154`2<string, string>:MoveNext ()
+System.Collections.Generic.LargeArrayBuilder`1<string>:AddRange (System.Collections.Generic.IEnumerable`1<string>)
+System.Collections.Generic.EnumerableHelpers:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+System.Linq.Enumerable:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:117)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 223]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_05' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.LODGroup:SetLODs (UnityEngine.LOD[])
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildHairPrefab (string,int) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:223)
+System.Linq.Enumerable/<SelectIterator>d__154`2<string, string>:MoveNext ()
+System.Collections.Generic.LargeArrayBuilder`1<string>:AddRange (System.Collections.Generic.IEnumerable`1<string>)
+System.Collections.Generic.EnumerableHelpers:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+System.Linq.Enumerable:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:117)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 223]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_05' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.LODGroup:RecalculateBounds ()
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildHairPrefab (string,int) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:228)
+System.Linq.Enumerable/<SelectIterator>d__154`2<string, string>:MoveNext ()
+System.Collections.Generic.LargeArrayBuilder`1<string>:AddRange (System.Collections.Generic.IEnumerable`1<string>)
+System.Collections.Generic.EnumerableHelpers:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+System.Linq.Enumerable:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:117)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 228]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_05' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.LODGroup:RecalculateBounds ()
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildHairPrefab (string,int) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:228)
+System.Linq.Enumerable/<SelectIterator>d__154`2<string, string>:MoveNext ()
+System.Collections.Generic.LargeArrayBuilder`1<string>:AddRange (System.Collections.Generic.IEnumerable`1<string>)
+System.Collections.Generic.EnumerableHelpers:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+System.Linq.Enumerable:ToArray<string> (System.Collections.Generic.IEnumerable`1<string>)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:117)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 228]
+
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_06.prefab using Guid(37daaeaedea311b49a479f64b4606b42) (PrefabImporter) -> (artifact id: '2610b7c2faa5dda9046585aa0e4cbeab') in 0.0093229 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a1636de612534bd42aa42bc511f76e6f): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildWorkbench (string[],string[]) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:244)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:118)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 244]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildWorkbench (string[],string[]) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:244)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:118)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 244]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildWorkbench (string[],string[]) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:244)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:118)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 244]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildWorkbench (string[],string[]) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:244)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:118)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 244]
+
+Start importing Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerAppearance_Workbench.prefab using Guid(32ebe3bcd46b0fa4ead2e9665e26a6c2) (PrefabImporter) -> (artifact id: '55bcda06f1c4dd5149376fb2a708d08f') in 0.0232898 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=61643f7118b118b40bf128f02ea4c11d): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6775 unused Assets / (2.2 MB). Loaded Objects now: 6953.
+Memory consumption went from 196.6 MB to 194.4 MB.
+Total: 6.590800 ms (FindLiveObjects: 0.358200 ms CreateObjectMapping: 0.241000 ms MarkObjects: 3.796500 ms  DeleteObjects: 2.194500 ms)
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildDemoScene () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:266)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:119)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 266]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildDemoScene () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:266)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:119)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 266]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildDemoScene () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:266)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:119)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 266]
+
+Renderer 'HairGeometry_05' is registered with more than one LODGroup ('D20_R02_Hair_06' and 'HairGeometry_05').
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PrefabUtility:InstantiatePrefab_internal (UnityEngine.Object,UnityEngine.SceneManagement.Scene,UnityEngine.Transform)
+UnityEditor.PrefabUtility:InstantiatePrefab (UnityEngine.Object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:InstantiateAsset (string,UnityEngine.Transform,UnityEngine.Vector3) (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:381)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildDemoScene () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:266)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:119)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+[Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs line 266]
+
+Start importing Assets/Scenes/D20/R02/Work/D20_A01_R02_PlayerAppearance_Work.unity using Guid(dfa126b9bf45036448ad1cf94f0ae739) (DefaultImporter) -> (artifact id: '780517dae0b35d8b4bf644de0010d6d4') in 0.0009867 seconds
+Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=86cf4f5e759c15a4cb63a38a083a0357): Total: 0.032 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=539739aa5c7415c4ba1b24f4c690f36b): Total: 0.007 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+[D20-A01-R02] Player appearance workbench built: Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerAppearance_Workbench.prefab
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:Build () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:127)
+WhalesIslandReef.Editor.D20A01R02.D20A01R02PlayerAppearanceBuilder:BuildFromMenu () (at Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs:74)
+
+(Filename: Assets/Editor/D20A01R02/D20A01R02PlayerAppearanceBuilder.cs Line: 127)
+
+Batchmode quit successfully invoked - shutting down!
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

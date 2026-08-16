@@ -1,0 +1,45 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_RERUN39_CURRENT_V1",
+  "task": "D19-R03-S01",
+  "run_id": "RERUN39_ROUTE_RERUN36_PERFORMANCE_GATE_REVIEW",
+  "conclusion": "BLOCKED",
+  "historical_results_preserved": [
+    "game/tools/results/D19/D19-R03-S01/D19_R03_S01_MACHINE_RESULT_RERUN29.json",
+    "game/tools/results/D19/D19-R03-S01/D19_R03_S01_MACHINE_RESULT_RERUN35.json"
+  ],
+  "inputs": {
+    "route": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN39_MACHINE_RESULT.json",
+    "route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN39.json",
+    "performance": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN36_CURRENT.json",
+    "collider_audit": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_SCENE_COLLIDER_AUDIT.json",
+    "fixed_shots": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN35_FIXED.json"
+  },
+  "gate_review": {
+    "real_player_menu_new_game": "PASS",
+    "boarding_disembarking_feedback": "PASS",
+    "save_feedback": "PASS",
+    "full_route_300_seconds": "BLOCKED_NOT_COMPLETED",
+    "market_warehouse_shipyard_return": "BLOCKED_NOT_REACHED",
+    "same_run_save_quit_continue": "BLOCKED_NOT_PERFORMED",
+    "performance_current_scene_low_medium_high": "BLOCKED_LOW_1_PERCENT_LOW_7_903",
+    "fixed_shots": "PARTIAL_HISTORY_14_OF_14_CALM_ONLY",
+    "weather_calm_rain_storm": "BLOCKED_0_OF_3_NON_CALM",
+    "visual_debt": "BLOCKED_FLAT_GROUND_LOW_DETAIL_BUILDINGS_DEVELOPMENT_HUD",
+    "resource_state_unchanged": true,
+    "formal_scene_ownership_unchanged": true
+  },
+  "release": {
+    "d19_r02_s02": "LOCKED",
+    "d20_formal_integration": "LOCKED",
+    "d18_s03": "NOT_STARTED",
+    "local_development_ready": 0,
+    "release_approved": 0
+  },
+  "next_required": [
+    "Obtain a genuine continuous Player input route to market, warehouse, shipyard, departure, return and same-run Continue.",
+    "Resolve or explicitly repair the Low 1% low outlier in D19 Integration and resample.",
+    "Capture Calm/Rain/Storm in the real Player and complete the 14-shot visual review.",
+    "Only after this gate passes, run D19-R02-S02; do not start D20 formal integration before then."
+  ],
+  "generated_at": "2026-08-16T17:55:00+08:00"
+}

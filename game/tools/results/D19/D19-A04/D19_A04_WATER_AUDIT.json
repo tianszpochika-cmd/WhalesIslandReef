@@ -1,0 +1,62 @@
+{
+    "task": "D19-A04",
+    "status": "PASS",
+    "unity_version": "6000.0.80f1",
+    "render_pipeline": "Universal Render Pipeline 17.0.4",
+    "scene_path": "Assets/Scenes/D19/Work/D19_Water_Work.unity",
+    "prefab_path": "Assets/Prefabs/Environment/D19/Water/WaterRoot.prefab",
+    "sea_level_y": 0.0,
+    "water_surface_renderers": 1,
+    "foam_renderers": 1,
+    "underwater_volume_renderers": 1,
+    "reef_renderers": 5,
+    "water_materials": 7,
+    "generated_meshes": 4,
+    "shader_compile_errors": 0,
+    "scene_compile_errors": 0,
+    "initial_harbor_changed": false,
+    "global_urp_settings_changed": false,
+    "gameplay_systems_changed": false,
+    "weather_logic_changed": false,
+    "camera_code_changed": false,
+    "formal_canvas_changed": false,
+    "sea_level_contract_passed": true,
+    "ui_overlay_order_passed": true,
+    "underwater_guard_passed": true,
+    "quality_tiers": [
+        "Low",
+        "Medium",
+        "High"
+    ],
+    "quality_notes": [
+        "Low: one analytic wave, no reflection probe, alpha blend, no scene-depth dependency; mobile fallback.",
+        "Medium: two analytic waves, transparent shoreline foam, reef visibility through alpha water; default work-scene tier.",
+        "High: three analytic waves, higher wave detail and fresnel response; no screen-space reflection or post effect."
+    ],
+    "allowed_external_manifest_ids": [
+        "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1",
+        "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1",
+        "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1",
+        "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1",
+        "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1",
+        "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1"
+    ],
+    "screenshots": [
+        "tools/results/D19/D19-A04/screenshots/D19_A04_01_sunny_deep_water.png",
+        "tools/results/D19/D19-A04/screenshots/D19_A04_02_shallow_water.png",
+        "tools/results/D19/D19-A04/screenshots/D19_A04_03_reef_visibility.png",
+        "tools/results/D19/D19-A04/screenshots/D19_A04_04_shoreline_wet_edge.png",
+        "tools/results/D19/D19-A04/screenshots/D19_A04_05_underwater_boundary.png",
+        "tools/results/D19/D19-A04/screenshots/D19_A04_06_low_quality_mobile.png"
+    ],
+    "render_ms_samples": [
+        901.6774291992188,
+        57.45140075683594,
+        38.215599060058597,
+        40.63079833984375,
+        32.5614013671875,
+        85.22840118408203
+    ],
+    "performance_note": "Editor camera.Render rough sample only; target-device profiling remains a D18-S03/D19-S02 gate.",
+    "warnings": []
+}

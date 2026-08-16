@@ -1,0 +1,56 @@
+{
+  "schema": "D19_R03_A01_RERUN10_MACHINE_RESULT_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN10_NONDEVELOPMENT_PLAYER",
+  "conclusion": "PARTIAL",
+  "historical_results_preserved": true,
+  "purpose": "用不带 Development/AllowDebugging PlayerConnection 的真实 Player 重新验证 MainMenu 入口；不把系统安全提示下的未进场景状态解释为路线证据。",
+  "evidence": {
+    "player_executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN10.exe",
+    "player_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD_RERUN10.log",
+    "unity_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_UNITY_BUILD_RERUN10.log",
+    "player_runtime_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_MAINMENU_ROUTE_RERUN10_PLAYER.log",
+    "prior_overlay_screenshot": "game/tools/results/D19/D19-R03-A01/screenshots/mainmenu_rerun7_system_blocker.jpg"
+  },
+  "runtime": {
+    "player_started": true,
+    "main_menu_scene_loaded": true,
+    "main_menu_ui_initialized": true,
+    "route_probe_component_started": true,
+    "initial_harbor_loaded": false,
+    "route_started": false,
+    "route_probe_result_written": false,
+    "requested_launch_resolution": "1920x1080",
+    "real_player_input_route": false,
+    "interaction_input_observed": false,
+    "save_input_observed": false,
+    "save_reload_verified": false,
+    "persisted_screenshot_count": 0,
+    "computer_use_observation": "Fresh Player state showed the MainMenu buttons, but the Windows security/firewall overlay remained topmost. The current observation was not serialized as a screenshot artifact; the prior overlay screenshot is retained separately."
+  },
+  "environment_blocker": {
+    "system_overlay_visible": true,
+    "overlay": "Windows Security firewall prompt remained over the Player window",
+    "overlay_interacted": false,
+    "overlay_dismissed": false,
+    "player_connection_removed_from_build": true,
+    "input_attempted": false,
+    "safety_decision": "No click, keyboard input, allow, cancel or dismiss action was sent to the system security prompt. The owned Player process was stopped by PID-only cleanup after the observation."
+  },
+  "gate_checks": {
+    "real_player_route_5_to_10_minutes": false,
+    "market_warehouse_tavern_dock_board_depart_return": false,
+    "save_exit_reload_restore": false,
+    "d19_r03_a01_pass": false
+  },
+  "blocking_reasons": [
+    "去除 PlayerConnection 后，已有 Windows 安全提示仍覆盖目标 Player，无法安全发送主菜单输入。",
+    "本轮未进入 InitialHarbor，因此没有路线、交互、保存或重载通过证据。",
+    "历史 RERUN4/RERUN6 的真实路线仍只到部分锚点；RERUN7/RERUN10 均未能开始新游戏。"
+  ],
+  "cleanup": {
+    "player_pid": 37648,
+    "player_stopped": true,
+    "unrelated_system_prompt_touched": false
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_RERUN15_V1",
+  "task": "D19-R03-A02",
+  "attempt": "RERUN15_FIXED_PLAYER_SHOTS",
+  "conclusion": "PARTIAL",
+  "historical_machine_result_preserved": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT.json",
+  "compile": {
+    "unity_version": "6000.0.80f1",
+    "player_build": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_Player_RERUN15.exe",
+    "player_build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_PLAYER_BUILD_RERUN15.log",
+    "unity_build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_BUILD_RERUN15.log",
+    "build_options": "BuildOptions.None; no Development/AllowDebugging PlayerConnection"
+  },
+  "runtime": {
+    "evidence_mode": "real standalone Windows x64 Player; ScreenCapture backbuffer",
+    "screen": "1920x1080",
+    "graphics_device": "NVIDIA GeForce RTX 4070 Ti",
+    "graphics_api": "Direct3D11",
+    "fixed_shot_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_FIXED_SHOT_PLAYER_RERUN15.json",
+    "fixed_shot_count": 14,
+    "fixed_shot_expected": 14,
+    "weather_snapshot_observed": "Calm",
+    "weather_variant_count": 0,
+    "weather_variant_expected": 3,
+    "formal_scene_modified": false,
+    "runtime_consumer_or_save_state_modified": false
+  },
+  "visual_qa": {
+    "screenshots_directory": "game/tools/results/D19/D19-R03-A02/fixed_cameras_rerun15/",
+    "all_screenshots_exist": true,
+    "all_screenshots_1920x1080": true,
+    "pink_missing_material_observed": false,
+    "large_white_proxy_plane_observed": false,
+    "flat_green_or_orange_surface_observed": true,
+    "blocky_building_or_roof_overlap_observed": true,
+    "development_hud_visible": true,
+    "visual_debt_closed": false,
+    "manual_observation": "真实 Player 固定镜头显示港口/码头/市场标识和表现几何，但仍可见大面积平坦色块、灰色柱状/三角代理、屋顶与道路重叠、低细节建筑和底部开发路线 HUD。"
+  },
+  "gate_checks": {
+    "fixed_player_cameras": "14/14",
+    "weather_variants": "0/3",
+    "visual_quality_pass": false,
+    "d19_r03_a02_pass": false
+  },
+  "validation": {
+    "fixed_shot_json": "PASS",
+    "fixed_shot_file_dimensions": "14/14 PASS at 1920x1080",
+    "unity_compile_and_player_build": "PASS",
+    "scoped_git_diff_check": "PASS",
+    "full_tools_unittest": "125 total; 121 PASS; 4 existing D18-S02-R01 assertion failures"
+  },
+  "blocking_reasons": [
+    "天气只观察到 Calm，Rain/Storm 没有真实 Player 变体证据，不能伪造。",
+    "14 张真实 1920×1080 镜头中仍有平面、方块/柱状代理、近景遮挡和开发叠字；因此视觉收口失败。"
+  ],
+  "next_actions": [
+    "由 D19-R03-A02 责任范围继续消除真实镜头中的平地/代理/屋顶重叠并关闭玩家默认开发 HUD。",
+    "在 EnvironmentSystem 只读快照基础上取得真实 Calm/Rain/Storm 视觉变体；不得由探针直接写天气。",
+    "完成 A01 路线与保存重载后，再重跑 D19-R03-S01。"
+  ]
+}

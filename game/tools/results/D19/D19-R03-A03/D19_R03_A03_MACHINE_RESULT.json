@@ -1,0 +1,90 @@
+{
+  "schema": "D19_R03_A03_MACHINE_RESULT_V1",
+  "task": "D19-R03-A03",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real standalone Windows x64 Player; runtime per-frame probe",
+  "compile": {
+    "unity_compile_exit_code": 0,
+    "compile_log": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_UNITY_COMPILE.log",
+    "player_build_log": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PLAYER_BUILD_RERUN16.log",
+    "player_build": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_Player_RERUN16.exe",
+    "historical_player_build_log": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PLAYER_BUILD_RERUN1.log",
+    "historical_player_build": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_Player_RERUN1.exe"
+  },
+  "runs": {
+    "low": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_low.json",
+      "quality_argument": "low",
+      "actual_quality_index": 0,
+      "actual_quality_name": "Very Low",
+      "screen": "1920x1080",
+      "vsync_count": 0,
+      "sample_seconds_actual": 60.013980865478519,
+      "sample_count": 95816,
+      "average_fps": 5234.076171875,
+      "one_percent_low_fps": 59.07558822631836,
+      "gpu_frame_ms": 0.1032247543334961,
+      "gc_gen0": 81,
+      "peak_reserved_bytes": 206385152
+    },
+    "medium": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_medium.json",
+      "quality_argument": "medium",
+      "actual_quality_index": 1,
+      "actual_quality_name": "Low",
+      "screen": "1920x1080",
+      "vsync_count": 0,
+      "sample_seconds_actual": 60.016048431396487,
+      "sample_count": 46818,
+      "average_fps": 5072.22021484375,
+      "one_percent_low_fps": 58.28901290893555,
+      "gpu_frame_ms": 0.11880966275930405,
+      "gc_gen0": 104,
+      "peak_reserved_bytes": 210579456
+    },
+    "high": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_high.json",
+      "quality_argument": "high",
+      "actual_quality_index": 2,
+      "actual_quality_name": "Medium",
+      "screen": "1920x1080",
+      "vsync_count": 1,
+      "sample_seconds_actual": 60.00502395629883,
+      "sample_count": 3616,
+      "average_fps": 61.28526306152344,
+      "one_percent_low_fps": 42.73077392578125,
+      "gpu_frame_ms": 0.49581292271614077,
+      "gc_gen0": 124,
+      "peak_reserved_bytes": 210579456
+    }
+  },
+  "latest_rerun16": {
+    "evidence_mode": "real standalone Windows x64 Player; InitialHarbor forced only for this isolated performance benchmark; per-frame runtime sampling",
+    "player_build": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_Player_RERUN16.exe",
+    "build_log": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PLAYER_BUILD_RERUN16.log",
+    "harbor_scene_flag": "-d19-r03-perf-harbor",
+    "runs": {
+      "low": {"raw_result":"game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_low_rerun16.json","scene":"InitialHarbor","actual_quality_name":"Very Low","actual_quality_index":0,"screen":"1920x1080","vsync_count":0,"warmup_seconds_actual":30.01481056213379,"sample_seconds_actual":60.00357437133789,"sample_count":3601,"average_fps":59.99666213989258,"one_percent_low_fps":59.71986770629883,"average_main_thread_ms":3.759138584136963,"gpu_frame_ms":1.5435154438018799,"gc_gen0":132,"peak_reserved_bytes":208482304},
+      "medium": {"raw_result":"game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_medium_rerun16.json","scene":"InitialHarbor","actual_quality_name":"Low","actual_quality_index":1,"screen":"1920x1080","vsync_count":0,"warmup_seconds_actual":30.00262451171875,"sample_seconds_actual":60.005767822265628,"sample_count":3601,"average_fps":59.99421310424805,"one_percent_low_fps":59.53479766845703,"average_main_thread_ms":3.7753102779388429,"gpu_frame_ms":1.5360554456710816,"gc_gen0":132,"peak_reserved_bytes":204288000},
+      "high": {"raw_result":"game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_high_rerun16.json","scene":"InitialHarbor","actual_quality_name":"Medium","actual_quality_index":2,"screen":"1920x1080","vsync_count":1,"warmup_seconds_actual":30.011764526367189,"sample_seconds_actual":60.005653381347659,"sample_count":3601,"average_fps":59.99443817138672,"one_percent_low_fps":59.556556701660159,"average_main_thread_ms":3.7639718055725099,"gpu_frame_ms":1.5231927633285523,"gc_gen0":132,"peak_reserved_bytes":204288000}
+    },
+    "screenshots": [
+      "game/tools/results/D19/D19-R03-A03/perf_harbor_rerun16_low.jpg",
+      "game/tools/results/D19/D19-R03-A03/perf_harbor_rerun16_medium.jpg",
+      "game/tools/results/D19/D19-R03-A03/perf_harbor_rerun16_high.jpg"
+    ],
+    "quality_label_note": "Requested low/medium/high map to project indices 0/1/2 named Very Low/Low/Medium. No QualitySettings names were changed."
+  },
+  "gate_assessment": {
+    "real_player_1080p_samples": true,
+    "all_three_requested_runs_present": true,
+    "runtime_screen_readback_proven": true,
+    "runtime_quality_index_readback_proven": true,
+    "runtime_vsync_readback_proven": true,
+    "one_percent_low_proven": true,
+    "gpu_counter_proven": true,
+    "port_route_complete": false,
+    "status": "PARTIAL",
+    "note": "The historical runs remain preserved. latest_rerun16 is the current post-RERUN13 geometry evidence from InitialHarbor. The command labels low/medium/high map to this project's actual quality indices 0/1/2 (Very Low/Low/Medium); no QualitySettings names were changed. These measurements do not close the separate route, visual-camera or final D19 gates."
+  }
+}

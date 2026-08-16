@@ -1,0 +1,77 @@
+Mono path[0] = 'C:/Users/Administrator/Desktop/game/first01/game/tools/results/D19/D19-R03-A03/D19_R03_A03_Player_RERUN1_Data/Managed'
+Mono config path = 'C:/Users/Administrator/Desktop/game/first01/game/tools/results/D19/D19-R03-A03/MonoBleedingEdge/etc'
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/tools/results/D19/D19-R03-A03/D19_R03_A03_Player_RERUN1_Data/UnitySubsystems
+Forcing GfxDevice: Direct3D 11
+kGfxThreadingModeSplitJobs is not supported on Direct3D 11. Reverting to kGfxThreadingModeClientWorkerJobs instead.
+GfxDevice: creating device client; kGfxThreadingModeClientWorkerJobs
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Ti (ID=0x2782)
+    Vendor:   NVIDIA
+    VRAM:     11996 MB
+    Driver:   32.0.15.9636
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.080 seconds
+- Finished resetting the current domain, in  0.002 seconds
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+<RI> Initializing input.
+Using Windows.Gaming.Input
+<RI> Input initialized.
+UnloadTime: 0.487000 ms
+[MainMenu] EventSystem 已就绪：EventSystem / InputSystemUIInputModule / actions=Default
+[MainMenu] UI 初始化完成：主菜单已显示
+[MainMenu] 场景加载完成，主菜单控制器已重新创建
+RenderGraph is now enabled.
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[MainMenu] 确认按钮被点击
+[MainMenu] NewGame 已发起：R03PerfMedium
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.874200 ms
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+Unloading 123 unused Assets to reduce memory usage. Loaded Objects now: 12376.
+Total: 1.740000 ms (FindLiveObjects: 0.304900 ms CreateObjectMapping: 0.079100 ms MarkObjects: 1.320500 ms  DeleteObjects: 0.035300 ms)
+
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D19-R03-A03] Performance result written: C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R03-A03\D19_R03_A03_PERFORMANCE_medium.json
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.

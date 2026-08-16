@@ -1,0 +1,128 @@
+{
+    "schema_version": 1,
+    "task": "D18-A02",
+    "status": "PASS",
+    "audit_mode": "report_only",
+    "read_only": true,
+    "registry_modified": false,
+    "asset_state_modified": false,
+    "release_approved_asserted": false,
+    "downloaded_assets": false,
+    "scanned_roots": [
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/bird/",
+        "Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/"
+    ],
+    "manifest_count": 1,
+    "file_count": 1,
+    "model_file_count": 1,
+    "texture_file_count": 0,
+    "audio_file_count": 0,
+    "prefab_file_count": 0,
+    "mesh_count": 1,
+    "animation_clip_count": 3,
+    "material_count": 4,
+    "issue_count": 1,
+    "error_count": 0,
+    "warning_count": 1,
+    "category_counts": [
+        {
+            "category": "Animals",
+            "count": 1
+        }
+    ],
+    "manifests": [
+        {
+            "manifest_path": "docs/game/design/common/assets/packs/characters_animals/gap_fill/bird/quaternius_animal_pack_vol2_bird.manifest.json",
+            "pack_id": "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1",
+            "review_status": "Candidate",
+            "import_status": "ImportVerified",
+            "declared_file_count": 1,
+            "candidate_files": [
+                "Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/Models/eagle.fbx"
+            ],
+            "issues": []
+        }
+    ],
+    "assets": [
+        {
+            "path": "Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/Models/eagle.fbx",
+            "target_id": "animal_quaternius_eagle_v01",
+            "role": "candidate_bird_nearshore_eagle",
+            "category": "Animals",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 1,
+            "animation_clip_count": 3,
+            "material_count": 4,
+            "texture_count": 0,
+            "renderer_count": 1,
+            "mesh_renderer_count": 0,
+            "skinned_mesh_renderer_count": 1,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 33,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -0.062305182218551639,
+                "y": -0.03673289716243744,
+                "z": -0.010121645405888558
+            },
+            "bounds_max": {
+                "x": 0.06230519711971283,
+                "y": 0.014676435850560665,
+                "z": 0.004624670371413231
+            },
+            "max_dimension": 0.12461037933826447,
+            "target_scale_reference": "species proportion and habitat reference; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup"
+            ]
+        }
+    ],
+    "prefabs": []
+}

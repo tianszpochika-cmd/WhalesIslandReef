@@ -1,0 +1,59 @@
+{
+  "task_id": "D19-R02-A02",
+  "status": "PARTIAL",
+  "unity_version": "6000.0.80f1",
+  "compile": {
+    "status": "PASS",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_UNITY_COMPILE.log"
+  },
+  "editmode": {
+    "status": "PASS",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_ALL.xml",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_ALL.log"
+  },
+  "playmode": {
+    "status": "PASS",
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN.xml",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN.log"
+  },
+  "real_player": {
+    "status": "PARTIAL",
+    "player_build": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_Player.exe",
+    "player_build_log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_BUILD.log",
+    "window_started": true,
+    "main_menu_new_game": "PASS",
+    "initial_harbor": "PASS",
+    "real_keyboard_route": "NOT_VERIFIED",
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A02/01_harbor_initial_player.png",
+      "game/tools/results/D19/D19-R02-A02/02_after_e_player.png",
+      "game/tools/results/D19/D19-R02-A02/03_after_focus_and_e_player.png",
+      "game/tools/results/D19/D19-R02-A02/04_after_repeated_w_player.png"
+    ],
+    "player_log": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log"
+  },
+  "blockers": [
+    {
+      "id": "A02-REAL-KEYBOARD-NOT-OBSERVED",
+      "severity": "P0",
+      "owner": "D19-R02-S02 with D19-R02-A03 route",
+      "reason": "Real Player E/W attempts did not produce D2 control events or visible feedback; no success is claimed.",
+      "next": "Repeat with a real focused Player keyboard route and retain input/state timestamps."
+    },
+    {
+      "id": "A02-HUD-ROUTER-REFRESH",
+      "severity": "P1",
+      "owner": "D19-R02-A01",
+      "reason": "The current D19RouteHudManager can cache a null D2 router before D2 bootstrap finishes, so the Player screenshot can remain at the initial hint even though D2 publishes feedback.",
+      "next": "A01-owned HUD task should reacquire D2ControlRouter after bootstrap without moving ownership into D2."
+    }
+  ],
+  "resource_states_changed": false,
+  "formal_scene_changed": false
+}

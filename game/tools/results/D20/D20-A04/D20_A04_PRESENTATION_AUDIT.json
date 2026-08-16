@@ -1,0 +1,55 @@
+{
+  "task_id": "D20-A04",
+  "conclusion": "PARTIAL",
+  "preconditions": {
+    "d20_s01": "PASS",
+    "d18_s02_r01": "PASS",
+    "npc_visual_interface_ready": true,
+    "a03_interface_review_status": "Candidate"
+  },
+  "read_only_source": {
+    "interface": "game/tools/results/D20/D20-A03/D20_A03_NPC_VISUAL_INTERFACE.json",
+    "prefab": "game/Assets/Prefabs/Characters/D20/NPC/npc_d20_dock_clerk_01.prefab",
+    "interface_sha256": "2A7083D85050155A308A1AF464BDC9E3743F71E7B175F494E3FFB8423DB3008E",
+    "prefab_sha256": "0267CFB0C7F91A8DB0C58850062397E6496AD985C418430D2F37CBF921B81B84"
+  },
+  "delivery": {
+    "runtime_directory": "game/Assets/Scripts/Presentation/D20/NpcPresentation/",
+    "action_map": "game/Assets/Animations/D20/NPC/D20_NPC_ACTION_MAP.json",
+    "animator_controller": "game/Assets/Animations/D20/NPC/D20_NPC_Presentation_Demo.controller",
+    "demo_prefab": "game/Assets/Prefabs/Characters/D20/NPCPresentation/D20_NPC_Presentation_Demo.prefab",
+    "demo_prefab_sha256": "9F96232225B43EDDB03D38240F061D68127B13A87179E73352378E4DAE9318CB",
+    "controller_sha256": "168535A957FAB45B88C51ADD2447FCA860B3CA531466E14707B1068849ABEB14",
+    "animator_parameter_count": 7,
+    "behavior_state_count": 9,
+    "visual_anchor_count": 4,
+    "logic_write_components": 0,
+    "scene_or_system_changes": false
+  },
+  "isolated_unity_test": {
+    "editor": "Unity 6000.0.80f1",
+    "result": "Passed",
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "results": "game/tools/results/D20/D20-A04/D20_A04_UNITY_TEST_RESULTS.xml",
+    "log": "game/tools/results/D20/D20-A04/unity_d20_a04_tests.log"
+  },
+  "main_project_test": {
+    "result": "Deferred",
+    "reason": "Existing parallel D19-R01-B Unity editor held the main project lock; no process was terminated and no lock file was removed.",
+    "required_follow_up": "Run the A04 EditMode/PlayMode route tests after the main editor releases the project."
+  },
+  "boundary_scan": {
+    "forbidden_domain_or_network_references": 0,
+    "writes_to_npc_owner_or_agent": 0,
+    "presentation_writes": [
+      "Animator parameters/state",
+      "Visual pose",
+      "Renderer/LOD/FarProxy visibility",
+      "feedback Billboard",
+      "snapshot resync lifecycle flag"
+    ]
+  },
+  "status_note": "Candidate only; no LocalDevelopmentReady or ReleaseApproved transition."
+}

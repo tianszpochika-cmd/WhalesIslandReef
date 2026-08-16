@@ -1,0 +1,26 @@
+{
+  "schema": "D19_R02_S02_VISUAL_QA_RERUN6_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "player_capture": {
+    "requested_resolution": "1920x1080",
+    "actual_backbuffer_verified": false,
+    "fresh_route_frame_count": 22,
+    "fixed_camera_matrix_count": 0,
+    "weather_variant_count": 0,
+    "screenshots_directory": "game/tools/results/D19/D19-R02-S02/screenshots/"
+  },
+  "manual_visual_checks": {
+    "pink_missing_material": {"status": "PASS_OBSERVED", "note": "No pink shader/missing-material frame observed in the fresh route images."},
+    "large_pure_white_plane": {"status": "PASS_OBSERVED", "note": "No large pure-white plane observed; isolated light rock/prop colors remain."},
+    "development_debug_overlay": {"status": "PASS_OBSERVED", "note": "The fresh Player HUD shows player-facing controls and port status, not resource IDs or debug prefixes."},
+    "flat_blocky_terrain": {"status": "FAIL_OBSERVED", "note": "Large flat brown terrain and simple block-like props remain visible in spawn, board, voyage and reload views."},
+    "port_building_readability": {"status": "NOT_VERIFIED", "note": "Market/warehouse/tavern building geometry is not visually established in the fresh fixed-camera matrix."},
+    "coast_water_depth_layers": {"status": "PARTIAL", "note": "Water strip and shore edge are visible, but depth/near-sea presentation is not a complete fixed-camera proof."},
+    "collision_or_intersection": {"status": "PARTIAL", "note": "D19/D17 automated collision regressions pass; the Player route did not prove every visual collision/occlusion camera."}
+  },
+  "fresh_route_frames": [
+    "rerun6_01_spawn.jpg", "rerun6_02_board.jpg", "rerun6_03_trade.jpg", "rerun6_04_trade_closed.jpg", "rerun6_05_departure.jpg", "rerun6_06_voyage_advance.jpg", "rerun6_07_settle.jpg", "rerun6_08_disembark.jpg", "rerun6_09_save.jpg", "rerun6_10_move.jpg", "rerun6_11_interaction_feedback.jpg", "rerun6_12_save_final.jpg", "rerun6_13_pause.jpg", "rerun6_14_300s.jpg", "rerun6_15_continue_loaded.jpg", "rerun6_16_continue2_loaded.jpg", "rerun6_17_route2_spawn.jpg", "rerun6_18_route2_advance.jpg", "rerun6_19_route2_settle.jpg", "rerun6_20_route2_disembark.jpg", "rerun6_21_route2_save.jpg", "rerun6_22_continue3_result.jpg"
+  ],
+  "blocking_reason": "D19 final visual gate requires 14 fresh Player fixed-camera views and weather variants with no obvious greybox/block terrain; this rerun has only route views and still shows the block/flat presentation debt."
+}

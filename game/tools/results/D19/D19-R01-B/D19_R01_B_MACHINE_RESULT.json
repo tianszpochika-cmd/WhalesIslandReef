@@ -1,0 +1,118 @@
+{
+  "task": "D19-R01-B",
+  "attempt": "formal_initialharbor_visual_repair",
+  "observed_on_local": "2026-08-15",
+  "conclusion": "PARTIAL",
+  "scope": "InitialHarbor and D19 Integration R01 only; no gameplay systems, contracts, Registry, save schema or resource-state promotion",
+  "history": {
+    "d19_r01_a": "PARTIAL retained at docs/game/design/common/handoffs/D19/D19-R01-A_HANDOFF.md",
+    "d19_s02_r01": "PARTIAL retained at docs/game/design/common/handoffs/D19/D19-S02-R01_HANDOFF.md",
+    "this_attempt": "R01-B formal visual repair; final route/performance gate remains D19-R01-S02"
+  },
+  "rollback": {
+    "baseline_id": "d19-r01-b-previsual-repair",
+    "scene_before_sha256": "3E081A48B4D7B53E9084308B86587170527E006C637EC0B280E074449C8B02AA",
+    "scene_before_bytes": 133143,
+    "snapshot": "game/tools/results/D19/D19-R01-B/D19_R01_B_ROLLBACK_INITIALHARBOR.unity",
+    "snapshot_meta": "game/tools/results/D19/D19-R01-B/D19_R01_B_ROLLBACK_INITIALHARBOR.unity.meta",
+    "restore": "Close Unity without saving, replace InitialHarbor.unity and its matching meta from the snapshot, then re-run the pre-R01 checks. Do not delete the R01-B Integration directory before confirming the scene is restored."
+  },
+  "final_scene": {
+    "path": "game/Assets/Scenes/InitialHarbor.unity",
+    "sha256": "4C45779C7B5A020583E9F11F9F8F61642C12F1EC3920E8001F4752EF626D7E9D",
+    "bytes": 165574,
+    "scene_delta_bytes": 32431,
+    "only_new_formal_visual_root": "D19_R01_B_HarborVisualRepair",
+    "integration_instance_count": 1,
+    "scene_only_references_prefab": true,
+    "legacy_stable_anchors_preserved": true,
+    "stable_anchor_count": 17,
+    "dev_overlay_default_off": true
+  },
+  "integration_prefab": {
+    "path": "game/Assets/Prefabs/Environment/D19/Integration/R01/D19_R01_B_HarborVisualRepair.prefab",
+    "sha256": "C7DC7401A38E5C6D7528CAB7D86640ACE8E619CC2B1B5BD0402134DDE1E3BD08",
+    "bytes": 934641,
+    "hierarchy_nodes": 367,
+    "mesh_renderers": 290,
+    "candidate_models_instantiated": 69,
+    "hidden_legacy_visual_renderers": 121,
+    "missing_candidate_models": 0,
+    "prefab_source_reloaded_before_scene_integration": true,
+    "terrain_mesh": {
+      "path": "game/Assets/Prefabs/Environment/D19/Integration/R01/D19_R01_B_TerrainBreakup.asset",
+      "sha256": "6281975EA8718E670B948DC27C8C84970F8A3C43B906CEEA1CC0173B091A7FA6",
+      "bytes": 204592,
+      "grid": "28 x 30 cells",
+      "materials": ["D19_R01_B_TerrainGrass", "D19_R01_B_TerrainSand", "D19_R01_B_TerrainRock"],
+      "collision_owner": "existing D19 terrain/port systems; R01-B visual mesh has no gameplay collider"
+    }
+  },
+  "resource_categories": {
+    "external_intake_eligible": {
+      "nature": ["env_kenney_nature_tree_palm_detailed_tall", "env_kenney_nature_tree_palm_bend", "env_kenney_nature_tree_palm_tall", "env_kenney_nature_tree_palm_short", "env_kenney_nature_tree_default", "env_kenney_nature_tree_oak", "env_kenney_nature_plant_bush_large", "env_kenney_nature_plant_bush_detailed", "env_kenney_nature_grass_leafs_large", "env_kenney_nature_grass_large", "env_kenney_nature_rock_large_a", "env_kenney_nature_rock_large_b", "env_kenney_nature_rock_tall_a", "env_kenney_nature_rock_small_flat_a", "env_kenney_nature_cliff_large_rock", "env_kenney_nature_cliff_block_slope_rock", "env_kenney_nature_cliff_cave_rock", "env_kenney_nature_log_stack", "env_kenney_nature_stone_large_a", "env_kenney_nature_path_stone", "env_kenney_nature_platform_beach"],
+      "building": ["d18a05_building_wall_window_square_detailed", "d18a05_building_wall_window_round_detailed", "d18a05_building_roof_flat_patch_large", "d18a05_building_roof_flat_side", "d18a05_building_door_rotate_square_b", "d18a05_building_stairs_open_short"],
+      "pirate_port_props": ["d18a05_pirate_structure_platform", "d18a05_pirate_platform_planks", "d18a05_pirate_flag_pirate", "d18a05_pirate_barrel", "d18a05_pirate_crate"]
+    },
+    "project_owned_r01_b": ["D19_R01_B_TerrainGrass", "D19_R01_B_TerrainSand", "D19_R01_B_TerrainRock", "D19_R01_B_Stucco", "D19_R01_B_Limewash", "D19_R01_B_DarkWood", "D19_R01_B_Wood", "D19_R01_B_Terracotta", "D19_R01_B_Window", "D19_R01_B_Cloth", "D19_R01_B_Soil", "D19_R01_B_ShoreSand", "D19_R01_B_ReefRock", "MarketHouse_TerracottaRoof", "WarehouseHouse_TerracottaRoof", "TavernHouse_TerracottaRoof", "ShipyardHouse_TerracottaRoof"],
+    "state_impact": "No Candidate/ImportVerified/PrefabCandidateIntake/LocalDevelopmentReady/ReleaseApproved state was changed. External references were read from the latest D18 intake catalog only."
+  },
+  "fixed_shots": {
+    "count": 14,
+    "resolution": "1920x1080",
+    "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+    "not_player_evidence": true,
+    "directory": "game/tools/results/D19/D19-R01-B/screenshots/",
+    "manual_review": "All 14 files opened and checked for pink/error materials, broad white/mint planes, missing image data, scene framing and the remaining low-poly/blockout debt.",
+    "visual_gate": "PARTIAL",
+    "remaining_visual_debt": ["terrain still uses broad faceted low-poly fields in several wide shots", "market/tavern building silhouettes remain box-like at close range despite added roofs, openings and awnings", "boarding planks and some props remain bright candidate modules", "nearshore/departure shots remain sparse and are not a substitute for water/ship presentation work", "settings/debug shots are regression captures only and do not prove D22 UI completion"],
+    "shots": ["d19_shot_main_menu", "d19_shot_spawn", "d19_shot_market", "d19_shot_dock_overview", "d19_shot_tavern_entry", "d19_shot_coastline", "d19_shot_boarding", "d19_shot_on_ship", "d19_shot_departure", "d19_shot_nearshore", "d19_shot_weather", "d19_shot_return_harbor", "d19_shot_settings_accessibility", "d19_shot_debug_boundary"]
+  },
+  "tests": {
+    "focused_editmode": {
+      "command": "Unity.exe -batchmode -nographics -projectPath <isolated-R01-B-copy> -runTests -testPlatform editmode -assemblyNames Save.Tests -testFilter WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests -testResults game/tools/results/D19/D19-R01-B/D19_R01_B_EDITMODE_RESULTS_V5.xml",
+      "result": "3 passed, 0 failed",
+      "evidence": "game/tools/results/D19/D19-R01-B/D19_R01_B_EDITMODE_RESULTS_V5.xml"
+    },
+    "builder": {
+      "result": "PASS_VISUAL_REPAIR_BUILD",
+      "evidence": "game/tools/results/D19/D19-R01-B/D19_R01_B_BUILD_RESULT_V11.json"
+    },
+    "main_project_compile": {
+      "result": "BLOCKED_BY_PRE_EXISTING_D20_COMPILATION_ERROR",
+      "error": "Assets/Tests/EditMode/D20/D20WildlifePresentationTests.cs references missing WhalesIslandReef.Presentation",
+      "policy": "D20 files were not modified to bypass this cross-module blocker"
+    },
+    "scope_and_scene_audit": "Focused test passed for prefab source, material/shader references, formal prefab instance and stable anchors; full D19/D17 rerun was not reclassified as this task's new evidence."
+  },
+  "real_player_route": {
+    "status": "NOT_RUN_IN_R01_B",
+    "reason": "D19-R01-B is a formal visual repair task. The prior D19-R01-A player evidence remains the authoritative 338-second/5m38s partial route: spawn, movement, market and save observed; NPC dialogue, boarding, departure visual transition and return berth were not completed.",
+    "evidence": "game/tools/results/D19/D19-R01-A/D19_R01_A_EVIDENCE.json"
+  },
+  "performance_1080p": {
+    "status": "NOT_RUN_IN_R01_B",
+    "reason": "No new real Player 1920x1080 Low/Medium/High telemetry was collected. Editor Camera.Render frames are visual regression only. D19-R01-S02 remains responsible for the real Player route and performance gate.",
+    "previous_evidence": "D19-R01-A reported 2194x1234 capture without native 1920x1080, frame-time, 1% low, GPU and GC proof."
+  },
+  "authorization_and_boundaries": {
+    "systems_changed": false,
+    "agentcore_changed": false,
+    "registry_changed": false,
+    "save_schema_changed": false,
+    "contracts_server_web_changed": false,
+    "resource_states_promoted": false,
+    "initialharbor_only_visual_integration_root_added": true,
+    "rollback_snapshot_preserved": true
+  },
+  "final_gate": {
+    "visual_root_and_prefab_serialization": "PASS",
+    "resource_reference_and_missing_material_static_gate": "PASS",
+    "stable_anchor_and_prefab_instance_focused_gate": "PASS",
+    "14_fixed_1920x1080_capture": "PASS_CAPTURE_ONLY",
+    "visual_quality_gate": "PARTIAL",
+    "real_player_route": "NOT_RUN",
+    "real_1080p_performance": "NOT_RUN",
+    "overall": "PARTIAL"
+  }
+}

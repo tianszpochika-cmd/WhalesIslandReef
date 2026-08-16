@@ -1,0 +1,626 @@
+{
+  "task_id": "D20-A05",
+  "date": "2026-08-15",
+  "status": "PARTIAL",
+  "wildlife_interface_ready": true,
+  "status_reason": "Eight real representative Prefabs are built from intake_eligible CC0 sources; shore/small bird and actual sea turtle remain unavailable, and runtime Player/1080p capture is not claimed.",
+  "prefab_count": 8,
+  "prefab_audit_pass": true,
+  "import_evidence_exists": true,
+  "unity_compile": {
+    "status": "PASS",
+    "build_log": "game/tools/results/D20/D20-A05/D20_A05_PREFAB_BUILD.log",
+    "errors_detected": false
+  },
+  "editmode_tests": {
+    "available": true,
+    "result": "Passed",
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "log": "game/tools/results/D20/D20-A05/D20_A05_EDITMODE_TESTS.log",
+    "pass": true
+  },
+  "screen_budget_1080p": {
+    "quality_budgets": {
+      "low": 12,
+      "medium": 24,
+      "high": 32
+    },
+    "distance_bands_m": {
+      "near": [
+        0,
+        12
+      ],
+      "mid": [
+        12,
+        32
+      ],
+      "far": [
+        32,
+        80
+      ],
+      "proxy": [
+        80,
+        null
+      ]
+    },
+    "lod0_and_lod1": "source SkinnedMeshRenderer retained for work-scene fidelity",
+    "lod2": "remote fallback silhouette quad; no shadow",
+    "animator_near_mid": "CullUpdateTransforms",
+    "animator_far_proxy": "CullCompletely",
+    "measurement_status": "STATIC_BUDGET_VERIFIED_NEEDS_PLAYER_CAPTURE",
+    "target_device_fps_measured": false
+  },
+  "prefabs": [
+    {
+      "prefab_key": "D20_Wildlife_eagle_coastal_bird",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_eagle_coastal_bird.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_eagle_coastal_bird.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/Models/eagle.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "3a718511499c91846afcf6cf60686502",
+      "prefab_source_guid": "3a718511499c91846afcf6cf60686502",
+      "source_guid_match": true,
+      "controller_guid": "b3efb2dae41a84745a1706f9cae028ba",
+      "prefab_controller_guid": "b3efb2dae41a84745a1706f9cae028ba",
+      "controller_guid_match": true,
+      "species_id": "animal_quaternius_eagle_v01",
+      "resource_key": "wildlife_animal_quaternius_eagle_v01_visual",
+      "category": "sea_bird",
+      "manifest_id": "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "6D8F6789D65DBDB352EBAD98A4209F26B41B384E87D81BC05E9CA76139DB1248",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": false,
+        "target_length_m": 0.85,
+        "ground_offset_m": 2.0,
+        "water_depth_m": 0.0,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_fox_small_land",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_fox_small_land.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_fox_small_land.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Fox.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "05f3c9be9639a944a921e1ccec69698b",
+      "prefab_source_guid": "05f3c9be9639a944a921e1ccec69698b",
+      "source_guid_match": true,
+      "controller_guid": "0c2b4cd9afcfcfa49973e46e92ecaf34",
+      "prefab_controller_guid": "0c2b4cd9afcfcfa49973e46e92ecaf34",
+      "controller_guid_match": true,
+      "species_id": "animal_quaternius_fox_v01",
+      "resource_key": "wildlife_animal_quaternius_fox_v01_visual",
+      "category": "small_land_animal",
+      "manifest_id": "pack_quaternius_ultimate_animated_animals_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "A843E66062B1967D60C966EB67383B25A082B1DF81175E931527F4A878316827",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": false,
+        "target_length_m": 0.75,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 0.0,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_cow_livestock",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_cow_livestock.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_cow_livestock.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Cow.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "25055f973a84faa42854700a258afd16",
+      "prefab_source_guid": "25055f973a84faa42854700a258afd16",
+      "source_guid_match": true,
+      "controller_guid": "0c6b36bd17af4f54d9e527306b5b9780",
+      "prefab_controller_guid": "0c6b36bd17af4f54d9e527306b5b9780",
+      "controller_guid_match": true,
+      "species_id": "animal_quaternius_cow_v01",
+      "resource_key": "wildlife_animal_quaternius_cow_v01_visual",
+      "category": "domestic_or_wild_representative",
+      "manifest_id": "pack_quaternius_ultimate_animated_animals_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "A843E66062B1967D60C966EB67383B25A082B1DF81175E931527F4A878316827",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": false,
+        "target_length_m": 1.8,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 0.0,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_fish_shallow_school",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_fish_shallow_school.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_fish_shallow_school.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish1.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "87d3567c27018fe4b97b3fe04378d3c8",
+      "prefab_source_guid": "87d3567c27018fe4b97b3fe04378d3c8",
+      "source_guid_match": true,
+      "controller_guid": "67f5f00f398af554fac3bdf5ebef9a44",
+      "prefab_controller_guid": "67f5f00f398af554fac3bdf5ebef9a44",
+      "controller_guid_match": true,
+      "species_id": "fish_quaternius_fish_01_v01",
+      "resource_key": "wildlife_fish_quaternius_fish_01_v01_visual",
+      "category": "shallow_fish_school",
+      "manifest_id": "pack_quaternius_animated_fish_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "D102C0B69595409041A08B7BE4CC524489967B2E42BF2B1AA6B0DEF6A85021E9",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": true,
+        "target_length_m": 0.55,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 0.8,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_fish_nearshore",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_fish_nearshore.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_fish_nearshore.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish2.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "aec971406f1ff454298e24217e900c2d",
+      "prefab_source_guid": "aec971406f1ff454298e24217e900c2d",
+      "source_guid_match": true,
+      "controller_guid": "4b5477cbcc4b2824faedba1b3b652436",
+      "prefab_controller_guid": "4b5477cbcc4b2824faedba1b3b652436",
+      "controller_guid_match": true,
+      "species_id": "fish_quaternius_fish_02_v01",
+      "resource_key": "wildlife_fish_quaternius_fish_02_v01_visual",
+      "category": "nearshore_fish",
+      "manifest_id": "pack_quaternius_animated_fish_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "D102C0B69595409041A08B7BE4CC524489967B2E42BF2B1AA6B0DEF6A85021E9",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": true,
+        "target_length_m": 0.7,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 1.5,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_shark_nearshore_predator",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_shark_nearshore_predator.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_shark_nearshore_predator.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Shark.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "25b7fd4a0ecc9254f8bab380b484cca3",
+      "prefab_source_guid": "25b7fd4a0ecc9254f8bab380b484cca3",
+      "source_guid_match": true,
+      "controller_guid": "8d6da4122f0f8f3439012c47abf4d6f5",
+      "prefab_controller_guid": "8d6da4122f0f8f3439012c47abf4d6f5",
+      "controller_guid_match": true,
+      "species_id": "animal_quaternius_shark_v01",
+      "resource_key": "wildlife_animal_quaternius_shark_v01_visual",
+      "category": "nearshore_predator",
+      "manifest_id": "pack_quaternius_animated_fish_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "D102C0B69595409041A08B7BE4CC524489967B2E42BF2B1AA6B0DEF6A85021E9",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": true,
+        "target_length_m": 3.0,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 4.0,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_manta_large_aquatic_equivalent",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_manta_large_aquatic_equivalent.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_manta_large_aquatic_equivalent.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Manta ray.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "5c19b2f96494cfc41b192a77340be855",
+      "prefab_source_guid": "5c19b2f96494cfc41b192a77340be855",
+      "source_guid_match": true,
+      "controller_guid": "344f8fe411552144db65568631e79c4d",
+      "prefab_controller_guid": "344f8fe411552144db65568631e79c4d",
+      "controller_guid_match": true,
+      "species_id": "animal_quaternius_manta_ray_v01",
+      "resource_key": "wildlife_animal_quaternius_manta_ray_v01_visual",
+      "category": "sea_turtle_or_equivalent",
+      "manifest_id": "pack_quaternius_animated_fish_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "D102C0B69595409041A08B7BE4CC524489967B2E42BF2B1AA6B0DEF6A85021E9",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": true,
+        "target_length_m": 2.5,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 3.0,
+        "source_dimensions_are_not_rewritten": true
+      }
+    },
+    {
+      "prefab_key": "D20_Wildlife_whale_distant_aquatic",
+      "prefab_path": "game/Assets/Prefabs/Animals/D20/Wildlife/D20_Wildlife_whale_distant_aquatic.prefab",
+      "prefab_exists": true,
+      "prefab_meta_exists": true,
+      "controller_path": "game/Assets/Animations/D20/Animals/D20_Wildlife_whale_distant_aquatic.controller",
+      "controller_exists": true,
+      "source_model_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx",
+      "source_model_exists": true,
+      "source_model_guid": "19387434e1a2a144681c96283cd5a60b",
+      "prefab_source_guid": "19387434e1a2a144681c96283cd5a60b",
+      "source_guid_match": true,
+      "controller_guid": "44ece82595bdff84a91e6310d17d7036",
+      "prefab_controller_guid": "44ece82595bdff84a91e6310d17d7036",
+      "controller_guid_match": true,
+      "species_id": "animal_quaternius_whale_v01",
+      "resource_key": "wildlife_animal_quaternius_whale_v01_visual",
+      "category": "distant_large_aquatic",
+      "manifest_id": "pack_quaternius_animated_fish_d18_a04_v1",
+      "intake_eligible": true,
+      "license_id": "CC0-1.0",
+      "archive_sha256": "D102C0B69595409041A08B7BE4CC524489967B2E42BF2B1AA6B0DEF6A85021E9",
+      "unity_import_evidence": "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+      "layout": {
+        "visual_lod_nodes": true,
+        "generic_rig_marker": true,
+        "observation_socket": true,
+        "collision_proxy": true,
+        "trigger_only_collision": true,
+        "lod_group": true,
+        "remote_fallback": true,
+        "root_scale_one": true
+      },
+      "animator": {
+        "controller_ref_present": true,
+        "root_motion_disabled": true,
+        "culling_mode_cull_update_transforms": true,
+        "generic_no_avatar_expected": true
+      },
+      "placement": {
+        "unit": "m",
+        "axis": "Y-up / Z-forward",
+        "aquatic": true,
+        "target_length_m": 12.0,
+        "ground_offset_m": 0.0,
+        "water_depth_m": 10.0,
+        "source_dimensions_are_not_rewritten": true
+      }
+    }
+  ],
+  "state_mapping": {
+    "land": {
+      "Idle": "Idle",
+      "Forage": "Feed",
+      "Travel": "Move",
+      "Alert": "Alert",
+      "Flee": "Flee",
+      "Rest": "Idle",
+      "Injured": "Idle",
+      "Observed": "Idle"
+    },
+    "aquatic": {
+      "Swim": "Swim",
+      "Turn": "Swim",
+      "Dive": "Swim/fallback",
+      "Surface": "Swim/fallback",
+      "Flee": "Swim",
+      "Observed": "Swim"
+    },
+    "bird": {
+      "Idle": "Idle",
+      "Travel": "Flying",
+      "Alert": "Flying/fallback",
+      "Flee": "Flying/fallback",
+      "Perch": "Idle/fallback"
+    },
+    "missing_clip_policy": "neutral Idle for land; Swim for aquatic; no AnimationEvent writes facts"
+  },
+  "category_coverage": {
+    "sea_bird": {
+      "status": "PARTIAL",
+      "prefab_count": 1,
+      "species_ids": [
+        "animal_quaternius_eagle_v01"
+      ]
+    },
+    "shore_or_small_bird": {
+      "status": "OPEN_GAP",
+      "prefab_count": 0,
+      "reason": "Only Eagle is intake_eligible; no second shore/small bird source is admitted."
+    },
+    "small_land_animal": {
+      "status": "READY_FOR_WORK_SCENE",
+      "prefab_count": 1,
+      "species_ids": [
+        "animal_quaternius_fox_v01"
+      ]
+    },
+    "domestic_or_wild_representative": {
+      "status": "READY_FOR_WORK_SCENE",
+      "prefab_count": 1,
+      "species_ids": [
+        "animal_quaternius_cow_v01"
+      ]
+    },
+    "shallow_fish_school": {
+      "status": "READY_FOR_WORK_SCENE",
+      "prefab_count": 1,
+      "species_ids": [
+        "fish_quaternius_fish_01_v01"
+      ]
+    },
+    "nearshore_fish": {
+      "status": "READY_FOR_WORK_SCENE",
+      "prefab_count": 1,
+      "species_ids": [
+        "fish_quaternius_fish_02_v01"
+      ]
+    },
+    "sea_turtle_or_equivalent": {
+      "status": "EQUIVALENT_ONLY",
+      "prefab_count": 1,
+      "species_ids": [
+        "animal_quaternius_manta_ray_v01"
+      ],
+      "reason": "Manta ray is an explicitly labelled large aquatic equivalent; no sea turtle model is claimed."
+    },
+    "distant_large_aquatic": {
+      "status": "READY_FOR_WORK_SCENE",
+      "prefab_count": 1,
+      "species_ids": [
+        "animal_quaternius_whale_v01"
+      ]
+    }
+  },
+  "gaps": [
+    {
+      "id": "shore_small_bird",
+      "status": "OPEN",
+      "reason": "The original Blender-only bird is not admitted; Eagle is the only imported bird candidate."
+    },
+    {
+      "id": "sea_turtle",
+      "status": "OPEN",
+      "reason": "D15/D11 turtle content exists, but no intake_eligible turtle model is available; manta is not relabelled as turtle."
+    },
+    {
+      "id": "aquatic_actions",
+      "status": "FALLBACK",
+      "reason": "Fish/shark/manta/whale sources provide Swim only; Turn/Dive/Surface/Flee use Swim or neutral fallback."
+    },
+    {
+      "id": "bird_near_camera_actions",
+      "status": "FALLBACK",
+      "reason": "Eagle provides Idle/Flying only; perch/takeoff/land/feeding are not claimed."
+    },
+    {
+      "id": "runtime_performance_capture",
+      "status": "OPEN",
+      "reason": "EditMode structure and static budget passed; no Player/target-device FPS/GC capture was run in this task."
+    },
+    {
+      "id": "local_development_ready",
+      "status": "WAITING_D18_S03",
+      "reason": "This task does not promote resources or mark LocalDevelopmentReady."
+    }
+  ],
+  "pet_interface_constraints": {
+    "A06_can_read": [
+      "species_id",
+      "resource_key",
+      "read_only_behavior_state",
+      "position",
+      "ecology_result",
+      "presentation_lod"
+    ],
+    "A06_must_not_assume": [
+      "pet_ownership",
+      "adoption",
+      "follow_target",
+      "affection",
+      "feeding_result",
+      "health",
+      "death",
+      "reward",
+      "inventory",
+      "save_writer"
+    ],
+    "pet_owner": "D11 Pet/Animal systems; this adapter only presents a supplied snapshot"
+  },
+  "ownership_boundary": {
+    "AnimalSystem_EcologySystem_write": [
+      "population",
+      "spawn",
+      "position_fact",
+      "behavior_state",
+      "capture",
+      "rarity",
+      "ecology_pressure",
+      "events"
+    ],
+    "D20_A05_write": [
+      "Prefab presentation components",
+      "Animator state playback",
+      "LOD/culling",
+      "trigger-only collision proxy",
+      "visual placement from snapshot"
+    ],
+    "D20_A05_forbidden": [
+      "EcologySystem",
+      "AnimalSystem",
+      "Registry",
+      "InitialHarbor",
+      "water shader",
+      "save schema",
+      "reward",
+      "network",
+      "LLM"
+    ]
+  },
+  "source_state": {
+    "intake_catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "local_development_ready_count_changed": false,
+    "release_approved_changed": false
+  },
+  "next_gate": "D20-S02 after work-scene/Prefab review; D18-S03 for runtime consumer and LocalDevelopmentReady"
+}

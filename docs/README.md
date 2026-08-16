@@ -7,8 +7,10 @@
 - [统一需求总纲 v3.0](game/REQUIREMENTS.md)：所有系统、玩法、数量和完成定义；
 - [统一设计总览](game/design/README.md)：领域结构、数据、边界和设计流程；
 - [玩法设计总目录](game/design/gameplay/README.md)：经营、捕捞、动物、牌局、关系、装扮、探索和奖励；
-- [D7 后统一开发路线](game/DEV_ROADMAP.md)：D8—D16 工作包和 DoD；
-- [Agent 开发任务总索引](game/AGENT_DEVELOPMENT_TASKS.md)：列出全部章节、编号和执行顺序；实际提示词位于 D8—D16 独立章节文件；
+- [D7 后统一开发路线](game/DEV_ROADMAP.md)：D8—D16 历史执行线、D17 保留基线和 D18—D24 本地开发轨；
+- [D18—D24 画面与完整本地可玩路线](game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md)：免费资源、样板岛、角色、船海、UI、完整闭环和扩量原则；
+- [D18 免费资源库准入验收（S02 v2）](game/design/common/D18_FREE_ASSET_LIBRARY_ADMISSION_ACCEPTANCE.md)：资源证据准入、受控开发解锁与 D18-S03 运行时晋级门；
+- [Agent 开发任务总索引](game/AGENT_DEVELOPMENT_TASKS.md)：列出全部章节、编号和执行顺序；实际提示词位于 D8—D16、D18—D24 独立章节文件；
 - [技术架构](ARCHITECTURE.md)：三端、契约和目录规则；
 - [开发规范](DEVELOPMENT_STANDARDS.md)：工程边界和验收要求；
 - [D8 数值与枚举统一配置](game/design/common/D8_NUMERIC_ENUM_CONFIG.md)：统一单位、范围、枚举、所有权和配置检查入口；
@@ -21,6 +23,8 @@
 - [D12 沉船、洞穴与打捞系统](game/design/common/D12_WRECK_CAVE_SALVAGE.md)：沉船/洞穴位置、潮汐、装备、风险、竞争者、法律裁决、失败恢复和奖励请求幂等；
 - [D13 产权与资产交易](game/design/common/D13_PROPERTY_ASSET_MARKET.md)：岛屿、地块、房屋、仓库、工坊、酒馆、船坞、农地与渔场的调查、估值、权利交易、共同治理、抵押、继承和争议；
 - [D15 植被批量目录](game/design/common/D15_VEGETATION_BATCH_CATALOG.md)：1,000—2,000 植物条目的分类、模型/材质占位状态、LOD、风场、生境、用途、来源/授权和抽样加载门禁；
+- [D19 港口建筑样板](game/design/common/D19_PORT_ARCHITECTURE.md)：圣玛格丽特港口模块化 Prefab、稳定交互锚点、碰撞、LOD、材质复用和工作场景验证；
+- [D19 圣玛格丽特正式场景验收](game/design/common/D19_SAINT_MARGARET_ACCEPTANCE.md)：InitialHarbor 串行集成、稳定交互 ID、兼容节点、固定镜头、PlayMode 回归、性能边界和回滚证据；
 - [D13 金融、信用与保险](game/design/common/D13_FINANCE_CREDIT_INSURANCE.md)：现金、赊账、贷款、担保、利息、展期、保险证据、拒赔、违约、催收、查封与破产保护；
 - [D13 农业、果园与蔬菜](game/design/common/D13_FARMING_ORCHARDS.md)：地块、种子、土壤、水源、季节、播种、病虫害、风暴、收获、轮作、加工与销售；
 - [环境搭建](game/SETUP.md)：本机运行与测试；

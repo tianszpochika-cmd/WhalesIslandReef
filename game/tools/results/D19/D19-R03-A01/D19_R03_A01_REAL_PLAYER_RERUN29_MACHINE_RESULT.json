@@ -1,0 +1,59 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_MACHINE_RESULT_V2",
+  "task": "D19-R03-A01",
+  "run_id": "RERUN29_LONG",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real Windows Player with CUA input; no Inspector or direct gameplay method invocation",
+  "player_executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN29.exe",
+  "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN29_PLAYER_LONG.log",
+  "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN29_LONG.json",
+  "resolution": "1920x1080",
+  "runtime_seconds": 694.13134765625,
+  "player_found": true,
+  "controller_found": true,
+  "router_found": true,
+  "moved_observed": true,
+  "interaction_input_observed": true,
+  "save_input_observed": true,
+  "save_feedback_observed": true,
+  "boarding_feedback_observed": true,
+  "reload_restore_observed": false,
+  "landmarks_reached": [
+    "anchor.player.spawn",
+    "building:tavern_santa_margarita",
+    "anchor.dock.primary",
+    "anchor.berth.primary"
+  ],
+  "landmarks_not_reached": [
+    "building:market_santa_margarita",
+    "building:warehouse_santa_margarita",
+    "building:shipyard_santa_margarita",
+    "anchor.return.harbor"
+  ],
+  "input_events": {
+    "interaction_input_observed": 5,
+    "save_input_observed": 2,
+    "movement_observed": 17,
+    "boarding_feedback_samples": 1354,
+    "disembarked_feedback_samples": 697
+  },
+  "screenshots": {
+    "count": 16,
+    "directory": "game/tools/results/D19/D19-R03-A01/screenshots/",
+    "pattern": "route_rerun29_00.png..route_rerun29_15.png",
+    "verified_dimensions": "1920x1080"
+  },
+  "ground_evidence": {
+    "surface": "D19_TerrainRoot",
+    "log_observation": "玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.73",
+    "interpretation": "route collider is recognized by D2 physics; it does not prove all route segments are traversable"
+  },
+  "failed_gates": [
+    "full spawn-market-warehouse-tavern-dock-board-depart-return-save-reload route not completed",
+    "market, warehouse, shipyard and return harbor landmarks were not reached",
+    "reload restore was not performed in this same run",
+    "weather variants and three-quality 1080p performance were not part of this A01 run"
+  ],
+  "historical_note": "RERUN29 is independent of the RERUN25 duplicate focus attempt; prior PARTIAL evidence remains unchanged.",
+  "generated_at": "2026-08-16T16:15:00+08:00"
+}

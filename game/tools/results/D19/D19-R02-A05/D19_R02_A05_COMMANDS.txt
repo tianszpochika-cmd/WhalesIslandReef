@@ -1,0 +1,7 @@
+Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform playmode -assemblyNames D16.PlayMode.Tests -testFilter Whalebone.Tests.D19Hud.D19R02A01HudPlayModeTests.InitialHarborKeepsOnePrimaryHudAndSuppressesLegacyPages -testResults game/tools/results/D19/D19-R02-A05/D19_R02_A05_REPRO_SINGLE.xml -logFile game/tools/results/D19/D19-R02-A05/D19_R02_A05_REPRO_SINGLE.log
+
+Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform playmode -assemblyNames D16.PlayMode.Tests -testFilter D19 -testResults game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_PLAYMODE.xml -logFile game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_PLAYMODE.log
+
+Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform playmode -assemblyNames D16.PlayMode.Tests -testFilter D17 -testResults game/tools/results/D19/D19-R02-A05/D19_R02_A05_D17_PLAYMODE.xml -logFile game/tools/results/D19/D19-R02-A05/D19_R02_A05_D17_PLAYMODE.log
+
+Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform editmode -assemblyNames Save.Tests -testFilter D19 -testResults game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_EDITMODE.xml -logFile game/tools/results/D19/D19-R02-A05/D19_R02_A05_D19_EDITMODE.log

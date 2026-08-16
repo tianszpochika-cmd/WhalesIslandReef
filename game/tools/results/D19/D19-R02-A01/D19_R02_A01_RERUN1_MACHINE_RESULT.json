@@ -1,0 +1,47 @@
+{
+  "schema": "D19_R02_A01_MACHINE_RESULT_RERUN1_V1",
+  "task": "D19-R02-A01",
+  "rerun": "RERUN1",
+  "status": "PARTIAL",
+  "historical_policy": {
+    "original_partial_preserved": true,
+    "this_result_adds_player_facing_hud_copy_evidence": true
+  },
+  "scope": {
+    "modified_files": [
+      "game/Assets/Scripts/Gameplay/UI/D19RouteHud/D19RouteHud.cs",
+      "game/Assets/Scripts/Gameplay/UI/D19RouteHud/D19RouteHudManager.cs"
+    ],
+    "unchanged": ["InitialHarbor", "D2", "D3", "Systems", "Registry", "Save Schema", "contracts", "D20"],
+    "business_logic_changed": false
+  },
+  "build": {
+    "status": "PASS",
+    "artifact": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_Player_RERUN1.exe",
+    "bytes": 671744,
+    "log": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_PLAYER_BUILD_RERUN1.log"
+  },
+  "tests": {
+    "editmode": {"total": 3, "passed": 3, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_EDITMODE_TESTS_RERUN1.xml"},
+    "playmode": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_PLAYMODE_TESTS_RERUN1.xml"}
+  },
+  "real_player": {
+    "status": "PASS_FOR_PLAYER_FACING_HUD_BOOT",
+    "build_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+    "main_menu_to_new_game": "PASS",
+    "harbor_spawn_and_landing": "PASS_OBSERVED",
+    "legacy_d2_d3_d5_d9_d10_canvases_hidden": "PASS_OBSERVED",
+    "internal_debug_prefixes_removed_from_primary_hud": "PASS_OBSERVED",
+    "screenshot": "game/tools/results/D19/D19-R02-A01/31_rerun1_harbor_hud.jpg",
+    "input_log": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_PLAYER_RERUN1_INPUT.log",
+    "captured_window_resolution": "1099x648 logical pixels",
+    "exact_backbuffer_1920x1080_verified": false,
+    "full_route_verified": false,
+    "player_closed_after_capture": true
+  },
+  "remaining_blockers": [
+    "A01 task-level real movement/operation/pause/input-switch/failure-feedback route is still not independently closed.",
+    "Exact 1920x1080 backbuffer and three-tier performance remain D19-R02-S02 scope.",
+    "InitialHarbor visual graybox debt remains A04 scope."
+  ]
+}

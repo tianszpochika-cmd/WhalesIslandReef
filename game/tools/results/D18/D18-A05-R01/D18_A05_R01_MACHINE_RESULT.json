@@ -1,0 +1,44 @@
+{
+  "task": "D18-A05-R01",
+  "status": "PARTIAL",
+  "read_only": true,
+  "review_packet": "docs/game/design/common/assets/review_packets/D18-A05-R01/D18_A05_R01_SHIP_PORT_REVIEW.json",
+  "model_file_count": 151,
+  "preview_file_count": 151,
+  "hash_files_checked": 302,
+  "model_hash_files_checked": 151,
+  "hash_mismatch_count": 0,
+  "missing_hashed_file_count": 0,
+  "missing_candidate_file_count": 0,
+  "import_asset_records": 151,
+  "import_errors": 0,
+  "import_warnings": 151,
+  "manifest_audit_status": "PASS",
+  "intake_audit_status": "PASS",
+  "ships_port_intake_eligible_now": 0,
+  "category_counts": {
+    "port_structure_core": 96,
+    "market_prop_core": 16,
+    "ship_visual_candidate": 15,
+    "out_of_scope_coastal_environment": 18,
+    "dock_and_shipyard_core": 6
+  },
+  "hash_mismatches": [],
+  "missing_hashed_files": [],
+  "missing_files": [],
+  "missing_import_records": [],
+  "protected_scope": {
+    "initial_harbor_modified_by_r01": false,
+    "ship_system_modified_by_r01": false,
+    "formal_prefab_modified_by_r01": false,
+    "global_intake_catalog_modified_by_r01": false,
+    "registry_save_contracts_server_web_modified_by_r01": false,
+    "candidate_sources_modified_by_r01": false
+  },
+  "next_owner": {
+    "D18-S02-R01": "review packet and decide intake eligibility; do not infer approval",
+    "D19-R01-B": "consume only after current intake gate; use project-owned fallback otherwise",
+    "D21-A01/A02": "review ship candidates and close hull/rigging/anchor Prefab evidence",
+    "D18-S03": "decide LocalDevelopmentReady only after runtime consumer/save/rollback evidence"
+  }
+}

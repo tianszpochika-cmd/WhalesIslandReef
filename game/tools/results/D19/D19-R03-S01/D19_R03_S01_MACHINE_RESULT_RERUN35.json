@@ -1,0 +1,36 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_RERUN35_V1",
+  "task": "D19-R03-S01",
+  "run_id": "RERUN35_GATE_REVIEW",
+  "conclusion": "BLOCKED",
+  "scene_changed_after_previous_gate": true,
+  "previous_gate_preserved": "game/tools/results/D19/D19-R03-S01/D19_R03_S01_MACHINE_RESULT_RERUN29.json",
+  "current_inputs": {
+    "visual_patch": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN35_VISUAL_PATCH.json",
+    "fixed_shots": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN35_FIXED.json",
+    "route_short_run": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_RUNTIME_VISUALPATCH_PLAYER_RERUN35.json",
+    "performance_baseline": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN17.json"
+  },
+  "gate_review": {
+    "fixed_shots_1920x1080": "PASS_14_OF_14_RECAPTURED",
+    "weather_variants": "BLOCKED_0_OF_3",
+    "route_after_scene_change": "BLOCKED_NOT_COMPLETED",
+    "save_reload_after_scene_change": "BLOCKED_NOT_COMPLETED",
+    "performance_after_scene_change": "BLOCKED_BASELINE_STALE",
+    "visual_quality": "BLOCKED_REMAINING_FLAT_GROUND_LOW_DETAIL_PROXY_DEBT",
+    "resource_state": "UNCHANGED",
+    "formal_scene_ownership": "UNCHANGED"
+  },
+  "reasons": [
+    "RERUN35 changed R03 presentation geometry after RERUN29; old route/performance evidence cannot be reused as final proof.",
+    "The RERUN35 short Player run did not produce movement or save edges.",
+    "Fixed-shot recapture is Calm-only and still observes flat ground, low-detail buildings, proxy rock geometry and development HUD.",
+    "D19-R03-S01 cannot release D19-R02-S02 or D20-S02-R01 while these gates remain open."
+  ],
+  "next_required": [
+    "real Player route after the current scene build",
+    "same-build save/exit/Continue recovery",
+    "Low/Medium/High 1920x1080 performance after the current scene build",
+    "Calm/Rain/Storm evidence and visual debt review"
+  ]
+}

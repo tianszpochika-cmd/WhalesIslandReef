@@ -1,0 +1,79 @@
+{
+  "schema": "D19_R03_A03_MACHINE_RESULT_RERUN36_CURRENT_V1",
+  "task": "D19-R03-A03",
+  "attempt": "RERUN36_CURRENT_SCENE",
+  "conclusion": "PARTIAL",
+  "conclusion_scope": "真实 Player 当前 R03 场景三档性能；Low 档 1% low 未达标准，因此不宣称子任务 PASS",
+  "player_build": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN29.exe",
+  "player_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD_RERUN37_COLLIDER_FIX.log",
+  "performance_probe_source": "game/Assets/Scripts/Gameplay/D19/R03/D19R03PerformanceProbe.cs",
+  "device": {
+    "graphics_device": "NVIDIA GeForce RTX 4070 Ti",
+    "graphics_api": "Direct3D11",
+    "screen": "1920x1080",
+    "fullscreen": false
+  },
+  "runs": {
+    "low": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_low_rerun36-current.json",
+      "quality_name": "Low",
+      "warmup_seconds": 30.0076217651367,
+      "sample_seconds": 60.0049934387207,
+      "sample_count": 3364,
+      "average_fps": 59.4353981018066,
+      "one_percent_low_fps": 7.90309286117554,
+      "p95_frame_ms": 16.6711025238037,
+      "completion": "complete",
+      "gate": "FAIL_1_PERCENT_LOW_BELOW_50"
+    },
+    "low_repeat": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_low_rerun36-current2.json",
+      "quality_name": "Low",
+      "warmup_seconds": 30.0090065002441,
+      "sample_seconds": 60.0047874450684,
+      "sample_count": 3601,
+      "average_fps": 59.9951019287109,
+      "one_percent_low_fps": 59.6241722106934,
+      "p95_frame_ms": 16.6692962646484,
+      "completion": "complete",
+      "gate": "PASS_REPEAT_ONLY"
+    },
+    "medium": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_medium_rerun36-current.json",
+      "quality_name": "Medium",
+      "warmup_seconds": 30.0,
+      "sample_seconds": 60.0050506591797,
+      "average_fps": 59.9949913024902,
+      "one_percent_low_fps": 59.6494598388672,
+      "p95_frame_ms": 16.6689968109131,
+      "completion": "complete",
+      "gate": "PASS"
+    },
+    "high": {
+      "raw_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_high_rerun36-current.json",
+      "quality_name": "High",
+      "warmup_seconds": 30.0,
+      "sample_seconds": 60.005744934082,
+      "average_fps": 59.9944267272949,
+      "one_percent_low_fps": 59.6369705200195,
+      "p95_frame_ms": 16.6692028045654,
+      "completion": "complete",
+      "gate": "PASS"
+    }
+  },
+  "gate_checks": {
+    "real_player": true,
+    "screen_1920x1080": true,
+    "warmup_30_seconds_each": true,
+    "sample_60_seconds_each": true,
+    "low_medium_high_runtime_names_exact": true,
+    "current_scene_after_rerun36_build": true,
+    "all_quality_gates_pass": false,
+    "d19_overall_pass": false
+  },
+  "notes": [
+    "The Player was stopped after each completed probe JSON was written.",
+    "The first Low result has a real 1% low outlier (7.903 FPS); a repeat produced 59.624 FPS. The outlier remains preserved and the three-run worst-case requirement is not yet satisfied, so the overall gate remains open.",
+    "These measurements do not prove route completion, weather variants, save/reload or final D19 gate."
+  ]
+}

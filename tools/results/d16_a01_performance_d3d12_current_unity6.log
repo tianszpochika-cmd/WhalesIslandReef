@@ -1,0 +1,1018 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+[Licensing::IpcConnector] Channel LicenseClient-Administrator doesn't exist
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-12T05:45:57Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 37856)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-force-d3d12
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-runTests
+-testPlatform
+PlayMode
+-assemblyNames
+D16.PlayMode.Tests
+-testFilter
+D16A01RuntimePerformanceWindowSamplesContinuously
+-testResults
+C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_performance_d3d12_current_unity6.xml
+-logFile
+C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_performance_d3d12_current_unity6.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [31836]  Target information:
+
+Player connection [31836]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 2493246726 [EditorId] 2493246726 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31836]  * "[IP] 172.16.219.2 [Port] 55504 [Flags] 2 [Guid] 2493246726 [EditorId] 2493246726 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31836] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [31836] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-12T05:45:57.687001Z"
+[Package Manager] Connected to IPC stream "Upm-12460" after 0.2 seconds.
+Library Redirect Path: Library/
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 37856, path: "C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+FMOD initialized on nosound output
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.34 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+Forcing GfxDevice: Direct3D 12
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              1dc6d9944e134c138e0ff012a313cb48
+  Correlation Id:          bc5100dbe343bcd5814e6efa5e2bc4cf
+  External correlation Id: 1306473440736224778
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.24s, validation: 0.21s, handshake: 0.02s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-12T05:45:57.9165448Z"
+[Licensing::Module] Connected to LicensingClient (PId: 37856, launch time: 0.00, total connection time: 0.47s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-21T04:30:30Z
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Module] Licensing Background thread has ended after 0.50s
+d3d12: failed to query info queue interface (0x80004002).
+Direct3D:
+    Version:         Direct3D 12 [level 12.1]
+    Renderer:        NVIDIA GeForce RTX 4070 Ti (ID=0x2782)
+    Vendor:          NVIDIA
+    VRAM:            11996 MB
+    App VRAM Budget: 11228 MB
+    Driver:          32.0.15.9636
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56460
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001651 seconds.
+- Loaded All Assemblies, in  0.237 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.234 seconds
+Domain Reload Profiling: 470ms
+	BeginReloadAssembly (60ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (109ms)
+		LoadAssemblies (58ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (106ms)
+			TypeCache.Refresh (105ms)
+				TypeCache.ScanAssembly (96ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (234ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (207ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (38ms)
+			ProcessInitializeOnLoadAttributes (107ms)
+			ProcessInitializeOnLoadMethodAttributes (42ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s205ms
+[641/819    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.18 seconds), 1 items updated, 819 evaluated
+AssetDatabase: script compilation time: 0.547549s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.941 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.253 seconds
+Domain Reload Profiling: 3192ms
+	BeginReloadAssembly (222ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (139ms)
+	RebuildCommonClasses (261ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (431ms)
+		LoadAssemblies (197ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (281ms)
+			TypeCache.Refresh (226ms)
+				TypeCache.ScanAssembly (219ms)
+			BuildScriptInfoCaches (43ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (2253ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2093ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (100ms)
+			ProcessInitializeOnLoadAttributes (1914ms)
+			ProcessInitializeOnLoadMethodAttributes (63ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Lighting/ProbeVolume/ProbeVolumeUploadDataL2.compute using Guid(6196f34ed825db14b81fb3eb0ea8d931) (ComputeShaderImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+ -> (artifact id: 'bb277a29a1e95b77bea127dd078c7268') in 0.1536083 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/OcclusionCullingDebug.compute using Guid(b23e766bcf50ca4438ef186b174557df) (ComputeShaderImporter) -> (artifact id: '442c530065e861c89cd2b3e4b0c04424') in 0.0575856 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/bit_histogram.compute using Guid(f2122e5e16c5caa42ba34450bc5ab14b) (ComputeShaderImporter) -> (artifact id: '2ae2e558b8b98c65edf4d36c52f86e63') in 0.0156368 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Common/Utilities/CopyBuffer.compute using Guid(033e2ad50853a92498e5ca004bf0a68c) (ComputeShaderImporter) -> (artifact id: 'e7e6c4b5ce237b0be991d9c8f392bc1f') in 0.0139763 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/STP/StpSetup.compute using Guid(33be2e9a5506b2843bdb2bdff9cad5e1) (ComputeShaderImporter) -> (artifact id: '224a7d7c4e1197b8b9872317940770ad') in 0.0653882 seconds
+Start importing Packages/com.unity.render-pipelines.universal/Shaders/Debug/ProbeVolumeSamplingDebugPositionNormal.compute using Guid(53626a513ea68ce47b59dc1299fe3959) (ComputeShaderImporter) -> (artifact id: '5a0302808d911fde220059a0fc7e2989') in 0.1236017 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceDataBufferUploadKernels.compute using Guid(53864816eb00f2343b60e1a2c5a262ef) (ComputeShaderImporter) -> (artifact id: 'd777c16304769284515a8ceca69bbe00') in 0.0153163 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Lighting/ProbeVolume/ProbeVolumeBlendStates.compute using Guid(a3f7b8c99de28a94684cb1daebeccf5d) (ComputeShaderImporter) -> (artifact id: '7662a2dc85bc619b759893ee0249618f') in 0.0244622 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/block_scan.compute using Guid(c453356d08264cd419c13dd2ae8d1147) (ComputeShaderImporter) -> (artifact id: 'f79a22b9f336d85a1ee7c707d3926afa') in 0.0184843 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Common/GeometryPool/GeometryPoolKernels.compute using Guid(e477e231a2d044e6bc38544c4b746446) (ComputeShaderImporter) -> (artifact id: 'ce3a010fb3e34fea42cedd696066f834') in 0.0269381 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/STP/StpPreTaa.compute using Guid(a679dba8ec4d9ce45884a270b0e22dda) (ComputeShaderImporter) -> (artifact id: '24cd3a9cea1f3c2a47ae7b78433ee282') in 0.0196626 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceOcclusionCullingKernels.compute using Guid(f6d223acabc2f974795a5a7864b50e6c) (ComputeShaderImporter) -> (artifact id: '227ca6dbe5afa887f375cf8f7dedfbc7') in 0.0323161 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/restructure_bvh.compute using Guid(f68e907366e14894aa16f412af90f520) (ComputeShaderImporter) -> (artifact id: '370ee6ffb93ed265986f002c7b2f5a67') in 0.0472631 seconds
+Start importing Packages/com.unity.render-pipelines.core/Tests/Runtime/Threading/FunctionTestsGroup.compute using Guid(77f6c3e00d2daf84ba7b57e205d5dd64) (ComputeShaderImporter) -> (artifact id: '9230313fdccc995aca76925fac0ef632') in 0.0214118 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/OccluderDepthPyramidKernels.compute using Guid(08b2b5fb307b0d249860612774a987da) (ComputeShaderImporter) -> (artifact id: '1a0262c2e0de9e64889a9b82684a4960') in 0.0267094 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/scatter.compute using Guid(28dba68663251c347b548c8ea7405650) (ComputeShaderImporter) -> (artifact id: '98d775906019529af3bd3916ff647bd0') in 0.0190327 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Lighting/ProbeVolume/ProbeVolumeUploadData.compute using Guid(0951de5992461754fa73650732c4954c) (ComputeShaderImporter) -> (artifact id: 'e396127ab969dd771056a97d4257707e') in 0.0189744 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/STP/StpTaa.compute using Guid(3923900e2b41b5e47bc25bfdcbcdc9e6) (ComputeShaderImporter) -> (artifact id: 'f7d8f4bc4cda7824143302976632aa04') in 0.0210404 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/build_hlbvh.compute using Guid(599a7ad58d01b8142b554e0a0625b451) (ComputeShaderImporter) -> (artifact id: '407714c845fc5824ddc787a67afedde4') in 0.0188472 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceDataBufferCopyKernels.compute using Guid(f984aeb540ded8b4fbb8a2047ab5b2e2) (ComputeShaderImporter) -> (artifact id: 'cde3c61aa52d2c079d10254209992ff5') in 0.0175832 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceTransformUpdateKernels.compute using Guid(2a567b9b2733f8d47a700c3c85bed75b) (ComputeShaderImporter) -> (artifact id: '0b7d5cb14406aec65c1d336f44a4df9d') in 0.0257497 seconds
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/ProbeVolumeCellDilation.compute using Guid(6bb382f7de370af41b775f54182e491d) (ComputeShaderImporter) -> (artifact id: '6cf750d0405e280d161bfe76915b25ca') in 0.0354591 seconds
+Start importing Packages/com.unity.render-pipelines.core/Tests/Editor/BufferCopyTest.compute using Guid(8ba6ac699baf35242857feaf27c9cc2a) (ComputeShaderImporter) -> (artifact id: '4a0ddad525aba7d02ff0f4bfea3a6754') in 0.0134571 seconds
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/ProbeVolumeSubdivide.compute using Guid(bb86f1f0af829fd45b2ebddda1245c22) (ComputeShaderImporter) -> (artifact id: '72c6b6a90767645c27917100ad4692aa') in 0.0231878 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/CopyPositions.compute using Guid(fb6acdefef36af24eab075e3f9e99247) (ComputeShaderImporter) -> (artifact id: '57ffd3f9304a5a8ff541ff423baa0ff4') in 0.0155005 seconds
+Start importing Packages/com.unity.render-pipelines.core/Tests/Runtime/Threading/FunctionTestsWave.compute using Guid(7cce01e3b2c07a34b8a6cfa8dcd99d0b) (ComputeShaderImporter) -> (artifact id: '8470efc6598a270a470d80a14bb8d356') in 0.0203566 seconds
+Start importing Packages/com.unity.cinemachine/Editor/EditorResources/CMWaveform.compute using Guid(6dd3f00b9032de54c8784df7bdc6fdf8) (ComputeShaderImporter) -> (artifact id: 'e317ee8ceca954e8ba498fbc4db725a8') in 0.0234022 seconds
+Start importing Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/GPUDriven/InstanceWindDataUpdateKernels.compute using Guid(fde76746e4fd0ed418c224f6b4084114) (ComputeShaderImporter) -> (artifact id: '117ed5ea8661ae65123c1619b83de9f2') in 0.0221696 seconds
+Start importing Packages/com.unity.rendering.light-transport/Runtime/UnifiedRayTracing/Compute/RadeonRays/kernels/block_reduce_part.compute using Guid(ae6c1838a70d96043b73ec2993509e8c) (ComputeShaderImporter) -> (artifact id: '0dc6ec099a6273886563fe4600172101') in 0.0175117 seconds
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/RenderingLayerMask/TraceRenderingLayerMask.urtshader using Guid(94a070d33e408384bafc1dea4a565df9) (ScriptedImporter)
+Compiling ray tracing shader "TraceRenderingLayerMask"
+    1 variants, starting compilation...
+    finished in 0.15 seconds. Local cache hits 0, remote cache hits 0, compiled 1 variants
+ -> (artifact id: 'c76bbb8821aaa1c325efe3019ecd56ea') in 0.2683464 seconds
+Start importing Packages/com.unity.rendering.light-transport/Tests/Editor/UnifiedRayTracing/TraceRaysAndFetchAttributes.urtshader using Guid(f5da308cb9cb0194e9bfae0b869c004e) (ScriptedImporter)
+Compiling ray tracing shader "TraceRaysAndFetchAttributes"
+    1 variants, starting compilation...
+    finished in 0.02 seconds. Local cache hits 0, remote cache hits 0, compiled 1 variants
+ -> (artifact id: '6c3250127b3daa231d519932bc68a856') in 0.034875 seconds
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/DynamicGI/DynamicGISkyOcclusion.urtshader using Guid(5a2a534753fbdb44e96c3c78b5a6999d) (ScriptedImporter)
+Compiling ray tracing shader "DynamicGISkyOcclusion"
+    1 variants, starting compilation...
+    finished in 0.05 seconds. Local cache hits 0, remote cache hits 0, compiled 1 variants
+ -> (artifact id: 'd60cb4a4ebab85362a7fd343ba001811') in 0.0737907 seconds
+Start importing Packages/com.unity.rendering.light-transport/Tests/Editor/UnifiedRayTracing/TraceRays.urtshader using Guid(8e91b451db4e4ae4d99c55ce20a031f8) (ScriptedImporter)
+Compiling ray tracing shader "TraceRays"
+    1 variants, starting compilation...
+    finished in 0.01 seconds. Local cache hits 0, remote cache hits 0, compiled 1 variants
+ -> (artifact id: '65726a0f7e6d8d023bf1af4da95864ed') in 0.0214947 seconds
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/VirtualOffset/TraceVirtualOffset.urtshader using Guid(ff2cbab5da58bf04d82c5f34037ed123) (ScriptedImporter)
+Compiling ray tracing shader "TraceVirtualOffset"
+    1 variants, starting compilation...
+    finished in 0.05 seconds. Local cache hits 0, remote cache hits 0, compiled 1 variants
+ -> (artifact id: '48dd9027a58b3caa6078c464eaf2a856') in 0.087308 seconds
+Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f979c212c4c771d47af8d8f521e46f26): Total: 6.262 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=5 (actual=5, local cache=0, cache server=0)
+		Asset DB Process Time: managed=7 ms, native=4209 ms
+		Asset DB Callback time: managed=339 ms, native=181 ms
+		Scripting: domain reloads=1, domain reload time=942 ms, compile time=549 ms, other=32 ms
+		Project Asset Count: scripts=1242, non-scripts=5147
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 15.861ms
+	ApplyChangesToAssetFolders: 0.493ms
+	Scan: 181.763ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 37.394ms
+	ProcessAssetsWithTransientArtifactChanges: 55.733ms
+	CategorizeAssets: 44.602ms
+	ImportOutOfDateAssets: 3801.377ms (1620.074ms without children)
+		ImportManagerImport: 1540.361ms (91.907ms without children)
+			ImportInProcess: 1448.244ms
+			UpdateCategorizedAssets: 0.210ms
+		CompileScripts: 548.596ms
+		ReloadNativeAssets: 0.036ms
+		UnloadImportedAssets: 0.927ms
+		ReloadImportedAssets: 89.590ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.050ms
+		InitializingProgressBar: 0.012ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.731ms
+	PostProcessAllAssets: 504.953ms
+	Hotreload: 2.308ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.001ms
+	UnloadStreamsBegin: 0.942ms
+	PersistCurrentRevisions: 0.407ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 1.992ms
+	Untracked: 1615.785ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.059ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Whalebone
+Unloading 19 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6184 unused Assets / (5.2 MB). Loaded Objects now: 6877.
+Memory consumption went from 200.4 MB to 195.2 MB.
+Total: 8.211200 ms (FindLiveObjects: 0.366800 ms CreateObjectMapping: 0.364600 ms MarkObjects: 5.777100 ms  DeleteObjects: 1.701600 ms)
+
+[Project] Loading completed in 8.203 seconds
+	Project init time: 				7.859 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.200 seconds
+		Asset Database init time: 		0.204 seconds
+		Global illumination init time: 	0.002 seconds
+		Assemblies load time: 			0.484 seconds
+		Unity extensions init time: 	0.006 seconds
+		Asset Database refresh time: 	6.262 seconds
+	Scene opening time: 			0.295 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1786513565632,"processId":12460,"projectLoad":8.203244300000002,"projectInit":7.8592951,"templateInit":0.0,"packageManagerInit":0.2001042,"assetDatabaseInit":0.2041349,"globalIlluminationInit":0.0017726,"assembliesLoad":0.4837496,"unityExtensionsInit":0.0057921,"assetDatabaseRefresh":6.2617601,"sceneOpening":0.2948274}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1786513565632,"processId":12460,"editorVersion":"6000.0.80f1 (2dfd32957da2)","branch":"6000.0/staging","buildType":"Release","platform":"Windows"}
+Asset Pipeline Refresh (id=2f8a140b007f0884480c4967c6d002e5): Total: 0.053 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Running tests for ExecutionSettings with details:
+targetPlatform = 
+playerHeartbeatTimeout = 600
+filters[0] = 
+   Filter with settings:
+   testMode = PlayMode
+   targetPlatform = 
+   testNames = null
+   groupNames = D16A01RuntimePerformanceWindowSamplesContinuously
+   categoryNames = null
+   assemblyNames = D16.PlayMode.Tests
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+[WhaleboneSetup] Unity 6：activeInputHandler 由 manifest.json 中的 com.unity.inputsystem 包自动启用
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.EditorTools.WhaleboneProjectSetup:RunOnce () (at Assets/Editor/WhaleboneProjectSetup.cs:41)
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+(Filename: Assets/Editor/WhaleboneProjectSetup.cs Line: 41)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at C:/Users/Administrator/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.015s, timestamps: [8.213 - 8.228]
+Unloading 12 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 134 unused Assets / (9.0 KB). Loaded Objects now: 6910.
+Memory consumption went from 185.2 MB to 185.2 MB.
+Total: 6.442000 ms (FindLiveObjects: 0.245100 ms CreateObjectMapping: 0.150800 ms MarkObjects: 5.908900 ms  DeleteObjects: 0.136100 ms)
+
+Start importing Assets/InitTestScenefe6621df-cd5c-42a3-bcf6-7a687f777bf0.unity using Guid(0754d981151d0e6478100dd3f617493b) (DefaultImporter) -> (artifact id: '91c61f56147b130520de36c2f7b6f43e') in 0.0012489 seconds
+Refreshing native plugins compatible for Editor in 0.71 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=83de6d3beeb64534cbd4720398eb8caf): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.563 seconds
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.580 seconds
+Domain Reload Profiling: 1143ms
+	BeginReloadAssembly (365ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (265ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (149ms)
+		LoadAssemblies (74ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (121ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (104ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (580ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (398ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (83ms)
+			ProcessInitializeOnLoadAttributes (181ms)
+			ProcessInitializeOnLoadMethodAttributes (115ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Asset Pipeline Refresh (id=62df40490e6d2d54484799f274e67224): Total: 1.254 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=657 ms
+		Asset DB Callback time: managed=22 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=573 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1242, non-scripts=5148
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 1.081ms
+	ApplyChangesToAssetFolders: 0.250ms
+	Scan: 0.001ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 0.004ms
+	ProcessAssetsWithTransientArtifactChanges: 2.715ms
+	CategorizeAssets: 45.494ms
+	ImportOutOfDateAssets: 585.369ms (580.651ms without children)
+		CompileScripts: 1.036ms
+		CollectScriptTypesHashes: 2.062ms
+		ReloadNativeAssets: 0.617ms
+		UnloadImportedAssets: 0.058ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.688ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.257ms
+	PostProcessAllAssets: 22.044ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.293ms
+	UnloadStreamsBegin: 0.051ms
+	PersistCurrentRevisions: 0.199ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 2.952ms
+	Untracked: 596.991ms
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.630 ms
+	Integration:            197.238 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.009 ms
+	Total Operation Time:   197.878 ms
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[WhaleboneSetup] Unity 6：activeInputHandler 由 manifest.json 中的 com.unity.inputsystem 包自动启用
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.EditorTools.WhaleboneProjectSetup:RunOnce () (at Assets/Editor/WhaleboneProjectSetup.cs:41)
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+(Filename: Assets/Editor/WhaleboneProjectSetup.cs Line: 41)
+
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime:ApplyToSceneUi () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:127)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime/<ApplyNextFrame>d__11:MoveNext () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:85)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs Line: 127)
+
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.712400 ms
+[D10] 外观与裁缝运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D10.D10AppearanceRuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D10/D10AppearanceRuntimeBootstrap.cs:29)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D10/D10AppearanceRuntimeBootstrap.cs Line: 29)
+
+[D10-A06] 酒馆社会场景入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D10.D10TavernSocialBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D10/D10TavernSocialBootstrap.cs:42)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D10/D10TavernSocialBootstrap.cs Line: 42)
+
+[D2] InitialHarbor 运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:62)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 62)
+
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D3.D3RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs:39)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs Line: 39)
+
+[D4] 内容扩充运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D4.D4RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs:39)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs Line: 39)
+
+[D5] 打磨上架运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs:41)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs Line: 41)
+
+[D7/Input] 首航体验控制协调器已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7ControlCoordinator:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs:80)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs Line: 80)
+
+[D9-A01] 港口与船舶整备入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D9.D9PortShipPreparationBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs:41)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs Line: 41)
+
+[D6/Input] 港口交互稳定器已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.HarborInteractionStabilizer:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs:33)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs Line: 33)
+
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.HarborPauseController:Awake () (at Assets/Scripts/Gameplay/UI/HarborPauseController.cs:65)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.UI.HarborPauseController> ()
+Whalebone.Gameplay.UI.HarborPauseController:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/UI/HarborPauseController.cs:46)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/UI/HarborPauseController.cs Line: 65)
+
+[HarborPause] 场景加载完成，暂停控制器已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.HarborPauseController:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/UI/HarborPauseController.cs:47)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/UI/HarborPauseController.cs Line: 47)
+
+Loaded scene 'Assets/Scenes/InitialHarbor.unity'
+	Deserialize:            8.413 ms
+	Integration:            200.373 ms
+	Integration of assets:  0.557 ms
+	Thread Wait Time:       0.247 ms
+	Total Operation Time:   209.590 ms
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7AudioController:Awake () (at Assets/Scripts/Gameplay/D7/D7AudioController.cs:47)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D7.D7AudioController> ()
+Whalebone.Gameplay.D7.D7ControlCoordinator:BindRuntimeObjects () (at Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs:149)
+Whalebone.Gameplay.D7.D7ControlCoordinator:Update () (at Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs:100)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7AudioController.cs Line: 47)
+
+Unloading 286 unused Assets / (31.5 KB). Loaded Objects now: 9918.
+Memory consumption went from 218.7 MB to 218.6 MB.
+Total: 5.619600 ms (FindLiveObjects: 0.349800 ms CreateObjectMapping: 0.131900 ms MarkObjects: 4.565100 ms  DeleteObjects: 0.572300 ms)
+
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime:ApplyToSceneUi () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:127)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime/<ApplyNextFrame>d__11:MoveNext () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:85)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs Line: 127)
+
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:InstantiateCharacterPlayer (UnityEngine.GameObject,UnityEngine.GameObject) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:283)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:EnsurePlayer (UnityEngine.GameObject) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:261)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:90)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 283)
+
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D3.D3RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs:179)
+Whalebone.Gameplay.D3.D3RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs:108)
+
+(Filename: Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs Line: 179)
+
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D4.D4RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs:280)
+Whalebone.Gameplay.D4.D4RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs:71)
+
+(Filename: Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs Line: 280)
+
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.Harbor.HarborCollisionController:Apply (UnityEngine.GameObject) (at Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs:61)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:97)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs Line: 61)
+
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterController:ConfigurePhysicsBody () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:587)
+Whalebone.Gameplay.D2.D2CharacterController:Awake () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:379)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D2.D2CharacterController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:101)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 587)
+
+[D2/Physics] 玩家已落地：surface=GangplankGround, surfaceY=0.54, playerY=0.61
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterController:SnapToGround (single) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:462)
+Whalebone.Gameplay.D2.D2CharacterController:InitializePhysics () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:404)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:102)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 462)
+
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:DiscoverVisualHierarchy () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:187)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:Awake () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:84)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D2.D2CharacterAnimationController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:104)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs Line: 187)
+
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:SetupFormalAnimator () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:205)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:Awake () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:85)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D2.D2CharacterAnimationController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:104)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs Line: 205)
+
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:SampleNeutralPose () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:160)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:LateUpdate () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:115)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs Line: 160)
+
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.Harbor.HarborPresentationController:Apply () (at Assets/Scripts/Gameplay/Harbor/HarborPresentationController.cs:41)
+Whalebone.Gameplay.Harbor.HarborPresentationController:Awake () (at Assets/Scripts/Gameplay/Harbor/HarborPresentationController.cs:28)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.Harbor.HarborPresentationController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:146)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/Harbor/HarborPresentationController.cs Line: 41)
+
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:158)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:72)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 158)
+
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs:294)
+Whalebone.Gameplay.D5.D5RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs:111)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs Line: 294)
+
+TrimDiskCacheJob: Current cache size 0mb
+[D16/A01] PASS C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_performance_window_report.json
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Tests.D16.D16RuntimeAcceptanceTests/<D16A01RuntimePerformanceWindowSamplesContinuously>d__22:MoveNext () (at Assets/Tests/PlayMode/D16RuntimeAcceptanceTests.cs:700)
+UnityEngine.TestTools.TestEnumerator/<Execute>d__7:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerableAndRecordExceptions>d__4:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:79)
+UnityEngine.TestTools.EnumerableTestMethodCommand:AdvanceEnumerator (System.Collections.IEnumerator) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:64)
+UnityEngine.TestTools.EnumerableTestMethodCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs:47)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:48)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<NUnit.Framework.ITestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<UnityEngine.TestTools.IOuterUnityTestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.RetryCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/RetryCommand.cs:37)
+UnityEngine.TestTools.RepeatCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/RepeatCommand.cs:36)
+UnityEngine.TestTools.IgnoreTestCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/IgnoreTestCommand.cs:42)
+UnityEngine.TestTools.StrictCheckCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/NUnitExtensions/Commands/StrictCheckCommand.cs:29)
+UnityEngine.TestTools.Utils.CoroutineRunner/<WrapEnumeratorForChecks>d__8:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEngine.TestRunner/Utils/CoroutineRunner.cs:58)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/Tests/PlayMode/D16RuntimeAcceptanceTests.cs Line: 700)
+
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/Whalebone\TestResults.xml
+Saving results to: C:\Users\Administrator\Desktop\game\first01\tools\results\d16_a01_performance_d3d12_current_unity6.xml
+Unloading 10 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.369 ms
+	Integration:            117.584 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.006 ms
+	Total Operation Time:   117.960 ms
+Unloading 44 unused Assets / (0.5 MB). Loaded Objects now: 6927.
+Memory consumption went from 214.4 MB to 213.8 MB.
+Total: 4.595200 ms (FindLiveObjects: 0.218900 ms CreateObjectMapping: 0.122200 ms MarkObjects: 4.139900 ms  DeleteObjects: 0.113400 ms)
+
+[Licensing::Client] Successfully resolved entitlement details
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 119 unused Assets / (28.1 KB). Loaded Objects now: 6932.
+Memory consumption went from 214.3 MB to 214.3 MB.
+Total: 5.186100 ms (FindLiveObjects: 0.242900 ms CreateObjectMapping: 0.125800 ms MarkObjects: 4.722700 ms  DeleteObjects: 0.094100 ms)
+
+Refreshing native plugins compatible for Editor in 0.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f5075d93a816a3445aebb2f26e81c68e): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+Start importing ProjectSettings/ProjectSettings.asset using Guid(00000000000000004000000000000000) (LibraryAssetImporter) -> (artifact id: '5bdcfa1eb877026f2c38f389747ac362') in 0.0051494 seconds
+Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f5cc6ff338ff0e244a5ccd4987627d3f): Total: 0.022 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1786513629783,"processId":12460,"allocatedMemory":18738964,"memoryLabels":[{"Default":14269},{"Permanent":15356},{"NewDelete":73073},{"Thread":4237360},{"Manager":32781},{"VertexData":8},{"Geometry":816},{"VFX":-104},{"Texture":296},{"Shader":89301},{"Material":24},{"GfxDevice":57944},{"Animation":392},{"Audio":4040},{"FontEngine":256},{"Physics":2081},{"Serialization":816},{"Input":14824},{"JobScheduler":33024},{"TextLib":160},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620528},{"Resource":1304},{"Renderer":2928},{"Transform":4646},{"File":9787},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":9474},{"DynamicArray":115904},{"HashMap":98086},{"Utility":2661166},{"Curl":48},{"PoolAlloc":1864},{"AI":104},{"TypeTree":5005},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7888},{"Director":8240},{"WebRequest":592},{"VR":45969},{"SceneManager":496},{"Video":208},{"LazyScriptCache":32},{"Camera":17},{"Secure":265},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":256},{"Hierarchy":272},{"CoreStats":12536},{"Identifiers":6192},{"Gui":80},{"EditorUtility":289440},{"VersionControl":4},{"Undo":947},{"AssetDatabase":8700865},{"EditorGi":328},{"UnityConnect":24208},{"Upm":2036},{"DrivenProperties":72},{"LocalIPC":219},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2601},{"Licensing":1232},{"AssetReference":32},{"IPCStream":32}]}

@@ -1,0 +1,72 @@
+{
+  "task": "D19-S02-R01",
+  "status": "PARTIAL",
+  "evidence_source": "R01 editor Camera.Render captures plus static scene/material audits",
+  "player_view_evidence": false,
+  "resolution": [1920, 1080],
+  "screenshot_directory": "game/tools/results/D19/D19-S02-R01/screenshots",
+  "screenshot_count": 16,
+  "fixed_shot_contract_count": 14,
+  "weather_variant_count": 3,
+  "manual_review": {
+    "performed_on": "2026-08-14",
+    "review_method": "local image inspection of existing R01 PNG captures; no debug shot used as visual pass evidence",
+    "pink_or_missing_material_pixels": 0,
+    "overall_visual_gate": "PARTIAL"
+  },
+  "areas": [
+    {
+      "area": "spawn_and_beach_entry",
+      "status": "PARTIAL",
+      "evidence": "screenshots/d19_shot_spawn.png",
+      "findings": [
+        "R01 adds landform and vegetation layering, but the broad faceted foreground and bright white beach band remain visible.",
+        "The player-facing view still reads as a low-detail proxy in places."
+      ]
+    },
+    {
+      "area": "market_and_main_street",
+      "status": "PARTIAL",
+      "evidence": "screenshots/d19_shot_market.png",
+      "findings": [
+        "R01 adds roof, facade, door, crate and cloth detail.",
+        "The market massing remains blocky at the reviewed camera distance and the surrounding ground remains broad and sparse."
+      ]
+    },
+    {
+      "area": "dock_shipyard_berth",
+      "status": "PARTIAL",
+      "evidence": "screenshots/d19_shot_dock_overview.png",
+      "findings": [
+        "Dock rails, bollards, crates and facade roofs are present and readable.",
+        "The low-poly treatment is still too sparse to claim the requested final visual quality; no Player capture was obtained."
+      ]
+    },
+    {
+      "area": "coast_shallow_nearshore_far_view",
+      "status": "PARTIAL",
+      "evidence": "screenshots/d19_shot_coastline.png; screenshots/d19_shot_nearshore.png",
+      "findings": [
+        "Reef/rock forms are present, but the coastline still shows large mint/white ground areas and a sparse far view.",
+        "The requested water, shoreline and nearshore presentation gate is not proven in a real Player."
+      ]
+    }
+  ],
+  "static_audit": {
+    "scene_renderer_count": 685,
+    "scene_enabled_renderer_count": 570,
+    "integration_renderers": 606,
+    "integration_colliders": 145,
+    "integration_lod_groups": 66,
+    "stable_anchor_count": 20,
+    "material_missing_count": 0,
+    "error_shader_count": 0,
+    "standard_shader_count": 0,
+    "source": "D19_S02_R01_INTEGRATION_RESULT.json and D19_S02_R01_GEOMETRY_AUDIT.json"
+  },
+  "blocking_gates": [
+    "14 player-camera captures not obtained; existing PNGs are editor captures.",
+    "Visual review still finds greybox/block/white-plane-like presentation in all four required areas.",
+    "Real local Player 1080p performance and GPU timing are not proven."
+  ]
+}

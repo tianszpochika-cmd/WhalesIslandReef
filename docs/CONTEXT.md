@@ -14,7 +14,7 @@
 3. `docs/game/design/DESIGN_BOUNDARIES.md` — 系统所有权和 Agent 边界
 4. `docs/game/design/DATA_MODELS.md` — 核心实体、事件和存档
 5. `docs/game/DEV_ROADMAP.md` — D7 后开发工作包
-6. `docs/game/AGENT_DEVELOPMENT_TASKS.md` 与其 D8—D16 章节文件 — 当前 Agent 任务索引、执行顺序和可复制提示词
+6. `docs/game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md`、`docs/game/AGENT_DEVELOPMENT_TASKS.md` 与对应章节文件 — 当前本地画面/可玩目标、执行顺序和可复制提示词
 7. `docs/ARCHITECTURE.md`、`docs/DEVELOPMENT_STANDARDS.md` — 工程约束
 
 ## 项目速览
@@ -58,7 +58,12 @@
 
 ## 当前开发入口
 
-当前入口是 `docs/game/D17_POST_D16_DEVELOPMENT_PLAN.md` 的 v9 执行版：先完成 D16-R01/R02/R03/R04/R05/R06 的真实外部门禁，再执行 D16-S01 → D16-S02；D17 本机基线只作为后续正式验收夹具，不从归档的 D1—D7 或已完成的 D8—D15 重新开工。
+当前有两条不能混淆的轨道：
+
+- **本地开发轨**：用户于 2026-08-13 明确授权继续画面、UI、真实免费资源和完整可玩体验，入口为 `docs/game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md` 与 `AGENT_DEVELOPMENT_TASKS.md` 第 10—16 章；从 `D18-S01` 开始。
+- **正式发布门禁轨**：继续按 `D17_POST_D16_DEVELOPMENT_PLAN.md` 完成 D16-R01—R06 → D16-S01 → D16-S02；D17 既有编号与本机基线保持，不重编号。
+
+D18—D24 可以推进本机资源、场景和玩法集成，但不能把 D16 未完成的目标设备、跨平台、真实断电、人工审查、隐私或 Steam 证据写成通过。
 
 ### 2026-08-12 最新本机快照
 
@@ -105,3 +110,9 @@
 - 工具全量回归更新为 **100/100 PASS**；候选包/Unity 导入证据专项 **4/4 PASS**；`git diff --check` 通过。
 - A04 仍为 3,139 entries、Pending 267、结构错误 0；A05 仍为 2,918 visual、654 integrated、2,264 placeholder、声明路径断链 0；A06 本机技术准备仍为 19/19 PASS。
 - 外部门禁复核结果仍 `BLOCKED`：A01—A06 六个真实 evidence envelope 缺失，Steam 未授权；D16-S01/S02、正式 D17 和 D18+ 未完成。
+
+### 2026-08-13 下一本地开发目标（覆盖性当前指针）
+
+- 用户已明确授权继续本地画面、UI、免费真实资源和完整可玩体验；这条授权只改变“是否可以继续本地开发”，不改变上述 D16 外部门禁事实。
+- 新入口为 `docs/game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md`，任务从 `D18-S01` 开始；共 D18—D24 七章、63 个完整可复制任务提示词。
+- 正式本地开发顺序为 `D18-S02-v2 准入 → D19/D20/D21/D22 工作场景/Prefab → D19-S02 → D20-S02 → D21-S02 → D22-S02 → D18-S03 运行时资源晋级 → D23 → D24`；D19—D22 工作场景只能使用 `d18_prefab_candidate_intake_catalog.json` 的 `intake_eligible` 外部资源。D24-S02 最多给出“本地可玩候选版”，不能代替目标设备、跨平台、人工审核、隐私或 Steam 发布验收。

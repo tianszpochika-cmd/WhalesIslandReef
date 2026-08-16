@@ -1,0 +1,57 @@
+{
+  "task_id": "D19-R02-A04",
+  "conclusion": "PARTIAL",
+  "evidence_type": "real Unity Player captures; manual inspection recorded, not an automated approval",
+  "fixed_shot_contract": {
+    "required": 14,
+    "verified": 0,
+    "reason": "The Player captures were taken after real input, but no reliable fixed-camera/position marker was available to prove the D19-S01 shot coordinates."
+  },
+  "real_player_capture": {
+    "requested_resolution": [1920, 1080],
+    "reported_capture_resolution": [2194, 1234],
+    "exact_target_proven": false,
+    "count": 14,
+    "files": [
+      "01_spawn_v3.png",
+      "02_spawn_fresh.png",
+      "03_market_approach.png",
+      "04_dock_left.png",
+      "05_coast_up.png",
+      "06_coast_down.png",
+      "07_shore_turn.png",
+      "08_port_turn.png",
+      "09_input_w.png",
+      "010_input_w.png",
+      "011_input_a.png",
+      "012_input_d.png",
+      "013_input_s.png",
+      "014_input_space.png"
+    ],
+    "directory": "game/tools/results/D19/D19-R02-A04/screenshots/"
+  },
+  "manual_checks": {
+    "pink_or_missing_material": "PASS_FOR_OBSERVED_FRAMES",
+    "large_white_or_mint_placeholder_plane": "FAIL",
+    "block_island_or_graybox_geometry": "FAIL",
+    "port_readability": "PARTIAL",
+    "coast_and_shallow_water_layering": "PARTIAL",
+    "vegetation_layering": "PARTIAL",
+    "camera_occlusion": "FAIL",
+    "visible_legacy_temporary_geometry": "FAIL",
+    "development_overlay_default_off": "NOT_VERIFIED",
+    "weather_variants": "NOT_RUN"
+  },
+  "observations": [
+    "The new R02 terrain surface is visible in the Player and has height variation, sand/grass/stone color bands, rocks, foliage, road and water/foam presentation layers.",
+    "The existing R01/legacy red dock and block-like temporary props remain in the same player-visible space.",
+    "A palm canopy/trunk can fill the camera during the input sequence; this is a real occlusion defect, not cropped evidence.",
+    "The R02 layer does not by itself prove that the entire InitialHarbor presentation is free of placeholder geometry."
+  ],
+  "owner_followups": [
+    "D19-R02-A05: performance and rendering budget verification",
+    "D19-R02-S02: real route, fixed shots, weather variants, save/reload and final scene gate",
+    "D19-R02-A03 or a new D19 integration fix: resolve D2 recovery from D19_R02_TerrainSurface to legacy BeachGround",
+    "D19 visual integration owner: remove/replace visible legacy dock and block props without deleting stable gameplay anchors"
+  ]
+}

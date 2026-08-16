@@ -1,0 +1,102 @@
+{
+  "schema": "D19_R02_S02_PERFORMANCE_1080P_RERUN2_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "device": {
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "graphics_api": "Direct3D11",
+    "unity_version": "6000.0.80f1",
+    "player_architecture": "x86_64",
+    "target_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+    "display_capture_logical_pixels": "1099x648",
+    "requested_resolution": "1920x1080",
+    "actual_backbuffer_resolution_verified": false,
+    "vsync_verified": false
+  },
+  "sampling_protocol": {
+    "warmup_seconds_requested": 30,
+    "sample_seconds_requested": 60,
+    "manual_run_window_seconds_per_quality": 90,
+    "probe_source": "D16RuntimePerformanceProbe report written by the real Player on destroy",
+    "one_percent_low_available": false,
+    "p95_frame_time_available": false,
+    "quality_runtime_confirmation_available": false,
+    "note": "Low/Medium/High are real Player launches with -quality 0/1/2 arguments. Player logs did not expose a runtime quality level, so the requested level is recorded without claiming runtime confirmation."
+  },
+  "quality_runs": {
+    "Low": {
+      "requested_command_quality": 0,
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_LOW.log",
+      "probe": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_LOW_REQUEST.json",
+      "sample_count": 487,
+      "average_fps": 59.9436264038086,
+      "minimum_fps": 34.567985534668,
+      "average_frame_ms": 16.6930103302002,
+      "longest_frame_ms": 165.892196655273,
+      "average_main_thread_ms": 4.02113628387451,
+      "gpu_frame_ms": 0.767734467983246,
+      "gc_gen0": 251,
+      "gc_gen1": 251,
+      "gc_gen2": 251,
+      "peak_reserved_bytes": 202190848,
+      "status": "REAL_PLAYER_DATA_REQUESTED_TIER_UNPROVEN"
+    },
+    "Medium": {
+      "requested_command_quality": 1,
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_MEDIUM.log",
+      "probe": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_MEDIUM_REQUEST.json",
+      "sample_count": 512,
+      "average_fps": 59.9512100219727,
+      "minimum_fps": 36.8567123413086,
+      "average_frame_ms": 16.6881065368652,
+      "longest_frame_ms": 169.7958984375,
+      "average_main_thread_ms": 4.09522247314453,
+      "gpu_frame_ms": 0.753781139850617,
+      "gc_gen0": 266,
+      "gc_gen1": 266,
+      "gc_gen2": 266,
+      "peak_reserved_bytes": 206385152,
+      "status": "REAL_PLAYER_DATA_REQUESTED_TIER_UNPROVEN"
+    },
+    "High": {
+      "requested_command_quality": 2,
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_HIGH.log",
+      "probe": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_HIGH_REQUEST.json",
+      "sample_count": 485,
+      "average_fps": 59.9435386657715,
+      "minimum_fps": 34.5939331054688,
+      "average_frame_ms": 16.6930465698242,
+      "longest_frame_ms": 165.598495483398,
+      "average_main_thread_ms": 4.09516143798828,
+      "gpu_frame_ms": 0.76466989517212,
+      "gc_gen0": 251,
+      "gc_gen1": 251,
+      "gc_gen2": 251,
+      "peak_reserved_bytes": 202190848,
+      "status": "REAL_PLAYER_DATA_REQUESTED_TIER_UNPROVEN"
+    },
+    "Default_continuous_route": {
+      "probe": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_DEFAULT.json",
+      "sample_count": 1370,
+      "average_fps": 59.9366798400879,
+      "minimum_fps": 19.483190536499,
+      "average_frame_ms": 16.7159938812256,
+      "longest_frame_ms": 203.36589050293,
+      "average_main_thread_ms": 4.99979734420776,
+      "gpu_frame_ms": 0.783675074577332,
+      "gc_gen0": 563,
+      "gc_gen1": 563,
+      "gc_gen2": 563,
+      "peak_reserved_bytes": 210579456,
+      "status": "REAL_PLAYER_DATA_CONTINUOUS_ROUTE_SESSION"
+    }
+  },
+  "budget_evaluation": {
+    "average_fps_target": 60,
+    "observed_average_fps_range": [59.9366798400879, 59.9512100219727],
+    "observed_minimum_fps_range": [19.483190536499, 36.8567123413086],
+    "one_percent_low_target": "not available from probe",
+    "status": "NOT_PASSABLE",
+    "reasons": ["actual backbuffer is not independently proven", "runtime quality tier is not confirmed", "1% low/p95 is unavailable", "minimum FPS includes values below a 60-FPS visual gate"]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "D19_R03_S01_GATE_REVIEW_V4",
+  "task": "D19-R03-S01",
+  "run_id": "RERUN46_CURRENT",
+  "conclusion": "BLOCKED",
+  "inputs": {
+    "route": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN46_MACHINE_RESULT.json",
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN46.json",
+    "performance": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN36_CURRENT.json",
+    "visual_fixed_shots": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN35_FIXED.json"
+  },
+  "gates": {
+    "real_player_menu_new_game": true,
+    "player_controller_router": true,
+    "movement_input": true,
+    "interaction_input": true,
+    "save_feedback": false,
+    "full_300_second_route": false,
+    "market_warehouse_tavern": false,
+    "dock_berth": true,
+    "departure_return": false,
+    "same_run_save_quit_continue": false,
+    "current_scene_perf_low_medium_high": false,
+    "fixed_player_shots_14_of_14": false,
+    "weather_variants_3": false,
+    "visual_debt_closed": false,
+    "external_resource_intake": true,
+    "release_approved": false
+  },
+  "observed": {
+    "runtime_seconds": 126.42691040039063,
+    "resolution_requested": "1920x1080",
+    "current_run_screenshot_count": 4,
+    "reached": ["anchor.player.spawn", "building:tavern_santa_margarita", "anchor.dock.primary", "anchor.berth.primary"],
+    "legacy_duplicate_dock_colliders_disabled": 3,
+    "legacy_terrain_colliders_disabled": 1,
+    "ship_position_runtime": [0.0, 0.0, 0.0],
+    "final_player_position": [0.0, 2.8313519954681396, 4.633120536804199]
+  },
+  "blocking_reasons": [
+    "RERUN46 did not complete the required 300-second full route or save/reload cycle.",
+    "Market, warehouse, shipyard, return, departure and save/reload were not completed; save input was not observed.",
+    "The legacy terrain collider fix increased reachable evidence, but repeated non-walkable-collider recovery remains in the Player log after disembark, so the route is not closed.",
+    "Current-scene three-quality performance, 14-shot visual closure, and Calm/Rain/Storm evidence remain unresolved."
+  ],
+  "historical_note": "RERUN46_CURRENT is an additional blocked review. RERUN45, RERUN44_CURRENT, RERUN42_CURRENT and earlier results remain preserved."
+}

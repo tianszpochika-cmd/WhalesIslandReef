@@ -1,0 +1,21 @@
+{
+  "task": "D19-A05",
+  "status": "NOT_RUN",
+  "reason": "Unity Editor executable is not available in the current workspace environment; no screenshot evidence is claimed.",
+  "resolution": "1920x1080",
+  "work_scene": "game/Assets/Scenes/D19/Work/D19_Lighting_Work.unity",
+  "formal_scene_touched": false,
+  "required_profiles": ["clear_day", "overcast_rain", "twilight_night", "fog", "storm"],
+  "shots": [
+    {"shot_id":"D19-A05-CLEAR-DAY","profile_id":"clear_day","weather":"Calm","normalized_time":0.35,"required_path":"screenshots/D19-A05/clear_day.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-CLEAR-NIGHT","profile_id":"twilight_night","weather":"Calm","normalized_time":0.90,"required_path":"screenshots/D19-A05/clear_day_night_mapping.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-RAIN-DAY","profile_id":"overcast_rain","weather":"Rain","normalized_time":0.55,"required_path":"screenshots/D19-A05/overcast_rain.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-RAIN-NIGHT","profile_id":"twilight_night","weather":"Rain","normalized_time":0.88,"required_path":"screenshots/D19-A05/overcast_rain_night_mapping.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-TWILIGHT-DAY","profile_id":"twilight_night","weather":"Calm","normalized_time":0.75,"required_path":"screenshots/D19-A05/twilight_night_dusk.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-TWILIGHT-NIGHT","profile_id":"twilight_night","weather":"Calm","normalized_time":0.90,"required_path":"screenshots/D19-A05/twilight_night.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-FOG-DAY","profile_id":"fog","weather":"Rain","normalized_time":0.30,"required_path":"screenshots/D19-A05/fog.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-FOG-NIGHT","profile_id":"fog","weather":"Rain","normalized_time":0.18,"required_path":"screenshots/D19-A05/fog_night_window.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-STORM-DAY","profile_id":"storm","weather":"Storm","normalized_time":0.35,"required_path":"screenshots/D19-A05/storm.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]},
+    {"shot_id":"D19-A05-STORM-NIGHT","profile_id":"storm","weather":"Storm","normalized_time":0.90,"required_path":"screenshots/D19-A05/storm_night.png","key_regions":["player","npc","building_entry","dock_edge","sea_surface","interaction_prompt"]}
+  ]
+}

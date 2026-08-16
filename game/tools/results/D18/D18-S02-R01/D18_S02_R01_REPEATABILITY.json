@@ -1,0 +1,12 @@
+{
+  "task": "D18-S02-R01",
+  "status": "PASS",
+  "command": "python tools/d18_s02_r01_intake_refresh.py --project-root . --catalog docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json --output game/tools/results/D18/D18-S02-R01/D18_S02_R01_RERUN_MACHINE_RESULT.json --generated-on 2026-08-15 --write-catalog",
+  "catalog_sha256_before": "F2D040DE15AFBE5DE2D22B863630484672E909EB352DD5E66838FD853DCDE530",
+  "catalog_sha256_after": "F2D040DE15AFBE5DE2D22B863630484672E909EB352DD5E66838FD853DCDE530",
+  "catalog_unchanged": true,
+  "entry_count": 1833,
+  "duplicate_errors": 0,
+  "catalog_validation_errors": 0,
+  "stable_id_formula": "sha256(manifest_id + '::' + candidate_file_path)[:20]"
+}

@@ -1,0 +1,37 @@
+{
+  "task": "D19-R01-S02",
+  "status": "NOT_COMPLETED",
+  "test_environment": "isolated copy C:/Users/Administrator/AppData/Local/Temp/whales-d19-r01-b-20260815",
+  "attempts": [
+    {
+      "command": "Unity.exe -batchmode -nographics -quit -projectPath <isolated-copy> -executeMethod D19R01S02TestRunner.RunPlayD19",
+      "log": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_PLAYMODE.log",
+      "started_local": "2026-08-15T11:30:25+08:00",
+      "scope": "D19A01TerrainPlayModeTests, D19S02ScenePlayModeTests, D19S02R01RoutePlayModeTests",
+      "last_observed_stage": "Unity.PerformanceTesting.Editor.TestRunBuilder prebuild",
+      "xml_result": null,
+      "outcome": "TIMEOUT_STOPPED"
+    },
+    {
+      "command": "Unity.exe -batchmode -nographics -quit -projectPath <isolated-copy> -executeMethod D19R01S02TestRunner.RunPlayD19",
+      "log": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_PLAYMODE_SCENE.log",
+      "started_local": "2026-08-15T11:34:16+08:00",
+      "scope": "D19S02ScenePlayModeTests only",
+      "last_observed_stage": "Unity.PerformanceTesting.Editor.TestRunBuilder prebuild",
+      "xml_result": null,
+      "outcome": "TIMEOUT_STOPPED"
+    }
+  ],
+  "isolated_editmode_result": {
+    "command": "Unity.exe -batchmode -nographics -quit -projectPath <isolated-copy> -executeMethod D19R01S02TestRunner.RunEditD19",
+    "result": "23 passed, 0 failed, 0 skipped",
+    "xml": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_EDITMODE_RESULTS.xml"
+  },
+  "main_project_compile_blocker": {
+    "status": "PRE_EXISTING",
+    "source": "game/tools/results/D19/D19-R01-B/D19_R01_B_BUILD_RESULT_V11.json",
+    "error": "Assets/Tests/EditMode/D20/D20WildlifePresentationTests.cs references missing WhalesIslandReef.Presentation",
+    "not_modified_by_this_task": true
+  },
+  "conclusion": "PlayMode results are not counted as pass evidence. Existing historical D19/D17 XML remains preserved and is not reclassified as this run."
+}

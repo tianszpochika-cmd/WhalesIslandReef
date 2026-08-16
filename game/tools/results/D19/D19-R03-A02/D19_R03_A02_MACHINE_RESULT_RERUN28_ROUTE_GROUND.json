@@ -1,0 +1,32 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_V2",
+  "task": "D19-R03-A02",
+  "run_id": "RERUN28_ROUTE_GROUND",
+  "conclusion": "PARTIAL",
+  "scope": "D19 Integration route-ground and candidate audit refresh; not final D19 scene acceptance",
+  "unity_audit": {
+    "log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_AUDIT_RERUN28_ROUTE_GROUND_ONLY.log",
+    "exit_code": 0,
+    "editor_audit": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json",
+    "renderer_count": 315,
+    "enabled_renderer_count": 314,
+    "mesh_vertex_sum": 6457,
+    "collider_count": 1,
+    "external_candidate_count": 8,
+    "external_candidate_policy": "all eight are intake_eligible and allowed for D19-A01/D19-A03"
+  },
+  "change": "Added a single non-rendering D19_TerrainRoot BoxCollider in the R03 Integration prefab; no D2/D6 collision owner or gameplay system was changed.",
+  "verified": [
+    "route collider is recognized by D2 in RERUN29 Player log",
+    "candidate references remain traceable to the D18 intake catalog",
+    "no resource state promotion"
+  ],
+  "not_verified": [
+    "complete player route",
+    "14 final visual cameras",
+    "weather matrix",
+    "save/reload closure",
+    "final D19 acceptance"
+  ],
+  "generated_at": "2026-08-16T16:20:00+08:00"
+}

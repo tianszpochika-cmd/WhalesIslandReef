@@ -1,0 +1,120 @@
+{
+  "schema": "D19_R02_S02_MACHINE_RESULT_RERUN2_V1",
+  "task": "D19-R02-S02",
+  "rerun": "RERUN2",
+  "conclusion": "PARTIAL",
+  "gate_pass": false,
+  "generated_at": "2026-08-15T18:57:00+08:00",
+  "historical_policy": {
+    "previous_machine_result_preserved": true,
+    "previous_report_preserved": true,
+    "previous_handoff_preserved": true,
+    "this_result_is_current_rerun_evidence": true
+  },
+  "preconditions": {
+    "d18_s02_r01": "PASS",
+    "d19_r02_a01": "PARTIAL",
+    "d19_r02_a02": "PARTIAL",
+    "d19_r02_a03": "PARTIAL",
+    "d19_r02_a04": "PARTIAL",
+    "d19_r02_a05": "PASS",
+    "d19_a04_stopped_editing_initial_harbor": true,
+    "d20_s02_r01_started": false
+  },
+  "scene_baseline": {
+    "scene": "game/Assets/Scenes/InitialHarbor.unity",
+    "sha256_current": "53861A681D9C59C4635CC3D037868C37F1D06CB54A9F22B6DE88F12B2026DCEB",
+    "sha256_current_verified": true,
+    "scene_bytes": 172675,
+    "scene_lines": 4812,
+    "integration_prefab": "game/Assets/Prefabs/Environment/D19/Integration/R02/D19_R02_HarborPresentation.prefab",
+    "integration_prefab_sha256": "52F5C259E6124FEF43CA86D02F64AD6FAAEB0F7EC70FF03DC84541327ABD0FE4",
+    "scene_modified_by_rerun2": false,
+    "latest_scene_visual_change_owner": "D19-R02-A04 RERUN4 legacy subtree isolation"
+  },
+  "player_runs": {
+    "build": {
+      "executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN2.exe",
+      "build_evidence": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_BUILD_RERUN2.log",
+      "status": "PASS"
+    },
+    "continuous_route": {
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_INPUT.log",
+      "route_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_RERUN2_ROUTE_LOG.json",
+      "observed_seconds": 303,
+      "minimum_seconds": 300,
+      "status": "PARTIAL"
+    },
+    "continue_reload": {
+      "low_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_LOW.log",
+      "medium_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_MEDIUM.log",
+      "high_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_HIGH.log",
+      "status": "PASS_LOG_CONFIRMED"
+    }
+  },
+  "route": {
+    "new_game": "PASS",
+    "spawn_and_landing": "PASS_OBSERVED",
+    "movement": "FAIL_NO_RELIABLE_DISPLACEMENT",
+    "market": "PASS",
+    "warehouse": "NOT_VERIFIED",
+    "tavern_npc_feedback": "FAIL_NO_VISIBLE_FEEDBACK",
+    "dock_berth": "NOT_VERIFIED",
+    "boarding": "NOT_VERIFIED",
+    "departure": "PARTIAL_LOG_ONLY",
+    "return_harbor": "FAIL_NOT_REACHED",
+    "save": "PASS_VISIBLE_AND_LOGGED",
+    "exit": "PASS",
+    "reload": "PASS_LOG_CONFIRMED",
+    "complete_required_route": false,
+    "evidence": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_RERUN2_ROUTE_LOG.json",
+    "post_run_input_recheck": {
+      "method": "Win32 keybd_event held W for 2.5 seconds after real Player activation",
+      "status": "FAIL_NO_RELIABLE_DISPLACEMENT",
+      "before_screenshot": "game/tools/results/D19/D19-R02-S02/screenshots/rerun2_hold_before.png",
+      "after_screenshot": "game/tools/results/D19/D19-R02-S02/screenshots/rerun2_hold_after_w_decoded.jpg",
+      "player_closed_after_recheck": true
+    }
+  },
+  "performance": {
+    "summary": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2.json",
+    "low": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_LOW_REQUEST.json",
+    "medium": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_MEDIUM_REQUEST.json",
+    "high": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_HIGH_REQUEST.json",
+    "continuous_default": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2_DEFAULT.json",
+    "real_player_data": true,
+    "quality_tier_runtime_confirmed": false,
+    "actual_backbuffer_confirmed": false,
+    "one_percent_low_available": false,
+    "budget_pass": false
+  },
+  "visual": {
+    "qa": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_VISUAL_QA_RERUN2.json",
+    "fresh_screenshot_count": 20,
+    "fresh_fixed_matrix_count": 0,
+    "weather_variants": 0,
+    "pink_material_observed": false,
+    "large_white_plane_observed": false,
+    "graybox_blocky_terrain_observed": true,
+    "flat_orange_green_surface_observed": true,
+    "debug_hud_visible": true,
+    "visual_pass": false
+  },
+  "regression": {
+    "d19_playmode": {"total": 9, "passed": 8, "failed": 0, "skipped": 1, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D19_PLAYMODE_RERUN2.xml"},
+    "d17_playmode": {"total": 7, "passed": 7, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D17_PLAYMODE_RERUN2.xml"},
+    "d19_editmode": {"total": 34, "passed": 34, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D19_EDITMODE_RERUN2.xml"},
+    "python_unit_tests": {"total": 11, "passed": 11, "failed": 0, "command": "python -m unittest -q tools.tests.test_d18_prefab_candidate_intake tools.tests.test_d18_asset_manifest_audit"},
+    "intake_audit": {"status": "PASS", "manifest_count": 29, "candidate_file_total": 1894, "intake_eligible_file_total": 1674, "local_development_ready_count": 0, "release_approved_count": 0, "result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_INTAKE_AUDIT_RERUN2.json"},
+    "manifest_audit": {"status": "PASS", "manifest_count": 28, "error_count": 0, "issue_count": 0, "result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PACK_MANIFEST_AUDIT_RERUN2.json"},
+    "new_compilation_error_observed": false,
+    "unity_or_player_left_running": false
+  },
+  "blocking_items": [
+    {"id": "D19-R02-S02-RERUN2-B01", "severity": "BLOCKING", "owner": "D19-R02-A02/A03 or a new D19 route-fix task", "reason": "Real player movement did not produce reliable displacement; warehouse, tavern/NPC, dock/berth and boarding could not be completed."},
+    {"id": "D19-R02-S02-RERUN2-B02", "severity": "BLOCKING", "owner": "D19-R02-A04 or a new D19 visual repair task", "reason": "Fresh Player views still show flat orange/green terrain, simple block-like structures and the debug/route HUD."},
+    {"id": "D19-R02-S02-RERUN2-B03", "severity": "BLOCKING", "owner": "D19 performance repair/sampler owner", "reason": "The real probe has FPS and frame-time data, but quality tier, actual 1920x1080 backbuffer, 1% low/p95 and VSync are not independently proven; minimum FPS is below the visual gate."},
+    {"id": "D19-R02-S02-RERUN2-B04", "severity": "HIGH", "owner": "D19-A01/D19-R02-A04 with D17 physics owner", "reason": "The earlier D2 log still reports legacy BeachGround recovery after R02 terrain contact; this was not changed during S02 verification."}
+  ],
+  "d20_s02_r01_release": {"allowed": false, "reason": "D19-R02-S02 remains PARTIAL and is a hard prerequisite."}
+}

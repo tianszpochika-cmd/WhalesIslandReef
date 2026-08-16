@@ -1,0 +1,228 @@
+{
+  "task": "D19-R01-A",
+  "status": "PARTIAL",
+  "evidence_scope": "read_only_real_player_route_and_performance",
+  "workspace": "C:/Users/Administrator/Desktop/game/first01",
+  "player": {
+    "executable": "C:/Users/Administrator/Desktop/WhalesIslandReef_D19_S02_R01_Player/WhalesIslandReef.exe",
+    "build_timestamp_local": "2026-08-14 21:30:58",
+    "process_id_at_sampling": 40772,
+    "window_mode": "full_screen_interactive",
+    "observed_capture_resolution": [2194, 1234],
+    "observed_aspect_ratio": "16:9",
+    "native_1920x1080_confirmed": false,
+    "native_resolution_note": "Computer Use returned the real Player full-screen capture at 2194x1234; no in-game/native resolution readout was exposed. This is not upgraded to a native 1920x1080 claim.",
+    "input_mode": "real_keyboard_mouse",
+    "graphics_log_fact": "Player.log identifies Direct3D11 and NVIDIA RTX 4070 Ti; GPU timing was not exposed by the Player evidence path."
+  },
+  "prior_unexecuted_items": [
+    "D19-S02 manual 5-10 minute player route was NOT_RUN.",
+    "D19-S02 target-device 1920x1080 Low/Medium/High performance was NOT_RUN.",
+    "D19-S02-R01 human route was NOT_RUN after user Escape.",
+    "D19-S02-R01 real Player performance, native resolution, GPU, memory/GC evidence was NOT_RUN.",
+    "Old 640x480 batch PlayMode and editor Camera.Render samples are not used as 1080p player evidence."
+  ],
+  "route": {
+    "route_id": "d19_r01_a_real_player_route_01",
+    "start_local": "2026-08-15 01:13:29",
+    "active_route_end_local": "2026-08-15 01:19:07",
+    "active_duration_seconds": 338,
+    "duration_gate_5_to_10_minutes": "MET_FOR_ATTEMPT",
+    "continuous_route_complete": false,
+    "completion_status": "PARTIAL_BLOCKED_BY_NO_FEEDBACK_AND_NO_TRANSITION",
+    "steps": [
+      {
+        "time_local": "2026-08-15 01:13:29",
+        "input": "New Game click; typed captain name R01-A; Confirm click",
+        "expected": "Stable spawn/landing at Saint Margaret",
+        "actual": "Player entered the third-person beach spawn and visible tutorial",
+        "recovery": "Continued with keyboard movement",
+        "status": "PASS",
+        "evidence": "screenshots/route_01_spawn_land_20260815T011329.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:14:24",
+        "input": "12 real W presses",
+        "expected": "Move from spawn toward the port main road",
+        "actual": "Movement input was accepted and tutorial advanced from step 1/11 to step 2/11; giant green/mint/white plane dominated the view",
+        "recovery": "Adjusted direction with A/W and continued",
+        "status": "PARTIAL",
+        "evidence": "screenshots/route_02_main_road_move_20260815T011424.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:15:16",
+        "input": "6 real A presses, 3 real W presses",
+        "expected": "Reach an NPC interaction range",
+        "actual": "Old sailor was visible at left, but no dialogue opened",
+        "recovery": "Stopped, repositioned and tried E",
+        "status": "BLOCKED",
+        "evidence": "screenshots/route_03_npc_attempt_no_dialogue_20260815T011516.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:15:32",
+        "input": "Real E press",
+        "expected": "NPC dialogue or explicit failure feedback",
+        "actual": "No dialogue, toast, or explicit failure feedback; tutorial remained at step 2/11 dialogue",
+        "recovery": "Recorded the no-feedback result and continued to market route",
+        "status": "FAIL_NO_FEEDBACK",
+        "evidence": "screenshots/route_04_npc_e_no_feedback_20260815T011532.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:16:03",
+        "input": "Clicked visible market action",
+        "expected": "Market interaction with visible result",
+        "actual": "Money changed 500 to 496; event log showed event_d9_trade_settled, owner EconomySystem; save checkpoint was visible",
+        "recovery": "Continued without retrying the successful transaction",
+        "status": "PASS",
+        "evidence": "screenshots/route_05_market_purchase_feedback_20260815T011603.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:18:01",
+        "input": "Clicked visible Leave Harbor [D] action",
+        "expected": "Departure/ship transition with visible state change",
+        "actual": "Status changed to 航行中, route 0/2 days, weather rain; event_d9_departure_prepared owner ShipSystem appeared, but camera still showed the on-foot beach view",
+        "recovery": "Tried E and later the berth/boarding actions; kept the mismatch as evidence",
+        "status": "PARTIAL_STATE_VISUAL_MISMATCH",
+        "evidence": "screenshots/route_06_departure_feedback_20260815T011801.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:18:23",
+        "input": "Real E press at the apparent boarding state",
+        "expected": "Boarding or explicit failure feedback",
+        "actual": "No visible transition; player remained on the beach",
+        "recovery": "Tried movement, berth action and later return retry",
+        "status": "FAIL_NO_TRANSITION",
+        "evidence": "screenshots/route_07_boarding_no_transition_20260815T011823.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:18:45",
+        "input": "Real F5",
+        "expected": "Save checkpoint or explicit save feedback",
+        "actual": "Save checkpoint/event feedback was visible; no duplicate reward or new visible inventory grant was observed",
+        "recovery": "Continued and made a later berth retry",
+        "status": "PASS_OBSERVED_CHECKPOINT",
+        "evidence": "screenshots/route_08_save_feedback_20260815T011845.jpg"
+      },
+      {
+        "time_local": "2026-08-15 01:27:06",
+        "input": "Retried visible berth/enter action B after sailing state",
+        "expected": "Return to port/berth or explicit failure feedback",
+        "actual": "No visible transition; status remained 航行中 and scene remained the beach/on-foot view",
+        "recovery": "Recorded exact blocker; did not alter scene or logic",
+        "status": "BLOCKED_NO_TRANSITION",
+        "evidence": "screenshots/route_09_return_berth_retry_no_transition_20260815T012706.jpg"
+      }
+    ],
+    "route_conclusion": "Real input reached spawn, movement, market, departure event and save checkpoint. NPC dialogue, boarding/disembark and return/berth were not completed because there was no visible feedback/transition."
+  },
+  "screenshots": {
+    "route_count": 9,
+    "performance_count": 5,
+    "all_count": 14,
+    "capture_resolution_each": [2194, 1234],
+    "directory": "screenshots/",
+    "hash_manifest": "D19_R01_A_SCREENSHOT_HASHES.json",
+    "files": [
+      "screenshots/route_01_spawn_land_20260815T011329.jpg",
+      "screenshots/route_02_main_road_move_20260815T011424.jpg",
+      "screenshots/route_03_npc_attempt_no_dialogue_20260815T011516.jpg",
+      "screenshots/route_04_npc_e_no_feedback_20260815T011532.jpg",
+      "screenshots/route_05_market_purchase_feedback_20260815T011603.jpg",
+      "screenshots/route_06_departure_feedback_20260815T011801.jpg",
+      "screenshots/route_07_boarding_no_transition_20260815T011823.jpg",
+      "screenshots/route_08_save_feedback_20260815T011845.jpg",
+      "screenshots/route_09_return_berth_retry_no_transition_20260815T012706.jpg",
+      "screenshots/perf_high_real_20260815T012247.jpg",
+      "screenshots/perf_low_start_real_20260815T012335.jpg",
+      "screenshots/perf_low_end_real_20260815T012435.jpg",
+      "screenshots/perf_medium_start_real_20260815T012518.jpg",
+      "screenshots/perf_medium_end_real_20260815T012625.jpg"
+    ]
+  },
+  "visible_audit": [
+    {"item": "white_or_mint_green_planes", "status": "FOUND", "finding": "Large flat white/mint-green surfaces dominate the beach/route view", "evidence": "route_02, route_06, route_09"},
+    {"item": "pure_block_island_or_low_detail", "status": "FOUND", "finding": "Green blocky landforms and sparse low-detail port composition are visible", "evidence": "route_01, route_02, route_05"},
+    {"item": "overlapping_text", "status": "FOUND", "finding": "Debug/status/event text overlaps dark panels and other labels, reducing readability", "evidence": "route_05, route_06, perf_low_start_real"},
+    {"item": "blocked_interaction", "status": "FOUND", "finding": "NPC E, boarding E and berth B produced no visible feedback/transition", "evidence": "route_04, route_07, route_09"},
+    {"item": "pink_material", "status": "NOT_OBSERVED_IN_CAPTURED_FRAMES", "finding": "No pink missing-material frame was observed in this capture set; this is not a full-scene absence claim"},
+    {"item": "black_screen", "status": "NOT_OBSERVED_IN_CAPTURED_FRAMES", "finding": "No black-screen frame was observed in this capture set"},
+    {"item": "camera_crop_or_collision", "status": "FOUND", "finding": "Camera/character view is very close to geometry and route view is dominated by the ground plane", "evidence": "route_02, route_06"},
+    {"item": "departure_visual_consistency", "status": "FOUND_PROBLEM", "finding": "ShipSystem departure event and 航行中 status were visible while the Player still showed the on-foot beach view", "evidence": "route_06, route_09"},
+    {"item": "button_feedback", "status": "PARTIAL", "finding": "Market and departure gave event/status feedback; NPC, boarding and berth actions did not", "evidence": "route_04, route_05, route_06, route_07, route_09"}
+  ],
+  "performance": {
+    "sampling_basis": "real_interactive_player_window",
+    "target_requested": {"resolution": "1920x1080", "aspect": "16:9", "tiers": ["Low", "Medium", "High"]},
+    "actual_resolution_evidence": "2194x1234 Computer Use full-screen capture; native 1920x1080 not confirmed",
+    "vsync": "NOT_VERIFIED_BY_PLAYER_EVIDENCE",
+    "frame_time_ms": "NOT_AVAILABLE",
+    "average_fps": "NOT_AVAILABLE_AS_A_VALID_AVERAGE",
+    "one_percent_low": "NOT_AVAILABLE",
+    "percentiles": "NOT_AVAILABLE",
+    "gpu_time": "NOT_AVAILABLE",
+    "gc": "NOT_AVAILABLE",
+    "overlay_limitation": "D5 overlay exposed LastFps/MinFps only. Displayed MinFPS 2.7 is a startup/outlier value and is not treated as 1% Low.",
+    "tiers": [
+      {
+        "quality": "High",
+        "quality_identification": "Real click cycle from default Medium to High; inferred from documented cycle order and visible quality state",
+        "sample_window_local": "2026-08-15 01:22:22-01:22:47",
+        "sample_duration_seconds": 25,
+        "screen_reported_fps": 160.2,
+        "screen_reported_min_fps": 2.7,
+        "cpu_process_seconds_before_after": "Not isolated to this tier; aggregate snapshot was 382.171875s before the tier sequence and 526.5625s after a longer High interval",
+        "working_set_bytes_before_after": "340561920 -> 341536768 (aggregate, not tier-isolated)",
+        "private_memory_bytes_before_after": "640000000 -> 657182720 (aggregate, not tier-isolated)",
+        "status": "REAL_SCREEN_SAMPLE_INCOMPLETE_METRICS"
+      },
+      {
+        "quality": "Low",
+        "quality_identification": "Real click cycle from High to Low; inferred from documented cycle order and visible quality state",
+        "sample_window_local": "2026-08-15 01:23:35-01:24:35",
+        "sample_duration_seconds": 60,
+        "screen_reported_fps": 60.0,
+        "screen_reported_min_fps": 2.7,
+        "cpu_process_seconds_before_after": "612.078125 -> 656.265625",
+        "working_set_bytes_before_after": "342364160 -> 342953984",
+        "private_memory_bytes_before_after": "656363520 -> 656502784",
+        "status": "REAL_SCREEN_SAMPLE_INCOMPLETE_METRICS"
+      },
+      {
+        "quality": "Medium",
+        "quality_identification": "Real click cycle from Low to Medium; inferred from documented cycle order and visible quality state",
+        "sample_window_local": "2026-08-15 01:25:18-01:26:25",
+        "sample_duration_seconds": 67,
+        "screen_reported_fps": 60.0,
+        "screen_reported_min_fps": 2.7,
+        "cpu_process_seconds_before_after": "682.6875 -> 731.578125",
+        "working_set_bytes_before_after": "342814720 -> 343543808",
+        "private_memory_bytes_before_after": "657399808 -> 657408000",
+        "status": "REAL_SCREEN_SAMPLE_INCOMPLETE_METRICS"
+      }
+    ],
+    "tool_unavailable_vs_perf_failure": {
+      "unavailable": ["native 1920x1080 readout", "frame-time stream", "valid 1% low/percentiles", "target GPU time", "Unity GC allocation/collection counter", "verified VSync state"],
+      "performance_failure": "NOT_DECLARED; the available real-screen readings are insufficient for the requested performance gate"
+    },
+    "performance_conclusion": "PARTIAL: real Player screen samples were obtained for all three quality cycles, but the requested native 1920x1080 and complete frame-time/1%/GPU/GC dataset was not available. High was shorter than the requested fixed 60-second target."
+  },
+  "regression_and_integrity": {
+    "git_diff_check_this_task": "PASS_EXIT_CODE_0_WITH_LINE_ENDING_WARNINGS_ONLY",
+    "existing_d19_evidence_rechecked": [
+      "D19-S02-R01 automated route probe 2/2 (automated test environment only)",
+      "D19-S02-R01 D19 PlayMode filter 15/15 and D19 PlayMode 1/1 in existing handoff/report",
+      "D17 local story ten cycles 1/1 in existing XML",
+      "D17 full after save transaction 60/60 in existing XML",
+      "D16/D17 local full baseline 63 passed as recorded by prior evidence"
+    ],
+    "this_task_unity_rerun": "NOT_RERUN_IN_A_SEPARATE_READ_ONLY_COPY; existing XML/report evidence is cited without reclassifying it as real Player evidence",
+    "scene_or_logic_changes": "NONE_INTENDED",
+    "screenshot_hashes": "D19_R01_A_SCREENSHOT_HASHES.json",
+    "duplicate_screenshot_hashes": 0
+  },
+  "final_conclusion": {
+    "status": "PARTIAL",
+    "reason": "Route was genuinely exercised for 5m38s with 9 route screenshots and three real quality cycles, but full route completion and complete 1920x1080 performance metrics were blocked by no-feedback/no-transition behavior and unavailable Player telemetry.",
+    "most_severe_visible_issue": "Large white/mint-green planes together with overlapping debug/status text and a departure status that did not visibly transition the on-foot beach view to ship/return state."
+  }
+}

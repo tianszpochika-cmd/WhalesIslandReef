@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="3.0053821">
+  <test-suite type="TestSuite" id="1101" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="69" result="Failed" site="Child" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="3.005382" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1085" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="69" result="Failed" site="Child" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="2.998327" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35992" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1086" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="2.997308" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1087" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="2.997003" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1090" name="D19Route" fullname="WhalesIslandReef.Tests.D19Route" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="2.996667" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1006" name="D19R02A03RoutePlayModeTests" fullname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" classname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:40Z" duration="2.995856" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1008" name="DepartureAdvanceAndReturnUseSystemOwnedState" fullname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests.DepartureAdvanceAndReturnUseSystemOwnedState" methodname="DepartureAdvanceAndReturnUseSystemOwnedState" classname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" runstate="Runnable" seed="1073034890" result="Failed" label="Error" start-time="2026-08-15 06:34:37Z" end-time="2026-08-15 06:34:39Z" duration="2.594038" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests.GetString (System.Object value, System.String property) [0x00000] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D19Route\D19R02A03RoutePlayModeTests.cs:123 
+  at WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests+<DepartureAdvanceAndReturnUseSystemOwnedState>d__1.MoveNext () [0x0017d] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D19Route\D19R02A03RoutePlayModeTests.cs:78 
+  at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@082c24152fd4\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44 ]]></stack-trace>
+                </failure>
+                <output><![CDATA[[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3] 已规划航线：圣玛格丽特港 → 绿湾村，按 N 推进航程。
+[D3/Save] 快照保存失败，保留上一次有效存档：[SaveSystem] 无进行中的游戏，无法保存 D3 快照。
+[D3] 海上盘查：巡逻船要求缴纳临时通行费。 金币变化：-12
+[D3/Save] 快照保存失败，保留上一次有效存档：[SaveSystem] 无进行中的游戏，无法保存 D3 快照。
+]]></output>
+              </test-case>
+              <test-case id="1007" name="TradeCloseAndSavePublishActionableRouteEvidence" fullname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests.TradeCloseAndSavePublishActionableRouteEvidence" methodname="TradeCloseAndSavePublishActionableRouteEvidence" classname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" runstate="Runnable" seed="374030201" result="Failed" start-time="2026-08-15 06:34:39Z" end-time="2026-08-15 06:34:40Z" duration="0.393063" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  港内可交易路线入口没有打开交易表现层
+  Expected: True
+  But was:  False
+]]></message>
+                  <stack-trace><![CDATA[at WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests+<TradeCloseAndSavePublishActionableRouteEvidence>d__0.MoveNext () [0x000df] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D19Route\D19R02A03RoutePlayModeTests.cs:31
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@082c24152fd4\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.002，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D2/Physics] 玩家已恢复可行走接地：surface=BeachGround, surfaceY=0.28
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D7/Tutorial] 已根据存档恢复引导步骤：推进航程
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3] 航行中不能打开港口市场。
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

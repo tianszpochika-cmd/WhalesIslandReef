@@ -1,0 +1,83 @@
+{
+  "task": "D19-S01",
+  "attempt": 2,
+  "date": "2026-08-14",
+  "status": "PASS",
+  "history": {
+    "attempt_1_status": "BLOCKED",
+    "attempt_1_reason": "旧版 D18-S02 运行时就绪证据与 D19-D22 产出形成循环依赖",
+    "attempt_1_preserved": true,
+    "formal_layout_claimed_in_attempt_1": false
+  },
+  "prerequisites": {
+    "d18_s02_v2": "PASS",
+    "intake_catalog": "PASS",
+    "local_development_ready_count": 0,
+    "release_approved_count": 0,
+    "local_development_ready_nonzero_required": false
+  },
+  "layout": {
+    "path": "docs/game/design/common/assets/d19_saint_margaret_layout_v1.json",
+    "world_origin": "SM_PORT_ORIGIN=(0,0,0)",
+    "unit": "1 Unity world unit = 1 metre",
+    "axis": "Y-up; +Z inland; -Z water/departure; +X east",
+    "sea_level_y_m": 0.0,
+    "playable_bounds_m": {"min": [-128.0, -16.0, -128.0], "max": [128.0, 64.0, 144.0]},
+    "zone_count": 14,
+    "anchor_count": 24,
+    "fixed_shot_count": 14,
+    "route_target_seconds": 420,
+    "route_allowed_seconds": [300, 600]
+  },
+  "initial_harbor_readonly_baseline": {
+    "scene_path": "game/Assets/Scenes/InitialHarbor.unity",
+    "bootstrap_scene_path": "game/Assets/Scenes/Bootstrap.unity",
+    "build_settings_path": "ProjectSettings/EditorBuildSettings.asset",
+    "build_settings_scene_entries_observed": 0,
+    "yaml_gameobject_count": 24,
+    "yaml_prefab_instance_count": 25,
+    "yaml_monobehaviour_count": 7,
+    "navmesh_data": "fileID: 0",
+    "scene_sha256": "D3D76848BDA2E00F3313F111D7E0DBD2B59E8D306C1A681765B67FD5A591932B",
+    "scene_modified": false,
+    "prefabs_modified": false
+  },
+  "resource_and_ownership_validation": {
+    "intake_catalog_sha256": "A25F07D4ED8A9AC5820126F9DD6A2D76DCA680F5A39B2767C12B3F645533EAB6",
+    "intake_eligible_files": 1674,
+    "external_manifest_selector_count": 14,
+    "external_selectors_all_intake_eligible": true,
+    "external_selectors_respect_catalog_task_scope": true,
+    "candidate_only_resources_used": false,
+    "local_ready_promotion": false,
+    "release_approved_promotion": false,
+    "a01_a06_write_scopes_disjoint": true,
+    "project_owned_gaps_explicit": true
+  },
+  "interface_validation": {
+    "stable_ids_complete": true,
+    "current_scene_compatibility_names_complete": true,
+    "runtime_collision_names_registered": true,
+    "departure_return_event_contracts_registered": true
+  },
+  "validation": {
+    "json_format": "PASS",
+    "d18_prerequisite_and_intake_paths": "PASS",
+    "layout_field_completeness": "PASS",
+    "initial_harbor_readonly_comparison": "PASS",
+    "a01_a06_scope_overlap": "PASS",
+    "resource_state_constraint": "PASS",
+    "git_diff_check": "PASS",
+    "unity_runtime_or_screenshot_run": "NOT_RUN_BY_S01_SCOPE"
+  },
+  "not_claimed": [
+    "Prefab completeness",
+    "collision/NavMesh runtime success",
+    "Animator or runtime consumer success",
+    "PlayMode route success",
+    "formal InitialHarbor integration",
+    "LocalDevelopmentReady",
+    "ReleaseApproved"
+  ],
+  "conclusion": "PASS: layout and development boundary freeze is complete; D19-A01—A06 may start controlled Work scene tasks, D19-S02 remains the only formal scene writer, and D18-S03 remains the runtime promotion gate."
+}

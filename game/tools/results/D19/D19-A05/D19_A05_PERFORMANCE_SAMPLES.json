@@ -1,0 +1,17 @@
+{
+  "task": "D19-A05",
+  "status": "NOT_RUN",
+  "reason": "Unity/target-device performance sampling was not available in the current workspace environment; targets remain explicit.",
+  "quality_tiers": [
+    {"tier":"Low","shadow_distance_m":35,"shadow_cascades":1,"fog":true,"post_processing":false,"local_light_limit":1,"target_fps":60,"target_gpu_p95_ms":15,"target_cpu_p95_ms":12},
+    {"tier":"Medium","shadow_distance_m":55,"shadow_cascades":2,"fog":true,"post_processing":true,"local_light_limit":2,"target_fps":60,"target_gpu_p95_ms":15,"target_cpu_p95_ms":12},
+    {"tier":"High","shadow_distance_m":80,"shadow_cascades":4,"fog":true,"post_processing":true,"local_light_limit":4,"target_fps":60,"target_gpu_p95_ms":15,"target_cpu_p95_ms":12}
+  ],
+  "rules": [
+    "No forced depth of field.",
+    "No motion blur.",
+    "No periodic light flicker; oil-lamp interfaces are steady presentation lights.",
+    "No additional shadow-casting point lights.",
+    "No change to URP project asset or water shader."
+  ]
+}

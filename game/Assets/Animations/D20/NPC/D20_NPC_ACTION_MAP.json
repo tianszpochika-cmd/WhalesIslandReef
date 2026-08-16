@@ -1,0 +1,45 @@
+{
+  "task_id": "D20-A04",
+  "review_status": "Candidate",
+  "read_only_input": "D20NpcPresentationSnapshot",
+  "states": {
+    "Idle": { "animator_state": "D20_NPC_Idle", "pose_fallback": "neutral_breath", "feedback_key": "" },
+    "Work": { "animator_state": "D20_NPC_Work", "pose_fallback": "work_bob", "feedback_key": "npc_feedback_working_{job}" },
+    "Walk": { "animator_state": "D20_NPC_Walk", "pose_fallback": "walk_bob", "feedback_key": "" },
+    "Talk": { "animator_state": "D20_NPC_Talk", "pose_fallback": "talk_lean", "feedback_key": "npc_feedback_dialogue_open" },
+    "Rest": { "animator_state": "D20_NPC_Rest", "pose_fallback": "rest_breath", "feedback_key": "" },
+    "Eat": { "animator_state": "D20_NPC_Eat", "pose_fallback": "eat_lean", "feedback_key": "" },
+    "Alarm": { "animator_state": "D20_NPC_Alarm", "pose_fallback": "alarm_lean", "feedback_key": "npc_feedback_alarm" },
+    "Refuse": { "animator_state": "D20_NPC_Refuse", "pose_fallback": "refuse_lean", "feedback_key": "npc_feedback_refused" },
+    "Injured": { "animator_state": "D20_NPC_Injured", "pose_fallback": "injured_lean", "feedback_key": "npc_feedback_injured" }
+  },
+  "dialogue_feedback": {
+    "Opening": "npc_feedback_dialogue_open",
+    "Open": "npc_feedback_dialogue_open",
+    "Ending": "npc_feedback_dialogue_ended",
+    "Completed": "npc_feedback_dialogue_ended",
+    "Busy": "npc_feedback_busy",
+    "Unreachable": "npc_feedback_unreachable",
+    "Refused": "npc_feedback_refused"
+  },
+  "navigation_feedback": {
+    "Unreachable": "npc_feedback_unreachable",
+    "NoAnchor": "npc_feedback_unreachable",
+    "SceneUnloaded": "npc_feedback_unreachable"
+  },
+  "lod": {
+    "near_m": [0, 12],
+    "mid_m": [12, 32],
+    "far_m": [32, 80],
+    "proxy_m": [80, 9999],
+    "far_rule": "Disable detailed Animator and keep the owner-provided position/state snapshot visible through FarProxy."
+  },
+  "fallbacks": {
+    "missing_action": "neutral_pose_and_feedback_key",
+    "missing_anchor": "npc_feedback_unreachable",
+    "scene_reload": "reapply_last_owner_snapshot_after_enable",
+    "paused": "hold_last_read_state_and_stop_presentation_time",
+    "save_restore": "consume_restored_snapshot_without_writing_domain_state"
+  },
+  "write_boundary": "Presentation reads snapshots and changes only Animator, pose, LOD, indicator and visual anchor lookup."
+}

@@ -1,0 +1,89 @@
+{
+    "status": "PASS",
+    "route_contract": "spawn -> walk -> board -> sail -> disembark -> save -> reload",
+    "actual_runtime_seconds": 2.5,
+    "route_start": {
+        "x": 0.0,
+        "y": 0.6821463704109192,
+        "z": -6.5
+    },
+    "route_end": {
+        "x": -0.03472581133246422,
+        "y": 0.6999533772468567,
+        "z": -3.6554160118103029
+    },
+    "ship_start": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "ship_end": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.3113958835601807
+    },
+    "player_walk_distance": 2.8448517322540285,
+    "ship_distance": 1.3113958835601807,
+    "boarded": true,
+    "disembarked": true,
+    "saved": true,
+    "scene_reloaded": true,
+    "stable_anchor_count_after_reload": 20,
+    "samples": [
+        {
+            "label": "spawn",
+            "position": {
+                "x": 0.0,
+                "y": 0.6821463704109192,
+                "z": -6.5
+            },
+            "grounded": true
+        },
+        {
+            "label": "walk_30",
+            "position": {
+                "x": -0.03441089019179344,
+                "y": 0.6906741261482239,
+                "z": -5.097395896911621
+            },
+            "grounded": true
+        },
+        {
+            "label": "walk_60",
+            "position": {
+                "x": -0.03463286906480789,
+                "y": 0.6999533772468567,
+                "z": -3.6554160118103029
+            },
+            "grounded": true
+        },
+        {
+            "label": "walk_90",
+            "position": {
+                "x": -0.03472581133246422,
+                "y": 0.6999533772468567,
+                "z": -3.6554160118103029
+            },
+            "grounded": true
+        },
+        {
+            "label": "walk_end",
+            "position": {
+                "x": -0.03472581133246422,
+                "y": 0.6999533772468567,
+                "z": -3.6554160118103029
+            },
+            "grounded": true
+        },
+        {
+            "label": "ship_end",
+            "position": {
+                "x": 0.0,
+                "y": 2.8313519954681398,
+                "z": 5.944516181945801
+            },
+            "grounded": true
+        }
+    ],
+    "note": "This is an automated runtime probe; it does not claim the human 5—10 minute route gate."
+}

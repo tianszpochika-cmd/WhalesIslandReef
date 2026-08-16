@@ -1,0 +1,635 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-14T07:48:20.7747119Z"
+Process architecture: x64
+Date: 2026-08-14T07:48:20Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+WhalesIslandReef.Editor.D19VegetationAssetBuilder.BuildD19A03
+-logFile
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-A03\D19_A03_BUILD.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [34516]  Target information:
+
+Player connection [34516]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 166406612 [EditorId] 166406612 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34516]  * "[IP] 172.16.219.2 [Port] 55504 [Flags] 2 [Guid] 166406612 [EditorId] 166406612 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34516] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34516] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-18844" after 0.2 seconds.
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Ti (ID=0x2782)
+    Vendor:   NVIDIA
+    VRAM:     11996 MB
+    Driver:   32.0.15.9636
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56844
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              ae1f8b9b49d04999a8f75a0507afb7aa
+  Correlation Id:          82c433db7d4a40380a9f70c71eaaee81
+  External correlation Id: 4281180496728408392
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.00s, validation: 0.00s, handshake: 0.72s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-14T07:48:21.4921626Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T08:47:24Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T08:47:24Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 0.72s
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001546 seconds.
+- Loaded All Assemblies, in  0.227 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.223 seconds
+Domain Reload Profiling: 449ms
+	BeginReloadAssembly (58ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (103ms)
+		LoadAssemblies (57ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (100ms)
+			TypeCache.Refresh (99ms)
+				TypeCache.ScanAssembly (90ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (223ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (198ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (99ms)
+			ProcessInitializeOnLoadMethodAttributes (42ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T08:47:24Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+The GUID inside 'Assets/Prefabs/VFX/D19/D19_Dust_VFX_Proxy.prefab.meta' cannot be extracted by the YAML Parser. Attempting to extract it via string matching instead. Please verify the file does not contain unexpected data.
+The GUID inside 'Assets/Prefabs/VFX/D19/D19_SeaSpray_VFX_Proxy.prefab.meta' cannot be extracted by the YAML Parser. Attempting to extract it via string matching instead. Please verify the file does not contain unexpected data.
+The .meta file Assets/Prefabs/VFX/D19/D19_Dust_VFX_Proxy.prefab.meta does not have a valid GUID and its corresponding Asset file will be ignored. If this file is not malformed, please add a GUID, or delete the .meta file and it will be recreated correctly
+The .meta file Assets/Prefabs/VFX/D19/D19_SeaSpray_VFX_Proxy.prefab.meta does not have a valid GUID and its corresponding Asset file will be ignored. If this file is not malformed, please add a GUID, or delete the .meta file and it will be recreated correctly
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Assembly for Assembly Definition File 'Assets/Tests/EditMode/D19/D19A02.Tests.asmdef' will not be compiled, because it has no scripts associated with it.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:LogFormat (UnityEngine.LogType,string,object[])
+UnityEngine.Debug:LogWarningFormat (string,object[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:WarnIfThereAreAssembliesWithoutAnyScripts (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings,UnityEditor.Scripting.ScriptCompilation.ScriptAssembly[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScriptsWithSettings (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface/<>c__DisplayClass21_0:<CompileScripts>b__0 ()
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:EmitExceptionAsError<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus> (System.Func`1<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus>,UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 2s22ms
+[686/889    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[873/889    1s] Csc Library/Bee/artifacts/1900b0aE.dag/WhalesIslandReef.D19.Vegetation.Runtime.dll (+2 others)
+Assets\Prefabs\Vegetation\D19\Editor\D19VegetationAssetBuilder.cs(747,34): warning CS0618: 'Object.FindObjectsOfType<T>(bool)' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+[877/889    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Save.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Save.Tests.dll, with 130 defines and 262 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[878/889    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/WhalesIslandReef.D19.Vegetation.Runtime.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/WhalesIslandReef.D19.Vegetation.Runtime.dll, with 132 defines and 254 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[880/889    0s] CopyFiles Library/ScriptAssemblies/WhalesIslandReef.D19.Vegetation.Runtime.pdb
+[881/889    0s] CopyFiles Library/ScriptAssemblies/WhalesIslandReef.D19.Vegetation.Runtime.dll
+[882/889    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 132 defines and 306 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[883/889    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 130 defines and 321 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+*** Tundra build success (2.00 seconds), 8 items updated, 889 evaluated
+Assets\Prefabs\Vegetation\D19\Editor\D19VegetationAssetBuilder.cs(747,34): warning CS0618: 'Object.FindObjectsOfType<T>(bool)' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+AssetDatabase: script compilation time: 2.424564s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.733 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.957 seconds
+Domain Reload Profiling: 2688ms
+	BeginReloadAssembly (212ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (128ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (466ms)
+		LoadAssemblies (356ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (157ms)
+			TypeCache.Refresh (103ms)
+				TypeCache.ScanAssembly (95ms)
+			BuildScriptInfoCaches (44ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (1958ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1799ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (91ms)
+			ProcessInitializeOnLoadAttributes (1641ms)
+			ProcessInitializeOnLoadMethodAttributes (52ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f6901e03b9f41de4fa069926d9e590d9): Total: 5.843 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=2391 ms
+		Asset DB Callback time: managed=234 ms, native=22 ms
+		Scripting: domain reloads=1, domain reload time=733 ms, compile time=2426 ms, other=34 ms
+		Project Asset Count: scripts=1371, non-scripts=7305
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 19.557ms
+	ApplyChangesToAssetFolders: 0.400ms
+	Scan: 187.816ms
+	OnSourceAssetsModified: 0.874ms
+	CategorizeAssetsWithTransientArtifact: 34.036ms
+	ProcessAssetsWithTransientArtifactChanges: 52.700ms
+	CategorizeAssets: 62.063ms
+	ImportOutOfDateAssets: 1964.906ms (-463.143ms without children)
+		CompileScripts: 2425.800ms
+		ReloadNativeAssets: 0.024ms
+		UnloadImportedAssets: 0.538ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.990ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.697ms
+	PostProcessAllAssets: 235.023ms
+	Hotreload: 2.654ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 1.010ms
+	PersistCurrentRevisions: 0.351ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 2.081ms
+	Untracked: 3281.285ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.188ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-WhalesIslandReef
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6207 unused Assets / (4.5 MB). Loaded Objects now: 6904.
+Memory consumption went from 203.0 MB to 198.5 MB.
+Total: 7.218300 ms (FindLiveObjects: 0.418400 ms CreateObjectMapping: 0.453500 ms MarkObjects: 4.497500 ms  DeleteObjects: 1.847900 ms)
+
+Asset Pipeline Refresh (id=68598edd50ddff84fb29cf0f5393e346): Total: 0.058 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=5b395135a6bfc4c479da680196e548fc): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/Materials/D19_Vegetation_Distant.mat using Guid(22121d436daa01d42bed0ad54976d90f) (NativeFormatImporter) -> (artifact id: '4c8eab21ef9fc0c40fceb70ea65031d4') in 0.0053525 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=9f69cdcff5286e24ca08310af4a68738): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=2b58f712fdf5c5f42b11c8a5c13a46f8): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=7e67ac07c520db140a9af675b3064338): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter)Problem detected while importing the Prefab file: 'Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab'.
+The file might be corrupt or have a missing Variant parent or nested Prefabs. See details below.
+Errors:
+	Nested Prefab problem. Missing Nested Prefab Asset: 'D19_Biome_beach (Missing Prefab with guid: 482420b5ae0f5254b914c403196e71f9)'
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:DeleteAsset (string)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:DeleteAssetIfPresent (string) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:810)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildBiomePrefab (WhalesIslandReef.Editor.D19VegetationAssetBuilder/BiomePlan,string,UnityEngine.Material,UnityEngine.Material,System.Collections.Generic.List`1<string>,System.Collections.Generic.List`1<string>,int&,int&,int&) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:415)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildInternal () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:308)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:239)
+
+[Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs line 308]
+
+ -> (artifact id: 'aa4a16250f867cd74a5d731a51fb8258') in 0.0155817 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=0c22420ef2af21d40a47a80bae4521e7): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_Biome_beach.prefab using Guid(482420b5ae0f5254b914c403196e71f9) (PrefabImporter) -> (artifact id: '4c93fb58542287aa027ee84cf7f90a12') in 0.0137196 seconds
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: '0c5050f4f61cb86b7fff66cf61d63235') in 0.0190245 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=37068da4dc8def548bfa10266eb78de2): Total: 0.075 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a1475adac1f52ac45910d50101462394): Total: 0.022 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.65 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=1d71c49a2625244468215215206e5afc): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter)Problem detected while importing the Prefab file: 'Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab'.
+The file might be corrupt or have a missing Variant parent or nested Prefabs. See details below.
+Errors:
+	Nested Prefab problem. Missing Nested Prefab Asset: 'D19_Biome_port_disturbed (Missing Prefab with guid: 9e91383e59c1e234ca2641496cbe7816)'
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:DeleteAsset (string)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:DeleteAssetIfPresent (string) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:810)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildBiomePrefab (WhalesIslandReef.Editor.D19VegetationAssetBuilder/BiomePlan,string,UnityEngine.Material,UnityEngine.Material,System.Collections.Generic.List`1<string>,System.Collections.Generic.List`1<string>,int&,int&,int&) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:415)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildInternal () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:308)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:239)
+
+[Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs line 308]
+
+ -> (artifact id: 'd94e27e6bed24b96172c2879ca7f9cc1') in 0.0114434 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=07603b8e7dfd39a4d916ef62841a8109): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_Biome_port_disturbed.prefab using Guid(9e91383e59c1e234ca2641496cbe7816) (PrefabImporter) -> (artifact id: 'dfb1f6f93f075cb1a55897bce03b45b8') in 0.0079704 seconds
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: '10dd9288d3aa24682e66debfba77e6cd') in 0.0136407 seconds
+Refreshing native plugins compatible for Editor in 0.65 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=784c01ca4bddda544a3954756a81aecc): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=be1d7be2c799ea14994d2a20da2e8d5e): Total: 0.022 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=daba9bdbcb87e9849b9fef6c3ed64811): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter)Problem detected while importing the Prefab file: 'Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab'.
+The file might be corrupt or have a missing Variant parent or nested Prefabs. See details below.
+Errors:
+	Nested Prefab problem. Missing Nested Prefab Asset: 'D19_Biome_road_edge (Missing Prefab with guid: 4d7416a507d4cb845802af041cf88261)'
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:DeleteAsset (string)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:DeleteAssetIfPresent (string) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:810)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildBiomePrefab (WhalesIslandReef.Editor.D19VegetationAssetBuilder/BiomePlan,string,UnityEngine.Material,UnityEngine.Material,System.Collections.Generic.List`1<string>,System.Collections.Generic.List`1<string>,int&,int&,int&) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:415)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildInternal () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:308)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:239)
+
+[Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs line 308]
+
+ -> (artifact id: 'ba45c0b607587ceaf79ff4dbffbc11b3') in 0.0114233 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=c99e1f83537df4e478986922f4f8278f): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_Biome_road_edge.prefab using Guid(4d7416a507d4cb845802af041cf88261) (PrefabImporter) -> (artifact id: 'f1d3ceb6e63fc503ff9f780b333c850a') in 0.0072521 seconds
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: '416686107e69fd4b72967bcd8345e9a1') in 0.015195 seconds
+Refreshing native plugins compatible for Editor in 1.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=6e90d6d51801eca4b98cbd714d716a02): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=4d05dd5125479ac458f57561ebd671d1): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=e72492f172291a0449421324a5e2701c): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter)Problem detected while importing the Prefab file: 'Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab'.
+The file might be corrupt or have a missing Variant parent or nested Prefabs. See details below.
+Errors:
+	Nested Prefab problem. Missing Nested Prefab Asset: 'D19_Biome_secondary_forest (Missing Prefab with guid: 5d79308d743905b449be14341e7d2f2a)'
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:DeleteAsset (string)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:DeleteAssetIfPresent (string) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:810)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildBiomePrefab (WhalesIslandReef.Editor.D19VegetationAssetBuilder/BiomePlan,string,UnityEngine.Material,UnityEngine.Material,System.Collections.Generic.List`1<string>,System.Collections.Generic.List`1<string>,int&,int&,int&) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:415)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildInternal () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:308)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:239)
+
+[Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs line 308]
+
+ -> (artifact id: '7b75c925af1e398c9f9041b4a8424293') in 0.0096808 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=c58bf68408eec9a41b90d0ee93ddea98): Total: 0.033 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_Biome_secondary_forest.prefab using Guid(5d79308d743905b449be14341e7d2f2a) (PrefabImporter) -> (artifact id: '93daa0d1cbc33413f2a8bd35f3203a65') in 0.0079902 seconds
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: '132cc6591eaf6db384398b18445bd227') in 0.0181413 seconds
+Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=eb6c3bfbf2765d64cab8b7d967b4b1e6): Total: 0.070 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=30dca4dd8af5bf246bf997ff914910e7): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=c2704f529fbb5904498a466454c84da2): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter)Problem detected while importing the Prefab file: 'Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab'.
+The file might be corrupt or have a missing Variant parent or nested Prefabs. See details below.
+Errors:
+	Nested Prefab problem. Missing Nested Prefab Asset: 'D19_Biome_rocky_slope (Missing Prefab with guid: 7c9caef762d557143bf7765d3f8a8384)'
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:DeleteAsset (string)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:DeleteAssetIfPresent (string) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:810)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildBiomePrefab (WhalesIslandReef.Editor.D19VegetationAssetBuilder/BiomePlan,string,UnityEngine.Material,UnityEngine.Material,System.Collections.Generic.List`1<string>,System.Collections.Generic.List`1<string>,int&,int&,int&) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:415)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildInternal () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:308)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:239)
+
+[Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs line 308]
+
+ -> (artifact id: 'f64fae728ac8e2bb7fbd01e82b8685be') in 0.0086934 seconds
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=259044b62b2baed47863eda027c0bdc3): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_Biome_rocky_slope.prefab using Guid(7c9caef762d557143bf7765d3f8a8384) (PrefabImporter) -> (artifact id: '9c27b36e493463f76b12a1b76b47d1aa') in 0.0103101 seconds
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: 'e83fcdfcb5e6c3e42e516018f6a97b85') in 0.0135136 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=4479b143bf0d08f49a8a570d17d839fc): Total: 0.073 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=72ffee147fe8ede40973b4ca64d361f6): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=bfbfd0e1c8828fa4b946f6e211eeb2b1): Total: 0.032 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter)Problem detected while importing the Prefab file: 'Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab'.
+The file might be corrupt or have a missing Variant parent or nested Prefabs. See details below.
+Errors:
+	Nested Prefab problem. Missing Nested Prefab Asset: 'D19_Biome_wet_lowland (Missing Prefab with guid: d584627828aa7de4f9a75f9eea416192)'
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:DeleteAsset (string)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:DeleteAssetIfPresent (string) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:810)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildBiomePrefab (WhalesIslandReef.Editor.D19VegetationAssetBuilder/BiomePlan,string,UnityEngine.Material,UnityEngine.Material,System.Collections.Generic.List`1<string>,System.Collections.Generic.List`1<string>,int&,int&,int&) (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:415)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildInternal () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:308)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:239)
+
+[Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs line 308]
+
+ -> (artifact id: 'ba9880812c13d4a193082668eb422795') in 0.0082515 seconds
+Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=31bb50bc8a7cfca479dce32bfcdcf024): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_Biome_wet_lowland.prefab using Guid(d584627828aa7de4f9a75f9eea416192) (PrefabImporter) -> (artifact id: '256e7e73e03839e92197d126ea76bb88') in 0.007451 seconds
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: '2a6afc8182934e87f8bf36e9ad9b6809') in 0.0147044 seconds
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b49393663cd44b14ea5cad62c554947e): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=699daa98943dd564f88c0060905d3b1d): Total: 0.026 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/D19_BiomeRoot.prefab using Guid(76a333258292e1343a771933c79e585e) (PrefabImporter) -> (artifact id: '328c3c7f7dbab48c2bb10e9385a2607c') in 0.0097269 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a45d1236efb55c245b1acfcc9de76f52): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Vegetation/D19/Data/D19_Vegetation_Layout.json using Guid(b2efcb9f9e1c88944a0c6859749e853e) (TextScriptImporter) -> (artifact id: 'a5bbdf10f19d34b5751981ea9bf50824') in 0.0021871 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f004ab4eb8f57ee4ca513d90a288debb): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2662 unused Assets / (0.8 MB). Loaded Objects now: 6912.
+Memory consumption went from 181.9 MB to 181.1 MB.
+Total: 5.838000 ms (FindLiveObjects: 0.246200 ms CreateObjectMapping: 0.153300 ms MarkObjects: 4.286400 ms  DeleteObjects: 1.151300 ms)
+
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Start importing Assets/Prefabs/Vegetation/D19/Materials/D19_Vegetation_Distant.mat using Guid(22121d436daa01d42bed0ad54976d90f) (NativeFormatImporter) -> (artifact id: 'd16a9636796cd8f8050cc2a1c17e0f3c') in 0.0023787 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Water_High.mat using Guid(d806fabfdfbe3084ea54ac01fc102061) (NativeFormatImporter) -> (artifact id: 'c3f9e8834be536f472cfa2a80bc239ac') in 0.0013693 seconds
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=4edcf219e8b0358479043f65a420ca28): Total: 0.032 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D19/Work/D19_Biomes_Work.unity using Guid(6453cf9fcdb2d5e458cbbcbaa8da6659) (DefaultImporter) -> (artifact id: 'da75daef1b9fbe28913af429523b0578') in 0.0013183 seconds
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=9752f1ed631271f4d8847ab51880a985): Total: 0.027 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D19/Work/D19_Biomes_Work.unity using Guid(6453cf9fcdb2d5e458cbbcbaa8da6659) (DefaultImporter) -> (artifact id: '7428b5c0fbe94d356de2dd3e1e8faed7') in 0.000903 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=ee73d9a74d41ae542a2442fd96b1054a): Total: 0.026 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+[D19-A03] vegetation biome build PASS
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+WhalesIslandReef.Editor.D19VegetationAssetBuilder:BuildD19A03 () (at Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs:240)
+
+(Filename: Assets/Prefabs/Vegetation/D19/Editor/D19VegetationAssetBuilder.cs Line: 240)
+
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

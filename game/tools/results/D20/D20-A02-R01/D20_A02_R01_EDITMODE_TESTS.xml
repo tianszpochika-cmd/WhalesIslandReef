@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.0869528">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="391" result="Failed" site="Child" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.086953" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1040" name="D20A02.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D20A02.Tests.dll" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.076134" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="17948" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1041" name="D20" fullname="D20" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.075674" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1042" name="Tests" fullname="D20.Tests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.075529" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1043" name="A02" fullname="D20.Tests.A02" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.075377" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1034" name="D20A02PlayerAnimationTests" fullname="D20.Tests.A02.D20A02PlayerAnimationTests" classname="D20.Tests.A02.D20A02PlayerAnimationTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.074603" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1035" name="ControllerContainsAllFrozenPresentationStatesAndParameters" fullname="D20.Tests.A02.D20A02PlayerAnimationTests.ControllerContainsAllFrozenPresentationStatesAndParameters" methodname="ControllerContainsAllFrozenPresentationStatesAndParameters" classname="D20.Tests.A02.D20A02PlayerAnimationTests" runstate="Runnable" seed="388067069" result="Passed" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.049176" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1036" name="MappingCoversLocomotionAirborneInteractionAndRecovery" fullname="D20.Tests.A02.D20A02PlayerAnimationTests.MappingCoversLocomotionAirborneInteractionAndRecovery" methodname="MappingCoversLocomotionAirborneInteractionAndRecovery" classname="D20.Tests.A02.D20A02PlayerAnimationTests" runstate="Runnable" seed="990833390" result="Passed" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.003260" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1038" name="MissingStateFallsBackAndPauseDoesNotMoveRoot" fullname="D20.Tests.A02.D20A02PlayerAnimationTests.MissingStateFallsBackAndPauseDoesNotMoveRoot" methodname="MissingStateFallsBackAndPauseDoesNotMoveRoot" classname="D20.Tests.A02.D20A02PlayerAnimationTests" runstate="Runnable" seed="1249077239" result="Passed" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.003673" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1039" name="PresentationSourceContainsNoNetworkOrStrongLogicWrites" fullname="D20.Tests.A02.D20A02PlayerAnimationTests.PresentationSourceContainsNoNetworkOrStrongLogicWrites" methodname="PresentationSourceContainsNoNetworkOrStrongLogicWrites" classname="D20.Tests.A02.D20A02PlayerAnimationTests" runstate="Runnable" seed="1005011904" result="Passed" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.001028" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1037" name="WorkAvatarDrivesAnimatorWithoutRootMotionOrPhysicalRootChanges" fullname="D20.Tests.A02.D20A02PlayerAnimationTests.WorkAvatarDrivesAnimatorWithoutRootMotionOrPhysicalRootChanges" methodname="WorkAvatarDrivesAnimatorWithoutRootMotionOrPhysicalRootChanges" classname="D20.Tests.A02.D20A02PlayerAnimationTests" runstate="Runnable" seed="382807570" result="Failed" label="Error" start-time="2026-08-15 08:26:44Z" end-time="2026-08-15 08:26:44Z" duration="0.006739" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.ArgumentException : UnpackPrefabInstance must be called with a Prefab instance.]]></message>
+                  <stack-trace><![CDATA[  at UnityEditor.PrefabUtility.UnpackPrefabInstance (UnityEngine.GameObject instanceRoot, UnityEditor.PrefabUnpackMode unpackMode, UnityEditor.InteractionMode action) [0x00024] in <15bb73cbe4984c7e86e71673213f0881>:0 
+  at D20.Tests.A02.D20A02PlayerAnimationTests.WorkAvatarDrivesAnimatorWithoutRootMotionOrPhysicalRootChanges () [0x0007c] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D20A02\D20A02PlayerAnimationTests.cs:71 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <4449e9424e7e4d4d81a660907c68cb97>:0 ]]></stack-trace>
+                </failure>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

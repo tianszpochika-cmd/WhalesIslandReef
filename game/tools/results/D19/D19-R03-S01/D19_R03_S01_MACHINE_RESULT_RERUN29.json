@@ -1,0 +1,26 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_V3",
+  "task": "D19-R03-S01",
+  "run_id": "RERUN29_GATE_REVIEW",
+  "conclusion": "BLOCKED",
+  "review_mode": "evidence aggregation after real Player RERUN29; no fabricated gate pass",
+  "upstream": {"d19_r03_a01": "PARTIAL", "d19_r03_a02": "PARTIAL", "d19_r03_a03": "PASS_SUBTASK_ONLY", "d18_s02_r02": "PASS"},
+  "route": {
+    "runtime_seconds": 694.13134765625,
+    "resolution": "1920x1080",
+    "player_controller_router": true,
+    "movement": true,
+    "interaction_input": true,
+    "save_input": true,
+    "save_feedback": true,
+    "boarding_disembarking": true,
+    "reload_restore_same_run": false,
+    "reached": ["anchor.player.spawn", "building:tavern_santa_margarita", "anchor.dock.primary", "anchor.berth.primary"],
+    "not_reached": ["building:market_santa_margarita", "building:warehouse_santa_margarita", "building:shipyard_santa_margarita", "anchor.return.harbor"]
+  },
+  "route_evidence": {"machine_result": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN29_MACHINE_RESULT.json", "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN29_LONG.json", "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN29_LONG_PLAYER.log", "screenshots": 16},
+  "visual": {"fixed_camera_count": 14, "weather_variants_verified": 0, "remaining_visual_debt": ["flat ground/dock", "blocky low-detail buildings", "nearshore proxy geometry", "route HUD remains visible"]},
+  "performance": {"subtask": "PASS", "evidence": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN17.json", "scope_note": "isolated 1080p performance subtask; not enough to close route/visual/weather gates"},
+  "decision": {"d19_r02_s02_unlocked": false, "d20_formal_integration_unlocked": false, "blocking_reasons": ["complete route not demonstrated", "same-run save/exit/reload not demonstrated", "weather Calm/Rain/Storm evidence incomplete", "visual debt remains"]},
+  "generated_at": "2026-08-16T16:25:00+08:00"
+}

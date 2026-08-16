@@ -1,0 +1,63 @@
+{
+  "task": "D19-R01-S02",
+  "status": "PARTIAL",
+  "acceptance_kind": "new formal current-state gate",
+  "history": {
+    "previous_d19_s02_partial_preserved": "docs/game/design/common/handoffs/D19/D19-S02_HANDOFF.md",
+    "previous_d19_s02_r01_partial_preserved": "docs/game/design/common/handoffs/D19/D19-S02-R01_HANDOFF.md",
+    "r01_b_partial_preserved": "docs/game/design/common/handoffs/D19/D19-R01-B_HANDOFF.md",
+    "this_result_does_not_relabel_historical_reports": true
+  },
+  "scope_lock": {
+    "initialharbor_modified_by_this_task": false,
+    "initialharbor_sha256_at_start": "4C45779C7B5A020583E9F11F9F8F61642C12F1EC3920E8001F4752EF626D7E9D",
+    "initialharbor_sha256_at_end": "4C45779C7B5A020583E9F11F9F8F61642C12F1EC3920E8001F4752EF626D7E9D",
+    "systems_modified": false,
+    "agentcore_modified": false,
+    "registry_modified": false,
+    "save_schema_modified": false,
+    "contracts_server_web_modified": false,
+    "resource_states_promoted": false,
+    "d18_s03_executed": false
+  },
+  "gate_results": {
+    "resource_reference_and_intake": "PASS_STATIC_ONLY",
+    "real_player_route_5_to_10_minutes": "FAIL_INCOMPLETE",
+    "real_player_1920x1080_low_medium_high": "FAIL_PERFORMANCE_AND_TELEMETRY_GAPS",
+    "current_player_14_fixed_shots": "NOT_RUN",
+    "visual_quality": "FAIL_GRAYBOX_AND_DEBUG_OVERLAY_DEBT",
+    "d19_editmode": "PASS_23_OF_23",
+    "d19_playmode": "NOT_COMPLETED_TIMEOUT",
+    "d17_regression": "NOT_RERUN_THIS_GATE; historical evidence retained",
+    "main_project_compile": "BLOCKED_BY_PRE_EXISTING_D20_TEST_REFERENCE"
+  },
+  "evidence": {
+    "resource_audit": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_RESOURCE_REFERENCE_AUDIT.json",
+    "intake_audit": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_INTAKE_AUDIT.json",
+    "manifest_audit": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_MANIFEST_AUDIT.json",
+    "route": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_ROUTE_LOG.json",
+    "performance_summary": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_PERFORMANCE_1080P.json",
+    "performance_tiers": [
+      "game/tools/results/D19/D19-R01-S02/performance/Low.json",
+      "game/tools/results/D19/D19-R01-S02/performance/Medium.json",
+      "game/tools/results/D19/D19-R01-S02/performance/High.json"
+    ],
+    "visual_qa": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_VISUAL_QA.json",
+    "playmode_timeout": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_PLAYMODE_TIMEOUT.json",
+    "editmode": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_EDITMODE_RESULTS.xml",
+    "screenshots": "game/tools/results/D19/D19-R01-S02/screenshots/"
+  },
+  "rollback": {
+    "r01_b_snapshot": "game/tools/results/D19/D19-R01-B/D19_R01_B_ROLLBACK_INITIALHARBOR.unity",
+    "r01_b_integration_prefab": "game/Assets/Prefabs/Environment/D19/Integration/R01/D19_R01_B_HarborVisualRepair.prefab",
+    "method": "Restore the preserved R01-B snapshot and matching meta only after closing Unity; do not delete the integration prefab until the scene hash and stable anchors are rechecked."
+  },
+  "allow_d20_s02": false,
+  "next_owner": {
+    "route_and_interaction": "new D19 repair task; fix NPC/boarding/departure/return/save feedback and rerun real menu-to-reload route",
+    "visual": "D19 integration repair; remove visible debug overlay and remaining graybox/blocky composition without changing ownership",
+    "performance": "D19 performance repair; investigate Low/Medium/High frame and 1% low failures, resolution consistency, GPU and working-set telemetry",
+    "playmode_and_d17": "rerun after repairs; do not use this timeout as a pass",
+    "release_gate": "D19-R01-S02 rerun, then D20-S02 only after all gates pass"
+  }
+}

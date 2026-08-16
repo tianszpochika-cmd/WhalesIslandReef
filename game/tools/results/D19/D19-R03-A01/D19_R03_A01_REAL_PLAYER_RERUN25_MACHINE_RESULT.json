@@ -1,0 +1,66 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_RERUN25_MACHINE_RESULT_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN25_REAL_PLAYER_INPUT_AND_SAVE_EDGE",
+  "conclusion": "PARTIAL",
+  "player": {
+    "executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN25.exe",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN25_PLAYER.log",
+    "route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN25.json",
+    "unity_version": "6000.0.80f1",
+    "resolution": "1920x1080",
+    "window_mode": "windowed",
+    "duration_seconds": 675.432556,
+    "continuous_run_requirement_met": true
+  },
+  "observed": {
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "movement_observed": true,
+    "interaction_input_observed": true,
+    "save_input_edge_observed": true,
+    "save_system_success_observed": false,
+    "reload_restore_observed": false,
+    "start_position": [0.0, 1.100000024, -6.5],
+    "end_position": [1.693310499, 0.691850007, -4.10900259],
+    "max_distance_from_start_m": 11.267,
+    "observations": 2557,
+    "events": 567,
+    "landmarks_reached": [
+      "anchor.player.spawn",
+      "anchor.dock.primary",
+      "anchor.berth.primary",
+      "building:tavern_santa_margarita"
+    ],
+    "landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "screenshots": [
+      "game/tools/results/D19/D19-R03-A01/RERUN25_PLAYER_CHECKPOINT_01.jpg",
+      "game/tools/results/D19/D19-R03-A01/RERUN25_PLAYER_CHECKPOINT_02.jpg",
+      "game/tools/results/D19/D19-R03-A01/RERUN25_PLAYER_CHECKPOINT_03.jpg"
+    ]
+  },
+  "input_evidence": {
+    "w_d_e_and_save_edges_in_log": true,
+    "observed_event_types": [
+      "displacement_observed",
+      "interaction_input_observed",
+      "landmark_reached",
+      "probe_started",
+      "save_input_observed"
+    ],
+    "interpretation": "Probe observed input edges only; no SaveSystem success or reload event was recorded."
+  },
+  "blocking_reasons": [
+    "Continuous Player runtime exceeded five minutes, but the required market/warehouse/shipyard/return-harbor route was not completed.",
+    "Save key edges were observed, but the probe does not invoke SaveProgress and the Player log contains no save-success or reload evidence for this run.",
+    "This run has only three checkpoint screenshots and is not the required 9+ route screenshot set."
+  ],
+  "historical_evidence_preserved": true,
+  "systems_or_save_schema_modified": false
+}

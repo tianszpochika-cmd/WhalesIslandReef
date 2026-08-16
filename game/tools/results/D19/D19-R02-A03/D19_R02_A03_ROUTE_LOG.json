@@ -1,0 +1,28 @@
+{
+  "task": "D19-R02-A03",
+  "conclusion": "PARTIAL",
+  "route_source": "real Player run; timestamps use local evidence file times and are not fabricated gameplay clocks",
+  "events": [
+    {"time_local":"2026-08-15T14:43:31","step":"main_menu","input":"none; Player startup","stable_id":"main_menu","expected":"Main Menu visible","actual":"Main Menu visible","result":"PASS","screenshot":"00_mainmenu_player.png"},
+    {"time_local":"2026-08-15T14:43:51","step":"new_game_panel","input":"real mouse click","stable_id":"main_menu.new_game","expected":"New Game panel opens","actual":"Panel visible","result":"PASS","screenshot":"01_newgame_panel_player.png"},
+    {"time_local":"2026-08-15T14:47:00","step":"enter_harbor","input":"real mouse confirmation","stable_id":"main_menu.new_game.confirm","expected":"InitialHarbor loads","actual":"InitialHarbor loaded; D2/D3 bootstrap logs present","result":"PASS","screenshot":"05_harbor_after_new_game_player.png"},
+    {"time_local":"2026-08-15T14:48:46","step":"market_open","input":"user32 B key","stable_id":"D3.market","expected":"Trade panel opens","actual":"Trade panel visible","result":"PASS","screenshot":"09_after_user32_B_trade.png"},
+    {"time_local":"2026-08-15T14:54:10","step":"market_close","input":"activated Player mouse click","stable_id":"D3.market.close","expected":"Panel closes and control returns","actual":"Panel closed","result":"PASS","screenshot":"12_after_mouse_close_player.png"},
+    {"time_local":"2026-08-15T14:54:56","step":"departure","input":"user32 T key","stable_id":"D3.departure","expected":"Voyage is planned by D3","actual":"Player log: 已规划航线：圣玛格丽特港 → 绿湾村","result":"PASS","screenshot":"13_after_T_departure_player.png"},
+    {"time_local":"2026-08-15T14:55:50","step":"advance_voyage","input":"user32 N key; repeated once after event wait","stable_id":"D3.voyage.advance","expected":"System-owned voyage event advances","actual":"Player log recorded sea inspection and calm-sea events; arrival became available","result":"PASS","screenshot":"14_after_N_advance_player.png"},
+    {"time_local":"2026-08-15T14:56:40","step":"return_and_settle","input":"user32 L key","stable_id":"D3.return.settle","expected":"Land/settle at destination","actual":"Player log: 已靠港并完成结算：绿湾村","result":"PASS","screenshot":"15_after_L_and_C_save_player.png"},
+    {"time_local":"2026-08-15T14:57:02","step":"save","input":"user32 C key","stable_id":"D3.save","expected":"SaveSystem-backed D3 snapshot","actual":"Player log: [D3/Save] 贸易、库存和航程快照已保存","result":"PASS","screenshot":"15_after_L_and_C_save_player.png"},
+    {"time_local":"2026-08-15T14:57:37","step":"restart","input":"close and relaunch Player","stable_id":"main_menu.continue","expected":"Main Menu returns with save available","actual":"Main Menu visible","result":"PASS","screenshot":"16_relaunch_mainmenu_player.png"},
+    {"time_local":"2026-08-15T14:58:16","step":"continue_load","input":"real mouse click after window activation","stable_id":"main_menu.continue","expected":"Saved harbor loads","actual":"InitialHarbor visible; subsequent Player.log contains [MainMenu] 存档加载成功，进入游戏 and D3 save/bootstrap logs","result":"PASS","screenshot":"18_after_continue_retry_player.png"},
+    {"time_local":"2026-08-15T15:00:49","step":"continue_loaded_capture","input":"no additional business input","stable_id":"InitialHarbor","expected":"Loaded state remains playable","actual":"Harbor camera/player visible; no error dialog observed","result":"PASS","screenshot":"19_after_continue_loaded_player.png"}
+  ],
+  "negative_observations": [
+    {"step":"movement","input":"W key and mouse-focus attempts","result":"PARTIAL","detail":"No reliable visible displacement was captured; no success is claimed."},
+    {"step":"escape_close","input":"Escape","result":"FAIL_OBSERVED","detail":"Escape did not visibly close the trade panel in the captured attempt; activated mouse close worked."}
+  ],
+  "recovery": {
+    "trade_panel": "mouse close after window activation",
+    "save_reload": "Player relaunch then Continue; MainMenu/Player logs prove load",
+    "unresolved": "input focus/movement and exact render-buffer proof"
+  }
+}

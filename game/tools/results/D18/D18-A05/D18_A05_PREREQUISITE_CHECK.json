@@ -1,0 +1,58 @@
+{
+  "task": "D18-A05",
+  "checked_at": "2026-08-14",
+  "status": "PARTIAL",
+  "download_started_by_this_task": true,
+  "prerequisites": [
+    {"task":"D18-S01","status":"PASS","evidence":"docs/game/design/common/handoffs/D18/D18-S01_HANDOFF.md"},
+    {"task":"D18-A01","status":"PASS","evidence":"docs/game/design/common/handoffs/D18/D18-A01_HANDOFF.md"},
+    {"task":"D18-A02","status":"PASS","evidence":"docs/game/design/common/handoffs/D18/D18-A02_HANDOFF.md; game/tools/results/D18/D18-A02/D18_A02_RESULT.json"}
+  ],
+  "official_packages": [
+    {"title":"Kenney Pirate Kit","official_page":"https://kenney.nl/assets/pirate-kit","license":"CC0-1.0","archive_sha256":"667ED2CAF92954DDB98F7B7CEDE831FE99AB75063C26B25E23D32715BEE9C943","external_archive":"C:/Users/Administrator/AppData/Local/WhalesIslandReef/D18/cache/kenney_pirate-kit_2026-08-14.zip","real_model_count":72,"preview_count":72,"import_status":"ImportVerified"},
+    {"title":"Kenney Building Kit","official_page":"https://kenney.nl/assets/building-kit","license":"CC0-1.0","archive_sha256":"2740EF5772FB5FB3D7AAB881DB22D129F6B68AFE711B1A79E6D5E9E19CF3EEC6","external_archive":"C:/Users/Administrator/AppData/Local/WhalesIslandReef/D18/cache/kenney_building-kit_2026-08-14.zip","real_model_count":79,"preview_count":79,"import_status":"ImportVerified"},
+    {"title":"Quaternius Pirate Kit","official_page":"https://quaternius.com/packs/piratekit.html","license":"CC0","archive_sha256":null,"real_model_count":0,"import_status":"ReviewedNotDownloaded","reason":"Kenney package evidence already provides 151 real local candidates; no page-only count was used."}
+  ],
+  "metrics": {
+    "official_packages_downloaded": 2,
+    "download_bytes": 4753570,
+    "archives_retained_in_repository": 0,
+    "resource_files_added_by_resumed_run": 0,
+    "observed_candidate_payload_files": 305,
+    "observed_candidate_payload_bytes": 5944606,
+    "current_candidate_directory_files_including_meta": 616,
+    "current_candidate_directory_bytes_including_meta": 6771478,
+    "accepted_model_or_module_candidates": 151,
+    "import_verified_sample_count": 151,
+    "thumbnail_or_contact_sheet_created": 1,
+    "contact_sheet": "game/tools/results/D18/D18-A05/D18_A05_CONTACT_SHEET.png"
+  },
+  "preexisting_candidate_observation": {
+    "path": "game/Assets/Art/Candidates/ShipsPortProps/",
+    "provenance_verified_and_adopted": true,
+    "method": "Every 151 FBX and 151 preview PNG was byte-matched against the two official external archives; local License.txt files were preserved."
+  },
+  "validation": {
+    "manifest_audit": "PASS_2_MANIFESTS_0_ERRORS",
+    "unity_model_material_bounds_audit": "PASS_151_MODELS_0_ERRORS_151_NAMING_WARNINGS",
+    "missing_reference_check": "PASS_0_MISSING_REFERENCES_0_MISSING_SCRIPTS",
+    "git_diff_check": "PASS_EXIT_0"
+  },
+  "unmet_or_deferred": [
+    "150-count and 60-imported-sample thresholds are met, but original package coverage has no independent sail, rudder, anchor or mooring bollard mesh.",
+    "No explicit lamp, fishing-gear or sign mesh; flags are only sign-like candidates.",
+    "Raw FBX audit reports 0 colliders, 0 interaction anchors and 0 LOD groups; consumer Prefab preflight remains required.",
+    "Raw audit does not prove Pivot, deck height, draft/waterline, closed building grid, foundations, interior usability or seam dimensions.",
+    "No formal ship Prefab, scene, Registry or runtime integration was permitted by task scope."
+  ],
+  "scope_guard": {
+    "ships_port_props_modified_only": true,
+    "main_scene_modified": false,
+    "formal_ship_prefab_modified": false,
+    "ship_system_modified": false,
+    "building_system_modified": false,
+    "registry_modified": false,
+    "release_approved_asserted": false,
+    "runtime_consumers": []
+  }
+}

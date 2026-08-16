@@ -1,0 +1,163 @@
+{
+  "schema": "D19_R02_S02_ROUTE_LOG_RERUN2_V1",
+  "task": "D19-R02-S02",
+  "rerun": "RERUN2",
+  "conclusion": "PARTIAL",
+  "player_executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN2.exe",
+  "player_build_evidence": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_BUILD_RERUN2.log",
+  "player_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN2_INPUT.log",
+  "input_method": "Computer Use real Player keyboard/mouse input",
+  "launch_arguments": [
+    "-screen-width", "1920", "-screen-height", "1080",
+    "-screen-fullscreen", "0", "-force-d3d11"
+  ],
+  "session": {
+    "main_menu_screenshot_time_local": "2026-08-15T18:39:01+08:00",
+    "new_game_screenshot_time_local": "2026-08-15T18:39:22+08:00",
+    "spawn_screenshot_time_local": "2026-08-15T18:39:41+08:00",
+    "observed_harbor_route_start_local": "2026-08-15T18:40:05.697+08:00",
+    "closed_local": "2026-08-15T18:45:14+08:00",
+    "observed_harbor_route_seconds": 303,
+    "required_seconds": 300,
+    "duration_gate": "PASS",
+    "note": "The duration is real Player wall time. It does not imply that every route node passed."
+  },
+  "events": [
+    {
+      "timestamp_local": "2026-08-15T18:39:22+08:00",
+      "node": "new_game",
+      "stable_id": "MainMenu.NewGame",
+      "input": "mouse click, ship name R02S02Rerun2, confirm click",
+      "actual": "New Game log emitted and harbor loaded",
+      "status": "PASS",
+      "screenshot": "screenshots/rerun2_after_newgame_click.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:39:41+08:00",
+      "node": "spawn_and_landing",
+      "stable_id": "D2_PlayerAvatar / anchor.player.spawn",
+      "input": "no direct movement input",
+      "actual": "Player visible; log reported surface=D19_TerrainRoot and playerY=0.68",
+      "status": "PASS_OBSERVED",
+      "screenshot": "screenshots/rerun2_spawn.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:40:09+08:00",
+      "node": "movement_to_market",
+      "stable_id": "anchor.market.service",
+      "input": "WASD, repeated W, type_text W sequence, click game view then W",
+      "actual": "No reliable visible displacement or changed player position was proven",
+      "status": "FAIL",
+      "screenshot": "screenshots/rerun2_move_e_attempt.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:40:27+08:00",
+      "node": "market",
+      "stable_id": "building:market_santa_margarita",
+      "input": "B",
+      "actual": "Trade overlay opened with market stock, demand and price text",
+      "status": "PASS",
+      "screenshot": "screenshots/rerun2_market_input_b.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:42:31+08:00",
+      "node": "market_exit",
+      "stable_id": "anchor.market.exit",
+      "input": "mouse click on 关闭贸易",
+      "actual": "Trade overlay closed and harbor returned",
+      "status": "PASS",
+      "screenshot": "screenshots/rerun2_market_closed.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:43:18+08:00",
+      "node": "warehouse_and_tavern_route",
+      "stable_id": "building:warehouse_santa_margarita / npc:santa_margarita_tavern_keeper",
+      "input": "WASD and E attempts",
+      "actual": "Could not reach the buildings; no NPC dialogue or actionable failure feedback was visible",
+      "status": "NOT_VERIFIED",
+      "screenshot": "screenshots/rerun2_after_type_w.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:42:47+08:00",
+      "node": "departure_and_boarding",
+      "stable_id": "anchor.departure.channel / anchor.boarding.player",
+      "input": "T then E",
+      "actual": "D3 log recorded route planning; no visible boarding, helm or departure transition was proven",
+      "status": "PARTIAL",
+      "screenshot": "screenshots/rerun2_after_t.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:44:24+08:00",
+      "node": "voyage_advance",
+      "stable_id": "event_d9_departure",
+      "input": "N",
+      "actual": "D3 log recorded sea inspection/encounter state change; no physical ship view was shown",
+      "status": "PASS_LOG_ONLY",
+      "screenshot": "screenshots/rerun2_after_n.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:44:26+08:00",
+      "node": "return_harbor",
+      "stable_id": "anchor.return.harbor",
+      "input": "L",
+      "actual": "D3 log reported that destination had not been reached; physical return/berth was not verified",
+      "status": "FAIL",
+      "screenshot": "screenshots/rerun2_after_l.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:44:28+08:00",
+      "node": "save",
+      "stable_id": "D9_SaveRestoreFeedback",
+      "input": "C and F5",
+      "actual": "Visible overlay said 存档检查点已完成; D3/Save log recorded snapshot saves",
+      "status": "PASS",
+      "screenshot": "screenshots/rerun2_after_c.png"
+    },
+    {
+      "timestamp_local": "2026-08-15T18:45:14+08:00",
+      "node": "exit",
+      "stable_id": "HarborPause",
+      "input": "Alt+F4",
+      "actual": "Player closed without Unity process left running",
+      "status": "PASS",
+      "screenshot": null
+    },
+    {
+      "timestamp_local": "2026-08-15T18:46:30+08:00",
+      "node": "continue_reload",
+      "stable_id": "D9_SaveRestoreFeedback",
+      "input": "relaunch Player and click Continue",
+      "actual": "Low log emitted 存档加载成功，进入游戏 and the harbor reopened; Medium/High repeated the same load path",
+      "status": "PASS",
+      "screenshot": "screenshots/rerun2_low_continue.png"
+    }
+  ],
+  "post_run_input_recheck": {
+    "timestamp_local": "2026-08-15T19:01:00+08:00",
+    "input": "Win32 keybd_event held W for 2.5 seconds after the Player window was activated",
+    "actual": "The before/after Player frames remained at the same spawn position; no reliable displacement or movement feedback was observed",
+    "status": "FAIL_NO_RELIABLE_DISPLACEMENT",
+    "screenshot_before": "screenshots/rerun2_hold_before.png",
+    "screenshot_after": "screenshots/rerun2_hold_after_w_decoded.jpg",
+    "player_closed_after_recheck": true
+  },
+  "required_nodes": {
+    "new_game": true,
+    "spawn_and_landing": true,
+    "movement": false,
+    "market": true,
+    "warehouse": false,
+    "tavern_or_npc_feedback": false,
+    "dock_or_berth": false,
+    "boarding": false,
+    "departure": false,
+    "return": false,
+    "save": true,
+    "exit": true,
+    "reload": true
+  },
+  "repeated_settlement_or_reward": "not observed; the route stopped before a valid physical departure/return settlement",
+  "fresh_rerun2_screenshot_count": 20,
+  "route_complete": false,
+  "next_owner": "D19-R02-A02/A03 route interaction repair and D19-R02-A04 visual repair before D20-S02-R01"
+}

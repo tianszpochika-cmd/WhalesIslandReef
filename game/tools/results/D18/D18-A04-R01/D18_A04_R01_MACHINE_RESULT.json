@@ -1,0 +1,58 @@
+{
+  "task": "D18-A04-R01",
+  "generated_on": "2026-08-15",
+  "conclusion": "PARTIAL",
+  "read_only": true,
+  "global_catalog_modified": false,
+  "manifest_state_modified": false,
+  "registry_modified": false,
+  "asset_state_modified": false,
+  "prefab_or_scene_modified": false,
+  "counts": {
+    "manifests": 5,
+    "candidate_records": 25,
+    "unity_imported_fbx_records": 24,
+    "source_only_blender_records": 1,
+    "distinct_model_identities": 23,
+    "meshes": 30,
+    "animation_clips": 228,
+    "materials": 121,
+    "unity_import_errors": 0,
+    "unity_import_warnings": 25,
+    "candidate_files_present": 25,
+    "candidate_meta_present": 25,
+    "license_evidence_packages": 5,
+    "archive_sha256_matches": 5,
+    "global_prefab_candidate_intake_records_for_this_scope": 0,
+    "local_development_ready": 0,
+    "release_approved": 0
+  },
+  "category_results": {
+    "player_visual_core": "PARTIAL",
+    "npc_visual_core": "PARTIAL",
+    "wildlife_core": "PARTIAL",
+    "pet_core": "PARTIAL",
+    "animation_core": "PARTIAL",
+    "female_or_neutral_human_gap": "OPEN",
+    "cat_gap": "OPEN",
+    "bird_gap": "OPEN"
+  },
+  "evidence_scope": "D18-A04 isolated Unity fixture; no claim of main-project Prefab or runtime integration",
+  "primary_review_json": "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+  "primary_review_markdown": "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.md",
+  "validation": {
+    "manifest_audit": "PASS: 5 manifests, 0 errors, 0 issues",
+    "intake_catalog_audit": "PASS: 25 manifests, 1857 candidates, 1674 global intake entries, no catalog mutation",
+    "json_validation": "PASS",
+    "unittest": "PASS: 11/11",
+    "pytest": "NOT_AVAILABLE: No module named pytest",
+    "git_diff_check": "PASS after final workspace verification"
+  },
+  "known_gaps": [
+    "female or complete era-neutral human base absent",
+    "cat candidate absent",
+    "bird is Blender-only and not Unity imported",
+    "all imported records are Generic/NoAvatar",
+    "no Prefab, Animator binding, LODGroup, collider, interaction anchor, runtime consumer, save/restore or editor screenshot evidence"
+  ]
+}

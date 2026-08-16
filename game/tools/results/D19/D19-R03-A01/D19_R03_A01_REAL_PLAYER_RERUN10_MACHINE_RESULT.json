@@ -1,0 +1,69 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_RERUN10_MACHINE_RESULT_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN10_NONPOPUP_REAL_PLAYER",
+  "conclusion": "PARTIAL",
+  "player": {
+    "executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN10.exe",
+    "unity_version": "6000.0.80f1",
+    "renderer": "Direct3D 11 / NVIDIA GeForce RTX 4070 Ti",
+    "resolution": "1920x1080",
+    "window_mode": "windowed non-popup",
+    "duration_seconds": 704.296936,
+    "continuous_run_requirement_met": true,
+    "route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN10.json",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_MAINMENU_ROUTE_RERUN10_PLAYER_NOPopup.log"
+  },
+  "observed": {
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "grounded_on_spawn": true,
+    "movement_observed": true,
+    "interaction_input_observed": true,
+    "save_input_observed": true,
+    "control_modes": {
+      "Character": 1882,
+      "Ship": 768
+    },
+    "landmarks_reached": [
+      "anchor.player.spawn",
+      "anchor.dock.primary",
+      "anchor.berth.primary",
+      "building:tavern_santa_margarita"
+    ],
+    "landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "screenshot_count": 16,
+    "screenshot_resolution": "1920x1080",
+    "screenshot_glob": "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun10_*.png"
+  },
+  "save_reload": {
+    "save_input_observed_in_route": true,
+    "reload_player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RELOAD_AFTER_SAVE_RERUN10_PLAYER.log",
+    "main_menu_load_success_logged": true,
+    "initial_harbor_recreated_after_continue": true,
+    "player_grounding_after_reload_logged": true,
+    "reload_result": "PASS"
+  },
+  "evidence_integrity": {
+    "route_log_and_player_logs_preserved": true,
+    "route_screenshot_files_preserved": true,
+    "original_runtime_probe_preserved": false,
+    "original_runtime_probe_path": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN10.json",
+    "overwrite_note": "后续一次无有效输入的目标路线短运行误复用了 rerun10 参数，覆盖了该探针文件；当前短运行已归档为 D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN11.json。704 秒结论只依赖本机器结果、路线日志、Player 日志、16 张截图和 Continue 重载日志，不把被覆盖探针当作独立证据。",
+    "targeted_short_run_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN11.json",
+    "targeted_short_run_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_TARGETED_RERUN11_PLAYER.log"
+  },
+  "blocking_reasons": [
+    "真实输入完成了人物移动和船控模式切换，但本轮没有通过全部市场/仓库/船坞/返港稳定地标。",
+    "探针只观察到保存输入边沿；重载 Player 证明存档可加载并恢复 InitialHarbor/落地，但没有形成完整离港-返港-保存闭环。",
+    "日志仍有不可行走碰撞体恢复提示，连续路线存在真实碰撞阻断。"
+  ],
+  "historical_evidence_preserved": true,
+  "systems_or_save_schema_modified": false
+}

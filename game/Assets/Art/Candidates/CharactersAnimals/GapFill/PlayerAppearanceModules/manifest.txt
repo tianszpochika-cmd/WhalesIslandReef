@@ -1,0 +1,52 @@
+# D18-A04-R03-P GapFill Player Appearance Modules
+
+## Status
+PARTIAL
+## Reason
+No downloadable free public domain 1675-era 3D geometry assets with clear commercial reuse license found in workspace or official archives. Real Unity import impossible in current environment. Cannot meet minimum 6 hair + 8 clothing combo threshold without external download (not permitted here).
+
+## Modules Planned (placeholder)
+- Hair Styles (6 geometric modules):
+  1. Short wavy hair (historical buccaneer style)
+  2. Long braided hair
+  3. Ponytail with ribbon
+  4. Headscarf wrapped hair
+  5. Bald with headband
+  6. Crew cut
+
+- Clothing Combos (8 sets required modules):
+  1. Shirt + trousers + belt
+  2. Shirt + vest + coat
+  3. Shirt + sash
+  4. Shirt + breeches + boots
+  5. Tunic + cloak
+  6. Doublet + trousers
+  7. Shirt + kerchief
+  8. Vest + hat + boots
+
+## Target Slots
+- hair_style
+- headwear
+- top
+- bottom
+- outerwear
+- footwear
+- accessory
+- tool_visual
+
+## Sources & Licenses
+- All entries marked as placeholder due to environment limitation. Real sources would be used per license check (CC0, public domain engravings, BlenderKit free assets, etc.). Download date & SHA-256 would be recorded upon fetch.
+- Unity import: Mesh, Materials, Bones, Bounds, Scale recorded in future import log.
+- No modern elements (zippers, plastic, 21st century fashion) included.
+
+## Manifest File
+See `manifest.json` below.
+
+## Audit Notes
+- No D20 Prefab created.
+- No modification to Intake Catalog, D20 PlayerVisual, AppearanceSystem, Save Schema, contracts.
+- Directories created as required.
+
+## Next Steps
+- External download and Unity import of verified free assets (e.g. from OpenGameArt.org, Sketchfab CC0, etc.).
+- Re-run task after import to confirm full PASS.

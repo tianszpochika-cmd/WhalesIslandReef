@@ -1,0 +1,43 @@
+{
+  "schema": "D19_R03_A01_CUA_FOCUS_CHECK_V1",
+  "task": "D19-R03-A01",
+  "run_id": "RERUN27",
+  "date": "2026-08-16",
+  "conclusion": "PARTIAL",
+  "independent_evidence": false,
+  "purpose": "记录一次真实 Player 窗口焦点与按键能力排查，不作为路线或保存通过证据。",
+  "player": {
+    "executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN26.exe",
+    "resolution": "1920x1080",
+    "entered_initial_harbor": true,
+    "main_menu_new_game": true,
+    "player_closed_cleanly": true
+  },
+  "actions": [
+    "通过真实 Player 主菜单点击新游戏并进入 InitialHarbor",
+    "通过真实键盘按键 E 观察到角色/船舶模式切换",
+    "通过真实窗口焦点发送 W、A、D、S 脉冲及文字注入；未形成可复核的连续位移路线",
+    "关闭 Player 后确认 Unity/Player 进程均已退出"
+  ],
+  "route_evidence": {
+    "counted_as_route": false,
+    "reason": "Computer Use press_key 是短脉冲且无 key-down/key-up 持续接口；RERUN27 归档探针与 RERUN25 SHA-256 完全相同，不能冒充独立路线。",
+    "probe_rerun27": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN27.json",
+    "probe_sha256": "12F36D3FA55D162593544746C66B2FF94D108F2F5B449703DEECB4DC79E0C2EF",
+    "duplicate_of": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN25.json",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN27_PLAYER.log"
+  },
+  "gate_effect": {
+    "D19_R03_A01": "PARTIAL",
+    "D19_R03_S01": "BLOCKED",
+    "D19_R02_S02": "not_released",
+    "D20_S02_R01": "not_started"
+  },
+  "integrity": {
+    "systems_modified": false,
+    "save_schema_modified": false,
+    "resource_state_modified": false,
+    "unity_processes_after_run": 0,
+    "player_processes_after_run": 0
+  }
+}

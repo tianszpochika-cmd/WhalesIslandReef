@@ -61,10 +61,16 @@ namespace Whalebone.Gameplay.D3
         private GameObject _tradePanel;
         private GameObject _controlPanel;
         private string _lastMessage = "D3 已就绪。";
+        private int _routeFeedbackSequence;
+        private bool _lastSaveSucceeded;
 
         public bool IsReady => _ready;
         public bool IsTradeOpen => _tradeOpen;
         public D3RuntimeSnapshot Snapshot => _snapshot;
+        public D3RouteFeedback LastRouteFeedback { get; private set; } =
+            new D3RouteFeedback("d3_ready", "D3 路线入口已就绪", D3VoyageStatus.InPort.ToString(), "", 0, 0);
+        public bool LastSaveSucceeded => _lastSaveSucceeded;
+        public event Action<D3RouteFeedback> RouteFeedbackChanged;
         /// <summary>D9 整备页提交意图的 D3 owner 状态；调用方不得直接改 Player/Ship。</summary>
         public D3TradeState TradeState => _trade;
         /// <summary>D9-A02 使用与 D3 交易页相同的 EconomySystem 实例。</summary>
@@ -111,23 +117,64 @@ namespace Whalebone.Gameplay.D3
 
             if (_tradeOpen)
             {
-                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3CloseTrade)) CloseTrade();
+                // 与其余 D3 默认键保持同一条兼容路径：Player 窗口在某些焦点组合
+                // 下可能错过 Input System 的 Escape 边沿，但 legacy 边沿仍然可读。
+                // 这里只生成关闭交易面板的输入意图，交易事实仍由本 owner 裁决。
+                if (WasD3Input(D16InputAction.D3CloseTrade, KeyCode.Escape)) CloseTrade();
                 return;
             }
             if (!D7ControlCoordinator.GameplayInputAllowed) return;
             if (Time.timeScale <= 0f) return;
 
-            if (D16InputRouter.WasPressedThisFrame(D16InputAction.Trade)) OpenTrade();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3StartVoyage)) StartVoyage();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3AdvanceVoyage)) AdvanceVoyage();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3Gather)) GatherOne();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D3LandAndSettle)) LandAndSettle();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Save)) SaveProgress();
+            if (WasD3Input(D16InputAction.Trade, KeyCode.B)) OpenTrade();
+            else if (WasD3Input(D16InputAction.D3StartVoyage, KeyCode.T)) StartVoyage();
+            else if (WasD3Input(D16InputAction.D3AdvanceVoyage, KeyCode.N)) AdvanceVoyage();
+            else if (WasD3Input(D16InputAction.D3Gather, KeyCode.G)) GatherOne();
+            else if (WasD3Input(D16InputAction.D3LandAndSettle, KeyCode.L)) LandAndSettle();
+            else if (WasD3Input(D16InputAction.Save, KeyCode.C)) SaveProgress();
             RefreshHud();
+        }
+
+        /// <summary>供路线测试和已有 UI 适配器调用的 D3 公开入口；仍由 D3 owner 裁决。</summary>
+        public bool RequestTrade()
+        {
+            if (!_ready) return false;
+            OpenTrade();
+            return _tradeOpen;
+        }
+
+        public bool RequestAdvanceVoyage()
+        {
+            if (!_ready) return false;
+            var beforeDay = _snapshot == null ? -1 : _snapshot.CurrentDay;
+            AdvanceVoyage();
+            return _snapshot != null && (_snapshot.CurrentDay != beforeDay || _snapshot.VoyageStatus == D3VoyageStatus.Arrived || _snapshot.VoyageStatus == D3VoyageStatus.Failed);
+        }
+
+        public bool RequestLandAndSettle()
+        {
+            if (!_ready) return false;
+            var beforeLocation = _snapshot == null ? string.Empty : _snapshot.CurrentLocationId;
+            LandAndSettle();
+            return _snapshot != null && _snapshot.VoyageStatus == D3VoyageStatus.InPort && _snapshot.CurrentLocationId != beforeLocation;
+        }
+
+        public bool RequestSave()
+        {
+            if (!_ready) return false;
+            SaveProgress();
+            PublishRouteFeedback("save_result", _lastSaveSucceeded ? "已保存当前贸易与航程快照。" : "保存失败，仍保留上一次有效存档。");
+            return _lastSaveSucceeded;
+        }
+
+        public D3RouteFeedback ReadRouteFeedback()
+        {
+            return LastRouteFeedback == null ? null : LastRouteFeedback.Clone();
         }
 
         public void SaveProgress()
         {
+            _lastSaveSucceeded = false;
             if (!_ready || _snapshot == null || _trade == null) return;
             SyncSnapshotFromRuntime();
             SyncPlayerLocationFromRuntime();
@@ -138,6 +185,7 @@ namespace Whalebone.Gameplay.D3
                     _snapshot.CurrentLocationId, checkpointRevision);
                 _snapshot.EventLog = SaveSystem.CaptureD3TradeEventLog(_economy.EventLog);
                 SaveSystem.SaveD3Runtime(_snapshot);
+                _lastSaveSucceeded = true;
                 Debug.Log("[D3/Save] 贸易、库存和航程快照已保存");
             }
             catch (Exception ex)
@@ -384,6 +432,7 @@ namespace Whalebone.Gameplay.D3
             _tradePanel.SetActive(true);
             RuntimeHudCoordinator.ShowTemporaryCanvas("D3Canvas");
             RefreshTradePanel();
+            PublishRouteFeedback("trade_open", "港口市场已打开。");
         }
 
         private void CloseTrade()
@@ -392,6 +441,7 @@ namespace Whalebone.Gameplay.D3
             _tradePanel.SetActive(false);
             _controlPanel.SetActive(true);
             RuntimeHudCoordinator.RestorePrimaryHud();
+            PublishRouteFeedback("trade_closed", "港口市场已关闭。");
             RefreshHud();
         }
 
@@ -582,6 +632,7 @@ namespace Whalebone.Gameplay.D3
         {
             _lastMessage = message ?? string.Empty;
             if (_tradeResult != null) _tradeResult.text = message;
+            PublishRouteFeedback("route_result", _lastMessage);
             RefreshHud();
             Debug.Log("[D3] " + message);
         }
@@ -590,8 +641,29 @@ namespace Whalebone.Gameplay.D3
         {
             _lastMessage = message ?? string.Empty;
             if (_tradeResult != null) _tradeResult.text = message;
+            PublishRouteFeedback("trade_result", _lastMessage);
             RefreshHud();
             Debug.Log("[D3/Trade] " + message);
+        }
+
+        private void PublishRouteFeedback(string code, string message)
+        {
+            _routeFeedbackSequence++;
+            LastRouteFeedback = new D3RouteFeedback(
+                code,
+                message,
+                _snapshot == null ? string.Empty : _snapshot.VoyageStatus.ToString(),
+                _snapshot == null ? string.Empty : _snapshot.CurrentLocationId,
+                _snapshot == null ? 0 : _snapshot.SaveRevision,
+                _routeFeedbackSequence);
+            var changed = RouteFeedbackChanged;
+            if (changed != null) changed(LastRouteFeedback.Clone());
+        }
+
+        private static bool WasD3Input(D16InputAction action, KeyCode fallback)
+        {
+            // Input System 是主入口；legacy 读取只是 Player 键鼠兼容 fallback，仍只产生动作意图。
+            return D16InputRouter.WasPressedThisFrame(action) || Input.GetKeyDown(fallback);
         }
 
         private static VoyageState ToVoyageState(D3RuntimeSnapshot snapshot)

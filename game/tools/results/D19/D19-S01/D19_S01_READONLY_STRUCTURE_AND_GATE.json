@@ -1,0 +1,91 @@
+{
+  "task_id": "D19-S01",
+  "date": "2026-08-14",
+  "status": "BLOCKED",
+  "conclusion": "BLOCKED",
+  "prerequisite": {
+    "task_id": "D18-S02",
+    "required_status": "PASS",
+    "observed_status": "BLOCKED",
+    "evidence": [
+      "docs/game/design/common/D18_FREE_ASSET_LIBRARY_ACCEPTANCE.md",
+      "docs/game/design/common/handoffs/D18/D18-S02_HANDOFF.md",
+      "game/tools/results/D18/D18-S02/D18_S02_MACHINE_RESULT.json",
+      "docs/game/design/common/assets/d18_local_development_ready_catalog.json"
+    ],
+    "local_development_ready_count": 0,
+    "p0_runtime_consumers": 0,
+    "resource_ids_used": 0
+  },
+  "scope": {
+    "scene_path": "game/Assets/Scenes/InitialHarbor.unity",
+    "bootstrap_scene_path": "game/Assets/Scenes/Bootstrap.unity",
+    "build_settings_path": "ProjectSettings/EditorBuildSettings.asset",
+    "build_settings_scene_entries": 0,
+    "scene_yaml_gameobjects": 24,
+    "scene_yaml_prefab_instances": 25,
+    "scene_yaml_monobehaviours": 7,
+    "scene_yaml_navmesh_data": "fileID: 0",
+    "screenshots_found": 0,
+    "runtime_validation": "NOT_RUN_READONLY_TASK",
+    "unity_process_started": false
+  },
+  "observed_scene_objects": [
+    {"name": "Dock", "local_position": [0.0, 0.0, 0.0], "tag": "Untagged", "layer": 0},
+    {"name": "DockDeck", "local_position": [0.0, 0.1, -6.0], "parent": "Dock"},
+    {"name": "Gangplank", "local_position": [0.0, 0.5, -4.75], "parent": "Dock"},
+    {"name": "Beach", "local_position": [0.0, -0.32, -26.0], "tag": "Untagged", "layer": 0},
+    {"name": "Sea", "local_position": [0.0, -0.02, 0.0], "tag": "Untagged", "layer": 0},
+    {"name": "Main Camera", "local_position": [2.0, 5.5, -8.5], "tag": "MainCamera", "layer": 0},
+    {"name": "Directional Light", "local_position": [0.0, 12.0, -4.0], "tag": "Untagged", "layer": 0},
+    {"name": "Harbor UI", "children": ["HarborName", "HarborSubtitle", "HarborControls"]}
+  ],
+  "runtime_entrypoints_observed": [
+    "D2RuntimeBootstrap",
+    "D3RuntimeBootstrap",
+    "D4RuntimeBootstrap",
+    "D5RuntimeBootstrap",
+    "D7ControlCoordinator",
+    "D7SaveCoordinator",
+    "HarborPresentationController",
+    "HarborCollisionController",
+    "HarborTutorialController",
+    "D9VerticalSliceRuntimeBootstrap",
+    "D9FishingRuntimeBootstrap",
+    "D9PortShipPreparationBootstrap",
+    "D9VoyageHudController",
+    "D9AudioPresentationController",
+    "D10TavernSocialBootstrap",
+    "D10AppearanceRuntimeBootstrap",
+    "HarborInteractionStabilizer",
+    "RuntimeHudCoordinator",
+    "HarborPauseController",
+    "D16 performance/accessibility/diagnostic entrypoints"
+  ],
+  "collision_and_navigation_observations": {
+    "runtime_collision_names": [
+      "D6_HarborCollision",
+      "BeachGround",
+      "DockGround",
+      "GangplankGround",
+      "ShoreBoundary",
+      "D6_ShipHullCollision"
+    ],
+    "ownership": "HarborCollisionController/D6/D17; not owned by D19 art layout",
+    "scene_navmesh_data": "missing"
+  },
+  "frozen_coordinates": false,
+  "frozen_layers_tags": false,
+  "frozen_interaction_migration": false,
+  "d19_agents_started": [],
+  "scene_modified": false,
+  "prefabs_modified": false,
+  "registry_modified": false,
+  "systems_modified": false,
+  "save_modified": false,
+  "notes": [
+    "Current scene coordinates are read-only observations, not D19 frozen coordinates.",
+    "The D18 LocalDevelopmentReady catalog is empty, so no D18 resource ID was used.",
+    "No Unity runtime route or screenshot was executed in this blocked gate run."
+  ]
+}

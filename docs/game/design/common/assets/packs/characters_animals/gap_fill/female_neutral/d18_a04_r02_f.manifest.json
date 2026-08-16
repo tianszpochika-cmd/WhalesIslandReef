@@ -1,0 +1,56 @@
+{
+  "manifest_kind": "d18_asset_pack_manifest",
+  "schema_version": 1,
+  "source_id": "source_quaternius",
+  "pack_id": "pack_quaternius_animated_women_d18_a04_r02_f_v1",
+  "title": "Quaternius Animated Women Pack — D18-A04-R02-F isolated female humanoid candidates",
+  "author": "Quaternius",
+  "official_page": "https://quaternius.com/packs/animatedwomen.html",
+  "download_url": "https://static.poly.pizza/list/HHSKxnk1mY-zip--1745939261.zip",
+  "downloaded_at": "2026-08-15",
+  "archive_name": "Animated-Women-Pack-HHSKxnk1mY-zip--1745939261.zip",
+  "sha256": "BCC6170D0175388FDF9AC7A3FC1E59B9250178E913B94B0D374B4795A1311C9F",
+  "license_id": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+  "attribution_required": false,
+  "commercial_use": true,
+  "modification_allowed": true,
+  "source_redistribution": "allowed",
+  "build_distribution": "allowed",
+  "category": [
+    "character",
+    "humanoid",
+    "female",
+    "animation",
+    "gap_fill_candidate"
+  ],
+  "file_count": 4,
+  "unity_object_count": 0,
+  "review_status": "Candidate",
+  "import_status": "NotImported",
+  "candidate_files": [
+    {
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_Alternative.fbx",
+      "role": "candidate_female_humanoid_model",
+      "target_id": "asset_quaternius_animated_women_female_alternative_v01"
+    },
+    {
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_Casual.fbx",
+      "role": "candidate_female_humanoid_model",
+      "target_id": "asset_quaternius_animated_women_female_casual_v01"
+    },
+    {
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_Dress.fbx",
+      "role": "candidate_female_humanoid_model",
+      "target_id": "asset_quaternius_animated_women_female_dress_v01"
+    },
+    {
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_TankTop.fbx",
+      "role": "candidate_female_humanoid_model",
+      "target_id": "asset_quaternius_animated_women_female_tank_top_v01"
+    }
+  ],
+  "runtime_consumers": [],
+  "notes": "Isolated Candidate-only gap-fill packet. Four independent FBX meshes were copied from the downloaded archive; same-mesh recolors are not counted. Read-only FBX static audit found 1 Geometry, 1 Mesh model, 42 LimbNode models, 32 Deformers, 11 AnimationStacks, 11 AnimationLayers, 3,168 AnimationCurves, 1 Connections node, and 5–11 embedded Material nodes per file. The repeated animation labels are Female_Clapping, Female_Death, Female_Idle, Female_Jump, Female_Punch, Female_Run, Female_RunningJump, Female_Sitting, Female_Standing, Female_SwordSlash, and Female_Walk. Unity import was not run because no Unity Editor executable is available; unity_object_count=0 records that no Unity objects were measured, not a claim that the source files are empty. Avatar type, scale, axis, bounds, foot placement, material assignment, and D20 Humanoid retargeting remain open. No Prefab, Animator, scene, Registry, runtime consumer, intake_eligible flag, LocalDevelopmentReady state, or ReleaseApproved state is created by this task. See LICENSE_EVIDENCE.md and D18_A04_R02_F_FBX_STATIC_AUDIT.json."
+}

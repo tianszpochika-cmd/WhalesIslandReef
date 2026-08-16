@@ -1,0 +1,207 @@
+{
+  "task": "D18-A01",
+  "tool": "tools/d18_asset_manifest_audit.py",
+  "read_only": true,
+  "registry_modified": false,
+  "status": "BLOCKED",
+  "manifest_count": 11,
+  "manifest_files": [
+    "docs\\game\\design\\common\\assets\\packs\\environment\\kenney_nature_kit_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json"
+  ],
+  "error_count": 25,
+  "issue_count": 25,
+  "issue_counts": {
+    "illegal_initial_state": 2,
+    "invalid_or_missing_sha256": 2,
+    "missing_archive_name": 2,
+    "missing_count": 11,
+    "same_file_multiple_sources": 8
+  },
+  "issues": [
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\kenney_nature_kit_d18_a03.manifest.json",
+      "pack_id": "pack_kenney_nature_kit_d18_a03_v1"
+    },
+    {
+      "code": "missing_archive_name",
+      "message": "archive_name must be present after a download",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "invalid_or_missing_sha256",
+      "message": "sha256 must be the real 64-hex archive digest",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "illegal_initial_state",
+      "message": "a new manifest may only start as Candidate",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_coral_mud_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_coral_mud_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_coral_mud_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_coral_mud_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_archive_name",
+      "message": "archive_name must be present after a download",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "invalid_or_missing_sha256",
+      "message": "sha256 must be the real 64-hex archive digest",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "illegal_initial_state",
+      "message": "a new manifest may only start as Candidate",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_1k_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_sand_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_sand_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_sand_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1"
+    },
+    {
+      "code": "same_file_multiple_sources",
+      "message": "candidate path also belongs to source_polyhaven:pack_polyhaven_sand_01_1k_d18_a03_v1 in C:\\Users\\Administrator\\Desktop\\game\\first01\\docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_1k_d18_a03.manifest.json",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1"
+    }
+  ]
+}

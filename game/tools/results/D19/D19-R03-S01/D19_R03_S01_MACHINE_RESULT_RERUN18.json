@@ -1,0 +1,66 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_RERUN18_V1",
+  "task": "D19-R03-S01",
+  "attempt": "RERUN18_PREFLIGHT_AFTER_FIXED_SHOTS",
+  "conclusion": "BLOCKED",
+  "historical_preflight_preserved": true,
+  "purpose": "汇总 A01 RERUN10、A02 RERUN15、A03 RERUN17；未启动正式 D19-R02-S02。",
+  "inputs": {
+    "route_machine_result": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN10_MACHINE_RESULT.json",
+    "route_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN10_ROUTE_LOG.json",
+    "visual_machine_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN15.json",
+    "fixed_shot_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_FIXED_SHOT_PLAYER_RERUN15.json",
+    "performance_machine_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN17.json",
+    "historical_d19_result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_RERUN8_MACHINE_RESULT.json"
+  },
+  "gate_checks": {
+    "a01_real_player_route_5_to_10_minutes": false,
+    "a01_complete_market_warehouse_tavern_dock_board_depart_return_route": false,
+    "a01_save_reload_verified": false,
+    "a01_system_overlay_blocker": true,
+    "a02_fixed_player_cameras": "14/14",
+    "a02_fixed_player_cameras_1920x1080": true,
+    "a02_weather_variants": "0/3",
+    "a02_visual_debt_closed": false,
+    "a03_real_player_1080p_runs": 3,
+    "a03_quality_names": ["Low", "Medium", "High"],
+    "a03_performance_subtask_passed": true,
+    "d19_editmode_passed": 34,
+    "d19_editmode_failed": 0,
+    "d19_playmode_passed": 8,
+    "d19_playmode_failed": 0,
+    "d19_playmode_skipped": 1,
+    "d17_playmode_passed": 7,
+    "d17_playmode_failed": 0,
+    "d18_python_tests_passed": 11,
+    "resource_state_unchanged": true,
+    "systems_or_save_schema_changed": false
+  },
+  "decision": {
+    "formal_d19_r02_s02_allowed": false,
+    "d20_a01_r02_allowed": false,
+    "d20_a02_r02_allowed": false,
+    "d20_s02_r01_allowed": false,
+    "reason": "Fixed Player camera count is now complete, and performance is complete for its subtask, but route/save-reload, three weather variants and visual quality remain open."
+  },
+  "validation": {
+    "json_validation": "7/7 PASS",
+    "d18_r03_review_unittest": "1/1 PASS",
+    "full_tools_unittest": "125 total; 121 PASS; 4 FAIL",
+    "full_tools_unittest_failures": "Existing D18-S02-R01 intake-refresh assertions still expect obsolete R01 task/counts; no R03 files caused those failures.",
+    "fixed_shot_dimension_check": "14/14 PASS at 1920x1080",
+    "scoped_git_diff_check": "PASS",
+    "full_git_diff_check": "FAIL due pre-existing InitialHarbor trailing whitespace/LF-CRLF warnings; not cleaned to avoid unrelated scene rewrite",
+    "unity_compile_and_player_build": "PASS; RERUN10 and RERUN15 build logs exit successfully"
+  },
+  "blocking_reasons": [
+    "A01 真实 Player 仍无法安全触发 MainMenu 新游戏，完整港口路线与保存—退出—重载没有证据。",
+    "A02 的 14 镜头真实存在，但人工检查仍见平坦色块、代理柱/三角几何、屋顶/道路重叠和开发 HUD。",
+    "A02 只观察到 EnvironmentSystem 快照 Calm；Rain/Storm 变体尚未真实采集。"
+  ],
+  "next_actions": [
+    "先解决不操作系统安全提示前提下的真实 Player 菜单输入阻断并完成 A01 路线/保存恢复。",
+    "继续 A02 视觉修复和只读天气表现取证；禁止探针直接写天气。",
+    "A01/A02 完成后再生成新的 S01 预检，并由其决定是否启动 D19-R02-S02。"
+  ]
+}

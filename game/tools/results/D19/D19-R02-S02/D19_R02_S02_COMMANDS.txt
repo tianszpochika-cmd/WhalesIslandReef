@@ -1,0 +1,22 @@
+D19 PlayMode:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform playmode -assemblyNames D16.PlayMode.Tests -testFilter D19 -testResults C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-S02\D19_R02_S02_D19_PLAYMODE.xml -logFile C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-S02\D19_R02_S02_D19_PLAYMODE.log
+
+D17 PlayMode:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform playmode -assemblyNames D16.PlayMode.Tests -testFilter D17 -testResults C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-S02\D19_R02_S02_D17_PLAYMODE.xml -logFile C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-S02\D19_R02_S02_D17_PLAYMODE.log
+
+D19 EditMode:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe -batchmode -nographics -disable-assembly-updater -projectPath C:\Users\Administrator\Desktop\game\first01\game -runTests -testPlatform editmode -assemblyNames Save.Tests -testFilter D19 -testResults C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-S02\D19_R02_S02_D19_EDITMODE.xml -logFile C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-S02\D19_R02_S02_D19_EDITMODE.log
+
+D18 intake audit:
+python tools/d18_prefab_candidate_intake_audit.py --project-root . --catalog docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json --output game/tools/results/D19/D19-R02-S02/D19_R02_S02_INTAKE_AUDIT.json
+
+D18 manifest audit:
+python tools/d18_asset_manifest_audit.py --project-root . --manifest-root docs/game/design/common/assets/packs --output game/tools/results/D19/D19-R02-S02/D19_R02_S02_PACK_MANIFEST_AUDIT.json
+
+D18 Python unit tests:
+python -m unittest -q tools.tests.test_d18_prefab_candidate_intake tools.tests.test_d18_asset_manifest_audit
+
+Performance sampler invocation per quality:
+powershell -ExecutionPolicy Bypass -File game/tools/results/D19/D19-R02-S02/d19_r02_s02_perf_sampler.ps1 -TargetPid <real-player-pid> -Quality <Low|Medium|High> -OutputPath <quality-result.json> -WarmupSec 30 -SampleSec 60
+
+The first x86 Player build and failure log are preserved; x64 was used for the real route because x86 lacked sqlite3.dll.

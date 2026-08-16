@@ -1,0 +1,60 @@
+{
+  "schema": "D19_R02_A02_INTERACTION_ROUTE_RERUN7_V1",
+  "task": "D19-R02-A02",
+  "conclusion": "PARTIAL",
+  "started_from_real_player_window": true,
+  "direct_method_invocation": false,
+  "player_build": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_Player_RERUN7.exe",
+  "resolution_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+  "steps": [
+    {
+      "id": "D2-R7-01",
+      "action": "Main Menu -> New Game -> InitialHarbor",
+      "input": "real Player mouse click New Game, type A02Rerun7, click Confirm",
+      "status": "PASS",
+      "screenshot": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_RERUN7_SPAWN.jpg",
+      "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_RERUN7_INPUT.log"
+    },
+    {
+      "id": "D2-R7-02",
+      "action": "Board ship while adjacent NPC is also in range",
+      "input": "real Player key E",
+      "status": "PASS",
+      "feedback": "已上船：可以操控船只；按 E 下船",
+      "screenshot": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_RERUN7_BOARD.jpg",
+      "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_RERUN7_INPUT.log",
+      "observed_log": "[D2/Input] 通过兼容 E 边沿恢复交互入口; [D2/Control] 已进入船只控制"
+    },
+    {
+      "id": "D2-R7-03",
+      "action": "Disembark",
+      "input": "real Player key E",
+      "status": "PASS",
+      "feedback": "已下船：WASD 移动，靠近老水手按 E 对话",
+      "screenshot": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_RERUN7_DISEMBARK.jpg",
+      "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_RERUN7_INPUT.log",
+      "observed_log": "[D2/Input] 通过兼容 E 边沿恢复交互入口; [D2/Control] 已退出船只控制"
+    }
+  ],
+  "interaction_priority_observed": {
+    "ship_in_boarding_range": "ship_toggle_before_crew_dialogue",
+    "ship_out_of_boarding_range": "crew_dialogue_path_remains_available",
+    "duplicate_business_entry": false
+  },
+  "tests": {
+    "editmode_total": 3,
+    "editmode_passed": 3,
+    "playmode_total": 2,
+    "playmode_passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "editmode_xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN7.xml",
+    "playmode_xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN7.xml"
+  },
+  "remaining_scope_gap": [
+    "This rerun proves the D2 E priority fix only; it is not the D19 300-second route gate.",
+    "Warehouse/tavern/NPC presentation and final visual quality remain D19-S02/A01/A04 scope.",
+    "Fresh Low/Medium/High 1920x1080 backbuffer and 1% low performance evidence remain D19-R02-S02 scope.",
+    "D20-S02-R01 remains blocked until D19-R02-S02 is PASS."
+  ]
+}

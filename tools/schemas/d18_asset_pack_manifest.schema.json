@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whalesislandreef.local/schema/d18_asset_pack_manifest.schema.json",
+  "title": "WhalesIslandReef D18 asset pack manifest",
+  "description": "A provenance and admission manifest. It is evidence input only; it never grants approval or edits the Content Registry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_kind",
+    "schema_version",
+    "source_id",
+    "pack_id",
+    "title",
+    "author",
+    "official_page",
+    "download_url",
+    "downloaded_at",
+    "archive_name",
+    "sha256",
+    "license_id",
+    "license_url",
+    "license_evidence_path",
+    "attribution_required",
+    "commercial_use",
+    "modification_allowed",
+    "source_redistribution",
+    "build_distribution",
+    "category",
+    "file_count",
+    "unity_object_count",
+    "review_status",
+    "import_status",
+    "candidate_files",
+    "runtime_consumers",
+    "notes"
+  ],
+  "properties": {
+    "manifest_kind": { "const": "d18_asset_pack_manifest" },
+    "schema_version": { "const": 1 },
+    "source_id": { "type": "string", "pattern": "^source_[a-z0-9_]+$" },
+    "pack_id": { "type": "string", "pattern": "^pack_[a-z0-9_]+_v[0-9]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "author": { "type": "string", "minLength": 1 },
+    "official_page": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "download_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "downloaded_at": { "type": ["string", "null"], "format": "date" },
+    "archive_name": { "type": ["string", "null"] },
+    "sha256": { "type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$" },
+    "license_id": { "type": "string", "minLength": 1 },
+    "license_url": { "type": "string", "format": "uri", "pattern": "^https?://" },
+    "license_evidence_path": { "type": ["string", "null"] },
+    "attribution_required": { "type": "boolean" },
+    "commercial_use": { "type": "boolean" },
+    "modification_allowed": { "type": "boolean" },
+    "source_redistribution": { "type": "string", "enum": ["allowed", "not_allowed", "pending", "not_applicable"] },
+    "build_distribution": { "type": "string", "enum": ["allowed", "not_allowed", "pending", "not_applicable"] },
+    "category": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "file_count": { "type": ["integer", "null"], "minimum": 0 },
+    "unity_object_count": { "type": ["integer", "null"], "minimum": 0 },
+    "review_status": {
+      "type": "string",
+      "enum": ["Candidate", "LicenseEvidenceComplete", "ImportVerified", "LocalDevelopmentReady", "ReleaseApproved", "Rejected"]
+    },
+    "previous_review_status": {
+      "type": "string",
+      "enum": ["Candidate", "LicenseEvidenceComplete", "ImportVerified", "LocalDevelopmentReady", "ReleaseApproved", "Rejected"]
+    },
+    "import_status": {
+      "type": "string",
+      "enum": ["NotImported", "ImportVerified", "ImportBlocked", "NotApplicable"]
+    },
+    "candidate_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "role", "target_id"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "target_id": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "runtime_consumers": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "human_reviewer": { "type": ["string", "null"] },
+    "human_review_date": { "type": ["string", "null"], "format": "date" },
+    "release_evidence_path": { "type": ["string", "null"] },
+    "notes": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "review_status": { "const": "ReleaseApproved" } } },
+      "then": {
+        "required": ["human_reviewer", "human_review_date", "release_evidence_path"]
+      }
+    }
+  ]
+}

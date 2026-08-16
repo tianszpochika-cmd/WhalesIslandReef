@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.0318353">
+  <test-suite type="TestSuite" id="1108" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="70" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.031835" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1103" name="WhalesIslandReef.D20.PlayerAnimation.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/WhalesIslandReef.D20.PlayerAnimation.PlayMode.Tests.dll" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.025848" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24944" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1104" name="D20" fullname="D20" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.025359" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1105" name="Tests" fullname="D20.Tests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.025148" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1106" name="A02" fullname="D20.Tests.A02" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.024977" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1107" name="PlayMode" fullname="D20.Tests.A02.PlayMode" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.024785" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1101" name="D20A02PlayerAnimationPlayModeTests" fullname="D20.Tests.A02.PlayMode.D20A02PlayerAnimationPlayModeTests" classname="D20.Tests.A02.PlayMode.D20A02PlayerAnimationPlayModeTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.024030" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1102" name="TenReadOnlyActionSnapshotsNeverMoveThePhysicalRoot" fullname="D20.Tests.A02.PlayMode.D20A02PlayerAnimationPlayModeTests.TenReadOnlyActionSnapshotsNeverMoveThePhysicalRoot" methodname="TenReadOnlyActionSnapshotsNeverMoveThePhysicalRoot" classname="D20.Tests.A02.PlayMode.D20A02PlayerAnimationPlayModeTests" runstate="Runnable" seed="691293155" result="Failed" start-time="2026-08-15 08:28:52Z" end-time="2026-08-15 08:28:52Z" duration="0.016308" asserts="0">
+                  <properties>
+                    <property name="_JOINTYPE" value="UnityCombinatorial" />
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: Helm
+  But was:  Idle
+]]></message>
+                    <stack-trace><![CDATA[at D20.Tests.A02.PlayMode.D20A02PlayerAnimationPlayModeTests+<TenReadOnlyActionSnapshotsNeverMoveThePhysicalRoot>d__0.MoveNext () [0x00296] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D20Animation\D20A02PlayerAnimationPlayModeTests.cs:40
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@082c24152fd4\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                  </failure>
+                  <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

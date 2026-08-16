@@ -1,0 +1,35 @@
+{
+  "manifest_kind": "d18_asset_pack_manifest",
+  "schema_version": 1,
+  "source_id": "source_quaternius",
+  "pack_id": "pack_quaternius_animal_pack_vol2_cat_d18_a04_r02_c_v1",
+  "title": "Quaternius Animal Pack Vol.2 — Cat isolated candidate",
+  "author": "Quaternius",
+  "official_page": "https://opengameart.org/content/animated-animales-low-poly",
+  "download_url": "https://opengameart.org/sites/default/files/Animal%20Pack%20Vol.2%20by%20%40Quaternius.zip",
+  "downloaded_at": "2026-08-15",
+  "archive_name": "Animal Pack Vol.2 by @Quaternius.zip",
+  "sha256": "6D8F6789D65DBDB352EBAD98A4209F26B41B384E87D81BC05E9CA76139DB1248",
+  "license_id": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Cat/Source/LICENSE_CC0_1.0.txt",
+  "attribution_required": false,
+  "commercial_use": true,
+  "modification_allowed": true,
+  "source_redistribution": "allowed",
+  "build_distribution": "allowed",
+  "category": ["animal", "cat", "pet", "animation"],
+  "file_count": 1,
+  "unity_object_count": 1,
+  "review_status": "Candidate",
+  "import_status": "ImportVerified",
+  "candidate_files": [
+    {
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Cat/Source/Cat.fbx",
+      "role": "isolated_cat_pet_model_candidate",
+      "target_id": "animal_quaternius_cat_pack_vol2_v01"
+    }
+  ],
+  "runtime_consumers": [],
+  "notes": "Isolated evidence packet only. Archive contains five animal source sets; only the original FBX/ Cat.fbx is copied into the Cat candidate directory. Unity 6000.0.80f1 import measured 1 mesh, 3 embedded materials, 2 Generic clips (CatArmature|Idle and CatArmature|Walking), 1 skinned renderer, 1537 vertices and 180 triangles with non-zero bounds. The source has no texture sub-assets, Collider, LODGroup or Avatar. No formal pet Prefab, global catalog entry, runtime consumer, gameplay event, or pet logic is created. D20-A06 must own scale, root/foot calibration, collision/follow wrapper, LOD and missing-action fallback review."
+}

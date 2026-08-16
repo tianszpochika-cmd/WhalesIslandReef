@@ -1,0 +1,44 @@
+{
+  "schema": "D19_R02_S02_ROUTE_LOG_RERUN6_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real standalone Player mouse and keyboard input; no Inspector/direct method invocation",
+  "player_build": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN6.exe",
+  "resolution_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+  "timestamp_basis": "screenshot file LastWriteTime for captured nodes; Unity logs for state outcomes",
+  "continuous_session_seconds": 311,
+  "total_observed_session_seconds_including_reload": 365,
+  "steps": [
+    {"order": 1, "timestamp": "2026-08-15T20:53:01.9871999+08:00", "action": "Main Menu -> New Game -> InitialHarbor", "input": "mouse click New Game, type S02Rerun6, click Confirm", "stable_id": "santa_margarita", "status": "PASS", "screenshot": "screenshots/rerun6_01_spawn.jpg", "feedback": "港口标题、玩家和海岸画面出现", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 2, "timestamp": "2026-08-15T20:53:10.6918542+08:00", "action": "Board", "input": "E", "stable_id": "anchor.boarding.gangplank / berth_santa_margarita", "status": "PASS", "screenshot": "screenshots/rerun6_02_board.jpg", "feedback": "已上船：可以操控船只；按 E 下船", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 3, "timestamp": "2026-08-15T20:53:18.8262881+08:00", "action": "Market open", "input": "B", "stable_id": "building:market_santa_margarita", "status": "PASS", "screenshot": "screenshots/rerun6_03_trade.jpg", "feedback": "贸易页显示价格、库存和金币", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 4, "timestamp": "2026-08-15T20:53:29.0249476+08:00", "action": "Market close", "input": "Escape", "stable_id": "building:market_santa_margarita", "status": "PASS", "screenshot": "screenshots/rerun6_04_trade_closed.jpg", "feedback": "回到港口画面", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 5, "timestamp": "2026-08-15T20:53:37.1787360+08:00", "action": "Plan departure", "input": "T", "stable_id": "anchor.departure.channel", "status": "PASS_LOGGED", "screenshot": "screenshots/rerun6_05_departure.jpg", "feedback": "日志显示已规划圣玛格丽特港→绿湾村航线；屏幕提示以存档检查点为主", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 6, "timestamp": "2026-08-15T20:53:55.5295443+08:00", "action": "Advance voyage", "input": "N", "stable_id": "D3_Port_santa_margarita", "status": "PASS_LOGGED", "screenshot": "screenshots/rerun6_06_voyage_advance.jpg", "feedback": "日志显示海上盘查事件和金币变化", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 7, "timestamp": "2026-08-15T20:54:10.5709486+08:00", "action": "First return attempt", "input": "L", "stable_id": "anchor.return.harbor", "status": "FAIL_FEEDBACK", "screenshot": "screenshots/rerun6_07_settle.jpg", "feedback": "尚未抵达目的地，不能靠港结算", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 8, "timestamp": "2026-08-15T20:54:18.0246331+08:00", "action": "Disembark", "input": "E", "stable_id": "anchor.disembark.dock", "status": "PASS", "screenshot": "screenshots/rerun6_08_disembark.jpg", "feedback": "已下船：WASD 移动，靠近老水手按 E 对话", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 9, "timestamp": "2026-08-15T20:54:26.1914723+08:00", "action": "Save checkpoint", "input": "F5", "stable_id": "save:manual_checkpoint", "status": "PASS_OBSERVED", "screenshot": "screenshots/rerun6_09_save.jpg", "feedback": "保存反馈/存档快照日志", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 10, "timestamp": "2026-08-15T20:54:44.3023663+08:00", "action": "Move away from dock", "input": "repeated W/A key events", "stable_id": "anchor.dock.primary", "status": "PASS_OBSERVED", "screenshot": "screenshots/rerun6_10_move.jpg", "feedback": "玩家位置/姿态构图发生可见变化", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 11, "timestamp": "2026-08-15T20:54:53.7975375+08:00", "action": "Interaction feedback attempt", "input": "E", "stable_id": "anchor.tavern_keeper / anchor.dockhand", "status": "NOT_VERIFIED", "screenshot": "screenshots/rerun6_11_interaction_feedback.jpg", "feedback": "未出现可定位的 NPC/仓库/酒馆反馈；船入口反馈仍保持", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 12, "timestamp": "2026-08-15T20:55:18.2247573+08:00", "action": "Save final", "input": "F5", "stable_id": "save:manual_checkpoint", "status": "PASS_OBSERVED", "screenshot": "screenshots/rerun6_12_save_final.jpg", "feedback": "保存反馈可见", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 13, "timestamp": "2026-08-15T20:55:28.3482109+08:00", "action": "Pause attempt", "input": "Escape", "stable_id": "pause:harbor", "status": "NOT_VERIFIED", "screenshot": "screenshots/rerun6_13_pause.jpg", "feedback": "未观察到独立暂停面板或可定位暂停状态", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 14, "timestamp": "2026-08-15T20:58:11.0508530+08:00", "action": "Continuous observation checkpoint", "input": "no synthetic gameplay input", "stable_id": "santa_margarita", "status": "PASS_DURATION", "screenshot": "screenshots/rerun6_14_300s.jpg", "feedback": "真实 Player 连续会话达到约 311 秒，未崩溃", "log": "D19_R02_S02_PLAYER_RERUN6_INPUT.log"},
+    {"order": 15, "timestamp": "2026-08-15T20:58:49.3433196+08:00", "action": "Exit and Continue reload", "input": "Alt+F4, relaunch, mouse click Continue", "stable_id": "save:manual_checkpoint", "status": "PASS", "screenshot": "screenshots/rerun6_15_continue_loaded.jpg", "feedback": "日志显示存档加载成功，进入游戏", "log": "D19_R02_S02_PLAYER_RERUN6_CONTINUE.log"},
+    {"order": 16, "timestamp": "2026-08-15T21:10:25.0037376+08:00", "action": "Second real voyage attempt: board, plan, advance N x4", "input": "E, T, N x4", "stable_id": "anchor.boarding.gangplank / anchor.departure.channel", "status": "PASS_LOGGED", "screenshot": "screenshots/rerun6_18_route2_advance.jpg", "feedback": "日志显示盘查、平静海面并抵达目的地", "log": "D19_R02_S02_PLAYER_RERUN6_ROUTE2.log"},
+    {"order": 17, "timestamp": "2026-08-15T21:11:06.5034631+08:00", "action": "Return and settle", "input": "L", "stable_id": "anchor.return.harbor", "status": "PASS_LOGGED", "screenshot": "screenshots/rerun6_19_route2_settle.jpg", "feedback": "日志显示已靠港并完成结算：绿湾村", "log": "D19_R02_S02_PLAYER_RERUN6_ROUTE2.log"},
+    {"order": 18, "timestamp": "2026-08-15T21:11:07.7523673+08:00", "action": "Return disembark", "input": "E", "stable_id": "anchor.disembark.dock", "status": "PASS", "screenshot": "screenshots/rerun6_20_route2_disembark.jpg", "feedback": "日志显示退出船只控制", "log": "D19_R02_S02_PLAYER_RERUN6_ROUTE2.log"},
+    {"order": 19, "timestamp": "2026-08-15T21:11:09.7474260+08:00", "action": "Save after completed voyage", "input": "F5", "stable_id": "save:manual_checkpoint", "status": "PASS_OBSERVED", "screenshot": "screenshots/rerun6_21_route2_save.jpg", "feedback": "D3/Save 日志存在，保存文件更新", "log": "D19_R02_S02_PLAYER_RERUN6_ROUTE2.log"},
+    {"order": 20, "timestamp": "2026-08-15T21:14:00+08:00", "action": "Continue after completed voyage save", "input": "relaunch, mouse click Continue", "stable_id": "save:manual_checkpoint", "status": "PASS", "screenshot": "screenshots/rerun6_22_continue3_result.jpg", "feedback": "日志显示存档加载成功，且存档引导步骤恢复为采集", "log": "D19_R02_S02_PLAYER_RERUN6_CONTINUE3.log"}
+  ],
+  "unverified_required_nodes": [
+    {"stable_id": "building:warehouse_santa_margarita", "status": "NOT_VERIFIED", "reason": "真实路线未到达/未触发仓库服务；当前正式场景没有可读建筑入口证据"},
+    {"stable_id": "building:tavern_santa_margarita", "status": "NOT_VERIFIED", "reason": "真实路线未到达/未触发酒馆入口或 NPC；当前正式场景没有可读建筑入口证据"},
+    {"stable_id": "npc:santa_margarita_tavern_keeper", "status": "NOT_VERIFIED", "reason": "未观察到稳定 NPC 对话反馈"}
+  ],
+  "route_gate": {
+    "required_complete": false,
+    "passed": ["new game", "spawn", "boarding", "market open/close", "voyage planning", "voyage events", "return settlement in route2", "disembark", "save", "exit", "continue reload", "311-second continuous observation"],
+    "failed_or_unverified": ["warehouse", "tavern/NPC", "pause feedback", "physical walking route to all required nodes"],
+    "owner": "D19-R02-S02 follow-up route/scene integration"
+  }
+}

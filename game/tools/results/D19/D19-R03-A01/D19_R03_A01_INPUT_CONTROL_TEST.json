@@ -1,0 +1,27 @@
+{
+  "schema": "D19_R03_A01_INPUT_CONTROL_TEST_V1",
+  "task": "D19-R03-A01",
+  "purpose": "diagnostic only; not a route pass",
+  "player_build": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN3.exe",
+  "launch_resolution": "1920x1080",
+  "input_method": "computer-use real Player window",
+  "sequence": [
+    "click New Game",
+    "type ControlTest and click confirm",
+    "click inside Player world to focus",
+    "press W, repeated W taps, type repeated w text, press Escape",
+    "close with Alt+F4"
+  ],
+  "observed": {
+    "menu_clicks": true,
+    "player_loaded": true,
+    "stable_world_view": true,
+    "movement_visible_after_key_taps": false,
+    "pause_visible_after_escape": false,
+    "save_attempted": false,
+    "process_closed_cleanly": true
+  },
+  "interpretation": "The computer-use key-edge path did not produce a reliable movement/pause observation in this diagnostic run. This is recorded as an input-capture limitation and is not promoted to a claim that the gameplay controller is broken. It prevents using this tool path as proof of a complete Player route.",
+  "screenshot": "game/tools/results/D19/D19-R03-A01/screenshots/control_test_spawn_rerun3.jpg",
+  "conclusion": "NOT_A_PASS_EVIDENCE"
+}

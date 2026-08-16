@@ -1,0 +1,47 @@
+{
+  "schema": "D19_R03_S01_GATE_REVIEW_V4",
+  "task": "D19-R03-S01",
+  "run_id": "RERUN44_CURRENT",
+  "conclusion": "BLOCKED",
+  "inputs": {
+    "route": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN44_MACHINE_RESULT.json",
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN44.json",
+    "performance": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN36_CURRENT.json",
+    "visual_fixed_shots": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN35_FIXED.json"
+  },
+  "gates": {
+    "real_player_menu_new_game": true,
+    "player_controller_router": true,
+    "movement_input": true,
+    "interaction_input": true,
+    "save_feedback": false,
+    "full_300_second_route": false,
+    "market_warehouse_tavern": false,
+    "dock_berth": true,
+    "departure_return": false,
+    "same_run_save_quit_continue": false,
+    "current_scene_perf_low_medium_high": false,
+    "fixed_player_shots_14_of_14": false,
+    "weather_variants_3": false,
+    "visual_debt_closed": false,
+    "external_resource_intake": true,
+    "release_approved": false
+  },
+  "observed": {
+    "runtime_seconds": 193.38430786132813,
+    "resolution_requested": "1920x1080",
+    "current_run_screenshot_count": 7,
+    "reached": ["anchor.dock.primary", "anchor.berth.primary"],
+    "ship_position_runtime": [0.0, 0.0, 0.0],
+    "player_overlaps_ship_hull": false,
+    "legacy_duplicate_colliders_disabled": 3,
+    "final_player_position": [-0.004999480675905943, 0.878308117389679, -6.454991817474365]
+  },
+  "blocking_reasons": [
+    "RERUN44 did not complete the required 300-second full route or save/reload cycle.",
+    "Market, warehouse, tavern, shipyard, return and spawn were not newly reached; save input was not observed.",
+    "The integration fix disabled three legacy duplicate dock/gangplank colliders and retained D6 ground ownership, but the real Player still did not produce a continuous route; the probe shows no ship-hull overlap and only about 0.045m final displacement.",
+    "Current-scene three-quality performance, 14-shot visual closure, and Calm/Rain/Storm evidence remain unresolved."
+  ],
+  "historical_note": "RERUN44_CURRENT is an additional blocked review. RERUN42_CURRENT, RERUN41_CURRENT, RERUN39_CURRENT, RERUN35 and earlier results remain preserved."
+}

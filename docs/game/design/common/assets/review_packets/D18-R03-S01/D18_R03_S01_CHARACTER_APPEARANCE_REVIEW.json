@@ -1,0 +1,1745 @@
+{
+  "schema": "D18_R03_S01_CHARACTER_APPEARANCE_REVIEW_V1",
+  "task": "D18-R03-S01",
+  "generated_at": "2026-08-15T15:52:00.981702+00:00",
+  "conclusion": "PARTIAL",
+  "scope": "read_only_review_of_D18_R03_A01_isolated_candidate_evidence",
+  "inputs": {
+    "packet": "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_R03_A01_PLAYER_APPEARANCE_PACKET.json",
+    "unity_import": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+    "official_page": "https://quaternius.com/packs/universalbasecharacters.html",
+    "license_id": "CC0-1.0",
+    "license_evidence": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+    "archive": "artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip",
+    "archive_sha256_recorded": "FDBF1804C90DFC1EA03E992BFF7DA2DFD1A79318E13270A660180F9308455F40",
+    "archive_sha256_actual": "FDBF1804C90DFC1EA03E992BFF7DA2DFD1A79318E13270A660180F9308455F40"
+  },
+  "counts": {
+    "candidate_records_reviewed": 33,
+    "candidate_files_present": 33,
+    "candidate_files_hash_verified": 33,
+    "unity_import_records": 33,
+    "valid_humanoid_bases": 2,
+    "independent_hairstyles": 5,
+    "outfit_candidate_files": 24,
+    "complete_outfit_candidate_files": 4,
+    "assembled_era_outfit_combinations": 0,
+    "formal_runtime_consumers": 0,
+    "local_development_ready": 0,
+    "release_approved": 0
+  },
+  "consumption_categories": {
+    "player_visual_core": {
+      "verified_candidates": 33,
+      "status": "PARTIAL"
+    },
+    "npc_visual_core": {
+      "verified_candidates": 0,
+      "status": "OUT_OF_SCOPE"
+    },
+    "wildlife_core": {
+      "verified_candidates": 0,
+      "status": "OUT_OF_SCOPE"
+    },
+    "pet_core": {
+      "verified_candidates": 0,
+      "status": "OUT_OF_SCOPE"
+    },
+    "animation_core": {
+      "verified_candidates": 0,
+      "status": "OPEN"
+    }
+  },
+  "candidates": [
+    {
+      "content_id": "candidate_eyebrows_female_r03a01",
+      "file_name": "Eyebrows_Female.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Eyebrows_Female.fbx",
+      "sha256_recorded": "EA6A6D1A3DEDDCF24B984684543C53693425560E670957E8486B4D2BA7B345DC",
+      "sha256_actual": "EA6A6D1A3DEDDCF24B984684543C53693425560E670957E8486B4D2BA7B345DC",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Eyebrows_Female.fbx",
+        "asset_path": "Assets/Models/Eyebrows_Female.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.038300521671772,
+        "renderer_width": 0.12599772214889526,
+        "renderer_depth": 0.04092781990766525,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "facial_detail_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_peasant_r03a01",
+      "file_name": "Female_Peasant.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Female_Peasant.fbx",
+      "sha256_recorded": "CB33C493852310400CA3974FE6734FCD4E1DA5232B527708A6082A86B90CA5D5",
+      "sha256_actual": "CB33C493852310400CA3974FE6734FCD4E1DA5232B527708A6082A86B90CA5D5",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Peasant.fbx",
+        "asset_path": "Assets/Models/Female_Peasant.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 71,
+        "mesh_count": 4,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 1.6519932746887207,
+        "renderer_width": 1.664702296257019,
+        "renderer_depth": 0.41167473793029785,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_peasant_arms_r03a01",
+      "file_name": "Female_Peasant_Arms.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Arms.fbx",
+      "sha256_recorded": "35EBFA4A7A67ACDC5E2E06CAE5450A60D7A34FC480678F43A74AC424BD43007D",
+      "sha256_actual": "35EBFA4A7A67ACDC5E2E06CAE5450A60D7A34FC480678F43A74AC424BD43007D",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Peasant_Arms.fbx",
+        "asset_path": "Assets/Models/Female_Peasant_Arms.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.13892152905464172,
+        "renderer_width": 1.664702296257019,
+        "renderer_depth": 0.149046391248703,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_peasant_body_r03a01",
+      "file_name": "Female_Peasant_Body.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Body.fbx",
+      "sha256_recorded": "93531D57B49102DE1F310C148D9DB97385C6AA352EF62935FA915DA845B75EE0",
+      "sha256_actual": "93531D57B49102DE1F310C148D9DB97385C6AA352EF62935FA915DA845B75EE0",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Peasant_Body.fbx",
+        "asset_path": "Assets/Models/Female_Peasant_Body.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.5902878642082214,
+        "renderer_width": 0.5019264221191406,
+        "renderer_depth": 0.4058047831058502,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_peasant_feet_r03a01",
+      "file_name": "Female_Peasant_Feet.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Feet.fbx",
+      "sha256_recorded": "E90746436F8BC3934E746455D175347AB0B119D2A6D8BA158675333D66BD19EE",
+      "sha256_actual": "E90746436F8BC3934E746455D175347AB0B119D2A6D8BA158675333D66BD19EE",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Peasant_Feet.fbx",
+        "asset_path": "Assets/Models/Female_Peasant_Feet.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.5693398714065552,
+        "renderer_width": 0.4030849039554596,
+        "renderer_depth": 0.40700507164001465,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_peasant_legs_r03a01",
+      "file_name": "Female_Peasant_Legs.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Legs.fbx",
+      "sha256_recorded": "817E5ED6840A29F039D9D3C4FAFA7AA9CEA57A554DCCE8FD8486BBEB081D7595",
+      "sha256_actual": "817E5ED6840A29F039D9D3C4FAFA7AA9CEA57A554DCCE8FD8486BBEB081D7595",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Peasant_Legs.fbx",
+        "asset_path": "Assets/Models/Female_Peasant_Legs.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.7053841352462769,
+        "renderer_width": 0.3757637143135071,
+        "renderer_depth": 0.322397917509079,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_r03a01",
+      "file_name": "Female_Ranger.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Female_Ranger.fbx",
+      "sha256_recorded": "63E7804F8129D507E84FCC2D6E17D98EF2BD6C4217A487A6BD4694C2A58447AB",
+      "sha256_actual": "63E7804F8129D507E84FCC2D6E17D98EF2BD6C4217A487A6BD4694C2A58447AB",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger.fbx",
+        "asset_path": "Assets/Models/Female_Ranger.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 76,
+        "mesh_count": 9,
+        "material_count": 2,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 1.9453802108764648,
+        "renderer_width": 1.664702296257019,
+        "renderer_depth": 0.48114290833473206,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_acc_pauldrons_r03a01",
+      "file_name": "Female_Ranger_Acc_Pauldrons.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Acc_Pauldrons.fbx",
+      "sha256_recorded": "992B49CB6AA6FFA32BCD211EE601E92D106B37F7D0D20D6BC8DDECDD1F6D3C7B",
+      "sha256_actual": "992B49CB6AA6FFA32BCD211EE601E92D106B37F7D0D20D6BC8DDECDD1F6D3C7B",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger_Acc_Pauldrons.fbx",
+        "asset_path": "Assets/Models/Female_Ranger_Acc_Pauldrons.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.12386444956064224,
+        "renderer_width": 0.21407896280288696,
+        "renderer_depth": 0.19362349808216095,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_arms_r03a01",
+      "file_name": "Female_Ranger_Arms.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Arms.fbx",
+      "sha256_recorded": "C5BA0BA31DCCBD99E959313168A65C01AFDF68E3ACF9767313E7CCAE0E0C86F4",
+      "sha256_actual": "C5BA0BA31DCCBD99E959313168A65C01AFDF68E3ACF9767313E7CCAE0E0C86F4",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger_Arms.fbx",
+        "asset_path": "Assets/Models/Female_Ranger_Arms.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 69,
+        "mesh_count": 2,
+        "material_count": 2,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.19555234909057617,
+        "renderer_width": 1.664702296257019,
+        "renderer_depth": 0.16738107800483704,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_body_r03a01",
+      "file_name": "Female_Ranger_Body.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Body.fbx",
+      "sha256_recorded": "07A455D19F55C6B3663A5423B1B0D9F7B94EFD2FAE8B78D7884E1BBE2AF16D2F",
+      "sha256_actual": "07A455D19F55C6B3663A5423B1B0D9F7B94EFD2FAE8B78D7884E1BBE2AF16D2F",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger_Body.fbx",
+        "asset_path": "Assets/Models/Female_Ranger_Body.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 70,
+        "mesh_count": 3,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.6808791160583496,
+        "renderer_width": 0.5486381649971008,
+        "renderer_depth": 0.4547650218009949,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_feet_r03a01",
+      "file_name": "Female_Ranger_Feet.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Feet.fbx",
+      "sha256_recorded": "4B25D8D735756EA872EB5E3A617A1636F6FCB4957C580AA344046FCA81132574",
+      "sha256_actual": "4B25D8D735756EA872EB5E3A617A1636F6FCB4957C580AA344046FCA81132574",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger_Feet.fbx",
+        "asset_path": "Assets/Models/Female_Ranger_Feet.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.670527458190918,
+        "renderer_width": 0.4021291136741638,
+        "renderer_depth": 0.3773491680622101,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_head_hood_r03a01",
+      "file_name": "Female_Ranger_Head_Hood.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Head_Hood.fbx",
+      "sha256_recorded": "FA5E0B078B0AF1953D053E09BA7AA194E702E6782598CD592F1F04999024A16E",
+      "sha256_actual": "FA5E0B078B0AF1953D053E09BA7AA194E702E6782598CD592F1F04999024A16E",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger_Head_Hood.fbx",
+        "asset_path": "Assets/Models/Female_Ranger_Head_Hood.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.449306845664978,
+        "renderer_width": 0.41855260729789734,
+        "renderer_depth": 0.4379001259803772,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_female_ranger_legs_r03a01",
+      "file_name": "Female_Ranger_Legs.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Legs.fbx",
+      "sha256_recorded": "753EE8AB27A2DA655268178A446C106E6F25C39BAA85E9CD031227ACB1F64F21",
+      "sha256_actual": "753EE8AB27A2DA655268178A446C106E6F25C39BAA85E9CD031227ACB1F64F21",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Female_Ranger_Legs.fbx",
+        "asset_path": "Assets/Models/Female_Ranger_Legs.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.7034860253334045,
+        "renderer_width": 0.4112219512462616,
+        "renderer_depth": 0.3405327796936035,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_hair_beard_r03a01",
+      "file_name": "Hair_Beard.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Beard.fbx",
+      "sha256_recorded": "00899E7D2CCEEBAB8C07456CA1C25E54E441EB271BB3427C3D12E371C2EF5189",
+      "sha256_actual": "00899E7D2CCEEBAB8C07456CA1C25E54E441EB271BB3427C3D12E371C2EF5189",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Hair_Beard.fbx",
+        "asset_path": "Assets/Models/Hair_Beard.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.1411440670490265,
+        "renderer_width": 0.16150622069835663,
+        "renderer_depth": 0.10858391225337982,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "facial_detail_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_hair_buns_r03a01",
+      "file_name": "Hair_Buns.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Buns.fbx",
+      "sha256_recorded": "CB45536C0E8C2B715732D9A75A33849239CA5E788C7DEE4E17998DAA0986FDFC",
+      "sha256_actual": "CB45536C0E8C2B715732D9A75A33849239CA5E788C7DEE4E17998DAA0986FDFC",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Hair_Buns.fbx",
+        "asset_path": "Assets/Models/Hair_Buns.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.2524121403694153,
+        "renderer_width": 0.3015138804912567,
+        "renderer_depth": 0.24142293632030487,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "hair_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Generic/NoAvatar mesh; head socket, clipping and animation follow-through remain D20 work",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_hair_buzzed_r03a01",
+      "file_name": "Hair_Buzzed.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Buzzed.fbx",
+      "sha256_recorded": "01C5C2EDEDD8B164274147EE8713A7A68CF74CD699FAD6B969CE5E37C1B7B686",
+      "sha256_actual": "01C5C2EDEDD8B164274147EE8713A7A68CF74CD699FAD6B969CE5E37C1B7B686",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Hair_Buzzed.fbx",
+        "asset_path": "Assets/Models/Hair_Buzzed.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.17684917151927948,
+        "renderer_width": 0.15459059178829193,
+        "renderer_depth": 0.1946014016866684,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "hair_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Generic/NoAvatar mesh; head socket, clipping and animation follow-through remain D20 work",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_hair_buzzedfemale_r03a01",
+      "file_name": "Hair_BuzzedFemale.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_BuzzedFemale.fbx",
+      "sha256_recorded": "AEB3A606D8B9B1818025DBF6B4640FF33F14B0E9676F3CBFE410321E1A1D6A5D",
+      "sha256_actual": "AEB3A606D8B9B1818025DBF6B4640FF33F14B0E9676F3CBFE410321E1A1D6A5D",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Hair_BuzzedFemale.fbx",
+        "asset_path": "Assets/Models/Hair_BuzzedFemale.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.1750665158033371,
+        "renderer_width": 0.15866240859031677,
+        "renderer_depth": 0.19993434846401215,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "hair_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Generic/NoAvatar mesh; head socket, clipping and animation follow-through remain D20 work",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_hair_long_r03a01",
+      "file_name": "Hair_Long.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Long.fbx",
+      "sha256_recorded": "206F14B69E05758425278F074EB61A730BFE40250E7CC30E0C433AB0B05342C7",
+      "sha256_actual": "206F14B69E05758425278F074EB61A730BFE40250E7CC30E0C433AB0B05342C7",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Hair_Long.fbx",
+        "asset_path": "Assets/Models/Hair_Long.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.28283387422561646,
+        "renderer_width": 0.2447107434272766,
+        "renderer_depth": 0.2726469039916992,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "hair_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Generic/NoAvatar mesh; head socket, clipping and animation follow-through remain D20 work",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_hair_simpleparted_r03a01",
+      "file_name": "Hair_SimpleParted.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_SimpleParted.fbx",
+      "sha256_recorded": "5E98ACD3561C814127326FDC78E74F20DFA1C3397760006D17EBAEA4C8D7A24D",
+      "sha256_actual": "5E98ACD3561C814127326FDC78E74F20DFA1C3397760006D17EBAEA4C8D7A24D",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Hair_SimpleParted.fbx",
+        "asset_path": "Assets/Models/Hair_SimpleParted.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.18784815073013306,
+        "renderer_width": 0.17542143166065216,
+        "renderer_depth": 0.1908896267414093,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "hair_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Generic/NoAvatar mesh; head socket, clipping and animation follow-through remain D20 work",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_peasant_r03a01",
+      "file_name": "Male_Peasant.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Male_Peasant.fbx",
+      "sha256_recorded": "D083F08A910C739B5A337207E4B6112F70C1235CDC3891C314BA26357C5F4965",
+      "sha256_actual": "D083F08A910C739B5A337207E4B6112F70C1235CDC3891C314BA26357C5F4965",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Peasant.fbx",
+        "asset_path": "Assets/Models/Male_Peasant.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 71,
+        "mesh_count": 4,
+        "material_count": 2,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 1.7027359008789062,
+        "renderer_width": 1.799338459968567,
+        "renderer_depth": 0.4771433472633362,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_peasant_arms_r03a01",
+      "file_name": "Male_Peasant_Arms.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Arms.fbx",
+      "sha256_recorded": "67E91B9F9054AE0B17BA7B7C2F1A3A6DDCE68704B08EE69CF66C7300993E5B54",
+      "sha256_actual": "67E91B9F9054AE0B17BA7B7C2F1A3A6DDCE68704B08EE69CF66C7300993E5B54",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Peasant_Arms.fbx",
+        "asset_path": "Assets/Models/Male_Peasant_Arms.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 2,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.1915915608406067,
+        "renderer_width": 1.799338459968567,
+        "renderer_depth": 0.24158930778503418,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_peasant_body_r03a01",
+      "file_name": "Male_Peasant_Body.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Body.fbx",
+      "sha256_recorded": "D875B268F63DDF884257A6F7C7A8C20B48F3AAFA30363755A6115963B1A17349",
+      "sha256_actual": "D875B268F63DDF884257A6F7C7A8C20B48F3AAFA30363755A6115963B1A17349",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Peasant_Body.fbx",
+        "asset_path": "Assets/Models/Male_Peasant_Body.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.713535487651825,
+        "renderer_width": 0.7526963353157043,
+        "renderer_depth": 0.4544229805469513,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_peasant_feet_r03a01",
+      "file_name": "Male_Peasant_Feet.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Feet.fbx",
+      "sha256_recorded": "09DEFC77E6FF81DDCC312A52940099079E0F31E5D73E331CDF6391440879EDE4",
+      "sha256_actual": "09DEFC77E6FF81DDCC312A52940099079E0F31E5D73E331CDF6391440879EDE4",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Peasant_Feet.fbx",
+        "asset_path": "Assets/Models/Male_Peasant_Feet.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.5633309483528137,
+        "renderer_width": 0.35063156485557556,
+        "renderer_depth": 0.41687706112861633,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_peasant_legs_r03a01",
+      "file_name": "Male_Peasant_Legs.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Legs.fbx",
+      "sha256_recorded": "547C90E8C7440CC149EBC5164EC0FDA2CF2BE0470CDF53816401545BE0337ABD",
+      "sha256_actual": "547C90E8C7440CC149EBC5164EC0FDA2CF2BE0470CDF53816401545BE0337ABD",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Peasant_Legs.fbx",
+        "asset_path": "Assets/Models/Male_Peasant_Legs.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.7100475430488586,
+        "renderer_width": 0.4228556454181671,
+        "renderer_depth": 0.3221944272518158,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_r03a01",
+      "file_name": "Male_Ranger.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Male_Ranger.fbx",
+      "sha256_recorded": "F142F1C0FEE43D0B1A635928469289DFF2ABEAAA2C3DAF95DD7B74A8044B244E",
+      "sha256_actual": "F142F1C0FEE43D0B1A635928469289DFF2ABEAAA2C3DAF95DD7B74A8044B244E",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger.fbx",
+        "asset_path": "Assets/Models/Male_Ranger.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 76,
+        "mesh_count": 9,
+        "material_count": 2,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 1.9753708839416504,
+        "renderer_width": 1.7993385791778564,
+        "renderer_depth": 0.4321556091308594,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_acc_pauldron_r03a01",
+      "file_name": "Male_Ranger_Acc_Pauldron.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Acc_Pauldron.fbx",
+      "sha256_recorded": "B0D28AF472710870E654286682059C0AAA89BDA7AF316CCCC520EA45DFD8CB68",
+      "sha256_actual": "B0D28AF472710870E654286682059C0AAA89BDA7AF316CCCC520EA45DFD8CB68",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger_Acc_Pauldron.fbx",
+        "asset_path": "Assets/Models/Male_Ranger_Acc_Pauldron.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.13718943297863007,
+        "renderer_width": 0.2394525110721588,
+        "renderer_depth": 0.21735797822475433,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_arms_r03a01",
+      "file_name": "Male_Ranger_Arms.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Arms.fbx",
+      "sha256_recorded": "1F8171FA29E8AD0D4290F2D9C7D99B6DEAD8A79987140DB3B220C3B62EE8CD0B",
+      "sha256_actual": "1F8171FA29E8AD0D4290F2D9C7D99B6DEAD8A79987140DB3B220C3B62EE8CD0B",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger_Arms.fbx",
+        "asset_path": "Assets/Models/Male_Ranger_Arms.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 69,
+        "mesh_count": 2,
+        "material_count": 2,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.19426274299621582,
+        "renderer_width": 1.7993385791778564,
+        "renderer_depth": 0.22629030048847198,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_body_r03a01",
+      "file_name": "Male_Ranger_Body.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Body.fbx",
+      "sha256_recorded": "9F5B7866170DAA1D32A4652C0574188379D93B9889792E13EDB3F2492FED444C",
+      "sha256_actual": "9F5B7866170DAA1D32A4652C0574188379D93B9889792E13EDB3F2492FED444C",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger_Body.fbx",
+        "asset_path": "Assets/Models/Male_Ranger_Body.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 70,
+        "mesh_count": 3,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.7501754760742188,
+        "renderer_width": 0.5550509095191956,
+        "renderer_depth": 0.4205501973628998,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_feet_boots_r03a01",
+      "file_name": "Male_Ranger_Feet_Boots.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Feet_Boots.fbx",
+      "sha256_recorded": "E60D0F0EAE8A9791DCE407767991CC3B759F2F7660CD8EAE5018E61F11E1AAEF",
+      "sha256_actual": "E60D0F0EAE8A9791DCE407767991CC3B759F2F7660CD8EAE5018E61F11E1AAEF",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger_Feet_Boots.fbx",
+        "asset_path": "Assets/Models/Male_Ranger_Feet_Boots.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.6829100847244263,
+        "renderer_width": 0.3563264012336731,
+        "renderer_depth": 0.38133057951927185,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_head_hood_r03a01",
+      "file_name": "Male_Ranger_Head_Hood.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Head_Hood.fbx",
+      "sha256_recorded": "C8B6F4E01B569176A5D91A7255BFC0EB45E83529B7E97EB4640C75DB25F847F2",
+      "sha256_actual": "C8B6F4E01B569176A5D91A7255BFC0EB45E83529B7E97EB4640C75DB25F847F2",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger_Head_Hood.fbx",
+        "asset_path": "Assets/Models/Male_Ranger_Head_Hood.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.3933713436126709,
+        "renderer_width": 0.3949606716632843,
+        "renderer_depth": 0.4321556091308594,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_male_ranger_legs_r03a01",
+      "file_name": "Male_Ranger_Legs.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Legs.fbx",
+      "sha256_recorded": "F1E30B2E4210086496AB2E18D107D4C163C8BDE7CE72B10CD309CF5125540F63",
+      "sha256_actual": "F1E30B2E4210086496AB2E18D107D4C163C8BDE7CE72B10CD309CF5125540F63",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Male_Ranger_Legs.fbx",
+        "asset_path": "Assets/Models/Male_Ranger_Legs.fbx",
+        "file_exists": true,
+        "animation_type": "Generic",
+        "avatar_setup": "NoAvatar",
+        "avatar_present": false,
+        "avatar_valid": false,
+        "avatar_is_human": false,
+        "transform_count": 68,
+        "mesh_count": 1,
+        "material_count": 1,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 0.6915984749794006,
+        "renderer_width": 0.36596959829330444,
+        "renderer_depth": 0.3089752793312073,
+        "notes": [
+          "No Avatar on this modular mesh",
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "clothing_module",
+      "review_conclusion": "RECOMMENDED_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "Fantasy/Medieval source is not historical approval for 1675 Caribbean clothing",
+        "No Humanoid Avatar; clothing/hair module requires project-owned assembly",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_superhero_female_fullbody_r03a01",
+      "file_name": "Superhero_Female_FullBody.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+      "sha256_recorded": "0727E7B236EEEA4115531E07AEB2BB7690C1A58155F743BBF54282944FB97EA9",
+      "sha256_actual": "0727E7B236EEEA4115531E07AEB2BB7690C1A58155F743BBF54282944FB97EA9",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Superhero_Female_FullBody.fbx",
+        "asset_path": "Assets/Models/Superhero_Female_FullBody.fbx",
+        "file_exists": true,
+        "animation_type": "Human",
+        "avatar_setup": "CreateFromThisModel",
+        "avatar_present": true,
+        "avatar_valid": true,
+        "avatar_is_human": true,
+        "transform_count": 70,
+        "mesh_count": 3,
+        "material_count": 3,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 1.8537367582321167,
+        "renderer_width": 1.669686198234558,
+        "renderer_depth": 0.43530288338661194,
+        "notes": [
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "humanoid_body",
+      "review_conclusion": "RECOMMENDED_HUMANOID_BASE_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "D17 1.80m scale and foot/pivot calibration remains D20 work",
+        "No independent animation clip evidence"
+      ]
+    },
+    {
+      "content_id": "candidate_superhero_male_fullbody_r03a01",
+      "file_name": "Superhero_Male_FullBody.fbx",
+      "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Male_FullBody.fbx",
+      "sha256_recorded": "79344418D754A59730B79D1874752E9592143DB34ABE8ADF138FA9A92A4768E9",
+      "sha256_actual": "79344418D754A59730B79D1874752E9592143DB34ABE8ADF138FA9A92A4768E9",
+      "file_exists": true,
+      "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+      "license_evidence_present": true,
+      "unity_import_evidence_path": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+      "unity_import_record_present": true,
+      "unity_import": {
+        "file_name": "Superhero_Male_FullBody.fbx",
+        "asset_path": "Assets/Models/Superhero_Male_FullBody.fbx",
+        "file_exists": true,
+        "animation_type": "Human",
+        "avatar_setup": "CreateFromThisModel",
+        "avatar_present": true,
+        "avatar_valid": true,
+        "avatar_is_human": true,
+        "transform_count": 70,
+        "mesh_count": 3,
+        "material_count": 3,
+        "texture_count": 0,
+        "animation_clip_count": 0,
+        "global_scale": 1.0,
+        "renderer_height": 1.915580153465271,
+        "renderer_width": 1.8597444295883179,
+        "renderer_depth": 0.44077032804489136,
+        "notes": [
+          "Measured in isolated fixture; no formal Prefab or scene consumer"
+        ]
+      },
+      "consumption_categories": [
+        "player_visual_core"
+      ],
+      "candidate_role": "humanoid_body",
+      "review_conclusion": "RECOMMENDED_HUMANOID_BASE_WITH_LIMITS",
+      "recommended_for_controlled_work_prefab": true,
+      "local_development_ready": false,
+      "release_approved": false,
+      "formal_runtime_consumer": false,
+      "known_gaps": [
+        "No formal Prefab, Animator, collision, LOD or runtime consumer in this isolated packet",
+        "D17 1.80m scale and foot/pivot calibration remains D20 work",
+        "No independent animation clip evidence"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "category": "female_or_neutral_human_gap",
+      "status": "COVERED_FOR_FEMALE_AND_MALE_BASE_ONLY",
+      "detail": "Two valid Humanoid bases are verified; no neutral body direction is claimed."
+    },
+    {
+      "category": "hair_gap",
+      "status": "OPEN",
+      "detail": "Five independent hairstyle meshes are verified; the sixth required hairstyle is not evidenced."
+    },
+    {
+      "category": "era_outfit_gap",
+      "status": "OPEN",
+      "detail": "Four source outfit files exist, but zero of eight 1675 Caribbean combinations have historical review and assembled import evidence."
+    },
+    {
+      "category": "animation_core",
+      "status": "OPEN",
+      "detail": "No independent animation clip candidate was verified in this packet; D20-A02 action curves remain separate project-owned work."
+    },
+    {
+      "category": "npc_visual_core",
+      "status": "OUT_OF_SCOPE",
+      "detail": "This packet is player appearance only; no NPC claim."
+    },
+    {
+      "category": "wildlife_core",
+      "status": "OUT_OF_SCOPE",
+      "detail": "This packet is player appearance only; no wildlife claim."
+    },
+    {
+      "category": "pet_core",
+      "status": "OUT_OF_SCOPE",
+      "detail": "This packet is player appearance only; no pet claim."
+    }
+  ],
+  "evidence_errors": [],
+  "state_boundary": {
+    "global_intake_catalog_modified": false,
+    "candidate_resource_states_modified": false,
+    "local_development_ready_written": false,
+    "release_approved_written": false,
+    "formal_prefab_created": false,
+    "formal_scene_consumer_created": false
+  }
+}

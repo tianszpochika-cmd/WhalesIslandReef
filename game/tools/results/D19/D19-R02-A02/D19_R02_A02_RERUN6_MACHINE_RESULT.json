@@ -1,0 +1,75 @@
+{
+  "schema": "D19_R02_A02_MACHINE_RESULT_RERUN6_V1",
+  "task": "D19-R02-A02",
+  "rerun": "RERUN6",
+  "conclusion": "PARTIAL",
+  "gate_pass": false,
+  "generated_at": "2026-08-15T19:51:04+08:00",
+  "historical_policy": {
+    "rerun5_preserved": true,
+    "original_partial_preserved": true,
+    "this_result_only_adds_e_input_evidence": true
+  },
+  "scope": {
+    "changed_files": [
+      "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs",
+      "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs"
+    ],
+    "input_owner": "D2ControlRouter/D2CharacterController",
+    "business_logic_changed": false,
+    "systems_save_registry_changed": false
+  },
+  "build": {
+    "status": "PASS",
+    "executable": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_Player_RERUN6.exe",
+    "bytes": 671744,
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_BUILD_RERUN6.log"
+  },
+  "tests": {
+    "editmode": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN6.xml"
+    },
+    "playmode": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN6.xml"
+    }
+  },
+  "real_player": {
+    "status": "PASS_OBSERVED_FOR_D2_INPUT_EDGE",
+    "player_build_used": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN4.exe",
+    "resolution_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+    "input_was_real_window_input": true,
+    "direct_method_invocation": false,
+    "e_boarding": {
+      "status": "PASS",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/15_rerun4_e.jpg",
+      "observed_log": "[D2/Input] 通过兼容 E 边沿恢复交互入口; [D2/Control] 已进入船只控制"
+    },
+    "e_disembarking": {
+      "status": "PASS",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/22_rerun4_disembark.jpg",
+      "observed_log": "[D2/Input] 通过兼容 E 边沿恢复交互入口; [D2/Control] 已退出船只控制"
+    },
+    "legacy_move_fallback": {
+      "status": "PASS_OBSERVED",
+      "route": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_INTERACTION_ROUTE_RERUN5.json",
+      "note": "RERUN5 已记录真实窗口重复 A/W 输入造成可见姿态/视图变化；本 RERUN6 聚焦 E 边沿。"
+    },
+    "player_closed_after_run": true
+  },
+  "remaining_scope_gap": [
+    "A02 does not own the D19 300-second route gate.",
+    "Warehouse/tavern/NPC presentation and final visual quality remain D19-S02/A01/A04 scope.",
+    "1920x1080 backbuffer, runtime Low/Medium/High confirmation, VSync and 1% low remain D19 final performance gate.",
+    "A02 remains PARTIAL; this evidence does not authorize D20-S02-R01."
+  ]
+}

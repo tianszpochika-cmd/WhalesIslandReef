@@ -1,0 +1,35 @@
+{
+  "manifest_kind": "d18_asset_pack_manifest",
+  "schema_version": 1,
+  "source_id": "source_quaternius",
+  "pack_id": "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1",
+  "title": "Quaternius Animal Pack Vol.2 — Eagle bird gap-fill candidate",
+  "author": "Quaternius",
+  "official_page": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+  "download_url": "https://opengameart.org/sites/default/files/Animal%20Pack%20Vol.2%20by%20%40Quaternius.zip",
+  "downloaded_at": "2026-08-15",
+  "archive_name": "Animal_Pack_Vol2_Quaternius.zip",
+  "sha256": "6D8F6789D65DBDB352EBAD98A4209F26B41B384E87D81BC05E9CA76139DB1248",
+  "license_id": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/LICENSE_EVIDENCE_QUATERNIUS_CC0.md",
+  "attribution_required": false,
+  "commercial_use": true,
+  "modification_allowed": true,
+  "source_redistribution": "allowed",
+  "build_distribution": "allowed",
+  "category": ["animal", "bird", "nearshore", "animation"],
+  "file_count": 1,
+  "unity_object_count": 1,
+  "review_status": "Candidate",
+  "import_status": "ImportVerified",
+  "candidate_files": [
+    {
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/Models/eagle.fbx",
+      "role": "candidate_bird_nearshore_eagle",
+      "target_id": "animal_quaternius_eagle_v01"
+    }
+  ],
+  "runtime_consumers": [],
+  "notes": "Official CC0 evidence is recorded in LICENSE_EVIDENCE_QUATERNIUS_CC0.md. Unity 6000.0.80f1 report-only import verified one FBX, one mesh, four material slots, one SkinnedMeshRenderer, valid bounds and three real clips (Flying plus two Idle clips). The source importer is Generic/NoAvatar and has no formal Animator component, no LODGroup, no collider and no Prefab; D20 must own those decisions. The original file name eagle.fbx is preserved and produces one naming warning. Candidate is suitable for a port/nearshore mid/far visual after a D20 Prefab and LOD pass; near-camera use is blocked until scale, Animator/Avatar strategy, collision and LOD are supplied. Chicken/Rooster source-only archives are rejected and not counted. This manifest is isolated evidence only; D18-S02-R01 alone may admit it."
+}

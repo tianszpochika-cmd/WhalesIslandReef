@@ -1,0 +1,115 @@
+{
+  "task": "D19-S02-R01",
+  "status": "PARTIAL",
+  "evaluated_on": "2026-08-14",
+  "historical_context": {
+    "previous_d19_s02_status": "PARTIAL",
+    "previous_report_preserved": true,
+    "previous_results_preserved": true,
+    "d18_s02_v2": "PASS",
+    "d18_s03": "NOT_RUN",
+    "local_development_ready_count": 0,
+    "release_approved_count": 0,
+    "external_asset_state_promoted": false
+  },
+  "rollback_baseline": {
+    "snapshot": "game/tools/results/D19/D19-S02-R01/R01_PreVerificationBaseline/D19_S02_R01_PREVERIFICATION_BASELINE.json",
+    "scene": "game/Assets/Scenes/InitialHarbor.unity",
+    "scene_sha256_at_snapshot": "3E081A48B4D7B53E9084308B86587170527E006C637EC0B280E074449C8B02AA",
+    "scene_bytes": 133143,
+    "scene_gameobject_yaml_count": 24,
+    "scene_prefab_instance_count": 26,
+    "scene_monobehaviour_count": 7,
+    "stable_anchor_count": 20,
+    "rollback_preserves_legacy_nodes": true
+  },
+  "scene_and_static_validation": {
+    "formal_scene_modified": true,
+    "integration_prefab_instances": 776,
+    "integration_renderers": 606,
+    "integration_colliders": 145,
+    "integration_lod_groups": 66,
+    "material_missing_count": 0,
+    "error_shader_count": 0,
+    "legacy_nodes_preserved": true,
+    "systems_modified": false,
+    "contracts_modified": false,
+    "registry_modified": false,
+    "save_schema_modified": false
+  },
+  "automated_route_probe": {
+    "file": "D19_S02_R01_ROUTE_LOG.json",
+    "status": "PASS_AUTOMATED_PROBE_ONLY",
+    "runtime_seconds": 2.5,
+    "boarded": true,
+    "disembarked": true,
+    "saved": true,
+    "scene_reloaded": true,
+    "stable_anchor_count_after_reload": 20,
+    "human_route_5_to_10_minutes": "NOT_RUN"
+  },
+  "test_runs": {
+    "d19_s02_editmode": {
+      "file": "D19_S02_R01_EDITMODE_RERUN_V2.xml",
+      "result": "Passed",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "all_d19_editmode": {
+      "file": "D19_ALL_EDITMODE_RERUN_V2.xml",
+      "result": "Passed",
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    "d19_s02_playmode": {
+      "file": "D19_S02_PLAYMODE_RERUN_V2.xml",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "d19_route_and_perf_automated_probe": {
+      "file": "D19_S02_R01_PLAYMODE_ROUTE_PERF_RESULTS_V2.xml",
+      "result": "Passed",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "d16_d17_core_playmode": {
+      "file": "D16_D17_CORE_PLAYMODE_RERUN_V2.xml",
+      "result": "Skipped:Ignored",
+      "passed": 63,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "visual_gate": {
+    "file": "D19_S02_R01_VISUAL_QA.json",
+    "status": "PARTIAL",
+    "player_camera_captures": 0,
+    "editor_captures": 16,
+    "fixed_shots": 14,
+    "weather_variants": 3,
+    "pink_pixels": 0
+  },
+  "performance_gate": {
+    "file": "D19_S02_R01_PERFORMANCE_1080P_RERUN_V2.json",
+    "status": "PARTIAL",
+    "real_player_1080p": "NOT_RUN",
+    "low_medium_high_60s": "NOT_RUN",
+    "gpu_timing": "NOT_AVAILABLE"
+  },
+  "computer_use": {
+    "status": "STOPPED_BY_USER_PHYSICAL_ESCAPE",
+    "human_route_and_player_capture": "NOT_RUN",
+    "note": "No further window input was sent after the safety stop."
+  },
+  "final_gate": "PARTIAL",
+  "blocking_reasons": [
+    "The mandatory human 5–10 minute route was not completed.",
+    "Real local Player 1920x1080 Low/Medium/High performance was not captured.",
+    "The reviewed editor screenshots still show unresolved broad faceted/white-plane-like visual debt in the four required areas."
+  ]
+}

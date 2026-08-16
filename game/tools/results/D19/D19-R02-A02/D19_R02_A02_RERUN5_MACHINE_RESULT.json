@@ -1,0 +1,80 @@
+{
+  "task_id": "D19-R02-A02",
+  "rerun_id": "RERUN5",
+  "status": "PARTIAL",
+  "scope": "D2-only targeted keyboard movement compatibility and real Player input recheck; historical results remain authoritative for the task gate.",
+  "unity_version": "6000.0.80f1",
+  "changes": [
+    "D2CharacterController now accepts the existing legacy WASD/arrow key state only as a compatibility movement-intent fallback when the existing D16 Input System axis is empty.",
+    "No speed, collision, grounding, boarding, save, domain-system, or input ownership rule was changed."
+  ],
+  "compile": {
+    "status": "PASS",
+    "player_build": "PASS",
+    "build_log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_BUILD_RERUN5.log",
+    "player": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_Player_RERUN5.exe",
+    "player_log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_RERUN5_INPUT.log"
+  },
+  "editmode": {
+    "status": "PASS",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN5_REAL.xml",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN5_REAL.log"
+  },
+  "playmode": {
+    "status": "PASS",
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN5_REAL.xml",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN5_REAL.log"
+  },
+  "real_player": {
+    "status": "PARTIAL",
+    "resolution_arguments": "1920x1080",
+    "window_started": true,
+    "main_menu_new_game": "PASS",
+    "initial_harbor": "PASS",
+    "d19_ground_contact": "PASS",
+    "market_b_input": "PASS",
+    "single_key_w_or_a_hold": "NOT_REPRODUCED_WITH_COMPUTER_USE_HOLD",
+    "repeated_player_input_movement": "PASS_OBSERVED",
+    "player_closed": true,
+    "input_method": "real Player window focus plus repeated keyboard input events; no inspector or direct method call",
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A02/03_rerun5_spawn.jpg",
+      "game/tools/results/D19/D19-R02-A02/04_rerun5_before_move.jpg",
+      "game/tools/results/D19/D19-R02-A02/09_rerun5_after_b.jpg",
+      "game/tools/results/D19/D19-R02-A02/10_rerun5_repeated_a.jpg",
+      "game/tools/results/D19/D19-R02-A02/11_rerun5_repeated_w.jpg"
+    ],
+    "screenshot_sha256": {
+      "04_rerun5_before_move.jpg": "C59DE39E0BF66BB3F9A36F10BC1B6B7C84D508C632E8B8B8DCA7CE4948D80335",
+      "10_rerun5_repeated_a.jpg": "C47A67AAA3AAB04F637E836CC74A80F0491CD9FCA9A6103F71DF1E9B6A66BCED",
+      "11_rerun5_repeated_w.jpg": "CD50ECDD4FA255F2B83D6FB3C0BE552CBD937167F99CB3D319104303661F4E02"
+    },
+    "runtime_exception_scan": "PASS_NO_TARGETED_EXCEPTIONS_FOUND"
+  },
+  "ownership_guard": {
+    "initial_harbor_modified": false,
+    "prefab_modified": false,
+    "systems_modified": false,
+    "save_schema_modified": false,
+    "resource_states_changed": false,
+    "stable_gameplay_ids_changed": false,
+    "d2_only_source_modified": true
+  },
+  "blockers": [
+    {
+      "id": "A02-REAL-ROUTE-SCOPE-RERUN5",
+      "severity": "P1",
+      "owner": "D19-R02-S02",
+      "reason": "This focused A02 run proves repeated player movement input can produce visible movement and that the market B action remains reachable, but it is not the required 300-second route and does not prove NPC, warehouse, tavern, boarding, return, save/reload, 14 fixed shots, or the three-tier performance gate.",
+      "next": "Use the corrected D2 input path as one dependency for the final D19-R02-S02 real-player route; do not upgrade D19-R02-S02 or D20-S02-R01 from this focused evidence alone."
+    }
+  ]
+}

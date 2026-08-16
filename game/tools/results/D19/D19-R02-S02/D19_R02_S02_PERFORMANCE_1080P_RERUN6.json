@@ -1,0 +1,73 @@
+{
+  "schema": "D19_R02_S02_PERFORMANCE_1080P_RERUN6_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "INCOMPLETE",
+  "player": {
+    "executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN6.exe",
+    "resolution_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+    "actual_backbuffer_verified": false,
+    "captured_window_screenshot_logical_size": "1099x648",
+    "unity_version": "6000.0.80f1",
+    "device": "Windows 11 x64; NVIDIA GPU queried by nvidia-smi in sampler"
+  },
+  "tiers": [
+    {
+      "requested_quality": "Low",
+      "runtime_quality_switch_verified": false,
+      "warmup_seconds": 30,
+      "sample_seconds": 60,
+      "process_alive_samples": "60/60",
+      "working_set_bytes_min": 268984320,
+      "working_set_bytes_max": 269062144,
+      "fps": null,
+      "one_percent_low": null,
+      "p95_frame_time_ms": null,
+      "cpu_frame_time_ms": null,
+      "gpu_frame_time_ms": null,
+      "gc_alloc_bytes": null,
+      "raw_result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_LOW_RERUN6.json"
+    },
+    {
+      "requested_quality": "Medium",
+      "runtime_quality_switch_verified": false,
+      "warmup_seconds": 30,
+      "sample_seconds": 60,
+      "process_alive_samples": "60/60",
+      "working_set_bytes_min": 268959744,
+      "working_set_bytes_max": 268972032,
+      "fps": null,
+      "one_percent_low": null,
+      "p95_frame_time_ms": null,
+      "cpu_frame_time_ms": null,
+      "gpu_frame_time_ms": null,
+      "gc_alloc_bytes": null,
+      "raw_result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_MEDIUM_RERUN6.json"
+    },
+    {
+      "requested_quality": "High",
+      "runtime_quality_switch_verified": false,
+      "warmup_seconds": 30,
+      "sample_seconds": 60,
+      "process_alive_samples": "60/60",
+      "working_set_bytes_min": 268976128,
+      "working_set_bytes_max": 269307904,
+      "fps": null,
+      "one_percent_low": null,
+      "p95_frame_time_ms": null,
+      "cpu_frame_time_ms": null,
+      "gpu_frame_time_ms": null,
+      "gc_alloc_bytes": null,
+      "raw_result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_HIGH_RERUN6.json"
+    }
+  ],
+  "sampler_limitations": [
+    "The existing sampler records process CPU/memory and nvidia-smi output only; it does not emit frame timing or FPS.",
+    "The three labels are requested tiers, not proof that the runtime quality setting changed between samples.",
+    "No PASS is inferred from 60/60 process survival or working-set stability."
+  ],
+  "gate": {
+    "status": "BLOCKED",
+    "missing": ["verified 1920x1080 backbuffer", "runtime Low/Medium/High switch evidence", "FPS", "1% low", "CPU/GPU frame time", "GC allocation"],
+    "owner": "D19-R02-S02 performance telemetry / D19 follow-up"
+  }
+}

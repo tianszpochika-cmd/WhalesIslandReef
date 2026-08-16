@@ -1,0 +1,90 @@
+{
+  "schema": "D19_R02_A02_INTERACTION_ROUTE_RERUN6_V1",
+  "task": "D19-R02-A02",
+  "conclusion": "PARTIAL",
+  "started_from_real_player_window": true,
+  "direct_method_invocation": false,
+  "route_source": "D19-R02-S02 RERUN4 real Player session",
+  "steps": [
+    {
+      "id": "D2-R6-01",
+      "action": "Main Menu -> New Game -> InitialHarbor",
+      "input": "mouse click New Game",
+      "status": "PASS",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/14_rerun4_spawn.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-02",
+      "action": "Board ship",
+      "input": "real Player key E",
+      "status": "PASS",
+      "feedback": "已上船：可以操控船只；按 E 下船",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/15_rerun4_e.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-03",
+      "action": "Plan departure",
+      "input": "real Player key T",
+      "status": "PASS_LOGGED",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/16_rerun4_departure.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-04",
+      "action": "Advance voyage",
+      "input": "real Player key N",
+      "status": "PASS_LOGGED",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/19_rerun4_voyage_advance.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-05",
+      "action": "Return and settle",
+      "input": "real Player key L after arrival",
+      "status": "PASS_LOGGED",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/20_rerun4_settle.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-06",
+      "action": "Disembark",
+      "input": "real Player key E",
+      "status": "PASS",
+      "feedback": "已下船：WASD 移动，靠近老水手按 E 对话",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/22_rerun4_disembark.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-07",
+      "action": "Save",
+      "input": "real Player key F5",
+      "status": "PASS_OBSERVED",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/25_rerun4_save2.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log"
+    },
+    {
+      "id": "D2-R6-08",
+      "action": "Exit Player",
+      "input": "Alt+F4",
+      "status": "PASS",
+      "process_check": "Player window absent after close"
+    },
+    {
+      "id": "D2-R6-09",
+      "action": "Continue saved game",
+      "input": "mouse click Continue",
+      "status": "PASS",
+      "screenshot": "game/tools/results/D19/D19-R02-S02/28_rerun4_continue_loaded.jpg",
+      "log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_CONTINUE.log",
+      "observed_log": "[MainMenu] 存档加载成功，进入游戏"
+    }
+  ],
+  "continuous_player_seconds": 312,
+  "not_proven_by_this_task": [
+    "D19 warehouse/tavern/NPC route",
+    "final visual fixed-camera matrix",
+    "target-device three-tier performance gate"
+  ]
+}

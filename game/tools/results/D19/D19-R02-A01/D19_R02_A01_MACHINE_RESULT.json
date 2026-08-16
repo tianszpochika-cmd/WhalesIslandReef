@@ -1,0 +1,101 @@
+{
+  "task_id": "D19-R02-A01",
+  "status": "PARTIAL",
+  "summary": "HUD overlap and legacy overlay suppression are implemented and verified. The task-level real Player route requirements are not all verified.",
+  "unity_version": "6000.0.80f1",
+  "scope": {
+    "written_directories": [
+      "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs",
+      "game/Assets/Scripts/Gameplay/UI/D19RouteHud/",
+      "game/Assets/Tests/EditMode/D19Hud/",
+      "game/Assets/Tests/PlayMode/D19Hud/"
+    ],
+    "formal_scene_modified": false,
+    "systems_modified": false,
+    "save_schema_modified": false
+  },
+  "build": {
+    "compile": {
+      "status": "PASS",
+      "log": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_UNITY_COMPILE_AFTER_HUD_LAYOUT.log"
+    },
+    "windows_player": {
+      "status": "PASS",
+      "log": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_BUILD_AFTER_HUD_LAYOUT.log",
+      "artifact": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_Player.exe",
+      "artifact_bytes": 671744
+    }
+  },
+  "automated_tests": {
+    "editmode": {
+      "status": "PASS",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "xml": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_EDITMODE_TESTS_FINAL2.xml",
+      "log": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_EDITMODE_TESTS_FINAL2.log"
+    },
+    "playmode": {
+      "status": "PASS",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "xml": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_PLAYMODE_TESTS_FINAL.xml",
+      "log": "game/tools/results/D19/D19-R02-A01/D19_R02_A01_PLAYMODE_TESTS_FINAL.log"
+    }
+  },
+  "real_player": {
+    "status": "PARTIAL",
+    "player_used": true,
+    "build_target_resolution": "1920x1080",
+    "captured_window_resolution": "2194x1234",
+    "exact_1920x1080_backbuffer_verified": false,
+    "startup": "PASS",
+    "main_menu_to_new_game": "PASS",
+    "initial_harbor_loaded": "PASS",
+    "hud_overlap_cleanup": "PASS",
+    "legacy_d9_d10_d7_panels_hidden": "PASS",
+    "single_primary_focus_panel": "PASS",
+    "movement_input": "NOT_VERIFIED",
+    "harbor_operation_input": "NOT_VERIFIED",
+    "pause_resume_input": "NOT_VERIFIED",
+    "mouse_keyboard_switch": "NOT_VERIFIED",
+    "failure_feedback_from_real_operation": "NOT_VERIFIED",
+    "route_duration_seconds": 0,
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A01/screenshots/00_before_hud_fix_player.png",
+      "game/tools/results/D19/D19-R02-A01/screenshots/01_after_hud_click.png",
+      "game/tools/results/D19/D19-R02-A01/screenshots/02_harbor_after_hud_fix.png",
+      "game/tools/results/D19/D19-R02-A01/screenshots/03_harbor_after_hud_fix.png",
+      "game/tools/results/D19/D19-R02-A01/screenshots/04_harbor_after_root_fix_before_legacy_cleanup.png",
+      "game/tools/results/D19/D19-R02-A01/screenshots/05_harbor_hud_clean_player.png"
+    ],
+    "player_log": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log"
+  },
+  "known_blockers": [
+    {
+      "id": "A01-REAL-ROUTE-INCOMPLETE",
+      "severity": "P0",
+      "reason": "This pass did not complete movement, one harbor operation, pause/resume, input switching, and failure feedback through real Player input.",
+      "owner": "D19-R02-A02 and D19-R02-A03",
+      "next": "Run those interactions in the D19 R02 route and retain full-screen evidence."
+    },
+    {
+      "id": "A01-EXACT-1080P-MISSING",
+      "severity": "P1",
+      "reason": "The captured desktop window was 2194x1234; an exact 1920x1080 Player backbuffer sample was not established in this task.",
+      "owner": "D19-R02-A04 and D19-R02-S02",
+      "next": "Capture real Player Low/Medium/High evidence at the frozen resolution."
+    },
+    {
+      "id": "A01-SCENE-VISUAL-DEBT",
+      "severity": "P1",
+      "reason": "The harbor still contains visual graybox/placeholder debt visible in the Player screenshot; A01 does not own InitialHarbor or scene assets.",
+      "owner": "D19-R02-A04",
+      "next": "Repair only in the scene/performance task without changing gameplay anchors."
+    }
+  ],
+  "resource_states_changed": false,
+  "local_development_ready_changed": false,
+  "release_approved_changed": false
+}

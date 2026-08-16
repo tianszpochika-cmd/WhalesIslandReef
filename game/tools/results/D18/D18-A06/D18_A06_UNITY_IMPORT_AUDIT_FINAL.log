@@ -1,0 +1,654 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-13T18:57:05.6622516Z"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-13T18:57:05Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+WhalesIslandReef.Editor.D18ArtPipeline.D18ArtPipelineBatch.RunKenneyAudit
+-logFile
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D18\D18-A06\D18_A06_UNITY_IMPORT_AUDIT_FINAL.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [33516]  Target information:
+
+Player connection [33516]  * "[IP] 192.168.50.214 [Port] 55505 [Flags] 2 [Guid] 3207909904 [EditorId] 3207909904 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [33516]  * "[IP] 172.16.219.2 [Port] 55505 [Flags] 2 [Guid] 3207909904 [EditorId] 3207909904 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [33516] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [33516] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-35332" after 0.4 seconds.
+Library Redirect Path: Library/
+FMOD initialized on nosound output
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 1 unused hashed content filesRefreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56332
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002581 seconds.
+- Loaded All Assemblies, in  0.394 seconds
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              44df587f905140d0af543a3e0dbffe11
+  Correlation Id:          82c433db7d4a40380a9f70c71eaaee81
+  External correlation Id: 1753551692881451790
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.00s, validation: 0.00s, handshake: 1.21s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-13T18:57:06.8794235Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T19:56:34Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T19:56:34Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 1.23s
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.363 seconds
+Domain Reload Profiling: 756ms
+	BeginReloadAssembly (113ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (167ms)
+		LoadAssemblies (110ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (165ms)
+			TypeCache.Refresh (163ms)
+				TypeCache.ScanAssembly (150ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (364ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (320ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (65ms)
+			ProcessInitializeOnLoadAttributes (154ms)
+			ProcessInitializeOnLoadMethodAttributes (62ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T19:56:34Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.04 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s295ms
+[655/839    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.26 seconds), 1 items updated, 839 evaluated
+AssetDatabase: script compilation time: 1.071816s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.720 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Start importing Assets/Art/Candidates/CharactersAnimals using Guid(cac2fede25f3ac64d967130bf1252a5d) (DefaultImporter) -> (artifact id: '77cbec97a1ae6dbdb2c60932d80efd14') in 0.0194874 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird using Guid(54adeaf51f67ad041943581a25f8813f) (DefaultImporter) -> (artifact id: '84419f721f909d790846dcc6bfb89676') in 0.0096606 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters using Guid(1bbe1e95105cc6546a4ff1c6f952c0cb) (DefaultImporter) -> (artifact id: 'a0578470a47bf4e13c6676e8fbe72de9') in 0.0091018 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen using Guid(8bbb35c39b1e6e3488975d7ef2139107) (DefaultImporter) -> (artifact id: '3ca92db3181661a2582fd6295aa11fbd') in 0.0090631 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals using Guid(7c20616892d1ff2428801ae8c5de384a) (DefaultImporter) -> (artifact id: '24f46cde01ce68a6b5ac0088ad98c7c5') in 0.0089079 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish using Guid(2f5babf72c2a0f14186bee7b2056513b) (DefaultImporter) -> (artifact id: '453e7c356d73128c74df36a756ed3dbf') in 0.006981 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models using Guid(56f5c44c1edaf654d8c978cc29ba8e42) (DefaultImporter) -> (artifact id: 'a14102469b94e89bbd6572c835e48fa1') in 0.0095602 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models using Guid(c846fb701ebdaac44a77598ff267a903) (DefaultImporter) -> (artifact id: '1c120dbae6def67bbb4c1c1d3a29d148') in 0.0080757 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source using Guid(2a88cdf71bd06094c85f8af577e302b1) (DefaultImporter) -> (artifact id: 'eed01d21a0aec081716889fc6f789ef5') in 0.0088239 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models using Guid(0baacd585742c6a479dad6354a30109e) (DefaultImporter) -> (artifact id: 'bd493d1a0d2b05783f0d51426dbd3fd5') in 0.0086618 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/Models using Guid(0cef2a449cb1b374c9c9af66058c7926) (DefaultImporter) -> (artifact id: 'c6e3ddb14b98ebb0912d31483a0f8d53') in 0.0083469 seconds
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.280 seconds
+Domain Reload Profiling: 2997ms
+	BeginReloadAssembly (266ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (38ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (137ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (21ms)
+	LoadAllAssembliesAndSetupDomain (393ms)
+		LoadAssemblies (272ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (178ms)
+			TypeCache.Refresh (118ms)
+				TypeCache.ScanAssembly (110ms)
+			BuildScriptInfoCaches (48ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (2281ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2083ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (102ms)
+			ProcessInitializeOnLoadAttributes (1887ms)
+			ProcessInitializeOnLoadMethodAttributes (76ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Start importing Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/LICENSE using Guid(ef7b9ab651393224993aeddceb9a9704) (DefaultImporter) -> (artifact id: '3304a8588bd5d8351f910ba343d20092') in 0.0210082 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/bird-preview.png using Guid(e1207d7cb20e1c04e967754da636e7e5) (TextureImporter) -> (artifact id: '67d84a6cfef2777cfeba11aa0caed2ec') in 0.0220327 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Casual.fbx using Guid(21cf194a6c145e543becea0be1e61ada) (FBXImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 14.356883%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 16.129028%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 14.823720%;
+Keyframe reduction: Ratio: 10.162601%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '9861e128012fa2cf14c19e4bd74db45e') in 0.2677938 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/ShibaInu.fbx using Guid(2214ac343baa92d499511add202a88d3) (FBXImporter)Keyframe reduction: Ratio: 13.066840%;
+Keyframe reduction: Ratio: 24.940886%;
+Keyframe reduction: Ratio: 18.879917%;
+Keyframe reduction: Ratio: 11.826719%;
+Keyframe reduction: Ratio: 3.239646%;
+Keyframe reduction: Ratio: 12.664638%;
+Keyframe reduction: Ratio: 12.765955%;
+Keyframe reduction: Ratio: 12.056739%;
+Keyframe reduction: Ratio: 2.991364%;
+Keyframe reduction: Ratio: 2.401517%;
+Keyframe reduction: Ratio: 15.343369%;
+Keyframe reduction: Ratio: 2.115937%;
+ -> (artifact id: '4da612570a607f6fd3b90a8f288bace8') in 0.3081188 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Alpaca.fbx using Guid(32edc9f8690df914c88b0a6c9bc726ab) (FBXImporter)Keyframe reduction: Ratio: 11.858156%;
+Keyframe reduction: Ratio: 19.801418%;
+Keyframe reduction: Ratio: 16.093842%;
+Keyframe reduction: Ratio: 26.950356%;
+Keyframe reduction: Ratio: 16.938814%;
+Keyframe reduction: Ratio: 12.450749%;
+Keyframe reduction: Ratio: 3.279265%;
+Keyframe reduction: Ratio: 14.685024%;
+Keyframe reduction: Ratio: 16.643026%;
+Keyframe reduction: Ratio: 16.327145%;
+Keyframe reduction: Ratio: 2.696440%;
+Keyframe reduction: Ratio: 1.916069%;
+Keyframe reduction: Ratio: 3.286287%;
+A polygon of Mesh 'Alpaca' in Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Alpaca.fbx is self-intersecting and has been discarded.
+A polygon of Mesh 'Alpaca' in Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Alpaca.fbx is self-intersecting and has been discarded.
+ -> (artifact id: '754d2fa083979ca21c97710675772665') in 0.3852516 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Horse_White.fbx using Guid(d2d4e13da46c0c449aa5eca09ce1d529) (FBXImporter)Keyframe reduction: Ratio: 9.926471%;
+Keyframe reduction: Ratio: 16.129025%;
+Keyframe reduction: Ratio: 13.324894%;
+Keyframe reduction: Ratio: 24.802197%;
+Keyframe reduction: Ratio: 16.281778%;
+Keyframe reduction: Ratio: 3.365044%;
+Keyframe reduction: Ratio: 12.947398%;
+Keyframe reduction: Ratio: 13.071892%;
+Keyframe reduction: Ratio: 14.453075%;
+Keyframe reduction: Ratio: 12.236746%;
+Keyframe reduction: Ratio: 2.769689%;
+Keyframe reduction: Ratio: 3.352101%;
+Keyframe reduction: Ratio: 2.000506%;
+ -> (artifact id: '42a7ef2f45de31eb6c5a9dbcb9b8b7e2') in 0.3163149 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Husky.fbx using Guid(84e54dfdd8bb95c42b9f0dafe02b8ae7) (FBXImporter)Keyframe reduction: Ratio: 11.567563%;
+Keyframe reduction: Ratio: 12.686871%;
+Keyframe reduction: Ratio: 24.555538%;
+Keyframe reduction: Ratio: 18.160917%;
+Keyframe reduction: Ratio: 3.316873%;
+Keyframe reduction: Ratio: 11.797980%;
+Keyframe reduction: Ratio: 2.937294%;
+Keyframe reduction: Ratio: 12.634918%;
+Keyframe reduction: Ratio: 12.698411%;
+Keyframe reduction: Ratio: 14.764227%;
+Keyframe reduction: Ratio: 2.607261%;
+Keyframe reduction: Ratio: 2.297521%;
+ -> (artifact id: '22414ba8b439778d6811c9740d07e6b1') in 0.2339725 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Fox.fbx using Guid(05f3c9be9639a944a921e1ccec69698b) (FBXImporter)Keyframe reduction: Ratio: 10.256412%;
+Keyframe reduction: Ratio: 12.723391%;
+Keyframe reduction: Ratio: 24.608250%;
+Keyframe reduction: Ratio: 6.135530%;
+Keyframe reduction: Ratio: 18.081341%;
+Keyframe reduction: Ratio: 11.907538%;
+Keyframe reduction: Ratio: 12.698410%;
+Keyframe reduction: Ratio: 12.759459%;
+Keyframe reduction: Ratio: 2.399086%;
+Keyframe reduction: Ratio: 14.806128%;
+Keyframe reduction: Ratio: 2.938565%;
+Keyframe reduction: Ratio: 2.124391%;
+ -> (artifact id: '6dfb7753f535838f882018b7f8f7d3e8') in 0.2491711 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Cow.fbx using Guid(25055f973a84faa42854700a258afd16) (FBXImporter)Keyframe reduction: Ratio: 10.004845%;
+Keyframe reduction: Ratio: 17.404343%;
+Keyframe reduction: Ratio: 14.228552%;
+Keyframe reduction: Ratio: 26.397383%;
+Keyframe reduction: Ratio: 13.156760%;
+Keyframe reduction: Ratio: 3.476860%;
+Keyframe reduction: Ratio: 2.778417%;
+Keyframe reduction: Ratio: 13.399776%;
+Keyframe reduction: Ratio: 18.018957%;
+Keyframe reduction: Ratio: 15.796403%;
+Keyframe reduction: Ratio: 1.901581%;
+Keyframe reduction: Ratio: 3.438483%;
+ -> (artifact id: '2347a7aba6c2bd2e9df1ab4d0fb642fe') in 0.2088296 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Shark.fbx using Guid(25b7fd4a0ecc9254f8bab380b484cca3) (FBXImporter)Keyframe reduction: Ratio: 9.318995%;
+ -> (artifact id: '0918169b708876575ab83fb8553b443f') in 0.030243 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 10.162604%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 14.356883%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580131%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: 'd3e255c30518be48a2134c8f5401eec3') in 0.1510523 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish1.fbx using Guid(87d3567c27018fe4b97b3fe04378d3c8) (FBXImporter)Keyframe reduction: Ratio: 7.754630%;
+ -> (artifact id: '99a494960e4347869ba90511283d6da6') in 0.0335195 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Stag.fbx using Guid(18513715e87ca254aa66eadac0bd44a6) (FBXImporter)Keyframe reduction: Ratio: 21.059830%;
+Keyframe reduction: Ratio: 13.574662%;
+Keyframe reduction: Ratio: 13.129154%;
+Keyframe reduction: Ratio: 28.959278%;
+Keyframe reduction: Ratio: 18.624527%;
+Keyframe reduction: Ratio: 17.857792%;
+Keyframe reduction: Ratio: 2.691038%;
+Keyframe reduction: Ratio: 15.133234%;
+Keyframe reduction: Ratio: 17.264963%;
+Keyframe reduction: Ratio: 3.418804%;
+Keyframe reduction: Ratio: 12.239316%;
+Keyframe reduction: Ratio: 3.554202%;
+Keyframe reduction: Ratio: 0.913403%;
+ -> (artifact id: '967ca224cf0776751eec840faef2de7f') in 0.2301147 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Wolf.fbx using Guid(68b58a02a071a324289efd6a189b3e5b) (FBXImporter)Keyframe reduction: Ratio: 12.665115%;
+Keyframe reduction: Ratio: 10.209508%;
+Keyframe reduction: Ratio: 6.035629%;
+Keyframe reduction: Ratio: 24.572636%;
+Keyframe reduction: Ratio: 18.059237%;
+Keyframe reduction: Ratio: 11.849262%;
+Keyframe reduction: Ratio: 2.399086%;
+Keyframe reduction: Ratio: 12.545786%;
+Keyframe reduction: Ratio: 12.606835%;
+Keyframe reduction: Ratio: 2.938564%;
+Keyframe reduction: Ratio: 14.774858%;
+Keyframe reduction: Ratio: 2.124391%;
+ -> (artifact id: 'f72ff2147c9adc4acd770806a8620d8f') in 0.7399245 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Horse.fbx using Guid(b87494e96a143c64b8c696d6e40a3aa2) (FBXImporter)Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 13.324895%;
+Keyframe reduction: Ratio: 24.802197%;
+Keyframe reduction: Ratio: 16.281778%;
+Keyframe reduction: Ratio: 12.236746%;
+Keyframe reduction: Ratio: 3.365044%;
+Keyframe reduction: Ratio: 12.947397%;
+Keyframe reduction: Ratio: 13.071892%;
+Keyframe reduction: Ratio: 9.926471%;
+Keyframe reduction: Ratio: 2.000506%;
+Keyframe reduction: Ratio: 2.769689%;
+Keyframe reduction: Ratio: 14.440745%;
+Keyframe reduction: Ratio: 3.352101%;
+ -> (artifact id: '0921a2843d168144bcd0d756c7c57dcf') in 0.2988208 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx using Guid(19387434e1a2a144681c96283cd5a60b) (FBXImporter)Keyframe reduction: Ratio: 3.746499%;
+A polygon of Mesh 'Whale' in Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx is self-intersecting and has been discarded.
+A polygon of Mesh 'Whale' in Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx is self-intersecting and has been discarded.
+A polygon of Mesh 'Whale' in Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx is self-intersecting and has been discarded.
+A polygon of Mesh 'Whale' in Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx is self-intersecting and has been discarded.
+ -> (artifact id: 'af99e89548bfdd7ddc353c7c7e09e13e') in 0.0411544 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Donkey.fbx using Guid(39df6a52327b93a489feba54bfa45636) (FBXImporter)Keyframe reduction: Ratio: 19.633987%;
+Keyframe reduction: Ratio: 13.472481%;
+Keyframe reduction: Ratio: 12.418301%;
+Keyframe reduction: Ratio: 26.951176%;
+Keyframe reduction: Ratio: 16.993469%;
+Keyframe reduction: Ratio: 12.400146%;
+Keyframe reduction: Ratio: 3.306802%;
+Keyframe reduction: Ratio: 2.776160%;
+Keyframe reduction: Ratio: 18.692806%;
+Keyframe reduction: Ratio: 16.262978%;
+Keyframe reduction: Ratio: 16.242525%;
+Keyframe reduction: Ratio: 2.004117%;
+Keyframe reduction: Ratio: 3.397399%;
+ -> (artifact id: '426ba72b5bd55ad6080bed2c612ab455') in 0.3351892 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Bull.fbx using Guid(b991fc841fea591489c8c7753ee3af54) (FBXImporter)Keyframe reduction: Ratio: 17.404346%;
+Keyframe reduction: Ratio: 26.397383%;
+Keyframe reduction: Ratio: 18.018957%;
+Keyframe reduction: Ratio: 3.476860%;
+Keyframe reduction: Ratio: 2.778418%;
+Keyframe reduction: Ratio: 13.399775%;
+Keyframe reduction: Ratio: 15.796404%;
+Keyframe reduction: Ratio: 13.156760%;
+Keyframe reduction: Ratio: 10.004845%;
+Keyframe reduction: Ratio: 14.228553%;
+Keyframe reduction: Ratio: 3.438484%;
+Keyframe reduction: Ratio: 1.901581%;
+ -> (artifact id: '1a6fc83f6594ca4be04b45bcb63c0a6e') in 0.2691608 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Dolphin.fbx using Guid(5a51b1adfe871814a9632eba8c733b79) (FBXImporter)Keyframe reduction: Ratio: 10.164836%;
+ -> (artifact id: '884081b623ee78431718f903df30ef8b') in 0.0358645 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Deer.fbx using Guid(0c7b7bc9e56fe034ab3827eb437cba1f) (FBXImporter)Keyframe reduction: Ratio: 11.801418%;
+Keyframe reduction: Ratio: 19.687943%;
+Keyframe reduction: Ratio: 15.902896%;
+Keyframe reduction: Ratio: 27.075512%;
+Keyframe reduction: Ratio: 12.490151%;
+Keyframe reduction: Ratio: 16.889330%;
+Keyframe reduction: Ratio: 2.668352%;
+Keyframe reduction: Ratio: 16.595745%;
+Keyframe reduction: Ratio: 14.559868%;
+Keyframe reduction: Ratio: 16.115889%;
+Keyframe reduction: Ratio: 3.251177%;
+Keyframe reduction: Ratio: 1.912151%;
+Keyframe reduction: Ratio: 3.279264%;
+ -> (artifact id: '739a2ae5d736b45f94bf3cfafcca6871') in 0.2709575 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Manta ray.fbx using Guid(5c19b2f96494cfc41b192a77340be855) (FBXImporter)Keyframe reduction: Ratio: 2.917834%;
+ -> (artifact id: 'bf80fab4e8311859df9ae15fe9552c22') in 0.0399349 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/Models/character-a.fbx using Guid(2d800d0a6b7873b42a6c68d197a0d187) (FBXImporter)Keyframe reduction: Ratio: 28.571428%;
+Keyframe reduction: Ratio: 17.316019%;
+Keyframe reduction: Ratio: 17.079891%;
+Keyframe reduction: Ratio: 16.666668%;
+Keyframe reduction: Ratio: 15.424819%;
+Keyframe reduction: Ratio: 25.591398%;
+Keyframe reduction: Ratio: 25.946970%;
+Keyframe reduction: Ratio: 16.666668%;
+Keyframe reduction: Ratio: 16.666668%;
+Keyframe reduction: Ratio: 25.303030%;
+Keyframe reduction: Ratio: 32.142857%;
+Keyframe reduction: Ratio: 32.142857%;
+Keyframe reduction: Ratio: 32.142857%;
+Keyframe reduction: Ratio: 25.641026%;
+Keyframe reduction: Ratio: 12.634407%;
+Keyframe reduction: Ratio: 25.641026%;
+Keyframe reduction: Ratio: 8.928572%;
+Keyframe reduction: Ratio: 19.826057%;
+Keyframe reduction: Ratio: 8.035715%;
+Keyframe reduction: Ratio: 19.826059%;
+Keyframe reduction: Ratio: 16.666668%;
+Keyframe reduction: Ratio: 14.516129%;
+Keyframe reduction: Ratio: 14.516129%;
+Keyframe reduction: Ratio: 12.634407%;
+Keyframe reduction: Ratio: 12.797621%;
+Keyframe reduction: Ratio: 12.797621%;
+Keyframe reduction: Ratio: 4.115853%;
+ -> (artifact id: '51b6d06dea08c2829067ca4957efd9f4') in 0.1253773 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish3.fbx using Guid(4d323fc2aca76a84bbd43867cf9b694f) (FBXImporter)Keyframe reduction: Ratio: 7.886905%;
+ -> (artifact id: '6263270453b52276b3a22c140de9ae48') in 0.0339144 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/bird.blend using Guid(cd0e49598684a734784a075e75656d36) (FBXImporter)Blender could not be found.
+Make sure that Blender is installed and the .blend file has Blender as its 'Open with' application!
+ -> (artifact id: '51e9ca37ee017369be0bb0f81d405357') in 0.0278673 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Suit.fbx using Guid(fd2d742eb9daa314387de610ac289672) (FBXImporter)Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 12.580128%;
+Keyframe reduction: Ratio: 11.259919%;
+Keyframe reduction: Ratio: 10.162601%;
+Keyframe reduction: Ratio: 2.330858%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '672509a0e58c3fe2694693766f4744db') in 0.1966548 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish2.fbx using Guid(aec971406f1ff454298e24217e900c2d) (FBXImporter)Keyframe reduction: Ratio: 7.754630%;
+ -> (artifact id: '464e0f4c65b1c218c1014bc1ea8b8ca6') in 0.0347635 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Shirt.fbx using Guid(af1ef9e429b113b4184b530ffe26fea3) (FBXImporter)Keyframe reduction: Ratio: 10.162604%;
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 12.580128%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '0da4c37d9af0bcbd23621efa411a2194') in 0.1674857 seconds
+Start importing Assets/Art/Candidates/UIMaterialsAudio/README.md using Guid(9487519ce10d40341b5eff980e757e3d) (TextScriptImporter) -> (artifact id: '6a4d2cf19b2b74f1ea69458b08455449') in 0.0115868 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt using Guid(f87034722c197ee4180840827aa2479a) (TextScriptImporter) -> (artifact id: '63f85891f319d3b9fa42e48c14b2fbd0') in 0.0118349 seconds
+Start importing Assets/Editor/D18ArtPipeline/D18ArtPipelineConfig.json using Guid(5b7fd6dc5718409a9ff82a9f074eb7e7) (TextScriptImporter) -> (artifact id: '9438de71a1b75836d26324acb23afaad') in 0.002003 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/License.txt using Guid(3cea8fb7b2b8fac468499d99cd65d157) (TextScriptImporter) -> (artifact id: 'fa17f43d65fe7db61871587db40d9753') in 0.0102 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt using Guid(9c4f8e053df0bb947adb3be705c1346c) (TextScriptImporter) -> (artifact id: '5d1d56e94c9d7027539b8cd580dd8ca0') in 0.0106032 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt using Guid(2f34c0656cb905140b14856ab1715e8c) (TextScriptImporter) -> (artifact id: '213163b40f63b52ac9a06a3de8406535') in 0.0106838 seconds
+Refreshing native plugins compatible for Editor in 1.86 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=9a77fd6f5b1f5484fb0327ede100893b): Total: 10.829 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=43 (actual=43, local cache=0, cache server=0)
+		Asset DB Process Time: managed=127 ms, native=8416 ms
+		Asset DB Callback time: managed=383 ms, native=56 ms
+		Scripting: domain reloads=1, domain reload time=720 ms, compile time=1074 ms, other=50 ms
+		Project Asset Count: scripts=1328, non-scripts=7176
+		Asset File Changes: new=43, changed=44, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.002ms
+	InvokePackagesCallback: 45.852ms
+	ApplyChangesToAssetFolders: 0.594ms
+	Scan: 428.434ms
+	OnSourceAssetsModified: 1.662ms
+	CategorizeAssetsWithTransientArtifact: 53.733ms
+	ProcessAssetsWithTransientArtifactChanges: 50.861ms
+	CategorizeAssets: 88.376ms
+	ImportOutOfDateAssets: 7548.828ms (1213.468ms without children)
+		ImportManagerImport: 5257.911ms (7.131ms without children)
+			ImportInProcess: 5250.482ms
+			UpdateCategorizedAssets: 0.298ms
+		CompileScripts: 1073.784ms
+		ReloadNativeAssets: 0.062ms
+		UnloadImportedAssets: 1.040ms
+		ReloadImportedAssets: 0.006ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.953ms
+		InitializingProgressBar: 0.017ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.585ms
+	PostProcessAllAssets: 388.676ms
+	Hotreload: 5.228ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.004ms
+	UnloadStreamsBegin: 1.314ms
+	PersistCurrentRevisions: 0.503ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 3.333ms
+	Untracked: 2215.039ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.347ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-WhalesIslandReef
+Unloading 42 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6213 unused Assets / (2.6 MB). Loaded Objects now: 6884.
+Memory consumption went from 213.4 MB to 210.8 MB.
+Total: 8.426100 ms (FindLiveObjects: 0.569200 ms CreateObjectMapping: 0.544200 ms MarkObjects: 5.543100 ms  DeleteObjects: 1.768400 ms)
+
+[D18-A02] status=PASS files=1337 meshes=0 animations=0 materials=0 issues=37 output=game/tools/results/D18/D18-A06/D18_A02_KENNEY_IMPORT_AUDIT.json;game/tools/results/D18/D18-A06/D18_A02_KENNEY_IMPORT_AUDIT.md
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+WhalesIslandReef.Editor.D18ArtPipeline.D18ArtPipelineBatch:RunKenneyAudit () (at Assets/Editor/D18ArtPipeline/D18ArtPipeline.cs:922)
+
+(Filename: Assets/Editor/D18ArtPipeline/D18ArtPipeline.cs Line: 922)
+
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

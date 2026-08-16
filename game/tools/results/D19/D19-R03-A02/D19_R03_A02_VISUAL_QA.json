@@ -1,0 +1,45 @@
+{
+  "schema": "D19_R03_A02_VISUAL_QA_V1",
+  "task": "D19-R03-A02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real Player screenshots; not Editor Camera.Render",
+  "baseline": {
+    "path": "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun2.jpg",
+    "observed": ["legacy foreground proxy props", "large flat ground fields", "block-like distant structures", "route HUD overlay"]
+  },
+  "latest": {
+    "path": "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_ship_visual_rerun14_player.jpg",
+    "latest_capture": "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun13_player.jpg",
+    "supplemental_player_build": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_Player_RERUN14.exe",
+    "supplemental_build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_PLAYER_BUILD_RERUN14.log",
+    "supplemental_editor_audit": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json",
+    "supplemental_audit_facts": {"r03_renderer_count": 311, "r03_enabled_renderer_count": 310, "r03_mesh_vertex_sum": 5996, "generated_mesh_asset_count": 297, "r03_collider_count": 0},
+    "observed": ["generated mesh assets persist into the prefab and Player", "facades, roofs, doors, windows, market entry, stalls, dock planks and props are visible", "stable ph_ship_fishing remains and has a separate presentation prefab with hull, deck, mast, sail and helm modules", "legacy foreground proxy props remain removed from view", "no pink material or large white proxy plane observed", "local flat ground and close roof overlap remain", "visual composition is still rough and not a final 14-camera/weather review", "route HUD remains compact"]
+  },
+  "checks": {
+    "player_screenshot_count": 5,
+    "fixed_camera_count": 0,
+    "weather_variant_count": 0,
+    "pink_material_observed": false,
+    "large_legacy_proxy_observed_in_latest": false,
+    "persistent_generated_meshes_observed_in_latest": true,
+    "flat_or_blocky_visual_debt_observed_in_latest": true,
+    "collision_or_anchor_regression_proven": false,
+    "human_visual_review_complete": false,
+    "latest_player_build_checked": true
+  },
+  "resource_categories_seen": {
+    "terrain": "project-owned R03 procedural mesh/material layer",
+    "road": "project-owned R03 mesh/material layer",
+    "vegetation": "project-owned palms/shrubs plus 4 intake-eligible Kenney Nature Kit models",
+    "port_structures": "project-owned R03 procedural house/dock/prop meshes",
+    "water": "project-owned R03 shoreline/water/foam layer"
+  },
+  "not_yet_passed": [
+    "14/14 fixed Player cameras",
+    "3/3 weather variants",
+    "final visual debt clearance",
+    "full route and interaction feedback",
+    "1080p Low/Medium/High gate"
+  ]
+}

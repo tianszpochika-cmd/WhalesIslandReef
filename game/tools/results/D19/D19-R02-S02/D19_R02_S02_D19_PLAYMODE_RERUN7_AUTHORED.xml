@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Skipped:Ignored" total="9" passed="8" failed="0" inconclusive="0" skipped="1" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:11Z" duration="11.3920172">
+  <test-suite type="TestSuite" id="1108" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="70" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:11Z" duration="11.392017" total="9" passed="8" failed="0" inconclusive="0" skipped="1" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <reason>
+      <message><![CDATA[One or more child tests were ignored]]></message>
+    </reason>
+    <test-suite type="Assembly" id="1085" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="69" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:11Z" duration="11.385487" total="9" passed="8" failed="0" inconclusive="0" skipped="1" asserts="0">
+      <properties>
+        <property name="_PID" value="28696" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <reason>
+        <message><![CDATA[One or more child tests were ignored]]></message>
+      </reason>
+      <test-suite type="TestSuite" id="1093" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="61" result="Passed" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:01Z" duration="1.972444" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1094" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="61" result="Passed" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:01Z" duration="1.971568" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1095" name="D19Hud" fullname="Whalebone.Tests.D19Hud" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:01Z" duration="1.971011" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1014" name="D19R02A01HudPlayModeTests" fullname="Whalebone.Tests.D19Hud.D19R02A01HudPlayModeTests" classname="Whalebone.Tests.D19Hud.D19R02A01HudPlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:01Z" duration="1.970118" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1015" name="InitialHarborKeepsOnePrimaryHudAndSuppressesLegacyPages" fullname="Whalebone.Tests.D19Hud.D19R02A01HudPlayModeTests.InitialHarborKeepsOnePrimaryHudAndSuppressesLegacyPages" methodname="InitialHarborKeepsOnePrimaryHudAndSuppressesLegacyPages" classname="Whalebone.Tests.D19Hud.D19R02A01HudPlayModeTests" runstate="Runnable" seed="1850685143" result="Passed" start-time="2026-08-15 14:01:00Z" end-time="2026-08-15 14:01:01Z" duration="1.961872" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+      <test-suite type="TestSuite" id="1086" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="8" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:01Z" end-time="2026-08-15 14:01:11Z" duration="9.411730" total="8" passed="7" failed="0" inconclusive="0" skipped="1" asserts="0">
+        <properties />
+        <reason>
+          <message><![CDATA[One or more child tests were ignored]]></message>
+        </reason>
+        <test-suite type="TestSuite" id="1087" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="8" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:01Z" end-time="2026-08-15 14:01:11Z" duration="9.399547" total="8" passed="7" failed="0" inconclusive="0" skipped="1" asserts="0">
+          <properties />
+          <reason>
+            <message><![CDATA[One or more child tests were ignored]]></message>
+          </reason>
+          <test-suite type="TestSuite" id="1092" name="D19A01" fullname="WhalesIslandReef.Tests.D19A01" runstate="Runnable" testcasecount="1" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:02Z" duration="0.070856" total="1" passed="0" failed="0" inconclusive="0" skipped="1" asserts="0">
+            <properties />
+            <reason>
+              <message><![CDATA[One or more child tests were ignored]]></message>
+            </reason>
+            <test-suite type="TestFixture" id="1012" name="D19A01TerrainPlayModeTests" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainPlayModeTests" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainPlayModeTests" runstate="Runnable" testcasecount="1" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:02Z" duration="0.054216" total="1" passed="0" failed="0" inconclusive="0" skipped="1" asserts="0">
+              <properties />
+              <reason>
+                <message><![CDATA[One or more child tests were ignored]]></message>
+              </reason>
+              <test-case id="1013" name="WorkSceneProbeReportsGroundAndNavMesh" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainPlayModeTests.WorkSceneProbeReportsGroundAndNavMesh" methodname="WorkSceneProbeReportsGroundAndNavMesh" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainPlayModeTests" runstate="Runnable" seed="740946489" result="Skipped" label="Ignored" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:02Z" duration="0.037562" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <reason>
+                  <message><![CDATA[Open D19_Terrain_Work through D19A01TerrainBuilder.RunPlayModeSmoke before running this PlayMode test.]]></message>
+                </reason>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1091" name="D19Interaction" fullname="WhalesIslandReef.Tests.D19Interaction" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:03Z" duration="1.002500" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1009" name="D19R02A02InteractionPlayModeTests" fullname="WhalesIslandReef.Tests.D19Interaction.D19R02A02InteractionPlayModeTests" classname="WhalesIslandReef.Tests.D19Interaction.D19R02A02InteractionPlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:03Z" duration="0.990329" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1011" name="MissingWalkableSurfaceReturnsActionableFailure" fullname="WhalesIslandReef.Tests.D19Interaction.D19R02A02InteractionPlayModeTests.MissingWalkableSurfaceReturnsActionableFailure" methodname="MissingWalkableSurfaceReturnsActionableFailure" classname="WhalesIslandReef.Tests.D19Interaction.D19R02A02InteractionPlayModeTests" runstate="Runnable" seed="1959696219" result="Passed" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:02Z" duration="0.411466" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Control] 下船被阻止：附近没有可行走的沙滩、码头或跳板
+]]></output>
+              </test-case>
+              <test-case id="1010" name="TenPublicBoardingCyclesPreserveModeAndFeedback" fullname="WhalesIslandReef.Tests.D19Interaction.D19R02A02InteractionPlayModeTests.TenPublicBoardingCyclesPreserveModeAndFeedback" methodname="TenPublicBoardingCyclesPreserveModeAndFeedback" classname="WhalesIslandReef.Tests.D19Interaction.D19R02A02InteractionPlayModeTests" runstate="Runnable" seed="1963601775" result="Passed" start-time="2026-08-15 14:01:02Z" end-time="2026-08-15 14:01:03Z" duration="0.561967" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D7/Input] 状态=船舶，模态=无
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.58
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.58
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.58
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.58
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.58
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.58
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D2/Physics] 玩家已落地：surface=D3_Port_santa_margarita, surfaceY=0.95, playerY=1.10
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1090" name="D19Route" fullname="WhalesIslandReef.Tests.D19Route" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:03Z" duration="0.884883" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1006" name="D19R02A03RoutePlayModeTests" fullname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" classname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:03Z" duration="0.868018" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1008" name="DepartureAdvanceAndReturnUseSystemOwnedState" fullname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests.DepartureAdvanceAndReturnUseSystemOwnedState" methodname="DepartureAdvanceAndReturnUseSystemOwnedState" classname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" runstate="Runnable" seed="1630863613" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:03Z" duration="0.453136" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D3/Save] 贸易、库存和航程快照已保存
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D3] 已规划航线：圣玛格丽特港 → 绿湾村，按 N 推进航程。
+[D3/Save] 贸易、库存和航程快照已保存
+[D3] 海上盘查：巡逻船要求缴纳临时通行费。 金币变化：-12
+[D3/Save] 贸易、库存和航程快照已保存
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D3] 平静海面：海面平缓，船员得以休整。
+[D3] 已抵达目的地，按 L 靠港并结算。
+[D3/Save] 贸易、库存和航程快照已保存
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.61, playerY=0.76
+[D3] 已靠港并完成结算：绿湾村
+[D3/Save] 贸易、库存和航程快照已保存
+]]></output>
+              </test-case>
+              <test-case id="1007" name="TradeCloseAndSavePublishActionableRouteEvidence" fullname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests.TradeCloseAndSavePublishActionableRouteEvidence" methodname="TradeCloseAndSavePublishActionableRouteEvidence" classname="WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests" runstate="Runnable" seed="90441679" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:03Z" duration="0.397918" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D3/Save] 贸易、库存和航程快照已保存
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1088" name="D19S02" fullname="WhalesIslandReef.Tests.D19S02" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:05Z" duration="1.377938" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <output><![CDATA[[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+]]></output>
+            <test-suite type="TestFixture" id="1001" name="D19S02ScenePlayModeTests" fullname="WhalesIslandReef.Tests.D19S02.D19S02ScenePlayModeTests" classname="WhalesIslandReef.Tests.D19S02.D19S02ScenePlayModeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:05Z" duration="1.368856" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <output><![CDATA[[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+]]></output>
+              <test-case id="1002" name="FormalSceneLoadsStableRouteAndNavigationAnchors" fullname="WhalesIslandReef.Tests.D19S02.D19S02ScenePlayModeTests.FormalSceneLoadsStableRouteAndNavigationAnchors" methodname="FormalSceneLoadsStableRouteAndNavigationAnchors" classname="WhalesIslandReef.Tests.D19S02.D19S02ScenePlayModeTests" runstate="Runnable" seed="372455095" result="Passed" start-time="2026-08-15 14:01:03Z" end-time="2026-08-15 14:01:05Z" duration="1.355362" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1089" name="D19S02R01" fullname="WhalesIslandReef.Tests.D19S02R01" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-15 14:01:05Z" end-time="2026-08-15 14:01:11Z" duration="6.046278" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1003" name="D19S02R01RoutePlayModeTests" fullname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" classname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-08-15 14:01:05Z" end-time="2026-08-15 14:01:11Z" duration="6.029722" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1005" name="R01PlayMode1080pFrameAndMemorySample" fullname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests.R01PlayMode1080pFrameAndMemorySample" methodname="R01PlayMode1080pFrameAndMemorySample" classname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" runstate="Runnable" seed="1120210067" result="Passed" start-time="2026-08-15 14:01:05Z" end-time="2026-08-15 14:01:07Z" duration="2.581154" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+]]></output>
+              </test-case>
+              <test-case id="1004" name="R01RouteMovesBoardsSavesAndReloads" fullname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests.R01RouteMovesBoardsSavesAndReloads" methodname="R01RouteMovesBoardsSavesAndReloads" classname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" runstate="Runnable" seed="98299894" result="Passed" start-time="2026-08-15 14:01:07Z" end-time="2026-08-15 14:01:11Z" duration="3.431359" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D7/Tutorial] 进入步骤：对话
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D2/Physics] 已阻止角色攀爬不可行走碰撞体：恢复碰撞前高度
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+[D2/Control] 已进入船只控制
+[D7/Input] 状态=船舶，模态=无
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.59, playerY=0.73
+[D7/Ship] 控制权切换：Character，甲板状态=False
+[D2/Control] 已退出船只控制
+[D7/Input] 状态=人物，模态=无
+[D2/Save] 运行时快照已保存
+[D3/Save] 贸易、库存和航程快照已保存
+[D5/Save] 世界、特质、预设、性能和 Steam 状态已保存
+[D7/Save] 全量运行时状态已请求保存：D5 入口已覆盖 D2-D5
+[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D3/Save] 贸易、库存和航程快照已保存
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

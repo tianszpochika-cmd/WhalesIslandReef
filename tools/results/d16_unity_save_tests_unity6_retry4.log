@@ -1,0 +1,1100 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-11T12:41:16.3368755Z"
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-11T12:41:16Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-nographics
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+Whalebone.EditorTools.D1Acceptance.RunD16SaveTests
+-logFile
+C:\Users\Administrator\Desktop\game\first01\tools\results\d16_unity_save_tests_unity6_retry4.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [34856]  Target information:
+
+Player connection [34856]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 424821017 [EditorId] 424821017 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34856]  * "[IP] 172.16.219.2 [Port] 55504 [Flags] 2 [Guid] 424821017 [EditorId] 424821017 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34856] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34856] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 5048, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Error: Unexpected message Type: ApiErrorResponse, expected: HandshakeResponse
+[Package Manager] Connected to IPC stream "Upm-9688" after 0.2 seconds.
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56688
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001822 seconds.
+- Loaded All Assemblies, in  0.273 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.270 seconds
+Domain Reload Profiling: 542ms
+	BeginReloadAssembly (68ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (43ms)
+	LoadAllAssembliesAndSetupDomain (125ms)
+		LoadAssemblies (64ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (123ms)
+			TypeCache.Refresh (121ms)
+				TypeCache.ScanAssembly (112ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (270ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (235ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (18ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (43ms)
+			ProcessInitializeOnLoadAttributes (111ms)
+			ProcessInitializeOnLoadMethodAttributes (58ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: Timed-out after 30.00s, waiting for HandshakeResponse
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Administrator"
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-Administrator-6000.0.80 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 30944)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-6000.0.80" at "2026-08-11T12:41:46.6106763Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 30944, path: "C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              f383880689bf4c4ca9b683b56d71c56b
+  Correlation Id:          b597e0f2710556a4014202090ed2c157
+  External correlation Id: 790047588950284840
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator-6000.0.80" (connect: 0.24s, validation: 0.17s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-6000.0.80-notifications" at "2026-08-11T12:41:46.793026Z"
+[Licensing::Module] Connected to LicensingClient (PId: 30944, launch time: 0.00, total connection time: 0.43s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-21T04:30:30Z
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 30.48s
+[Licensing::Module] Licensing is initialized (took 29.36s).
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 4s133ms
+[622/798    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[782/798    2s] Csc Library/Bee/artifacts/1900b0aE.dag/Whalebone.Systems.dll (+2 others)
+[783/798    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Save.Tests.dll (+2 others)
+[786/798    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Whalebone.Systems.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Whalebone.Systems.dll, with 132 defines and 255 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[787/798    0s] CopyFiles Library/ScriptAssemblies/Whalebone.Systems.pdb
+[788/798    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Save.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Save.Tests.dll, with 130 defines and 258 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[789/798    0s] CopyFiles Library/ScriptAssemblies/Save.Tests.pdb
+[790/798    0s] CopyFiles Library/ScriptAssemblies/Whalebone.Systems.dll
+[791/798    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 130 defines and 314 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[792/798    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 132 defines and 299 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[797/798    0s] CopyFiles Library/ScriptAssemblies/Save.Tests.dll
+*** Tundra build success (4.11 seconds), 11 items updated, 798 evaluated
+AssetDatabase: script compilation time: 4.495738s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.019 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.323 seconds
+Domain Reload Profiling: 4340ms
+	BeginReloadAssembly (236ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (132ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (28ms)
+	LoadAllAssembliesAndSetupDomain (1710ms)
+		LoadAssemblies (1602ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (168ms)
+			TypeCache.Refresh (109ms)
+				TypeCache.ScanAssembly (101ms)
+			BuildScriptInfoCaches (48ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (2323ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2145ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (106ms)
+			ProcessInitializeOnLoadAttributes (1964ms)
+			ProcessInitializeOnLoadMethodAttributes (57ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_watertight_bulkhead.obj using Guid(402b050a9b7d2c14cb90ee99cfd538d9) (FBXImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '584d42c69037f54f7f36799c1d774e3e') in 0.0901753 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_rescue_rope_and_float.obj using Guid(6027f607d5d821f439de965822022872) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '01212084b955b473d18d331f71473c0c') in 0.0380519 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_sugar_route_schooner.obj using Guid(609e06999fbe3364181050bdfeb4a81e) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c4dfb96ffd60d247aa17f2edc3f3f1b6') in 0.0167431 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_spare_tiller_assembly.obj using Guid(70c4586231f0aae489ac69ed6673cc64) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7cb1f6913b22cb9644699aaf5487dfe7') in 0.0128604 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_bilge_pump_access.obj using Guid(b0411079361e5ed4ea0fd8a365f51523) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7fef02a6063d23d44ce83af6b40cc473') in 0.0157214 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_shallow_draft_conversion.obj using Guid(d0a8628651296af4c94681b64383ef86) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f472021a74ec3ee995ea61fa69f05a2d') in 0.013498 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_rigging_locker.obj using Guid(e0347f4dce9c62242a034df6497ff90b) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9c942ad982ca3fdb14c1efeec8f21517') in 0.008431 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_reinforced_planking.obj using Guid(41ccc90ed3191234c808c51d9933f436) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '4098ab17d6331359b02e99457d4b8f3a') in 0.0102549 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_crew_rest_area.obj using Guid(81418490487bf9b42a8834f2bb632828) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '920605ffa24dcd01c6f23fe07bde7816') in 0.0086405 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_fire_bulkhead.obj using Guid(9172b92a56371b54bbb9574d18d3e9ee) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'fa421c36f8c07d691fa697b0474b94a8') in 0.0109551 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_anchor_chain_guide.obj using Guid(a15f01543d5c58b4ebd342f71bcb7832) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b9c78cc8aee9a721c0c2f18431c0569f') in 0.0104713 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_breast_line_point.obj using Guid(b15870757b922df41a03c98bc0ffd04d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '4f32a2ffa069dc6c0f3646003079752a') in 0.0085665 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_signal_gun.obj using Guid(b158e2988da2e274b9dfc5bf58382206) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'aba9784accd73601560214bbf6dce287') in 0.0097618 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_weapon_and_firearm_rack.obj using Guid(b14a625d9e02fbb4eb94456941e1f315) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c08d49681199e02ee3b1e596a5c0dbbf') in 0.0087542 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_stern_bollard.obj using Guid(d16445b81eabb3c4bb2947f362d805fb) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '5de83ecbae12fdd380e63213fd0eb91c') in 0.0099652 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_dry_goods_shelf.obj using Guid(e14f62a907123154dac829057d69efd5) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b108823f600570b6773f9ff901f93571') in 0.008532 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_fire_sand_box.obj using Guid(22578fdca046235478af6b1e712e5427) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '4825655483176dca67106b4eb5f37043') in 0.0109266 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_sounding_lead.obj using Guid(4221e138bba35254f9546d22c2ef6406) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '238b25de083f7c3f6d1815f70507bffb') in 0.0111438 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_water_saving_kitchen.obj using Guid(423d7f849301db3498bf08755806b6a7) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f703ea136700fd5855c739722a3e03cf') in 0.0086225 seconds
+Start importing Assets/Art/Placeholder/Models/Ships/ph_ship_fishing.fbx using Guid(623a9b562caee3b47bcde61efef24786) (FBXImporter) -> (artifact id: '068636fce2c7d55dad209afad758ca24') in 0.0161159 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_cargo_winch.obj using Guid(820bc3aafb2fed949864b1092e7ef2c2) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '13681b5022d6e370ae372a72343aa468') in 0.0104655 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_windward_pinnace.obj using Guid(825efb715edb20b4984128da7bcb0a39) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '39964b6c9532bdb1add17c445fe97e54') in 0.008746 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_crew_storage_lockers.obj using Guid(a2d5024fb22d846498310f7ae46b3747) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '34eef183bb86de321612035794b8dad4') in 0.0112687 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_light_canvas.obj using Guid(c23df239e591fec4f9244d18d716aed3) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7882e4f7b9f9c5d1a4c7f2f92227ca44') in 0.0117512 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_quick_release_rigging.obj using Guid(c27e6a02b508ca14e97f7f4344daaa66) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b912ccf2a5fabeb4732278cfa77bebd8') in 0.0121777 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_fire_bucket_rack.obj using Guid(e2b1368a4b2225647bea2da5488fd38a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '1ff9fa99d2d81c9903aac0ea6e8e8819') in 0.0094673 seconds
+Start importing Assets/Art/Placeholder/Models/Crew/ph_crew_male.fbx using Guid(f2e283a083827bb4887e2c86d2470032) (FBXImporter)Keyframe reduction: Ratio: 100.000000%;
+Keyframe reduction: Ratio: 9.056955%;
+Keyframe reduction: Ratio: 26.285715%;
+Keyframe reduction: Ratio: 14.031746%;
+Keyframe reduction: Ratio: 27.926588%;
+Keyframe reduction: Ratio: 17.746031%;
+Keyframe reduction: Ratio: 27.926588%;
+Keyframe reduction: Ratio: 6.861242%;
+Keyframe reduction: Ratio: 1.844168%;
+ -> (artifact id: 'fad31dac6c8f421b8a9b4a1b197a94dc') in 0.1691009 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_isolation_partition.obj using Guid(f2ef8fdcfd4d9e14eb9ccc4dcf820a45) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '4cfeadc7adba87365edccc30534f5aeb') in 0.01064 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_carpenter_workbench.obj using Guid(139920dfeea52954ea0b024f9e153fde) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f539a0a91c240f17e176f9ca5b9e5341') in 0.0135671 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_weapon_rack.obj using Guid(53c9190399b933045b090a0c59eac50c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '065c118e1bca4ad6f924c18b3f9b26ca') in 0.0135541 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_freshwater_barrel_rack.obj using Guid(63d52819689f5674ebae437bff305e5d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '6d619e21913e73266a492a4d01dabadd') in 0.0138897 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_auxiliary_staysail.obj using Guid(6356fcdf0371283458b976918931cd08) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd61a248815e724ce1278671b0196b651') in 0.0137804 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_reinforced_rudder.obj using Guid(736e77b70499d8f4da292138afe5f387) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd17e6e7b44d432c79770e989c7cf5c63') in 0.012031 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_sail_trim.obj using Guid(73dfc475de189174686c831a2c3b497f) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '2ecc6d3d850f18d17753cbcf73afa444') in 0.012095 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_free_cove_catboat.obj using Guid(9314358629d2e8a4dae2466f03f82f14) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'e9648ccc01078998e1c0e4caa39a46a8') in 0.015214 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_council_table.obj using Guid(9308c3ac4f578404b95a2b6e8a9b3bb6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7cb716a4651e76ba8e5e52db86a9ae84') in 0.0133621 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_braced_gun_carriage.obj using Guid(c32671609ed8c104cae9c5d01de090ca) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9d9dbf53845657cbb336d2f3e72c2bf4') in 0.0166631 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_waste_treatment_point.obj using Guid(f3e6da67c99044e48bdd418f29205e98) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '3731cdbfe4421f099fc168a3d76568b4') in 0.018087 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_gunport.obj using Guid(0406ce1be9d105b4b9b78fbcfa639ed4) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '119c6ce4f21d39d3a7b65ba71e07ba30') in 0.0169584 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_fore_sail.obj using Guid(24a47f73917c5af40b2c878d4f1304b6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '09f9c00f824cfb5539ea8e1541a6245e') in 0.0246038 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_raised_freeboard.obj using Guid(347d88e3b3a9f124a9c9c5fd3da2e993) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'cc1494718423b9bb44de1d8474bac4f3') in 0.0212889 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_improved_galley_stove.obj using Guid(349dfca7b9713654f8590e06ae9f7738) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'afabce5d3c779f21f7f45b2e5ff3bae0') in 0.0205673 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_gangplank.obj using Guid(347ef591e2696804e91545ac879f301d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '72a4828472d3780f8d51d98ace544f81') in 0.0128909 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_confinement_isolation_cabin.obj using Guid(7463f4f26ddeb8f40a46df41b22a150d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '212e4a832e449608b3841b152ee49817') in 0.0135704 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_fire_bucket_station.obj using Guid(74e582888a9f2fb41b77f828400d4589) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '93d4cbf1d35739196af3c140807b98ef') in 0.0129827 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_cook_workbench.obj using Guid(84ae71e47d6f6ad4ca170c0f225437c6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '55b7015549f3d4ca7ae2be1416030a7c') in 0.0161005 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_rudder.obj using Guid(949c1b7a5d8e7ae44abdd5f5dca04631) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '2bc5c16b81e0d682c9c5d5a9dca1cb78') in 0.0130035 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_reef_runner_sloop.obj using Guid(942d3ea31c4e79a408cd07da6bdeff86) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '69a61c5f3327009e9af8bccee2e56966') in 0.0121224 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_carpenter_workbench.obj using Guid(b467948f30b44e748910da038a3837a4) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd0653ec013f8f74ae59bf6e31aef90e2') in 0.0143649 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_enlarged_main_sail.obj using Guid(e4ae42ba75ba7584684d3ae6a06e682c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '498716f975b7c6bf8090435d6c3d5dfa') in 0.0146308 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_dry_cargo_hold.obj using Guid(f45e8a051de1440409fd215f46944d7c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '234d43d276d7214ea40a1fbb51d16784') in 0.0161028 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_main_sail.obj using Guid(25d1f4bc1a79d274d9332dab1a593a7d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '644a2aec02b576960d07ed87419737e9') in 0.0151318 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_grape_shot_rack.obj using Guid(35e3d6bbebf4eea4d8169b36cdb0308e) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '38a1ccb758e0aef5164dbd81114e409b') in 0.0098188 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_main_mast.obj using Guid(3586a71767fc0b44c92a5b71893d8973) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c68f224a8562c7cc6c865529b43e728c') in 0.0181657 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_spare_timber_rack.obj using Guid(351b8afe06eb8a546aed01d5a2cc69ca) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f7e587885c861beb9178ebd16422295b') in 0.0108678 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_night_signal_lamp.obj using Guid(e5e859eab863bf247ad665673fe6e502) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '5c6caa0491ea61607c785be0a1d5c6cf') in 0.0115729 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_hull_paint_layer.obj using Guid(1608ac13c7447d142ab27224acff2297) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '6b61657f0451adb16cd06962c313a008') in 0.0140281 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_medical_berth.obj using Guid(26ef8b4d707edb1449c38ae52e04265c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '5956ee60ba54ccd7be312b19232e2e80') in 0.0103554 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_sable_fin_skiff.obj using Guid(3654168ad2d17bc4d9fced43174e39e6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '4943cf20b3407fa8ab8080d9ba3963dd') in 0.0149058 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_cargo_hatch.obj using Guid(3674ec1096cd8024d88c903361e32e78) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '150e7e2ebe0b86dfae1735f2feb6f11f') in 0.0140531 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_longwake_barque.obj using Guid(86d14f5460840274c85e442d41dc356e) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '91f2fe1c72496988f38825cddb39ff5d') in 0.0154268 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_chain_shot_rack.obj using Guid(b6c40cc5a31bd1247ae2ff96c999641b) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'efa8af817137cd4da74bc4bf8ee2c447') in 0.01631 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_gunner_workbench.obj using Guid(b65f7c0f3dff96a4891ac0b4e601a026) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'e12bc0ff3513fac6283ebb7d40a46a51') in 0.0150779 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_dinghy_davit.obj using Guid(c6864196f2879c340b155f89a4a26bf6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '10314fd504ca8832300534c90f391729') in 0.0165277 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_dry_medicine_cabinet.obj using Guid(f69bcf9d35edbf14a9fea891c565d63a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b5a2b641d674abaaf2b84070d916eb92') in 0.011921 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_rapid_patch_layer.obj using Guid(07b1dd7bb2734cc459a19f76c09ef39a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'eb18c19d5d9af600e060bd4ea0e138f6') in 0.011962 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_rapid_loading_rack.obj using Guid(37b87b92d38934245b291f03e381b0da) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'cce0e120702a9249c7eb4fffd3f7ac33') in 0.013011 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_quiet_rigging.obj using Guid(47e5418a5ed4d90448b0a473dbfee33a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'e30227780a51c44ece97c0bcd819e7e9') in 0.0122819 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_compass_stand.obj using Guid(4796992d15b90e94893e805cc8cc0d4c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '3e32a625d014c521f0f76db8133f29d9') in 0.0097761 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_sounding_gear_rack.obj using Guid(47dcc211071d1b445b56076e7918e62c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f86204b2a62d01fd2f8f83acfd13fd13') in 0.0111461 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_ventilation_hatch.obj using Guid(774e8ff291f198c498bf6346b0462354) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd980cc67eb4e31771c8065fa52dfee5e') in 0.0108511 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_extra_crew_berths.obj using Guid(d7a4c53aaaa1e29458070416e1b762a4) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'fd71da7ca969d384513f1871ff9e1963') in 0.0143171 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_navigation_compass.obj using Guid(f771b514b1d8bfa4f9c45bde112884eb) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'eb6d1fcc9e416e59b1537ada4319f01d') in 0.0110773 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_cocoa_brigantine.obj using Guid(f7a600321b6548f4aa1294a31797a876) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'dc47597686a18b1a43731e7816f57a9a') in 0.0112437 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_shot_locker.obj using Guid(28f09d47d5c4a464a809602f8bab4819) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'de062a79d1b40de18251ad30b93dcfcb') in 0.0116017 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_saltwind_schooner.obj using Guid(48f5b353de47bfe42a5092aad98aa652) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '42c176aedfa1e480b4886c2d6a36080b') in 0.009206 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_flag_signal_set.obj using Guid(5898fa92876e65d469de5698d64ae67a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '28ed126f7052ba546cc471ee821737a3') in 0.0117132 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_valuables_locker.obj using Guid(6814d7aa6e0cdfc498636e934e2eae8c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'faee8e4c52bca059adb917b5fe5e4bb5') in 0.0126724 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_raincrown_schooner.obj using Guid(68a6249e2c756134398da540137b2131) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'fe71fa285850e81aec03f65e9f5a4592') in 0.0090924 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_boat_hook_rack.obj using Guid(a8b0b98f0bb8c4c4e8ff9b10791b87da) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c802891189b2eb8c4f63439fa0381ad1') in 0.0106389 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_spare_mast_kit.obj using Guid(a8c63cb97d148964e99d915ad9cfab0d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'a10f1ce7a478885c1d721c5f1fe4f2db') in 0.0114153 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_expanded_cargo_hold.obj using Guid(b8b449be93f067744a7b3dd97cb1c3d9) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '82d2624dda21272d518c214095c1fabf') in 0.0101299 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_blackreef_brig.obj using Guid(c8b3801ab9361d845accee57c38a58e7) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9b853db2ebf0eb77ea1f131f761342e6') in 0.0116439 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_stability_sponson.obj using Guid(d83deacfc9f917249b63a466b4737728) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '98af810d9dc2343a8a86b1a2821dc341') in 0.0103318 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_improved_fore_sail.obj using Guid(e8b9845b3e26cb54184c3afaaa14ba5c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '29be1bca7203affbffa35748f9e87f6c') in 0.0107006 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_log_line.obj using Guid(f85c9e4a54a459947a006fcf95a754f7) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '15d6ca64f7b52621d75e0e6211c055d0') in 0.0121664 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_tiller.obj using Guid(39f7852020da23c45a196bec27aeea57) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '455a7f606fa5318bc4c75e452ef5568f') in 0.01003 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_tool_rack.obj using Guid(490147870d3c72943b13c5a4702d755d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '96965d3b99cd8c265e66f062d195debe') in 0.0096229 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_starboard_anchor.obj using Guid(69748d78cda5cb44b9e8627f40ffc5e6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f2e42c912540363614d49e5e4a7dd417') in 0.0100954 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_locked_valuables_case.obj using Guid(999e213b584b9c641a66b80921e67d9f) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c9ecec95511e024e5d3473db424f839f') in 0.0085 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_boarding_net.obj using Guid(b939b3ccd6df1b94f9733c8b7c4ac572) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9840df255fc7d465b03b27effca996a6') in 0.0097807 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_deck_catch_area.obj using Guid(d91c1c7504920ab45826d92977ea1934) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '37095b1544ff36b6ade596759a065a60') in 0.0086144 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_disguise_flag_mount.obj using Guid(d93cbd73aa0d9f14abbfbaaa6ed4e2f7) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '32d1c0135c3918b0ff0447ff66f8d93e') in 0.0101013 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_spare_rope_rack.obj using Guid(e9f06a2fd4271f7468ecaf258452a8ee) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '960f5819b7d043e232cbc59cd4246e83') in 0.0094133 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_privateer_brigantine.obj using Guid(e9754a167ab07574687b14872b6e0586) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '43a6f2c131488d6619bf2e34efc750c0') in 0.0092146 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_sailor_berth.obj using Guid(0a65df58683d98f4692303dfe37ceec5) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '8bef432c001927bcbb6d1f619c30d63b') in 0.0101923 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_lookout_platform.obj using Guid(1ac58938a24bacf42906921aa4745dce) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c0e3a770d673d8338c2fa46497be3962') in 0.0085427 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_signal_flag_locker.obj using Guid(2a2253f5b3e13554aa7cff2043b607c3) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '311c922f771c0e3c56b7b2dce3dd03bf') in 0.0095366 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_spare_anchor_chain_set.obj using Guid(2a3866bea5b7a4c4aab562619e65b1dd) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '18ab8c905cb46671bede84b0a0336b33') in 0.0083315 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_dry_powder_locker.obj using Guid(5a296251a4e28554999e5b5689f74482) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b20d3107adbfab0ade0305d774ee8e3c') in 0.0094091 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_cargo_davit.obj using Guid(5ab9811b37426074b905877677a232e9) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'efd3c9bc8991b5c30403a837cdd60085') in 0.0082233 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_saint_marys_ketch.obj using Guid(6a9484e11f1054a41a579fa9941a1927) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7e50953b06a6ed1b03218e11df49c34c') in 0.0100076 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_light_gun_mount.obj using Guid(8a6726f1974c240429db48dede5bcbfd) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9cdf2400a9ff19465212d6ab092eddd5') in 0.0096837 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_boarding_net.obj using Guid(8ac9986b2beb44f4ea7853c5c949bc8f) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '4a8697cea8c108c4c5ded6449dbdbc47') in 0.0098404 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_harbor_brig.obj using Guid(8a4f201d8028efc44b778954de84846c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '94f4d648309a149b6d76a53c38310029') in 0.0107405 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_temporary_deck_cargo.obj using Guid(9ab54ff2b07d4d54b9444d8186267c99) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'edd63adcf4fc4d24b58266980c68d4a6') in 0.0100639 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_staysail.obj using Guid(aaf725275b4f5b2458d1bed21d90cd9d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '723298406830a4c84c259c01f2203b6e') in 0.0107593 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_storm_canvas.obj using Guid(ba86e5bed7f3c4d46867c7406575e4cd) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b46df0fb8e22fc1251e97b78111bd011') in 0.0107159 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_main_cargo_hold.obj using Guid(dac5eb9e660226a44a4dedbe865bb774) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'f098d800b69e7f8cbd5281df8a7aa1fa') in 0.0093176 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_shot_sorting_rack.obj using Guid(0b4bdde158b267940bd01ec249692c93) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'cfc7fbe757fbe8e941a0f9cd0556f8f7') in 0.0109777 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_food_preservation_cabinet.obj using Guid(1bd06b965464a0640baa2c8239cbff8f) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd7061b26a7517de5e45e6f615355e112') in 0.0094922 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_improved_helm_wheel.obj using Guid(2bbf7e741a9f173439f323a399eb7b02) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'aada2c9c9d6a230b9e4b80e11e6a4829') in 0.0091317 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_fore_mast.obj using Guid(3befcc10f3696864695e849035ab0242) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '681a992380d5fcd1ffbcf69bdfeed26f') in 0.0102624 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_ship_bell_alarm.obj using Guid(4baad0d941a097d42997a61cc9bb80b4) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7af8ee557cb6d18c9299a86e541a32ce') in 0.0087272 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_captains_cabin_refit.obj using Guid(5b78c50226b5e38498ca3ea803995ae0) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '27dfd17dc3fa944fd45889815ec5bec4') in 0.009858 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_long_voyage_granary.obj using Guid(6bc3125c283e6c546ada41dfd61104ad) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '091c82ca7d8117939ba6de88ef2ea0bb') in 0.0089802 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_medicine_cabinet.obj using Guid(9b097fbaf59f0e543975ffd4068c0cc6) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '739cf242ba93878d7d30f823baefc467') in 0.0100974 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_weatherproof_chart_case.obj using Guid(9bca929cd3d073b40b54d86be6c0c3d8) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '7fccd118f75e5d4372072b1a80264e90') in 0.008661 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_steering_transmission.obj using Guid(abc1bdcbcd3a2864e8d9f1b516db22ca) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'e1612eceb86fa9b8a0d31103ce1d166f') in 0.010112 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_light_cargo_dividers.obj using Guid(bb667ced287b28c4c98a09a256b5740f) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '492ba252329a1f426948ddc29c407b63') in 0.0100714 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_reinforced_keel.obj using Guid(db6881d775302ec46b2fdc7f5ca59b67) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd609864102518550513bc38693a38d1b') in 0.0088863 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_galley_stove.obj using Guid(eb406a4d6e19447468a2643661a341e1) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '8596f7ea050b73cd52a1f01593e4f69e') in 0.0102571 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_anchor_winch.obj using Guid(eb387ae5061909f4abdd4d15bb4aab0c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '93d5d53f1f6a927535e357e5c2ad190c') in 0.0084394 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_twin_rudder_linkage.obj using Guid(1c47b0118b63f7f4f91457a4a38e8847) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c263ba6835f0d0b5fd4abaacb4cd260b') in 0.0105648 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_coastal_bark.obj using Guid(3cc8167e696e69b4e8ab6b201892e66f) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '1cf98def93152586478af4c8e7bf8bbb') in 0.0086362 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_mangrove_punt.obj using Guid(4cc38e885ee0df441bf7f90c7d253a3e) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '168e26839b697295983728e913864a2d') in 0.0102441 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_cargo_davit.obj using Guid(ac2242f8184edc445a4ce43b0b4765e3) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '123e2f76278aa59517cd7bfd6bed9a33') in 0.009933 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_reinforced_dinghy.obj using Guid(bc1fd95ab1e3f5947a83055b59e1ad6c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '6117d69de6320ffe7e1d26fdcbcb2642') in 0.0092752 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_bilge_drain_pump.obj using Guid(bc4f2679a863f1e49b280941d98f40d2) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '47d18b4823a1d4e392090f88a8fad934') in 0.0100522 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_anchor_chain_locker.obj using Guid(bcfffa06d6531cc49b2d7383a8635e36) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'fb2531c1ab80a56039ae9218e3b691d2') in 0.0085446 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_gun_carriage.obj using Guid(ec79ac1fa5078ad45aacc5e2cb224b97) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'e0ee3926fd2c053549a3028c10e6f73a') in 0.0090368 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_bluewater_cutter.obj using Guid(ec3b1621bd7568f4e9687d92c71f6c0a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '8eb426c3459509d79bff510ab44bd592') in 0.0096064 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_simple_medical_berth.obj using Guid(fc81c87a9d4501e45bde77987313212d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '6d2acf6669dcff8334bd294ca485646f') in 0.0097665 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_food_larder.obj using Guid(0dacbb2dfbbc48948b86e7a2ff59f651) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '279624c53a5a86a135f03ceb1e236b81') in 0.0101516 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_heavy_gun_mount.obj using Guid(1d446c18837e76b409a67dd4dc1a2195) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '524d7f9f5d935327e286b961ea656c7d') in 0.00892 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_tideglass_cutter.obj using Guid(1d0d6c042027dea47b812ff3cd955f32) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '6d40077524368c9b2cd5cbc2025c695c') in 0.0099215 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_braced_frames.obj using Guid(2d87780eceabfff46af551b6ac1e392e) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'd58cc2cee9e4ff4a2708dbe1ea2e3a1e') in 0.0086395 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_deepwater_frigate.obj using Guid(4df1cbd030e929a4ab5efdad4626fb9e) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9d34a22d726472d5f430dd23781198a4') in 0.0097973 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_helm_wheel.obj using Guid(6de1471a194d5924dabf104bf01797b0) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'e6d853b12abd65aee3bbe7dda18a54bd') in 0.0096797 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_bow_bollard.obj using Guid(8d638e59d3eca0f4faebb3fc2007642d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'a39243be14f12492ddb6852a6b12ae43') in 0.0094306 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_spare_bucket_line.obj using Guid(cd70fbc033c6e5b499d4d8620fb00cae) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '68347fccbfbde54a99b5c346f9b1b609') in 0.0113533 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_high_lookout_platform.obj using Guid(edfc4bace418d094e84725753772b021) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '91e3d148e0d3944abf19bcd343969fb9') in 0.0089191 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_braced_mast.obj using Guid(0e3a51f439ba4a445b5c1332d3c8d44c) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '869f5584172a231a329e1e968fe60e39') in 0.0105275 seconds
+Start importing Assets/Content/D15/A06/assets/models/hulls/ship_island_packet_sloop.obj using Guid(2eb07b5d8607de7489bdd3036d464037) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'b5f4bdd5ffa7fff6e99d2c30447ca513') in 0.0098233 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_washing_and_hygiene_point.obj using Guid(2e9317316cf1bbd468878c9e5eca8837) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'df2a00ed95898ef713fe4ad147685a90') in 0.0091472 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_boarding_rail.obj using Guid(2efe1e43854f8b24b9d65b5a7804c30d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9318d049e62605401ddb01ee0e79ec45') in 0.0102202 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_fish_hold.obj using Guid(4e3455fb5da64cc4c961106b679d0a5a) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '577e00033ad15718f99c2c3d62148d85') in 0.0086593 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_sandglass.obj using Guid(4e183b45aacb406468a0a094e1f88db0) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '28eed3993fe05b7161224d46a5fc5dfc') in 0.0105713 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_name_and_crest_board.obj using Guid(5ec184db102578d4ba3aa6d8bb5848dc) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '15fef7d2dd13f9a0d9a03857fafdf169') in 0.0089402 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_ballast_rack.obj using Guid(5e48cfc3e3a46d246a88342b1c71a2cf) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '37c616a90ec3f6907406558472112cb3') in 0.0105831 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_port_anchor.obj using Guid(0f1609467112ce246a84867bb7880602) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '2ac1d520f67124b01e9d9956c8808731') in 0.01056 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_captains_cabin.obj using Guid(1fd7a6f2047b8d542a52b2d47599bfbe) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '209173a0d8722d726d543637d67ecad9') in 0.0090305 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_freshwater_tank.obj using Guid(2f1c98a5cbc77d84eacef996d2a752b0) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'fc629b4a7ed9b8b4c3b18554dd781621') in 0.0108233 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_ship_sickbay.obj using Guid(3f4aebe43f157fd49b31d6d7096c0694) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'abdcf7563c991f05edadd356c50a5807') in 0.0095727 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_aft_mast.obj using Guid(4fbd073aec086094fa58ea6691582edc) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: 'c9902dec22c569a30a114950f4b71557') in 0.00996 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_powder_magazine.obj using Guid(9f6381ff5067a0347bb23b8225798057) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '3e427b253db36ce4a8d25fd1c0b62160') in 0.009642 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_concealed_cargo_compartment.obj using Guid(9f0b77b731a792f4cb12d805ad519cb9) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '9a94636c0ec1ea03ef200b789f9ddd8d') in 0.0085818 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_braced_cargo_shelves.obj using Guid(af9c7b2c0c3c85e42b54febca8af1746) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '52fe8ac2068ae379a5b8b531efa15c75') in 0.0105859 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_hand_winch.obj using Guid(bf86654f4658b2a4cbde1e71dee10f8d) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '91710a6660c2292187247bfe9e30dcc2') in 0.0091396 seconds
+Start importing Assets/Content/D15/A06/assets/models/modules/item_ship_module_professional_sailor_platform.obj using Guid(ef9b4f0752adf2e409ba24e5cbf4b87b) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '76cfcb3fe7f0d8682e4adb698ffe26c9') in 0.0101614 seconds
+Start importing Assets/Content/D15/A06/assets/models/functional_points/ship_function_chart_table.obj using Guid(ff71496112b4e1f4abe71e6d95dd5563) (FBXImporter)ImportFBX Warnings:
+Can't import normals, because mesh 'default' doesn't have any.
+Mesh 'default' has no normals. Recalculating normals.
+ -> (artifact id: '678b75b9b696adbc9a65573eca92e689') in 0.0101298 seconds
+Start importing Assets/Prefabs/Placeholder/ph_ship_fishing.prefab using Guid(80b67cf03808fea419a6650043d43330) (PrefabImporter) -> (artifact id: '73e492345968a1caab0b95b9e589475e') in 0.0025309 seconds
+Start importing Assets/Prefabs/Placeholder/ph_crew_male.prefab using Guid(f1fc1ff80902e1d428fcdd8dc75935bd) (PrefabImporter) -> (artifact id: 'df74b7c73a4b0846db1284bfa4b07bdf') in 0.0050659 seconds
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=3a937f92d2e3ff44eb746e90d264e780): Total: 11.634 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=2 (actual=2, local cache=0, cache server=0)
+		Asset DB Process Time: managed=170 ms, native=4656 ms
+		Asset DB Callback time: managed=197 ms, native=54 ms
+		Scripting: domain reloads=1, domain reload time=2019 ms, compile time=4497 ms, other=37 ms
+		Project Asset Count: scripts=1239, non-scripts=5146
+		Asset File Changes: new=0, changed=3, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 12.068ms
+	ApplyChangesToAssetFolders: 0.607ms
+	Scan: 94.230ms
+	OnSourceAssetsModified: 0.717ms
+	CategorizeAssetsWithTransientArtifact: 39.380ms
+	ProcessAssetsWithTransientArtifactChanges: 58.682ms
+	CategorizeAssets: 58.920ms
+	ImportOutOfDateAssets: 4473.451ms (-2168.905ms without children)
+		ImportManagerImport: 2142.447ms (12.912ms without children)
+			ImportInProcess: 2129.490ms
+			UpdateCategorizedAssets: 0.044ms
+		CompileScripts: 4497.500ms
+		ReloadNativeAssets: 0.051ms
+		UnloadImportedAssets: 0.670ms
+		ReloadImportedAssets: 0.012ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.151ms
+		InitializingProgressBar: 0.011ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.513ms
+	PostProcessAllAssets: 237.467ms
+	Hotreload: 2.608ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 1.035ms
+	PersistCurrentRevisions: 0.836ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 2.289ms
+	Untracked: 6653.701ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.091ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-WhalesIslandReef
+Unloading 178 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6326 unused Assets / (2.1 MB). Loaded Objects now: 6861.
+Memory consumption went from 225.1 MB to 223.0 MB.
+Total: 9.400000 ms (FindLiveObjects: 0.405900 ms CreateObjectMapping: 0.385200 ms MarkObjects: 5.053300 ms  DeleteObjects: 3.554200 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1 unused Assets / (2.7 KB). Loaded Objects now: 6871.
+Memory consumption went from 192.9 MB to 192.9 MB.
+Total: 5.165000 ms (FindLiveObjects: 0.253100 ms CreateObjectMapping: 0.141900 ms MarkObjects: 4.724100 ms  DeleteObjects: 0.045000 ms)
+
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:RunJob (UnityEditor.TestTools.TestRunner.TestRun.TestJobData) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:99)
+UnityEditor.TestTools.TestRunner.Api.TestRunnerApi/<>c:<.ctor>b__21_0 (UnityEditor.TestTools.TestRunner.Api.ExecutionSettings) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/Api/TestRunnerApi.cs:54)
+UnityEditor.TestTools.TestRunner.Api.TestRunnerApi:Execute (UnityEditor.TestTools.TestRunner.Api.ExecutionSettings) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/Api/TestRunnerApi.cs:85)
+Save.Tests.D2BatchTestRunner:RunD2 () (at Assets/Tests/EditMode/D2BatchTestRunner.cs:31)
+Whalebone.EditorTools.D1Acceptance:RunD16SaveTests () (at Assets/Editor/D1Acceptance.cs:50)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:RunJob (UnityEditor.TestTools.TestRunner.TestRun.TestJobData) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:99)
+UnityEditor.TestTools.TestRunner.Api.TestRunnerApi/<>c:<.ctor>b__21_0 (UnityEditor.TestTools.TestRunner.Api.ExecutionSettings) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/Api/TestRunnerApi.cs:54)
+UnityEditor.TestTools.TestRunner.Api.TestRunnerApi:Execute (UnityEditor.TestTools.TestRunner.Api.ExecutionSettings) (at ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/Api/TestRunnerApi.cs:85)
+Save.Tests.D2BatchTestRunner:RunD2 () (at Assets/Tests/EditMode/D2BatchTestRunner.cs:31)
+Whalebone.EditorTools.D1Acceptance:RunD16SaveTests () (at Assets/Editor/D1Acceptance.cs:50)
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@082c24152fd4/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 2813 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 2813 unused Assets / (1.7 MB). Loaded Objects now: 6871.
+Memory consumption went from 262.6 MB to 261.0 MB.
+Total: 7.175500 ms (FindLiveObjects: 0.413900 ms CreateObjectMapping: 0.312300 ms MarkObjects: 4.592600 ms  DeleteObjects: 1.855900 ms)
+
+DisplayProgressbar: Undo
+Saving results to: D2_TestResults.xml
+D2/D3 EditMode tests: passed=291, failed=0, skipped=0
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Save.Tests.D2BatchTestRunner:RunD2 () (at Assets/Tests/EditMode/D2BatchTestRunner.cs:41)
+Whalebone.EditorTools.D1Acceptance:RunD16SaveTests () (at Assets/Editor/D1Acceptance.cs:50)
+
+(Filename: Assets/Tests/EditMode/D2BatchTestRunner.cs Line: 41)
+
+Curl error 42: Callback aborted
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-6000.0.80-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator-6000.0.80 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1786452133392,"processId":9688,"allocatedMemory":18762629,"memoryLabels":[{"Default":28597},{"Permanent":15356},{"NewDelete":70905},{"Thread":4230384},{"Manager":32674},{"VertexData":8},{"Geometry":816},{"VFX":-104},{"Texture":160},{"Shader":78773},{"Material":24},{"GfxDevice":55784},{"Animation":392},{"Audio":4040},{"FontEngine":256},{"Physics":2081},{"Serialization":816},{"Input":14824},{"JobScheduler":33024},{"TextLib":160},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620112},{"Resource":1304},{"Renderer":2928},{"Transform":4646},{"File":1016},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":202597},{"DynamicArray":115175},{"HashMap":93971},{"Utility":2661166},{"Curl":48},{"PoolAlloc":1864},{"AI":104},{"TypeTree":5005},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7888},{"Director":8240},{"CloudService":77040},{"WebRequest":592},{"VR":45969},{"SceneManager":496},{"Video":64},{"LazyScriptCache":32},{"Camera":17},{"Secure":265},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":384},{"Hierarchy":272},{"CoreStats":12536},{"Identifiers":6192},{"Gui":80},{"EditorUtility":52316},{"VersionControl":4},{"Undo":947},{"AssetDatabase":8713589},{"EditorGi":328},{"UnityConnect":24184},{"Upm":2036},{"DrivenProperties":72},{"LocalIPC":219},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2889},{"Licensing":664},{"AssetReference":32},{"IPCStream":32}]}

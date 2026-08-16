@@ -1,0 +1,113 @@
+{
+  "task": "D19-R02-A03",
+  "title": "Main Menu, market, voyage, save and reload route repair",
+  "conclusion": "PARTIAL",
+  "conclusion_reason": "The real Player completed the main-menu/new-game, market, voyage, return, save and continue-load chain. Real keyboard movement and exact 1920x1080 back-buffer proof were not independently established, so the task is not PASS.",
+  "timestamp_local": "2026-08-15",
+  "scope": {
+    "modified_code": [
+      "game/Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs",
+      "game/Assets/Scripts/Gameplay/D3/D3RouteFeedback.cs"
+    ],
+    "modified_tests": [
+      "game/Assets/Tests/EditMode/D19Route/D19R02A03RouteTests.cs",
+      "game/Assets/Tests/PlayMode/D19Route/D19R02A03RoutePlayModeTests.cs",
+      "game/Assets/Tests/EditMode/D19Route/D19R02A03.EditMode.Tests.asmdef"
+    ],
+    "not_modified": [
+      "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs",
+      "game/Assets/Scripts/Gameplay/D2/",
+      "game/Assets/Scenes/InitialHarbor.unity",
+      "SaveSystem",
+      "D5/D7/Systems",
+      "contracts/",
+      "server/",
+      "web/"
+    ]
+  },
+  "verification": {
+    "unity_compile": {
+      "status": "PASS",
+      "evidence": "game/tools/results/D19/D19-R02-A03/D19_R02_A03_UNITY_COMPILE.log",
+      "notes": "Assembly-CSharp build completed; warnings were retained in the log and no new C# compile error was observed."
+    },
+    "edit_mode": {
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "xml": "game/tools/results/D19/D19-R02-A03/D19_R02_A03_EDITMODE_TESTS.xml",
+      "log": "game/tools/results/D19/D19-R02-A03/D19_R02_A03_EDITMODE_TESTS.log"
+    },
+    "play_mode": {
+      "status": "PASS",
+      "passed": 2,
+      "failed": 0,
+      "xml": "game/tools/results/D19/D19-R02-A03/D19_R02_A03_PLAYMODE_TESTS_RERUN.xml",
+      "notes": "The first 2-test run is retained as failure evidence; the rerun fixed the test harness setup and passed without changing D3 ownership."
+    },
+    "player_build": {
+      "status": "PASS",
+      "player": "game/tools/results/D19/D19-R02-A03/D19_R02_A03_Player.exe",
+      "log": "game/tools/results/D19/D19-R02-A03/D19_R02_A03_PLAYER_BUILD.log"
+    },
+    "git_diff_check": {
+      "status": "PASS",
+      "exit_code": 0,
+      "notes": "Only line-ending warnings were reported; no whitespace error."
+    }
+  },
+  "real_player_route": {
+    "status": "PARTIAL_WITH_COMPLETED_SAVE_CHAIN",
+    "input_method": "real Player window with mouse and user32 keyboard input; no direct method invocation",
+    "target_resolution": "1920x1080 requested",
+    "captured_frame_size": "2048x1152",
+    "resolution_proof": "NOT_PROVEN_INDEPENDENTLY",
+    "steps_completed": [
+      "Main Menu visible",
+      "New Game panel opened",
+      "New Game entered InitialHarbor",
+      "Trade panel opened with B",
+      "Trade panel closed by activated Player mouse click",
+      "Departure planned with T",
+      "Voyage advanced with N and system event was logged",
+      "Arrival settled with L",
+      "Save requested with C and D3/Save log was emitted",
+      "Player closed and relaunched",
+      "Continue loaded InitialHarbor and emitted MainMenu save-load success"
+    ],
+    "steps_not_proven": [
+      "W movement did not produce a reliable visible displacement in the captured run",
+      "Escape did not visibly close the trade panel; mouse close succeeded after focus activation",
+      "A full 5-10 minute route and exact 1920x1080 back-buffer measurement were not collected for this A03 scope"
+    ],
+    "log_evidence": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log",
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A03/00_mainmenu_player.png",
+      "game/tools/results/D19/D19-R02-A03/01_newgame_panel_player.png",
+      "game/tools/results/D19/D19-R02-A03/05_harbor_after_new_game_player.png",
+      "game/tools/results/D19/D19-R02-A03/09_after_user32_B_trade.png",
+      "game/tools/results/D19/D19-R02-A03/12_after_mouse_close_player.png",
+      "game/tools/results/D19/D19-R02-A03/13_after_T_departure_player.png",
+      "game/tools/results/D19/D19-R02-A03/14_after_N_advance_player.png",
+      "game/tools/results/D19/D19-R02-A03/15_after_L_and_C_save_player.png",
+      "game/tools/results/D19/D19-R02-A03/16_relaunch_mainmenu_player.png",
+      "game/tools/results/D19/D19-R02-A03/18_after_continue_retry_player.png",
+      "game/tools/results/D19/D19-R02-A03/19_after_continue_loaded_player.png"
+    ]
+  },
+  "system_owned_feedback_observed": [
+    "d3_ready",
+    "trade_open",
+    "trade_closed",
+    "voyage_planned",
+    "voyage_advanced",
+    "arrived",
+    "settled",
+    "save_result"
+  ],
+  "performance": {
+    "status": "NOT_RUN",
+    "reason": "Dedicated Low/Medium/High 1920x1080 sampling belongs to D19-R02-A04/A05 and D19-R02-S02; this task records the Player renderer/device log only.",
+    "device_log": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "task_id": "D19-R02-A02",
+  "rerun_id": "RERUN2",
+  "status": "PARTIAL",
+  "steps": [
+    {
+      "step": "main_menu_new_game",
+      "input": "Mouse click New Game, type GroundR4, mouse click Confirm",
+      "result": "PASS",
+      "evidence": "D19_R02_A02_PLAYER_RERUN4_GROUND_INPUT.log"
+    },
+    {
+      "step": "initial_harbor_and_ground",
+      "input": "No direct method call; real Player loaded with 1920x1080 arguments",
+      "result": "PASS",
+      "observed": "D2 terrain landing remained on D19_TerrainRoot after the D2 walkable-surface fix",
+      "evidence": "D19_R02_A02_PLAYER_RERUN4_GROUND_INPUT.log; 05_rerun4_ground_player.jpg"
+    },
+    {
+      "step": "interact_e",
+      "input": "Real Player keyboard edge: e",
+      "result": "NOT_VERIFIED",
+      "observed": "No D2 feedback code, dialogue, board/disembark transition or input log line",
+      "evidence": "D19_R02_A02_PLAYER_RERUN4_GROUND_INPUT.log; 06_rerun4_e_player.jpg"
+    }
+  ],
+  "automated_regression": {
+    "editmode": "3/3 PASS",
+    "playmode": "2/2 PASS",
+    "board_disembark_cycles": "historical 10/10 PASS retained",
+    "unsafe_disembark": "historical 1/1 rejection retained"
+  },
+  "not_claimed": [
+    "No real keyboard route PASS",
+    "No NPC dialogue PASS",
+    "No boarding/disembark PASS from real Player"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "D19_R02_S02_MACHINE_RESULT_RERUN8_AUTHORED_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "timestamp": "2026-08-15T22:32:44+08:00",
+  "historical_results_preserved": true,
+  "player_build": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_Player_RERUN6_AUTHORED3.exe",
+  "scene_hash": "CE12DC16EBF33960C24F18208C821FCA4A357F147D8501007D719B40712865DC",
+  "integration_prefab_hash": "5051EBAC9703E215F52AFBF7ACCEE3CA6F51BD0EFC1A7B4B7DA1477DF181AF14",
+  "builder_hash": "BA16FC3762F08C330CB66926508DC3145CEA8A9D7681EFEC67A83F608BF388A7",
+  "resource_boundary": {
+    "intake_audit": "PASS",
+    "manifest_audit": "PASS",
+    "manifest_count": 29,
+    "candidate_file_total": 1894,
+    "intake_eligible_file_total": 1674,
+    "local_development_ready_count": 0,
+    "release_approved_count": 0,
+    "resource_state_changed": false,
+    "latest_intake_result": "D19_R02_S02_INTAKE_AUDIT_RERUN8_AUTHORED.json",
+    "latest_manifest_result": "D19_R02_S02_PACK_MANIFEST_AUDIT_RERUN8_AUTHORED.json"
+  },
+  "static_tests": {
+    "d19_editmode": {"passed": 34, "failed": 0, "skipped": 0, "xml": "D19_R02_S02_D19_EDITMODE_RERUN7_AUTHORED.xml"},
+    "d19_playmode": {"passed": 8, "failed": 0, "skipped": 1, "xml": "D19_R02_S02_D19_PLAYMODE_RERUN7_AUTHORED.xml"},
+    "d17_playmode": {"passed": 7, "failed": 0, "skipped": 0, "xml": "D19_R02_S02_D17_PLAYMODE_RERUN7_AUTHORED.xml"},
+    "d18_python_unittest": {"passed": 11, "failed": 0},
+    "git_diff_check": "PASS; no whitespace errors"
+  },
+  "player_route": {
+    "result": "PARTIAL",
+    "duration_gate": "PASS; same Player session held at least 300 seconds",
+    "new_game_spawn_market_voyage_return_disembark_save_reload": "PASS_WITH_LOGGED_VOYAGE",
+    "warehouse_tavern_npc_walk": "NOT_VERIFIED",
+    "screenshots": "D19_R02_S02_RERUN8_ROUTE_15_300_SPAWN.jpg through D19_R02_S02_RERUN8_ROUTE_22_CONTINUE_RETRY.jpg",
+    "raw_log": "D19_R02_S02_RERUN8_PLAYER_300_ROUTE.log",
+    "continue_log": "D19_R02_S02_RERUN8_PLAYER_CONTINUE.log"
+  },
+  "performance": {
+    "result": "PARTIAL",
+    "summary": "D19_R02_S02_PERFORMANCE_1080P_RERUN8_AUTHORED.json",
+    "all_requested_quality_arguments_sampled": true,
+    "real_fps_frame_time_gpu_gc_memory": true,
+    "exact_backbuffer_quality_vsync_and_one_percent_low": false
+  },
+  "visual": {
+    "result": "PARTIAL",
+    "summary": "D19_R02_S02_VISUAL_QA_RERUN8_AUTHORED.json",
+    "fixed_player_cameras": 0,
+    "weather_variants": 0,
+    "greybox_or_flat_surface_observed": true,
+    "pink_material_observed": false
+  },
+  "gate_failures": [
+    "Required warehouse/tavern/NPC/continuous physical walk nodes remain unverified.",
+    "14 fixed Player cameras and 3 weather variants were not freshly captured.",
+    "The real Player still shows obvious flat/blocky visual debt.",
+    "Probe captures actual FPS and frame timing but does not prove exact 1920x1080 backbuffer, runtime quality, VSync, or 1% low."
+  ],
+  "d20_s02_r01": "NOT_STARTED; hard-gated until D19-R02-S02 PASS",
+  "d18_s03": "NOT_STARTED",
+  "d21_plus": "NOT_STARTED"
+}

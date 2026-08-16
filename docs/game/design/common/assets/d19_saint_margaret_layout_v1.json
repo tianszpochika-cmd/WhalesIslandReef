@@ -1,0 +1,453 @@
+{
+  "layout_id": "d19_saint_margaret_layout_v1",
+  "schema_version": 1,
+  "task": "D19-S01",
+  "attempt": 2,
+  "generated_on": "2026-08-14",
+  "status": "PASS",
+  "history": {
+    "attempt_1": {
+      "status": "BLOCKED",
+      "reason": "旧版 D18-S02 把 Prefab、运行时消费者和 LocalDevelopmentReady 证据提前放在资源库准入门内，形成 D18-S02 与 D19-D22 的循环依赖。",
+      "evidence_preserved": [
+        "game/tools/results/D19/D19-S01/D19_S01_READONLY_STRUCTURE_AND_GATE.json",
+        "docs/game/design/common/handoffs/D19/D19-S01_HANDOFF.md",
+        "docs/game/design/common/D19_SAINT_MARGARET_WORLD_BUILD_SPEC.md"
+      ],
+      "formal_layout_was_frozen": false
+    },
+    "attempt_2": {
+      "basis": "D18-S02-v2 PASS：免费资源库准入与受控开发解锁",
+      "local_development_ready_required": false,
+      "formal_scene_modified": false,
+      "purpose": "冻结 D19-A01—A06 共同遵循的布局、接口、资源准入、工作场景和验收边界。"
+    }
+  },
+  "authoritative_evidence": {
+    "d18_s02_v2_report": "docs/game/design/common/D18_FREE_ASSET_LIBRARY_ADMISSION_ACCEPTANCE.md",
+    "d18_s02_v2_handoff": "docs/game/design/common/handoffs/D18/D18-S02_V2_HANDOFF.md",
+    "intake_catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "local_development_ready_catalog": "docs/game/design/common/assets/d18_local_development_ready_catalog.json",
+    "intake_catalog_required_status": "PASS",
+    "local_development_ready_count_observed": 0,
+    "release_approved_count_observed": 0,
+    "external_resource_rule": "Only intake_eligible=true entries from the intake catalog may be used in D19 work scenes or Prefab authoring. No D19 task may promote a resource state."
+  },
+  "world_reference": {
+    "world_origin": {
+      "id": "SM_PORT_ORIGIN",
+      "position_m": [0.0, 0.0, 0.0],
+      "meaning": "Saint Margaret port datum: primary dock centerline and shoreline reference intersection. The current Dock object at this coordinate is read-only evidence, not a scene edit."
+    },
+    "unit": "1 Unity world unit = 1 metre",
+    "axis": {
+      "up": "+Y",
+      "inland": "+Z",
+      "water_and_departure": "-Z",
+      "east": "+X"
+    },
+    "sea_level_y_m": 0.0,
+    "walk_surface_reference_y_m": 0.2,
+    "grid_m": {
+      "layout_grid": 1.0,
+      "anchor_grid": 0.25,
+      "placement_tolerance": 0.25,
+      "interaction_tolerance": 0.5
+    },
+    "playable_bounds_m": {
+      "min": [-128.0, -16.0, -128.0],
+      "max": [128.0, 64.0, 144.0]
+    },
+    "visible_range_m": {
+      "player_camera_target": 128.0,
+      "harbor_overview": 256.0,
+      "far_background": 384.0
+    },
+    "safe_boundary_rule": "No gameplay exit beyond the bounds without an owned recovery anchor. The boundary is a design contract; collision and recovery remain owned by the gameplay/navigation tasks."
+  },
+  "current_initial_harbor_readonly_baseline": {
+    "scene_path": "game/Assets/Scenes/InitialHarbor.unity",
+    "bootstrap_scene_path": "game/Assets/Scenes/Bootstrap.unity",
+    "build_settings_path": "ProjectSettings/EditorBuildSettings.asset",
+    "build_settings_scene_entries_observed": 0,
+    "yaml_gameobject_count": 24,
+    "yaml_prefab_instance_count": 25,
+    "yaml_monobehaviour_count": 7,
+    "navmesh_data_observed": "fileID: 0",
+    "screenshots_found": 0,
+    "observed_objects": [
+      {"name": "Dock", "position_m": [0.0, 0.0, 0.0]},
+      {"name": "DockDeck", "parent": "Dock", "local_position_m": [0.0, 0.1, -6.0]},
+      {"name": "Gangplank", "parent": "Dock", "local_position_m": [0.0, 0.5, -4.75]},
+      {"name": "Beach", "position_m": [0.0, -0.32, -26.0]},
+      {"name": "Sea", "position_m": [0.0, -0.02, 0.0]},
+      {"name": "Main Camera", "position_m": [2.0, 5.5, -8.5], "tag": "MainCamera"},
+      {"name": "Directional Light", "position_m": [0.0, 12.0, -4.0]},
+      {"name": "Harbor UI", "children": ["HarborName", "HarborSubtitle", "HarborControls"]},
+      {"name": "Dock children", "children": ["HandRail", "Bollard", "Bollard", "Crate", "Crate2", "Barrel", "Barrel2", "Pile x6"]}
+    ],
+    "runtime_entrypoints_observed": [
+      "D2RuntimeBootstrap", "D3RuntimeBootstrap", "D4RuntimeBootstrap", "D5RuntimeBootstrap",
+      "D7ControlCoordinator", "D7SaveCoordinator", "HarborPresentationController",
+      "HarborCollisionController", "HarborTutorialController", "D9VerticalSliceRuntimeBootstrap",
+      "D9FishingRuntimeBootstrap", "D9PortShipPreparationBootstrap", "D9VoyageHudController",
+      "D9AudioPresentationController", "D10TavernSocialBootstrap", "D10AppearanceRuntimeBootstrap",
+      "HarborInteractionStabilizer", "RuntimeHudCoordinator", "HarborPauseController",
+      "D16 performance/accessibility/diagnostic entrypoints"
+    ],
+    "collision_names_observed": [
+      "D6_HarborCollision", "BeachGround", "DockGround", "GangplankGround", "ShoreBoundary", "D6_ShipHullCollision"
+    ],
+    "baseline_is_readonly": true
+  },
+  "zones": [
+    {
+      "zone_id": "zone_port_entrance",
+      "kind": "port_entry",
+      "bounds_center_m": [0.0, 0.0, 112.0],
+      "bounds_half_extents_m": [24.0, 2.0, 12.0],
+      "owner_tasks": ["D19-A02", "D19-A06"],
+      "allowed_external_manifest_ids": [],
+      "allowed_project_owned_assets": ["interface_markers", "period-appropriate_port_signage_config"],
+      "resource_gap": "No intake-eligible external building model is available; do not import Candidate-only building packs.",
+      "required_anchors": ["anchor.port.entry", "anchor.port.recovery"]
+    },
+    {
+      "zone_id": "zone_player_arrival",
+      "kind": "spawn_and_arrival",
+      "bounds_center_m": [-22.0, 0.2, 88.0],
+      "bounds_half_extents_m": [12.0, 2.0, 10.0],
+      "owner_tasks": ["D19-A01", "D19-A03"],
+      "allowed_external_manifest_ids": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1"],
+      "allowed_project_owned_assets": ["spawn_anchor_config"],
+      "resource_gap": "Player body/Animator/CharacterController remain owned by D17/D20; D19 may not replace the player runtime node.",
+      "required_anchors": ["anchor.player.spawn", "anchor.player.recovery"]
+    },
+    {
+      "zone_id": "zone_market",
+      "kind": "market_and_trade_service",
+      "bounds_center_m": [26.0, 0.2, 62.0],
+      "bounds_half_extents_m": [18.0, 5.0, 14.0],
+      "owner_tasks": ["D19-A02", "D19-A06"],
+      "allowed_external_manifest_ids": [],
+      "allowed_project_owned_assets": ["market_service_marker_config", "period-appropriate_material_config"],
+      "resource_gap": "No intake-eligible external market/building model is available; structure must remain a recorded gap until a legal candidate or separately authorized project-owned asset exists.",
+      "required_anchors": ["anchor.market.service", "anchor.market.queue", "anchor.market.exit"]
+    },
+    {
+      "zone_id": "zone_warehouse",
+      "kind": "warehouse_and_cargo_service",
+      "bounds_center_m": [48.0, 0.2, 34.0],
+      "bounds_half_extents_m": [16.0, 5.0, 12.0],
+      "owner_tasks": ["D19-A02", "D19-A06"],
+      "allowed_external_manifest_ids": [],
+      "allowed_project_owned_assets": ["warehouse_service_marker_config"],
+      "resource_gap": "No intake-eligible external warehouse model; do not substitute a generic Candidate asset.",
+      "required_anchors": ["anchor.warehouse.service", "anchor.warehouse.queue"]
+    },
+    {
+      "zone_id": "zone_tavern",
+      "kind": "tavern_and_social_entry",
+      "bounds_center_m": [-42.0, 0.2, 50.0],
+      "bounds_half_extents_m": [14.0, 5.0, 12.0],
+      "owner_tasks": ["D19-A02", "D19-A03", "D19-A06"],
+      "allowed_external_manifest_ids": [],
+      "allowed_project_owned_assets": ["tavern_entry_marker_config", "sensitivity_warning_marker_config"],
+      "resource_gap": "No intake-eligible external tavern model or NPC model is available; D10 social IDs and warnings must remain independent of presentation geometry.",
+      "required_anchors": ["anchor.tavern.entry", "anchor.tavern.service", "anchor.tavern.night_talk"]
+    },
+    {
+      "zone_id": "zone_shipyard",
+      "kind": "shipyard_and_repair_service",
+      "bounds_center_m": [60.0, 0.2, 8.0],
+      "bounds_half_extents_m": [18.0, 5.0, 14.0],
+      "owner_tasks": ["D19-A02", "D19-A04", "D19-A06"],
+      "allowed_external_manifest_ids": [],
+      "allowed_project_owned_assets": ["shipyard_service_marker_config", "repair_light_config"],
+      "resource_gap": "Ship/port model packs are Candidate-only; independent anchor, rudder, sail and berth geometry are not proven intake resources.",
+      "required_anchors": ["anchor.shipyard.service", "anchor.shipyard.repair", "anchor.berth.santa_margarita"]
+    },
+    {
+      "zone_id": "zone_primary_dock",
+      "kind": "main_dock_and_boarding",
+      "bounds_center_m": [0.0, 0.2, -12.0],
+      "bounds_half_extents_m": [12.0, 2.0, 12.0],
+      "owner_tasks": ["D19-A02", "D19-A04", "D19-A06"],
+      "allowed_external_manifest_ids": ["pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1", "pack_kenney_impact_sounds_v1", "pack_kenney_interface_sounds_v1"],
+      "allowed_project_owned_assets": ["dock_marker_config", "rope_and_wake_vfx_config"],
+      "resource_gap": "No intake-eligible external dock/ship model; stable Dock, DockDeck and Gangplank compatibility names must survive until D19-S02.",
+      "required_anchors": ["anchor.dock.primary", "anchor.boarding.gangplank", "anchor.disembark.dock", "anchor.berth.santa_margarita"]
+    },
+    {
+      "zone_id": "zone_berth_and_harbor_pool",
+      "kind": "berth_and_harbor_water",
+      "bounds_center_m": [0.0, 0.0, -30.0],
+      "bounds_half_extents_m": [28.0, 8.0, 18.0],
+      "owner_tasks": ["D19-A04", "D19-A05", "D19-A06"],
+      "allowed_external_manifest_ids": ["pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_hdri_sky_references_v1"],
+      "allowed_project_owned_assets": ["water_shader", "shoreline_vfx", "weather_visual_profile"],
+      "resource_gap": "Water and weather are project-owned presentation assets; no external model candidate is inferred.",
+      "required_anchors": ["anchor.berth.santa_margarita", "anchor.boarding.gangplank", "anchor.departure.channel", "anchor.return.harbor"]
+    },
+    {
+      "zone_id": "zone_beach",
+      "kind": "beach_and_landing",
+      "bounds_center_m": [-58.0, 0.0, -8.0],
+      "bounds_half_extents_m": [32.0, 2.0, 22.0],
+      "owner_tasks": ["D19-A01", "D19-A03", "D19-A04"],
+      "allowed_external_manifest_ids": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1"],
+      "allowed_project_owned_assets": ["shoreline_shader", "landing_collision_config"],
+      "resource_gap": "Landing collision and navigation are not owned by visual assets; D19-A01 must provide evidence to D19-S02 without changing D6/D17 formulas.",
+      "required_anchors": ["anchor.beach.landing", "anchor.beach.recovery", "anchor.shallow.waterline"]
+    },
+    {
+      "zone_id": "zone_roads_and_walkable_core",
+      "kind": "roads_and_walkable_navmesh",
+      "bounds_center_m": [0.0, 0.2, 52.0],
+      "bounds_half_extents_m": [76.0, 4.0, 58.0],
+      "owner_tasks": ["D19-A01", "D19-A02", "D19-A03"],
+      "allowed_external_manifest_ids": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1"],
+      "allowed_project_owned_assets": ["road_material_config", "navmesh_bake_settings"],
+      "resource_gap": "Current InitialHarbor has no bound NavMeshData; final NavMesh ownership and evidence are assigned to D19-A01/D19-A06 and verified by D19-S02.",
+      "required_anchors": ["anchor.port.entry", "anchor.market.exit", "anchor.dock.primary", "anchor.tavern.entry", "anchor.shipyard.service"]
+    },
+    {
+      "zone_id": "zone_vegetation_biomes",
+      "kind": "vegetation_and_biome_bands",
+      "bounds_center_m": [-72.0, 0.5, 54.0],
+      "bounds_half_extents_m": [44.0, 18.0, 62.0],
+      "owner_tasks": ["D19-A01", "D19-A03", "D19-A05"],
+      "allowed_external_manifest_ids": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1"],
+      "allowed_project_owned_assets": ["wind_material_parameters", "biome_placement_config"],
+      "resource_gap": "Use only intake-eligible environment candidates; missing species or era suitability remains a candidate gap, not a reason to add generic models.",
+      "required_anchors": ["anchor.vegetation.boundary", "anchor.road.clearance", "anchor.player.recovery"]
+    },
+    {
+      "zone_id": "zone_rock_slope_and_cliff",
+      "kind": "rock_slope_and_cliff",
+      "bounds_center_m": [72.0, 6.0, 72.0],
+      "bounds_half_extents_m": [34.0, 18.0, 36.0],
+      "owner_tasks": ["D19-A01", "D19-A03"],
+      "allowed_external_manifest_ids": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1"],
+      "allowed_project_owned_assets": ["cliff_collision_config", "rock_slope_navmesh_exclusion"],
+      "resource_gap": "Cliff collision and walkability require D19-A01 evidence; no visual-only cliff may become a gameplay boundary.",
+      "required_anchors": ["anchor.cliff.exclusion", "anchor.lookout", "anchor.recovery.highland"]
+    },
+    {
+      "zone_id": "zone_shallow_water_and_reef",
+      "kind": "shallow_water_reef",
+      "bounds_center_m": [-16.0, -1.5, -66.0],
+      "bounds_half_extents_m": [54.0, 6.0, 22.0],
+      "owner_tasks": ["D19-A01", "D19-A04", "D19-A05"],
+      "allowed_external_manifest_ids": ["pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_hdri_sky_references_v1"],
+      "allowed_project_owned_assets": ["shallow_water_shader", "reef_visibility_config", "weather_reflection_profile"],
+      "resource_gap": "No external seawater model is used; water, reef visibility and weather response are project-owned presentation responsibilities.",
+      "required_anchors": ["anchor.shallow.waterline", "anchor.reef.boundary", "anchor.channel.safe"]
+    },
+    {
+      "zone_id": "zone_departure_channel",
+      "kind": "nearshore_channel_and_deep_sea_boundary",
+      "bounds_center_m": [0.0, -4.0, -112.0],
+      "bounds_half_extents_m": [32.0, 12.0, 48.0],
+      "owner_tasks": ["D19-A04", "D19-A05", "D19-A06"],
+      "allowed_external_manifest_ids": ["pack_polyhaven_hdri_sky_references_v1", "pack_kenney_impact_sounds_v1", "pack_kenney_ui_audio_v1"],
+      "allowed_project_owned_assets": ["deep_water_shader", "channel_marker_vfx", "weather_visual_profile"],
+      "resource_gap": "Navigation, ship clearance and weather effects must remain read-only presentation consumers; ShipSystem owns departure facts.",
+      "required_anchors": ["anchor.departure.channel", "anchor.channel.safe", "anchor.deep_sea.boundary", "anchor.return.harbor"]
+    }
+  ],
+  "anchors": [
+    {"anchor_id": "anchor.player.spawn", "stable_id": "D2_PlayerAvatar", "position_m": [-22.0, 0.2, 88.0], "owner_task": "D19-A03", "logic_owner": "D2/D17", "migration_policy": "preserve_runtime_node_and_save_position"},
+    {"anchor_id": "anchor.player.recovery", "stable_id": "D17_PlayerRecovery", "position_m": [-22.0, 0.2, 82.0], "owner_task": "D19-A01", "logic_owner": "D17", "migration_policy": "rebind_only_after_playmode_evidence"},
+    {"anchor_id": "anchor.port.entry", "stable_id": "santa_margarita", "position_m": [0.0, 0.2, 112.0], "owner_task": "D19-A02", "logic_owner": "WorldCatalog/D3", "migration_policy": "preserve_location_ref"},
+    {"anchor_id": "anchor.market.service", "stable_id": "building:market_santa_margarita", "position_m": [26.0, 0.2, 62.0], "owner_task": "D19-A02", "logic_owner": "TradeEconomySystem", "migration_policy": "rebind service marker; preserve service ID"},
+    {"anchor_id": "anchor.market.queue", "stable_id": "market_queue_santa_margarita", "position_m": [12.0, 0.2, 58.0], "owner_task": "D19-A02", "logic_owner": "D9 UI/service flow", "migration_policy": "preserve request target"},
+    {"anchor_id": "anchor.warehouse.service", "stable_id": "building:warehouse_santa_margarita", "position_m": [48.0, 0.2, 34.0], "owner_task": "D19-A02", "logic_owner": "Inventory/Cargo systems", "migration_policy": "rebind service marker; preserve storage semantics"},
+    {"anchor_id": "anchor.tavern.entry", "stable_id": "building:tavern_santa_margarita", "position_m": [-42.0, 0.2, 50.0], "owner_task": "D19-A02", "logic_owner": "D10TavernSocialSystem", "migration_policy": "preserve tavern ID and warning entry"},
+    {"anchor_id": "anchor.tavern.service", "stable_id": "tavern_santa_margarita", "position_m": [-38.0, 0.2, 50.0], "owner_task": "D19-A03", "logic_owner": "D10TavernSocialSystem", "migration_policy": "preserve location_ref and social facts"},
+    {"anchor_id": "anchor.tavern.night_talk", "stable_id": "tavern_night_talk_santa_margarita", "position_m": [-44.0, 0.2, 46.0], "owner_task": "D19-A03", "logic_owner": "RelationSystem/D10", "migration_policy": "preserve event target; UI cannot write result"},
+    {"anchor_id": "anchor.shipyard.service", "stable_id": "building:shipyard_santa_margarita", "position_m": [60.0, 0.2, 8.0], "owner_task": "D19-A02", "logic_owner": "ShipyardSystem", "migration_policy": "preserve repair and preparation service"},
+    {"anchor_id": "anchor.shipyard.repair", "stable_id": "shipyard_repair_santa_margarita", "position_m": [54.0, 0.2, 2.0], "owner_task": "D19-A02", "logic_owner": "ShipyardSystem", "migration_policy": "preserve event and cost ownership"},
+    {"anchor_id": "anchor.dock.primary", "stable_id": "building_saint_marys_dock", "position_m": [0.0, 0.2, -12.0], "owner_task": "D19-A02", "logic_owner": "D9PortShipPreparationSystem", "migration_policy": "preserve building ID and berth lookup"},
+    {"anchor_id": "anchor.berth.santa_margarita", "stable_id": "berth_santa_margarita", "position_m": [0.0, 0.0, -30.0], "owner_task": "D19-A04", "logic_owner": "ShipSystem/D9", "migration_policy": "preserve berth fact; visual rebind only"},
+    {"anchor_id": "anchor.boarding.gangplank", "stable_id": "GangplankGround", "position_m": [0.0, 0.5, -16.75], "owner_task": "D19-A04", "logic_owner": "HarborCollisionController/D6/D17", "migration_policy": "keep collision node or provide tested alias"},
+    {"anchor_id": "anchor.disembark.dock", "stable_id": "DockGround", "position_m": [0.0, 0.2, -10.0], "owner_task": "D19-A02", "logic_owner": "HarborCollisionController/D6/D17", "migration_policy": "preserve ground contact and exit route"},
+    {"anchor_id": "anchor.beach.landing", "stable_id": "BeachGround", "position_m": [-58.0, 0.2, -8.0], "owner_task": "D19-A01", "logic_owner": "HarborCollisionController/D6/D17", "migration_policy": "rebind only with landing and recovery test"},
+    {"anchor_id": "anchor.shallow.waterline", "stable_id": "shoreline_santa_margarita", "position_m": [-16.0, 0.0, -48.0], "owner_task": "D19-A04", "logic_owner": "Environment/ShipSystem", "migration_policy": "presentation boundary; no weather write"},
+    {"anchor_id": "anchor.departure.channel", "stable_id": "departure_channel_santa_margarita", "position_m": [0.0, 0.0, -78.0], "owner_task": "D19-A04", "logic_owner": "ShipSystem", "migration_policy": "preserve departure event and channel clearance"},
+    {"anchor_id": "anchor.return.harbor", "stable_id": "return_harbor_santa_margarita", "position_m": [0.0, 0.0, -54.0], "owner_task": "D19-A04", "logic_owner": "ShipSystem/D9", "migration_policy": "preserve return event and berth selection"},
+    {"anchor_id": "anchor.channel.safe", "stable_id": "safe_channel_santa_margarita", "position_m": [0.0, -2.0, -96.0], "owner_task": "D19-A04", "logic_owner": "ShipSystem", "migration_policy": "collision/navigation evidence required"},
+    {"anchor_id": "anchor.deep_sea.boundary", "stable_id": "deep_sea_boundary_santa_margarita", "position_m": [0.0, -4.0, -160.0], "owner_task": "D19-A04", "logic_owner": "ShipSystem/EnvironmentSystem", "migration_policy": "do not turn visual boundary into gameplay formula"},
+    {"anchor_id": "anchor.lookout", "stable_id": "npc:santa_margarita_lookout", "position_m": [-68.0, 6.0, 84.0], "owner_task": "D19-A03", "logic_owner": "D10/NPC task system", "migration_policy": "preserve NPC reference and dialogue target"},
+    {"anchor_id": "anchor.dockhand", "stable_id": "npc:santa_margarita_dockhand", "position_m": [12.0, 0.2, -8.0], "owner_task": "D19-A03", "logic_owner": "D10/NPC task system", "migration_policy": "preserve rumor target and interaction prompt"},
+    {"anchor_id": "anchor.tavern_keeper", "stable_id": "npc:santa_margarita_tavern_keeper", "position_m": [-34.0, 0.2, 52.0], "owner_task": "D19-A03", "logic_owner": "D10TavernSocialSystem", "migration_policy": "preserve service and task target"}
+  ],
+  "interaction_migration_contract": {
+    "stable_ids_must_not_change": [
+      "santa_margarita", "building_saint_marys_dock", "berth_santa_margarita", "tavern_santa_margarita", "building:tavern_santa_margarita",
+      "npc:santa_margarita_dockhand", "npc:santa_margarita_lookout", "npc:santa_margarita_tavern_keeper",
+      "D2_PlayerAvatar", "ph_ship_fishing", "D7_HelmPoint", "D7StatusCanvas", "D3Canvas", "D4Canvas",
+      "D3_Port_santa_margarita", "D9PortServicePage", "D10TavernSocialPage", "D9_SaveRestoreFeedback"
+    ],
+    "existing_scene_compatibility_names": [
+      "Dock", "DockDeck", "Gangplank", "HandRail", "Bollard", "Beach", "Sea", "Harbor UI", "HarborName", "HarborSubtitle", "HarborControls", "Main Camera", "Directional Light"
+    ],
+    "runtime_collision_compatibility_names": [
+      "D6_HarborCollision", "BeachGround", "DockGround", "GangplankGround", "ShoreBoundary", "D6_ShipHullCollision"
+    ],
+    "event_contracts_to_regress": [
+      "event_d9_departure_prepared", "event_d9_departure", "event_d9_returned_to_harbor", "event_d9_ship_repaired"
+    ],
+    "migration_rule": "If a scene object must be renamed, the owning gameplay system must supply a compatibility alias and a D19-S02 regression result. Art tasks may not alter IDs, save fields, economy formulas or event ownership."
+  },
+  "ownership_and_work_boundaries": {
+    "single_writer_rule": "D19-A01—A06 write only their own Work scene, Prefab/settings/audio scope and result directory. D19-S02 is the sole scene integration writer after a pre-integration snapshot. No Agent may write InitialHarbor during S01/A01—A06.",
+    "tasks": {
+      "D19-A01": {
+        "work_scene": "game/Assets/Scenes/D19/Work/D19_Terrain_Work.unity",
+        "write_scopes": ["game/Assets/Prefabs/Environment/D19/Terrain/", "D19 terrain materials and tests", "game/tools/results/D19/D19-A01/"],
+        "shared_interfaces": ["anchor.beach.landing", "anchor.player.recovery", "anchor.shallow.waterline", "anchor.vegetation.boundary", "anchor.road.clearance", "anchor.cliff.exclusion"],
+        "must_not_write": ["InitialHarbor", "D19-A02 work scene", "D19-A04 water files", "D19-A05 lighting files", "Systems", "Registry", "save"]
+      },
+      "D19-A02": {
+        "work_scene": "game/Assets/Scenes/D19/Work/D19_PortArchitecture_Work.unity",
+        "write_scopes": ["game/Assets/Prefabs/Buildings/D19/", "game/Assets/Prefabs/Environment/D19/Port/", "D19 port materials and tests", "game/tools/results/D19/D19-A02/"],
+        "shared_interfaces": ["anchor.port.entry", "anchor.market.service", "anchor.warehouse.service", "anchor.tavern.entry", "anchor.shipyard.service", "anchor.dock.primary", "anchor.disembark.dock"],
+        "must_not_write": ["InitialHarbor", "D19-A01 terrain files", "D19-A04 water files", "D19-A05 lighting files", "D19-A03 character files", "Systems", "Registry", "save"]
+      },
+      "D19-A03": {
+        "work_scene": "game/Assets/Scenes/D19/Work/D19_Biomes_Work.unity",
+        "write_scopes": ["game/Assets/Prefabs/Vegetation/D19/", "D19 vegetation materials and placement data", "game/tools/results/D19/D19-A03/"],
+        "shared_interfaces": ["anchor.player.spawn", "anchor.tavern.service", "anchor.lookout", "anchor.dockhand", "anchor.tavern_keeper", "anchor.vegetation.boundary"],
+        "must_not_write": ["InitialHarbor", "D19-A01 terrain work scene", "D19-A02 buildings", "D19-A04 water", "D19-A05 lighting", "Systems", "Registry", "save"]
+      },
+      "D19-A04": {
+        "work_scene": "game/Assets/Scenes/D19/Work/D19_Water_Work.unity",
+        "write_scopes": ["game/Assets/Prefabs/Environment/D19/Water/", "D19 water Shader/material/test files", "game/tools/results/D19/D19-A04/"],
+        "shared_interfaces": ["anchor.berth.santa_margarita", "anchor.boarding.gangplank", "anchor.shallow.waterline", "anchor.departure.channel", "anchor.return.harbor", "anchor.channel.safe", "anchor.deep_sea.boundary"],
+        "must_not_write": ["InitialHarbor", "D19-A01 terrain", "D19-A02 buildings", "D19-A03 vegetation", "D19-A05 weather profiles", "ShipSystem", "WeatherSystem", "Registry", "save"]
+      },
+      "D19-A05": {
+        "work_scene": "game/Assets/Scenes/D19/Work/D19_Lighting_Work.unity",
+        "write_scopes": ["game/Assets/Settings/D19/Lighting/", "game/Assets/Prefabs/Environment/D19/Lighting/", "D19 lighting/weather presentation tests", "game/tools/results/D19/D19-A05/"],
+        "shared_interfaces": ["camera and shot contracts", "anchor.berth.santa_margarita", "anchor.shallow.waterline", "anchor.departure.channel", "anchor.deep_sea.boundary"],
+        "must_not_write": ["InitialHarbor", "WeatherSystem", "TimeSystem", "D19-A04 water Shader", "D19-A02 building files", "UI business data", "Registry", "save"]
+      },
+      "D19-A06": {
+        "work_scene": "game/Assets/Scenes/D19/Work/D19_Ambience_Work.unity",
+        "write_scopes": ["game/Assets/Prefabs/Props/D19/", "game/Assets/Prefabs/VFX/D19/", "game/Assets/Audio/D19/", "D19 ambience tests", "game/tools/results/D19/D19-A06/"],
+        "shared_interfaces": ["anchor.port.entry", "anchor.market.service", "anchor.tavern.entry", "anchor.dock.primary", "anchor.departure.channel", "camera and audio-zone contracts"],
+        "must_not_write": ["InitialHarbor", "D19-A01 terrain", "D19-A02 buildings", "D19-A03 vegetation", "D19-A04 water", "D19-A05 lighting", "AudioMixer global ownership", "Systems", "Registry", "save"]
+      }
+    },
+    "overlap_check_rule": "The six write_scope lists must remain disjoint. Shared interfaces are contracts only; they do not grant write ownership over another task's files."
+  },
+  "resource_contracts": {
+    "allowed_external_manifest_ids_by_task": {
+      "D19-A01": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1", "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1", "pack_polyhaven_ui_materials_selected_v1"],
+      "D19-A02": [],
+      "D19-A03": ["pack_kenney_nature_kit_d18_a03_v1", "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1", "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1", "pack_polyhaven_ui_materials_selected_v1"],
+      "D19-A04": ["pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1", "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1", "pack_polyhaven_ui_materials_selected_v1"],
+      "D19-A05": ["pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1", "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1", "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1", "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1", "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1", "pack_polyhaven_hdri_sky_references_v1", "pack_polyhaven_ui_materials_selected_v1"],
+      "D19-A06": ["pack_kenney_impact_sounds_v1", "pack_kenney_interface_sounds_v1", "pack_kenney_ui_audio_v1"]
+    },
+    "project_owned_asset_rules": [
+      "D19-A04 owns water Shader/material presentation and shoreline VFX only; it does not write weather or ShipSystem facts.",
+      "D19-A05 owns lighting/weather presentation Profiles only; it reads WeatherSystem/TimeSystem snapshots.",
+      "D19-A06 may create project-owned VFX/configuration and use intake-eligible audio; it does not write events, economy, inventory or animal spawning.",
+      "D19-A02 has no intake-eligible external building model in v1; no Candidate-only pack may be imported. Any future structural project-owned asset requires an explicit responsibility and evidence update before use."
+    ],
+    "forbidden": ["Candidate-only external assets", "NotImported assets", "LocalDevelopmentReady promotion", "ReleaseApproved promotion", "formal InitialHarbor integration before D19-S02", "Registry/asset_state mutation"]
+  },
+  "formal_initial_harbor_integration_contract": {
+    "integration_writer": "D19-S02 assigned human sync integrator; human name/account must be recorded before the first formal scene write",
+    "scene_path": "game/Assets/Scenes/InitialHarbor.unity",
+    "root_node_order": [
+      "D19_SaintMargaret_Root",
+      "D19_EnvironmentRoot",
+      "D19_PortBuildingsRoot",
+      "D19_CharactersAnimalsRoot",
+      "D19_ShipsSeaRoot",
+      "D19_PresentationRoot",
+      "D19_AmbienceRoot",
+      "ExistingGameplayAnchors",
+      "Harbor UI"
+    ],
+    "compatibility_nodes_must_survive": ["Dock", "DockDeck", "Gangplank", "Beach", "Sea", "Main Camera", "Harbor UI", "HarborControls"],
+    "integration_rule": "Only D19-S02 may write InitialHarbor, and only after all A01—A06 work-scene evidence is present. S01 creates no Prefab or scene object.",
+    "rollback": {
+      "rollback_point_id": "d19-s02-preintegration-baseline",
+      "snapshot_required_before_scene_write": true,
+      "snapshot_scope": ["InitialHarbor.unity", "scene meta", "D19 integration manifest", "stable interaction anchor map"],
+      "current_baseline": "Current InitialHarbor remains unchanged and is the Attempt 2 rollback baseline; no snapshot was created by S01.",
+      "failure_action": "Restore the pre-integration snapshot, retain failed evidence in results, and do not delete candidate or historical reports."
+    }
+  },
+  "fixed_acceptance_shots": [
+    {"index": 1, "shot_id": "d19_shot_main_menu", "position_m": [0.0, 4.0, 20.0], "look_at_m": [0.0, 2.0, 60.0], "weather": "clear", "purpose": "Menu, entry prompt, warning and accessibility legibility"},
+    {"index": 2, "shot_id": "d19_shot_spawn", "position_m": [-22.0, 3.2, 82.0], "look_at_m": [-22.0, 1.0, 66.0], "weather": "clear", "purpose": "Player spawn, foot contact, shore direction and HUD"},
+    {"index": 3, "shot_id": "d19_shot_market", "position_m": [42.0, 5.0, 74.0], "look_at_m": [26.0, 3.0, 62.0], "weather": "clear", "purpose": "Market, trade entry, road readability"},
+    {"index": 4, "shot_id": "d19_shot_dock_overview", "position_m": [14.0, 7.0, 4.0], "look_at_m": [0.0, 1.0, -22.0], "weather": "clear", "purpose": "Dock, berth direction, shoreline and harbor pool"},
+    {"index": 5, "shot_id": "d19_shot_tavern_entry", "position_m": [-58.0, 4.0, 58.0], "look_at_m": [-42.0, 2.0, 50.0], "weather": "clear", "purpose": "Tavern entrance, social anchor, warning/skip entry"},
+    {"index": 6, "shot_id": "d19_shot_coastline", "position_m": [-86.0, 3.0, -2.0], "look_at_m": [-58.0, 1.0, -8.0], "weather": "clear", "purpose": "Beach, shallow water, sand/rock transition"},
+    {"index": 7, "shot_id": "d19_shot_boarding", "position_m": [6.0, 3.2, -15.0], "look_at_m": [0.0, 1.0, -20.0], "weather": "clear", "purpose": "Gangplank, boarding anchor, player/ship scale"},
+    {"index": 8, "shot_id": "d19_shot_on_ship", "position_m": [0.0, 5.0, -28.0], "look_at_m": [0.0, 2.0, -18.0], "weather": "clear", "purpose": "Ship deck, helm/interaction clearance and collision"},
+    {"index": 9, "shot_id": "d19_shot_departure", "position_m": [0.0, 8.0, -42.0], "look_at_m": [0.0, 1.0, -78.0], "weather": "clear", "purpose": "Departure heading, berth release, safe channel"},
+    {"index": 10, "shot_id": "d19_shot_nearshore", "position_m": [18.0, 4.0, -66.0], "look_at_m": [0.0, -1.0, -88.0], "weather": "clear", "purpose": "Nearshore, reef, waterline and chart feedback"},
+    {"index": 11, "shot_id": "d19_shot_weather", "position_m": [-18.0, 6.0, 18.0], "look_at_m": [0.0, 3.0, -20.0], "weather": "clear/rain/storm", "purpose": "Weather presentation, visibility and readable interaction"},
+    {"index": 12, "shot_id": "d19_shot_return_harbor", "position_m": [8.0, 5.0, -52.0], "look_at_m": [0.0, 1.0, -12.0], "weather": "clear", "purpose": "Return, berth, disembark and save boundary"},
+    {"index": 13, "shot_id": "d19_shot_settings_accessibility", "position_m": [0.0, 3.0, 60.0], "look_at_m": [0.0, 3.0, 60.0], "weather": "clear", "purpose": "Font, subtitle, colorblind, low-stimulation and rebinding UI"},
+    {"index": 14, "shot_id": "d19_shot_debug_boundary", "position_m": [104.0, 72.0, 104.0], "look_at_m": [0.0, 0.0, 0.0], "weather": "clear", "purpose": "Developer-only bounds, anchors, ownership and layer/tag overlay; never default player HUD"}
+  ],
+  "player_route": {
+    "route_id": "d19_route_spawn_to_return_07m",
+    "target_duration_seconds": 420,
+    "allowed_duration_seconds": [300, 600],
+    "steps": [
+      {"order": 1, "from": "anchor.player.spawn", "to": "anchor.beach.landing", "target_seconds": 45, "must_check": ["grounded", "recovery", "shore direction"]},
+      {"order": 2, "from": "anchor.beach.landing", "to": "anchor.market.service", "target_seconds": 45, "must_check": ["road clearance", "vegetation clearance", "market prompt"]},
+      {"order": 3, "from": "anchor.market.service", "to": "anchor.warehouse.service", "target_seconds": 35, "must_check": ["cargo service marker", "collision", "no blocked route"]},
+      {"order": 4, "from": "anchor.warehouse.service", "to": "anchor.tavern.entry", "target_seconds": 45, "must_check": ["tavern entry", "warning/skip availability", "NPC target stability"]},
+      {"order": 5, "from": "anchor.tavern.entry", "to": "anchor.dock.primary", "target_seconds": 45, "must_check": ["road readability", "dock approach", "camera clearance"]},
+      {"order": 6, "from": "anchor.dock.primary", "to": "anchor.berth.santa_margarita", "target_seconds": 40, "must_check": ["berth lookup", "bollard/edge collision", "gangplank visibility"]},
+      {"order": 7, "from": "anchor.dock.primary", "to": "anchor.boarding.gangplank", "target_seconds": 35, "must_check": ["boarding request", "actual collision", "ship control transition"]},
+      {"order": 8, "from": "anchor.boarding.gangplank", "to": "anchor.departure.channel", "target_seconds": 35, "must_check": ["helm/control", "departure event", "channel clearance"]},
+      {"order": 9, "from": "anchor.departure.channel", "to": "anchor.return.harbor", "target_seconds": 45, "must_check": ["nearshore visual", "weather snapshot read-only", "return event"]},
+      {"order": 10, "from": "anchor.return.harbor", "to": "anchor.disembark.dock", "target_seconds": 50, "must_check": ["berth selection", "disembark", "save/restore and no duplicate settlement"]}
+    ],
+    "route_failure_policy": "Record the failed step and responsible task; do not shorten the route or delete the failure to obtain PASS."
+  },
+  "d19_s02_integration_order": [
+    {"order": 0, "step_id": "lock_evidence", "owner": "D19-S02 human sync integrator", "action": "Lock this layout version, the D18 intake catalog digest and all A01—A06 handoffs before any scene write.", "rollback": "Return to current unchanged InitialHarbor baseline."},
+    {"order": 1, "step_id": "integrate_terrain", "owner": "D19-S02", "source_task": "D19-A01", "action": "Add TerrainRoot/shore/road/reef Prefabs and verify spawn, navmesh and recovery anchors.", "rollback": "Remove only the D19 EnvironmentRoot from the integration copy."},
+    {"order": 2, "step_id": "integrate_port", "owner": "D19-S02", "source_task": "D19-A02", "action": "Add PortBuildingsRoot and rebind market, warehouse, tavern, shipyard, dock and berth anchors.", "rollback": "Restore pre-step scene snapshot; retain A02 evidence."},
+    {"order": 3, "step_id": "integrate_biomes", "owner": "D19-S02", "source_task": "D19-A03", "action": "Add BiomeRoot after route clearance and interaction anchors are validated.", "rollback": "Remove only the D19 vegetation root; do not delete source Prefabs."},
+    {"order": 4, "step_id": "integrate_water", "owner": "D19-S02", "source_task": "D19-A04", "action": "Add ShipsSeaRoot/water presentation and validate sea level, berth, gangplank and channel boundaries.", "rollback": "Restore water root and preserve ShipSystem facts."},
+    {"order": 5, "step_id": "integrate_lighting", "owner": "D19-S02", "source_task": "D19-A05", "action": "Add PresentationRoot lighting/weather profiles without changing WeatherSystem/TimeSystem state.", "rollback": "Disable D19 presentation profile and restore prior light settings from snapshot."},
+    {"order": 6, "step_id": "integrate_ambience", "owner": "D19-S02", "source_task": "D19-A06", "action": "Add AmbienceRoot props/VFX/audio zones after collision and route checks.", "rollback": "Disable AmbienceRoot; keep UI and gameplay anchors untouched."},
+    {"order": 7, "step_id": "regression_and_evidence", "owner": "D19-S02", "action": "Run 14 shots, 5—10 minute route, save/restore, interaction, performance and D18-S03 evidence capture.", "rollback": "If any gate fails, restore pre-integration snapshot and mark the responsible task PARTIAL/BLOCKED."}
+  ],
+  "validation_contract": {
+    "required_checks": [
+      "D18-S02-v2 status is PASS",
+      "intake catalog JSON is valid and every referenced manifest/path exists",
+      "every external resource selector belongs to the intake catalog and is intake_eligible=true",
+      "no LocalDevelopmentReady or ReleaseApproved promotion in S01",
+      "A01—A06 write scopes are disjoint",
+      "all stable interaction IDs and compatibility names are present",
+      "current InitialHarbor scene path and read-only object baseline are unchanged",
+      "14 fixed shot records and 300—600 second route are present",
+      "D19-S02 integration order and rollback are present",
+      "git diff --check passes"
+    ],
+    "not_claimed_by_s01": [
+      "Prefab completeness",
+      "Unity import/runtime/PlayMode success",
+      "collision or NavMesh runtime success",
+      "LocalDevelopmentReady",
+      "ReleaseApproved",
+      "formal InitialHarbor integration",
+      "screenshots"
+    ]
+  }
+}

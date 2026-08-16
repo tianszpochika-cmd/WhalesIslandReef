@@ -1,0 +1,77 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_RERUN23_V1",
+  "task": "D19-R03-A02",
+  "attempt": "RERUN23_COLLISION_WAIT_AND_REAL_PLAYER_INPUT_RECHECK",
+  "conclusion": "PARTIAL",
+  "historical_results_preserved": [
+    "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT.json",
+    "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN17.json",
+    "game/tools/results/D19/D19-R03-S01/D19_R03_S01_MACHINE_RESULT_RERUN20.json"
+  ],
+  "scope": {
+    "changed": [
+      "game/Assets/Scripts/Gameplay/D19/R03/D19R03HarborRuntimePresentation.cs: wait for ShoreBoundary before applying route collision window",
+      "game/Assets/Scripts/Gameplay/D19/R03/D19R03HarborRuntimePresentation.cs: move existing ShoreBoundary to z=17.0 while retaining D6 collider ownership",
+      "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs: lower-saturation R03 presentation palette"
+    ],
+    "not_changed": [
+      "D2/D6 movement and ship systems",
+      "D19-A01—A06 work scenes and source Prefabs",
+      "InitialHarbor stable IDs and save schema",
+      "Systems, AgentCore, Registry, contracts/server/web",
+      "resource state machine"
+    ]
+  },
+  "compile_and_build": {
+    "unity_version": "6000.0.80f1",
+    "presentation_rebuild_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_BUILD_RERUN21_COLLISION_WAIT.log",
+    "player_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_BUILD_PLAYER_RERUN21_UNITY.log",
+    "player": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN20.exe",
+    "exit_code": 0
+  },
+  "runtime_bridge": {
+    "evidence_mode": "real standalone Windows Player; route probe is read-only observation",
+    "screen_request": "1920x1080",
+    "shore_boundary_found": true,
+    "shore_boundary_z": 17.0,
+    "d6_collider_owner_retained": true,
+    "hud_applied_after_boundary_wait": true,
+    "bridge_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN23_PLAYER.log"
+  },
+  "input_recheck": {
+    "player_run": "RERUN23",
+    "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN23.json",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN23_PLAYER.log",
+    "duration_seconds": 160.0128631591797,
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "moved_observed": false,
+    "interaction_input_observed": true,
+    "save_input_observed": false,
+    "observations": 538,
+    "events": 4,
+    "landmarks_reached": ["anchor.dock.primary", "anchor.berth.primary"],
+    "landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "building:tavern_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "route_result": "NOT_PROVEN",
+    "save_reload_result": "NOT_RUN_IN_THIS_RECHECK"
+  },
+  "visual_evidence": {
+    "screenshot": "game/tools/results/D19/D19-R03-S01/RERUN21_HARBOR_AFTER_FIX.png",
+    "visual_observation": "muted brown R03 harbor presentation is visible; no claim of final 14-shot visual pass",
+    "weather_variants": "0/3",
+    "release_or_runtime_promotion": false
+  },
+  "decision": {
+    "d19_r03_a02_pass": false,
+    "formal_d19_r02_s02_allowed": false,
+    "d20_formal_integration_allowed": false,
+    "reason": "Boundary timing is fixed and logged, but real Player movement and save input were not observed; this does not prove the required continuous route or save/reload loop."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "task": "D20-A01",
+  "audit_kind": "static_candidate_prefab_interface",
+  "read_only": true,
+  "unity_editor_run": false,
+  "status": "PASS",
+  "checks": {
+    "interface_json_valid": true,
+    "status_is_partial": true,
+    "rig_not_overclaimed": true,
+    "base_prefab_exists": true,
+    "source_guid_is_intake_model": true,
+    "no_gameplay_script_in_prefab": true,
+    "no_animator_in_prefab": true,
+    "no_character_controller_in_prefab": true,
+    "prefab_root_parent_is_scene_root": true,
+    "candidate_is_intake_eligible": true,
+    "fallback_preserves_state": true,
+    "a02_contract_is_read_only": true
+  },
+  "known_unverified": [
+    "Unity YAML import and PrefabUtility validation",
+    "SkinnedMeshRenderer/material binding",
+    "Avatar and exact D20 skeleton mapping",
+    "bounds/foot/camera/anchor runtime probes",
+    "pink material and Console regression check"
+  ]
+}

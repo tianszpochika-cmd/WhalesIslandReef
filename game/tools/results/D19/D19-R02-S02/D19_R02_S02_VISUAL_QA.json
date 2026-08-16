@@ -1,0 +1,33 @@
+{
+  "schema": "D19_R02_S02_VISUAL_QA_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "source": "real x86_64 Player screenshots, not Camera.Render",
+  "fixed_shot_count": 14,
+  "fixed_shots_directory": "game/tools/results/D19/D19-R02-S02/screenshots",
+  "image_dimensions": {
+    "fixed_01_to_fixed_14": "1099x648",
+    "requested": "1920x1080",
+    "verified_target_count": 0
+  },
+  "checks": {
+    "pink_material": {"observed_failures": 0, "status": "PASS_OBSERVED"},
+    "large_white_plane": {"observed_failures": 0, "status": "PASS_OBSERVED"},
+    "mint_green_placeholder_surface": {"observed_failures": 0, "status": "PASS_OBSERVED"},
+    "blocky_or_graybox_terrain": {"observed_failures": 14, "status": "FAIL"},
+    "flat_orange_green_surface": {"observed_failures": 14, "status": "FAIL"},
+    "readable_market_dock_layers": {"observed_failures": 14, "status": "FAIL"},
+    "severe_intersection_or_occlusion": {"observed_failures": 1, "status": "WARN"},
+    "debug_or_route_hud_default_clean": {"observed_failures": 14, "status": "FAIL"},
+    "weather_variants": {"required": 3, "captured": 0, "status": "NOT_RUN"}
+  },
+  "manual_notes": [
+    "Player spawn frame still shows broad flat green/orange ground and low-detail block-like structures.",
+    "Market screen opens and is readable, but the background and town frontage remain visually placeholder-like.",
+    "No pink missing-shader/material evidence was seen in the captured frames.",
+    "Bottom D2/D3 route text is visible in player views and is not a clean production HUD result.",
+    "Most fixed shots are visually similar because W/A/D did not produce a reliably observed player route."
+  ],
+  "visual_pass": false,
+  "responsibility": "D19-R02-A04/new D19 visual repair for presentation; D22 for final HUD cleanup"
+}

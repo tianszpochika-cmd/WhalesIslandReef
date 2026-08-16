@@ -1,0 +1,198 @@
+{
+  "task": "D20-S02",
+  "date": "2026-08-15",
+  "status": "BLOCKED",
+  "decision": "FORMAL_INTEGRATION_NOT_STARTED",
+  "reason": "D19-R01-S02 is a hard PASS gate and its current formal result is PARTIAL.",
+  "history_preserved": true,
+  "hard_gates": {
+    "D20-S01": {
+      "required": "PASS",
+      "actual": "PASS",
+      "evidence": "game/tools/results/D20/D20-S01/D20_S01_MACHINE_RESULT.json"
+    },
+    "D19-R01-S02": {
+      "required": "PASS",
+      "actual": "PARTIAL",
+      "allow_d20_s02": false,
+      "evidence": "game/tools/results/D19/D19-R01-S02/D19_R01_S02_MACHINE_RESULT.json"
+    },
+    "D18-S02-R01": {
+      "required": "PASS",
+      "actual": "PASS",
+      "note": "This is intake admission only; it does not promote runtime readiness.",
+      "evidence": "game/tools/results/D18/D18-S02-R01/D18_S02_R01_MACHINE_RESULT.json"
+    },
+    "D20-A01": {
+      "required": "PARTIAL_OR_BETTER_WITH_RIG_READY",
+      "actual": "PARTIAL",
+      "rig_interface_ready": false,
+      "evidence": "game/tools/results/D20/D20-A01/D20_A01_PLAYER_VISUAL_INTERFACE.json"
+    },
+    "D20-A02": {
+      "required": "PASS_OR_UNBLOCKED",
+      "actual": "BLOCKED",
+      "evidence": "game/tools/results/D20/D20-A02/D20_A02_PREFLIGHT_RESULT.json"
+    },
+    "D20-A03": {
+      "required": "P0_READY",
+      "actual": "PARTIAL",
+      "interface_ready": true,
+      "review_status": "Candidate",
+      "evidence": "game/tools/results/D20/D20-A03/D20_A03_NPC_VISUAL_INTERFACE.json"
+    },
+    "D20-A04": {
+      "required": "P0_READY",
+      "actual": "PARTIAL",
+      "evidence": "game/tools/results/D20/D20-A04/D20_A04_PRESENTATION_AUDIT.json"
+    },
+    "D20-A05": {
+      "required": "P0_READY",
+      "actual": "PARTIAL",
+      "interface_ready": true,
+      "review_status": "Candidate",
+      "evidence": "game/tools/results/D20/D20-A05/D20_A05_WILDLIFE_INTERFACE.json"
+    },
+    "D20-A06": {
+      "required": "P0_READY",
+      "actual": "PASS_ISOLATED_ONLY",
+      "formal_scene_modified": false,
+      "evidence": "game/tools/results/D20/D20-A06/D20_A06_PREFAB_AUDIT.json"
+    }
+  },
+  "formal_integration": {
+    "started": false,
+    "initial_harbor_modified_by_this_task": false,
+    "formal_player_prefab_modified_by_this_task": false,
+    "formal_npc_generation_modified_by_this_task": false,
+    "formal_animal_generation_modified_by_this_task": false,
+    "shared_animator_connection_modified_by_this_task": false,
+    "resource_state_promoted_by_this_task": false,
+    "save_schema_modified_by_this_task": false,
+    "systems_modified_by_this_task": false,
+    "contracts_server_web_modified_by_this_task": false,
+    "d20_s02_screenshots_created": 0,
+    "d20_s02_performance_samples_created": false
+  },
+  "d18_resource_state": {
+    "catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "catalog_status": "PASS",
+    "manifest_total": 28,
+    "manifest_intake_eligible": 24,
+    "candidate_file_total": 1863,
+    "intake_eligible_file_total": 1833,
+    "audit_errors": 0,
+    "local_development_ready": 0,
+    "release_approved": 0,
+    "boundary": "intake_eligible permits controlled work-scene consumption; it is not LocalDevelopmentReady, formal scene integration, or ReleaseApproved."
+  },
+  "resource_ids_reviewed": {
+    "player": [
+      "asset_kenney_blocky_character_a_v01"
+    ],
+    "npc": [
+      "npc_d20_deckhand_01",
+      "npc_d20_rigger_01",
+      "npc_d20_shore_trader_01",
+      "npc_d20_shore_trader_02",
+      "npc_d20_dock_clerk_01",
+      "npc_d20_net_mender_01",
+      "npc_d20_fisher_01",
+      "npc_d20_tavern_cook_01",
+      "npc_d20_boatbuilder_01",
+      "npc_d20_sailmaker_01",
+      "npc_d20_harbor_watch_proxy",
+      "npc_d20_common_resident_01"
+    ],
+    "wildlife": [
+      "wildlife_animal_quaternius_eagle_v01_visual",
+      "wildlife_animal_quaternius_fox_v01_visual",
+      "wildlife_animal_quaternius_cow_v01_visual",
+      "wildlife_fish_quaternius_fish_01_v01_visual",
+      "wildlife_fish_quaternius_fish_02_v01_visual",
+      "wildlife_animal_quaternius_shark_v01_visual",
+      "wildlife_animal_quaternius_manta_ray_v01_visual",
+      "wildlife_animal_quaternius_whale_v01_visual"
+    ],
+    "pets_and_rare_observation": [
+      "pet_animal_quaternius_cat_pack_vol2_v01_visual",
+      "pet_animal_quaternius_shiba_inu_v01_visual",
+      "wildlife_animal_quaternius_eagle_v01_visual",
+      "wildlife_animal_quaternius_fox_v01_visual"
+    ],
+    "resource_state": "Candidate/PrefabCandidateIntake evidence only; no formal runtime consumer was registered."
+  },
+  "upstream_test_counts": {
+    "D20-A01_static_check": "PASS",
+    "D20-A02_read_only_preflight": "BLOCKED",
+    "D20-A03_Unity_EditMode": { "passed": 3, "failed": 0, "total": 3 },
+    "D20-A04_isolated_Unity_EditMode": { "passed": 7, "failed": 0, "total": 7 },
+    "D20-A05_Unity_EditMode": { "passed": 6, "failed": 0, "total": 6 },
+    "D20-A06_Unity_EditMode": { "passed": 6, "failed": 0, "total": 6 },
+    "D19_R01_S02_EditMode": { "passed": 23, "failed": 0, "total": 23 },
+    "D19_R01_S02_PlayMode": "TIMEOUT_NO_XML",
+    "D17_historical_local_baseline": "60_OF_60_PASS; not rerun or reclassified by D20-S02"
+  },
+  "d19_gate_evidence": {
+    "formal_status": "PARTIAL",
+    "real_player_route": "FAIL_INCOMPLETE",
+    "route_frames": 10,
+    "route_duration_seconds": 254,
+    "required_duration_seconds_min": 300,
+    "complete_save_reload_route": false,
+    "current_player_14_fixed_shots": "NOT_RUN",
+    "visual_quality": "FAIL_GRAYBOX_AND_DEBUG_OVERLAY_DEBT",
+    "performance": {
+      "resolution": "1920x1080",
+      "warmup_seconds": 30,
+      "sample_seconds": 60,
+      "low_avg_fps": 13.54,
+      "low_1_percent_fps": 0.18,
+      "medium_avg_fps": 57.85,
+      "medium_1_percent_fps": 11.62,
+      "high_avg_fps": 59.18,
+      "high_1_percent_fps": 21.49,
+      "gpu_timing": "UNAVAILABLE",
+      "working_set_and_gc": "UNAVAILABLE_OR_ZERO_TELEMETRY",
+      "target_gate": "FAILED"
+    },
+    "evidence_directory": "game/tools/results/D19/D19-R01-S02/"
+  },
+  "current_resource_key_boundary": {
+    "appearance_owner": "D10AppearanceSystem",
+    "appearance_lookup": "Resources.Load<GameObject>(\"D10/Appearance/\" + assetId)",
+    "d20_adapters": "D20 NPC/wildlife/pet adapters consume snapshot resource_key values and only write presentation state",
+    "formal_resolver_or_generator_changed": false,
+    "note": "No second character or animal data path was introduced because the hard gate was not met."
+  },
+  "fallbacks_preserved": {
+    "player": "D2FallbackHumanoidBuilder/D2CharacterController; preserves gameplay, appearance history, and stable IDs",
+    "npc": "D20 neutral pose/fallback and FarProxy; no NPC fact or save write",
+    "wildlife": "Idle/Swim state fallback and distant fallback; no ecology/reward write",
+    "pets": "Unavailable/remote fallback and read-only recovery; no pet ownership/relation/save write"
+  },
+  "evidence_paths": {
+    "acceptance_report": "docs/game/design/common/D20_CHARACTER_CREATURE_ACCEPTANCE.md",
+    "handoff": "docs/game/design/common/handoffs/D20/D20-S02_HANDOFF.md",
+    "d19_report": "docs/game/design/common/D19_SAINT_MARGARET_ACCEPTANCE_R01_S02.md",
+    "d18_catalog": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "d18_ready_catalog": "docs/game/design/common/assets/d18_local_development_ready_catalog.json",
+    "d19_screenshots": "game/tools/results/D19/D19-R01-S02/screenshots/"
+  },
+  "blocked_reasons": [
+    "D19-R01-S02 is PARTIAL, while the task explicitly requires PASS before formal D20 integration.",
+    "D19 real route did not complete NPC/market/boarding/departure/return/save/reload closure and was shorter than five minutes.",
+    "D19 Low/Medium/High 1080p performance failed its target gate and telemetry is incomplete.",
+    "D19 current-player 14 fixed-shot and visual graybox gate was not passed.",
+    "D20-A01 rig_interface_ready=false; the only player candidate is Generic/NoAvatar, so D20-A02 is BLOCKED.",
+    "D20-A03/A04/A05 are PARTIAL and D20-A06 is isolated-only; their Candidate status is not a formal runtime consumer.",
+    "D18-S03 has not promoted any resource; LocalDevelopmentReady and ReleaseApproved remain zero."
+  ],
+  "next_gate_sequence": [
+    "D19 repair and rerun D19-R01-S02 until the real route, Player shots, 1080p performance, PlayMode and D17 regression satisfy PASS.",
+    "D20-A01 must publish a verified player rig interface or an explicitly reapproved D17 fallback contract; then rerun D20-A02.",
+    "D20-A03/A04/A05 must close the main-scene runtime consumer, interaction, screenshot, performance and recovery evidence; retain D20-A06 isolated evidence.",
+    "Run D18-S03 only after real runtime consumers exist; it decides LocalDevelopmentReady promotion.",
+    "Re-open D20-S02 only after every hard gate is PASS."
+  ]
+}

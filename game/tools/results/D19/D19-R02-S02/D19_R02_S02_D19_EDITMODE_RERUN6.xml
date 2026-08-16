@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="34" result="Passed" total="34" passed="34" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="1.4350107">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="391" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="1.435011" total="34" passed="34" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1465" name="Save.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/Save.Tests.dll" runstate="Runnable" testcasecount="339" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="1.424262" total="34" passed="34" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="33388" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1490" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.101976" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1491" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.101700" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1492" name="D19Hud" fullname="Whalebone.Tests.D19Hud" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.086564" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1339" name="D19R02A01HudTests" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.085651" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1340" name="PrimaryHudPolicyHidesLegacyCanvasesAndKeepsRouteHudVisible" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests.PrimaryHudPolicyHidesLegacyCanvasesAndKeepsRouteHudVisible" methodname="PrimaryHudPolicyHidesLegacyCanvasesAndKeepsRouteHudVisible" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" seed="1104476758" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.017659" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1342" name="RouteHudDoesNotInventFeedbackText" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests.RouteHudDoesNotInventFeedbackText" methodname="RouteHudDoesNotInventFeedbackText" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" seed="1101282385" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.056096" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1341" name="TemporaryTradeCanvasIsMutuallyExclusiveAndRestoresPrimaryHud" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests.TemporaryTradeCanvasIsMutuallyExclusiveAndRestoresPrimaryHud" methodname="TemporaryTradeCanvasIsMutuallyExclusiveAndRestoresPrimaryHud" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" seed="200487980" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.000954" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1493" name="EditMode" fullname="Whalebone.Tests.EditMode" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.014751" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1353" name="D19LightingProfileTests" fullname="Whalebone.Tests.EditMode.D19LightingProfileTests" classname="Whalebone.Tests.EditMode.D19LightingProfileTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.009727" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1354" name="CatalogHasFiveProfilesAndFrozenSafetyBounds" fullname="Whalebone.Tests.EditMode.D19LightingProfileTests.CatalogHasFiveProfilesAndFrozenSafetyBounds" methodname="CatalogHasFiveProfilesAndFrozenSafetyBounds" classname="Whalebone.Tests.EditMode.D19LightingProfileTests" runstate="Runnable" seed="1401132507" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.005804" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1357" name="IllegalMappingAndColorBoundsAreRejectedByValidator" fullname="Whalebone.Tests.EditMode.D19LightingProfileTests.IllegalMappingAndColorBoundsAreRejectedByValidator" methodname="IllegalMappingAndColorBoundsAreRejectedByValidator" classname="Whalebone.Tests.EditMode.D19LightingProfileTests" runstate="Runnable" seed="1440158538" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.001159" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1355" name="ReadOnlyWeatherAndTimeMapToAllRepresentativeProfiles" fullname="Whalebone.Tests.EditMode.D19LightingProfileTests.ReadOnlyWeatherAndTimeMapToAllRepresentativeProfiles" methodname="ReadOnlyWeatherAndTimeMapToAllRepresentativeProfiles" classname="Whalebone.Tests.EditMode.D19LightingProfileTests" runstate="Runnable" seed="55231498" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.001028" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1358" name="TimeWindowSupportsDuskNightWrapAround" fullname="Whalebone.Tests.EditMode.D19LightingProfileTests.TimeWindowSupportsDuskNightWrapAround" methodname="TimeWindowSupportsDuskNightWrapAround" classname="Whalebone.Tests.EditMode.D19LightingProfileTests" runstate="Runnable" seed="1851919233" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.000234" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1356" name="UnsafeProfileIsRejectedByValidator" fullname="Whalebone.Tests.EditMode.D19LightingProfileTests.UnsafeProfileIsRejectedByValidator" methodname="UnsafeProfileIsRejectedByValidator" classname="Whalebone.Tests.EditMode.D19LightingProfileTests" runstate="Runnable" seed="978343233" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.000424" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+      <test-suite type="TestSuite" id="1476" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="26" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="1.319023" total="26" passed="26" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1477" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="26" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="1.318528" total="26" passed="26" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1482" name="D19" fullname="WhalesIslandReef.Tests.D19" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.102987" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1152" name="D19PortArchitectureTests" fullname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests" classname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.102794" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1153" name="EveryD19PortPrefabHasMarkerColliderAndLod" fullname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests.EveryD19PortPrefabHasMarkerColliderAndLod" methodname="EveryD19PortPrefabHasMarkerColliderAndLod" classname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests" runstate="Runnable" seed="448018789" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.024710" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1154" name="PrefabMaterialsAndAnchorReferencesAreComplete" fullname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests.PrefabMaterialsAndAnchorReferencesAreComplete" methodname="PrefabMaterialsAndAnchorReferencesAreComplete" classname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests" runstate="Runnable" seed="1136917784" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.020937" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1156" name="WorkSceneHasSeparateArchitectureRootsAndNoInitialHarborReference" fullname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests.WorkSceneHasSeparateArchitectureRootsAndNoInitialHarborReference" methodname="WorkSceneHasSeparateArchitectureRootsAndNoInitialHarborReference" classname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests" runstate="Runnable" seed="1547499802" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.044835" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1155" name="WorkScenePreservesD19A02AndDockInterfaceAnchors" fullname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests.WorkScenePreservesD19A02AndDockInterfaceAnchors" methodname="WorkScenePreservesD19A02AndDockInterfaceAnchors" classname="WhalesIslandReef.Tests.D19.D19PortArchitectureTests" runstate="Runnable" seed="120154738" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.010097" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1483" name="D19A01" fullname="WhalesIslandReef.Tests.D19A01" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.196520" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1157" name="D19A01TerrainTests" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.191835" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1162" name="AnchorPrefabContainsA01SharedAnchors" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.AnchorPrefabContainsA01SharedAnchors" methodname="AnchorPrefabContainsA01SharedAnchors" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="1150593572" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.000869" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1161" name="CollisionPrefabHasRepresentativeBoundaries" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.CollisionPrefabHasRepresentativeBoundaries" methodname="CollisionPrefabHasRepresentativeBoundaries" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="946920426" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.000645" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1164" name="IntakeEnvironmentModelsRemainSourceReferences" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.IntakeEnvironmentModelsRemainSourceReferences" methodname="IntakeEnvironmentModelsRemainSourceReferences" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="1071226768" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.001817" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1163" name="NavMeshDataAssetExistsAndIsNotLocalReadyPromotion" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.NavMeshDataAssetExistsAndIsNotLocalReadyPromotion" methodname="NavMeshDataAssetExistsAndIsNotLocalReadyPromotion" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="637806219" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.001079" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1158" name="TerrainPrefabHasFrozenResolutionAndLayers" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.TerrainPrefabHasFrozenResolutionAndLayers" methodname="TerrainPrefabHasFrozenResolutionAndLayers" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="879674902" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.004466" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1159" name="TerrainPrefabHasTexturedVisualMeshWithoutGameplayCollider" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.TerrainPrefabHasTexturedVisualMeshWithoutGameplayCollider" methodname="TerrainPrefabHasTexturedVisualMeshWithoutGameplayCollider" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="515896471" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.002307" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1160" name="WorkSceneContainsOnlyPrefabRoots" fullname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests.WorkSceneContainsOnlyPrefabRoots" methodname="WorkSceneContainsOnlyPrefabRoots" classname="WhalesIslandReef.Tests.D19A01.D19A01TerrainTests" runstate="Runnable" seed="801585009" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:51Z" duration="0.178984" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1481" name="D19R01B" fullname="WhalesIslandReef.Tests.D19R01B" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="0.269082" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1148" name="D19R01BVisualRepairTests" fullname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests" classname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="0.267766" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1151" name="FormalSceneKeepsRepairPrefabAndStableInteractionAnchors" fullname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests.FormalSceneKeepsRepairPrefabAndStableInteractionAnchors" methodname="FormalSceneKeepsRepairPrefabAndStableInteractionAnchors" classname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests" runstate="Runnable" seed="1987869779" result="Passed" start-time="2026-08-15 13:05:51Z" end-time="2026-08-15 13:05:52Z" duration="0.217899" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1149" name="RepairPrefabContainsProjectOwnedDetailAndApprovedNestedReferences" fullname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests.RepairPrefabContainsProjectOwnedDetailAndApprovedNestedReferences" methodname="RepairPrefabContainsProjectOwnedDetailAndApprovedNestedReferences" classname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests" runstate="Runnable" seed="55134169" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.025313" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1150" name="RepairPrefabHasNoMissingOrErrorMaterials" fullname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests.RepairPrefabHasNoMissingOrErrorMaterials" methodname="RepairPrefabHasNoMissingOrErrorMaterials" classname="WhalesIslandReef.Tests.D19R01B.D19R01BVisualRepairTests" runstate="Runnable" seed="1976703138" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.023242" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1480" name="D19R02A04" fullname="WhalesIslandReef.Tests.D19R02A04" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.246287" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1144" name="D19R02A04SceneTests" fullname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests" classname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.245180" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1147" name="InitialHarborReferencesR02PrefabAndStableAnchorPrefab" fullname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests.InitialHarborReferencesR02PrefabAndStableAnchorPrefab" methodname="InitialHarborReferencesR02PrefabAndStableAnchorPrefab" classname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests" runstate="Runnable" seed="2248800" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.217453" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1146" name="R02PresentationHasNoMissingOrInternalErrorMaterials" fullname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests.R02PresentationHasNoMissingOrInternalErrorMaterials" methodname="R02PresentationHasNoMissingOrInternalErrorMaterials" classname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests" runstate="Runnable" seed="25900390" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.019002" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1145" name="R02PresentationPrefabHasTerrainMeshColliderAndLodData" fullname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests.R02PresentationPrefabHasTerrainMeshColliderAndLodData" methodname="R02PresentationPrefabHasTerrainMeshColliderAndLodData" classname="WhalesIslandReef.Tests.D19R02A04.D19R02A04SceneTests" runstate="Runnable" seed="722790726" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.007756" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1479" name="D19S02" fullname="WhalesIslandReef.Tests.D19S02" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.482023" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1139" name="D19S02IntegrationTests" fullname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests" classname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.480902" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1143" name="FormalSceneKeepsNavigationAndPresentationBoundaries" fullname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests.FormalSceneKeepsNavigationAndPresentationBoundaries" methodname="FormalSceneKeepsNavigationAndPresentationBoundaries" classname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests" runstate="Runnable" seed="891574511" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.213391" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1142" name="FormalScenePreservesCompatibilityNodesAndStableAnchors" fullname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests.FormalScenePreservesCompatibilityNodesAndStableAnchors" methodname="FormalScenePreservesCompatibilityNodesAndStableAnchors" classname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests" runstate="Runnable" seed="634893055" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.198058" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1140" name="IntegrationPrefabContainsOrderedRootsAndNestedPrefabInstances" fullname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests.IntegrationPrefabContainsOrderedRootsAndNestedPrefabInstances" methodname="IntegrationPrefabContainsOrderedRootsAndNestedPrefabInstances" classname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests" runstate="Runnable" seed="2133508105" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.036488" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1141" name="IntegrationPrefabHasNoMissingOrErrorMaterials" fullname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests.IntegrationPrefabHasNoMissingOrErrorMaterials" methodname="IntegrationPrefabHasNoMissingOrErrorMaterials" classname="WhalesIslandReef.Tests.D19S02.D19S02IntegrationTests" runstate="Runnable" seed="16865134" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.031717" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1478" name="EditMode" fullname="WhalesIslandReef.Tests.EditMode" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.020949" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1133" name="D19VegetationBiomeTests" fullname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" classname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.019701" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1135" name="D19A03_AllBiomePrefabsHaveLodWindMaterialAndStableAnchors" fullname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests.D19A03_AllBiomePrefabsHaveLodWindMaterialAndStableAnchors" methodname="D19A03_AllBiomePrefabsHaveLodWindMaterialAndStableAnchors" classname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" runstate="Runnable" seed="1104078514" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.013282" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1134" name="D19A03_LayoutHasFixedSeedSixBiomesAndExclusions" fullname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests.D19A03_LayoutHasFixedSeedSixBiomesAndExclusions" methodname="D19A03_LayoutHasFixedSeedSixBiomesAndExclusions" classname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" runstate="Runnable" seed="1171304263" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.001790" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1136" name="D19A03_LodDistancesAndPlacementExclusionsAreDeterministic" fullname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests.D19A03_LodDistancesAndPlacementExclusionsAreDeterministic" methodname="D19A03_LodDistancesAndPlacementExclusionsAreDeterministic" classname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" runstate="Runnable" seed="2094872362" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.002260" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1137" name="D19A03_ResultKeepsCandidateStateAndReportsZeroSeriousIntersections" fullname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests.D19A03_ResultKeepsCandidateStateAndReportsZeroSeriousIntersections" methodname="D19A03_ResultKeepsCandidateStateAndReportsZeroSeriousIntersections" classname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" runstate="Runnable" seed="1384090113" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.000624" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1138" name="D19A03_WorkSceneAndBiomeRootExistWithNamedExclusions" fullname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests.D19A03_WorkSceneAndBiomeRootExistWithNamedExclusions" methodname="D19A03_WorkSceneAndBiomeRootExistWithNamedExclusions" classname="WhalesIslandReef.Tests.EditMode.D19VegetationBiomeTests" runstate="Runnable" seed="1389415877" result="Passed" start-time="2026-08-15 13:05:52Z" end-time="2026-08-15 13:05:52Z" duration="0.000608" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

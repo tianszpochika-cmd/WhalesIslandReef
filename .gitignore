@@ -62,3 +62,34 @@ pnpm-debug.log*
 # Local diagnostic output and scratch Unity projects
 /ops/logs/
 /ops/p1c_scratch/
+
+# D18 external asset source cache: keep provenance manifests/evidence in docs,
+# but never add downloaded archives to ordinary Git history.
+/artifacts/external_sources/*.zip
+/artifacts/external_sources/*.7z
+/artifacts/external_sources/*.rar
+/artifacts/external_sources/*.tar
+/artifacts/external_sources/*.gz
+
+# Generated validation fixtures, Player builds, and Python bytecode are reproducible.
+# Keep their compact reports under tools/results and docs, not full runtime caches.
+/artifacts/
+/+/
+**/__pycache__/
+
+# Unity audit fixtures and standalone Player copies are regenerated from the
+# project. Keep their reports and screenshots, but never commit nested caches.
+/game/tools/results/**/_Unity*FixtureProject/
+/game/tools/results/**/_UnityAuditFixtureProject/
+/game/tools/results/**/UnityAuditProject*/
+/game/tools/results/**/[Ll]ibrary/
+/game/tools/results/**/[Tt]emp/
+/game/tools/results/**/[Ll]ogs/
+/game/tools/results/**/[Pp]ackageCache/
+/game/tools/results/**/[Mm]onoBleedingEdge/
+**/[Bb]in/
+**/[Oo]bj/
+/game/tools/results/**/*_Data/
+/game/tools/results/**/*_BurstDebugInformation_DoNotShip/
+/game/tools/results/**/*.exe
+/game/tools/results/**/*.dll

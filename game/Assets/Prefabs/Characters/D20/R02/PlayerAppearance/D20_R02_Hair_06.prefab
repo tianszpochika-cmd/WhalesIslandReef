@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8430340144125839762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2417826209538145877}
+  - component: {fileID: 2086613023587673064}
+  m_Layer: 0
+  m_Name: D20_R02_Hair_06
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2417826209538145877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430340144125839762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6066384810692661760}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &2086613023587673064
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430340144125839762}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 1.4085475, z: -0.13674954}
+  m_Size: 0.65909505
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.12
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1024339645683644622}
+  - screenRelativeHeight: 0.025
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
+--- !u!1001 &5584870399581485164
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2417826209538145877}
+    m_Modifications:
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566283084255426935, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+      propertyPath: m_Name
+      value: HairGeometry_05
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3293126067411693064, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+--- !u!23 &1024339645683644622 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4879189994234134690, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+  m_PrefabInstance: {fileID: 5584870399581485164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6066384810692661760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1851351983647926892, guid: b1bb6c7b2d1ce7f44a01edfaf638c865, type: 3}
+  m_PrefabInstance: {fileID: 5584870399581485164}
+  m_PrefabAsset: {fileID: 0}

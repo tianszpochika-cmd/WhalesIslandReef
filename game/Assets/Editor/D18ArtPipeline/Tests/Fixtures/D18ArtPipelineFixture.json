@@ -1,0 +1,8 @@
+{
+  "fixture_id": "d18_art_pipeline_minimal_fixture",
+  "purpose": "Editor-only guard and prefab preflight fixture; never a runtime asset or scene reference.",
+  "allowed_auto_fix_root": "Assets/Editor/D18ArtPipeline/Tests/Fixtures/",
+  "required_prefab_checks": ["renderer", "material", "bounds", "collider", "interaction_anchor", "lod_group", "missing_script", "missing_reference", "stable_name"],
+  "expected_scan_exclusions": ["Library", "Temp", "Logs"],
+  "expected_report_mode": "report_only"
+}

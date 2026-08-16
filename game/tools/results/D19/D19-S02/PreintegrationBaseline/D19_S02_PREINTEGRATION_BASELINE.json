@@ -1,0 +1,175 @@
+﻿{
+    "task":  "D19-S02",
+    "rollback_point_id":  "d19-s02-preintegration-baseline",
+    "created_on":  "2026-08-14",
+    "status":  "READY_FOR_INTEGRATION",
+    "scene_path":  "game/Assets/Scenes/InitialHarbor.unity",
+    "scene_sha256":  "D3D76848BDA2E00F3313F111D7E0DBD2B59E8D306C1A681765B67FD5A591932B",
+    "scene_meta_path":  "game/Assets/Scenes/InitialHarbor.unity.meta",
+    "snapshot_path":  "game/tools/results/D19/D19-S02/PreintegrationBaseline/InitialHarbor.unity",
+    "writer_scope":  "D19-S02 only; no Systems/contracts/server/web writes",
+    "original_scene_counts":  {
+                                  "game_objects":  24,
+                                  "prefab_instances":  25,
+                                  "scene_monobehaviours":  7,
+                                  "navmesh_data":  "fileID: 0"
+                              },
+    "compatibility_nodes":  [
+                                "Dock",
+                                "DockDeck",
+                                "Gangplank",
+                                "Beach",
+                                "Sea",
+                                "Main Camera",
+                                "Harbor UI",
+                                "HarborControls"
+                            ],
+    "stable_interaction_points":  [
+                                      {
+                                          "id":  "D2_PlayerAvatar",
+                                          "kind":  "runtime_player",
+                                          "source":  "D2RuntimeBootstrap",
+                                          "position":  "runtime:ship-6.5m",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "santa_margarita",
+                                          "kind":  "port_entry",
+                                          "source":  "D19-S01/D19-A02",
+                                          "position":  "0,0.2,112",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "building:market_santa_margarita",
+                                          "kind":  "market_service",
+                                          "source":  "D9/D19-A02",
+                                          "position":  "26,0.2,62",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "market_queue_santa_margarita",
+                                          "kind":  "market_queue",
+                                          "source":  "D19-A02",
+                                          "position":  "12,0.2,58",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "building:warehouse_santa_margarita",
+                                          "kind":  "warehouse_service",
+                                          "source":  "D9/D19-A02",
+                                          "position":  "48,0.2,34",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "warehouse_queue_santa_margarita",
+                                          "kind":  "warehouse_queue",
+                                          "source":  "D19-A02",
+                                          "position":  "40,0.2,24",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "building:tavern_santa_margarita",
+                                          "kind":  "tavern_service",
+                                          "source":  "D10/D19-A02",
+                                          "position":  "-42,0.2,50",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "building:shipyard_santa_margarita",
+                                          "kind":  "shipyard_service",
+                                          "source":  "D9/D19-A02",
+                                          "position":  "60,0.2,8",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "shipyard_repair_santa_margarita",
+                                          "kind":  "shipyard_repair",
+                                          "source":  "D9/D19-A02",
+                                          "position":  "54,0.2,2",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "building_saint_marys_dock",
+                                          "kind":  "primary_dock",
+                                          "source":  "D9/D19-A02",
+                                          "position":  "0,0.2,-12",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "DockGround",
+                                          "kind":  "dock_collision",
+                                          "source":  "HarborCollisionController",
+                                          "position":  "runtime:0,0.1,-6",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "berth_santa_margarita",
+                                          "kind":  "berth",
+                                          "source":  "ShipSystem/D19-A04",
+                                          "position":  "0,0,-30",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "GangplankGround",
+                                          "kind":  "boarding_collision",
+                                          "source":  "HarborCollisionController/D19-A04",
+                                          "position":  "runtime:0,0.5,-4.75",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "D7_HelmPoint",
+                                          "kind":  "helm",
+                                          "source":  "D7ShipDeckController",
+                                          "position":  "runtime:ship",
+                                          "compatibility":  true
+                                      },
+                                      {
+                                          "id":  "departure_channel_santa_margarita",
+                                          "kind":  "departure_channel",
+                                          "source":  "D19-S01/D19-A04",
+                                          "position":  "0,0,-78",
+                                          "compatibility":  false
+                                      },
+                                      {
+                                          "id":  "return_channel_santa_margarita",
+                                          "kind":  "return_channel",
+                                          "source":  "D19-S01/D19-A04",
+                                          "position":  "0,0,-54",
+                                          "compatibility":  false
+                                      },
+                                      {
+                                          "id":  "save_point_santa_margarita",
+                                          "kind":  "save_point",
+                                          "source":  "D7SaveCoordinator",
+                                          "position":  "0,0.2,-12",
+                                          "compatibility":  false
+                                      },
+                                      {
+                                          "id":  "npc:santa_margarita_dockhand",
+                                          "kind":  "npc",
+                                          "source":  "D10TavernSocialSystem",
+                                          "position":  "12,0.2,-8",
+                                          "compatibility":  false
+                                      },
+                                      {
+                                          "id":  "npc:santa_margarita_lookout",
+                                          "kind":  "npc",
+                                          "source":  "D10TavernSocialSystem",
+                                          "position":  "-68,6,84",
+                                          "compatibility":  false
+                                      },
+                                      {
+                                          "id":  "npc:santa_margarita_tavern_keeper",
+                                          "kind":  "npc",
+                                          "source":  "D10TavernSocialSystem",
+                                          "position":  "-34,0.2,52",
+                                          "compatibility":  false
+                                      }
+                                  ],
+    "rollback_strategy":  [
+                              "disable or remove D19_SaintMargaret_Root prefab instance only",
+                              "restore scene and meta from snapshot if any acceptance gate fails",
+                              "retain failed result logs/screenshots and never delete A01-A06 evidence",
+                              "do not modify Systems, Registry, save schema or contracts"
+                          ]
+}

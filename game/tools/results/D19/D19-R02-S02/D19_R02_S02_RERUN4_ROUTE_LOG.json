@@ -1,0 +1,31 @@
+{
+  "schema": "D19_R02_S02_ROUTE_LOG_RERUN4_V1",
+  "task": "D19-R02-S02",
+  "rerun": "RERUN4",
+  "conclusion": "PARTIAL",
+  "player_executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN4.exe",
+  "player_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+  "observed_duration_seconds": 312,
+  "input_source": "real keyboard/mouse input delivered to visible Player window",
+  "direct_method_invocation": false,
+  "steps": [
+    {"index": 1, "node": "出生/落地", "input": "New Game click", "status": "PASS_OBSERVED", "feedback": "Player spawned and D2 physics log reports D19_TerrainRoot", "screenshot": "14_rerun4_spawn.jpg", "stable_id": "D19.PlayerSpawn"},
+    {"index": 2, "node": "市场入口", "input": "B during real Player session", "status": "NOT_COMPLETED_IN_RERUN4", "prior_evidence": "RERUN3 B trade open/close retained", "stable_id": "D9.Market.Trade"},
+    {"index": 3, "node": "仓库", "input": "WASD navigation attempt", "status": "NOT_VERIFIED", "failure": "No trustworthy warehouse interaction feedback", "stable_id": "D9.Warehouse"},
+    {"index": 4, "node": "酒馆/NPC", "input": "WASD + E approach attempt", "status": "NOT_VERIFIED", "failure": "No trustworthy tavern/NPC dialogue feedback", "stable_id": "D10.Tavern.Dialogue"},
+    {"index": 5, "node": "码头/泊位", "input": "WASD navigation attempt", "status": "NOT_VERIFIED", "failure": "Physical walk-to-dock path not demonstrated", "stable_id": "D9.Dock.Berth"},
+    {"index": 6, "node": "登船", "input": "E", "status": "PASS", "feedback": "已上船：可以操控船只；按 E 下船", "screenshot": "15_rerun4_e.jpg", "stable_id": "D9.Dock.Board"},
+    {"index": 7, "node": "出航", "input": "T", "status": "PASS_LOGGED", "feedback": "D3 已规划航线", "screenshot": "16_rerun4_departure.jpg", "stable_id": "D3.Voyage.Departure"},
+    {"index": 8, "node": "航行推进", "input": "N repeated in real Player", "status": "PASS_LOGGED", "feedback": "海上事件与航程推进日志", "screenshot": "19_rerun4_voyage_advance.jpg", "stable_id": "D3.Voyage.Advance"},
+    {"index": 9, "node": "返港/结算", "input": "L after arrival", "status": "PASS_LOGGED", "feedback": "已抵达目的地/已靠港并完成结算", "screenshot": "20_rerun4_settle.jpg", "stable_id": "D3.Voyage.Settle"},
+    {"index": 10, "node": "下船", "input": "E", "status": "PASS", "feedback": "已下船：WASD 移动，靠近老水手按 E 对话", "screenshot": "22_rerun4_disembark.jpg", "stable_id": "D9.Dock.Disembark"},
+    {"index": 11, "node": "保存", "input": "F5", "status": "PASS_OBSERVED", "feedback": "保存结果记录在 Player 会话日志/截图", "screenshot": "25_rerun4_save2.jpg", "stable_id": "D8.Save.Checkpoint"},
+    {"index": 12, "node": "连续运行", "input": "No direct game method; Player left running", "status": "PASS_DURATION_ONLY", "feedback": "wall-clock session reached 312 seconds", "screenshot": "26_rerun4_300s.jpg", "stable_id": "D19.Route.Duration"},
+    {"index": 13, "node": "退出", "input": "Alt+F4", "status": "PASS", "feedback": "Player process/window stopped", "stable_id": "D8.Save.Exit"},
+    {"index": 14, "node": "重载恢复", "input": "Main Menu Continue click", "status": "PASS", "feedback": "[MainMenu] 存档加载成功，进入游戏", "screenshot": "28_rerun4_continue_loaded.jpg", "stable_id": "D8.Save.Continue"}
+  ],
+  "required_route_complete": false,
+  "not_completed": ["仓库", "酒馆/NPC", "物理步行到码头/泊位"],
+  "evidence_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_INPUT.log",
+  "continue_evidence_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN4_CONTINUE.log"
+}

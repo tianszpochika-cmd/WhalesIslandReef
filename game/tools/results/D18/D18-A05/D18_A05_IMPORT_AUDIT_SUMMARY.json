@@ -1,0 +1,46 @@
+{
+  "task": "D18-A05",
+  "status": "PASS",
+  "audit_report": "game/tools/results/D18/D18-A05/D18_A02_KENNEY_IMPORT_AUDIT.json",
+  "audit_command": "Unity 6000.0.80f1 -batchmode -nographics -quit -projectPath game -executeMethod WhalesIslandReef.Editor.D18ArtPipeline.D18ArtPipelineBatch.RunKenneyAudit",
+  "audit_scope": {
+    "manifest_root": "docs/game/design/common/assets/packs/ships_port_props/",
+    "candidate_root": "game/Assets/Art/Candidates/ShipsPortProps/",
+    "manifest_count": 2,
+    "candidate_models": 151,
+    "candidate_previews": 151,
+    "import_verified_sample": 151,
+    "prefabs_scanned": 0,
+    "runtime_consumers": 0
+  },
+  "unity_metrics": {
+    "model_files": 151,
+    "mesh_count": 231,
+    "animation_clip_count": 27,
+    "material_count": 161,
+    "texture_files": 0,
+    "audio_files": 0,
+    "prefab_files": 0,
+    "bounds_valid": 151,
+    "missing_references": 0,
+    "missing_scripts": 0,
+    "errors": 0,
+    "warnings": 151
+  },
+  "category_counts": {
+    "Buildings": 100,
+    "Environment": 9,
+    "Props": 18,
+    "Ships": 15,
+    "Vegetation": 9
+  },
+  "warning_reason": "All 151 warnings are raw Kenney hyphenated source filenames not matching the project's D18 snake_case naming convention. They are naming warnings only; no import, bounds, material, script, or reference error was reported.",
+  "raw_model_limitations": {
+    "colliders": 0,
+    "interaction_anchors": 0,
+    "lod_groups": 0,
+    "interpretation": "Raw FBX audit is import evidence, not consumer Prefab evidence. D19/D21 must create and preflight consumer Prefabs before runtime use."
+  },
+  "config_restored": true,
+  "release_approved": false
+}

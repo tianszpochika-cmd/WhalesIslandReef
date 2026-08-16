@@ -1,0 +1,55 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_MACHINE_RESULT_V4",
+  "task": "D19-R03-A01",
+  "run_id": "RERUN41",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real Windows Player with CUA input; no Inspector or direct gameplay method invocation",
+  "player_executable": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN41.exe",
+  "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN41_PLAYER_RERUN2.log",
+  "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN41.json",
+  "resolution_requested": "1920x1080",
+  "runtime_seconds": 59.76485061645508,
+  "player_found": true,
+  "controller_found": true,
+  "router_found": true,
+  "moved_observed": true,
+  "interaction_input_observed": true,
+  "save_input_observed": true,
+  "save_feedback_observed": true,
+  "boarding_feedback_observed": true,
+  "reload_restore_observed": false,
+  "landmarks_reached": [
+    "anchor.player.spawn",
+    "building:market_santa_margarita",
+    "building:tavern_santa_margarita",
+    "anchor.dock.primary",
+    "anchor.berth.primary"
+  ],
+  "landmarks_not_reached": [
+    "building:warehouse_santa_margarita",
+    "building:shipyard_santa_margarita",
+    "anchor.return.harbor"
+  ],
+  "same_run_route_seconds_requirement_met": false,
+  "screenshots": {
+    "current_run_count": 0,
+    "current_run_directory": "game/tools/results/D19/D19-R03-A01/screenshots/",
+    "current_run_note": "The route probe recorded no screenshot request in this 59.8 second run; existing RERUN35/RERUN39 Player screenshots remain historical evidence and are not relabeled as RERUN41."
+  },
+  "manual_observations": [
+    "Main Menu -> New Game -> InitialHarbor completed by real Player input.",
+    "Repeated real WASD input moved the player from the dock into the market/tavern visual cluster and then onto the grass-side presentation area.",
+    "B opened the real Saint-Marguerite trade panel; Escape closed it.",
+    "C produced the real save checkpoint feedback.",
+    "E produced real boarding feedback at the end of the run; no ship departure/return loop was completed."
+  ],
+  "failed_gates": [
+    "full spawn-market-warehouse-tavern-dock-board-depart-return-save-reload route not completed",
+    "runtime was shorter than the required 300 seconds for the route gate",
+    "same-run quit and Continue reload was not performed",
+    "weather variants were not captured",
+    "current-run screenshot count is 0; historical screenshots remain separately named"
+  ],
+  "historical_note": "RERUN29, RERUN35, RERUN39 and the original PARTIAL/BLOCKED results remain preserved; this result only records the correctly parameterized RERUN41 evidence after the route-probe flag fix.",
+  "generated_at": "2026-08-16T18:26:30+08:00"
+}

@@ -1,0 +1,689 @@
+{
+    "task": "D19-R01-B",
+    "status": "PASS_VISUAL_REPAIR_BUILD",
+    "generated_on_utc": "2026-08-14T19:04:24.7705012Z",
+    "scene_path": "Assets/Scenes/InitialHarbor.unity",
+    "repair_prefab_path": "Assets/Prefabs/Environment/D19/Integration/R01/D19_R01_B_HarborVisualRepair.prefab",
+    "rollback_point_id": "d19-r01-b-previsual-repair",
+    "formal_initial_harbor_modified": true,
+    "systems_modified": false,
+    "registry_modified": false,
+    "save_schema_modified": false,
+    "external_asset_state_promoted": false,
+    "scene_only_references_prefab": true,
+    "legacy_stable_anchors_preserved": true,
+    "dev_overlay_default_off": true,
+    "hidden_legacy_visual_renderers": 0,
+    "candidate_models_instantiated": 69,
+    "project_owned_renderers": 290,
+    "missing_candidate_models": 0,
+    "fixed_shot_count": 14,
+    "fixed_shot_width": 1920,
+    "fixed_shot_height": 1080,
+    "stable_anchor_ids": [
+        "D19_Anchor_D2_PlayerAvatar",
+        "D19_Anchor_santa_margarita",
+        "D19_Anchor_building_market_santa_margarita",
+        "D19_Anchor_building_warehouse_santa_margarita",
+        "D19_Anchor_building_tavern_santa_margarita",
+        "D19_Anchor_building_shipyard_santa_margarita",
+        "D19_Anchor_building_saint_marys_dock",
+        "D19_Anchor_berth_santa_margarita",
+        "D19_Anchor_DockGround",
+        "D19_Anchor_GangplankGround",
+        "D19_Anchor_D7_HelmPoint",
+        "D19_Anchor_departure_channel_santa_margarita",
+        "D19_Anchor_return_channel_santa_margarita",
+        "D19_Anchor_save_point_santa_margarita",
+        "D19_Anchor_npc_santa_margarita_dockhand",
+        "D19_Anchor_npc_santa_margarita_lookout",
+        "D19_Anchor_npc_santa_margarita_tavern_keeper"
+    ],
+    "resource_usage": [
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/path_stone.fbx",
+            "content_id": "env_kenney_nature_path_stone",
+            "domain": "environment",
+            "role": "candidate_dirt_path_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/path_stone.fbx",
+            "content_id": "env_kenney_nature_path_stone",
+            "domain": "environment",
+            "role": "candidate_dirt_path_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/path_stone.fbx",
+            "content_id": "env_kenney_nature_path_stone",
+            "domain": "environment",
+            "role": "candidate_dirt_path_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/path_stone.fbx",
+            "content_id": "env_kenney_nature_path_stone",
+            "domain": "environment",
+            "role": "candidate_dirt_path_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/path_stone.fbx",
+            "content_id": "env_kenney_nature_path_stone",
+            "domain": "environment",
+            "role": "candidate_dirt_path_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/path_stone.fbx",
+            "content_id": "env_kenney_nature_path_stone",
+            "domain": "environment",
+            "role": "candidate_dirt_path_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/platform_beach.fbx",
+            "content_id": "env_kenney_nature_platform_beach",
+            "domain": "environment",
+            "role": "candidate_beach_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/platform_beach.fbx",
+            "content_id": "env_kenney_nature_platform_beach",
+            "domain": "environment",
+            "role": "candidate_beach_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palmDetailedTall.fbx",
+            "content_id": "env_kenney_nature_tree_palm_detailed_tall",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palmBend.fbx",
+            "content_id": "env_kenney_nature_tree_palm_bend",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palmTall.fbx",
+            "content_id": "env_kenney_nature_tree_palm_tall",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palmShort.fbx",
+            "content_id": "env_kenney_nature_tree_palm_short",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_default.fbx",
+            "content_id": "env_kenney_nature_tree_default",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_oak.fbx",
+            "content_id": "env_kenney_nature_tree_oak",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/plant_bushLarge.fbx",
+            "content_id": "env_kenney_nature_plant_bush_large",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/plant_bushDetailed.fbx",
+            "content_id": "env_kenney_nature_plant_bush_detailed",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/plant_bushLarge.fbx",
+            "content_id": "env_kenney_nature_plant_bush_large",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/grass_leafsLarge.fbx",
+            "content_id": "env_kenney_nature_grass_leafs_large",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/grass_large.fbx",
+            "content_id": "env_kenney_nature_grass_large",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_largeA.fbx",
+            "content_id": "env_kenney_nature_rock_large_a",
+            "domain": "environment",
+            "role": "candidate_rock_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_largeB.fbx",
+            "content_id": "env_kenney_nature_rock_large_b",
+            "domain": "environment",
+            "role": "candidate_rock_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_tallA.fbx",
+            "content_id": "env_kenney_nature_rock_tall_a",
+            "domain": "environment",
+            "role": "candidate_rock_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_smallFlatA.fbx",
+            "content_id": "env_kenney_nature_rock_small_flat_a",
+            "domain": "environment",
+            "role": "candidate_rock_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_large_rock.fbx",
+            "content_id": "env_kenney_nature_cliff_large_rock",
+            "domain": "environment",
+            "role": "candidate_cliff_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_blockSlope_rock.fbx",
+            "content_id": "env_kenney_nature_cliff_block_slope_rock",
+            "domain": "environment",
+            "role": "candidate_cliff_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_cave_rock.fbx",
+            "content_id": "env_kenney_nature_cliff_cave_rock",
+            "domain": "environment",
+            "role": "candidate_cliff_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/log_stack.fbx",
+            "content_id": "env_kenney_nature_log_stack",
+            "domain": "environment",
+            "role": "candidate_wood_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/stone_largeA.fbx",
+            "content_id": "env_kenney_nature_stone_large_a",
+            "domain": "environment",
+            "role": "candidate_stone_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palmBend.fbx",
+            "content_id": "env_kenney_nature_tree_palm_bend",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palmShort.fbx",
+            "content_id": "env_kenney_nature_tree_palm_short",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/plant_bushDetailed.fbx",
+            "content_id": "env_kenney_nature_plant_bush_detailed",
+            "domain": "environment",
+            "role": "candidate_vegetation_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_smallFlatA.fbx",
+            "content_id": "env_kenney_nature_rock_small_flat_a",
+            "domain": "environment",
+            "role": "candidate_rock_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/wall-window-square-detailed.fbx",
+            "content_id": "d18a05_building_wall_window_square_detailed",
+            "domain": "building",
+            "role": "building_opening_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/wall-window-round-detailed.fbx",
+            "content_id": "d18a05_building_wall_window_round_detailed",
+            "domain": "building",
+            "role": "building_opening_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/roof-flat-patch-large.fbx",
+            "content_id": "d18a05_building_roof_flat_patch_large",
+            "domain": "building",
+            "role": "building_roof_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/door-rotate-square-b.fbx",
+            "content_id": "d18a05_building_door_rotate_square_b",
+            "domain": "building",
+            "role": "building_opening_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/wall-window-square-detailed.fbx",
+            "content_id": "d18a05_building_wall_window_square_detailed",
+            "domain": "building",
+            "role": "building_opening_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/roof-flat-side.fbx",
+            "content_id": "d18a05_building_roof_flat_side",
+            "domain": "building",
+            "role": "building_roof_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/door-rotate-square-b.fbx",
+            "content_id": "d18a05_building_door_rotate_square_b",
+            "domain": "building",
+            "role": "building_opening_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/wall-window-round-detailed.fbx",
+            "content_id": "d18a05_building_wall_window_round_detailed",
+            "domain": "building",
+            "role": "building_opening_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/roof-flat-patch-large.fbx",
+            "content_id": "d18a05_building_roof_flat_patch_large",
+            "domain": "building",
+            "role": "building_roof_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/stairs-open-short.fbx",
+            "content_id": "d18a05_building_stairs_open_short",
+            "domain": "building",
+            "role": "building_access_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/structure-platform.fbx",
+            "content_id": "d18a05_pirate_structure_platform",
+            "domain": "ship",
+            "role": "port_platform_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/platform-planks.fbx",
+            "content_id": "d18a05_pirate_platform_planks",
+            "domain": "ship",
+            "role": "port_platform_module",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/flag-pirate.fbx",
+            "content_id": "d18a05_pirate_flag_pirate",
+            "domain": "building",
+            "role": "port_flag_sign_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/flag-pirate.fbx",
+            "content_id": "d18a05_pirate_flag_pirate",
+            "domain": "building",
+            "role": "port_flag_sign_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/barrel.fbx",
+            "content_id": "d18a05_pirate_barrel",
+            "domain": "building",
+            "role": "port_storage_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/barrel.fbx",
+            "content_id": "d18a05_pirate_barrel",
+            "domain": "building",
+            "role": "port_storage_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/crate.fbx",
+            "content_id": "d18a05_pirate_crate",
+            "domain": "building",
+            "role": "port_storage_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/crate.fbx",
+            "content_id": "d18a05_pirate_crate",
+            "domain": "building",
+            "role": "port_storage_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/barrel.fbx",
+            "content_id": "d18a05_pirate_barrel",
+            "domain": "building",
+            "role": "port_storage_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/crate.fbx",
+            "content_id": "d18a05_pirate_crate",
+            "domain": "building",
+            "role": "port_storage_prop",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        },
+        {
+            "candidate_file_path": "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/log_stack.fbx",
+            "content_id": "env_kenney_nature_log_stack",
+            "domain": "environment",
+            "role": "candidate_wood_model",
+            "consumer": "D19-R01-B-visual-only",
+            "source_exists": true,
+            "instantiated": true,
+            "note": "Approved intake candidate used as visual-only nested model; collision remains owned by D19 terrain/port systems."
+        }
+    ],
+    "shots": [
+        {
+            "shot_id": "d19_shot_main_menu",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_main_menu.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_spawn",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_spawn.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_market",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_market.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_dock_overview",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_dock_overview.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_tavern_entry",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_tavern_entry.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_coastline",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_coastline.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_boarding",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_boarding.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_on_ship",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_on_ship.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_departure",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_departure.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_nearshore",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_nearshore.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_weather",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_weather.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_return_harbor",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_return_harbor.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_settings_accessibility",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_settings_accessibility.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        },
+        {
+            "shot_id": "d19_shot_debug_boundary",
+            "file": "tools/results/D19/D19-R01-B/screenshots/d19_shot_debug_boundary.png",
+            "width": 1920,
+            "height": 1080,
+            "capture_mode": "Unity_Editor_Camera.Render_visual_regression_only",
+            "status": "CAPTURED_VISUAL_REGRESSION"
+        }
+    ],
+    "warnings": []
+}

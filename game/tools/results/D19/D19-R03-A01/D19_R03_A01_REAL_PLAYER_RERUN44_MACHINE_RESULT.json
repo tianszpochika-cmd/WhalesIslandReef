@@ -1,0 +1,48 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_V4",
+  "task": "D19-R03-A01",
+  "run_id": "RERUN44",
+  "conclusion": "PARTIAL",
+  "player": {
+    "real_windows_player": true,
+    "build": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN44.exe",
+    "requested_resolution": "1920x1080",
+    "duration_seconds": 193.38430786132813,
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "movement_input_observed": true,
+    "interaction_input_observed": true,
+    "save_input_observed": false,
+    "current_run_screenshot_count": 7,
+    "screenshot_prefix": "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun44_"
+  },
+  "landmarks_reached": ["anchor.dock.primary", "anchor.berth.primary"],
+  "landmarks_not_reached": [
+    "anchor.player.spawn",
+    "building:market_santa_margarita",
+    "building:warehouse_santa_margarita",
+    "building:tavern_santa_margarita",
+    "building:shipyard_santa_margarita",
+    "anchor.return.harbor"
+  ],
+  "evidence": {
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN44.json",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN44_PLAYER.log",
+    "build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD_RERUN44_UNITY.log",
+    "screenshots": "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun44_00.png..route_rerun44_06.png"
+  },
+  "integration_fix": {
+    "legacy_duplicate_colliders_disabled": 3,
+    "ship_position_runtime": [0.0, 0.0, 0.0],
+    "player_overlaps_ship_hull": false,
+    "stable_ids_and_d6_ground_owners_retained": true
+  },
+  "blocking_reasons": [
+    "The real Player run did not complete the required menu-to-market-to-warehouse-to-tavern-to-dock-to-board-to-depart-to-return-to-save/reload route.",
+    "Save input was not observed and no same-run Continue reload was executed.",
+    "The player remained near the dock/berth and final displacement was only about 0.045m; the current computer-control evidence provides discrete key pulses rather than a sustained key-down/key-up route.",
+    "Market, warehouse, tavern, shipyard and return landmarks were not reached in this independent run."
+  ],
+  "historical_note": "RERUN44 is an additional partial run after the R03 integration duplicate-collider fix; RERUN43, RERUN42, RERUN41 and earlier evidence remain preserved and are not replaced."
+}

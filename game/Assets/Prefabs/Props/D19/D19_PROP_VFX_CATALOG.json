@@ -1,0 +1,27 @@
+{
+  "schema": "d19_port_props_vfx_catalog.v1",
+  "task": "D19-A06",
+  "status": "WorkSceneCandidate",
+  "scope": "D19_Ambience_Work only; no InitialHarbor integration",
+  "project_owned_visuals": {
+    "source_id": "project_owned_d19_lowpoly_proxy",
+    "license": "project-owned",
+    "evidence": ["game/Assets/Prefabs/Environment/D19/Port/Materials", "built-in Unity primitive meshes"],
+    "external_intake_used": false
+  },
+  "prop_sets": [
+    {"asset_id": "prop.d19.port.prop_set", "prefab": "game/Assets/Prefabs/Props/D19/D19_Port_PropSet.prefab", "items": ["barrels", "crates", "fishing_net", "rope_coil", "tool_rack", "cargo_stack"], "regions": ["port", "market", "warehouse", "dock"], "collider_policy": "none; never blocks route", "distance_bands_m": [0, 12, 32, 80]},
+    {"asset_id": "prop.d19.market.display", "prefab": "game/Assets/Prefabs/Props/D19/D19_Market_Display.prefab", "items": ["market_display", "cloth_canopy_proxy"], "regions": ["market"], "collider_policy": "none; service anchors remain owned by D19-A02", "distance_bands_m": [0, 12, 32, 80]},
+    {"asset_id": "prop.d19.shipyard.repair_set", "prefab": "game/Assets/Prefabs/Props/D19/D19_Shipyard_RepairSet.prefab", "items": ["timber_stack", "repair_tools", "rope"], "regions": ["shipyard", "dock"], "collider_policy": "none; repair anchor remains owned by D19-A02", "distance_bands_m": [0, 12, 32, 80]},
+    {"asset_id": "prop.d19.night.lamp_set", "prefab": "game/Assets/Prefabs/Props/D19/D19_Night_LampSet.prefab", "items": ["lamp", "signage_light"], "regions": ["port", "market", "shipyard", "night"], "collider_policy": "none; light only", "distance_bands_m": [0, 12, 32, 80]}
+  ],
+  "vfx_proxies": [
+    {"asset_id": "vfx.d19.smoke", "prefab": "game/Assets/Prefabs/VFX/D19/D19_Smoke_VFX_Proxy.prefab", "source_id": "project_owned_d19_vfx_proxy", "implementation": "mesh_proxy_until_particle_import", "max_instances": 4, "pool": "D19_VFX_POOL", "distance_fade_m": [0, 18, 40]},
+    {"asset_id": "vfx.d19.dust", "prefab": "game/Assets/Prefabs/VFX/D19/D19_Dust_VFX_Proxy.prefab", "source_id": "project_owned_d19_vfx_proxy", "implementation": "mesh_proxy_until_particle_import", "max_instances": 3, "pool": "D19_VFX_POOL", "distance_fade_m": [0, 14, 32]},
+    {"asset_id": "vfx.d19.firelight", "prefab": "game/Assets/Prefabs/VFX/D19/D19_Firelight_VFX_Proxy.prefab", "source_id": "project_owned_d19_vfx_proxy", "implementation": "point_light_proxy; no flicker loop", "max_instances": 8, "pool": "D19_VFX_POOL", "distance_fade_m": [0, 20, 45]},
+    {"asset_id": "vfx.d19.insect_bird_distant", "prefab": "game/Assets/Prefabs/VFX/D19/D19_InsectBird_Distant_VFX_Proxy.prefab", "source_id": "project_owned_d19_vfx_proxy", "implementation": "distant marker proxy", "max_instances": 6, "pool": "D19_VFX_POOL", "distance_fade_m": [12, 40, 80]},
+    {"asset_id": "vfx.d19.sea_spray", "prefab": "game/Assets/Prefabs/VFX/D19/D19_SeaSpray_VFX_Proxy.prefab", "source_id": "project_owned_d19_vfx_proxy", "implementation": "shore marker proxy until particle import", "max_instances": 5, "pool": "D19_VFX_POOL", "distance_fade_m": [0, 18, 36]}
+  ],
+  "performance_contract": {"medium_target": "60 FPS", "stable_gc_bytes_per_frame": 0, "max_active_props_near": 128, "max_active_vfx": 26, "transparent_vfx_materials": 0, "pool_policy": "prewarm only when zone is active; return on distance/zone exit", "ui_occlusion": "none; all proxies are world-space and below UI layer"},
+  "history_and_content": {"period": "1675 Caribbean port", "historical_claims": "visual category labels only; no unverified historical narrative", "sensitive_content": "none in prop/VFX candidates", "review_status": "reviewed_for_scope_not_release_approved"}
+}

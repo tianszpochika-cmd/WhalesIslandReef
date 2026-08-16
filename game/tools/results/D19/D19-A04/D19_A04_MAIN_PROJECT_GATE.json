@@ -1,0 +1,42 @@
+{
+  "task": "D19-A04",
+  "status": "BLOCKED",
+  "scope": "main_project_compile_gate",
+  "command": "Unity.exe -batchmode -quit -projectPath game -executeMethod WhalesIslandReef.Editor.D19Water.D19WaterWorkBuilder.GenerateAndAuditBatch",
+  "water_module_isolated_audit": "PASS",
+  "main_project_result": "blocked_before_water_builder_execution",
+  "errors": [
+    {
+      "file": "Assets/Tests/PlayMode/D19A01TerrainPlayModeTests.cs",
+      "missing_type": "WhalesIslandReef.D19A01",
+      "responsible_task": "D19-A01"
+    },
+    {
+      "files": [
+        "Assets/Tests/EditMode/D19PortArchitectureBuild.cs",
+        "Assets/Tests/EditMode/D19PortArchitectureTests.cs"
+      ],
+      "missing_type": "WhalesIslandReef.D19",
+      "responsible_task": "D19-A02"
+    },
+    {
+      "file": "Assets/Tests/EditMode/D19LightingProfileTests.cs",
+      "missing_types": [
+        "Whalebone.Game.D19",
+        "D19LightingProfileCatalog"
+      ],
+      "responsible_task": "D19-A05"
+    }
+  ],
+  "fix_order": [
+    "D19-A01 restores its own runtime/test types and passes compilation",
+    "D19-A02 restores its own port module types and passes compilation",
+    "D19-A05 restores its own lighting module types and passes compilation",
+    "Re-run the main Unity water audit and D19-S02 integration gate"
+  ],
+  "scope_protection": [
+    "D19-A04 did not edit the responsible task files",
+    "InitialHarbor.unity was not edited",
+    "ShipSystem, weather logic, camera code, registry, save and global URP settings were not edited"
+  ]
+}

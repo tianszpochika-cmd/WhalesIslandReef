@@ -1,0 +1,96 @@
+{
+  "schema": "D19_R02_S02_PERFORMANCE_1080P_RERUN8_AUTHORED_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real standalone Windows x64 Player; D16RuntimePerformanceProbe output",
+  "device": {
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "graphics_api": "Direct3D11",
+    "unity_version": "6000.0.80f1",
+    "scene": "InitialHarbor"
+  },
+  "launch_contract": {
+    "requested_resolution": "1920x1080",
+    "fullscreen": false,
+    "vsync": "not recorded by probe",
+    "actual_backbuffer_proof": "NOT_PROVEN; Computer Use readback is logical 1099x648",
+    "quality_arguments": {
+      "low": 0,
+      "medium": 1,
+      "high": 2
+    }
+  },
+  "sampling_contract": {
+    "warmup_seconds_requested": 30,
+    "sample_seconds_requested": 60,
+    "note": "Each raw Player run was left in the scene for the requested window; sample count is the probe's actual count. The probe does not persist a quality/backbuffer/VSync readback."
+  },
+  "runs": [
+    {
+      "quality": "Low",
+      "quality_argument": 0,
+      "raw_report": "D19_R02_S02_PERFORMANCE_1080P_RERUN8_LOW_PLAYER.json",
+      "sample_count": 379,
+      "average_fps": 59.77715682983399,
+      "min_fps": 13.48715877532959,
+      "average_frame_ms": 16.887184143066408,
+      "average_main_thread_ms": 4.136241436004639,
+      "gpu_time_ms": 0.4236211478710175,
+      "gpu_sample_available": true,
+      "managed_gc_gen0": 184,
+      "managed_gc_gen1": 184,
+      "managed_gc_gen2": 184,
+      "peak_reserved_bytes": 210579456,
+      "peak_managed_bytes": 15052800,
+      "long_frame_count_over_50ms": 2
+    },
+    {
+      "quality": "Medium",
+      "quality_argument": 1,
+      "raw_report": "D19_R02_S02_PERFORMANCE_1080P_RERUN7_MEDIUM_PLAYER.json",
+      "sample_count": 591,
+      "average_fps": 59.92084884643555,
+      "min_fps": 23.85200309753418,
+      "average_frame_ms": 16.715063095092775,
+      "average_main_thread_ms": 4.341196,
+      "gpu_time_ms": 0.4347107,
+      "gpu_sample_available": true,
+      "managed_gc_gen0": 276,
+      "managed_gc_gen1": 276,
+      "managed_gc_gen2": 276,
+      "peak_reserved_bytes": 210579456,
+      "peak_managed_bytes": 15237120,
+      "long_frame_count_over_50ms": 2
+    },
+    {
+      "quality": "High",
+      "quality_argument": 2,
+      "raw_report": "D19_R02_S02_PERFORMANCE_1080P_RERUN8_HIGH_PLAYER.json",
+      "sample_count": 343,
+      "average_fps": 59.85701751708985,
+      "min_fps": 18.89334297180176,
+      "average_frame_ms": 16.779733657836915,
+      "average_main_thread_ms": 4.129166603088379,
+      "gpu_time_ms": 0.4222727715969086,
+      "gpu_sample_available": true,
+      "managed_gc_gen0": 167,
+      "managed_gc_gen1": 167,
+      "managed_gc_gen2": 167,
+      "peak_reserved_bytes": 210579456,
+      "peak_managed_bytes": 15060992,
+      "long_frame_count_over_50ms": 3
+    }
+  ],
+  "gate_assessment": {
+    "real_player_data_available": true,
+    "all_three_requested_quality_runs_present": true,
+    "fps_and_frame_time_available": true,
+    "gc_and_memory_available": true,
+    "one_percent_low_available": false,
+    "exact_1920x1080_backbuffer_proven": false,
+    "runtime_quality_readback_proven": false,
+    "vsync_readback_proven": false,
+    "weather_variants_sampled": false,
+    "status": "PARTIAL"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "task_id": "D19-R02-A02",
+  "rerun_id": "RERUN2",
+  "status": "PARTIAL",
+  "scope": "D2-only targeted repair: remove invalid keyboard-enum diagnostic and accept the frozen D19 terrain walkable surface names.",
+  "unity_version": "6000.0.80f1",
+  "changes": [
+    "Removed D16InputRouter.TryGetPressedKeyboardKey per-frame diagnostic call that raised ArgumentOutOfRangeException in Unity 6.",
+    "Kept the single D2 Input System E fallback.",
+    "Accepted D19_TerrainRoot, D19_R02_TerrainSurface and D19_R02_WalkableTerrain only as explicit D19 walkable/disembark surfaces in D2 collision checks."
+  ],
+  "compile": {
+    "status": "PASS",
+    "player_build": "PASS",
+    "build_log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_BUILD_RERUN4_GROUND.log",
+    "player": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_Player_RERUN4.exe"
+  },
+  "editmode": {
+    "status": "PASS",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN2.xml",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN2.log"
+  },
+  "playmode": {
+    "status": "PASS",
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN2.xml",
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN2.log"
+  },
+  "real_player": {
+    "status": "PARTIAL",
+    "resolution_args": "1920x1080",
+    "window_started": true,
+    "main_menu_new_game": "PASS",
+    "initial_harbor": "PASS",
+    "d19_ground_contact": "PASS",
+    "ground_restore_to_legacy_beach": "NOT_OBSERVED_AFTER_FIX",
+    "keyboard_e_feedback": "NOT_VERIFIED",
+    "player_log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_RERUN4_GROUND_INPUT.log",
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A02/05_rerun4_ground_player.jpg",
+      "game/tools/results/D19/D19-R02-A02/06_rerun4_e_player.jpg"
+    ]
+  },
+  "observed_log_evidence": [
+    "[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.53, playerY=0.68",
+    "No ArgumentOutOfRangeException was observed in the RERUN4 Player log.",
+    "No D2/Input or interaction feedback event was observed for the E attempt; this remains unverified rather than counted as success."
+  ],
+  "ownership_guard": {
+    "initial_harbor_modified": false,
+    "prefab_modified": false,
+    "systems_modified": false,
+    "save_schema_modified": false,
+    "resource_states_changed": false,
+    "stable_gameplay_ids_changed": false
+  },
+  "blockers": [
+    {
+      "id": "A02-REAL-KEYBOARD-NOT-OBSERVED-RERUN2",
+      "severity": "P0",
+      "owner": "D19-R02-S02 with D19-R02-A03 route",
+      "reason": "The real Player reached InitialHarbor and the D19 terrain contact was logged, but the E attempt still produced no D2 feedback or mode transition.",
+      "next": "Repeat a focused real-player route with a verified keyboard edge or use an existing player-visible interaction control, without claiming keyboard success until the D2 event is logged."
+    }
+  ]
+}

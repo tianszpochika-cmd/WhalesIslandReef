@@ -1,0 +1,35 @@
+{
+  "schema": "D19_R02_S02_VISUAL_QA_RERUN2_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "source": "fresh real x86_64 Player screenshots and logs; no Camera.Render substitute",
+  "fresh_screenshot_count": 20,
+  "fresh_screenshot_directory": "game/tools/results/D19/D19-R02-S02/screenshots",
+  "historical_fixed_shots_preserved": 14,
+  "fresh_fixed_shot_matrix_count": 0,
+  "dimensions": {
+    "computer_use_logical_capture": "1099x648",
+    "requested_player_resolution": "1920x1080",
+    "verified_1920x1080_capture_count": 0
+  },
+  "checks": {
+    "pink_or_missing_material": {"status": "PASS_OBSERVED", "failures": 0},
+    "large_white_plane": {"status": "PASS_OBSERVED", "failures": 0},
+    "mint_green_placeholder_surface": {"status": "PASS_OBSERVED", "failures": 0},
+    "blocky_or_graybox_terrain": {"status": "FAIL", "failures": 20},
+    "flat_orange_green_surface": {"status": "FAIL", "failures": 20},
+    "readable_market_dock_layers": {"status": "FAIL", "failures": 20},
+    "debug_or_route_hud_default_clean": {"status": "FAIL", "failures": 20},
+    "severe_intersection_or_occlusion": {"status": "WARN", "failures": 1},
+    "weather_variants": {"required": 3, "captured": 0, "status": "NOT_RUN"}
+  },
+  "manual_notes": [
+    "Fresh spawn, market return, save and Low/Medium/High Continue frames all still show a broad flat orange/green ground treatment and simple block-like port frontage.",
+    "The player visual is present and grounded, but the route HUD/debug text remains visible in the Player frame.",
+    "No pink missing material was observed; this does not prove all material references are production-ready.",
+    "No fresh 14-shot fixed matrix or weather/time variants were captured in RERUN2; the historical 14-shot set remains preserved and is not relabeled as fresh evidence.",
+    "The market overlay itself is readable and opened by real B input."
+  ],
+  "visual_pass": false,
+  "responsibility": "D19-R02-A04/new D19 visual repair for presentation; D22 for final HUD cleanup"
+}

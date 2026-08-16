@@ -583,6 +583,13 @@ namespace Whalebone.Gameplay.D2
             if (_inputEnabled && D7ControlCoordinator.GameplayInputAllowed)
             {
                 input = D16InputRouter.MoveAxis();
+                // 与 D3 的 Player 兼容入口保持一致：某些 Windows Player 窗口
+                // 能收到 legacy KeyCode，但 Input System 的 KeyboardControl 没有
+                // 产生 isPressed。这里仅把同一组键转换为移动意图，不改变速度、
+                // 碰撞、地面或任何领域裁决。
+                var legacyInput = ReadLegacyMoveAxis();
+                if (legacyInput.sqrMagnitude > input.sqrMagnitude)
+                    input = legacyInput;
                 if (D16InputRouter.WasPressedThisFrame(D16InputAction.Jump)) TryJump();
             }
 
@@ -598,6 +605,15 @@ namespace Whalebone.Gameplay.D2
             }
 
             ApplyPhysicsMotion();
+        }
+
+        private static Vector2 ReadLegacyMoveAxis()
+        {
+            float x = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) -
+                      (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1f : 0f);
+            float y = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) -
+                      (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1f : 0f);
+            return Vector2.ClampMagnitude(new Vector2(x, y), 1f);
         }
 
         private Vector3 ResolveWorldDirection(Vector2 input)
@@ -711,7 +727,10 @@ namespace Whalebone.Gameplay.D2
             if (collider == null) return false;
             return collider.name == "BeachGround" ||
                    collider.name == "DockGround" ||
-                   collider.name == "GangplankGround";
+                   collider.name == "GangplankGround" ||
+                   collider.name == "D19_TerrainRoot" ||
+                   collider.name == "D19_R02_TerrainSurface" ||
+                   collider.name == "D19_R02_WalkableTerrain";
         }
 
         private void ConfigurePhysicsBody()

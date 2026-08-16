@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.0730432">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="386" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.073043" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1028" name="D20.Wildlife.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D20.Wildlife.Tests.dll" runstate="Runnable" testcasecount="15" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.064798" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="33912" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1031" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.064132" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1032" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.063929" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1033" name="D20" fullname="WhalesIslandReef.Tests.D20" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.063735" total="6" passed="3" failed="3" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1016" name="D20A01PlayerVisualTests" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.052367" total="3" passed="1" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1017" name="CandidatePrefabLoadsWithoutGameplayComponents" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabLoadsWithoutGameplayComponents" methodname="CandidatePrefabLoadsWithoutGameplayComponents" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="916629468" result="Passed" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.037319" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" methodname="CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="468187752" result="Failed" label="Error" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.002895" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.IO.DirectoryNotFoundException : Could not find a part of the path "C:\Users\Administrator\Desktop\game\first01\Assets\Prefabs\Characters\D20\PlayerVisuals\D20_PlayerVisual_Neutral.prefab".]]></message>
+                  <stack-trace><![CDATA[  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x00164] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks, System.Int32 bufferSize) [0x00055] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamReader..ctor(string,System.Text.Encoding,bool)
+  at System.IO.File.InternalReadAllText (System.String path, System.Text.Encoding encoding) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.File.ReadAllText (System.String path) [0x0002c] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding () [0x0001e] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D20\D20A01PlayerVisualTests.cs:52 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <4449e9424e7e4d4d81a660907c68cb97>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1018" name="InterfaceContractAndStableFallbackArePresent" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.InterfaceContractAndStableFallbackArePresent" methodname="InterfaceContractAndStableFallbackArePresent" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="439783552" result="Failed" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.001488" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                  <stack-trace><![CDATA[at WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.InterfaceContractAndStableFallbackArePresent () [0x0001e] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D20\D20A01PlayerVisualTests.cs:39
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1020" name="D20A01R01PlayerVisualTests" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.010449" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1023" name="R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" methodname="R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="2031625923" result="Failed" label="Error" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.000465" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.IO.DirectoryNotFoundException : Could not find a part of the path "C:\Users\Administrator\Desktop\game\first01\tools\results\D20\D20-A01\D20_A01_PLAYER_VISUAL_INTERFACE.json".]]></message>
+                  <stack-trace><![CDATA[  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x00164] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks, System.Int32 bufferSize) [0x00055] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamReader..ctor(string,System.Text.Encoding,bool)
+  at System.IO.File.InternalReadAllText (System.String path, System.Text.Encoding encoding) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.File.ReadAllText (System.String path) [0x0002c] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary () [0x0001e] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D20\D20A01R01PlayerVisualTests.cs:65 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <4449e9424e7e4d4d81a660907c68cb97>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1022" name="R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" methodname="R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="235981891" result="Passed" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.003733" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="R01PrefabUsesRealHumanoidAvatarAndD20Height" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01PrefabUsesRealHumanoidAvatarAndD20Height" methodname="R01PrefabUsesRealHumanoidAvatarAndD20Height" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="1473139878" result="Passed" start-time="2026-08-15 07:59:59Z" end-time="2026-08-15 07:59:59Z" duration="0.005093" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,75 @@
+{
+  "task": "D18-A05",
+  "units": "1 Unity unit = 1 metre (consumer assumption; source FBX scale must be confirmed in Prefab preflight)",
+  "axis_target": "Y-up/Z-forward",
+  "archive_metrics": {
+    "external_cache": "C:/Users/Administrator/AppData/Local/WhalesIslandReef/D18/cache/",
+    "archives_downloaded": 2,
+    "download_bytes": 4753570,
+    "repository_archives_retained": 0,
+    "candidate_models": 151,
+    "candidate_previews": 151
+  },
+  "ship_reference_policy": {
+    "pivot": "Source pivot is not exposed by the raw audit; consumer Hull Prefab preflight required.",
+    "deck_height_reference": "Not identifiable from raw FBX bounds; consumer Hull Prefab must define deck datum.",
+    "draft_reference": "Not identifiable from raw FBX bounds; waterline/keel datum belongs to ShipSystem/Hull Prefab.",
+    "forward_axis": "Target Y-up/Z-forward; must be confirmed per consumer Prefab before runtime.",
+    "collision": "0 raw colliders; consumer Prefab must add and audit collision.",
+    "interaction_anchors": "0 raw anchors; consumer Prefab must add boarding, helm, rudder and grab points.",
+    "lod": "0 raw LOD groups; consumer Prefab must add or explicitly exempt distant silhouettes.",
+    "animation": "Raw candidates contain 0 clips for the ship query; static meshes are animation-capable candidates only, not rigged runtime content."
+  },
+  "ship_candidates": [
+    {"file":"boat-row-large.fbx","role":"boat_tender","dimensions_m":{"x":2.749,"y":0.792,"z":2.852,"max":2.852},"mesh_count":2,"material_count":1},
+    {"file":"boat-row-small.fbx","role":"boat_tender","dimensions_m":{"x":2.749,"y":0.792,"z":2.372,"max":2.749},"mesh_count":2,"material_count":1},
+    {"file":"cannon-ball.fbx","role":"ship_prop","dimensions_m":{"x":0.637,"y":0.670,"z":0.552,"max":0.670},"mesh_count":1,"material_count":1},
+    {"file":"cannon-mobile.fbx","role":"ship_prop","dimensions_m":{"x":1.679,"y":1.380,"z":2.394,"max":2.394},"mesh_count":3,"material_count":1},
+    {"file":"cannon.fbx","role":"ship_prop","dimensions_m":{"x":1.402,"y":1.055,"z":2.394,"max":2.394},"mesh_count":3,"material_count":1},
+    {"file":"mast-ropes.fbx","role":"mast_rigging","dimensions_m":{"x":4.386,"y":7.888,"z":2.349,"max":7.888},"mesh_count":3,"material_count":1},
+    {"file":"mast.fbx","role":"mast","dimensions_m":{"x":4.386,"y":7.864,"z":1.740,"max":7.864},"mesh_count":3,"material_count":1},
+    {"file":"ship-ghost.fbx","role":"distant_silhouette","dimensions_m":{"x":4.800,"y":9.964,"z":10.600,"max":10.600},"mesh_count":6,"material_count":1},
+    {"file":"ship-large.fbx","role":"hull_large","dimensions_m":{"x":4.800,"y":9.964,"z":13.100,"max":13.100},"mesh_count":6,"material_count":1},
+    {"file":"ship-medium.fbx","role":"hull_medium","dimensions_m":{"x":4.800,"y":9.964,"z":10.600,"max":10.600},"mesh_count":6,"material_count":1},
+    {"file":"ship-pirate-large.fbx","role":"hull_pirate_large","dimensions_m":{"x":4.800,"y":9.964,"z":13.100,"max":13.100},"mesh_count":6,"material_count":1},
+    {"file":"ship-pirate-medium.fbx","role":"hull_pirate_medium","dimensions_m":{"x":4.800,"y":9.964,"z":10.600,"max":10.600},"mesh_count":6,"material_count":1},
+    {"file":"ship-pirate-small.fbx","role":"hull_pirate_small","dimensions_m":{"x":4.800,"y":9.964,"z":8.800,"max":9.964},"mesh_count":4,"material_count":1},
+    {"file":"ship-small.fbx","role":"hull_small","dimensions_m":{"x":4.800,"y":9.964,"z":8.800,"max":9.964},"mesh_count":4,"material_count":1},
+    {"file":"ship-wreck.fbx","role":"damage_variant","dimensions_m":{"x":4.800,"y":10.749,"z":10.600,"max":10.749},"mesh_count":16,"material_count":1}
+  ],
+  "required_coverage": [
+    {"requirement":"small_drivable_sailboat","candidates":["ship-small.fbx","ship-pirate-small.fbx"],"status":"CandidateOnly","note":"Visual hull candidates; drivable status requires D21 Hull Prefab and ShipSystem integration."},
+    {"requirement":"distant_ship","candidates":["ship-ghost.fbx","ship-medium.fbx","ship-large.fbx"],"status":"Candidate"},
+    {"requirement":"hull","candidates":["ship-small.fbx","ship-pirate-small.fbx","ship-medium.fbx","ship-pirate-medium.fbx","ship-large.fbx","ship-pirate-large.fbx","ship-wreck.fbx"],"status":"Candidate"},
+    {"requirement":"mast","candidates":["mast.fbx","mast-ropes.fbx"],"status":"Candidate"},
+    {"requirement":"sail","candidates":[],"status":"Gap","note":"No separate sail FBX; integrated ship visual does not meet a detachable sail-module claim."},
+    {"requirement":"rudder","candidates":[],"status":"Gap","note":"No separate rudder file."},
+    {"requirement":"anchor","candidates":[],"status":"Gap","note":"No separate anchor file."},
+    {"requirement":"wood_dock_pier","candidates":["structure-platform-dock-small.fbx","structure-platform-dock.fbx","platform.fbx","platform-planks.fbx","structure-platform-small.fbx","structure-platform.fbx"],"status":"Candidate"},
+    {"requirement":"mooring_bollard","candidates":[],"status":"Gap","note":"No explicitly named bollard/mooring post file."},
+    {"requirement":"wood_house_warehouse_market_modules","candidates":["structure.fbx","structure-roof.fbx","castle-wall.fbx","castle-door.fbx","castle-window.fbx","tower-base.fbx","tower-middle.fbx","tower-roof.fbx"],"status":"Candidate","note":"Shell/opening/roof modules exist; closed-grid, foundation, door/window proportion and interior use require consumer review."},
+    {"requirement":"barrel_crate_fishing_gear_lamp_rope_sign","candidates":["barrel.fbx","crate.fbx","crate-bottles.fbx","tool-paddle.fbx","mast-ropes.fbx","flag.fbx","flag-pennant.fbx"],"status":"Partial","note":"Barrels/crates/paddle/rope/flag-like sign candidates exist; no explicit fishing-gear, lamp or sign mesh."}
+  ],
+  "building_review": {
+    "candidate_count": 100,
+    "grid_closure": "Not claimed from raw FBX audit; modular wall/floor/roof/door/window pieces require consumer assembly check.",
+    "door_window_proportion": "Not claimed; opening pieces are recorded as candidates only.",
+    "foundation": "Not claimed; floor/corner pieces require placement and ground-fit check.",
+    "interior_possible": "Candidate modular pieces suggest possible interior assembly, but no interior-ready building Prefab is delivered.",
+    "collision": "0 raw colliders; consumer building Prefab preflight required.",
+    "snap_dimensions": "Source grid/metric snap not exposed by raw audit; consumer assembly must verify seams and scale."
+  },
+  "prop_review": {
+    "candidate_count": 18,
+    "grab_place_pivot": "Not claimed; raw source pivot requires consumer interaction preflight.",
+    "collision": "0 raw colliders; consumer prop Prefab preflight required.",
+    "material": "All audited raw candidates have one embedded material; texture files are not separately retained in candidate scope.",
+    "batching_instancing": "Static mesh candidates are suitable for later batching review; no runtime Prefab or renderer settings delivered."
+  },
+  "release_gate": {
+    "review_status": "Candidate",
+    "runtime_consumers": [],
+    "release_approved": false,
+    "overall_status": "PARTIAL"
+  }
+}

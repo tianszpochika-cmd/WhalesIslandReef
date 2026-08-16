@@ -1,0 +1,65 @@
+{
+  "task": "D18-R03-A01",
+  "run": "RERUN1",
+  "status": "PASS",
+  "scope": "isolated_resource_completion_and_workbench_evidence",
+  "unity_version": "6000.0.80f1",
+  "audit": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_EDITOR_AUDIT_RERUN1.json",
+  "build_log": "game/tools/results/D18/D18-R03-A01/D18_R03_A01_BUILD_RERUN1D.log",
+  "source_evidence": "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_R03_A01_SOURCE_EVIDENCE.md",
+  "packet": "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_R03_A01_PLAYER_APPEARANCE_PACKET_RERUN1.json",
+  "body_directions_verified": 2,
+  "body_sources": [
+    {
+      "file": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+      "sha256": "0727E7B236EEEA4115531E07AEB2BB7690C1A58155F743BBF54282944FB97EA9",
+      "derived_avatar": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/ProjectOwned/R03/Avatars/D18_R03_A01_PlayerHumanoidFemale.asset",
+      "derived_avatar_sha256": "C1FDB9D1756542A4329B238F74E5760F3132988DD4093ABB366683DB849A493B",
+      "avatar_valid": true,
+      "avatar_is_human": true
+    },
+    {
+      "file": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Male_FullBody.fbx",
+      "sha256": "79344418D754A59730B79D1874752E9592143DB34ABE8ADF138FA9A92A4768E9",
+      "derived_avatar": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/ProjectOwned/R03/Avatars/D18_R03_A01_PlayerHumanoidMale.asset",
+      "derived_avatar_sha256": "8D7D90C5EEC7BF9808E9A76ED383B160D3D88AE8EFEC8DC9AEF0B8F236C8CD54",
+      "avatar_valid": true,
+      "avatar_is_human": true
+    }
+  ],
+  "independent_hair_styles_verified": 6,
+  "hair_evidence": [
+    "5 audited Quaternius hairstyle meshes in D18_R03_A01_ISOLATED_UNITY_IMPORT.json",
+    "1 project-owned geometry module: game/Assets/Prefabs/Characters/D18/R03/PlayerAppearance/D18_R03_A01_Hair_TwistPonytail.prefab",
+    {
+      "project_owned_hair_mesh_sha256": "E7CCE5F9986D50AC2EB438A093CFBD1EE4B13751CF7926B6A3A70EF647CA4761"
+    }
+  ],
+  "outfit_combinations_verified": 8,
+  "outfit_evidence": {
+    "prefab_directory": "game/Assets/Prefabs/Characters/D18/R03/PlayerAppearance/",
+    "all_variants_have_meshes": true,
+    "all_variants_have_materials": true,
+    "all_variants_have_runtime_monobehaviour": false,
+    "historical_review_status": "PROVISIONAL_LOCAL_VISUAL",
+    "source_license": "Quaternius CC0 evidence remains linked to the source packet; project-owned assembly is not a new external license claim."
+  },
+  "workbench_prefab": "game/Assets/Prefabs/Characters/D18/R03/PlayerAppearance/D18_R03_A01_PlayerAppearanceWorkbench.prefab",
+  "formal_scene_consumer_count": 0,
+  "runtime_consumer_count": 0,
+  "local_playable_ready_count": 0,
+  "local_development_ready_count": 0,
+  "release_approved_count": 0,
+  "state_boundary": {
+    "candidate_state_unchanged": true,
+    "global_intake_catalog_modified": false,
+    "formal_generator_modified": false,
+    "formal_scene_modified": false,
+    "note": "PASS means the isolated D18 resource/workbench coverage is complete. It does not grant LocalDevelopmentReady, ReleaseApproved, a runtime consumer, or a formal scene integration."
+  },
+  "remaining_follow_up": [
+    "D18-R03-S01 must perform the read-only evidence review and consumption gate.",
+    "D20-A01-R02 must calibrate the visual prefab against D17 scale, sockets, collision and real Player use.",
+    "1675 Caribbean clothing review remains provisional and must not be presented as historical approval."
+  ]
+}

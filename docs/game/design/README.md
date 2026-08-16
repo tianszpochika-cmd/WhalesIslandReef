@@ -76,6 +76,10 @@
 - [D8 数值与枚举统一配置](common/D8_NUMERIC_ENUM_CONFIG.md)
 - [D9 船员 Agent 垂直切片](common/D9_CREW_AGENT_VERTICAL_SLICE.md)
 - [D10 船员岗位与行为状态](common/D10_CREW_BEHAVIOR_STATE.md)
+- [D18 视觉美术方向与本地开发预算冻结](common/D18_VISUAL_ART_DIRECTION_AND_BUDGET.md)
+- [D18 Unity 资产导入与 Prefab 预检管线](common/D18_UNITY_ASSET_IMPORT_PIPELINE.md)
+- [D18 免费资源库准入验收（S02 v2）](common/D18_FREE_ASSET_LIBRARY_ADMISSION_ACCEPTANCE.md)
+- [D18 PrefabCandidateIntake 准入目录](common/assets/d18_prefab_candidate_intake_catalog.json)
 - [数据模型](DATA_MODELS.md)
 - [设计边界](DESIGN_BOUNDARIES.md)
 

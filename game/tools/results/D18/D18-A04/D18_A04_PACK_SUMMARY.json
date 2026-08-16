@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "task": "D18-A04",
+  "status": "PARTIAL",
+  "source_packs": 5,
+  "cc0_packs": 5,
+  "imported_fbx_files": 24,
+  "distinct_model_identities": 23,
+  "variant_files_not_counted_separately": 1,
+  "source_only_blender_files": 1,
+  "unity_meshes": 30,
+  "unity_animation_clips": 228,
+  "unity_materials": 121,
+  "unity_audit_errors": 0,
+  "unity_audit_warnings": 25,
+  "unity_audit_issues": 25,
+  "unity_audit_status": "PASS",
+  "manifest_audit_status": "PASS",
+  "release_approved_asserted": false,
+  "runtime_consumers": [],
+  "formal_prefabs_created": 0,
+  "formal_animators_created": 0,
+  "unity_editor_preview_screenshots": 0,
+  "coverage": {
+    "character_base": true,
+    "port_roles": ["civilian", "merchant", "sailor", "military_visual_candidate"],
+    "dog_pets": true,
+    "cat_pets": false,
+    "birds": "source_only_blender",
+    "land_animals": true,
+    "aquatic_animals": true,
+    "female_or_neutral_imported_base": false
+  },
+  "known_limitations": [
+    "All audited FBX are Generic/NoAvatar; Humanoid retargeting is not verified.",
+    "Raw FBX have no Prefab-level collider, LODGroup or interaction anchor.",
+    "Quaternius source dimensions are small in Unity units; scale is reported and not normalized.",
+    "The A02 category heuristic classified some fish and all Animated Men as Props because source role is not encoded in the path tokens.",
+    "No Unity Editor preview screenshot was generated.",
+    "OpenGameArt bird remains Blender-only and is not counted as imported."
+  ]
+}

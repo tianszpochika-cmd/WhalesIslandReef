@@ -1,0 +1,110 @@
+{
+  "schema": "D19_R02_S02_ROUTE_LOG_RERUN8_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real Windows x64 standalone Player mouse and keyboard input; no Inspector/direct method invocation",
+  "player_build": "game/tools/results/D19/D19-R02-A04/D19_R02_A04_Player_RERUN6_AUTHORED3.exe",
+  "launch_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11", "-quality", "1"],
+  "session": {
+    "clean_route_name": "D19R02Route300",
+    "continuous_player_session_seconds_minimum": 300,
+    "duration_evidence": "five sequential 60-second waits while the same Player remained in InitialHarbor; checkpoint captured after the fifth wait",
+    "checkpoint_screenshot": "D19_R02_S02_RERUN8_ROUTE_19_300S_CLEAN.jpg",
+    "raw_player_log": "D19_R02_S02_RERUN8_PLAYER_300_ROUTE.log"
+  },
+  "steps": [
+    {
+      "order": 1,
+      "action": "Main Menu -> New Game -> InitialHarbor",
+      "input": "mouse click New Game, type D19R02Route300, click Confirm",
+      "stable_id": "santa_margarita",
+      "status": "PASS",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_15_300_SPAWN.jpg",
+      "feedback": "港口标题、玩家、岸线和海面进入画面；Player.log 记录 NewGame 与 D19_TerrainRoot 落地"
+    },
+    {
+      "order": 2,
+      "action": "Market open and close",
+      "input": "B, Escape",
+      "stable_id": "building:market_santa_margarita",
+      "status": "PASS",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_16_300_MARKET.jpg",
+      "feedback": "交易页显示港口、价格、库存、金币；Player.log 记录贸易模态打开/关闭"
+    },
+    {
+      "order": 3,
+      "action": "Plan departure and advance voyage",
+      "input": "T, N, N, N, N",
+      "stable_id": "anchor.departure.channel",
+      "status": "PASS_LOGGED",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_17_300_VOYAGE.jpg",
+      "feedback": "Player.log 记录已规划航线、海上盘查、平静海面和抵达目的地"
+    },
+    {
+      "order": 4,
+      "action": "Return and settle",
+      "input": "L",
+      "stable_id": "anchor.return.harbor",
+      "status": "PASS_LOGGED",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_18_300_SAVE_FINAL.jpg",
+      "feedback": "Player.log 记录已靠港并完成结算：绿湾村"
+    },
+    {
+      "order": 5,
+      "action": "Disembark and manual save",
+      "input": "E, F5",
+      "stable_id": "anchor.disembark.dock / save:manual_checkpoint",
+      "status": "PASS_OBSERVED",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_20_DISMBARK_SAVE.jpg",
+      "feedback": "画面反馈切换为人物 WASD 控制；Player.log 记录 Ship -> Character 与保存快照"
+    },
+    {
+      "order": 6,
+      "action": "Continuous observation checkpoint",
+      "input": "no synthetic gameplay input during hold",
+      "stable_id": "santa_margarita",
+      "status": "PASS_DURATION",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_19_300S_CLEAN.jpg",
+      "feedback": "同一 Player 会话完成至少 300 秒观察，未崩溃"
+    },
+    {
+      "order": 7,
+      "action": "Exit and Continue reload",
+      "input": "Alt+F4, relaunch, click Continue",
+      "stable_id": "save:manual_checkpoint",
+      "status": "PASS",
+      "screenshot": "D19_R02_S02_RERUN8_ROUTE_22_CONTINUE_RETRY.jpg",
+      "feedback": "Continue 日志记录存档加载成功，进入游戏；重载后 D19_TerrainRoot 落地日志存在"
+    }
+  ],
+  "required_nodes_not_verified": [
+    {
+      "stable_id": "building:warehouse_santa_margarita",
+      "status": "NOT_VERIFIED",
+      "reason": "本轮没有通过真实 WASD 路线到达并触发仓库入口"
+    },
+    {
+      "stable_id": "building:tavern_santa_margarita",
+      "status": "NOT_VERIFIED",
+      "reason": "本轮没有通过真实 WASD 路线到达并触发酒馆入口"
+    },
+    {
+      "stable_id": "npc:santa_margarita_tavern_keeper",
+      "status": "NOT_VERIFIED",
+      "reason": "没有观察到可定位的 NPC 对话反馈"
+    },
+    {
+      "stable_id": "anchor.dock.primary",
+      "status": "NOT_VERIFIED",
+      "reason": "连续步行到码头/泊位与交互距离未完成；E 的船控切换虽有证据，但不替代完整步行路线"
+    }
+  ],
+  "route_gate": {
+    "duration_gate": "PASS",
+    "new_game_market_voyage_return_save_reload": "PASS_WITH_LOGGED_VOYAGE",
+    "warehouse_tavern_npc_walk": "NOT_VERIFIED",
+    "complete_required_route": false,
+    "owner": "D19 route/interaction follow-up",
+    "status": "PARTIAL"
+  }
+}

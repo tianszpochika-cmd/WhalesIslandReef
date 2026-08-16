@@ -1,0 +1,54 @@
+{
+  "manifest_kind": "d18_asset_pack_manifest",
+  "schema_version": 1,
+  "source_id": "source_polyhaven",
+  "pack_id": "pack_polyhaven_hdri_sky_references_v1",
+  "title": "Poly Haven 1K HDRI sky references",
+  "author": "Poly Haven",
+  "official_page": "https://polyhaven.com/license",
+  "download_url": "https://api.polyhaven.com/assets?type=hdris",
+  "downloaded_at": "2026-08-14",
+  "archive_name": "polyhaven_selected_1k_hdri_files_20260814",
+  "sha256": "C2646A0F27319985A0962451DF7EDB862CEF35520F362181B23A2ABDB864C71C",
+  "license_id": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+  "attribution_required": false,
+  "commercial_use": true,
+  "modification_allowed": true,
+  "source_redistribution": "allowed",
+  "build_distribution": "allowed",
+  "category": [
+    "HDRI",
+    "Environment"
+  ],
+  "file_count": 4,
+  "unity_object_count": 4,
+  "review_status": "ImportVerified",
+  "previous_review_status": "LicenseEvidenceComplete",
+  "import_status": "ImportVerified",
+  "candidate_files": [
+    {
+      "path": "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/green_point_park_1k.hdr",
+      "role": "hdri_sky_reference",
+      "target_id": "candidate_hdri_green_point_park"
+    },
+    {
+      "path": "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/joburg_central_sunset_1k.hdr",
+      "role": "hdri_sky_reference",
+      "target_id": "candidate_hdri_joburg_central_sunset"
+    },
+    {
+      "path": "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/kloppenheim_06_1k.hdr",
+      "role": "hdri_sky_reference",
+      "target_id": "candidate_hdri_kloppenheim_06"
+    },
+    {
+      "path": "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/venice_sunset_1k.hdr",
+      "role": "hdri_sky_reference",
+      "target_id": "candidate_hdri_venice_sunset"
+    }
+  ],
+  "runtime_consumers": [],
+  "notes": "Four distinct HDRIs cover clear, partly cloudy and sunset references. The images are not assigned to a formal skybox, lighting profile or scene by this task. Unity 6000.0.80f1 report-only import audit: PASS with 0 errors; see game/tools/results/D18/D18-A06/D18_A02_KENNEY_IMPORT_AUDIT.json."
+}

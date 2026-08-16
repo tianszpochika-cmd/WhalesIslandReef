@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.0455943">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="386" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.045594" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1028" name="D20.Wildlife.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D20.Wildlife.Tests.dll" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.038077" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="34876" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1031" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.037474" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1032" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.037249" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1033" name="D20" fullname="WhalesIslandReef.Tests.D20" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.037037" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1016" name="D20A01PlayerVisualTests" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.027069" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1017" name="CandidatePrefabLoadsWithoutGameplayComponents" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabLoadsWithoutGameplayComponents" methodname="CandidatePrefabLoadsWithoutGameplayComponents" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="1948474500" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.016136" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" methodname="CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="685953687" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.000831" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1018" name="InterfaceContractAndStableFallbackArePresent" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.InterfaceContractAndStableFallbackArePresent" methodname="InterfaceContractAndStableFallbackArePresent" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="1097252896" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.000521" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1020" name="D20A01R01PlayerVisualTests" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.009118" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1023" name="R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" methodname="R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="921335930" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.000385" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1022" name="R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" methodname="R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="140615954" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.003461" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="R01PrefabUsesRealHumanoidAvatarAndD20Height" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01PrefabUsesRealHumanoidAvatarAndD20Height" methodname="R01PrefabUsesRealHumanoidAvatarAndD20Height" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="1335902418" result="Passed" start-time="2026-08-15 08:02:37Z" end-time="2026-08-15 08:02:37Z" duration="0.004351" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,20 @@
+{
+  "task": "D19-A05",
+  "status": "PARTIAL",
+  "static_contract": "PASS",
+  "runtime_visual_check": "NOT_RUN",
+  "areas": [
+    {"area":"player","required":"silhouette and ground contact remain distinct","static_rule":"ambient + main light never both zero"},
+    {"area":"npc","required":"face/body silhouette remains distinguishable from background","static_rule":"profile contrast is bounded and no forced DOF"},
+    {"area":"building_entry","required":"doorway/threshold remains readable in fog/night","static_rule":"fog end distance and local oil-lamp interface are declared"},
+    {"area":"dock_edge","required":"waterline and edge remain readable without a neon marker","static_rule":"ambient ground and fog color are declared"},
+    {"area":"sea_surface","required":"horizon/water boundary remains readable","static_rule":"sky/ambient colors and fog window are declared"},
+    {"area":"interaction_prompt","required":"prompt is not made invisible by lighting changes","static_rule":"UI is outside this task and remains a read-only consumer"}
+  ],
+  "accessibility_constraints": [
+    "No high-frequency flicker.",
+    "No forced motion blur or depth of field.",
+    "High-contrast/readability checks must be rerun at 1920x1080 and D16 accessibility presets.",
+    "Night and storm require manual screenshots before D19-S02 integration."
+  ]
+}

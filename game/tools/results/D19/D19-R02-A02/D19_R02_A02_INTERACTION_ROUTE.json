@@ -1,0 +1,65 @@
+{
+  "task_id": "D19-R02-A02",
+  "status": "PARTIAL",
+  "owner": "D2ControlRouter",
+  "version": "r02-a02-v1",
+  "public_interaction_entry": "Whalebone.Gameplay.D2.D2ControlRouter",
+  "public_methods": [
+    { "name": "TryOpenCrewDialogue", "purpose": "request NPC dialogue through existing D2 dialogue entry", "writes_domain_facts": false },
+    { "name": "TryToggleShip", "purpose": "request board/disembark through existing D7 ship deck and D2 control entry", "writes_domain_facts": false },
+    { "name": "ReadLastInteractionFeedback", "purpose": "read a cloned display snapshot", "writes_domain_facts": false }
+  ],
+  "feedback_codes": [
+    { "code": "router_ready", "when": "router initialized", "success": true },
+    { "code": "npc_dialogue_open", "when": "crew is in range and dialogue owner accepts Open", "success": true },
+    { "code": "npc_too_far", "when": "crew target is outside crewInteractRange", "success": false },
+    { "code": "npc_target_missing", "when": "no crew target exists", "success": false },
+    { "code": "npc_dialogue_unavailable", "when": "dialogue entry is unavailable", "success": false },
+    { "code": "npc_state_missing", "when": "crew target has no crew fact", "success": false },
+    { "code": "boarded", "when": "existing D7 deck accepts in-range boarding", "success": true },
+    { "code": "ship_too_far", "when": "ship is outside shipInteractRange", "success": false },
+    { "code": "ship_target_missing", "when": "no ship target exists", "success": false },
+    { "code": "disembarked", "when": "existing walkable surface is found", "success": true },
+    { "code": "disembark_unavailable", "when": "no safe BeachGround/DockGround/GangplankGround is found", "success": false },
+    { "code": "interaction_mode_locked", "when": "D2 is in Locked mode", "success": false },
+    { "code": "gameplay_input_blocked", "when": "D7/D16 modal gate denies input", "success": false },
+    { "code": "dialogue_open", "when": "dialogue is already open during ship request", "success": false },
+    { "code": "dialogue_closed", "when": "dialogue lock releases", "success": true }
+  ],
+  "stable_target_ids": {
+    "crew": "ph_crew_male",
+    "ship": "ph_ship_fishing",
+    "id_source": "existing runtime stable object names; no new gameplay IDs"
+  },
+  "automated_evidence": {
+    "editmode_total": 3,
+    "editmode_passed": 3,
+    "playmode_total": 2,
+    "playmode_passed": 2,
+    "ten_board_disembark_cycles": { "attempted": 10, "boarded": 10, "disembarked": 10 },
+    "unsafe_disembark": { "attempted": 1, "rejected": 1, "mode_retained_ship": true }
+  },
+  "real_player_evidence": {
+    "player_started": true,
+    "route_started_from_main_menu": true,
+    "input_attempts": ["E", "E", "20x W"],
+    "observable_d2_feedback": "NOT_OBSERVED",
+    "observable_mode_transition": "NOT_OBSERVED",
+    "player_log_control_events": 0,
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A02/01_harbor_initial_player.png",
+      "game/tools/results/D19/D19-R02-A02/02_after_e_player.png",
+      "game/tools/results/D19/D19-R02-A02/03_after_focus_and_e_player.png",
+      "game/tools/results/D19/D19-R02-A02/04_after_repeated_w_player.png"
+    ],
+    "limitation": "The real Player window accepted camera clicks, but the attempted keyboard inputs did not produce a D2 control log or visible feedback. This is retained as NOT_VERIFIED rather than counted as success."
+  },
+  "ownership_guard": {
+    "runtime_hud_modified": false,
+    "d3_modified": false,
+    "initial_harbor_modified": false,
+    "systems_modified": false,
+    "save_schema_modified": false,
+    "stable_gameplay_ids_changed": false
+  }
+}

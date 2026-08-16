@@ -1,0 +1,73 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_V1",
+  "task": "D19-R03-A02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "Unity batch builder plus real standalone Windows x64 Player visual checks",
+  "historical_context": {
+    "before": "D19-R02-S02 and D19-S02-R01 remained PARTIAL; earlier Player evidence showed legacy proxy renderers, flat ground, large labels and blocky silhouettes.",
+    "after": "R03 presentation prefab is instantiated in InitialHarbor and legacy presentation renderers are disabled while stable colliders/anchors are retained. RERUN13 persists generated mesh assets into the prefab, so real Player now shows facades, roofs, market entry, stalls, dock planks and props; the visual gate remains open because fixed cameras, weather and route evidence are still missing."
+  },
+  "scene": "game/Assets/Scenes/InitialHarbor.unity",
+  "prefab": "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab",
+  "builds": {
+    "builder_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_BUILD_RERUN14.log",
+    "player_build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_PLAYER_BUILD_RERUN14.log",
+    "mesh_persistence_note": "Generated meshes are stored as task-owned .asset files under Assets/Art/Materials/D19/R03/Meshes and referenced by the prefab; no runtime-only temporary meshes remain for the R03 generated geometry.",
+    "editor_audit": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json",
+    "unity_batch_exit_code": 0,
+    "player_build_exit_code": 0
+  },
+  "editor_audit_facts": {
+    "r03_renderer_count": 311,
+    "r03_enabled_renderer_count": 310,
+    "r03_collider_count": 0,
+    "r03_mesh_vertex_sum": 5996,
+    "generated_mesh_asset_count": 297,
+    "legacy_root_renderer_state": "D19_SaintMargaret_Root renderers=957, enabled=0; colliders and stable nodes preserved",
+    "external_candidate_models": 4,
+    "external_candidate_paths": [
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_default.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_detailed_dark.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/rock_largeF.fbx",
+      "Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_large_rock.fbx"
+    ],
+    "ship_presentation": {
+      "prefab": "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_ShipVisual.prefab",
+      "scene_instance": "D19_R03_ShipVisualInstance under stable ph_ship_fishing",
+      "renderer_count_in_stable_ship_root": 19,
+      "enabled_renderer_count_in_stable_ship_root": 17,
+      "explicit_hull_collider": "D6_ShipHullCollision",
+      "stable_node_preserved": true,
+      "systems_changed": false
+    }
+  },
+  "real_player_evidence": {
+    "player_build": "D19_R03_A02_Player_RERUN14.exe",
+    "resolution_arguments": "-screen-width 1920 -screen-height 1080 -screen-fullscreen 0 -force-d3d11",
+    "screenshots": [
+      "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun2.jpg",
+      "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun3.jpg",
+      "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun4.jpg",
+      "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun6.jpg",
+      "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun13_player.jpg",
+      "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_ship_visual_rerun14_player.jpg"
+    ],
+    "visual_observation": "RERUN14 is a real Windows Player capture after installing a separate D19_R03_ShipVisual prefab under the stable ph_ship_fishing node. The Player shows persistent R03 facades, roofs, market entry, stalls and dock/ship presentation without a pink material or large white proxy plane. The capture also exposes close camera/roof overlap and rough local composition; this does not prove 14 fixed Player cameras, three weather variants, or final visual acceptance.",
+    "route_or_save_verified": false,
+    "performance_verified": false,
+    "capture_build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_PLAYER_BUILD_RERUN13.log"
+  },
+  "allowed_scope_check": {
+    "systems_changed": false,
+    "agentcore_changed": false,
+    "registry_changed": false,
+    "save_schema_changed": false,
+    "external_resource_state_changed": false,
+    "legacy_interaction_nodes_removed": false
+  },
+  "blocking_reasons": [
+    "视觉层仍未达到‘真实港口样板’的最终质量：局部平坦地表、近景屋顶重叠和低细节远景仍可见。",
+    "未完成 14 个真实 Player 固定镜头、三种天气变体和人工逐镜头检查。",
+    "本工作包没有完成连续玩家路线、交互、保存恢复或性能门禁。"
+  ]
+}

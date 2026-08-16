@@ -1,0 +1,1233 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-11T15:20:56.6366363Z"
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-11T15:20:56Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+Save.Tests.D5RuntimeSmokeRunner.RunRuntimeSmoke
+-d5Smoke
+-logFile
+C:\Users\Administrator\Desktop\game\first01\tools\results\d17_a01_d5_smoke.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 5048, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Error: Unexpected message Type: ApiErrorResponse, expected: HandshakeResponse
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [34360]  Target information:
+
+Player connection [34360]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 3655674032 [EditorId] 3655674032 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34360]  * "[IP] 172.16.219.2 [Port] 55504 [Flags] 2 [Guid] 3655674032 [EditorId] 3655674032 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34360] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34360] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-34944" after 0.2 seconds.
+Library Redirect Path: Library/
+FMOD initialized on nosound output
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Ti (ID=0x2782)
+    Vendor:   NVIDIA
+    VRAM:     11996 MB
+    Driver:   32.0.15.9636
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56944
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001582 seconds.
+- Loaded All Assemblies, in  0.240 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.214 seconds
+Domain Reload Profiling: 453ms
+	BeginReloadAssembly (67ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (104ms)
+		LoadAssemblies (65ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (102ms)
+			TypeCache.Refresh (101ms)
+				TypeCache.ScanAssembly (92ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (215ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (189ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (35ms)
+			ProcessInitializeOnLoadAttributes (94ms)
+			ProcessInitializeOnLoadMethodAttributes (40ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: Timed-out after 30.00s, waiting for HandshakeResponse
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Administrator"
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-Administrator-6000.0.80 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 29352)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-6000.0.80" at "2026-08-11T15:21:26.9074535Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 29352, path: "C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              61f6633021504e05b50bfa977340b6d6
+  Correlation Id:          9621b0b37b94161a08657897a2767f18
+  External correlation Id: 2938611457131042251
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator-6000.0.80" (connect: 0.24s, validation: 0.16s, handshake: 0.01s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-6000.0.80-notifications" at "2026-08-11T15:21:27.0744057Z"
+[Licensing::Module] Connected to LicensingClient (PId: 29352, launch time: 0.00, total connection time: 0.41s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-21T04:30:30Z
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 30.46s
+[Licensing::Module] Licensing is initialized (took 29.38s).
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 2s173ms
+[638/818    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[810/818    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+[811/818    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[812/818    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 132 defines and 300 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[813/818    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 130 defines and 315 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[814/818    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[815/818    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[816/818    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+[817/818    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+*** Tundra build success (2.15 seconds), 9 items updated, 818 evaluated
+AssetDatabase: script compilation time: 2.579958s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.041 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 0.77 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.79 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.911 seconds
+Domain Reload Profiling: 2950ms
+	BeginReloadAssembly (213ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (127ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (777ms)
+		LoadAssemblies (665ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (160ms)
+			TypeCache.Refresh (106ms)
+				TypeCache.ScanAssembly (98ms)
+			BuildScriptInfoCaches (43ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (1911ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1742ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (90ms)
+			ProcessInitializeOnLoadAttributes (1600ms)
+			ProcessInitializeOnLoadMethodAttributes (37ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_temporary_deck_cargo.json using Guid(103379649e7afd1ff5e5082db20f9e81) (TextScriptImporter) -> (artifact id: '75b32aeaacc9e04e4909b81d83cc27b0') in 0.0086209 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sounding_lead.json using Guid(30651218753acd4545975caaa19d7691) (TextScriptImporter) -> (artifact id: '70323b0f1982ad0e119afa5cf6b530d0') in 0.0023719 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_captains_cabin.json using Guid(50d415bf8a8d3e28e0a5162e8cc8788d) (TextScriptImporter) -> (artifact id: '014ac5ed9df2ba9435d91afba42fb54e') in 0.0021497 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_isolation_partition.json using Guid(70dd2c61d0168a205e06bec1a4d4fc63) (TextScriptImporter) -> (artifact id: '5a374cc9fcf7ad140e0385961d89f604') in 0.002049 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sailor_berth.json using Guid(80103f869b5c55c59437408432c5a971) (TextScriptImporter) -> (artifact id: '1a48cbab2dc302506b186caaacf0f34b') in 0.002252 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_auxiliary_staysail.json using Guid(90c0a26a29e1579efc92b0bf61750025) (TextScriptImporter) -> (artifact id: '0310b23d1b333708b5a6c41cd55486bb') in 0.0035826 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_light_gun_mount.json using Guid(b0840ac547b47e2d8df55e3b92ba8a16) (TextScriptImporter) -> (artifact id: '1632d6749ab4449a8ca5a08121817baa') in 0.0024396 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_log_line.json using Guid(b07e767688e39935f1a4c896b26ae57f) (TextScriptImporter) -> (artifact id: 'e91d92eb431ebd9a67571c907826d059') in 0.0025698 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_breast_line_point.json using Guid(c0aa95270a7b9049fea81260c1fc4919) (TextScriptImporter) -> (artifact id: '75c3c1ebb40eee7cab3c932caa06040e') in 0.0023998 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_confinement_isolation_cabin.json using Guid(d003999f2b246eaf5a66b3ecbeff4759) (TextScriptImporter) -> (artifact id: 'c2dc9563457162f6cd2bd832ef7c4e83') in 0.002196 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_improved_galley_stove.json using Guid(d0e7c00d15c95f34d58a0aed2cb04aa9) (TextScriptImporter) -> (artifact id: 'e0848f49e18c1ce0ff62b86d6a78a9df') in 0.0028821 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_blackreef_brig.json using Guid(d03df2af8c2e6bed5a261762ebbf4b34) (TextScriptImporter) -> (artifact id: '7732da439c68bfab40f6e2835f723ce1') in 0.0019003 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_dry_goods_shelf.json using Guid(e005b08baeba73f94118a5ae731d78cf) (TextScriptImporter) -> (artifact id: '9fd9cfb045b22e0975cef9d521cca65c') in 0.0023093 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gangplank.json using Guid(f0308756b55531772ddefafb39d28a9b) (TextScriptImporter) -> (artifact id: 'f9cd8abab18fe0c7eca03c2e35c8cf02') in 0.0018959 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_deepwater_frigate.json using Guid(f07973ea1b62373f289566291b4793a0) (TextScriptImporter) -> (artifact id: 'c997bb4339bf5d88520941071acee8ce') in 0.0027583 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_crew_rest_area.json using Guid(2124e9f323ef4798454c451a989e3341) (TextScriptImporter) -> (artifact id: 'a0d25f4b9a98d8cb547c685d16e86842') in 0.0023543 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_quiet_rigging.json using Guid(21e426fa5f1f037932132f0a5c66ba80) (TextScriptImporter) -> (artifact id: '5ebafbfe67457d7540dbd384e1c2e26a') in 0.0045188 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_island_packet_sloop.json using Guid(311e21717ab033bd4d448e49305481fd) (TextScriptImporter) -> (artifact id: 'c4bbe137cc02b56ae991f17663eab4a3') in 0.0018452 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fire_bucket_station.json using Guid(41a52c23d5dc682adf23602200c05160) (TextScriptImporter) -> (artifact id: '5226b9de159c92b7414d79e672e977bf') in 0.0019115 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sail_trim.json using Guid(41e90f0bc2c47220df0bee9e4f42cd02) (TextScriptImporter) -> (artifact id: 'df32a9d7714d6d12ec0b70129d87db0b') in 0.0022482 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_animation_profiles.json using Guid(516dadb02c6af3c0b9519f53f54321a7) (TextScriptImporter) -> (artifact id: '6c9bbb00b1feb853ee80cbf7c28f43e4') in 0.0053065 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_bilge_pump_access.json using Guid(612b6c865393373f1bff8631c6894ba4) (TextScriptImporter) -> (artifact id: 'f810a7157ff862c9c8a5fe189269d0c7') in 0.0021052 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_chain_shot_rack.json using Guid(7122d6e23cd3241bea2e9bb901960490) (TextScriptImporter) -> (artifact id: '1388fcb9a4bf6db6d73ed43d456cc801') in 0.008045 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_staysail.json using Guid(71a61d42f86f9b4f630337365660042e) (TextScriptImporter) -> (artifact id: '87cef12b4916d4b49b4b4b6917b11379') in 0.0028737 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_tideglass_cutter.json using Guid(8111e75d1550f03109b892565be4fe57) (TextScriptImporter) -> (artifact id: '5ca303895fedf41a230e1130148745d0') in 0.0025127 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_windward_pinnace.json using Guid(b1dbe40c72452dc1c9b88653d949b084) (TextScriptImporter) -> (artifact id: '3803b85c06334f12776a2ca374ba2a1f') in 0.0026722 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_disguise_flag_mount.json using Guid(c101998367c22838864e2dfaa5f3d60a) (TextScriptImporter) -> (artifact id: 'ebf1f9bb8e7259483a669a001347a13a') in 0.002252 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_powder_magazine.json using Guid(e1679d96280717bac4a7d4427f4badf6) (TextScriptImporter) -> (artifact id: '8ad8fbe05a082fce350578ca2fce19a5') in 0.0023482 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_signal_flag_locker.json using Guid(e13aae1fe9ffa20b3b9f1ff368d27eb5) (TextScriptImporter) -> (artifact id: '89d656fcbdf6c21636bdf4c99439d64e') in 0.0026765 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_light_cargo_dividers.json using Guid(022bbb1302d6f1b93114ce8c1c58c7eb) (TextScriptImporter) -> (artifact id: '1f3eb5e0c5edd1bcd5d3b788545973ca') in 0.0024234 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_enlarged_main_sail.json using Guid(32d3fdc6c53c7109d963407da4450ad4) (TextScriptImporter) -> (artifact id: '4568f99e7309aa7fb8d4a03d44de3fff') in 0.0023256 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_gun_carriage.json using Guid(422ae8b55db4b9686211fdb91ef45eb6) (TextScriptImporter) -> (artifact id: '152baa916d8475eb643384bd1143849e') in 0.0023331 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_fire_bucket_rack.json using Guid(427e12e8faf42600ea41ddf2fa457e28) (TextScriptImporter) -> (artifact id: '0fedeb2c05f42e3c7427f1f7a0990255') in 0.0015481 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_fire_bulkhead.json using Guid(620ba0ebae658a3e6e60a23743a34f3e) (TextScriptImporter) -> (artifact id: '5040e4a845a02ce046396c2bbc0e12a8') in 0.0018576 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_hull_paint_layer.json using Guid(627e7b1cd78e6a5d10f84db0020c99a1) (TextScriptImporter) -> (artifact id: 'b89fcb7772b6b391dc8fc5c5b3db7680') in 0.0024708 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_ballast_rack.json using Guid(92c8571596687aae00451568d35987c6) (TextScriptImporter) -> (artifact id: '29103f8cf18ded4f2645e56e14329f73') in 0.0021363 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_cook_workbench.json using Guid(b2185a2ee1c00481b33d63efb3c5e5d1) (TextScriptImporter) -> (artifact id: 'd99e8f8b927de5e9aa9ade8b1fb891da') in 0.0016646 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_raincrown_schooner.json using Guid(c255fe3cb89aaaed81c248a31822b496) (TextScriptImporter) -> (artifact id: '45b5eff7d7b0f6dbee803e5e2c19056a') in 0.0019902 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gunner_workbench.json using Guid(c27745749941ce1f5b49a864af9d4117) (TextScriptImporter) -> (artifact id: 'fefca9c0e954d569654ed36987fbbae3') in 0.001786 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_professional_sailor_platform.json using Guid(d2eb1e4da2515698a32b6f22b1fb4931) (TextScriptImporter) -> (artifact id: 'eb56caacf9bb3e30994471f32032f51d') in 0.0016565 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_watertight_bulkhead.json using Guid(f27c4028145468399834dffae0a9121d) (TextScriptImporter) -> (artifact id: 'a5cfc7b3c6ea71b1a1764d53004f869e') in 0.0016453 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_signal_gun.json using Guid(f29da5dc4229054e7c5d37bbf6b8541f) (TextScriptImporter) -> (artifact id: 'a2e4a0db7392f2a7c8a3f7664585f708') in 0.0026169 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_rigging_locker.json using Guid(333e3da077c22b55d5298d4d881af871) (TextScriptImporter) -> (artifact id: '9f7e615bb5cbf130ef2f0f6a7ead9d8a') in 0.0019867 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_free_cove_catboat.json using Guid(733954b1aaa74172106ee47fdd6089bd) (TextScriptImporter) -> (artifact id: 'd158e8bbb8e98ed78c8ddc65da233109') in 0.0018075 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_shot_locker.json using Guid(73d9347294501f5e679e8e8e56fa33df) (TextScriptImporter) -> (artifact id: '5df7fa6692c0dbf61753b3eefd5f6554') in 0.0026382 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_rudder.json using Guid(8346aeed8c0514b0bbb5d42f4236c110) (TextScriptImporter) -> (artifact id: 'aed8299b9b11513b97862585197098f9') in 0.0021178 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_name_and_crest_board.json using Guid(a30110d847d48c64fb69b662b5036b02) (TextScriptImporter) -> (artifact id: '188eaa428903edc9439212dcd63fa270') in 0.0020214 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_washing_and_hygiene_point.json using Guid(b384da19fef4a2b032f05fcba30a151a) (TextScriptImporter) -> (artifact id: '5adefcb4495903fa6ec46bd039a27edf') in 0.0020359 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_sable_fin_skiff.json using Guid(b3459913db5d5dd733d47251f324229e) (TextScriptImporter) -> (artifact id: 'd48604ce43c7d97d62c0344776ec3e25') in 0.0018147 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_rescue_rope_and_float.json using Guid(b387f9aed8439cdda19946308006e28e) (TextScriptImporter) -> (artifact id: '6d297f8c17c7d2793a18508a2bb5a294') in 0.0018491 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_sandglass.json using Guid(c3e3c626d7a50b7715d615c0daf321e9) (TextScriptImporter) -> (artifact id: '5c3a624744cac122cb86961a83adb997') in 0.0025058 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_shallow_draft_conversion.json using Guid(e3de74b563128f272f50e4b5762ad1ed) (TextScriptImporter) -> (artifact id: '52fea59b1dbb8985db3ed4e3d3adcff4') in 0.0016994 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_bluewater_cutter.json using Guid(04f4a5a7c0c0902f439d662360605837) (TextScriptImporter) -> (artifact id: '6038fd4eeb40615c4b9414fda6ae6663') in 0.0019363 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_ventilation_hatch.json using Guid(34f2d22805441c50e7d67d4b23e68ee2) (TextScriptImporter) -> (artifact id: '5204bc3cf86548e0263f63ca5b45b680') in 0.002172 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_rapid_patch_layer.json using Guid(34af1692c63c4d89448617be2180efec) (TextScriptImporter) -> (artifact id: 'dbaf9d75cd2ab0bb42d6d971cf490cf9') in 0.0021868 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_steering_transmission.json using Guid(542f23e5451a85cf2efbf925b3ebb356) (TextScriptImporter) -> (artifact id: '8b4af6fc5bf36bc1637697db1de9765b') in 0.0019859 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_frames.json using Guid(94203fb6a9df2c85c4cd3e9aee9c5439) (TextScriptImporter) -> (artifact id: '212cc499af4c98d669194496c0f1682d') in 0.0019095 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_anchor_chain_set.json using Guid(94118b70959764b7ba77a65add3654f4) (TextScriptImporter) -> (artifact id: 'd214f63c59944d6ba62d6d08d3105297') in 0.0021002 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_longwake_barque.json using Guid(942e1af98a78cb3f13bdc683d384c6d0) (TextScriptImporter) -> (artifact id: '0b6699fd25c2e4c8c879b49cc640ae89') in 0.0019265 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_anchor_profiles.json using Guid(a48a63c82aba861176f4e35e68a645a7) (TextScriptImporter) -> (artifact id: '3076bf42cbc9213c407a0e9027545908') in 0.0020426 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_valuables_locker.json using Guid(a4ca85e9b4a89f1147c20ee2aca1f008) (TextScriptImporter) -> (artifact id: 'fa8a8dc6edff99c17b6589f1e1a789b7') in 0.0019206 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_long_voyage_granary.json using Guid(b46117a7d6b5c86bc94cabb300951068) (TextScriptImporter) -> (artifact id: 'b143dde84256ed98e8cc6d4fe31ef67f') in 0.002239 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_lookout_platform.json using Guid(c42888a456de8868959270b745773566) (TextScriptImporter) -> (artifact id: '2783ee2ec4334f7ea6fdabb652d9b16c') in 0.0017921 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gunport.json using Guid(0534848f58a515f6d13a7051b5124dad) (TextScriptImporter) -> (artifact id: '73ad659f262d27bd70ba8932a8470713') in 0.0021101 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_twin_rudder_linkage.json using Guid(25b097655df3e81af1279c56439831c1) (TextScriptImporter) -> (artifact id: 'f58eff3081ddcc12b9b1b491cfd69695') in 0.0018357 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_stern_bollard.json using Guid(25fdeba9932e611c99779f648d88d94d) (TextScriptImporter) -> (artifact id: 'ec4e37d5fdf2b4e4ded6faea947c75e4') in 0.0017392 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_improved_fore_sail.json using Guid(55b1ec88f8e35dd01a9a6bf5300a5d84) (TextScriptImporter) -> (artifact id: '222c4f23afe1e6ed6a7d6456c39bc329') in 0.0024028 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_locked_valuables_case.json using Guid(55efe64c8ade65cf9827daa3879a82d6) (TextScriptImporter) -> (artifact id: '33442d32144d38cde4c5477ada1a9935') in 0.0019731 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_cargo_davit.json using Guid(9526e2751ad50e7b4717c20d5a0c3270) (TextScriptImporter) -> (artifact id: '50c41086dbb8d560464b5410b8659dcc') in 0.0020371 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_cocoa_brigantine.json using Guid(a5281e7fedcba3383fecab1ea61cb379) (TextScriptImporter) -> (artifact id: 'a24c52de49a01672a05e74dbaf392f8f') in 0.0016897 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_carpenter_workbench.json using Guid(b583abe7788595c0987f82c5a10619ad) (TextScriptImporter) -> (artifact id: '3e4e4c7d20c6a0cadc1da92e72eb7456') in 0.0017625 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_simple_medical_berth.json using Guid(b515ba5c7308f95ba3434ca85fafb70c) (TextScriptImporter) -> (artifact id: '60fa5be7bd94e191c380b50ab4ecb9d4') in 0.0022029 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_reef_runner_sloop.json using Guid(c5edb3fa995702b884122e05df65e7dd) (TextScriptImporter) -> (artifact id: '4d96a8ad4cbf8e9ed53c4fe79c280834') in 0.0020654 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_tiller_assembly.json using Guid(e5b7a578afee56dfe914aa3a1fa4f48c) (TextScriptImporter) -> (artifact id: '894ca97934e74859b4f534f8a5fc71e1') in 0.001756 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_cargo_hatch.json using Guid(e58c581e1f34e7d78527a0c6e1438e26) (TextScriptImporter) -> (artifact id: 'd750c701f18a32d4f19d32f7f0e3f8a6') in 0.0021545 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_shot_sorting_rack.json using Guid(162454e9ee0c2bf1d513170ca15f3992) (TextScriptImporter) -> (artifact id: '4c257d5b6e7a4f3f56ba4a21687ea356') in 0.0032599 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_weatherproof_chart_case.json using Guid(16df5557864e16f85b4bd82440c655fa) (TextScriptImporter) -> (artifact id: '5d6b8d64d05f42acf56472631daa89bd') in 0.0019092 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_anchor_chain_guide.json using Guid(460623297842a7638182d0a2fb1f09d8) (TextScriptImporter) -> (artifact id: 'ba511d748bd2df17c464f72eaecfb57e') in 0.0019649 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_grape_shot_rack.json using Guid(66a13b45734ed7632a0888b829dec8d9) (TextScriptImporter) -> (artifact id: 'a913e80666032e258e00ce76d96c64ef') in 0.0017818 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_mangrove_punt.json using Guid(76117515a3e33bfed9ed3c8a833d2392) (TextScriptImporter) -> (artifact id: 'a6c8e7de8e0302c3c6dba1e05436ee58') in 0.0021766 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_tool_rack.json using Guid(96cb37fb77d7fd5fb0fe9ec1b1a8d307) (TextScriptImporter) -> (artifact id: '39eb25e0b448483d08828acc1e4fa4f2') in 0.0016808 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_port_anchor.json using Guid(a6ee8b8a245c4b51c39e37ba99d2c09b) (TextScriptImporter) -> (artifact id: 'a5a03ff85b88b65427350fcfa54b5d77') in 0.0017083 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_audio_profiles.json using Guid(b6bf24a2c1c26b7139ff8f5408b4475a) (TextScriptImporter) -> (artifact id: '97dd400e8c6c38ab72fae8d68acc0991') in 0.0015258 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_main_mast.json using Guid(d69b6003f1ed8a288d4eaf586bf73010) (TextScriptImporter) -> (artifact id: '8e4ab494592f6a1bea5b23931d028e13') in 0.0017663 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fore_mast.json using Guid(e6c85043fb54d72af43253cecd5cb715) (TextScriptImporter) -> (artifact id: '32dc355a847bb587332c9ecce4a5f2a2') in 0.0015259 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_bilge_drain_pump.json using Guid(27d33091ba5987516d012d2464b9e973) (TextScriptImporter) -> (artifact id: '0e2923860032d9c6f585cbffe942518c') in 0.0016025 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_fire_sand_box.json using Guid(471312615d25541b6bbefbebe4537d2c) (TextScriptImporter) -> (artifact id: '6fcd5a0ea0e19676bbeee330f701e5a0') in 0.0015272 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_aft_mast.json using Guid(9717098ce05b31be9e97a4b454b5e879) (TextScriptImporter) -> (artifact id: '21191bdd869f73ea2691ee7a3add49ca') in 0.0015637 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_privateer_brigantine.json using Guid(c78dbe3755fb25619edd24ae436bc29f) (TextScriptImporter) -> (artifact id: 'f5fa58bae6ddc7dbc8b690719f5d533f') in 0.0017933 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_harbor_brig.json using Guid(d78885f799cc3cfec44359a60b911ed2) (TextScriptImporter) -> (artifact id: '44a273cf451569fdee4b00f4fed484f0') in 0.002225 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_coastal_bark.json using Guid(d7099711178b2c0d1f1cb0ada9912d8d) (TextScriptImporter) -> (artifact id: '5ea442d7ebe67db4d6f2690360d388bf') in 0.0014712 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_ship_sickbay.json using Guid(e77ad3e5749f765e8d628f5b32887112) (TextScriptImporter) -> (artifact id: '6fb080e70908d33cbf43436ff53877ea') in 0.0015765 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_collision_profiles.json using Guid(38f02ff652798c84ca6fdfc86f963961) (TextScriptImporter) -> (artifact id: '80fdb4040e477e643c3b43957323858d') in 0.0014471 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_medicine_cabinet.json using Guid(38167c5ac42b12ee1e5ebef6c12105c3) (TextScriptImporter) -> (artifact id: 'eddc07f79a5a42b7df0cadff6dd07b6a') in 0.0014151 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_concealed_cargo_compartment.json using Guid(68815420c26bb1ff19cdbdfbe0167e49) (TextScriptImporter) -> (artifact id: '0e56d14bb3fdacdc7ae764600686b14c') in 0.0013259 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_food_preservation_cabinet.json using Guid(a817775c2311649867f5c8270959cbaa) (TextScriptImporter) -> (artifact id: '376fb88c21e8e34aa829abf05a5fe564') in 0.0015812 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_material_profiles.json using Guid(c858ffb0ad49e53c2b6377f3172285b8) (TextScriptImporter) -> (artifact id: '9b0849b1b903d848777d1da1cf1eea51') in 0.0016766 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_water_saving_kitchen.json using Guid(c89964b4fda0593b415747f8ca0c4a64) (TextScriptImporter) -> (artifact id: 'a0043135e0d5c9103a9a2d6d443da770') in 0.0015525 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_mast_kit.json using Guid(d84e076a1c6837a5b46504b237421d26) (TextScriptImporter) -> (artifact id: '8b323bbc2fe6ce6b695840df4b4fdccd') in 0.0014888 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_gun_carriage.json using Guid(e8812368fe53938b38c9b033d1283743) (TextScriptImporter) -> (artifact id: '259ae016447beaa89af5d85dca60d909') in 0.0014771 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_carpenter_workbench.json using Guid(09eaac29a0039742eeb7a89fef434689) (TextScriptImporter) -> (artifact id: '8ee1ea6505a88b27f639629346ace2ab') in 0.0017374 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_compass_stand.json using Guid(09ecf2ccd8c8be2eb898257aa0a488f2) (TextScriptImporter) -> (artifact id: '3a8a4b0b9399aaabe9e7c47edb9ac19f') in 0.0018181 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_timber_rack.json using Guid(1998dbe27d3e02bd18f312c251df9725) (TextScriptImporter) -> (artifact id: '7dfad1c762b693dce89995a30613edee') in 0.0017986 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_saint_marys_ketch.json using Guid(19ac24a443f3035b2f9af49b4064d3e3) (TextScriptImporter) -> (artifact id: '1da13595ece136c88094c74aa0ce0052') in 0.0016765 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_medical_berth.json using Guid(297aaed82df35155d410d2311f50c381) (TextScriptImporter) -> (artifact id: '7a0811a0d7440762f017272aea12f7f3') in 0.0017992 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_ph_ship_fishing.json using Guid(79ed0cc2b4507d1877b207004c33c51a) (TextScriptImporter) -> (artifact id: '7db8b20f1e11115f4a0810ba5a8fc011') in 0.0018959 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_food_larder.json using Guid(89a3b356480d245d1c3162e6fc144fd1) (TextScriptImporter) -> (artifact id: 'd8365cb1424a1b620ef0c6895724348a') in 0.0016329 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_ui_profiles.json using Guid(89f7885da79f488c18016eeaa8f82afc) (TextScriptImporter) -> (artifact id: 'aae792d930374510f070b49dd0fb6c39') in 0.0016692 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_boarding_rail.json using Guid(89897deedfe5ebc6b3574faf60577a35) (TextScriptImporter) -> (artifact id: '2f33583945f51b3f37b3b99e4f19229f') in 0.0019264 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_main_sail.json using Guid(996c96615c1fa6690c837f0b0577b6c3) (TextScriptImporter) -> (artifact id: 'ace9e4d8d4738ad7b713cdc5920ac4f0') in 0.0017883 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_cargo_shelves.json using Guid(c967ad65e56c30d280930a39758976e0) (TextScriptImporter) -> (artifact id: 'efa0cf67c122bc38c0f5afba4d16ebec') in 0.0016369 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_starboard_anchor.json using Guid(c94f8324bf3bd0ec023c3badd4c8d701) (TextScriptImporter) -> (artifact id: '8b6938dd94b8da981e61e700d20478e8') in 0.0016235 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_saltwind_schooner.json using Guid(d99a02a384a4fadede42ee2e9e7b6269) (TextScriptImporter) -> (artifact id: 'e0d8bb06b3ec66b66377c66c0255fd82') in 0.0015474 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dry_medicine_cabinet.json using Guid(e9301aefe77b8a8bd99254c28698adf8) (TextScriptImporter) -> (artifact id: '873b7a86ef6d8cf4068a9fbdaf1f05b9') in 0.0016309 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_bucket_line.json using Guid(f913fb647e0a2bee6079aec5f877726b) (TextScriptImporter) -> (artifact id: '6b21487dfc18371d3b2abc89aa52110a') in 0.0016627 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_anchor_chain_locker.json using Guid(1a5ba5164a17d756bec28bdfd12a6f4e) (TextScriptImporter) -> (artifact id: 'a555d183aa874019eb76613527323979') in 0.0023562 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_crew_storage_lockers.json using Guid(6ab1e95e13e3dbae0a0b7e7123d0703f) (TextScriptImporter) -> (artifact id: '6da6b523261c7eb8cdcc13e650adba00') in 0.0044786 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_dinghy.json using Guid(8a074d13529d049ec603300d3878648e) (TextScriptImporter) -> (artifact id: '750ff33304896523ee77990a472501f7') in 0.001449 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_heavy_gun_mount.json using Guid(9ac90f4289a0c665ff7f2a410df628d1) (TextScriptImporter) -> (artifact id: 'f166c64e3c2af8b8b94233d22d56f52a') in 0.0013386 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_freshwater_barrel_rack.json using Guid(9a8c2eecbfb3e99b5ecfd87c06df82f8) (TextScriptImporter) -> (artifact id: 'a0bbbef4fe746d1ab7554dd3d978d6b2') in 0.0015807 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_night_signal_lamp.json using Guid(ba71de81a26caa8c71e0a4dae3f534f8) (TextScriptImporter) -> (artifact id: 'ba5fcde466e7e34f0cd203c3001caeac') in 0.0015623 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_improved_helm_wheel.json using Guid(da52f5c1fd3ac21a7c7b6a3f5962b8dc) (TextScriptImporter) -> (artifact id: '369f17609a870a370a0607d7c3e22f9a') in 0.0016259 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_flag_signal_set.json using Guid(da15c298a9d5a4a1a6316ec6652ff616) (TextScriptImporter) -> (artifact id: '7e4944e37f1ba58a65edc5487a05eb93') in 0.0016387 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_weapon_and_firearm_rack.json using Guid(daf649dfd3e8671019020e67ada4cc40) (TextScriptImporter) -> (artifact id: '339c65e9e34b3de4eeb63f582b176d74') in 0.0017245 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_boat_hook_rack.json using Guid(fa9c5de5946ed142ef15ac23750cf463) (TextScriptImporter) -> (artifact id: 'a7207c1caf7da6bc822d382f698f2853') in 0.0015677 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_stability_sponson.json using Guid(9ba37234ed50114dbf942344cc7f1987) (TextScriptImporter) -> (artifact id: '10c811bdab7e2c8f098a691d94be23ed') in 0.0020542 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_cargo_winch.json using Guid(fb7775be02cbd8f54f30978fc991d94a) (TextScriptImporter) -> (artifact id: '6b9e83ec6a1da535fe86c63d27ca4d5a') in 0.0018342 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_storm_canvas.json using Guid(fb8902f0f142c3edc929a7fae39044d2) (TextScriptImporter) -> (artifact id: '259064652707ed2dafbfb30e05e692f3') in 0.0020599 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_boarding_net.json using Guid(0c3a674d068ec8245ff0d1b46729a9f9) (TextScriptImporter) -> (artifact id: '804797230a5da12fe88646c2d6e0af8b') in 0.0021079 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_extra_crew_berths.json using Guid(1c61a3bd0cc52b567bbb1317df6b3d68) (TextScriptImporter) -> (artifact id: '9223dd01c4c845a73664d74ad3b6e2f2') in 0.0029257 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_chart_table.json using Guid(2cd483ba6b787fac3ec10e77a9511cf5) (TextScriptImporter) -> (artifact id: '2b9954b9524b4f02cb12b358e177720f') in 0.0017911 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_weapon_rack.json using Guid(3c5fc2b67ae50a57c9b278da64fa7247) (TextScriptImporter) -> (artifact id: 'ad6c04cece5d019f7da45d6b0220756b') in 0.0024435 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_sugar_route_schooner.json using Guid(4cdd0c811bcc64ec4068ba65869c5d7a) (TextScriptImporter) -> (artifact id: '1923f803095ffab94e870511aad039d2') in 0.0023201 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_rapid_loading_rack.json using Guid(5cfb5450544b3d857225c67977d118ab) (TextScriptImporter) -> (artifact id: 'a0bb5bdb6f7d4a5499767b2dd070bb74') in 0.0025585 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_freshwater_tank.json using Guid(7ce2c9ac832e67dc9c1c8134186ebe04) (TextScriptImporter) -> (artifact id: '7070f00f1efc8f0e69dad8c4a952ed43') in 0.0026764 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dry_cargo_hold.json using Guid(fc00ec89b046926d5e1a010eb37c166e) (TextScriptImporter) -> (artifact id: 'b16ad78dc3dfb066d75c459e5d1922b3') in 0.0021035 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_light_canvas.json using Guid(fcdc51b146d23aed50d59830b19a720a) (TextScriptImporter) -> (artifact id: '707504a463b451ecbad848b982afe07e') in 0.0019289 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_quick_release_rigging.json using Guid(1db096a42399a427adfa0b9c703a9141) (TextScriptImporter) -> (artifact id: '9477695b816e59984fd7274850afbfc4') in 0.0027785 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_raised_freeboard.json using Guid(1d6393283eee1a8787bc0fbc24393731) (TextScriptImporter) -> (artifact id: '36e62d421c8f54070168145d45599df7') in 0.0021397 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_sounding_gear_rack.json using Guid(2dc1e94403ca81d7ab487bc997c824f1) (TextScriptImporter) -> (artifact id: 'f20272f0bd7527b4814602a88209d894') in 0.0142833 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_high_lookout_platform.json using Guid(3d8b8e111f6223f8c62f305cd1358e7b) (TextScriptImporter) -> (artifact id: 'd3453777d0e8af71356c20d56fe4bef0') in 0.002283 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_galley_stove.json using Guid(9d7ac63c850081fbea00424520e6bb93) (TextScriptImporter) -> (artifact id: '0ab103810d60863e3f57ae339bd72c5d') in 0.0018772 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_waste_treatment_point.json using Guid(adec673689a7c0954d107785a121fac0) (TextScriptImporter) -> (artifact id: '60e5e824ab73c885a80ff7f94052cb8e') in 0.0018174 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_council_table.json using Guid(bd1cf4d4d6b5e75ec653615fb2c56abe) (TextScriptImporter) -> (artifact id: 'fd18bfc49ec382e4ecd7ec1c551b0ade') in 0.0015958 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_keel.json using Guid(1e47c08ac4e5637e988d2f76c4c7c4f0) (TextScriptImporter) -> (artifact id: 'e02b932ebd73086c06cf01fe812af1fd') in 0.0016551 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_rudder.json using Guid(2e90afa095faff74153e6e16633d8198) (TextScriptImporter) -> (artifact id: '2d8eae2d0c9ff03c3e4e2fe548d48394') in 0.0017834 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_anchor_winch.json using Guid(2ecd30295d7fa84d14c96ab685620eb7) (TextScriptImporter) -> (artifact id: '4bdfc6e51b7014cd68b13244327a0150') in 0.0022383 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_helm_wheel.json using Guid(3ea187fbe5b48d36e7996ac77cd355d0) (TextScriptImporter) -> (artifact id: '118d521e7cccb6423a09b7d4d61eb4a2') in 0.002187 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_reinforced_planking.json using Guid(3ea8ea973a931d425b644b2ca313f08f) (TextScriptImporter) -> (artifact id: '940f1c2178d8eee6b41dadec714dc2b9') in 0.0027082 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_ship_bell_alarm.json using Guid(5e65c48ade4bf0022d16d0fd03364ebe) (TextScriptImporter) -> (artifact id: '99474a908cb42f994221f0fef4bf2711') in 0.0020713 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_bow_bollard.json using Guid(6ee0251fee504a211ddf715785659462) (TextScriptImporter) -> (artifact id: '2b973c50c0607815ca1ae9d7a417e818') in 0.0017886 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_navigation_compass.json using Guid(9e8d3d053cdfdb0351d2986fa99a9cca) (TextScriptImporter) -> (artifact id: 'b2414f5d98236e6323f565b8789321ea') in 0.0016192 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fore_sail.json using Guid(ce469a2f8f69c1bf314b171f37ebd5de) (TextScriptImporter) -> (artifact id: '5e1c1c31ea427898c3d77ae388411565') in 0.0018113 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_fish_hold.json using Guid(de2a5dda35371c174c4832f450f0a14f) (TextScriptImporter) -> (artifact id: '3dc107f27261b27e83d57bb74141d9c0') in 0.0017237 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_expanded_cargo_hold.json using Guid(ee028f347b8434c1d3ede86bffe43549) (TextScriptImporter) -> (artifact id: '3b5f52b476f7ae96ac5285820b938a13') in 0.0020003 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_hand_winch.json using Guid(eee72e6ce39c324b8f0486412d0e3fbd) (TextScriptImporter) -> (artifact id: 'c2fd132bbfddd9a404035d3bd0f71e68') in 0.0017949 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dry_powder_locker.json using Guid(ee188ca47460bf911e5029a217922b52) (TextScriptImporter) -> (artifact id: 'da48b4b80e16ce6875b78521a4a2741e') in 0.0020758 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_captains_cabin_refit.json using Guid(0f206700c7f16418214a5dc139ad07af) (TextScriptImporter) -> (artifact id: 'fafe5da86c26ec803468f54b7bcd87d6') in 0.0020232 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_dinghy_davit.json using Guid(1f6376be74ebc3d7178e10d5dc8d5e7b) (TextScriptImporter) -> (artifact id: '34d89aadc8b3bf3f87b8230a53705099') in 0.0020692 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_deck_catch_area.json using Guid(3ff66f11d441041caec673055225b339) (TextScriptImporter) -> (artifact id: '086fb5e926edfd87d10e231f51a71cb6') in 0.0020652 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_main_cargo_hold.json using Guid(4f7cfbf5897ac3942469ddbb2dceb992) (TextScriptImporter) -> (artifact id: '8b26d7a3b59f702b9acfd5bfa80286a7') in 0.0020359 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_function_tiller.json using Guid(5f4030e1ca889ac3b11dc941e5426306) (TextScriptImporter) -> (artifact id: '74fc6feba4cd74d4a32b8b8eb9f7613a') in 0.002056 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_boarding_net.json using Guid(7f7823709bd26b65b2932d36e19f4a43) (TextScriptImporter) -> (artifact id: 'b41b490453088a4262ff3b70dcf20708') in 0.0024223 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_braced_mast.json using Guid(bf1242dec20e275acfdcd87bbc00f5fd) (TextScriptImporter) -> (artifact id: '29ccf86f02e773581bcbdc219a5c5077') in 0.0022675 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_spare_rope_rack.json using Guid(bff2f20e192e4030c7e73a20b491e11f) (TextScriptImporter) -> (artifact id: '7f2a54753ef5f2c05f1a5565f6fe1d67') in 0.0018006 seconds
+Start importing Assets/Content/D15/A06/entries/assets/asset_d15_a06_model_ship_module_cargo_davit.json using Guid(df4d28055ba5c4a05f3a213dd2bbe204) (TextScriptImporter) -> (artifact id: '0a6cbaa599e8111cc41ccb4fdad654ae') in 0.0019126 seconds
+Refreshing native plugins compatible for Editor in 0.98 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=45b71525e6965a740952bbc4146cffc4): Total: 6.573 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=14 ms, native=2666 ms
+		Asset DB Callback time: managed=219 ms, native=16 ms
+		Scripting: domain reloads=1, domain reload time=1041 ms, compile time=2581 ms, other=32 ms
+		Project Asset Count: scripts=1242, non-scripts=5147
+		Asset File Changes: new=0, changed=168, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 11.413ms
+	ApplyChangesToAssetFolders: 0.489ms
+	Scan: 118.221ms
+	OnSourceAssetsModified: 0.938ms
+	CategorizeAssetsWithTransientArtifact: 32.404ms
+	ProcessAssetsWithTransientArtifactChanges: 54.741ms
+	CategorizeAssets: 46.828ms
+	ImportOutOfDateAssets: 2336.183ms (-664.524ms without children)
+		ImportManagerImport: 416.721ms (7.459ms without children)
+			ImportInProcess: 409.262ms
+		CompileScripts: 2581.065ms
+		ReloadNativeAssets: 0.051ms
+		UnloadImportedAssets: 0.779ms
+		ReloadImportedAssets: 0.013ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.248ms
+		InitializingProgressBar: 0.007ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.822ms
+	PostProcessAllAssets: 220.222ms
+	Hotreload: 4.567ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 0.846ms
+	PersistCurrentRevisions: 0.802ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 2.549ms
+	Untracked: 3745.113ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.580ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Whalebone
+Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6167 unused Assets / (4.8 MB). Loaded Objects now: 6864.
+Memory consumption went from 206.4 MB to 201.6 MB.
+Total: 6.669300 ms (FindLiveObjects: 0.344500 ms CreateObjectMapping: 0.341500 ms MarkObjects: 4.242600 ms  DeleteObjects: 1.739800 ms)
+
+Start importing Assets/Art/Placeholder/Models/Crew/ph_crew_male.fbx using Guid(f2e283a083827bb4887e2c86d2470032) (FBXImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Keyframe reduction: Ratio: 100.000000%;
+Keyframe reduction: Ratio: 26.285715%;
+Keyframe reduction: Ratio: 14.031746%;
+Keyframe reduction: Ratio: 27.926588%;
+Keyframe reduction: Ratio: 9.056956%;
+Keyframe reduction: Ratio: 17.746031%;
+Keyframe reduction: Ratio: 27.926588%;
+Keyframe reduction: Ratio: 6.861239%;
+Keyframe reduction: Ratio: 1.844168%;
+ -> (artifact id: 'fad31dac6c8f421b8a9b4a1b197a94dc') in 0.1752326 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a904b46b696418f4998de0d67b256f8e): Total: 0.238 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=af8aa071b9a81e84590e8cd345cb47ff): Total: 0.002 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/InitialHarbor.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/InitialHarbor.unity'
+	Deserialize:            4.413 ms
+	Integration:            131.512 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.009 ms
+	Total Operation Time:   135.939 ms
+Unloading 128 unused Assets / (6.2 MB). Loaded Objects now: 7577.
+Memory consumption went from 188.8 MB to 182.6 MB.
+Total: 4.297400 ms (FindLiveObjects: 0.239500 ms CreateObjectMapping: 0.146700 ms MarkObjects: 3.826400 ms  DeleteObjects: 0.084300 ms)
+
+[Project] Loading completed in 38.272 seconds
+	Project init time: 				37.733 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.200 seconds
+		Asset Database init time: 		0.122 seconds
+		Global illumination init time: 	0.002 seconds
+		Assemblies load time: 			0.468 seconds
+		Unity extensions init time: 	0.008 seconds
+		Asset Database refresh time: 	6.573 seconds
+	Scene opening time: 			0.488 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1786461694897,"processId":34944,"projectLoad":38.271798,"projectInit":37.7333552,"templateInit":0.0,"packageManagerInit":0.2000976,"assetDatabaseInit":0.1215355,"globalIlluminationInit":0.0018089,"assembliesLoad":0.4677092,"unityExtensionsInit":0.0078694,"assetDatabaseRefresh":6.5729226,"sceneOpening":0.4883403}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1786461694897,"processId":34944,"editorVersion":"6000.0.80f1 (2dfd32957da2)","branch":"6000.0/staging","buildType":"Release","platform":"Windows"}
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.459 seconds
+Refreshing native plugins compatible for Editor in 0.71 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.548 seconds
+Domain Reload Profiling: 1009ms
+	BeginReloadAssembly (252ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (27ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (148ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (154ms)
+		LoadAssemblies (82ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (125ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (105ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (549ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (336ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (90ms)
+			ProcessInitializeOnLoadAttributes (190ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (25ms)
+Asset Pipeline Refresh (id=6f94ae32dd03ada428f1f5cbe822178b): Total: 1.118 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=626 ms
+		Asset DB Callback time: managed=21 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=469 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1242, non-scripts=5147
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 1.045ms
+	ApplyChangesToAssetFolders: 0.254ms
+	Scan: 0.000ms
+	OnSourceAssetsModified: 0.002ms
+	CategorizeAssetsWithTransientArtifact: 0.002ms
+	ProcessAssetsWithTransientArtifactChanges: 3.856ms
+	CategorizeAssets: 44.009ms
+	ImportOutOfDateAssets: 554.084ms (549.434ms without children)
+		CompileScripts: 1.037ms
+		CollectScriptTypesHashes: 1.876ms
+		ReloadNativeAssets: 0.591ms
+		UnloadImportedAssets: 0.089ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.826ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.230ms
+	PostProcessAllAssets: 21.049ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.300ms
+	UnloadStreamsBegin: 0.118ms
+	PersistCurrentRevisions: 0.193ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 2.754ms
+	Untracked: 493.482ms
+
+[D10] 外观与裁缝运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D10.D10AppearanceRuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D10/D10AppearanceRuntimeBootstrap.cs:29)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D10/D10AppearanceRuntimeBootstrap.cs Line: 29)
+
+[D10-A06] 酒馆社会场景入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D10.D10TavernSocialBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D10/D10TavernSocialBootstrap.cs:40)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D10/D10TavernSocialBootstrap.cs Line: 40)
+
+[D2] InitialHarbor 运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:37)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 37)
+
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D3.D3RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs:37)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs Line: 37)
+
+[D4] 内容扩充运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D4.D4RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs:37)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs Line: 37)
+
+[D5] 打磨上架运行时入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs:39)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs Line: 39)
+
+[D7/Input] 首航体验控制协调器已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7ControlCoordinator:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs:75)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs Line: 75)
+
+[D9-A01] 港口与船舶整备入口已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D9.D9PortShipPreparationBootstrap:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs:39)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs Line: 39)
+
+[D6/Input] 港口交互稳定器已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.HarborInteractionStabilizer:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs:33)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs Line: 33)
+
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.HarborPauseController:Awake () (at Assets/Scripts/Gameplay/UI/HarborPauseController.cs:65)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.UI.HarborPauseController> ()
+Whalebone.Gameplay.UI.HarborPauseController:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/UI/HarborPauseController.cs:46)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/UI/HarborPauseController.cs Line: 65)
+
+[HarborPause] 场景加载完成，暂停控制器已创建
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.HarborPauseController:OnSceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode) (at Assets/Scripts/Gameplay/UI/HarborPauseController.cs:47)
+UnityEngine.SceneManagement.SceneManager:Internal_SceneLoaded (UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode)
+
+(Filename: Assets/Scripts/Gameplay/UI/HarborPauseController.cs Line: 47)
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            3.993 ms
+	Integration:            241.623 ms
+	Integration of assets:  0.065 ms
+	Thread Wait Time:       0.003 ms
+	Total Operation Time:   245.683 ms
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:InstantiateCharacterPlayer (UnityEngine.GameObject,UnityEngine.GameObject) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:215)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:EnsurePlayer (UnityEngine.GameObject) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:197)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:49)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 215)
+
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.Harbor.HarborCollisionController:Apply (UnityEngine.GameObject) (at Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs:61)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:52)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs Line: 61)
+
+[D2/Physics] 玩家碰撞体已配置：height=5.94, radius=2.12, visualGroundOffset=-0.46
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterController:ConfigurePhysicsBody () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:519)
+Whalebone.Gameplay.D2.D2CharacterController:Awake () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:311)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D2.D2CharacterController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:56)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 519)
+
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.35
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterController:SnapToGround (single) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:394)
+Whalebone.Gameplay.D2.D2CharacterController:InitializePhysics () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:336)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:57)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 394)
+
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:DiscoverVisualHierarchy () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:187)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:Awake () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:84)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D2.D2CharacterAnimationController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:59)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs Line: 187)
+
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:SetupFormalAnimator () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:205)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:Awake () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:85)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D2.D2CharacterAnimationController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:59)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs Line: 205)
+
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.Harbor.HarborPresentationController:Apply () (at Assets/Scripts/Gameplay/Harbor/HarborPresentationController.cs:41)
+Whalebone.Gameplay.Harbor.HarborPresentationController:Awake () (at Assets/Scripts/Gameplay/Harbor/HarborPresentationController.cs:28)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.Harbor.HarborPresentationController> ()
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:94)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/Harbor/HarborPresentationController.cs Line: 41)
+
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:BuildRuntime () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:104)
+Whalebone.Gameplay.D2.D2RuntimeBootstrap:Start () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:42)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 104)
+
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7AudioController:Awake () (at Assets/Scripts/Gameplay/D7/D7AudioController.cs:47)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Whalebone.Gameplay.D7.D7AudioController> ()
+Whalebone.Gameplay.D7.D7ControlCoordinator:BindRuntimeObjects () (at Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs:142)
+Whalebone.Gameplay.D7.D7ControlCoordinator:Update () (at Assets/Scripts/Gameplay/D7/D7ControlCoordinator.cs:95)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7AudioController.cs Line: 47)
+
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D3.D3RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs:179)
+Whalebone.Gameplay.D3.D3RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs:106)
+
+(Filename: Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs Line: 179)
+
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D4.D4RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs:279)
+Whalebone.Gameplay.D4.D4RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs:69)
+
+(Filename: Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs Line: 279)
+
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeBootstrap:TryBuildRuntime () (at Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs:240)
+Whalebone.Gameplay.D5.D5RuntimeBootstrap:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs:91)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeBootstrap.cs Line: 240)
+
+[D5 Smoke] Boarding attempt: player=(0.00, 1.00, -5.00), ship=(0.00, 0.00, 0.00), inRange=True
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:104)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 104)
+
+[D7/Ship] 控制权切换：Ship，甲板状态=True
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7ShipDeckController:RecordControlTransition (Whalebone.Systems.D2.D2ControlMode) (at Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs:74)
+Whalebone.Gameplay.D2.D2ControlRouter:SetMode (Whalebone.Systems.D2.D2ControlMode) (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:179)
+Whalebone.Gameplay.D2.D2ControlRouter:EnterShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:141)
+Whalebone.Gameplay.D2.D2ControlRouter:TryToggleShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:95)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:107)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs Line: 74)
+
+[D2/Control] 已进入船只控制
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2ControlRouter:EnterShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:144)
+Whalebone.Gameplay.D2.D2ControlRouter:TryToggleShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:95)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:107)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2ControlRouter.cs Line: 144)
+
+[D7/Ship] 控制权切换：Character，甲板状态=False
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7ShipDeckController:RecordControlTransition (Whalebone.Systems.D2.D2ControlMode) (at Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs:74)
+Whalebone.Gameplay.D2.D2ControlRouter:SetMode (Whalebone.Systems.D2.D2ControlMode) (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:179)
+Whalebone.Gameplay.D2.D2ControlRouter:ExitShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:159)
+Whalebone.Gameplay.D2.D2ControlRouter:TryToggleShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:85)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:110)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs Line: 74)
+
+[D2/Physics] 玩家已落地：surface=GangplankGround, surfaceY=0.54, playerY=0.61
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterController:SnapToGround (single) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:394)
+Whalebone.Gameplay.D2.D2CharacterController:SetCollisionEnabled (bool) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:356)
+Whalebone.Gameplay.D2.D2ControlRouter:ExitShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:160)
+Whalebone.Gameplay.D2.D2ControlRouter:TryToggleShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:85)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:110)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs Line: 394)
+
+[D2/Control] 已退出船只控制
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2ControlRouter:ExitShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:163)
+Whalebone.Gameplay.D2.D2ControlRouter:TryToggleShip () (at Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:85)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:110)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2ControlRouter.cs Line: 163)
+
+[D5 Smoke] Physics check: collisionLayer=True, body=True, collision=True, grounded=True, playerY=0.61
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:121)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 121)
+
+[Camera] 视角切换：船上视角
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.CameraFollow:SetViewMode (Whalebone.Gameplay.CameraViewMode) (at Assets/Scripts/Gameplay/CameraFollow.cs:143)
+Whalebone.Gameplay.CameraFollow:CycleViewMode () (at Assets/Scripts/Gameplay/CameraFollow.cs:127)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:152)
+
+(Filename: Assets/Scripts/Gameplay/CameraFollow.cs Line: 143)
+
+[Camera] 视角切换：港口总览
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.CameraFollow:SetViewMode (Whalebone.Gameplay.CameraViewMode) (at Assets/Scripts/Gameplay/CameraFollow.cs:143)
+Whalebone.Gameplay.CameraFollow:CycleViewMode () (at Assets/Scripts/Gameplay/CameraFollow.cs:127)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:154)
+
+(Filename: Assets/Scripts/Gameplay/CameraFollow.cs Line: 143)
+
+[Camera] 视角切换：人物视角
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.CameraFollow:SetViewMode (Whalebone.Gameplay.CameraViewMode) (at Assets/Scripts/Gameplay/CameraFollow.cs:143)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:156)
+
+(Filename: Assets/Scripts/Gameplay/CameraFollow.cs Line: 143)
+
+[D5 Smoke] Camera check: modes=3, cycle=True, collisionChecks=4, obstructed=True, distance=6.01, restored=人物视角
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:159)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 159)
+
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7CharacterPresentationController:CalibrateVisualGrounding () (at Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs:59)
+Whalebone.Gameplay.D7.D7CharacterPresentationController:LateUpdate () (at Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs:39)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs Line: 59)
+
+Asset Pipeline Refresh (id=9440c20282ad6b6469856deb11e4ffba): Total: 0.033 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[WhaleboneSetup] Unity 6：activeInputHandler 由 manifest.json 中的 com.unity.inputsystem 包自动启用
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.EditorTools.WhaleboneProjectSetup:RunOnce () (at Assets/Editor/WhaleboneProjectSetup.cs:41)
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+(Filename: Assets/Editor/WhaleboneProjectSetup.cs Line: 41)
+
+[D7/Material] 材质保真层已应用：渲染器=97，保留贴图材质=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D7.D7MaterialPolishController:Apply () (at Assets/Scripts/Gameplay/D7/D7MaterialPolishController.cs:65)
+Whalebone.Gameplay.D7.D7MaterialPolishController:Update () (at Assets/Scripts/Gameplay/D7/D7MaterialPolishController.cs:28)
+
+(Filename: Assets/Scripts/Gameplay/D7/D7MaterialPolishController.cs Line: 65)
+
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime:ApplyToSceneUi () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:127)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime/<ApplyNextFrame>d__11:MoveNext () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:85)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs Line: 127)
+
+Created GICache directory at C:/Users/Administrator/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.010s, timestamps: [39.858 - 39.867]
+[D7 Smoke] Quality check: control=人物, modal=无, deckTransitions=2, visualGroundError=0.000, audioFallback=True, polishedRenderers=97
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:175)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 175)
+
+[D5 Smoke] Action quality check: proceduralPoseLayer=True, transitions=1
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:168)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 168)
+
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:SampleNeutralPose () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:160)
+Whalebone.Gameplay.D2.D2CharacterAnimationController:LateUpdate () (at Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:115)
+
+(Filename: Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs Line: 160)
+
+[D5 Smoke] Pose check: neutralSampled=True, lowerBodyError=0.0°
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:145)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 145)
+
+[D5 Smoke] InitialHarbor verified: primary HUD, clickable D5 button text, hidden legacy HUDs, world map, 12 island markers, character player, formal animator clips/states, smooth action pose layer, neutral pose baseline, camera view modes, harbor quality, collision/grounding, interaction stabilizer, tutorial, boarding, jump, D7 control/deck/presentation/audio/material/status
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.D5.D5RuntimeSmokeProbe:Update () (at Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs:187)
+
+(Filename: Assets/Scripts/Gameplay/D5/D5RuntimeSmokeProbe.cs Line: 187)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            1.693 ms
+	Integration:            115.542 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.002 ms
+	Total Operation Time:   117.241 ms
+Unloading 20 unused Assets / (6.8 MB). Loaded Objects now: 7627.
+Memory consumption went from 222.3 MB to 215.6 MB.
+Total: 4.486800 ms (FindLiveObjects: 0.252400 ms CreateObjectMapping: 0.136400 ms MarkObjects: 4.033700 ms  DeleteObjects: 0.063800 ms)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Curl error 42: Callback aborted
+Request timed out while processing request "https://public-cdn.cloud.unity3d.com/config/production", HTTP error code 0
+.[UnityConnect] Request timed out.
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-6000.0.80-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator-6000.0.80 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1786461700101,"processId":34944,"allocatedMemory":18596874,"memoryLabels":[{"Default":28597},{"Permanent":15356},{"NewDelete":74985},{"Thread":4230384},{"Manager":32813},{"VertexData":8},{"Geometry":816},{"VFX":-104},{"Texture":296},{"Shader":81077},{"Material":24},{"GfxDevice":55784},{"Animation":392},{"Audio":4040},{"FontEngine":256},{"Physics":2081},{"Serialization":816},{"Input":14824},{"JobScheduler":33024},{"TextLib":160},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620528},{"Resource":1304},{"Renderer":2928},{"Transform":4646},{"File":3945},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":61251},{"DynamicArray":115364},{"HashMap":96907},{"Utility":2661166},{"Curl":48},{"PoolAlloc":1864},{"AI":104},{"TypeTree":5005},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7888},{"Director":8240},{"CloudService":33408},{"WebRequest":592},{"VR":45969},{"SceneManager":496},{"Video":208},{"LazyScriptCache":32},{"Camera":17},{"Secure":265},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":560},{"Hierarchy":272},{"CoreStats":12536},{"Identifiers":6192},{"Gui":80},{"EditorUtility":65080},{"VersionControl":4},{"Undo":947},{"AssetDatabase":8706457},{"EditorGi":328},{"UnityConnect":24208},{"Upm":2036},{"DrivenProperties":72},{"LocalIPC":219},{"ProfilerEditor":9746},{"CoreBusinessMetrics":2879},{"Licensing":792},{"AssetReference":32},{"IPCStream":32}]}

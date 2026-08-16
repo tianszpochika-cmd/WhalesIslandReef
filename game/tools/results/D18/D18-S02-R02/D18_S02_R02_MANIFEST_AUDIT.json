@@ -1,0 +1,113 @@
+{
+  "task": "D18-A01",
+  "tool": "tools/d18_asset_manifest_audit.py",
+  "read_only": true,
+  "registry_modified": false,
+  "status": "BLOCKED",
+  "manifest_count": 31,
+  "manifest_files": [
+    "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+    "docs\\game\\design\\common\\assets\\d18_local_development_ready_catalog.json",
+    "docs\\game\\design\\common\\assets\\d18_prefab_candidate_intake_catalog.json",
+    "docs\\game\\design\\common\\assets\\d19_saint_margaret_layout_v1.json",
+    "docs\\game\\design\\common\\assets\\manifests\\kenney_blocky_characters_vertical_slice.manifest.json",
+    "docs\\game\\design\\common\\assets\\manifests\\kenney_pirate_kit_vertical_slice.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\bird\\quaternius_animal_pack_vol2_bird_d18_a04_r02_b.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\cat\\D18_A04_R02_C_manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\female_neutral\\d18_a04_r02_f.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\female_neutral\\D18_A04_R02_F_R01_HUMANOID_AVATAR_PACKET.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\player_appearance\\D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\player_appearance\\pack_quaternius_modular_character_outfits_fantasy_standard_v01.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\gap_fill\\player_appearance\\pack_quaternius_universal_base_characters_standard_v01.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\kenney_blocky_characters.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\opengameart_bird.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\quaternius_animated_fish.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\quaternius_animated_men.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\characters_animals\\quaternius_ultimate_animated_animals.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\kenney_nature_kit_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\environment\\polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ships_port_props\\D18_A05_FILE_HASHES.json",
+    "docs\\game\\design\\common\\assets\\packs\\ships_port_props\\kenney_building_kit_ships_port_props.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ships_port_props\\kenney_pirate_kit_ships_port_props.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\font_license_audit.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\kenney_impact_sounds_v1.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\kenney_input_prompts_v15.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\kenney_interface_sounds_v1.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\kenney_ui_audio_v1.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\kenney_ui_v2.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\polyhaven_hdri_sky_references_v1.manifest.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\polyhaven_selected_assets.json",
+    "docs\\game\\design\\common\\assets\\packs\\ui_materials_audio\\polyhaven_ui_materials_selected_v1.manifest.json",
+    "docs\\game\\design\\common\\assets\\replacement\\d18_placeholder_replacement_map.json",
+    "docs\\game\\design\\common\\assets\\review_packets\\D18-A04-R01\\D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+    "docs\\game\\design\\common\\assets\\review_packets\\D18-A05-R01\\D18_A05_R01_SHIP_PORT_REVIEW.json"
+  ],
+  "error_count": 7,
+  "issue_count": 7,
+  "issue_counts": {
+    "candidate_file_missing": 1,
+    "invalid_or_missing_sha256": 1,
+    "missing_archive_name": 1,
+    "missing_count": 2,
+    "missing_download_date": 1,
+    "missing_license_evidence": 1
+  },
+  "issues": [
+    {
+      "code": "missing_download_date",
+      "message": "downloaded_at is null; the package has not been downloaded",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    },
+    {
+      "code": "missing_archive_name",
+      "message": "archive_name must be present after a download",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    },
+    {
+      "code": "invalid_or_missing_sha256",
+      "message": "sha256 must be the real 64-hex archive digest",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    },
+    {
+      "code": "missing_license_evidence",
+      "message": "license_evidence_path must point to local evidence",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "file_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    },
+    {
+      "code": "missing_count",
+      "message": "unity_object_count is null; do not claim an unmeasured count",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    },
+    {
+      "code": "candidate_file_missing",
+      "message": "candidate file does not exist: game/Assets/Art/Candidates/<source>/<pack>/replace-me.fbx",
+      "severity": "error",
+      "manifest": "docs\\game\\design\\common\\assets\\d18_asset_pack_manifest.example.json",
+      "pack_id": "pack_example_candidate_v1"
+    }
+  ]
+}

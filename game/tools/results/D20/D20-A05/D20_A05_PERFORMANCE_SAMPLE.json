@@ -1,0 +1,31 @@
+{
+  "quality_budgets": {
+    "low": 12,
+    "medium": 24,
+    "high": 32
+  },
+  "distance_bands_m": {
+    "near": [
+      0,
+      12
+    ],
+    "mid": [
+      12,
+      32
+    ],
+    "far": [
+      32,
+      80
+    ],
+    "proxy": [
+      80,
+      null
+    ]
+  },
+  "lod0_and_lod1": "source SkinnedMeshRenderer retained for work-scene fidelity",
+  "lod2": "remote fallback silhouette quad; no shadow",
+  "animator_near_mid": "CullUpdateTransforms",
+  "animator_far_proxy": "CullCompletely",
+  "measurement_status": "STATIC_BUDGET_VERIFIED_NEEDS_PLAYER_CAPTURE",
+  "target_device_fps_measured": false
+}

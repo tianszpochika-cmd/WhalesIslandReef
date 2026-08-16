@@ -1,0 +1,58 @@
+{
+  "task": "D19-R01-B",
+  "baseline_id": "d19-r01-b-previsual-repair",
+  "captured_at_utc": "2026-08-14T18:23:32.4380553Z",
+  "scene_path": "game/Assets/Scenes/InitialHarbor.unity",
+  "scene_sha256": "3E081A48B4D7B53E9084308B86587170527E006C637EC0B280E074449C8B02AA",
+  "scene_bytes": 133143,
+  "scene_game_object_count": 24,
+  "scene_prefab_instance_count": 26,
+  "scene_monobehaviour_count": 7,
+  "rollback_snapshot": "game/tools/results/D19/D19-R01-B/D19_R01_B_ROLLBACK_INITIALHARBOR.unity",
+  "rollback_snapshot_meta": "game/tools/results/D19/D19-R01-B/D19_R01_B_ROLLBACK_INITIALHARBOR.unity.meta",
+  "stable_interaction_ids": [
+    "D2_PlayerAvatar",
+    "santa_margarita",
+    "building:market_santa_margarita",
+    "building:warehouse_santa_margarita",
+    "building:tavern_santa_margarita",
+    "building:shipyard_santa_margarita",
+    "building_saint_marys_dock",
+    "berth_santa_margarita",
+    "DockGround",
+    "GangplankGround",
+    "D7_HelmPoint",
+    "departure_channel_santa_margarita",
+    "return_channel_santa_margarita",
+    "save_point_santa_margarita",
+    "npc:santa_margarita_dockhand",
+    "npc:santa_margarita_lookout",
+    "npc:santa_margarita_tavern_keeper"
+  ],
+  "fixed_shot_baseline": {
+    "source": "D19-S01 fixed shot contract",
+    "count": 14,
+    "status": "CONTRACT_ONLY_NO_NEW_R01_B_CAPTURE_YET",
+    "shot_ids": [
+      "d19_shot_main_menu",
+      "d19_shot_spawn",
+      "d19_shot_market",
+      "d19_shot_dock_overview",
+      "d19_shot_tavern_entry",
+      "d19_shot_coastline",
+      "d19_shot_boarding",
+      "d19_shot_on_ship",
+      "d19_shot_departure",
+      "d19_shot_nearshore",
+      "d19_shot_weather",
+      "d19_shot_return_harbor",
+      "d19_shot_settings_accessibility",
+      "d19_shot_debug_boundary"
+    ]
+  },
+  "concurrency_check": {
+    "unity_process_at_capture": "not_running",
+    "other_agent_write_detected": false,
+    "note": "Existing dirty InitialHarbor and D19 files are prior workspace changes; this snapshot preserves them before R01-B edits."
+  }
+}

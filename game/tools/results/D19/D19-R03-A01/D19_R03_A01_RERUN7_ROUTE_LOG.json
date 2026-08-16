@@ -1,0 +1,52 @@
+{
+  "schema": "D19_R03_A01_RERUN7_ROUTE_LOG_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN7_FULLSCREEN",
+  "conclusion": "PARTIAL",
+  "capture": {
+    "player_build": "D19_R03_A01_Player_RERUN7.exe",
+    "launch_args": "-d19-r03-route -d19-r03-route-rerun7 -screen-width 1920 -screen-height 1080 -screen-fullscreen 1 -force-d3d11",
+    "scene_expected": "MainMenu -> InitialHarbor",
+    "scene_reached": "MainMenu",
+    "input_mode": "real Player window attempt via computer-use; no Inspector invocation",
+    "continuous_held_wasd_proven": false,
+    "screenshots": 1,
+    "screenshot": "game/tools/results/D19/D19-R03-A01/screenshots/mainmenu_rerun7_system_blocker.jpg",
+    "route_probe_result": null
+  },
+  "steps": [
+    {
+      "step": "main_menu_boot",
+      "stable_id": "flow.main_menu",
+      "input": "Player process launched with route flags",
+      "result": "PASS",
+      "feedback": "Unity log confirms EventSystem and MainMenu UI initialized; visible menu contained 新游戏/继续/设置/关于。",
+      "evidence": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN7_FULLSCREEN_PLAYER.log"
+    },
+    {
+      "step": "new_game_activation",
+      "stable_id": "flow.new_game",
+      "input": "Return, Tab, Space and Return attempts; one New Game click attempt",
+      "result": "BLOCKED",
+      "feedback": "Click was rejected because the point was owned by PickerHost.exe; keyboard did not activate the button while Windows Security owned focus. The prompt was not touched.",
+      "evidence": "game/tools/results/D19/D19-R03-A01/screenshots/mainmenu_rerun7_system_blocker.jpg"
+    },
+    {
+      "step": "initial_harbor",
+      "stable_id": "scene.initial_harbor",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "No honest evidence exists for a route step after the main menu.",
+      "evidence": null
+    },
+    {
+      "step": "route_and_save_reload",
+      "stable_id": "flow.save_reload",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "No interaction, departure, return, save or reload was attempted after entering the game.",
+      "evidence": null
+    }
+  ],
+  "route_assessment": "This run proves only that the built Player reaches and renders the main menu. It is not a D19 route pass and does not replace RERUN4/RERUN6 partial evidence."
+}

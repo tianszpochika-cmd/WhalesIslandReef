@@ -1,0 +1,378 @@
+{
+  "task": "D18-S02-R01",
+  "status": "PASS",
+  "upstream": [
+    {
+      "task": "D18-A04-R01",
+      "handoff": "docs/game/design/common/handoffs/D18/D18-A04-R01_HANDOFF.md",
+      "status": "PARTIAL",
+      "records_processed": 25,
+      "records_admitted": 24,
+      "records_excluded": 1,
+      "excluded": [
+        {
+          "candidate_id": "animal_opengameart_bird_v01",
+          "candidate_file_path": "game/Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/bird.blend",
+          "reasons": [
+            "no_unity_import_evidence",
+            "manifest_import_status=NotImported"
+          ]
+        }
+      ],
+      "evidence": [
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04-R01/D18_A04_R01_MACHINE_RESULT.json"
+      ]
+    },
+    {
+      "task": "D18-A04-R02-F",
+      "handoff": "docs/game/design/common/handoffs/D18/D18-A04-R02-F_HANDOFF.md",
+      "status": "PARTIAL",
+      "records_processed": 4,
+      "records_admitted": 0,
+      "records_excluded": 4,
+      "excluded": [
+        {
+          "reasons": [
+            "unity_import_not_run_no_unity_editor",
+            "review_status=Candidate",
+            "not_intake_eligible"
+          ]
+        }
+      ],
+      "evidence": [
+        "game/tools/results/D18/D18-A04-R02-F/D18_A04_R02_F_SUMMARY.json",
+        "game/tools/results/D18/D18-A04-R02-F/D18_A04_R02_F_FBX_STATIC_AUDIT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/female_neutral/d18_a04_r02_f.manifest.json"
+      ],
+      "note": "Static FBX evidence is retained in the upstream packet; no Unity ImportVerified evidence, so no intake entry is created."
+    },
+    {
+      "task": "D18-A04-R02-C",
+      "handoff": "docs/game/design/common/handoffs/D18/D18-A04-R02-C_HANDOFF.md",
+      "status": "PARTIAL",
+      "records_processed": 1,
+      "records_admitted": 1,
+      "records_excluded": 0,
+      "excluded": [],
+      "evidence": [
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/cat/D18_A04_R02_C_PACKET.md",
+        "game/tools/results/D18/D18-A04-R02-C/D18_A04_R02_C_EVIDENCE_AUDIT.json",
+        "game/tools/results/D18/D18-A04-R02-C/D18_A04_R02_C_UNITY_IMPORT_AUDIT.json"
+      ]
+    },
+    {
+      "task": "D18-A04-R02-B",
+      "handoff": "docs/game/design/common/handoffs/D18/D18-A04-R02-B_HANDOFF.md",
+      "status": "PARTIAL",
+      "records_processed": 1,
+      "records_admitted": 1,
+      "records_excluded": 0,
+      "excluded": [],
+      "evidence": [
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/bird/D18_A04_R02_B_PACKET.md",
+        "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_RESULT.json",
+        "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_HASHES.json",
+        "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_UNITY_IMPORT_AUDIT.json"
+      ]
+    },
+    {
+      "task": "D18-A05-R01",
+      "handoff": "docs/game/design/common/handoffs/D18/D18-A05-R01_HANDOFF.md",
+      "status": "PARTIAL",
+      "records_processed": 151,
+      "records_admitted": 133,
+      "records_excluded": 18,
+      "excluded": [
+        {
+          "candidate_id": "d18a05_pirate_grass",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/grass.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_grass_patch",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/grass-patch.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_grass_plant",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/grass-plant.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_hole",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/hole.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_palm_bend",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/palm-bend.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_palm_detailed_bend",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/palm-detailed-bend.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_palm_detailed_straight",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/palm-detailed-straight.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_palm_straight",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/palm-straight.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_patch_grass",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/patch-grass.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_patch_grass_foliage",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/patch-grass-foliage.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_patch_sand",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/patch-sand.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_patch_sand_foliage",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/patch-sand-foliage.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_rocks_a",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/rocks-a.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_rocks_b",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/rocks-b.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_rocks_c",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/rocks-c.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_rocks_sand_a",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/rocks-sand-a.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_rocks_sand_b",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/rocks-sand-b.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        },
+        {
+          "candidate_id": "d18a05_pirate_rocks_sand_c",
+          "candidate_file_path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/rocks-sand-c.fbx",
+          "reasons": [
+            "out_of_scope_coastal_environment",
+            "D18-A05-R01 explicitly assigns this category to D19-A01/A03 review"
+          ]
+        }
+      ],
+      "evidence": [
+        "docs/game/design/common/assets/review_packets/D18-A05-R01/D18_A05_R01_SHIP_PORT_REVIEW.json",
+        "game/tools/results/D18/D18-A05-R01/D18_A05_R01_MACHINE_RESULT.json",
+        "docs/game/design/common/assets/packs/ships_port_props/D18_A05_FILE_HASHES.json",
+        "docs/game/design/common/assets/packs/ships_port_props/D18_A05_SOURCE_EVIDENCE.md"
+      ],
+      "external_archive_cache": "C:\\Users\\Administrator\\AppData\\Local\\WhalesIslandReef\\D18\\cache"
+    }
+  ],
+  "category_summary": {
+    "player_visual_core": {
+      "intake_eligible_count": 1,
+      "manifest_count": 1,
+      "manifest_ids": [
+        "pack_kenney_blocky_characters_d18_a04_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "npc_visual_core": {
+      "intake_eligible_count": 4,
+      "manifest_count": 1,
+      "manifest_ids": [
+        "pack_quaternius_animated_men_d18_a04_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "wildlife_core": {
+      "intake_eligible_count": 18,
+      "manifest_count": 3,
+      "manifest_ids": [
+        "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1",
+        "pack_quaternius_animated_fish_d18_a04_v1",
+        "pack_quaternius_ultimate_animated_animals_d18_a04_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "pet_core": {
+      "intake_eligible_count": 3,
+      "manifest_count": 2,
+      "manifest_ids": [
+        "pack_quaternius_animal_pack_vol2_cat_d18_a04_r02_c_v1",
+        "pack_quaternius_ultimate_animated_animals_d18_a04_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "animation_core": {
+      "intake_eligible_count": 26,
+      "manifest_count": 6,
+      "manifest_ids": [
+        "pack_kenney_blocky_characters_d18_a04_v1",
+        "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1",
+        "pack_quaternius_animal_pack_vol2_cat_d18_a04_r02_c_v1",
+        "pack_quaternius_animated_fish_d18_a04_v1",
+        "pack_quaternius_animated_men_d18_a04_v1",
+        "pack_quaternius_ultimate_animated_animals_d18_a04_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "port_structure_core": {
+      "intake_eligible_count": 96,
+      "manifest_count": 2,
+      "manifest_ids": [
+        "pack_kenney_building_kit_ships_port_props_v1",
+        "pack_kenney_pirate_kit_ships_port_props_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "dock_and_shipyard_core": {
+      "intake_eligible_count": 6,
+      "manifest_count": 1,
+      "manifest_ids": [
+        "pack_kenney_pirate_kit_ships_port_props_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "market_prop_core": {
+      "intake_eligible_count": 16,
+      "manifest_count": 1,
+      "manifest_ids": [
+        "pack_kenney_pirate_kit_ships_port_props_v1"
+      ],
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "notes": "Evidence supports controlled work-scene/Prefab authoring only; consumer, runtime, save and D18-S03 evidence remains open."
+    },
+    "female_or_neutral_human_gap": {
+      "intake_eligible_count": 0,
+      "status": "OPEN",
+      "reason": "D18-A04-R02-F has 4 static FBX candidates but no Unity ImportVerified evidence; existing neutral base is Generic/NoAvatar and not a complete Humanoid solution.",
+      "owner_tasks": [
+        "D18-A04-R02-F",
+        "D20-A01",
+        "D20-A03"
+      ]
+    },
+    "cat_gap": {
+      "intake_eligible_count": 1,
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "reason": "One real cat FBX has Unity ImportVerified evidence; only Idle/Walking and no raw Collider/LOD/Avatar are proven.",
+      "owner_tasks": [
+        "D20-A06",
+        "D18-S03"
+      ]
+    },
+    "bird_gap": {
+      "intake_eligible_count": 1,
+      "status": "INTAKE_AVAILABLE_PARTIAL",
+      "reason": "One real Eagle FBX is imported for mid/far controlled work; original Blender-only bird remains excluded and near-camera behavior is not proven.",
+      "owner_tasks": [
+        "D20-A05",
+        "D18-S03"
+      ]
+    },
+    "sail_rig_gap": {
+      "intake_eligible_count": 0,
+      "status": "EMPTY_BLOCKED",
+      "reason": "No independent sail evidence; mast/ropes are not a sail or rigging interaction substitute.",
+      "owner_tasks": [
+        "D21-A02"
+      ]
+    },
+    "rudder_anchor_gap": {
+      "intake_eligible_count": 0,
+      "status": "EMPTY_BLOCKED",
+      "reason": "No independent rudder/anchor or consumer interaction-anchor evidence in A05-R01.",
+      "owner_tasks": [
+        "D21-A01",
+        "D21-A02",
+        "D21-A03"
+      ]
+    }
+  },
+  "audit": {
+    "manifest_index_errors": [],
+    "catalog_validation_errors": [],
+    "duplicate_new_references": [],
+    "same_candidate_file_multiple_sources": 0,
+    "path_escape_errors": 0,
+    "status_shortcut_fields_detected": false
+  }
+}

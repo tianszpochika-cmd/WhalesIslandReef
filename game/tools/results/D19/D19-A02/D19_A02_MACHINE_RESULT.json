@@ -1,0 +1,34 @@
+﻿{
+  "task": "D19-A02",
+  "status": "WORK_SCENE_READY",
+  "external_manifest_ids_used": [],
+  "project_owned_prefab_count": 13,
+  "project_owned_material_count": 10,
+  "lod_levels_per_prefab": 2,
+  "prefab_collision_verified": true,
+  "work_scene_stable_anchor_count": 12,
+  "work_scene_prefab_instance_count": 29,
+  "batching_strategy": "shared project-owned materials; modular prefab boundaries; no global static-batch mutation",
+  "scene_path": "Assets/Scenes/D19/Work/D19_PortArchitecture_Work.unity",
+  "required_preview_screenshot_count": 6,
+  "prefab_paths": [
+    "Assets/Prefabs/Buildings/D19/D19_PortEntry_Admin.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Market.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Warehouse.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Tavern_Exterior.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Shipyard.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Dock_Primary.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Dock_Secondary.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Market_Stall.prefab",
+    "Assets/Prefabs/Environment/D19/Port/D19_Bollard.prefab",
+    "Assets/Prefabs/Environment/D19/Port/D19_Fence_Module.prefab",
+    "Assets/Prefabs/Environment/D19/Port/D19_Stair_Module.prefab",
+    "Assets/Prefabs/Environment/D19/Port/D19_Port_Walk_Surface.prefab",
+    "Assets/Prefabs/Buildings/D19/D19_Common_Residence.prefab"
+  ],
+  "notes": [
+    "All structures are project-owned primitive modular geometry because the D18 intake catalog exposes no D19-A02 eligible external manifest.",
+    "No economy, inventory, shipyard formula, Registry, save data or InitialHarbor file was modified.",
+    "External asset promotion remains untouched; runtime integration waits for D19-S02 and D18-S03."
+  ]
+}

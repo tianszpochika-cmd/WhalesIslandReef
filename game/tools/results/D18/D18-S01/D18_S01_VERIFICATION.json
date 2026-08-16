@@ -1,0 +1,62 @@
+{
+  "task": "D18-S01",
+  "date": "2026-08-14",
+  "conclusion": "PASS",
+  "scope": "local_visual_development_standard_freeze",
+  "steam_ready": false,
+  "runtime_visual_pass": false,
+  "human_release_approval": false,
+  "initial_harbor_static_scan": {
+    "scene": "game/Assets/Scenes/InitialHarbor.unity",
+    "bytes": 130530,
+    "scene_objects": 24,
+    "placeholder_property_references": 25,
+    "placeholder_prefabs": 6
+  },
+  "frozen_baseline": {
+    "resolution": "1920x1080",
+    "aspect": "16:9",
+    "recommended_quality": "Medium",
+    "average_fps_target": 60,
+    "one_percent_low_fps_min": 45,
+    "cpu_main_thread_p95_ms": 12,
+    "gpu_frame_p95_ms": 15,
+    "steady_state_gc_bytes_per_frame": 0,
+    "working_set_medium_gib_max": 4.0,
+    "gpu_texture_medium_gib_max": 1.5,
+    "rebuildable_cache_mib_max": 512,
+    "initial_harbor_interactive_seconds_max": 8,
+    "streaming_cell_p95_seconds_max": 3,
+    "same_screen_entities_medium_max": 128
+  },
+  "fixed_shots": 14,
+  "resource_states": [
+    "Candidate",
+    "LicenseEvidenceComplete",
+    "ImportVerified",
+    "LocalDevelopmentReady",
+    "ReleaseApproved",
+    "Rejected"
+  ],
+  "checks": {
+    "required_docs_read": "PASS",
+    "main_doc_and_handoff": "PASS",
+    "index_and_memory_paths": "PASS",
+    "initial_harbor_static_scan": "PASS_STATIC_ONLY",
+    "budget_schema": "PASS",
+    "resource_state_machine": "PASS",
+    "large_binary_policy": "PASS_POLICY_ONLY",
+    "runtime_screenshots": "TODO",
+    "human_license_review": "BLOCKED_D16_A04_267_PENDING",
+    "d16_external_gate": "BLOCKED_EXISTING_STATE",
+    "git_diff_check": "PASS"
+  },
+  "modified_scope": [
+    "docs/game/design/common/D18_VISUAL_ART_DIRECTION_AND_BUDGET.md",
+    "docs/game/design/common/handoffs/D18/D18-S01_HANDOFF.md",
+    "docs/game/design/README.md",
+    "game/tools/results/D18/D18-S01/D18_S01_VERIFICATION.md",
+    "game/tools/results/D18/D18-S01/D18_S01_VERIFICATION.json",
+    ".workbuddy/memory/2026-08-14.md"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "task": "D18-A06",
+  "checked_at": "2026-08-14",
+  "status": "PASS_WITH_SCOPE",
+  "candidate_policy": "Only OFL or an explicit commercial-embedding license is eligible; no font is copied over the existing formal resource.",
+  "records": [
+    {
+      "font_id": "font_noto_sans_cjk_sc_existing_v1",
+      "path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md#ph_font_noto_sans_cjk_sc.otf",
+      "binary_path": "game/Assets/Resources/Fonts/ph_font_noto_sans_cjk_sc.otf",
+      "license_id": "OFL-1.1",
+      "license_url": "https://openfontlicense.org/",
+      "source_url": "https://github.com/googlefonts/noto-cjk",
+      "commercial_embedding": true,
+      "modification_allowed": true,
+      "candidate_status": "ExistingOutOfScope",
+      "notes": "Audited as the current CJK fallback. The binary and its GUID were not changed by D18-A06."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "D19_R03_A03_PERFORMANCE_SUMMARY_V1",
+  "task": "D19-R03-A03",
+  "device": {
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "graphics_api": "Direct3D11",
+    "unity_version": "6000.0.80f1",
+    "player_build": "D19_R03_A03_Player_RERUN16.exe",
+    "historical_player_build": "D19_R03_A03_Player_RERUN1.exe"
+  },
+  "runs": [
+    {"requested":"low","actual_quality":"Very Low","screen":"1920x1080","vsync":0,"warmup_seconds":30.000080108642579,"sample_seconds":60.013980865478519,"samples":95816,"average_fps":5234.076171875,"one_percent_low_fps":59.07558822631836,"gpu_ms":0.1032247543334961},
+    {"requested":"medium","actual_quality":"Low","screen":"1920x1080","vsync":0,"warmup_seconds":30.000093460083009,"sample_seconds":60.016048431396487,"samples":46818,"average_fps":5072.22021484375,"one_percent_low_fps":58.28901290893555,"gpu_ms":0.11880966275930405},
+    {"requested":"high","actual_quality":"Medium","screen":"1920x1080","vsync":1,"warmup_seconds":30.00079917907715,"sample_seconds":60.00502395629883,"samples":3616,"average_fps":61.28526306152344,"one_percent_low_fps":42.73077392578125,"gpu_ms":0.49581292271614077}
+  ],
+  "latest_rerun16_runs": [
+    {"requested":"low","actual_quality":"Very Low","scene":"InitialHarbor","screen":"1920x1080","vsync":0,"warmup_seconds":30.01481056213379,"sample_seconds":60.00357437133789,"samples":3601,"average_fps":59.99666213989258,"one_percent_low_fps":59.71986770629883,"average_main_thread_ms":3.759138584136963,"gpu_ms":1.5435154438018799,"gc_gen0":132,"peak_reserved_bytes":208482304,"raw_result":"D19_R03_A03_PERFORMANCE_low_rerun16.json"},
+    {"requested":"medium","actual_quality":"Low","scene":"InitialHarbor","screen":"1920x1080","vsync":0,"warmup_seconds":30.00262451171875,"sample_seconds":60.005767822265628,"samples":3601,"average_fps":59.99421310424805,"one_percent_low_fps":59.53479766845703,"average_main_thread_ms":3.7753102779388429,"gpu_ms":1.5360554456710816,"gc_gen0":132,"peak_reserved_bytes":204288000,"raw_result":"D19_R03_A03_PERFORMANCE_medium_rerun16.json"},
+    {"requested":"high","actual_quality":"Medium","scene":"InitialHarbor","screen":"1920x1080","vsync":1,"warmup_seconds":30.011764526367189,"sample_seconds":60.005653381347659,"samples":3601,"average_fps":59.99443817138672,"one_percent_low_fps":59.556556701660159,"average_main_thread_ms":3.7639718055725099,"gpu_ms":1.5231927633285523,"gc_gen0":132,"peak_reserved_bytes":204288000,"raw_result":"D19_R03_A03_PERFORMANCE_high_rerun16.json"}
+  ],
+  "interpretation": "The historical MainMenu measurements remain preserved. The latest RERUN16 evidence is from the real standalone Player on InitialHarbor after the R03 mesh persistence repair. The requested 1080p runtime readback and three real Player windows are proven. This is not a final D19 PASS: the project quality list currently maps the labels to Very Low/Low/Medium, and the route/visual camera/weather gates remain open."
+}

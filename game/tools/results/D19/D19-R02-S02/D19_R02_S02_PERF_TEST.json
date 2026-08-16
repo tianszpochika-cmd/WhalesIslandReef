@@ -1,0 +1,49 @@
+﻿{
+    "schema":  "D19_R02_S02_PERF_PROCESS_SAMPLE_V1",
+    "quality_requested":  "Test",
+    "target_pid":  35232,
+    "warmup_seconds":  1,
+    "sample_seconds":  2,
+    "started_at":  "2026-08-15T17:02:22.8685206+08:00",
+    "warmup_ended_at":  "2026-08-15T17:02:23.8685206+08:00",
+    "sample_started_at":  "2026-08-15T17:02:23.8798992+08:00",
+    "finished_at":  "2026-08-15T17:02:25.0740022+08:00",
+    "actual_resolution_from_player":  "not emitted by current runtime",
+    "fps":  null,
+    "one_percent_low":  null,
+    "p95_frame_time_ms":  null,
+    "cpu_frame_time_ms":  null,
+    "gpu_frame_time_ms":  null,
+    "gc_alloc_bytes":  null,
+    "notes":  [
+                  "Real standalone Player process was sampled after the requested warm-up.",
+                  "This process sampler does not infer FPS or frame timing from CPU/GPU utilization.",
+                  "Missing frame metrics remain unavailable; no PASS is inferred from process counters."
+              ],
+    "samples":  [
+                    {
+                        "index":  0,
+                        "timestamp":  "2026-08-15T17:02:23.8798992+08:00",
+                        "process_alive":  true,
+                        "cpu_seconds":  320.84375,
+                        "working_set_bytes":  346144768,
+                        "private_memory_bytes":  508956672,
+                        "handle_count":  904,
+                        "thread_count":  121,
+                        "gpu_raw":  "2026/08/15 17:02:23.988, 37, 9, 3021, 12282, 30.30",
+                        "gpu_error":  null
+                    },
+                    {
+                        "index":  1,
+                        "timestamp":  "2026-08-15T17:02:25.0352860+08:00",
+                        "process_alive":  true,
+                        "cpu_seconds":  321.59375,
+                        "working_set_bytes":  346144768,
+                        "private_memory_bytes":  508956672,
+                        "handle_count":  904,
+                        "thread_count":  121,
+                        "gpu_raw":  "2026/08/15 17:02:25.066, 35, 9, 3021, 12282, 30.13",
+                        "gpu_error":  null
+                    }
+                ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "D19_R02_S02_ROUTE_LOG_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "player_executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_x64.exe",
+  "player_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_X64_1920.log",
+  "continue_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_X64_CONTINUE.log",
+  "input_method": "Computer Use real Player keyboard/mouse input",
+  "session": {
+    "started_local": "2026-08-15T16:45:24+08:00",
+    "closed_before_continue_local": "2026-08-15T16:52:47+08:00",
+    "observed_seconds": 443,
+    "required_seconds": 300,
+    "duration_gate": "PASS",
+    "note": "Duration was real Player wall time; duration alone does not imply all route nodes passed"
+  },
+  "events": [
+    {"timestamp_local": "2026-08-15T16:46:18+08:00", "node": "spawn", "stable_id": "D2_PlayerAvatar", "input": "New Game click, captain text entry, confirm", "expected": "spawn and land at anchor.player.spawn", "actual": "Harbor loaded and player visible; landing observed", "status": "OBSERVED", "screenshot": "screenshots/route_01_spawn_1920args.png"},
+    {"timestamp_local": "2026-08-15T16:46:38+08:00", "node": "movement_to_market", "stable_id": "anchor.market.service", "input": "W and directional key attempts", "expected": "player moves along walkable route", "actual": "no reliable visible displacement proven", "status": "FAIL", "screenshot": "screenshots/route_02_main_street_move.png"},
+    {"timestamp_local": "2026-08-15T16:46:54+08:00", "node": "market", "stable_id": "building:market_santa_margarita", "input": "B", "expected": "open market service", "actual": "trade screen opened", "status": "PASS", "screenshot": "screenshots/route_03_market_open.png"},
+    {"timestamp_local": "2026-08-15T16:47:10+08:00", "node": "market_exit", "stable_id": "anchor.market.exit", "input": "mouse click on close trade", "expected": "return to harbor", "actual": "trade screen closed", "status": "PASS", "screenshot": "screenshots/route_04_market_return.png"},
+    {"timestamp_local": "2026-08-15T16:47:31+08:00", "node": "warehouse", "stable_id": "building:warehouse_santa_margarita", "input": "movement attempts", "expected": "reach warehouse", "actual": "not reached or independently verified", "status": "NOT_VERIFIED", "screenshot": "screenshots/route_05_market_to_street.png"},
+    {"timestamp_local": "2026-08-15T16:47:46+08:00", "node": "npc_dialogue", "stable_id": "npc:santa_margarita_tavern_keeper", "input": "E", "expected": "dialogue or explainable failure feedback", "actual": "no visible feedback and no reliable D2 event in log", "status": "FAIL", "screenshot": "screenshots/route_06_npc_attempt_no_feedback.png"},
+    {"timestamp_local": "2026-08-15T16:48:01+08:00", "node": "dock_berth", "stable_id": "building_saint_marys_dock", "input": "directional key attempts", "expected": "reach dock/berth", "actual": "dock turn view captured; boarding anchor not verified", "status": "NOT_VERIFIED", "screenshot": "screenshots/route_07_dock_turn.png"},
+    {"timestamp_local": "2026-08-15T16:48:44+08:00", "node": "departure", "stable_id": "anchor.departure.channel", "input": "T", "expected": "departure preparation/feedback", "actual": "D3 log recorded route preparation/state feedback", "status": "PARTIAL", "screenshot": "screenshots/route_08_departure_feedback.png"},
+    {"timestamp_local": "2026-08-15T16:49:19+08:00", "node": "voyage_advance", "stable_id": "event_d9_departure", "input": "N", "expected": "advance voyage and record sea event", "actual": "D3 log recorded inspection and calm sea events", "status": "PASS", "screenshot": "screenshots/route_09_advance_feedback.png"},
+    {"timestamp_local": "2026-08-15T16:50:22+08:00", "node": "return_harbor", "stable_id": "anchor.return.harbor", "input": "L", "expected": "return and berth", "actual": "D3 log recorded destination arrival and harbor settlement; physical return not independently walked", "status": "PARTIAL", "screenshot": "screenshots/route_10_return_harbor.png"},
+    {"timestamp_local": "2026-08-15T16:50:36+08:00", "node": "save", "stable_id": "D9_SaveRestoreFeedback", "input": "C", "expected": "save checkpoint", "actual": "D3/Save log recorded snapshot saves", "status": "PASS", "screenshot": "screenshots/route_11_saved_return.png"},
+    {"timestamp_local": "2026-08-15T16:52:47+08:00", "node": "exit", "stable_id": "HarborPause", "input": "Alt+F4", "expected": "close without destroying save", "actual": "Player closed; no duplicate reward evidence", "status": "PASS", "screenshot": null},
+    {"timestamp_local": "2026-08-15T16:53:38+08:00", "node": "continue_reload", "stable_id": "D9_SaveRestoreFeedback", "input": "relaunch Player, click Continue", "expected": "restore harbor and save facts", "actual": "MainMenu log recorded save load and harbor reopened", "status": "PASS", "screenshot": "screenshots/route_12_continue_loaded.png"}
+  ],
+  "required_nodes": {
+    "spawn": true,
+    "market": true,
+    "warehouse": false,
+    "tavern": false,
+    "dock": false,
+    "boarding": false,
+    "departure": true,
+    "return": true,
+    "save": true,
+    "reload": true
+  },
+  "repeated_settlement_or_reward": "not observed in this run; full route is incomplete",
+  "route_complete": false,
+  "next_owner": "D19 route/interaction repair before any D20-S02-R01 release"
+}

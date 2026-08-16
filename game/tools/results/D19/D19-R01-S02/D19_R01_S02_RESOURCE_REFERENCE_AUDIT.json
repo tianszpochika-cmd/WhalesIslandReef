@@ -1,0 +1,83 @@
+{
+  "task": "D19-R01-S02",
+  "audit_kind": "read_only_formal_scene_resource_reference",
+  "status": "PASS_STATIC_ONLY",
+  "scene": {
+    "path": "game/Assets/Scenes/InitialHarbor.unity",
+    "sha256": "4C45779C7B5A020583E9F11F9F8F61642C12F1EC3920E8001F4752EF626D7E9D",
+    "bytes": 165574,
+    "same_as_r01_b_end_baseline": true,
+    "modified_by_this_task": false,
+    "scene_only_references_integration_prefab": true,
+    "integration_root_instance": "D19_R01_B_HarborVisualRepair",
+    "stable_anchor_count_from_r01_b_audit": 17
+  },
+  "integration_prefab": {
+    "path": "game/Assets/Prefabs/Environment/D19/Integration/R01/D19_R01_B_HarborVisualRepair.prefab",
+    "sha256": "C7DC7401A38E5C6D7528CAB7D86640ACE8E619CC2B1B5BD0402134DDE1E3BD08",
+    "bytes": 934641,
+    "source_evidence": "game/tools/results/D19/D19-R01-B/D19_R01_B_BUILD_RESULT_V11.json"
+  },
+  "intake_catalog": {
+    "path": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "catalog_status": "PASS",
+    "manifest_total": 28,
+    "manifest_intake_eligible": 24,
+    "candidate_file_total": 1863,
+    "intake_eligible_file_total": 1833,
+    "local_development_ready_count": 0,
+    "release_approved_count": 0
+  },
+  "external_reference_check": {
+    "resource_usage_records_from_r01_b": 53,
+    "unique_external_content_ids": 32,
+    "unique_ids_found_in_latest_intake_catalog": 32,
+    "missing_intake_ids": [],
+    "all_external_references_intake_eligible": true,
+    "state_promotion_performed": false,
+    "catalog_reference": "docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+    "r01_b_usage_reference": "game/tools/results/D19/D19-R01-B/D19_R01_B_BUILD_RESULT_V11.json",
+    "content_ids": [
+      "env_kenney_nature_path_stone",
+      "env_kenney_nature_platform_beach",
+      "env_kenney_nature_tree_palm_detailed_tall",
+      "env_kenney_nature_tree_palm_bend",
+      "env_kenney_nature_tree_palm_tall",
+      "env_kenney_nature_tree_palm_short",
+      "env_kenney_nature_tree_default",
+      "env_kenney_nature_tree_oak",
+      "env_kenney_nature_plant_bush_large",
+      "env_kenney_nature_plant_bush_detailed",
+      "env_kenney_nature_grass_leafs_large",
+      "env_kenney_nature_grass_large",
+      "env_kenney_nature_rock_large_a",
+      "env_kenney_nature_rock_large_b",
+      "env_kenney_nature_rock_tall_a",
+      "env_kenney_nature_rock_small_flat_a",
+      "env_kenney_nature_cliff_large_rock",
+      "env_kenney_nature_cliff_block_slope_rock",
+      "env_kenney_nature_cliff_cave_rock",
+      "env_kenney_nature_log_stack",
+      "env_kenney_nature_stone_large_a",
+      "d18a05_building_wall_window_square_detailed",
+      "d18a05_building_wall_window_round_detailed",
+      "d18a05_building_roof_flat_patch_large",
+      "d18a05_building_door_rotate_square_b",
+      "d18a05_building_roof_flat_side",
+      "d18a05_building_stairs_open_short",
+      "d18a05_pirate_structure_platform",
+      "d18a05_pirate_platform_planks",
+      "d18a05_pirate_flag_pirate",
+      "d18a05_pirate_barrel",
+      "d18a05_pirate_crate"
+    ]
+  },
+  "audit_commands": {
+    "intake": "python tools/d18_prefab_candidate_intake_audit.py --project-root . --catalog docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json --output game/tools/results/D19/D19-R01-S02/D19_R01_S02_INTAKE_AUDIT.json",
+    "intake_result": "PASS; errors=[]; tool scan manifest_count=27, candidate_file_total=1862, intake_eligible_file_total=1674",
+    "manifest": "python tools/d18_asset_manifest_audit.py --project-root . --manifest-root docs/game/design/common/assets/packs --output game/tools/results/D19/D19-R01-S02/D19_R01_S02_MANIFEST_AUDIT.json",
+    "manifest_result": "PASS; manifest_count=26; error_count=0; issue_count=0",
+    "note": "The catalog snapshot counts and the audit tool's discovered-input counts are both preserved verbatim; the difference is not silently normalized. The 32 scene-used IDs independently resolve to eligible_entries."
+  },
+  "conclusion": "Static resource eligibility and scene-reference gate passes. This does not prove LocalDevelopmentReady, runtime consumers, visual quality, or ReleaseApproved."
+}

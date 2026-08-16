@@ -1,0 +1,84 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_RERUN17_V1",
+  "task": "D19-R03-A02",
+  "attempt": "RERUN17_TARGETED_INTEGRATION_PRESENTATION_FIX",
+  "conclusion": "PARTIAL",
+  "historical_results_preserved": [
+    "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT.json",
+    "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN15.json"
+  ],
+  "scope": {
+    "changed": [
+      "muted R03 URP palette to reduce Player clipping",
+      "replaced pale vertical dock rope proxies with angled brown mooring lines",
+      "reduced market-entry canopy footprint",
+      "kept candidate tree files catalogued but removed their oversized presentation instances",
+      "hid legacy ph_palm_tree/ph_rock/ph_grass/ph_flower renderers without deleting stable nodes"
+    ],
+    "not_changed": [
+      "game/Assets/Scripts/Systems",
+      "AgentCore",
+      "Registry",
+      "Save Schema",
+      "contracts/server/web",
+      "D19-A01—A06 source work scenes",
+      "resource state machine"
+    ]
+  },
+  "compile_and_build": {
+    "unity_version": "6000.0.80f1",
+    "scene_rebuild_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_BUILD_RERUN17.log",
+    "editor_audit_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_AUDIT_RERUN16.log",
+    "editor_audit_json": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT_RERUN17.json",
+    "player_build": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_Player_RERUN17.exe",
+    "player_build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_BUILD_PLAYER_RERUN17.log",
+    "build_options": "BuildOptions.None; no Development/AllowDebugging PlayerConnection",
+    "exit_code": 0
+  },
+  "runtime_fixed_shots": {
+    "evidence_mode": "real standalone Windows x64 Player; ScreenCapture backbuffer",
+    "screen": "1920x1080",
+    "graphics_device": "NVIDIA GeForce RTX 4070 Ti",
+    "graphics_api": "Direct3D11",
+    "result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_FIXED_SHOT_PLAYER_RERUN17.json",
+    "screenshots_directory": "game/tools/results/D19/D19-R03-A02/fixed_cameras_rerun17/",
+    "fixed_shots": "14/14",
+    "dimension_check": "14/14 at 1920x1080",
+    "weather_observed": ["Calm"],
+    "weather_variants": "0/3",
+    "player_input_route": "not run in this visual pass"
+  },
+  "manual_visual_review": {
+    "pink_missing_material_observed": false,
+    "large_white_proxy_plane_observed": false,
+    "legacy_tree_and_pale_pole_debt_reduced": true,
+    "visual_debt_closed": false,
+    "remaining_findings": [
+      "large flat procedural ground and dock planes remain",
+      "building and roof silhouettes remain low-detail/blocky",
+      "some nearshore rocks and roof edges still read as proxy geometry",
+      "player-mode route HUD remains visible at the bottom of the frame",
+      "weather matrix is still Calm-only"
+    ],
+    "reviewed_shots": [
+      "fixed_02_d19_shot_spawn.png",
+      "fixed_04_d19_shot_dock_overview.png",
+      "fixed_06_d19_shot_coastline.png",
+      "fixed_10_d19_shot_nearshore.png",
+      "fixed_12_d19_shot_return_harbor.png"
+    ]
+  },
+  "gate_checks": {
+    "four_player_visible_regions_improved": true,
+    "all_14_player_fixed_shots_exist": true,
+    "all_14_player_fixed_shots_1920x1080": true,
+    "three_weather_variants": false,
+    "final_visual_quality": false,
+    "d19_r03_a02_pass": false
+  },
+  "next_actions": [
+    "Keep route and save/reload evidence in D19-R03-A01; do not infer it from this camera pass.",
+    "Obtain real Calm/Rain/Storm presentation evidence through EnvironmentSystem-controlled state only.",
+    "A larger art pass is still required for ground/architecture detail before the D19 gate can close."
+  ]
+}

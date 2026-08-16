@@ -1,0 +1,53 @@
+{
+  "schema": "D19_R03_A01_RERUN10_ROUTE_LOG_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN10_NONDEVELOPMENT_PLAYER",
+  "conclusion": "PARTIAL",
+  "capture": {
+    "player_build": "D19_R03_A01_Player_RERUN10.exe",
+    "launch_args": "-d19-r03-route -d19-r03-route-rerun9 -screen-width 1920 -screen-height 1080 -screen-fullscreen 0 -popupwindow -force-d3d11",
+    "scene_expected": "MainMenu -> InitialHarbor",
+    "scene_reached": "MainMenu",
+    "input_mode": "real non-development Windows x64 Player observation; no Inspector invocation",
+    "continuous_route_seconds": 0,
+    "continuous_held_wasd_proven": false,
+    "screenshots": 0,
+    "route_probe_result": null,
+    "note": "Player MainMenu was observed at 1920x1080 launch settings, but no persisted screenshot was created because the system overlay blocked safe input and the run ended before the route probe could capture a scene frame."
+  },
+  "steps": [
+    {
+      "step": "main_menu_boot",
+      "stable_id": "flow.main_menu",
+      "input": "Non-development Player process launched with route flags",
+      "result": "PASS",
+      "feedback": "Runtime log confirms Input System, EventSystem, MainMenu UI and route probe initialization; the Player window visibly contained 新游戏/继续/设置/关于.",
+      "evidence": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_MAINMENU_ROUTE_RERUN10_PLAYER.log"
+    },
+    {
+      "step": "new_game_activation",
+      "stable_id": "flow.new_game",
+      "input": "Not sent because a Windows security prompt owned the visible topmost layer",
+      "result": "BLOCKED",
+      "feedback": "The system prompt was not touched, allowed, cancelled or dismissed. The prior prompt capture is retained as context only.",
+      "evidence": "game/tools/results/D19/D19-R03-A01/screenshots/mainmenu_rerun7_system_blocker.jpg"
+    },
+    {
+      "step": "initial_harbor",
+      "stable_id": "scene.initial_harbor",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "No honest evidence exists for a route step after the main menu.",
+      "evidence": null
+    },
+    {
+      "step": "route_and_save_reload",
+      "stable_id": "flow.save_reload",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "No departure, return, save or reload was attempted after entering the game.",
+      "evidence": null
+    }
+  ],
+  "route_assessment": "This run proves only that the non-development Player reaches and renders the main menu. It does not replace RERUN4/RERUN6 partial route evidence and does not close D19-R03-A01."
+}

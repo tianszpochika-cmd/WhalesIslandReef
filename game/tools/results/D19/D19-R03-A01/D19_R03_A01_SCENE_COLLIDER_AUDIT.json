@@ -1,0 +1,4039 @@
+{
+    "schema": "D19_R03_A01_SCENE_COLLIDER_AUDIT_V1",
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "collider_count": 192,
+    "rows": [
+        {
+            "name": "D6_ShipHullCollision",
+            "hierarchy_path": "ph_ship_fishing/D19_R03_ShipVisualInstance/D6_ShipHullCollision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.3799999952316284,
+                "z": -5.199999809265137
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.3799999952316284,
+                "z": -5.199999809265137
+            },
+            "bounds_size": {
+                "x": 4.5,
+                "y": 0.8399999141693115,
+                "z": 7.1999993324279789
+            }
+        },
+        {
+            "name": "D19_TerrainRoot",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainRoot",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -128.0,
+                "y": -8.0,
+                "z": -128.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 3.027040481567383,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 256.0,
+                "y": 20.053958892822267,
+                "z": 272.0
+            }
+        },
+        {
+            "name": "D19_ReefCollision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_ReefCollision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -16.0,
+                "y": -0.800000011920929,
+                "z": -66.0
+            },
+            "bounds_center": {
+                "x": -16.0,
+                "y": -0.7999999523162842,
+                "z": -66.0
+            },
+            "bounds_size": {
+                "x": 108.0,
+                "y": 2.0,
+                "z": 5.0
+            }
+        },
+        {
+            "name": "D19_CliffExclusion",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_CliffExclusion",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 72.0,
+                "y": 17.503189086914064,
+                "z": 72.0
+            },
+            "bounds_center": {
+                "x": 72.0,
+                "y": 17.503189086914064,
+                "z": 72.0
+            },
+            "bounds_size": {
+                "x": 68.0,
+                "y": 10.0,
+                "z": 5.0
+            }
+        },
+        {
+            "name": "D19_CaveInteriorBlocker",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_CaveInteriorBlocker",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 72.0,
+                "y": 13.703187942504883,
+                "z": 68.0
+            },
+            "bounds_center": {
+                "x": 72.0,
+                "y": 13.703187942504883,
+                "z": 68.0
+            },
+            "bounds_size": {
+                "x": 5.0,
+                "y": 2.3999996185302736,
+                "z": 2.0
+            }
+        },
+        {
+            "name": "D19_BoundaryNorth",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_BoundaryNorth",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 144.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 12.0,
+                "z": 144.0
+            },
+            "bounds_size": {
+                "x": 256.0,
+                "y": 24.0,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "D19_BoundaryWest",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_BoundaryWest",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": -128.0,
+                "y": 12.0,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": -128.0,
+                "y": 12.0,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 1.0,
+                "y": 24.0,
+                "z": 272.0
+            }
+        },
+        {
+            "name": "D19_BoundaryEast",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_BoundaryEast",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 128.0,
+                "y": 12.0,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 128.0,
+                "y": 12.0,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 1.0,
+                "y": 24.0,
+                "z": 272.0
+            }
+        },
+        {
+            "name": "D19_DeepSeaBoundary",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainCollision/D19_DeepSeaBoundary",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": -128.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": -1.0,
+                "z": -128.0
+            },
+            "bounds_size": {
+                "x": 256.0,
+                "y": 10.0,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "Intake_cliff_corner_rock",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainSurfaceSet/Intake_cliff_corner_rock",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 72.0,
+                "y": 12.79366397857666,
+                "z": 76.0
+            },
+            "bounds_center": {
+                "x": 71.25164794921875,
+                "y": 13.693663597106934,
+                "z": 75.25164794921875
+            },
+            "bounds_size": {
+                "x": 0.3032989501953125,
+                "y": 1.7999992370605469,
+                "z": 0.3032989501953125
+            }
+        },
+        {
+            "name": "Intake_rock_largeF",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainSurfaceSet/Intake_rock_largeF",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 88.0,
+                "y": 6.695041179656982,
+                "z": 58.0
+            },
+            "bounds_center": {
+                "x": 88.0,
+                "y": 7.054262638092041,
+                "z": 58.0
+            },
+            "bounds_size": {
+                "x": 1.6431884765625,
+                "y": 0.7184429168701172,
+                "z": 1.3484725952148438
+            }
+        },
+        {
+            "name": "Intake_rock_tallF",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainSurfaceSet/Intake_rock_tallF",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 56.0,
+                "y": 9.915706634521485,
+                "z": 92.0
+            },
+            "bounds_center": {
+                "x": 56.0,
+                "y": 10.288593292236329,
+                "z": 92.0
+            },
+            "bounds_size": {
+                "x": 0.5768051147460938,
+                "y": 0.7457733154296875,
+                "z": 0.6660308837890625
+            }
+        },
+        {
+            "name": "Intake_ground_pathBend",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainSurfaceSet/Intake_ground_pathBend",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.0,
+                "y": 1.8429630994796754,
+                "z": 44.0
+            },
+            "bounds_center": {
+                "x": -6.0,
+                "y": 1.8179631233215333,
+                "z": 44.0
+            },
+            "bounds_size": {
+                "x": 1.0,
+                "y": 0.04999995231628418,
+                "z": 1.0
+            }
+        },
+        {
+            "name": "Intake_bridge_wood",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainSurfaceSet/Intake_bridge_wood",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -58.0,
+                "y": 0.6499999761581421,
+                "z": -8.0
+            },
+            "bounds_center": {
+                "x": -58.0,
+                "y": 0.8499999642372131,
+                "z": -8.0
+            },
+            "bounds_size": {
+                "x": 1.0400009155273438,
+                "y": 0.3999999761581421,
+                "z": 1.0399994850158692
+            }
+        },
+        {
+            "name": "Intake_cliff_stepsCorner_stone",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_TerrainSurfaceSet/Intake_cliff_stepsCorner_stone",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 58.0,
+                "y": 0.44999998807907107,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 58.025001525878909,
+                "y": 0.9499999284744263,
+                "z": 62.025001525878909
+            },
+            "bounds_size": {
+                "x": 1.0500030517578126,
+                "y": 1.0,
+                "z": 1.0500030517578126
+            }
+        },
+        {
+            "name": "CaveLeftPillar",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_CaveFissure/CaveLeftPillar",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 68.80000305175781,
+                "y": 14.503188133239746,
+                "z": 72.0
+            },
+            "bounds_center": {
+                "x": 68.80000305175781,
+                "y": 14.503188133239746,
+                "z": 72.0
+            },
+            "bounds_size": {
+                "x": 2.1999969482421877,
+                "y": 4.399999618530273,
+                "z": 5.0
+            }
+        },
+        {
+            "name": "CaveRightPillar",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_CaveFissure/CaveRightPillar",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 75.19999694824219,
+                "y": 14.503188133239746,
+                "z": 72.0
+            },
+            "bounds_center": {
+                "x": 75.19999694824219,
+                "y": 14.503188133239746,
+                "z": 72.0
+            },
+            "bounds_size": {
+                "x": 2.1999969482421877,
+                "y": 4.399999618530273,
+                "z": 5.0
+            }
+        },
+        {
+            "name": "CaveLintel",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_CaveFissure/CaveLintel",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 72.0,
+                "y": 16.903188705444337,
+                "z": 72.0
+            },
+            "bounds_center": {
+                "x": 72.0,
+                "y": 16.903188705444337,
+                "z": 72.0
+            },
+            "bounds_size": {
+                "x": 8.600006103515625,
+                "y": 2.0,
+                "z": 5.0
+            }
+        },
+        {
+            "name": "CaveInterior",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_EnvironmentRoot/D19_CaveFissure/CaveInterior",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 72.0,
+                "y": 13.903188705444336,
+                "z": 69.4000015258789
+            },
+            "bounds_center": {
+                "x": 72.0,
+                "y": 13.903188705444336,
+                "z": 69.4000015258789
+            },
+            "bounds_size": {
+                "x": 4.0,
+                "y": 2.200000762939453,
+                "z": 0.1999969482421875
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Floor_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": 112.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": 112.0
+            },
+            "bounds_size": {
+                "x": 18.0,
+                "y": 0.19999998807907105,
+                "z": 12.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Wall_Back",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 2.799999952316284,
+                "z": 117.82499694824219
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 2.799999713897705,
+                "z": 117.82499694824219
+            },
+            "bounds_size": {
+                "x": 18.0,
+                "y": 5.199999809265137,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Wall_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -8.824999809265137,
+                "y": 2.799999952316284,
+                "z": 112.0
+            },
+            "bounds_center": {
+                "x": -8.824999809265137,
+                "y": 2.799999713897705,
+                "z": 112.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 5.199999809265137,
+                "z": 12.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Wall_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 8.824999809265137,
+                "y": 2.799999952316284,
+                "z": 112.0
+            },
+            "bounds_center": {
+                "x": 8.824999809265137,
+                "y": 2.799999713897705,
+                "z": 112.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 5.199999809265137,
+                "z": 12.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Wall_Front_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -5.050000190734863,
+                "y": 2.799999952316284,
+                "z": 106.17500305175781
+            },
+            "bounds_center": {
+                "x": -5.050000190734863,
+                "y": 2.799999713897705,
+                "z": 106.17500305175781
+            },
+            "bounds_size": {
+                "x": 7.899999618530273,
+                "y": 5.199999809265137,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Wall_Front_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 5.050000190734863,
+                "y": 2.799999952316284,
+                "z": 106.17500305175781
+            },
+            "bounds_center": {
+                "x": 5.050000190734863,
+                "y": 2.799999713897705,
+                "z": 106.17500305175781
+            },
+            "bounds_size": {
+                "x": 7.899999618530273,
+                "y": 5.199999809265137,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Door_Header",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 4.949999809265137,
+                "z": 106.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 4.949999809265137,
+                "z": 106.0
+            },
+            "bounds_size": {
+                "x": 2.200000047683716,
+                "y": 0.4499998092651367,
+                "z": 0.399993896484375
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Door_Left_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -1.100000023841858,
+                "y": 2.799999952316284,
+                "z": 106.0
+            },
+            "bounds_center": {
+                "x": -1.100000023841858,
+                "y": 2.799999713897705,
+                "z": 106.0
+            },
+            "bounds_size": {
+                "x": 0.34999996423721316,
+                "y": 5.199999809265137,
+                "z": 0.399993896484375
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Door_Right_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 1.100000023841858,
+                "y": 2.799999952316284,
+                "z": 106.0
+            },
+            "bounds_center": {
+                "x": 1.100000023841858,
+                "y": 2.799999713897705,
+                "z": 106.0
+            },
+            "bounds_size": {
+                "x": 0.34999996423721316,
+                "y": 5.199999809265137,
+                "z": 0.399993896484375
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Roof_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 5.5799994468688969,
+                "z": 112.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 5.5799994468688969,
+                "z": 112.0
+            },
+            "bounds_size": {
+                "x": 18.700000762939454,
+                "y": 0.3599996566772461,
+                "z": 12.699996948242188
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_PortEntry_Admin/LOD0_Structural/Roof_Ridge",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 5.87999963760376,
+                "z": 112.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 5.87999963760376,
+                "z": 112.0
+            },
+            "bounds_size": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 12.899993896484375
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Floor_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 0.30000001192092898,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 0.30000001192092898,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 24.0,
+                "y": 0.19999998807907105,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Wall_Back",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 2.6000001430511476,
+                "z": 68.82499694824219
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 2.5999999046325685,
+                "z": 68.82499694824219
+            },
+            "bounds_size": {
+                "x": 24.0,
+                "y": 4.800000190734863,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Wall_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 14.175000190734864,
+                "y": 2.6000001430511476,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 14.175000190734864,
+                "y": 2.5999999046325685,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 4.800000190734863,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Wall_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 37.82500076293945,
+                "y": 2.6000001430511476,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 37.82500076293945,
+                "y": 2.5999999046325685,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 4.800000190734863,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Wall_Front_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 19.450000762939454,
+                "y": 2.6000001430511476,
+                "z": 55.17499923706055
+            },
+            "bounds_center": {
+                "x": 19.450000762939454,
+                "y": 2.5999999046325685,
+                "z": 55.17499923706055
+            },
+            "bounds_size": {
+                "x": 10.90000057220459,
+                "y": 4.800000190734863,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Wall_Front_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 32.54999923706055,
+                "y": 2.6000001430511476,
+                "z": 55.17499923706055
+            },
+            "bounds_center": {
+                "x": 32.54999923706055,
+                "y": 2.5999999046325685,
+                "z": 55.17499923706055
+            },
+            "bounds_size": {
+                "x": 10.900001525878907,
+                "y": 4.800000190734863,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Door_Header",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 4.550000190734863,
+                "z": 55.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 4.550000190734863,
+                "z": 55.0
+            },
+            "bounds_size": {
+                "x": 2.200000762939453,
+                "y": 0.4499998092651367,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Door_Left_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 24.899999618530275,
+                "y": 2.6000001430511476,
+                "z": 55.0
+            },
+            "bounds_center": {
+                "x": 24.899999618530275,
+                "y": 2.5999999046325685,
+                "z": 55.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 4.800000190734863,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Door_Right_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 27.100000381469728,
+                "y": 2.6000001430511476,
+                "z": 55.0
+            },
+            "bounds_center": {
+                "x": 27.100000381469728,
+                "y": 2.5999999046325685,
+                "z": 55.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 4.800000190734863,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Roof_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 5.179999828338623,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 5.179999828338623,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 24.69999885559082,
+                "y": 0.3599996566772461,
+                "z": 14.699996948242188
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market/LOD0_Structural/Roof_Ridge",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 5.480000019073486,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 5.480000019073486,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 14.89999771118164
+            }
+        },
+        {
+            "name": "Counter_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market_Stall/LOD0_Stall/Counter_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 0.949999988079071,
+                "z": 52.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 0.9499999284744263,
+                "z": 52.0
+            },
+            "bounds_size": {
+                "x": 3.4000015258789064,
+                "y": 1.2000000476837159,
+                "z": 1.0999984741210938
+            }
+        },
+        {
+            "name": "Awning",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market_Stall/LOD0_Stall/Awning",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 26.0,
+                "y": 2.299999952316284,
+                "z": 52.20000076293945
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 2.299999952316284,
+                "z": 52.20000076293945
+            },
+            "bounds_size": {
+                "x": 4.0,
+                "y": 0.48442888259887698,
+                "z": 2.203643798828125
+            }
+        },
+        {
+            "name": "Post_L",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market_Stall/LOD0_Stall/Post_L",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 24.350000381469728,
+                "y": 1.5,
+                "z": 52.400001525878909
+            },
+            "bounds_center": {
+                "x": 24.350000381469728,
+                "y": 1.5,
+                "z": 52.400001525878909
+            },
+            "bounds_size": {
+                "x": 0.18000030517578126,
+                "y": 2.5999999046325685,
+                "z": 0.18000030517578126
+            }
+        },
+        {
+            "name": "Post_R",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Market_Stall/LOD0_Stall/Post_R",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 27.649999618530275,
+                "y": 1.5,
+                "z": 52.400001525878909
+            },
+            "bounds_center": {
+                "x": 27.649999618530275,
+                "y": 1.5,
+                "z": 52.400001525878909
+            },
+            "bounds_size": {
+                "x": 0.18000030517578126,
+                "y": 2.5999999046325685,
+                "z": 0.18000030517578126
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Floor_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 48.0,
+                "y": 0.30000001192092898,
+                "z": 34.0
+            },
+            "bounds_center": {
+                "x": 48.0,
+                "y": 0.30000001192092898,
+                "z": 34.0
+            },
+            "bounds_size": {
+                "x": 24.0,
+                "y": 0.19999998807907105,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Wall_Back",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 48.0,
+                "y": 2.9000000953674318,
+                "z": 40.82500076293945
+            },
+            "bounds_center": {
+                "x": 48.0,
+                "y": 2.9000000953674318,
+                "z": 40.82500076293945
+            },
+            "bounds_size": {
+                "x": 24.0,
+                "y": 5.40000057220459,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Wall_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 36.17499923706055,
+                "y": 2.9000000953674318,
+                "z": 34.0
+            },
+            "bounds_center": {
+                "x": 36.17499923706055,
+                "y": 2.9000000953674318,
+                "z": 34.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.40000057220459,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Wall_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 59.82500076293945,
+                "y": 2.9000000953674318,
+                "z": 34.0
+            },
+            "bounds_center": {
+                "x": 59.82500076293945,
+                "y": 2.9000000953674318,
+                "z": 34.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.40000057220459,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Wall_Front_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 41.45000076293945,
+                "y": 2.9000000953674318,
+                "z": 27.174999237060548
+            },
+            "bounds_center": {
+                "x": 41.45000076293945,
+                "y": 2.9000000953674318,
+                "z": 27.174999237060548
+            },
+            "bounds_size": {
+                "x": 10.900001525878907,
+                "y": 5.40000057220459,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Wall_Front_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 54.54999923706055,
+                "y": 2.9000000953674318,
+                "z": 27.174999237060548
+            },
+            "bounds_center": {
+                "x": 54.54999923706055,
+                "y": 2.9000000953674318,
+                "z": 27.174999237060548
+            },
+            "bounds_size": {
+                "x": 10.900001525878907,
+                "y": 5.40000057220459,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Door_Header",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 48.0,
+                "y": 5.150000095367432,
+                "z": 27.0
+            },
+            "bounds_center": {
+                "x": 48.0,
+                "y": 5.150000095367432,
+                "z": 27.0
+            },
+            "bounds_size": {
+                "x": 2.1999969482421877,
+                "y": 0.4499998092651367,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Door_Left_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 46.900001525878909,
+                "y": 2.9000000953674318,
+                "z": 27.0
+            },
+            "bounds_center": {
+                "x": 46.900001525878909,
+                "y": 2.9000000953674318,
+                "z": 27.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.40000057220459,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Door_Right_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 49.099998474121097,
+                "y": 2.9000000953674318,
+                "z": 27.0
+            },
+            "bounds_center": {
+                "x": 49.099998474121097,
+                "y": 2.9000000953674318,
+                "z": 27.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.40000057220459,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Roof_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 48.0,
+                "y": 5.779999732971191,
+                "z": 34.0
+            },
+            "bounds_center": {
+                "x": 48.0,
+                "y": 5.779999732971191,
+                "z": 34.0
+            },
+            "bounds_size": {
+                "x": 24.699996948242189,
+                "y": 0.3599996566772461,
+                "z": 14.69999885559082
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Warehouse/LOD0_Structural/Roof_Ridge",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 48.0,
+                "y": 6.079999923706055,
+                "z": 34.0
+            },
+            "bounds_center": {
+                "x": 48.0,
+                "y": 6.079999923706055,
+                "z": 34.0
+            },
+            "bounds_size": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 14.900001525878907
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Floor_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -42.0,
+                "y": 0.30000001192092898,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": -42.0,
+                "y": 0.30000001192092898,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 18.0,
+                "y": 0.19999998807907105,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Wall_Back",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -42.0,
+                "y": 2.700000047683716,
+                "z": 56.82500076293945
+            },
+            "bounds_center": {
+                "x": -42.0,
+                "y": 2.6999998092651369,
+                "z": 56.82500076293945
+            },
+            "bounds_size": {
+                "x": 18.0,
+                "y": 5.0,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Wall_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -50.82500076293945,
+                "y": 2.700000047683716,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": -50.82500076293945,
+                "y": 2.6999998092651369,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.0,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Wall_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -33.17499923706055,
+                "y": 2.700000047683716,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": -33.17499923706055,
+                "y": 2.6999998092651369,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.0,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Wall_Front_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -47.04999923706055,
+                "y": 2.700000047683716,
+                "z": 43.17499923706055
+            },
+            "bounds_center": {
+                "x": -47.04999923706055,
+                "y": 2.6999998092651369,
+                "z": 43.17499923706055
+            },
+            "bounds_size": {
+                "x": 7.900001525878906,
+                "y": 5.0,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Wall_Front_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -36.95000076293945,
+                "y": 2.700000047683716,
+                "z": 43.17499923706055
+            },
+            "bounds_center": {
+                "x": -36.95000076293945,
+                "y": 2.6999998092651369,
+                "z": 43.17499923706055
+            },
+            "bounds_size": {
+                "x": 7.900001525878906,
+                "y": 5.0,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Door_Header",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -42.0,
+                "y": 4.75,
+                "z": 43.0
+            },
+            "bounds_center": {
+                "x": -42.0,
+                "y": 4.75,
+                "z": 43.0
+            },
+            "bounds_size": {
+                "x": 2.1999969482421877,
+                "y": 0.4499998092651367,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Door_Left_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -43.099998474121097,
+                "y": 2.700000047683716,
+                "z": 43.0
+            },
+            "bounds_center": {
+                "x": -43.099998474121097,
+                "y": 2.6999998092651369,
+                "z": 43.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.0,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Door_Right_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -40.900001525878909,
+                "y": 2.700000047683716,
+                "z": 43.0
+            },
+            "bounds_center": {
+                "x": -40.900001525878909,
+                "y": 2.6999998092651369,
+                "z": 43.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.0,
+                "z": 0.40000152587890627
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Roof_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -42.0,
+                "y": 5.37999963760376,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": -42.0,
+                "y": 5.37999963760376,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 18.699996948242189,
+                "y": 0.3599996566772461,
+                "z": 14.699996948242188
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Tavern_Exterior/LOD0_Structural/Roof_Ridge",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -42.0,
+                "y": 5.679999828338623,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": -42.0,
+                "y": 5.679999828338623,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 14.900001525878907
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Floor_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 60.0,
+                "y": 0.30000001192092898,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 0.30000001192092898,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 28.0,
+                "y": 0.19999998807907105,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Wall_Back",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 60.0,
+                "y": 3.0,
+                "z": 16.825000762939454
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 3.0,
+                "z": 16.825000762939454
+            },
+            "bounds_size": {
+                "x": 28.0,
+                "y": 5.600000381469727,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Wall_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 46.17499923706055,
+                "y": 3.0,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 46.17499923706055,
+                "y": 3.0,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.600000381469727,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Wall_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 73.82499694824219,
+                "y": 3.0,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 73.82499694824219,
+                "y": 3.0,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 0.350006103515625,
+                "y": 5.600000381469727,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Wall_Front_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 52.45000076293945,
+                "y": 3.0,
+                "z": -0.8249998092651367
+            },
+            "bounds_center": {
+                "x": 52.45000076293945,
+                "y": 3.0,
+                "z": -0.8249998092651367
+            },
+            "bounds_size": {
+                "x": 12.900001525878907,
+                "y": 5.600000381469727,
+                "z": 0.3500000238418579
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Wall_Front_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 67.55000305175781,
+                "y": 3.0,
+                "z": -0.8249998092651367
+            },
+            "bounds_center": {
+                "x": 67.55000305175781,
+                "y": 3.0,
+                "z": -0.8249998092651367
+            },
+            "bounds_size": {
+                "x": 12.89999771118164,
+                "y": 5.600000381469727,
+                "z": 0.3500000238418579
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Door_Header",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 60.0,
+                "y": 5.349999904632568,
+                "z": -1.0
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 5.349999904632568,
+                "z": -1.0
+            },
+            "bounds_size": {
+                "x": 2.1999969482421877,
+                "y": 0.4499998092651367,
+                "z": 0.40000003576278689
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Door_Left_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 58.900001525878909,
+                "y": 3.0,
+                "z": -1.0
+            },
+            "bounds_center": {
+                "x": 58.900001525878909,
+                "y": 3.0,
+                "z": -1.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.600000381469727,
+                "z": 0.40000003576278689
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Door_Right_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 61.099998474121097,
+                "y": 3.0,
+                "z": -1.0
+            },
+            "bounds_center": {
+                "x": 61.099998474121097,
+                "y": 3.0,
+                "z": -1.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 5.600000381469727,
+                "z": 0.40000003576278689
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Roof_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 60.0,
+                "y": 5.979999542236328,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 5.979999542236328,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 28.699996948242189,
+                "y": 0.3599996566772461,
+                "z": 18.700000762939454
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Shipyard/LOD0_Structural/Roof_Ridge",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 60.0,
+                "y": 6.279999732971191,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 6.279999732971191,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 18.900001525878908
+            }
+        },
+        {
+            "name": "DockDeck_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockDeck_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 18.0,
+                "y": 0.19999998807907105,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "HandRail_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/HandRail_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -8.880000114440918,
+                "y": 1.0500000715255738,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": -8.880000114440918,
+                "y": 1.0500000715255738,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.23999977111816407,
+                "y": 1.2999999523162842,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "RailTop_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/RailTop_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -8.880000114440918,
+                "y": 1.7000000476837159,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": -8.880000114440918,
+                "y": 1.7000000476837159,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.31999969482421877,
+                "y": 0.20000004768371583,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "HandRail_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/HandRail_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 8.880000114440918,
+                "y": 1.0500000715255738,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 8.880000114440918,
+                "y": 1.0500000715255738,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.23999977111816407,
+                "y": 1.2999999523162842,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "RailTop_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/RailTop_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 8.880000114440918,
+                "y": 1.7000000476837159,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 8.880000114440918,
+                "y": 1.7000000476837159,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.31999969482421877,
+                "y": 0.20000004768371583,
+                "z": 18.0
+            }
+        },
+        {
+            "name": "DockPile_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockPile_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.4800004959106449,
+                "y": -0.550000011920929,
+                "z": -18.479999542236329
+            },
+            "bounds_center": {
+                "x": -6.4800004959106449,
+                "y": -0.5500000715255737,
+                "z": -18.479999542236329
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 1.7999999523162842,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "DockPile_R_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockPile_R_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 6.4800004959106449,
+                "y": -0.550000011920929,
+                "z": -18.479999542236329
+            },
+            "bounds_center": {
+                "x": 6.4800004959106449,
+                "y": -0.5500000715255737,
+                "z": -18.479999542236329
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 1.7999999523162842,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "DockPile_0",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockPile_0",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.4800004959106449,
+                "y": -0.550000011920929,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": -6.4800004959106449,
+                "y": -0.5500000715255737,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 1.7999999523162842,
+                "z": 0.35000038146972659
+            }
+        },
+        {
+            "name": "DockPile_R_0",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockPile_R_0",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 6.4800004959106449,
+                "y": -0.550000011920929,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 6.4800004959106449,
+                "y": -0.5500000715255737,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 1.7999999523162842,
+                "z": 0.35000038146972659
+            }
+        },
+        {
+            "name": "DockPile_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockPile_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.4800004959106449,
+                "y": -0.550000011920929,
+                "z": -5.5199995040893559
+            },
+            "bounds_center": {
+                "x": -6.4800004959106449,
+                "y": -0.5500000715255737,
+                "z": -5.5199995040893559
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 1.7999999523162842,
+                "z": 0.35000038146972659
+            }
+        },
+        {
+            "name": "DockPile_R_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/DockPile_R_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 6.4800004959106449,
+                "y": -0.550000011920929,
+                "z": -5.5199995040893559
+            },
+            "bounds_center": {
+                "x": 6.4800004959106449,
+                "y": -0.5500000715255737,
+                "z": -5.5199995040893559
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 1.7999999523162842,
+                "z": 0.35000038146972659
+            }
+        },
+        {
+            "name": "Gangplank_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/Gangplank_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": -16.75
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": -16.75
+            },
+            "bounds_size": {
+                "x": 2.200000047683716,
+                "y": 0.19999998807907105,
+                "z": 3.200000762939453
+            }
+        },
+        {
+            "name": "Bollard_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/Bollard_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.0,
+                "y": 0.6499999761581421,
+                "z": -9.0
+            },
+            "bounds_center": {
+                "x": -6.0,
+                "y": 0.6499999761581421,
+                "z": -9.0
+            },
+            "bounds_size": {
+                "x": 0.4200000762939453,
+                "y": 1.4000000953674317,
+                "z": 0.4200000762939453
+            }
+        },
+        {
+            "name": "Bollard_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Primary/LOD0_DockStructure/Bollard_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 6.0,
+                "y": 0.6499999761581421,
+                "z": -9.0
+            },
+            "bounds_center": {
+                "x": 6.0,
+                "y": 0.6499999761581421,
+                "z": -9.0
+            },
+            "bounds_size": {
+                "x": 0.4200000762939453,
+                "y": 1.4000000953674317,
+                "z": 0.4200000762939453
+            }
+        },
+        {
+            "name": "DockDeck_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockDeck_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 34.0,
+                "y": 0.30000001192092898,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 34.0,
+                "y": 0.30000001192092898,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 10.0,
+                "y": 0.19999998807907105,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "HandRail_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/HandRail_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 29.119998931884767,
+                "y": 1.0500000715255738,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 29.119998931884767,
+                "y": 1.0500000715255738,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 0.24000167846679688,
+                "y": 1.2999999523162842,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "RailTop_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/RailTop_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 29.119998931884767,
+                "y": 1.7000000476837159,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 29.119998931884767,
+                "y": 1.7000000476837159,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 0.31999969482421877,
+                "y": 0.20000004768371583,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "HandRail_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/HandRail_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 38.880001068115237,
+                "y": 1.0500000715255738,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 38.880001068115237,
+                "y": 1.0500000715255738,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 0.23999786376953126,
+                "y": 1.2999999523162842,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "RailTop_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/RailTop_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 38.880001068115237,
+                "y": 1.7000000476837159,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 38.880001068115237,
+                "y": 1.7000000476837159,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 0.31999969482421877,
+                "y": 0.20000004768371583,
+                "z": 14.0
+            }
+        },
+        {
+            "name": "DockPile_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockPile_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 30.399999618530275,
+                "y": -0.550000011920929,
+                "z": -25.040000915527345
+            },
+            "bounds_center": {
+                "x": 30.399999618530275,
+                "y": -0.5500000715255737,
+                "z": -25.040000915527345
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 1.7999999523162842,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "DockPile_R_-1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockPile_R_-1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 37.599998474121097,
+                "y": -0.550000011920929,
+                "z": -25.040000915527345
+            },
+            "bounds_center": {
+                "x": 37.599998474121097,
+                "y": -0.5500000715255737,
+                "z": -25.040000915527345
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 1.7999999523162842,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "DockPile_0",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockPile_0",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 30.399999618530275,
+                "y": -0.550000011920929,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 30.399999618530275,
+                "y": -0.5500000715255737,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 1.7999999523162842,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "DockPile_R_0",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockPile_R_0",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 37.599998474121097,
+                "y": -0.550000011920929,
+                "z": -20.0
+            },
+            "bounds_center": {
+                "x": 37.599998474121097,
+                "y": -0.5500000715255737,
+                "z": -20.0
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 1.7999999523162842,
+                "z": 0.34999847412109377
+            }
+        },
+        {
+            "name": "DockPile_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockPile_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 30.399999618530275,
+                "y": -0.550000011920929,
+                "z": -14.960000038146973
+            },
+            "bounds_center": {
+                "x": 30.399999618530275,
+                "y": -0.5500000715255737,
+                "z": -14.960000038146973
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 1.7999999523162842,
+                "z": 0.35000038146972659
+            }
+        },
+        {
+            "name": "DockPile_R_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Dock_Secondary/LOD0_DockStructure/DockPile_R_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 37.599998474121097,
+                "y": -0.550000011920929,
+                "z": -14.960000038146973
+            },
+            "bounds_center": {
+                "x": 37.599998474121097,
+                "y": -0.5500000715255737,
+                "z": -14.960000038146973
+            },
+            "bounds_size": {
+                "x": 0.34999847412109377,
+                "y": 1.7999999523162842,
+                "z": 0.35000038146972659
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Floor_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -10.0,
+                "y": 0.30000001192092898,
+                "z": 82.0
+            },
+            "bounds_center": {
+                "x": -10.0,
+                "y": 0.30000001192092898,
+                "z": 82.0
+            },
+            "bounds_size": {
+                "x": 10.0,
+                "y": 0.19999998807907105,
+                "z": 8.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Wall_Back",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -10.0,
+                "y": 2.0,
+                "z": 85.82499694824219
+            },
+            "bounds_center": {
+                "x": -10.0,
+                "y": 2.0,
+                "z": 85.82499694824219
+            },
+            "bounds_size": {
+                "x": 10.0,
+                "y": 3.5999999046325685,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Wall_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -14.824999809265137,
+                "y": 2.0,
+                "z": 82.0
+            },
+            "bounds_center": {
+                "x": -14.824999809265137,
+                "y": 2.0,
+                "z": 82.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 3.5999999046325685,
+                "z": 8.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Wall_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -5.175000190734863,
+                "y": 2.0,
+                "z": 82.0
+            },
+            "bounds_center": {
+                "x": -5.175000190734863,
+                "y": 2.0,
+                "z": 82.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 3.5999999046325685,
+                "z": 8.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Wall_Front_Left",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -13.050000190734864,
+                "y": 2.0,
+                "z": 78.17500305175781
+            },
+            "bounds_center": {
+                "x": -13.050000190734864,
+                "y": 2.0,
+                "z": 78.17500305175781
+            },
+            "bounds_size": {
+                "x": 3.8999996185302736,
+                "y": 3.5999999046325685,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Wall_Front_Right",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.949999809265137,
+                "y": 2.0,
+                "z": 78.17500305175781
+            },
+            "bounds_center": {
+                "x": -6.949999809265137,
+                "y": 2.0,
+                "z": 78.17500305175781
+            },
+            "bounds_size": {
+                "x": 3.8999996185302736,
+                "y": 3.5999999046325685,
+                "z": 0.350006103515625
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Door_Header",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -10.0,
+                "y": 3.3499999046325685,
+                "z": 78.0
+            },
+            "bounds_center": {
+                "x": -10.0,
+                "y": 3.3499999046325685,
+                "z": 78.0
+            },
+            "bounds_size": {
+                "x": 2.200000762939453,
+                "y": 0.4499998092651367,
+                "z": 0.399993896484375
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Door_Left_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -11.100000381469727,
+                "y": 2.0,
+                "z": 78.0
+            },
+            "bounds_center": {
+                "x": -11.100000381469727,
+                "y": 2.0,
+                "z": 78.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 3.5999999046325685,
+                "z": 0.399993896484375
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Door_Right_Post",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -8.899999618530274,
+                "y": 2.0,
+                "z": 78.0
+            },
+            "bounds_center": {
+                "x": -8.899999618530274,
+                "y": 2.0,
+                "z": 78.0
+            },
+            "bounds_size": {
+                "x": 0.35000038146972659,
+                "y": 3.5999999046325685,
+                "z": 0.399993896484375
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Roof_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -10.0,
+                "y": 3.9800000190734865,
+                "z": 82.0
+            },
+            "bounds_center": {
+                "x": -10.0,
+                "y": 3.9800000190734865,
+                "z": 82.0
+            },
+            "bounds_size": {
+                "x": 10.700000762939454,
+                "y": 0.3599998950958252,
+                "z": 8.699996948242188
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Common_Residence/LOD0_Residence/Roof_Ridge",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -10.0,
+                "y": 4.279999732971191,
+                "z": 82.0
+            },
+            "bounds_center": {
+                "x": -10.0,
+                "y": 4.279999732971191,
+                "z": 82.0
+            },
+            "bounds_size": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 8.899993896484375
+            }
+        },
+        {
+            "name": "Bollard_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Bollard_Left/LOD0_Bollard/Bollard_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.0,
+                "y": 0.75,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": -6.0,
+                "y": 0.75,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.6500005722045898,
+                "y": 2.200000286102295,
+                "z": 0.6499996185302734
+            }
+        },
+        {
+            "name": "Bollard_Cap",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Bollard_Left/LOD0_Bollard/Bollard_Cap",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": -6.0,
+                "y": 1.3000000715255738,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": -6.0,
+                "y": 1.3000000715255738,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.8999996185302734,
+                "y": 0.18000006675720216,
+                "z": 0.8999996185302734
+            }
+        },
+        {
+            "name": "Bollard_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Bollard_Right/LOD0_Bollard/Bollard_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 6.0,
+                "y": 0.75,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 6.0,
+                "y": 0.75,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.6500005722045898,
+                "y": 2.200000286102295,
+                "z": 0.6499996185302734
+            }
+        },
+        {
+            "name": "Bollard_Cap",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Bollard_Right/LOD0_Bollard/Bollard_Cap",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 6.0,
+                "y": 1.3000000715255738,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 6.0,
+                "y": 1.3000000715255738,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.8999996185302734,
+                "y": 0.18000006675720216,
+                "z": 0.8999996185302734
+            }
+        },
+        {
+            "name": "Fence_Rail_L",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Fence_Market_East/LOD0_Fence/Fence_Rail_L",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 14.0,
+                "y": 1.0500000715255738,
+                "z": 39.20000076293945
+            },
+            "bounds_center": {
+                "x": 14.0,
+                "y": 1.0500000715255738,
+                "z": 39.20000076293945
+            },
+            "bounds_size": {
+                "x": 5.0,
+                "y": 0.1600000262260437,
+                "z": 0.160003662109375
+            }
+        },
+        {
+            "name": "Fence_Rail_H",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Fence_Market_East/LOD0_Fence/Fence_Rail_H",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 14.0,
+                "y": 1.5500000715255738,
+                "z": 39.20000076293945
+            },
+            "bounds_center": {
+                "x": 14.0,
+                "y": 1.5500000715255738,
+                "z": 39.20000076293945
+            },
+            "bounds_size": {
+                "x": 5.0,
+                "y": 0.16000008583068849,
+                "z": 0.160003662109375
+            }
+        },
+        {
+            "name": "Fence_Post_-2",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Fence_Market_East/LOD0_Fence/Fence_Post_-2",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 12.0,
+                "y": 1.0,
+                "z": 39.20000076293945
+            },
+            "bounds_center": {
+                "x": 12.0,
+                "y": 1.0,
+                "z": 39.20000076293945
+            },
+            "bounds_size": {
+                "x": 0.2199993133544922,
+                "y": 1.5999999046325684,
+                "z": 0.220001220703125
+            }
+        },
+        {
+            "name": "Fence_Post_0",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Fence_Market_East/LOD0_Fence/Fence_Post_0",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 14.0,
+                "y": 1.0,
+                "z": 39.20000076293945
+            },
+            "bounds_center": {
+                "x": 14.0,
+                "y": 1.0,
+                "z": 39.20000076293945
+            },
+            "bounds_size": {
+                "x": 0.2199993133544922,
+                "y": 1.5999999046325684,
+                "z": 0.220001220703125
+            }
+        },
+        {
+            "name": "Fence_Post_2",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Fence_Market_East/LOD0_Fence/Fence_Post_2",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 16.0,
+                "y": 1.0,
+                "z": 39.20000076293945
+            },
+            "bounds_center": {
+                "x": 16.0,
+                "y": 1.0,
+                "z": 39.20000076293945
+            },
+            "bounds_size": {
+                "x": 0.2200002670288086,
+                "y": 1.5999999046325684,
+                "z": 0.220001220703125
+            }
+        },
+        {
+            "name": "Step_0",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Stairs_Warehouse/LOD0_Stairs/Step_0",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 40.0,
+                "y": 0.25,
+                "z": 46.0
+            },
+            "bounds_center": {
+                "x": 40.0,
+                "y": 0.25,
+                "z": 46.0
+            },
+            "bounds_size": {
+                "x": 2.4000015258789064,
+                "y": 0.10000000894069672,
+                "z": 0.5
+            }
+        },
+        {
+            "name": "Step_1",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Stairs_Warehouse/LOD0_Stairs/Step_1",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 40.0,
+                "y": 0.3700000047683716,
+                "z": 46.45000076293945
+            },
+            "bounds_center": {
+                "x": 40.0,
+                "y": 0.3700000047683716,
+                "z": 46.45000076293945
+            },
+            "bounds_size": {
+                "x": 2.4000015258789064,
+                "y": 0.3400000333786011,
+                "z": 0.5
+            }
+        },
+        {
+            "name": "Step_2",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Stairs_Warehouse/LOD0_Stairs/Step_2",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 40.0,
+                "y": 0.49000000953674319,
+                "z": 46.900001525878909
+            },
+            "bounds_center": {
+                "x": 40.0,
+                "y": 0.49000000953674319,
+                "z": 46.900001525878909
+            },
+            "bounds_size": {
+                "x": 2.4000015258789064,
+                "y": 0.5799999237060547,
+                "z": 0.5
+            }
+        },
+        {
+            "name": "Step_3",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Stairs_Warehouse/LOD0_Stairs/Step_3",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 40.0,
+                "y": 0.6100000143051148,
+                "z": 47.349998474121097
+            },
+            "bounds_center": {
+                "x": 40.0,
+                "y": 0.6100000143051148,
+                "z": 47.349998474121097
+            },
+            "bounds_size": {
+                "x": 2.4000015258789064,
+                "y": 0.8199999332427979,
+                "z": 0.5
+            }
+        },
+        {
+            "name": "WalkSurface_Collision",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_PortBuildingsRoot/D19_Port_Walk_Surface/LOD0_WalkSurface/WalkSurface_Collision",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": 52.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.30000001192092898,
+                "z": 52.0
+            },
+            "bounds_size": {
+                "x": 4.0,
+                "y": 0.19999998807907105,
+                "z": 10.0
+            }
+        },
+        {
+            "name": "Exclusion_player_spawn",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_player_spawn",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": -22.0,
+                "y": 0.20000000298023225,
+                "z": 88.0
+            },
+            "bounds_center": {
+                "x": -22.0,
+                "y": 0.20000000298023225,
+                "z": 88.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_player_recovery",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_player_recovery",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": -22.0,
+                "y": 0.20000000298023225,
+                "z": 82.0
+            },
+            "bounds_center": {
+                "x": -22.0,
+                "y": 0.20000000298023225,
+                "z": 82.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_market",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_market",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 26.0,
+                "y": 0.20000000298023225,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 0.20000000298023225,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_warehouse",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_warehouse",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 48.0,
+                "y": 0.20000000298023225,
+                "z": 34.0
+            },
+            "bounds_center": {
+                "x": 48.0,
+                "y": 0.20000000298023225,
+                "z": 34.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_tavern",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_tavern",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": -42.0,
+                "y": 0.20000000298023225,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": -42.0,
+                "y": 0.20000000298023225,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_shipyard",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_shipyard",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 60.0,
+                "y": 0.20000000298023225,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 0.20000000298023225,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_primary_dock",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_primary_dock",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": 0.20000000298023225,
+                "z": -12.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.20000000298023225,
+                "z": -12.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_berth_pool",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_berth_pool",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -30.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -30.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_departure_channel",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_departure_channel",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": -4.0,
+                "z": -112.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": -4.0,
+                "z": -112.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_road_clearance",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_road_clearance",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": 0.20000000298023225,
+                "z": 52.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.20000000298023225,
+                "z": 52.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_beach_landing",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_beach_landing",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": -58.0,
+                "y": 0.20000000298023225,
+                "z": -8.0
+            },
+            "bounds_center": {
+                "x": -58.0,
+                "y": 0.20000000298023225,
+                "z": -8.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_dockhand",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_dockhand",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": 12.0,
+                "y": 0.20000000298023225,
+                "z": -8.0
+            },
+            "bounds_center": {
+                "x": 12.0,
+                "y": 0.20000000298023225,
+                "z": -8.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Exclusion_lookout",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_BiomeRoot/D19_BiomeRoot/D19_Vegetation_ExclusionVolumes/Exclusion_lookout",
+            "enabled": false,
+            "is_trigger": true,
+            "position": {
+                "x": -68.0,
+                "y": 6.0,
+                "z": 84.0
+            },
+            "bounds_center": {
+                "x": -68.0,
+                "y": 6.0,
+                "z": 84.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Zone_Port_Entrance",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_AmbienceRoot/D19_AmbienceRoot/D19_AudioZoneContracts/Zone_Port_Entrance",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 112.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 112.0
+            },
+            "bounds_size": {
+                "x": 48.0,
+                "y": 4.0,
+                "z": 24.0
+            }
+        },
+        {
+            "name": "Zone_Market",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_AmbienceRoot/D19_AmbienceRoot/D19_AudioZoneContracts/Zone_Market",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 26.0,
+                "y": 1.0,
+                "z": 62.0
+            },
+            "bounds_center": {
+                "x": 26.0,
+                "y": 1.0,
+                "z": 62.0
+            },
+            "bounds_size": {
+                "x": 36.0,
+                "y": 4.0,
+                "z": 28.0
+            }
+        },
+        {
+            "name": "Zone_Coast",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_AmbienceRoot/D19_AmbienceRoot/D19_AudioZoneContracts/Zone_Coast",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": -58.0,
+                "y": 1.0,
+                "z": -8.0
+            },
+            "bounds_center": {
+                "x": -58.0,
+                "y": 1.0,
+                "z": -8.0
+            },
+            "bounds_size": {
+                "x": 64.0,
+                "y": 4.0,
+                "z": 44.0
+            }
+        },
+        {
+            "name": "Zone_Shipyard",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_AmbienceRoot/D19_AmbienceRoot/D19_AudioZoneContracts/Zone_Shipyard",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 60.0,
+                "y": 1.0,
+                "z": 8.0
+            },
+            "bounds_center": {
+                "x": 60.0,
+                "y": 1.0,
+                "z": 8.0
+            },
+            "bounds_size": {
+                "x": 40.0,
+                "y": 4.0,
+                "z": 28.0
+            }
+        },
+        {
+            "name": "Zone_Night_Overlay",
+            "hierarchy_path": "D19_SaintMargaret_Root/D19_AmbienceRoot/D19_AmbienceRoot/D19_AudioZoneContracts/Zone_Night_Overlay",
+            "enabled": true,
+            "is_trigger": true,
+            "position": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 50.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 50.0
+            },
+            "bounds_size": {
+                "x": 120.0,
+                "y": 4.0,
+                "z": 116.0
+            }
+        },
+        {
+            "name": "D19_R02_TerrainSurface",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_TerrainSurface",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.5799999833106995,
+                "z": 0.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.5799999833106995,
+                "z": 0.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Floor_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 5.400000095367432,
+                "y": 1.2599999904632569,
+                "z": 1.7999999523162842
+            },
+            "bounds_center": {
+                "x": 5.400000095367432,
+                "y": 1.2599999904632569,
+                "z": 1.7999999523162842
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Wall_Back",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 5.400000095367432,
+                "y": 3.559999942779541,
+                "z": 8.625
+            },
+            "bounds_center": {
+                "x": 5.400000095367432,
+                "y": 3.559999942779541,
+                "z": 8.625
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Wall_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -6.424999713897705,
+                "y": 3.559999942779541,
+                "z": 1.7999999523162842
+            },
+            "bounds_center": {
+                "x": -6.424999713897705,
+                "y": 3.559999942779541,
+                "z": 1.7999999523162842
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Wall_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 17.225000381469728,
+                "y": 3.559999942779541,
+                "z": 1.7999999523162842
+            },
+            "bounds_center": {
+                "x": 17.225000381469728,
+                "y": 3.559999942779541,
+                "z": 1.7999999523162842
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Wall_Front_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -1.1500000953674317,
+                "y": 3.559999942779541,
+                "z": -5.024999618530273
+            },
+            "bounds_center": {
+                "x": -1.1500000953674317,
+                "y": 3.559999942779541,
+                "z": -5.024999618530273
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Wall_Front_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 11.950000762939454,
+                "y": 3.559999942779541,
+                "z": -5.024999618530273
+            },
+            "bounds_center": {
+                "x": 11.950000762939454,
+                "y": 3.559999942779541,
+                "z": -5.024999618530273
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Door_Header",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 5.400000095367432,
+                "y": 5.510000228881836,
+                "z": -5.199999809265137
+            },
+            "bounds_center": {
+                "x": 5.400000095367432,
+                "y": 5.510000228881836,
+                "z": -5.199999809265137
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Door_Left_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 4.300000190734863,
+                "y": 3.559999942779541,
+                "z": -5.199999809265137
+            },
+            "bounds_center": {
+                "x": 4.300000190734863,
+                "y": 3.559999942779541,
+                "z": -5.199999809265137
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Door_Right_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 6.5,
+                "y": 3.559999942779541,
+                "z": -5.199999809265137
+            },
+            "bounds_center": {
+                "x": 6.5,
+                "y": 3.559999942779541,
+                "z": -5.199999809265137
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Roof_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 5.400000095367432,
+                "y": 6.139999866485596,
+                "z": 1.7999999523162842
+            },
+            "bounds_center": {
+                "x": 5.400000095367432,
+                "y": 6.139999866485596,
+                "z": 1.7999999523162842
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/MarketVisualPrefab/LOD0_Structural/Roof_Ridge",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 5.400000095367432,
+                "y": 6.440000057220459,
+                "z": 1.7999999523162842
+            },
+            "bounds_center": {
+                "x": 5.400000095367432,
+                "y": 6.440000057220459,
+                "z": 1.7999999523162842
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Floor_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -5.400000095367432,
+                "y": 1.2599999904632569,
+                "z": 2.0
+            },
+            "bounds_center": {
+                "x": -5.400000095367432,
+                "y": 1.2599999904632569,
+                "z": 2.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Wall_Back",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -5.400000095367432,
+                "y": 3.6599998474121095,
+                "z": 8.824999809265137
+            },
+            "bounds_center": {
+                "x": -5.400000095367432,
+                "y": 3.6599998474121095,
+                "z": 8.824999809265137
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Wall_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -14.225000381469727,
+                "y": 3.6599998474121095,
+                "z": 2.0
+            },
+            "bounds_center": {
+                "x": -14.225000381469727,
+                "y": 3.6599998474121095,
+                "z": 2.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Wall_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 3.424999713897705,
+                "y": 3.6599998474121095,
+                "z": 2.0
+            },
+            "bounds_center": {
+                "x": 3.424999713897705,
+                "y": 3.6599998474121095,
+                "z": 2.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Wall_Front_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -10.450000762939454,
+                "y": 3.6599998474121095,
+                "z": -4.824999809265137
+            },
+            "bounds_center": {
+                "x": -10.450000762939454,
+                "y": 3.6599998474121095,
+                "z": -4.824999809265137
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Wall_Front_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -0.34999990463256838,
+                "y": 3.6599998474121095,
+                "z": -4.824999809265137
+            },
+            "bounds_center": {
+                "x": -0.34999990463256838,
+                "y": 3.6599998474121095,
+                "z": -4.824999809265137
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Door_Header",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -5.400000095367432,
+                "y": 5.710000038146973,
+                "z": -5.0
+            },
+            "bounds_center": {
+                "x": -5.400000095367432,
+                "y": 5.710000038146973,
+                "z": -5.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Door_Left_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -6.5,
+                "y": 3.6599998474121095,
+                "z": -5.0
+            },
+            "bounds_center": {
+                "x": -6.5,
+                "y": 3.6599998474121095,
+                "z": -5.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Door_Right_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -4.300000190734863,
+                "y": 3.6599998474121095,
+                "z": -5.0
+            },
+            "bounds_center": {
+                "x": -4.300000190734863,
+                "y": 3.6599998474121095,
+                "z": -5.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Roof_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -5.400000095367432,
+                "y": 6.339999675750732,
+                "z": 2.0
+            },
+            "bounds_center": {
+                "x": -5.400000095367432,
+                "y": 6.339999675750732,
+                "z": 2.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/TavernVisualPrefab/LOD0_Structural/Roof_Ridge",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -5.400000095367432,
+                "y": 6.639999866485596,
+                "z": 2.0
+            },
+            "bounds_center": {
+                "x": -5.400000095367432,
+                "y": 6.639999866485596,
+                "z": 2.0
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Floor_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 1.2599999904632569,
+                "z": 5.599999904632568
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 1.2599999904632569,
+                "z": 5.599999904632568
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Wall_Back",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 3.859999895095825,
+                "z": 12.424999237060547
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 3.859999895095825,
+                "z": 12.424999237060547
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Wall_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -11.824999809265137,
+                "y": 3.859999895095825,
+                "z": 5.599999904632568
+            },
+            "bounds_center": {
+                "x": -11.824999809265137,
+                "y": 3.859999895095825,
+                "z": 5.599999904632568
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Wall_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 11.824999809265137,
+                "y": 3.859999895095825,
+                "z": 5.599999904632568
+            },
+            "bounds_center": {
+                "x": 11.824999809265137,
+                "y": 3.859999895095825,
+                "z": 5.599999904632568
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Wall_Front_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -6.550000190734863,
+                "y": 3.859999895095825,
+                "z": -1.2249999046325684
+            },
+            "bounds_center": {
+                "x": -6.550000190734863,
+                "y": 3.859999895095825,
+                "z": -1.2249999046325684
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Wall_Front_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 6.550000190734863,
+                "y": 3.859999895095825,
+                "z": -1.2249999046325684
+            },
+            "bounds_center": {
+                "x": 6.550000190734863,
+                "y": 3.859999895095825,
+                "z": -1.2249999046325684
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Door_Header",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 6.110000133514404,
+                "z": -1.4000000953674317
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 6.110000133514404,
+                "z": -1.4000000953674317
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Door_Left_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -1.100000023841858,
+                "y": 3.859999895095825,
+                "z": -1.4000000953674317
+            },
+            "bounds_center": {
+                "x": -1.100000023841858,
+                "y": 3.859999895095825,
+                "z": -1.4000000953674317
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Door_Right_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 1.100000023841858,
+                "y": 3.859999895095825,
+                "z": -1.4000000953674317
+            },
+            "bounds_center": {
+                "x": 1.100000023841858,
+                "y": 3.859999895095825,
+                "z": -1.4000000953674317
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Roof_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 6.739999771118164,
+                "z": 5.599999904632568
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 6.739999771118164,
+                "z": 5.599999904632568
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/WarehouseVisualPrefab/LOD0_Structural/Roof_Ridge",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 7.039999961853027,
+                "z": 5.599999904632568
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 7.039999961853027,
+                "z": 5.599999904632568
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Floor_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Floor_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -7.0,
+                "y": 1.2599999904632569,
+                "z": -4.800000190734863
+            },
+            "bounds_center": {
+                "x": -7.0,
+                "y": 1.2599999904632569,
+                "z": -4.800000190734863
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Back",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Wall_Back",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -7.0,
+                "y": 3.9599997997283937,
+                "z": 4.024999618530273
+            },
+            "bounds_center": {
+                "x": -7.0,
+                "y": 3.9599997997283937,
+                "z": 4.024999618530273
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Wall_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -20.825000762939454,
+                "y": 3.9599997997283937,
+                "z": -4.800000190734863
+            },
+            "bounds_center": {
+                "x": -20.825000762939454,
+                "y": 3.9599997997283937,
+                "z": -4.800000190734863
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Wall_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 6.824999809265137,
+                "y": 3.9599997997283937,
+                "z": -4.800000190734863
+            },
+            "bounds_center": {
+                "x": 6.824999809265137,
+                "y": 3.9599997997283937,
+                "z": -4.800000190734863
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Left",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Wall_Front_Left",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -14.550000190734864,
+                "y": 3.9599997997283937,
+                "z": -13.625
+            },
+            "bounds_center": {
+                "x": -14.550000190734864,
+                "y": 3.9599997997283937,
+                "z": -13.625
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Wall_Front_Right",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Wall_Front_Right",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": 0.5500001907348633,
+                "y": 3.9599997997283937,
+                "z": -13.625
+            },
+            "bounds_center": {
+                "x": 0.5500001907348633,
+                "y": 3.9599997997283937,
+                "z": -13.625
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Header",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Door_Header",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -7.0,
+                "y": 6.309999942779541,
+                "z": -13.800000190734864
+            },
+            "bounds_center": {
+                "x": -7.0,
+                "y": 6.309999942779541,
+                "z": -13.800000190734864
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Left_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Door_Left_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -8.100000381469727,
+                "y": 3.9599997997283937,
+                "z": -13.800000190734864
+            },
+            "bounds_center": {
+                "x": -8.100000381469727,
+                "y": 3.9599997997283937,
+                "z": -13.800000190734864
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Door_Right_Post",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Door_Right_Post",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -5.900000095367432,
+                "y": 3.9599997997283937,
+                "z": -13.800000190734864
+            },
+            "bounds_center": {
+                "x": -5.900000095367432,
+                "y": 3.9599997997283937,
+                "z": -13.800000190734864
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Collision",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Roof_Collision",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -7.0,
+                "y": 6.939999580383301,
+                "z": -4.800000190734863
+            },
+            "bounds_center": {
+                "x": -7.0,
+                "y": 6.939999580383301,
+                "z": -4.800000190734863
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "Roof_Ridge",
+            "hierarchy_path": "D19_R02_HarborPresentation/D19_R02_A04_AuthoredBuildingVisuals/ShipyardVisualPrefab/LOD0_Structural/Roof_Ridge",
+            "enabled": false,
+            "is_trigger": false,
+            "position": {
+                "x": -7.0,
+                "y": 7.239999771118164,
+                "z": -4.800000190734863
+            },
+            "bounds_center": {
+                "x": -7.0,
+                "y": 7.239999771118164,
+                "z": -4.800000190734863
+            },
+            "bounds_size": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        },
+        {
+            "name": "D19_TerrainRoot",
+            "hierarchy_path": "D19_R03_HarborPresentation/D19_TerrainRoot",
+            "enabled": true,
+            "is_trigger": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.6299999952316284,
+                "z": 5.0
+            },
+            "bounds_center": {
+                "x": 0.0,
+                "y": 0.6299999952316284,
+                "z": 5.0
+            },
+            "bounds_size": {
+                "x": 32.0,
+                "y": 0.20000004768371583,
+                "z": 24.0
+            }
+        }
+    ]
+}

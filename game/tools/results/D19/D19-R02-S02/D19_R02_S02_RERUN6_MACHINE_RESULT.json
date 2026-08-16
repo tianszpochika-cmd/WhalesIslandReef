@@ -1,0 +1,125 @@
+{
+  "schema": "D19_R02_S02_MACHINE_RESULT_RERUN6_V1",
+  "task": "D19-R02-S02",
+  "rerun": "RERUN6",
+  "conclusion": "PARTIAL",
+  "gate_pass": false,
+  "generated_at": "2026-08-15T21:15:00+08:00",
+  "historical_policy": {
+    "original_partial_preserved": true,
+    "rerun2_preserved": true,
+    "rerun4_preserved": true,
+    "rerun6_is_new_evidence": true
+  },
+  "preconditions": {
+    "d18_s02_r01": "PASS",
+    "d19_r02_a01": "PARTIAL",
+    "d19_r02_a02": "PARTIAL_RERUN7",
+    "d19_r02_a03": "PARTIAL_RERUN3",
+    "d19_r02_a04": "PARTIAL_RERUN5E",
+    "d19_r02_a05": "PASS",
+    "d20_s02_r01_started": false
+  },
+  "scene_baseline": {
+    "scene": "game/Assets/Scenes/InitialHarbor.unity",
+    "scene_sha256_at_rerun6": "2D821BA9850C9F1260F27148B105BF1AF1C7C7F539B1A26E2371357AEB271369",
+    "scene_sha256_before_whitespace_hygiene": "16E001F35234BA066402C0541C1BA89868F8C67424584BAF95A6B0F580F65D61",
+    "scene_modified_by_s02_rerun6": "true_only_trailing_whitespace_hygiene_no_serialized_semantic_change",
+    "integration_prefab": "game/Assets/Prefabs/Environment/D19/Integration/R02/D19_R02_HarborPresentation.prefab",
+    "integration_prefab_sha256": "D0A21A05F4800A0D83971637C40FDDF971BBB5088D8FB13D4520F06046D6BCE3",
+    "scene_visual_owner": "D19-R02-A04 RERUN5E; S02 only consumed the latest scene"
+  },
+  "player_sessions": {
+    "primary_build": {
+      "executable": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_Player_RERUN6.exe",
+      "build_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_BUILD_RERUN6.log",
+      "status": "PASS",
+      "arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"]
+    },
+    "primary_route": {
+      "status": "PARTIAL",
+      "continuous_seconds": 311,
+      "total_with_reload": 365,
+      "input_method": "real Player window keyboard and mouse events",
+      "direct_method_invocation": false,
+      "input_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN6_INPUT.log",
+      "continue_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN6_CONTINUE.log",
+      "route2_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN6_ROUTE2.log",
+      "continue3_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PLAYER_RERUN6_CONTINUE3.log",
+      "process_closed_after_capture": true
+    }
+  },
+  "route": {
+    "menu_new_game": "PASS",
+    "spawn_landing": "PASS_OBSERVED",
+    "market_open_close": "PASS",
+    "warehouse": "NOT_VERIFIED",
+    "tavern_npc": "NOT_VERIFIED",
+    "dock_berth": "PARTIAL",
+    "boarding": "PASS",
+    "departure": "PASS_LOGGED",
+    "voyage_advance": "PASS_LOGGED",
+    "return_settle": "PASS_LOGGED_IN_ROUTE2",
+    "disembark": "PASS",
+    "save": "PASS_OBSERVED",
+    "exit": "PASS",
+    "continue_reload": "PASS",
+    "required_route_complete": false,
+    "reason_not_complete": "Warehouse/tavern/NPC and a continuous physical walk route through every required service node were not demonstrated; route2 did close the voyage/return/save/reload loop.",
+    "route_log": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_RERUN6_ROUTE_LOG.json"
+  },
+  "performance": {
+    "status": "INCOMPLETE",
+    "fresh_process_samples": {
+      "low": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_LOW_RERUN6.json",
+      "medium": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_MEDIUM_RERUN6.json",
+      "high": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERF_HIGH_RERUN6.json"
+    },
+    "warmup_sample_each": "30s + 60s",
+    "alive_samples_each": "60/60",
+    "actual_1920x1080_backbuffer_verified": false,
+    "runtime_quality_tier_verified": false,
+    "fps_available": false,
+    "one_percent_low_available": false,
+    "frame_time_available": false,
+    "gc_available": false,
+    "aggregate": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN6.json"
+  },
+  "visual": {
+    "status": "PARTIAL",
+    "fresh_route_frames": 22,
+    "fixed_camera_matrix": 0,
+    "weather_variants": 0,
+    "pink_missing_material": "not observed",
+    "large_white_plane": "not observed",
+    "flat_blocky_terrain": "observed",
+    "visual_qa": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_VISUAL_QA_RERUN6.json"
+  },
+  "regression": {
+    "d19_editmode": {"total": 34, "passed": 34, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D19_EDITMODE_RERUN6.xml"},
+    "d19_playmode": {"total": 9, "passed": 8, "failed": 0, "skipped": 1, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D19_PLAYMODE_RERUN6.xml"},
+    "d17_playmode": {"total": 7, "passed": 7, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_D17_PLAYMODE_RERUN6.xml"},
+    "d2_editmode": {"total": 3, "passed": 3, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN7.xml"},
+    "d2_playmode": {"total": 2, "passed": 2, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN7.xml"},
+    "d18_intake_audit": {"status": "PASS", "result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_INTAKE_AUDIT_RERUN6.json"},
+    "d18_manifest_audit": {"status": "PASS", "result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PACK_MANIFEST_AUDIT_RERUN6.json"},
+    "d18_python_tests": {"total": 11, "passed": 11, "failed": 0, "command": "python -m unittest -q tools.tests.test_d18_prefab_candidate_intake tools.tests.test_d18_asset_manifest_audit"},
+    "unity_or_player_left_running": false
+  },
+  "resource_state": {
+    "local_development_ready": 0,
+    "release_approved": 0,
+    "resource_states_changed": false
+  },
+  "blocking_items": [
+    {"id": "D19-R02-S02-RERUN6-B01", "severity": "BLOCKING", "owner": "D19 route/scene integration", "reason": "Warehouse, tavern/NPC and physical walk-through route remain unverified; service geometry/markers are not visibly established."},
+    {"id": "D19-R02-S02-RERUN6-B02", "severity": "BLOCKING", "owner": "D19 visual repair", "reason": "Fresh Player views still show flat brown terrain and block-like props; 14 fixed cameras and weather variants were not collected."},
+    {"id": "D19-R02-S02-RERUN6-B03", "severity": "BLOCKING", "owner": "D19 performance telemetry", "reason": "Three process samplers completed, but 1920x1080 backbuffer, runtime tier switch, FPS, 1% low and frame-time/GC metrics are unavailable."}
+  ],
+  "d20_s02_r01_release": {"allowed": false, "reason": "D19-R02-S02 remains PARTIAL and is a hard prerequisite."},
+  "git_diff_check": {
+    "status": "PASS",
+    "command": "git diff --check",
+    "note": "Removed three trailing-whitespace-only YAML endings in the permitted final acceptance workspace hygiene step; no object, component, prefab, interaction or serialized value was changed."
+  }
+}

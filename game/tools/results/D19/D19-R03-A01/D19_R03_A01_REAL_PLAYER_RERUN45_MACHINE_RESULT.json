@@ -1,0 +1,46 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_V4",
+  "task": "D19-R03-A01",
+  "run_id": "RERUN45",
+  "conclusion": "PARTIAL",
+  "player": {
+    "real_windows_player": true,
+    "build": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN45.exe",
+    "requested_resolution": "1920x1080",
+    "duration_seconds": 120.1856460571289,
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "movement_input_observed": true,
+    "interaction_input_observed": true,
+    "save_input_observed": false,
+    "current_run_screenshot_count": 2,
+    "screenshot_prefix": "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun45_"
+  },
+  "landmarks_reached": ["building:tavern_santa_margarita", "anchor.dock.primary", "anchor.berth.primary"],
+  "landmarks_not_reached": [
+    "anchor.player.spawn",
+    "building:market_santa_margarita",
+    "building:warehouse_santa_margarita",
+    "building:shipyard_santa_margarita",
+    "anchor.return.harbor"
+  ],
+  "evidence": {
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN45.json",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN45_PLAYER.log",
+    "build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD_RERUN45_UNITY.log",
+    "screenshots": "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun45_00.png..route_rerun45_01.png"
+  },
+  "integration_fix": {
+    "legacy_duplicate_dock_colliders_disabled": 3,
+    "legacy_terrain_colliders_disabled": 1,
+    "ship_position_runtime": [0.0, 0.0, 0.0],
+    "stable_ids_and_d6_ground_owners_retained": true
+  },
+  "blocking_reasons": [
+    "This short independent Player run did not complete the required 300-second menu-to-market-to-warehouse-to-tavern-to-dock-to-board-to-depart-to-return-to-save/reload route.",
+    "Save input was not observed and no same-run Continue reload was executed.",
+    "The run observed movement and reached the tavern/dock/berth, but did not establish the full player route or three-quality performance evidence."
+  ],
+  "historical_note": "RERUN45 is a new partial run after disabling the single legacy D19-A01 terrain collider in the R03 integration bridge; RERUN44 and earlier results remain preserved."
+}

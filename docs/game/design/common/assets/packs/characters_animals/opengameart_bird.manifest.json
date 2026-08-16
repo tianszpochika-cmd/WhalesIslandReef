@@ -1,0 +1,31 @@
+{
+  "manifest_kind": "d18_asset_pack_manifest",
+  "schema_version": 1,
+  "source_id": "source_opengameart",
+  "pack_id": "pack_opengameart_bird_d18_a04_v1",
+  "title": "OpenGameArt Bird — D18-A04 bird coverage candidate",
+  "author": "mess110",
+  "official_page": "https://opengameart.org/content/bird-1",
+  "download_url": "https://opengameart.org/sites/default/files/bird.tar.gz",
+  "downloaded_at": "2026-08-14",
+  "archive_name": "opengameart_bird.tar.gz",
+  "sha256": "BE008AE2DAB3C25D2F61632E2E77060AFD4CAA8AB699FDFB0DF6054824EEA567",
+  "license_id": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/LICENSE",
+  "attribution_required": false,
+  "commercial_use": true,
+  "modification_allowed": true,
+  "source_redistribution": "allowed",
+  "build_distribution": "pending",
+  "category": ["animal", "bird", "animation", "source_only"],
+  "file_count": 1,
+  "unity_object_count": 0,
+  "review_status": "Candidate",
+  "import_status": "NotImported",
+  "candidate_files": [
+    { "path": "game/Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/bird.blend", "role": "candidate_bird_source_only", "target_id": "animal_opengameart_bird_v01" }
+  ],
+  "runtime_consumers": [],
+  "notes": "The official page identifies a rigged/animated bird, CC0, with pose/attack/idle/flap/loony/sing1/sing2, but the downloaded asset is Blender-only. It is retained as source-only to cover bird discovery without pretending Unity import success; no FBX conversion was made, no Blender tool was available, and build_distribution remains pending. The archive SHA-256 is recorded from the downloaded tar.gz. Do not use in runtime or count as an imported model."
+}

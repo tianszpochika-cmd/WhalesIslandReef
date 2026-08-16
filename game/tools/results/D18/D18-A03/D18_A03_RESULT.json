@@ -1,0 +1,111 @@
+{
+  "task": "D18-A03",
+  "status": "PASS",
+  "packet_status": "ImportVerified",
+  "generated_at": "2026-08-14",
+  "preconditions": {
+    "D18-S01": "PASS",
+    "D18-A01": "PASS",
+    "D18-A02": "PASS"
+  },
+  "source_counts": {
+    "kenney_models": 329,
+    "polyhaven_texture_files": 8,
+    "candidate_total": 337
+  },
+  "import_verified_sample_count": 50,
+  "unity_audit": "game/tools/results/D18/D18-A03/D18_A03_UNITY_IMPORT_AUDIT.json",
+  "manifest_audit": {
+    "path": "game/tools/results/D18/D18-A03/D18_A03_MANIFEST_AUDIT.json",
+    "status": "PASS",
+    "error_count": 0
+  },
+  "missing_reference_check": {
+    "path": "game/tools/results/D18/D18-A03/D18_A03_MISSING_REFERENCE_CHECK.json",
+    "status": "PASS",
+    "missing_script_count": 0,
+    "missing_reference_count": 0,
+    "runtime_consumer_count": 0
+  },
+  "manifests": [
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/kenney_nature_kit_d18_a03.manifest.json",
+      "pack_id": "pack_kenney_nature_kit_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 329,
+      "unity_object_count": 329
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    },
+    {
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1",
+      "review_status": "ImportVerified",
+      "import_status": "ImportVerified",
+      "file_count": 1,
+      "unity_object_count": 1
+    }
+  ],
+  "collision_lod_interaction": "not authored; Prefab owner must verify later",
+  "initial_harbor_integrated": false,
+  "release_approved": false,
+  "unfulfilled": [
+    "No shallow-water surface shader/material was authored; Coral Mud 01 covers exposed seabed only.",
+    "No Prefab collision, LODGroup or interaction anchor exists in the candidate packet."
+  ]
+}

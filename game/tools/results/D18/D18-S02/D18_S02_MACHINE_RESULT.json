@@ -1,0 +1,33 @@
+{
+  "task": "D18-S02",
+  "status": "BLOCKED",
+  "generated_on": "2026-08-14",
+  "manifest_audit": {
+    "actual_manifest_count": 25,
+    "pass_count": 25,
+    "error_count": 0,
+    "issue_count": 0,
+    "candidate_file_count": 1857,
+    "existing_candidate_file_count": 1857,
+    "duplicate_pack_id_count": 0,
+    "duplicate_candidate_path_count": 0,
+    "license_evidence_missing_count": 0,
+    "archive_sha256_invalid_count": 0,
+    "runtime_consumer_reference_count": 0,
+    "review_status_counts": {"Candidate": 9, "ImportVerified": 16},
+    "import_status_counts": {"ImportVerified": 24, "NotImported": 1},
+    "license_counts": {"CC0-1.0": 25}
+  },
+  "unity_import_evidence": {
+    "A02": {"status": "PASS", "files": 7, "errors": 0, "warnings": 7, "editmode_tests": "6/6"},
+    "A03": {"status": "PASS", "files": 337, "errors": 0, "warnings": 235},
+    "A04": {"status": "PASS", "files": 24, "errors": 0, "warnings": 25},
+    "A05": {"status": "PASS", "models": 151, "errors": 0, "warnings": 151},
+    "A06": {"status": "PASS", "files": 1337, "errors": 0, "warnings": 37}
+  },
+  "sampling": {"categories": 10, "samples_per_category": 3, "sample_count": 30, "directory_scan": "PASS", "runtime_save_interaction_behavior": "NOT_RUN_NO_RUNTIME_CONSUMER", "not_imported_edge_cases": 1},
+  "replacement_map": {"input_placeholder_count": 2264, "output_record_count": 2264, "mapped_count": 1107, "unmapped_count": 1157, "audit_status": "PASS", "registry_digest_unchanged": true, "local_development_ready_count": 0, "release_approved_count": 0},
+  "storage": {"manifest_candidate_bytes": 130828371, "candidate_root_bytes_including_meta": 136473038, "external_cache_bytes": 4753570, "candidate_payload_duplicate_hash_groups": 30, "duplicate_model_hash_groups": 7, "candidate_archives_in_candidate_root": 0, "git_lfs_installed": true, "git_lfs_version": "3.5.1", "remote_quota_confirmed": false, "gitattributes_present": false},
+  "p0_gate": {"status": "BLOCKED", "required_local_development_ready_categories": 8, "actual_local_development_ready_categories": 0, "sea_weather_candidate": false, "runtime_consumers_verified": false, "initial_harbor_integrated": false},
+  "blocking_reasons": ["zero_LocalDevelopmentReady_candidates", "P0_prefab_collision_anchor_lod_animation_consumer_evidence_missing", "sea_weather_candidate_missing", "bird_source_not_imported", "D16_external_gate_and_human_review_pending"]
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Failed(Child)" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.0733709">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="374" result="Failed" site="Child" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.073371" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1447" name="Save.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/Save.Tests.dll" runstate="Runnable" testcasecount="336" result="Failed" site="Child" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.041118" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="32044" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1471" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="20" result="Failed" site="Child" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.037430" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1472" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="20" result="Failed" site="Child" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.037159" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1473" name="D19Hud" fullname="Whalebone.Tests.D19Hud" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.036499" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1321" name="D19R02A01HudTests" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.035029" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1322" name="PrimaryHudPolicyHidesLegacyCanvasesAndKeepsRouteHudVisible" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests.PrimaryHudPolicyHidesLegacyCanvasesAndKeepsRouteHudVisible" methodname="PrimaryHudPolicyHidesLegacyCanvasesAndKeepsRouteHudVisible" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" seed="1863708025" result="Passed" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.015556" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1324" name="RouteHudDoesNotInventFeedbackText" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests.RouteHudDoesNotInventFeedbackText" methodname="RouteHudDoesNotInventFeedbackText" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" seed="1923649373" result="Failed" label="Error" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.006087" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.Reflection.TargetInvocationException : Exception has been thrown by the target of an invocation.
+  ----> System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at Whalebone.Tests.D19Hud.D19R02A01HudTests.RouteHudDoesNotInventFeedbackText () [0x0002e] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D19Hud\D19R02A01HudTests.cs:59 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+--NullReferenceException
+  at Whalebone.Gameplay.UI.D19RouteHud.D19RouteHud.UpdateHud (System.String hint, System.String status, System.String feedback) [0x00000] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Scripts\Gameplay\UI\D19RouteHud\D19RouteHud.cs:93 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <4449e9424e7e4d4d81a660907c68cb97>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1323" name="TemporaryTradeCanvasIsMutuallyExclusiveAndRestoresPrimaryHud" fullname="Whalebone.Tests.D19Hud.D19R02A01HudTests.TemporaryTradeCanvasIsMutuallyExclusiveAndRestoresPrimaryHud" methodname="TemporaryTradeCanvasIsMutuallyExclusiveAndRestoresPrimaryHud" classname="Whalebone.Tests.D19Hud.D19R02A01HudTests" runstate="Runnable" seed="563405471" result="Passed" start-time="2026-08-15 06:10:43Z" end-time="2026-08-15 06:10:43Z" duration="0.001030" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

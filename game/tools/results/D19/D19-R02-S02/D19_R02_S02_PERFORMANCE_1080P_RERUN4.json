@@ -1,0 +1,29 @@
+{
+  "schema": "D19_R02_S02_PERFORMANCE_1080P_RERUN4_V1",
+  "task": "D19-R02-S02",
+  "rerun": "RERUN4",
+  "status": "INCOMPLETE",
+  "fresh_three_tier_probe": false,
+  "player_route_session_seconds": 312,
+  "player_arguments": ["-screen-width", "1920", "-screen-height", "1080", "-screen-fullscreen", "0", "-force-d3d11"],
+  "requested_resolution": "1920x1080",
+  "actual_backbuffer_resolution_verified": false,
+  "runtime_quality_tier_verified": false,
+  "vsync_verified": false,
+  "one_percent_low_available": false,
+  "p95_frame_time_available": false,
+  "cpu_frame_time_available": false,
+  "gpu_frame_time_available": false,
+  "gc_alloc_available": false,
+  "historical_real_player_baseline": {
+    "source": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_PERFORMANCE_1080P_RERUN2.json",
+    "low_average_fps": 59.9436264038086,
+    "low_minimum_fps": 34.567985534668,
+    "medium_average_fps": 59.9512100219727,
+    "medium_minimum_fps": 36.8567123413086,
+    "high_average_fps": 59.9435386657715,
+    "high_minimum_fps": 34.5939331054688,
+    "note": "These are preserved RERUN2 real Player probe values, not silently relabeled as fresh RERUN4 evidence."
+  },
+  "reason": "RERUN4 focused on input/boarding/return/save/reload after D2/D3 compatibility fixes. Because no new exact three-tier frame probe was produced in this rerun, the performance gate remains open and the result cannot be PASS."
+}

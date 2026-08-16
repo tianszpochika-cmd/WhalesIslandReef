@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.0591685">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="386" result="Failed" site="Child" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.059169" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1028" name="D20.Wildlife.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D20.Wildlife.Tests.dll" runstate="Runnable" testcasecount="15" result="Failed" site="Child" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.051318" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="28984" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1031" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.050827" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1032" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.050620" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1033" name="D20" fullname="WhalesIslandReef.Tests.D20" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.050437" total="6" passed="5" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1016" name="D20A01PlayerVisualTests" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.037503" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1017" name="CandidatePrefabLoadsWithoutGameplayComponents" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabLoadsWithoutGameplayComponents" methodname="CandidatePrefabLoadsWithoutGameplayComponents" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="66417836" result="Passed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.016963" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" methodname="CandidatePrefabTextHasNoRuntimeScriptOrAnimatorBinding" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="638328109" result="Passed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.000813" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1018" name="InterfaceContractAndStableFallbackArePresent" fullname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests.InterfaceContractAndStableFallbackArePresent" methodname="InterfaceContractAndStableFallbackArePresent" classname="WhalesIslandReef.Tests.D20.D20A01PlayerVisualTests" runstate="Runnable" seed="2039316478" result="Passed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.010294" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1020" name="D20A01R01PlayerVisualTests" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.012056" total="3" passed="2" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1023" name="R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" methodname="R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="609416429" result="Failed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.003020" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: String containing "only_one_independent_humanoid_body_direction"
+  But was:  "{
+  "schema_version": 2,
+  "task": "D20-A01-R01",
+  "status": "PARTIAL",
+  "read_only_contract": true,
+  "consumer": "D20-A02-R01",
+  "consumer_must_not_write_back": true,
+  "rig_interface_ready": true,
+  "base_prefab_path": "Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_HumanoidFemale_R01.prefab",
+  "repository_prefab_path": "game/Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_HumanoidFemale_R01.prefab",
+  "avatar_asset_path": "game/Assets/Art/Models/Characters/D20/Player/D20_PlayerHumanoidAvatar_R01.asset",
+  "avatar_asset_key": "asset_d20_player_humanoid_avatar_female_r01",
+  "physical_root_contract": {
+    "owner": "D17/D2RuntimeBootstrap",
+    "runtime_root_name": "D2_PlayerAvatar",
+    "root_scale": [1, 1, 1],
+    "root_has_renderer": false,
+    "root_has_character_controller": false,
+    "visual_normalization_owner": "D20-A01-R01 candidate prefab; D2 remains runtime physical-root owner",
+    "target_visual_height_m": 1.8,
+    "height_tolerance_m": 0.03,
+    "character_controller_reference": {
+      "height_m": 1.8,
+      "radius_m": 0.32,
+      "center_y_m": 0.9
+    },
+    "camera_target_name": "CameraTarget",
+    "camera_target_y_m": 1.1,
+    "interaction_anchor_names": [
+      "D20Socket_Head",
+      "D20Socket_Hand_L",
+      "D20Socket_Hand_R",
+      "D20Socket_Foot_L",
+      "D20Socket_Foot_R",
+      "D20Socket_Carry",
+      "D20Socket_Fish",
+      "D20Socket_Boarding",
+      "D20Socket_Disembark",
+      "D20Socket_Helm"
+    ],
+    "anchor_status": "pure Transform sockets in candidate visual prefab; D17/D2 owns runtime physics and gameplay anchors"
+  },
+  "skeleton_avatar": {
+    "source_manifest_id": "pack_quaternius_universal_base_characters_standard_v01",
+    "source_intake_id": "intake_a99050649c3cc24cb8a7",
+    "content_id": "candidate_superhero_female_fullbody_r03p",
+    "candidate_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+    "main_project_source_import": "Generic/NoAvatar",
+    "derived_avatar_asset": "game/Assets/Art/Models/Characters/D20/Player/D20_PlayerHumanoidAvatar_R01.asset",
+    "animation_type": "Humanoid derived from admitted skeleton",
+    "avatar_setup": "AvatarBuilder explicit mapping; source candidate metadata unchanged",
+    "avatar_present": true,
+    "avatar_valid": true,
+    "avatar_is_human": true,
+    "avatar_evidence": "game/tools/results/D20/D20-A01-R01/D20_A01_R01_EDITOR_AUDIT.json",
+    "root_motion": false
+  },
+  "usable_resource_keys": [
+    {
+      "resource_key": "candidate_superhero_female_fullbody_r03p",
+      "kind": "intake_eligible_model",
+      "path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+      "manifest_id": "pack_quaternius_universal_base_characters_standard_v01",
+      "intake_id": "intake_a99050649c3cc24cb8a7",
+      "intake_eligible": true,
+      "status": "candidate_work_prefab_only"
+    },
+    {
+      "resource_key": "asset_d20_player_humanoid_avatar_female_r01",
+      "kind": "project_owned_derived_avatar",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/D20_PlayerHumanoidAvatar_R01.asset",
+      "source": "candidate_superhero_female_fullbody_r03p skeleton",
+      "status": "candidate_work_prefab_only"
+    }
+  ],
+  "candidate_material_keys": [
+    {
+      "resource_key": "asset_d20_player_skin_neutral_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerSkin_Neutral.mat",
+      "status": "bound_to_R01_work_prefab"
+    },
+    {
+      "resource_key": "asset_d20_player_skin_warm_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerSkin_Warm.mat",
+      "status": "candidate_material_not_bound_as_second_body"
+    },
+    {
+      "resource_key": "asset_d20_player_hair_brown_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerHair_Brown.mat",
+      "status": "candidate_material_not_bound_without_hair_geometry"
+    },
+    {
+      "resource_key": "asset_d20_player_hair_black_v01",
+      "path": "game/Assets/Art/Models/Characters/D20/Player/Materials/D20_PlayerHair_Black.mat",
+      "status": "candidate_material_not_bound_without_hair_geometry"
+    }
+  ],
+  "appearance_resource_interface": {
+    "writer": "D10AppearanceSystem",
+    "request_entry": "D10AppearanceRuntimeBootstrap",
+    "supported_slot_enum": ["Body", "Hair", "Hat", "Top", "Bottom", "Coat", "Shoes", "Gloves", "Accessory", "CareerEquipment", "Injury"],
+    "state_preservation": "appearance_selection_must_not_reset_D2_or_save_state",
+    "missing_resource_behavior": "D10 MissingResourcePlaceholder with concrete asset ID; then stable D17 fallback"
+  },
+  "variant_counts": {
+    "independent_body_directions_verified": 1,
+    "independent_body_directions_target": 2,
+    "independent_hair_geometry_verified": 0,
+    "hair_slots_target": 6,
+    "era_reasonable_outfit_combinations_verified": 0,
+    "outfit_combinations_target": 8,
+    "controlled_skin_material_candidates": 2,
+    "controlled_hair_material_candidates": 2
+  },
+  "available_variants": [
+    {
+      "variant_id": "player_visual_humanoid_female_r01",
+      "resource_key": "candidate_superhero_female_fullbody_r03p",
+      "prefab_path": "Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_HumanoidFemale_R01.prefab",
+      "independent_model": true,
+      "avatar_ready": true,
+      "era_ready": false,
+      "height_m": 1.8,
+      "renderer_count": 3,
+      "lod_group_count": 1,
+      "socket_count": 10
+    }
+  ],
+  "missing_variants": [
+    {
+      "kind": "second_body_or_gender_direction",
+      "reason": "Only one admitted Humanoid candidate is available; no second independent body is counted."
+    },
+    {
+      "kind": "hair_geometry",
+      "reason": "No six independently switchable player hair meshes are proven in the admitted player_visual_core set."
+    },
+    {
+      "kind": "era_outfit_geometry",
+      "reason": "No eight independent 1675-tagged outfit combinations are proven; only audited material slots are available."
+    }
+  ],
+  "stable_fallback": {
+    "kind": "D17_programmatic_fallback",
+    "owner": "D2FallbackHumanoidBuilder/D2CharacterController",
+    "trigger": "missing_resource_or_unverified_avatar",
+    "preserves_gameplay_state": true,
+    "preserves_appearance_history": true,
+    "writes_save_or_identity": false
+  },
+  "promotion_status": "Candidate_only_D18-S03_required",
+  "formal_scene_consumers": 0,
+  "local_development_ready": false,
+  "release_approved": false
+}
+"
+]]></message>
+                  <stack-trace><![CDATA[at NUnit.Framework.StringAssert.Contains (System.String expected, System.String actual, System.String message, System.Object[] args) [0x00007] in <f577cd9686154d6ab10efd7e65e64366>:0
+at NUnit.Framework.StringAssert.Contains (System.String expected, System.String actual) [0x00000] in <f577cd9686154d6ab10efd7e65e64366>:0
+at WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01InterfaceKeepsMissingVariantTruthAndRuntimePromotionBoundary () [0x0002a] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D20\D20A01R01PlayerVisualTests.cs:67
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1022" name="R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" methodname="R01PrefabHasTenPureTransformSocketsAndNoGameplayComponents" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="1164645205" result="Passed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.003472" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="R01PrefabUsesRealHumanoidAvatarAndD20Height" fullname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests.R01PrefabUsesRealHumanoidAvatarAndD20Height" methodname="R01PrefabUsesRealHumanoidAvatarAndD20Height" classname="WhalesIslandReef.Tests.D20.D20A01R01PlayerVisualTests" runstate="Runnable" seed="1114830672" result="Passed" start-time="2026-08-15 08:01:29Z" end-time="2026-08-15 08:01:29Z" duration="0.004544" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

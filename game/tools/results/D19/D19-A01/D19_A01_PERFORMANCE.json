@@ -1,0 +1,34 @@
+{
+  "task": "D19-A01",
+  "status": "RECORDED_STATIC_BUDGET",
+  "measurement_mode": "Unity batchmode asset and scene budget probe",
+  "target_device_profiled": false,
+  "target_device_profile_note": "CPU/GPU frame time, runtime GC and peak memory require a target-device PlayMode capture; this Work-scene task does not claim those values.",
+  "terrain": {
+    "heightmap_resolution": 257,
+    "alphamap_resolution": 256,
+    "visual_mesh_vertices": 4485,
+    "visual_mesh_triangles": 8704,
+    "navmesh_source_vertices": 4485,
+    "navmesh_source_triangles": 8704,
+    "terrain_size_m": [256.0, 32.0, 272.0]
+  },
+  "scene": {
+    "prefab_roots": 8,
+    "external_model_instances": 6,
+    "representative_collision_contracts": 7,
+    "validation_screenshot_resolution": [1280, 720],
+    "generated_work_assets_bytes": 1762474
+  },
+  "budgets_and_follow_up": {
+    "d18_1080p_frame_budget_ms": 16.67,
+    "d18_same_screen_entity_budget": 80,
+    "d18_terrain_visual_mesh_triangle_budget": 30000,
+    "observed_static_mesh_triangle_budget_pass": true,
+    "cpu_gpu_gc_memory_runtime_result": "PENDING_D19-S02_DEVICE_PLAYMODE_CAPTURE",
+    "over_limit_action": "D19-S02 records a profiler capture, then reduces visual mesh/LOD or streaming scope without changing collision, NavMesh or saved facts."
+  },
+  "formal_initial_harbor_modified": false,
+  "local_development_ready": false,
+  "release_approved": false
+}

@@ -1,0 +1,48 @@
+{
+  "task": "D18-A01",
+  "date": "2026-08-14",
+  "conclusion": "PASS",
+  "tool": "tools/d18_asset_manifest_audit.py",
+  "read_only": true,
+  "registry_modified": false,
+  "real_candidate_audit": {
+    "status": "PASS",
+    "manifest_count": 2,
+    "error_count": 0,
+    "output": "game/tools/results/D18/D18-A01/d18_asset_manifest_audit.json"
+  },
+  "fixture_audit": {
+    "status": "BLOCKED",
+    "fixture_count": 7,
+    "error_count": 14,
+    "output": "game/tools/results/D18/D18-A01/d18_asset_manifest_fixture_audit.json",
+    "covered_failures": [
+      "missing_field",
+      "sha256_format_or_missing",
+      "illegal_state_transition",
+      "license_evidence_broken",
+      "candidate_path_escape",
+      "unapproved_runtime_reference",
+      "same_file_multiple_sources"
+    ]
+  },
+  "unit_tests": {
+    "command": "python -m unittest tools.tests.test_d18_asset_manifest_audit -v",
+    "passed": 8,
+    "failed": 0
+  },
+  "official_source_review_date": "2026-08-14",
+  "git_lfs": {
+    "installed": true,
+    "version": "3.5.1",
+    "remote_quota_confirmed": false,
+    "gitattributes_changed": false,
+    "cache_ignore_rules_added": true
+  },
+  "scope_limits": [
+    "No Unity scene, Prefab, Registry, Systems, contracts, server or web changes",
+    "No download or import performed by D18-A01; six catalog-only packs remain Candidate/NotImported by design",
+    "No Approved or ReleaseApproved inferred by the tool"
+  ],
+  "pending_catalog_entries_are_non_blocking": true
+}

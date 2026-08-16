@@ -1,0 +1,27 @@
+{
+  "task": "D18-S02-v2",
+  "status": "PASS",
+  "manifest_count": 29,
+  "candidate_file_total": 1894,
+  "intake_eligible_file_total": 1674,
+  "intake_eligible_manifest_total": 16,
+  "excluded_manifest_total": 13,
+  "errors": [],
+  "resource_state_snapshot": {
+    "local_development_ready_count": 0,
+    "release_approved_count": 0,
+    "source_catalog_unchanged": true
+  },
+  "cycle_fix": {
+    "d18_s02_role": "admission and controlled development unlock",
+    "d18_s03_role": "runtime consumer and LocalDevelopmentReady promotion gate",
+    "d19_s01_allowed_after_v2_pass": true,
+    "d23_requires_d18_s03_pass": true
+  },
+  "catalog_validation": {
+    "status": "PASS",
+    "entry_count": 1674,
+    "duplicate_or_path_errors": [],
+    "forbidden_promotion_fields_detected": false
+  }
+}

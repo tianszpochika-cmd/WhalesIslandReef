@@ -1,0 +1,108 @@
+{
+    "task": "D20-A02-R01",
+    "controller_path": "game/Assets/Animations/D20/Player/D20_PlayerAnimation.controller",
+    "status": "PASS",
+    "root_motion": false,
+    "states": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Jump",
+        "Fall",
+        "Land",
+        "Interact",
+        "Talk",
+        "Carry",
+        "Fish",
+        "Board",
+        "Disembark",
+        "Helm",
+        "Hit",
+        "Recover"
+    ],
+    "parameters": [
+        "Speed01:Float",
+        "VerticalSpeed:Float",
+        "Grounded:Bool",
+        "InteractionActive:Bool",
+        "ActionHash:Int",
+        "Paused:Bool"
+    ],
+    "clips": [
+        {
+            "state": "Idle",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Walk",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Run",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Jump",
+            "curve_count": 5,
+            "loop": false
+        },
+        {
+            "state": "Fall",
+            "curve_count": 5,
+            "loop": false
+        },
+        {
+            "state": "Land",
+            "curve_count": 5,
+            "loop": false
+        },
+        {
+            "state": "Interact",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Talk",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Carry",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Fish",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Board",
+            "curve_count": 5,
+            "loop": false
+        },
+        {
+            "state": "Disembark",
+            "curve_count": 5,
+            "loop": false
+        },
+        {
+            "state": "Helm",
+            "curve_count": 5,
+            "loop": true
+        },
+        {
+            "state": "Hit",
+            "curve_count": 5,
+            "loop": false
+        },
+        {
+            "state": "Recover",
+            "curve_count": 5,
+            "loop": false
+        }
+    ]
+}

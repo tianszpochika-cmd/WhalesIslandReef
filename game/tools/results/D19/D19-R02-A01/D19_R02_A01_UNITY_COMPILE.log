@@ -1,0 +1,521 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-15T05:32:41.0403687Z"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-15T05:32:41Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-logFile
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-R02-A01\D19_R02_A01_UNITY_COMPILE.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [34188]  Target information:
+
+Player connection [34188]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 882358700 [EditorId] 882358700 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34188] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34188] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 24864, path: "C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              682cc5188f2a4fecb4bafd9813e904ea
+  Correlation Id:          32f54cd3b0b42de4a0f8c4a66011e94d
+  External correlation Id: 6806424002988191289
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.00s, validation: 0.00s, handshake: 0.03s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-15T05:32:41.0734459Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T20:21:21Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T20:21:21Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 0.04s
+[Package Manager] Connected to IPC stream "Upm-34420" after 0.2 seconds.
+Library Redirect Path: Library/
+FMOD initialized on nosound output
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56420
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001581 seconds.
+- Loaded All Assemblies, in  0.215 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.196 seconds
+Domain Reload Profiling: 410ms
+	BeginReloadAssembly (56ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (95ms)
+		LoadAssemblies (55ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (93ms)
+			TypeCache.Refresh (91ms)
+				TypeCache.ScanAssembly (83ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (196ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (174ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (34ms)
+			ProcessInitializeOnLoadAttributes (88ms)
+			ProcessInitializeOnLoadMethodAttributes (33ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T20:21:21Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Assembly for Assembly Definition File 'Assets/Tests/EditMode/D19/D19A02.Tests.asmdef' will not be compiled, because it has no scripts associated with it.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:LogFormat (UnityEngine.LogType,string,object[])
+UnityEngine.Debug:LogWarningFormat (string,object[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:WarnIfThereAreAssembliesWithoutAnyScripts (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings,UnityEditor.Scripting.ScriptCompilation.ScriptAssembly[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScriptsWithSettings (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface/<>c__DisplayClass21_0:<CompileScripts>b__0 ()
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:EmitExceptionAsError<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus> (System.Func`1<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus>,UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 4s169ms
+[737/959    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[951/959    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+Assets\Scripts\Gameplay\UI\D19RouteHud\D19RouteHudManager.cs(26,20): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scripts\Gameplay\UI\D19RouteHud\D19RouteHudManager.cs(32,30): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scenes\D19\Work\D19A01TerrainRuntimeProbe.cs(31,27): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scenes\D19\Work\D19A01TerrainRuntimeProbe.cs(38,56): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scenes\D19\Work\D19A01TerrainRuntimeProbe.cs(66,27): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+[952/959    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+Assets\Editor\D19Water\D19WaterWorkBuilder.cs(343,42): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Editor\D19A01\D19A01TerrainBuilder.cs(389,93): warning CS0618: 'StaticEditorFlags.NavigationStatic' is obsolete: 'Enum member StaticEditorFlags.NavigationStatic has been deprecated. The precise selection of the objects is now done using NavMeshBuilder.CollectSources() and NavMeshBuildMarkup.'
+[953/959    1s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 130 defines and 324 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[954/959    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[955/959    1s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 132 defines and 309 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[956/959    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[957/959    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+[958/959    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (4.15 seconds), 9 items updated, 959 evaluated
+Assets\Scripts\Gameplay\UI\D19RouteHud\D19RouteHudManager.cs(26,20): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Gameplay\UI\D19RouteHud\D19RouteHudManager.cs(32,30): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scenes\D19\Work\D19A01TerrainRuntimeProbe.cs(31,27): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scenes\D19\Work\D19A01TerrainRuntimeProbe.cs(38,56): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scenes\D19\Work\D19A01TerrainRuntimeProbe.cs(66,27): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Editor\D19Water\D19WaterWorkBuilder.cs(343,42): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Editor\D19A01\D19A01TerrainBuilder.cs(389,93): warning CS0618: 'StaticEditorFlags.NavigationStatic' is obsolete: 'Enum member StaticEditorFlags.NavigationStatic has been deprecated. The precise selection of the objects is now done using NavMeshBuilder.CollectSources() and NavMeshBuildMarkup.'
+AssetDatabase: script compilation time: 4.485583s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.404 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance using Guid(2797ebc59e805d943819944b7fcc1b29) (DefaultImporter) -> (artifact id: '83185362b9f52f3098c84ce502746cb9') in 0.0206264 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy using Guid(613c6aed43655d54aa5e70782801ddd6) (DefaultImporter) -> (artifact id: '5806366fb22c21766f487e9f2f96b54f') in 0.0057477 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters using Guid(e21e79ce446e43f41b94b9fc4613d1ba) (DefaultImporter) -> (artifact id: '05114d1db19313eecce6dfa2b688778a') in 0.0073057 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models using Guid(f030ea5ce3aad9b4db0166d086da9bbe) (DefaultImporter) -> (artifact id: '4b184e3fe60e77a4399ce4be982c7562') in 0.0095895 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models using Guid(68fc4a13549b06a4a980b2c2667b2822) (DefaultImporter) -> (artifact id: '05f42dd8ca7a1a2ae3c88e00a334436e') in 0.0070717 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures using Guid(a8f90fecf530f4f419af39cc38b1ed27) (DefaultImporter) -> (artifact id: '6673823d155d1b6d8f8a895fd7d820da') in 0.009393 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures using Guid(dc5bcc81039c8a547b43861645de7115) (DefaultImporter) -> (artifact id: 'b82038be64ed1ceb2fad8482110f0e29') in 0.006868 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base using Guid(707adbd0844bd2e4fa4c1ffeeafebdf1) (DefaultImporter) -> (artifact id: '61045ca15a745bd558b1ac3669e49d46') in 0.007137 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts using Guid(9117a4f9d03a40d4391bbc949544424b) (DefaultImporter) -> (artifact id: '9ac892bb0ca5d1ec56ab84457671e90d') in 0.0086997 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles using Guid(4205134cbad91bb498b27e40161825ab) (DefaultImporter) -> (artifact id: '9ecf74c632df398633f6f071daddc72a') in 0.0077494 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant using Guid(042e79d49ae375c4d9674fc3b599b73b) (DefaultImporter) -> (artifact id: '52016d849eb3ea3a5b3d56003bb80f11') in 0.0082739 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles using Guid(45c4cd6ee6359d445807aeee442c4799) (DefaultImporter) -> (artifact id: 'ec674b9502c6111501ff983f1aab40bb') in 0.0087346 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger using Guid(f94b17479e6f8db42bc2bcd64180b5c1) (DefaultImporter) -> (artifact id: 'b940e5e947b27bb30a46ff521431b7a1') in 0.007301 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base using Guid(0b709c662cf85de4aabce4f10197ba04) (DefaultImporter) -> (artifact id: 'ea4b6d22e91641a7a303d6cb20c7fd15') in 0.0085514 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits using Guid(dced5d0b5a4233e4e8413f1457560464) (DefaultImporter) -> (artifact id: 'fa3752d1c5051cc540216cbd81a4f044') in 0.0078573 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters using Guid(ece2f3c39b196614d9964a973ca0a76f) (DefaultImporter) -> (artifact id: '12ee81df537f9cb6d7b52fa51d993736') in 0.0071053 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Accessories using Guid(fc0710f85014da54da5db26dec42148d) (DefaultImporter) -> (artifact id: '755899af5d83cf030f62a2fe43976149') in 0.0097339 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars using Guid(94eaea174aec4de468272c805ab20c2f) (DefaultImporter) -> (artifact id: '2e840ee23af8c884579977990559b488') in 0.0054286 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Normals-UnrealEngine using Guid(18d6cf89459b50d4fba0f200b37ffc45) (DefaultImporter) -> (artifact id: '3945494d1aa6dc5dd6b8b3797165f7d1') in 0.0068852 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant/Normals-UnrealEngine using Guid(19605413661db2a46ad4c6bda5258cc8) (DefaultImporter) -> (artifact id: '458fea2809f390f7ca69b6f13427fdec') in 0.0073805 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/Normals Unity - Godot using Guid(498a0b67505726a448d8f36f61072ea6) (DefaultImporter) -> (artifact id: '053218f6f948f2b4062bce26d614df18') in 0.0095886 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/Normals Unity - Godot using Guid(6fbe50d342ef59147b4d557866b5e245) (DefaultImporter) -> (artifact id: '21984c6805936dec62e4aa9f4ffc66aa') in 0.0075593 seconds
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.036 seconds
+Domain Reload Profiling: 3438ms
+	BeginReloadAssembly (207ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (123ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (1148ms)
+		LoadAssemblies (1040ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (150ms)
+			TypeCache.Refresh (96ms)
+				TypeCache.ScanAssembly (89ms)
+			BuildScriptInfoCaches (43ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (2036ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1904ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (86ms)
+			ProcessInitializeOnLoadAttributes (1679ms)
+			ProcessInitializeOnLoadMethodAttributes (125ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Male_Dark.png using Guid(10ef0b247f964e34f8fed351e908939c) (TextureImporter) -> (artifact id: 'c989fd882bd32a7a4ab83a5b811530ba') in 0.1210565 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/T_Hair_1_Normal.png using Guid(20c033d414c3ec84790ae16948628d38) (TextureImporter) -> (artifact id: 'b2d72bd1b1e88b5b652a61b1fa6a5ae0') in 0.1186391 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant/T_Peasant_ORM.png using Guid(306dd62a3f081dd4488698738b7213a3) (TextureImporter) -> (artifact id: '3253890161003b6b96842025cae1ce54') in 0.3287094 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars/T_Regular_Male_Normal.png using Guid(a0dca476844540649a4a5e9027cefbf0) (TextureImporter) -> (artifact id: 'c1f20a0598d766676635c2f9438af8f8') in 0.1265422 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Male_Roughness.png using Guid(518ca635fc80756409df75bcf470c50b) (TextureImporter) -> (artifact id: '8de75ae7d6c1f15b3beff6f68cf06553') in 0.0889716 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/Normals Unity - Godot/T_Hair_2_Normal.png using Guid(91b5fe89194b4e44aa45bf0bb1eb8c74) (TextureImporter) -> (artifact id: '43d7a4daf4de490f470444d267ec97d2') in 0.1439812 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Female_Roughness.png using Guid(919f14373cbb29c44816cd6cf5db153f) (TextureImporter) -> (artifact id: 'c1ebd60eb6a4046921b1d27592018e4b') in 0.0853265 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars/T_Regular_Female_Roughness.png using Guid(c142b8c2367ad1a42afe0b4dd105c04d) (TextureImporter) -> (artifact id: '20b4283b35978563febe278ebc74442d') in 0.1128854 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Female_Dark_BaseColor.png using Guid(e1fb5ba81fa57914c8c21b8821dee13a) (TextureImporter) -> (artifact id: 'e45cfe55893c65184ffd06ffd16ab759') in 0.1133525 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Normals-UnrealEngine/T_Ranger_Normal.png using Guid(627414c8c4c5fb040bc1413f84943d56) (TextureImporter) -> (artifact id: 'cc3493e63d897067e76fd2199c47895f') in 0.3293019 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/T_Hair_2_BaseColor.png using Guid(723693af105e07f46985d67a957d3ca4) (TextureImporter) -> (artifact id: 'eab55eb26c5e66623f68745f43ca530e') in 0.1010002 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars/T_Regular_Male_Dark_BaseColor.png using Guid(92b49382f6480cd4bab29434aac7c56d) (TextureImporter) -> (artifact id: '2446c2c3736fe504c19e6fcedabda2dd') in 0.0992493 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base/T_Regular_Female_Normal.png using Guid(03bec8be0e1b7fd48a698ec583143f92) (TextureImporter) -> (artifact id: '43348098fabe4989b4280a8edcb3a41e') in 0.1259417 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base/T_Regular_Male_Normal.png using Guid(6347a2a5710d18e4ba6c9afbc1f82270) (TextureImporter) -> (artifact id: '1624f8c63c2929b31ada07f6e0dc506d') in 0.1141653 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/T_Ranger_Normal.png using Guid(b3d30cf65ecb286499c0f11fe3bfce6f) (TextureImporter) -> (artifact id: 'ac6d2c1b6e6453f50284068accd1de03') in 0.3252485 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/Normals Unity - Godot/T_Hair_2_Normal.png using Guid(c312f1ef231b8be4ca7ef20bbf92363f) (TextureImporter) -> (artifact id: '9647778d4f88c6f4323f90f6a7bf066c') in 0.128456 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/Normals Unity - Godot/T_Hair_1_Normal.png using Guid(d372b5fb8253ede4bb38b8e19e2212dd) (TextureImporter) -> (artifact id: '6ad14e6190d3ede0e0994be5a0d45dbf') in 0.1181595 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars/T_Regular_Female_Dark_BaseColor.png using Guid(b49fb66deb561484f86e5a6e86dad1d9) (TextureImporter) -> (artifact id: '3cb04ac7a14079c8f905f4863bba84db') in 0.0937872 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/T_Hair_1_BaseColor.png using Guid(158f49b89e5c74441a316daa256cb119) (TextureImporter) -> (artifact id: 'd8fb39d8eb2bc80fb3e5d3dee4995970') in 0.0927029 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Male_Normal.png using Guid(75fd76df3d85ede4884c565b267967fa) (TextureImporter) -> (artifact id: '9c074f00fee05aab873a8577a808e0b5') in 0.1083246 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant/T_Peasant_2_BaseColor.png using Guid(756ee155ccf95814db9a513ece378088) (TextureImporter) -> (artifact id: '3733e1f13401417ac22a36f662c75545') in 0.2656941 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base/T_Regular_Male_Roughness.png using Guid(851b81918783f614a9fd22067d5313a9) (TextureImporter) -> (artifact id: '2d22314afea980b8a5ede3398163cb83') in 0.0963027 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Hair_2_Normal.png using Guid(a5a555924882a7b41b107d1af411ad21) (TextureImporter) -> (artifact id: '1343ed14d7cf3f0831ded15c317a0f50') in 0.134977 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant/T_Peasant_Normal.png using Guid(a56b9d97708ec534d880727405006e37) (TextureImporter) -> (artifact id: '073377cc6a929963ed6fde1c9cc293e8') in 0.3139304 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/Normals Unity - Godot/T_Eye_Normal.png using Guid(165dadb09f5da694ab9009c036033b15) (TextureImporter) -> (artifact id: '64f80d5ad8cc186ea426c4b197d4ac39') in 0.0134288 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Eye_Brown.png using Guid(7607c559b0687664e8ec3a06fe3c49fb) (TextureImporter) -> (artifact id: 'e5142cf60ddc49b69912eb916b722e81') in 0.0126289 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Hair_2_BaseColor.png using Guid(d6125d662e952024fbcce79652517d27) (TextureImporter) -> (artifact id: 'd9ed7a9faf5bca785c3a9bfc4c6a0efa') in 0.0896912 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars/T_Regular_Male_Roughness.png using Guid(d679c21c1b2843a4a9d52b9b4dec2791) (TextureImporter) -> (artifact id: '775e16bd2959f4f35033b6716eb19cf1') in 0.086113 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Female_Normal.png using Guid(67915a4add3debe4b9b0f91bff824cec) (TextureImporter) -> (artifact id: '70ca5c3dcea13da93888a6740a153b6f') in 0.1003897 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base/T_Regular_Female_Dark_BaseColor.png using Guid(a7d0d1e72a62154439fb2b03de7960ce) (TextureImporter) -> (artifact id: 'fc34b05144ca45687db11f1079c3b5c6') in 0.0953336 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/Normals Unity - Godot/T_Superhero_Female_Normal.png using Guid(28029c004f2abdb40b40ad4cb5a62b6f) (TextureImporter) -> (artifact id: '4fd71fa32ff0b63f762aa90370f66d51') in 0.1098006 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base/T_Regular_Female_Roughness.png using Guid(28cf99235676e2d49ad9761d0e35ba4d) (TextureImporter) -> (artifact id: '03ce9ef2d1cc1191ef684a7360fc85ba') in 0.096885 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Female_Light_BaseColor.png using Guid(68d103e3b6caee94a95f2bd05f150ccd) (TextureImporter) -> (artifact id: '634162e546daf3b87fd11419c1cd619d') in 0.0986167 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/T_Ranger_BaseColor.png using Guid(b920224066e569f4c851f1ad3c7827e4) (TextureImporter) -> (artifact id: '63b41849da5c2c2b3eae7425bb141c08') in 0.2864735 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/Normals Unity - Godot/T_Superhero_Male_Normal.png using Guid(e99fc902273e2fe4cac34fe356114d16) (TextureImporter) -> (artifact id: '9017d0d02e7d9fbaf3a803906b7f227f') in 0.1153913 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Eye_Normal.png using Guid(0a11ebddad1e01d408dd2a2f316726ce) (TextureImporter) -> (artifact id: 'cec5e724aa06e3a3a31102af271a1ca4') in 0.013958 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/Base Chars/T_Regular_Female_Normal.png using Guid(0aa72f01b9b23cb448797e636564f439) (TextureImporter) -> (artifact id: '84d7ee1a71e2df0ab280cc65059f424c') in 0.1070427 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Superhero_Male_Ligh.png using Guid(6a67d731c8f998b4eb2314a7ed3158c2) (TextureImporter) -> (artifact id: '4690d3c87bf8e3cd3a173590a4efcbb0') in 0.0867734 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/Hairstyles/T_Hair_2_Normal.png using Guid(abbb730493c2dff4b80baff29d778234) (TextureImporter) -> (artifact id: '38342472a1937acbad9e1836891b15e2') in 0.1075463 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/T_Ranger_ORM.png using Guid(db860de7604e9d64d83c8614b0ff6ec4) (TextureImporter) -> (artifact id: 'e68dbab892e26503e7d0b4cd89ec0b9a') in 0.2934949 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Ranger/T_Ranger_3_BaseColor.png using Guid(db6fae2892f20364c876ca2756ac9dbd) (TextureImporter) -> (artifact id: 'e892bf5ebfe58986cdc8f8e6b1dd1037') in 0.262816 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Hair_1_Normal.png using Guid(1c6b55ceecb658b40bdabc4196d0a3a2) (TextureImporter) -> (artifact id: '0b92eb76975890a16b87e971b3394626') in 0.1157489 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant/T_Peasant_BaseColor.png using Guid(7c2848cc66c3ee7409c8762ca1bf980c) (TextureImporter) -> (artifact id: '0ed944f96165c49fe18d183e0a692a4f') in 0.2677282 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Base/T_Regular_Male_Dark_BaseColor.png using Guid(9dc4369f08d8afa4283643247c053152) (TextureImporter) -> (artifact id: '386bb066f6cde96da0e4595b45924b84') in 0.0890233 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Textures/Peasant/Normals-UnrealEngine/T_Peasant_Normal.png using Guid(9ea02f6862e8525448b72b833cbadaff) (TextureImporter) -> (artifact id: '61050b2ffa7ab3928b872744381a9541') in 0.3465331 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/T_Hair_1_BaseColor.png using Guid(ceee0aad5376a56469b4303640eab26c) (TextureImporter) -> (artifact id: 'cc5232fcdbab3de984872781de3f4463') in 0.0949758 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Textures/BaseCharacters/Normals Unity - Godot/T_Hair_1_Normal.png using Guid(ee13f1c14b1a5e441abfaf1dec1f71e9) (TextureImporter) -> (artifact id: '6d5bcd63c501ab28d7c590624bf80f23') in 0.1206189 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Head_Hood.fbx using Guid(402f23233c27ecd45a816fa8b1599c48) (FBXImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+ -> (artifact id: '3ac210f11016b4da55539d8921beb7bf') in 0.0987317 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Arms.fbx using Guid(d1c2e1f1357c65f45b85f168edeee691) (FBXImporter) -> (artifact id: '18a16ca49ccfad54280f06589247bfbb') in 0.055948 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Feet.fbx using Guid(92a22bc44dedab847a6c1e7bf636409e) (FBXImporter) -> (artifact id: 'dcc9a6b3aaf613bfe1d5b5e24ea3b4e7') in 0.0542403 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Body.fbx using Guid(b249fbd793705134eb36f22f4f820442) (FBXImporter) -> (artifact id: '5c50c2550a6fc6b5c65ba6243d1649ea') in 0.0504866 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Arms.fbx using Guid(f2e15b885d4c07f44b519c5fc59dca0d) (FBXImporter) -> (artifact id: '5c15afe2fd25eab7e1943a3699bd29d8') in 0.0648463 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Feet_Boots.fbx using Guid(13d1fe58e9130a540902084f370a380d) (FBXImporter) -> (artifact id: 'bcc29919a9cf961c4eada974d8d80e65') in 0.0539643 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Legs.fbx using Guid(65f5498d2fe738c43b8f7250f6ce7dc0) (FBXImporter) -> (artifact id: 'cba0b88e07709f4a549d53ae7227c519') in 0.0476238 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Legs.fbx using Guid(659ea91ba64cad549b9b904b69d78c0f) (FBXImporter) -> (artifact id: 'a6699018ccc1aa8d21362667e94bacf3') in 0.0482097 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Legs.fbx using Guid(466bbc3b750c95149b4e05215d18aa60) (FBXImporter) -> (artifact id: '72b3c9477d0d49fa743ae0fd583a2459') in 0.044727 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Male_Ranger.fbx using Guid(860445d96e825804596f634a61e43127) (FBXImporter) -> (artifact id: '2e9b2239b7cfe815d3b2c89f0ce182d9') in 0.1415642 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Body.fbx using Guid(374acccd6bad1094f8f398b92b785b36) (FBXImporter) -> (artifact id: '1ba9430b759fc1086e2f4de829e52814') in 0.0669243 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx using Guid(d74634c448d4ac34a8fd19a13f55508d) (FBXImporter) -> (artifact id: 'c1673afce5a7b0a8c1c58dc33b99877f') in 0.091425 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Arms.fbx using Guid(2860c841e81f58f46bd8fd4157181eae) (FBXImporter) -> (artifact id: 'b3d0fd31480b88b5e51b28fb9b35e0e1') in 0.0620091 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Legs.fbx using Guid(48a242eb08d062142bb080f84186cb61) (FBXImporter) -> (artifact id: '521f0b69fe2c670021b2c54f46609c8a') in 0.038716 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Beard.fbx using Guid(687fa7116c573bd4fa723e07e91c3f03) (FBXImporter) -> (artifact id: 'bd437f14d82e6ab4715f1823d5a336e5') in 0.0414669 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Long.fbx using Guid(f80ec2fe2cc775642b94085d5fba7409) (FBXImporter) -> (artifact id: '3a55b8dae56bf4b79b87aa2d81353861') in 0.0408232 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Head_Hood.fbx using Guid(392a13ab514ada34bb04425fbc7181f1) (FBXImporter) -> (artifact id: 'd52e798ad316fadb7a92e9cb0d508206') in 0.0447653 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Body.fbx using Guid(7ae4b5bf23989ba4cb390d507c75e843) (FBXImporter) -> (artifact id: '81b2377992b8867c0e906b5cc452c94a') in 0.0615427 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Buns.fbx using Guid(da0786e1b01e59a4a88950d7c0c67620) (FBXImporter) -> (artifact id: '23a87eea3caccdc3e2a48d697fb9d75a') in 0.0426219 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Buzzed.fbx using Guid(2b77531a1cb2c2141b1198fbd0586ecc) (FBXImporter) -> (artifact id: 'e6fd2a05c8f45f6101f15e9d15a5b130') in 0.0429449 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Female_Peasant.fbx using Guid(eb836a900e59d7b429512e8386dd1248) (FBXImporter) -> (artifact id: '1b3a25f395732d03322c78ea3a97a6a2') in 0.0823925 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Acc_Pauldron.fbx using Guid(1c0af59cb4519f747954b730702cec97) (FBXImporter) -> (artifact id: 'e173b1b07cdb44456c74f488e26300f8') in 0.0504144 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_SimpleParted.fbx using Guid(3de8d87e2adb884418b1ea2a33872e56) (FBXImporter) -> (artifact id: '89fd35e5fabe5a8eff0d2488fd876e8d') in 0.0466826 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Female_Ranger.fbx using Guid(edbd221edaae6414bb9d843d6843dc64) (FBXImporter) -> (artifact id: '233a874340cfb734f6088f996638d9cc') in 0.1434437 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Arms.fbx using Guid(0e08306542fed3c4abba9f827de8d10a) (FBXImporter) -> (artifact id: '9599645b771a5c5ca2c89e40c65b9b95') in 0.0542206 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Feet.fbx using Guid(1edfc49515dd0e844909f25c9f71311d) (FBXImporter) -> (artifact id: '3b91c6f3a056577eea0493c63f473139') in 0.0465351 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Acc_Pauldrons.fbx using Guid(ae3baf52868fbb04e87975e83d55a3c3) (FBXImporter) -> (artifact id: '058b63abdc006e10185a7e29e65a11fe') in 0.0464426 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Eyebrows_Female.fbx using Guid(fea79cdd5d47b0a41bb86f9a6ea2a431) (FBXImporter) -> (artifact id: '690b6ab61e45c33890b3cfcd986c4bdd') in 0.0517253 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_BuzzedFemale.fbx using Guid(7f7374f2ff6fa5a438886e01c068e6b6) (FBXImporter) -> (artifact id: '80bbc3f83c49a079e5e8017d241a3a7e') in 0.048984 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Male_Peasant.fbx using Guid(9f605d891c7cf264cb347d741ab51701) (FBXImporter) -> (artifact id: 'c84e6981395a57b718ed0a0e694eb919') in 0.0856083 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Body.fbx using Guid(cfc2167cac2ffe946852d836eaa7d948) (FBXImporter) -> (artifact id: '3319ffe9e7254d78eebad2d4f42a8515') in 0.0468438 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Feet.fbx using Guid(ff8bf67ebbed2ee4b9a86a7131891c0a) (FBXImporter) -> (artifact id: 'e67bfd239109cfd3067618d3b8a9e5bf') in 0.0576375 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/README_OFFICIAL.txt using Guid(b116eef7c28259f4e9c2c04c2fe5688b) (TextScriptImporter) -> (artifact id: '489a896441ba8d09aaa222bcb08b9ac5') in 0.0095469 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt using Guid(b87e6a84f9fa3a347af7de858ba9633e) (TextScriptImporter) -> (artifact id: '9e28221660977222a3f430652b40f5ef') in 0.0100911 seconds
+Start importing Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt using Guid(b91f6d5dad4fd2343993eba60ff14efb) (TextScriptImporter) -> (artifact id: 'efef8040e705778d3c112b9e7b927130') in 0.0093641 seconds
+Refreshing native plugins compatible for Editor in 0.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=88b11eb36d3f9da49b5ac89b5e6cac64): Total: 17.926 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=57 (actual=57, local cache=0, cache server=0)
+		Asset DB Process Time: managed=50 ms, native=11634 ms
+		Asset DB Callback time: managed=285 ms, native=25 ms
+		Scripting: domain reloads=1, domain reload time=1405 ms, compile time=4487 ms, other=37 ms
+		Project Asset Count: scripts=1448, non-scripts=7514
+		Asset File Changes: new=104, changed=107, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 13.874ms
+	ApplyChangesToAssetFolders: 0.477ms
+	Scan: 446.048ms
+	OnSourceAssetsModified: 1.171ms
+	CategorizeAssetsWithTransientArtifact: 36.094ms
+	ProcessAssetsWithTransientArtifactChanges: 50.519ms
+	CategorizeAssets: 60.782ms
+	ImportOutOfDateAssets: 10975.513ms (-2444.386ms without children)
+		ImportManagerImport: 8930.521ms (6.650ms without children)
+			ImportInProcess: 8923.419ms
+			UpdateCategorizedAssets: 0.452ms
+		CompileScripts: 4486.610ms
+		ReloadNativeAssets: 0.036ms
+		UnloadImportedAssets: 0.643ms
+		ReloadImportedAssets: 0.009ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.221ms
+		InitializingProgressBar: 0.011ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.849ms
+	PostProcessAllAssets: 295.688ms
+	Hotreload: 2.608ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.001ms
+	UnloadStreamsBegin: 1.146ms
+	PersistCurrentRevisions: 0.918ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 2.085ms
+	Untracked: 6040.896ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.255ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-WhalesIslandReef
+Unloading 49 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6261 unused Assets / (3.2 MB). Loaded Objects now: 6929.
+Memory consumption went from 225.0 MB to 221.8 MB.
+Total: 7.998600 ms (FindLiveObjects: 0.467900 ms CreateObjectMapping: 0.312200 ms MarkObjects: 5.380100 ms  DeleteObjects: 1.837700 ms)
+
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

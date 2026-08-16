@@ -1,0 +1,68 @@
+{
+  "task": "D18-S02",
+  "sample_method": "deterministic_rotation_seed_D18_S02_2026-08-14",
+  "sample_count": 27,
+  "directory_scan": "PASS",
+  "runtime_boundary": "Candidates are not integrated; save, interaction-entry and behavior-takeover checks are intentionally not executed and remain blocked by missing runtime consumers.",
+  "checks": {
+    "static_file_load": "PASS when the candidate file exists and is covered by the cited Unity import audit; NOT_IMPORTED for the explicit bird edge case",
+    "save_check": "NOT_RUN_NO_RUNTIME_CONSUMER",
+    "interaction_entry_check": "NOT_RUN_NO_RUNTIME_CONSUMER",
+    "behavior_takeover_check": "NOT_RUN_NO_RUNTIME_CONSUMER"
+  },
+  "samples": {
+    "environment": [
+      {"id": "env_kenney_nature_tree_palm", "path": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/tree_palm.fbx", "file_exists": true, "unity_evidence": "D18-A03/D18_A03_UNITY_IMPORT_AUDIT.json"},
+      {"id": "env_kenney_nature_plant_bush", "path": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/plant_bush.fbx", "file_exists": true, "unity_evidence": "D18-A03/D18_A03_UNITY_IMPORT_AUDIT.json"},
+      {"id": "env_kenney_nature_cliff_block_rock", "path": "game/Assets/Art/Candidates/Environment/KenneyNatureKit/Models/cliff_block_rock.fbx", "file_exists": true, "unity_evidence": "D18-A03/D18_A03_UNITY_IMPORT_AUDIT.json"}
+    ],
+    "character": [
+      {"id": "crew_quaternius_male_shirt_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Shirt.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"},
+      {"id": "crew_quaternius_male_casual_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Casual.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"},
+      {"id": "asset_kenney_blocky_character_a_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/KenneyBlockyCharacters/Models/character-a.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"}
+    ],
+    "animal": [
+      {"id": "animal_quaternius_alpaca_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Alpaca.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"},
+      {"id": "animal_quaternius_bull_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Bull.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"},
+      {"id": "animal_quaternius_cow_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Cow.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"}
+    ],
+    "fish": [
+      {"id": "animal_quaternius_dolphin_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Dolphin.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"},
+      {"id": "animal_quaternius_manta_ray_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Manta ray.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"},
+      {"id": "animal_quaternius_whale_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx", "file_exists": true, "unity_evidence": "D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json"}
+    ],
+    "ship": [
+      {"id": "candidate_ship_pirate_small", "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/ship-pirate-small.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"},
+      {"id": "d18a05_pirate_boat_row_large", "path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/boat-row-large.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"},
+      {"id": "d18a05_pirate_mast", "path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/mast.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"}
+    ],
+    "building": [
+      {"id": "building_saint_marys_dock", "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-dock-small.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"},
+      {"id": "building_small_boat_pier", "path": "game/Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-small.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"},
+      {"id": "d18a05_building_barricade_doorway_a", "path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyBuildingKit/Models/barricade-doorway-a.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"}
+    ],
+    "prop": [
+      {"id": "d18a05_pirate_barrel", "path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/barrel.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"},
+      {"id": "d18a05_pirate_bottle", "path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/bottle.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"},
+      {"id": "d18a05_pirate_cannon", "path": "game/Assets/Art/Candidates/ShipsPortProps/KenneyPirateKit/Models/cannon.fbx", "file_exists": true, "unity_evidence": "D18-A05/D18_A05_IMPORT_AUDIT_SUMMARY.json"}
+    ],
+    "ui": [
+      {"id": "candidate_ui_button_rectangle_border", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/UI/KenneyUiPack/Blue/Default/button_rectangle_border.png", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"},
+      {"id": "candidate_ui_arrow_basic_e", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/UI/KenneyUiPack/Blue/Default/arrow_basic_e.png", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"},
+      {"id": "candidate_input_keyboard_mouse_keyboard", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/UI/KenneyInputPrompts/KeyboardMouse/keyboard.png", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"}
+    ],
+    "material": [
+      {"id": "polyhaven_coast_sand_01_albedo", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_01/coast_sand_01_albedo.jpg", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"},
+      {"id": "polyhaven_coral_mud_01_diff", "path": "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/coral_mud_01_diff_1k.jpg", "file_exists": true, "unity_evidence": "D18-A03/D18_A03_UNITY_IMPORT_AUDIT.json"},
+      {"id": "polyhaven_aerial_grass_rock_albedo", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_grass_rock/aerial_grass_rock_albedo.jpg", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"}
+    ],
+    "audio": [
+      {"id": "candidate_audio_impact_footstep_carpet_000", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/Audio/KenneyImpactSounds/footstep_carpet_000.ogg", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"},
+      {"id": "candidate_audio_impact_footstep_concrete_000", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/Audio/KenneyImpactSounds/footstep_concrete_000.ogg", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"},
+      {"id": "candidate_audio_interface_click_001", "path": "game/Assets/Art/Candidates/UIMaterialsAudio/Audio/KenneyInterfaceSounds/click_001.ogg", "file_exists": true, "unity_evidence": "D18-A06/D18_A06_UNITY_IMPORT_AUDIT.json"}
+    ]
+  },
+  "edge_cases": [
+    {"id": "animal_opengameart_bird_v01", "path": "game/Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/bird.blend", "file_exists": true, "static_load": "BLOCKED_NOT_IMPORTED", "reason": "Blender source only; no Unity model import evidence"}
+  ]
+}

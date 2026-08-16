@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "task": "D18-A02",
+  "date": "2026-08-14",
+  "status": "PASS",
+  "unity_version": "6000.0.80f1",
+  "urp_version": "17.0.4",
+  "d18_s01": "PASS",
+  "d18_a01": "PASS",
+  "pipeline_scope": "Editor-only; report-first; no runtime or Systems dependency",
+  "audit_log": "game/tools/results/D18/D18-A02/unity_audit_final_20260814.log",
+  "editmode_results": "game/tools/results/D18/D18-A02/D18_A02_EDITMODE_TEST_RESULTS.xml",
+  "candidate_audit": {
+    "status": "PASS",
+    "report_json": "game/tools/results/D18/D18-A02/D18_A02_KENNEY_IMPORT_AUDIT.json",
+    "report_markdown": "game/tools/results/D18/D18-A02/D18_A02_KENNEY_IMPORT_AUDIT.md",
+    "manifests": 2,
+    "candidate_files": 7,
+    "models": 7,
+    "textures": 0,
+    "audio": 0,
+    "prefabs": 0,
+    "meshes": 15,
+    "animation_clips": 27,
+    "materials": 7,
+    "errors": 0,
+    "warnings": 7,
+    "warning_policy": "non_blocking; retained in report",
+    "categories": {
+      "Buildings": 2,
+      "Characters": 1,
+      "Environment": 2,
+      "Ships": 1,
+      "Vegetation": 1
+    }
+  },
+  "validation": {
+    "editor_compile": "PASS_UNITY_BATCH_2026-08-14",
+    "editmode_tests": "PASS_6_OF_6",
+    "report_determinism_test": "PASS",
+    "path_scope_test": "PASS",
+    "meta_guid_files": "PASS",
+    "systems_dependency": "NONE",
+    "registry_modified": false,
+    "asset_state_modified": false,
+    "downloaded_assets": false,
+    "git_diff_check": "PASS"
+  },
+  "blockers": [],
+  "release_approved_asserted": false
+}

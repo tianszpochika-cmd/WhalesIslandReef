@@ -1,0 +1,65 @@
+{
+  "task": "D20-A01-R01",
+  "date": "2026-08-15",
+  "conclusion": "PARTIAL",
+  "rig_interface_ready": true,
+  "historical_result_preserved": "game/tools/results/D20/D20-A01/D20_A01_PLAYER_VISUAL_INTERFACE_HISTORICAL_PARTIAL.json",
+  "source": {
+    "manifest_id": "pack_quaternius_universal_base_characters_standard_v01",
+    "intake_id": "intake_a99050649c3cc24cb8a7",
+    "content_id": "candidate_superhero_female_fullbody_r03p",
+    "candidate_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+    "intake_eligible": true,
+    "source_import_evidence": "game/tools/results/D20/D20-A01-R01/D20_A01_R01_SOURCE_IMPORT_AUDIT.json",
+    "source_import_fact": "Generic/NoAvatar; avatars=[]",
+    "derived_avatar_strategy": "Project-owned candidate AvatarBuilder asset from the admitted skeleton; source candidate metadata unchanged"
+  },
+  "deliverables": {
+    "prefab": "game/Assets/Prefabs/Characters/D20/PlayerVisuals/D20_PlayerVisual_HumanoidFemale_R01.prefab",
+    "avatar": "game/Assets/Art/Models/Characters/D20/Player/D20_PlayerHumanoidAvatar_R01.asset",
+    "editor_audit": "game/tools/results/D20/D20-A01-R01/D20_A01_R01_EDITOR_AUDIT.json",
+    "preview_manifest": "game/tools/results/D20/D20-A01-R01/D20_A01_R01_PREVIEWS.json",
+    "preview_files": 3,
+    "preview_resolution": "512x768",
+    "interface": "game/tools/results/D20/D20-A01/D20_A01_PLAYER_VISUAL_INTERFACE.json"
+  },
+  "verified": {
+    "avatar_present": true,
+    "avatar_valid": true,
+    "avatar_is_human": true,
+    "world_height_m": 1.7999999523162842,
+    "root_scale": [1.0, 1.0, 1.0],
+    "renderer_count": 3,
+    "material_count": 1,
+    "lod_group_count": 1,
+    "socket_count": 10,
+    "monobehaviour_count": 0,
+    "animator_count": 0,
+    "character_controller_count": 0,
+    "editmode_tests": {"total": 6, "passed": 6, "failed": 0, "skipped": 0, "xml": "game/tools/results/D20/D20-A01-R01/D20_A01_R01_EDITMODE_TESTS_FINAL2.xml"}
+  },
+  "not_verified_or_missing": {
+    "independent_body_directions": {"verified": 1, "target": 2},
+    "independent_hair_geometry": {"verified": 0, "target": 6},
+    "era_outfit_combinations": {"verified": 0, "target": 8},
+    "formal_runtime_consumers": 0,
+    "local_development_ready": 0,
+    "release_approved": 0,
+    "formal_player_route": "NOT_RUN; outside A01 work-Prefab scope",
+    "player_performance": "NOT_RUN; outside A01 work-Prefab scope"
+  },
+  "warnings": [
+    "Only one independent body direction is proven; no second body is fabricated.",
+    "Material color variants are not counted as hair or outfit geometry.",
+    "Derived Avatar is valid/human, while the main-project source importer remains Generic/NoAvatar.",
+    "D18-S03 and D20-S02-R01 remain required for runtime promotion and formal integration."
+  ],
+  "tests": {
+    "unity": "Unity 6000.0.80f1 batchmode editor build/audit completed",
+    "focused_editmode": "PASS 6/6",
+    "previous_failed_runs_preserved": [
+      "game/tools/results/D20/D20-A01-R01/D20_A01_R01_EDITMODE_TESTS_D20ASM.xml"
+    ],
+    "git_diff_check": "PASS; exit code 0, existing line-ending warnings only"
+  }
+}

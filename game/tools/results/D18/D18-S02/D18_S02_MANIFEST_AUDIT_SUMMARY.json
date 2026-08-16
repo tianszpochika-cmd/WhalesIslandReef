@@ -1,0 +1,25 @@
+{
+  "task": "D18-S02",
+  "audit_scope": "25 actual docs/game/design/common/assets/**/*.manifest.json; example and auxiliary JSON excluded",
+  "status": "PASS",
+  "manifest_count": 25,
+  "pass_count": 25,
+  "error_count": 0,
+  "issue_count": 0,
+  "candidate_file_count": 1857,
+  "candidate_files_exist": 1857,
+  "license_evidence_missing": 0,
+  "invalid_archive_sha256": 0,
+  "path_escape_count": 0,
+  "duplicate_pack_id_count": 0,
+  "duplicate_candidate_path_count": 0,
+  "review_status_counts": {"Candidate": 9, "ImportVerified": 16},
+  "import_status_counts": {"ImportVerified": 24, "NotImported": 1},
+  "license_counts": {"CC0-1.0": 25},
+  "runtime_consumer_count": 0,
+  "negative_scope_audit": {
+    "result_file": "D18_S02_MANIFEST_AUDIT.json",
+    "status": "BLOCKED",
+    "reason": "The intentionally broad scan includes the example manifest, auxiliary JSON and A07 replacement map; it is retained as a negative boundary check, not a formal package result."
+  }
+}

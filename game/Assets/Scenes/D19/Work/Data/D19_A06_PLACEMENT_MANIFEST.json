@@ -1,0 +1,19 @@
+{
+  "schema": "d19_ambience_placement_manifest.v1",
+  "task": "D19-A06",
+  "scene": "game/Assets/Scenes/D19/Work/D19_Ambience_Work.unity",
+  "layout_source": "docs/game/design/common/assets/d19_saint_margaret_layout_v1.json",
+  "route_policy": {"route_id": "d19_route_spawn_to_return_07m", "minimum_clearance_m": 4.0, "prop_colliders": "none", "zone_colliders": "trigger_only", "failure_action": "record_and_fix_in_D19-S02; never hide a blockage"},
+  "placements": [
+    {"instance_id": "d19_prop_port_sign_and_cargo", "asset_id": "prop.d19.port.prop_set", "position_m": [18, 0, 118], "region": "port", "route_clearance_m": 6.0, "non_blocking": true},
+    {"instance_id": "d19_prop_market_display", "asset_id": "prop.d19.market.display", "position_m": [42, 0, 72], "region": "market", "route_clearance_m": 9.0, "non_blocking": true},
+    {"instance_id": "d19_prop_shipyard_repair", "asset_id": "prop.d19.shipyard.repair_set", "position_m": [72, 0, 0], "region": "shipyard", "route_clearance_m": 10.0, "non_blocking": true},
+    {"instance_id": "d19_prop_night_lamps", "asset_id": "prop.d19.night.lamp_set", "position_m": [-50, 0, 42], "region": "night", "route_clearance_m": 8.0, "non_blocking": true},
+    {"instance_id": "d19_vfx_smoke_shipyard", "asset_id": "vfx.d19.smoke", "position_m": [54, 1, 10], "region": "shipyard", "route_clearance_m": 0.0, "non_blocking": true},
+    {"instance_id": "d19_vfx_dust_market", "asset_id": "vfx.d19.dust", "position_m": [38, 0.2, 66], "region": "market", "route_clearance_m": 0.0, "non_blocking": true},
+    {"instance_id": "d19_vfx_sea_spray", "asset_id": "vfx.d19.sea_spray", "position_m": [-16, 0, -48], "region": "coast", "route_clearance_m": 0.0, "non_blocking": true},
+    {"instance_id": "d19_vfx_insect_bird", "asset_id": "vfx.d19.insect_bird_distant", "position_m": [-72, 6, 84], "region": "night", "route_clearance_m": 0.0, "non_blocking": true},
+    {"instance_id": "d19_vfx_firelight_tavern", "asset_id": "vfx.d19.firelight", "position_m": [-48, 2, 46], "region": "night", "route_clearance_m": 0.0, "non_blocking": true}
+  ],
+  "streaming": {"cell_size_m": 32, "near_m": 12, "mid_m": 32, "far_m": 80, "proxy_after_far": true, "save_restore": "presentation-only; no gameplay state is created"}
+}

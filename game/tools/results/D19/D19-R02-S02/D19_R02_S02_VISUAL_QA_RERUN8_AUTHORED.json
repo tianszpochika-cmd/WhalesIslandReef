@@ -1,0 +1,43 @@
+{
+  "schema": "D19_R02_S02_VISUAL_QA_RERUN8_AUTHORED_V1",
+  "task": "D19-R02-S02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "manual inspection of real Player frames; not Editor Camera.Render",
+  "requested_player_resolution": "1920x1080",
+  "readback_resolution": "1099x648 logical Computer Use frame",
+  "resolution_proof": "NOT_PROVEN",
+  "fixed_camera_count": 0,
+  "fixed_camera_required": 14,
+  "weather_variant_count": 0,
+  "weather_variant_required": 3,
+  "observed_frames": [
+    "D19_R02_S02_RERUN8_ROUTE_15_300_SPAWN.jpg",
+    "D19_R02_S02_RERUN8_ROUTE_16_300_MARKET.jpg",
+    "D19_R02_S02_RERUN8_ROUTE_17_300_VOYAGE.jpg",
+    "D19_R02_S02_RERUN8_ROUTE_18_300_SAVE_FINAL.jpg",
+    "D19_R02_S02_RERUN8_ROUTE_19_300S_CLEAN.jpg",
+    "D19_R02_S02_RERUN8_ROUTE_20_DISMBARK_SAVE.jpg",
+    "D19_R02_S02_RERUN8_ROUTE_22_CONTINUE_RETRY.jpg",
+    "D19_R02_A04_FACADE_RERUN6_AUTHORED3_SPAWN.jpg",
+    "D19_R02_A04_FACADE_RERUN6_AUTHORED3_DISEMBARK.jpg"
+  ],
+  "checks": {
+    "pink_missing_material": "PASS_FOR_OBSERVED_FRAMES",
+    "large_pure_white_placeholder_plane": "PASS_FOR_OBSERVED_FRAMES",
+    "flat_brown_orange_ground": "FAIL_OBSERVED",
+    "block_or_greybox_landform": "FAIL_OBSERVED",
+    "readable_market_warehouse_tavern_facades": "NOT_VERIFIED",
+    "readable_water_and_coast": "PARTIAL",
+    "vegetation_layering": "FAIL_OBSERVED; sparse blocky trees and floating small pieces remain",
+    "debug_overlay_default_off": "FAIL_OBSERVED; bottom route/control text remains visible",
+    "camera_occlusion_or_crop": "PARTIAL",
+    "weather_lighting_variants": "NOT_RUN"
+  },
+  "manual_notes": [
+    "真实 Player 仍显示宽阔平坦棕/橙地表、单一蓝色水带和简化块状植被。",
+    "最新 A04 authored facade/building layer 已编译并进入构建数据，但在当前玩家镜头中未形成可读港口建筑群；不能用静态 Renderer 计数替代视觉通过。",
+    "未观察到粉色缺材质；这不抵消灰盒/方块视觉债务。"
+  ],
+  "status": "PARTIAL",
+  "owner_follow_up": "D19-R02-A04 visual integration and D19 route camera/scene follow-up"
+}

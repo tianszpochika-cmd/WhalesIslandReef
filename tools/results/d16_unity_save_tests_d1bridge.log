@@ -1,0 +1,95 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-11T12:25:56.1591904Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 5048, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.16.1'. Current supported versions are: 1.0,1.1,1.2,1.3,1.4,1.4.1,1.5,1.6,1.7,1.8,1.9,1.10
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Administrator"
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-Administrator-2022.3.52 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 26752)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-2022.3.52" at "2026-08-11T12:26:02.7771394Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 26752, path: "C:/Program Files/Unity/Hub/Editor/2022.3.52f1c1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.16.1+e780b2e
+  Session Id:              24853ff2b69649a3934d09146fc4462b
+  Correlation Id:          838bb152eab56c11459d6b3df2c62f3c
+  External correlation Id: 8535824471557662114
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator-2022.3.52" (connect: 6.56s, validation: 0.46s, handshake: 0.02s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-2022.3.52-notifications" at "2026-08-11T12:26:03.2535918Z"
+[Licensing::Module] Connected to LicensingClient (PId: 26752, launch time: 0.03, total connection time: 7.03s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully updated license
+Built from '2022.3/china_unity/release' branch; Version is '2022.3.52f1c1 (f5e26ee28457) revision 16114286'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) 64bit Core' Language: 'zh' Physical Memory: 32553 MB
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Serial number assigned to: "F4-YDQB-K8QU-8563-AC7N-XXXX"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+[Licensing::Client] Successfully resolved entitlement details
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.52f1c1\Editor\Unity.exe
+-batchmode
+-nographics
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+Whalebone.EditorTools.D1Acceptance.RunD16SaveTests
+-logFile
+C:\Users\Administrator\Desktop\game\first01\tools\results\d16_unity_save_tests_d1bridge.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [5092]  Target information:
+
+Player connection [5092]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 3111964953 [EditorId] 3111964953 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [5092]  * "[IP] 172.16.219.2 [Port] 55504 [Flags] 2 [Guid] 3111964953 [EditorId] 3111964953 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [5092] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [5092] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[PhysX] Initialized MultithreadedTaskDispatcher with 20 workers.
+[Package Manager] UpmClient::Connect -- Connected to IPC stream "Upm-29528" after 0.0 seconds.
+Source asset database is recreated because source asset version has changed
+ArtifactDBVersion changed from '0x01f5f63b' to '0x5ce21767'
+[Package Manager] Done resolving packages in 92.60 seconds
+[Licensing::Client] Successfully resolved entitlement details
+An error occurred while resolving packages:
+  Project has invalid dependencies:
+    com.unity.render-pipelines.universal: connect ETIMEDOUT 1.15.161.111:443
+    com.unity.textmeshpro: connect ETIMEDOUT 1.15.161.111:443
+    com.unity.ugui: connect ETIMEDOUT 1.15.161.111:443
+Exiting without the bug reporter. Application will terminate with return code 1

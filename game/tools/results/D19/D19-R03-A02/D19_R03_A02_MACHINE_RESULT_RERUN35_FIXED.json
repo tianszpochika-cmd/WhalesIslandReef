@@ -1,0 +1,33 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_RERUN35_FIXED_V1",
+  "task": "D19-R03-A02",
+  "conclusion": "PARTIAL",
+  "evidence_mode": "real standalone Windows x64 Player; 1920x1080 ScreenCapture backbuffer",
+  "build_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_PLAYER_BUILD_FIXED_RERUN35.log",
+  "runtime_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_FIXED_SHOT_RERUN35_PLAYER.log",
+  "source_probe_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_FIXED_SHOT_PLAYER_RERUN17.json",
+  "captured_shot_count": 14,
+  "requested_shot_count": 14,
+  "screen_width": 1920,
+  "screen_height": 1080,
+  "weather_variant_count": 0,
+  "screenshot_directory": "game/tools/results/D19/D19-R03-A02/fixed_cameras_rerun17/",
+  "player_backbuffer_capture": true,
+  "observed": {
+    "missing_material_pink": false,
+    "large_white_proxy_plane": false,
+    "roof_occlusion_reduced": true,
+    "flat_ground_or_dock": true,
+    "low_detail_buildings": true,
+    "triangle_or_proxy_rock_debt": true,
+    "development_route_hud": true,
+    "calm_only": true
+  },
+  "not_proven": [
+    "Rain/Storm presentation",
+    "complete player route",
+    "save and reload",
+    "final visual gate"
+  ],
+  "resource_state_unchanged": true
+}

@@ -1,0 +1,42 @@
+{
+  "task": "D18-A04-R02-B",
+  "status": "PARTIAL",
+  "status_reason": "One licensed Eagle FBX is genuinely imported and audited, but the source is Generic/NoAvatar without an Animator component, LODGroup or collider; Chicken/Rooster archives are Blend-only and rejected as source_only.",
+  "existing_bird_gap": {
+    "path": "game/Assets/Art/Candidates/CharactersAnimals/OpenGameArtBird/Source/bird.blend",
+    "import_status": "NotImported",
+    "unity_object_count": 0,
+    "reason": "Blender-only source with no Unity import evidence"
+  },
+  "accepted_candidate_count": 1,
+  "actual_imported_model_count": 1,
+  "actual_mesh_count": 1,
+  "actual_material_slot_count": 4,
+  "actual_external_texture_count": 0,
+  "actual_renderer_count": 1,
+  "actual_skinned_mesh_renderer_count": 1,
+  "actual_animation_clip_count": 3,
+  "actual_animation_clips": [
+    "EagleArmature|Flying",
+    "EagleArmature|Idle",
+    "Eagle|Idle"
+  ],
+  "avatar_present": false,
+  "animator_component_count": 0,
+  "lod_group_count": 0,
+  "collider_count": 0,
+  "d20_a05_near_camera": "BLOCKED_UNTIL_FORMAL_PREFAB_ADAPTATION",
+  "d20_a05_mid_far": "CANDIDATE_WITH_LOD_AND_FALLBACK_REQUIREMENTS",
+  "rejected_source_only_count": 2,
+  "global_catalog_modified": false,
+  "formal_prefab_created": false,
+  "runtime_logic_modified": false,
+  "admission_owner": "D18-S02-R01",
+  "evidence_paths": [
+    "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_MANIFEST_AUDIT.json",
+    "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_UNITY_IMPORT_AUDIT.json",
+    "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_BIRD_DETAIL.json",
+    "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_HASHES.json",
+    "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_REJECTED_CANDIDATES.json"
+  ]
+}

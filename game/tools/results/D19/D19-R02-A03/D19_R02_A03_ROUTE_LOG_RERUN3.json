@@ -1,0 +1,41 @@
+{
+  "task": "D19-R02-A03",
+  "rerun_id": "RERUN3",
+  "status": "PARTIAL",
+  "steps": [
+    {
+      "step": "menu_new_game",
+      "input": "Mouse click New Game, type A03Rerun3, mouse click Confirm",
+      "result": "PASS",
+      "evidence": "20_rerun3_menu.jpg; 21_rerun3_newgame.jpg; 22_rerun3_harbor.jpg"
+    },
+    {
+      "step": "trade_open",
+      "input": "Real Player B",
+      "result": "PASS",
+      "evidence": "23_rerun3_trade_open.jpg"
+    },
+    {
+      "step": "trade_close_escape",
+      "input": "Real Player Escape",
+      "result": "PASS",
+      "observed": "The trade modal closed and harbor HUD returned",
+      "evidence": "24_rerun3_after_escape.jpg; D19_R02_A03_PLAYER_RERUN3_INPUT.log"
+    },
+    {
+      "step": "shutdown",
+      "input": "Real Player Alt+F4",
+      "result": "PASS",
+      "evidence": "D19_R02_A03_PLAYER_RERUN3_INPUT.log"
+    }
+  ],
+  "automated_regression": {
+    "editmode": "3/3 PASS",
+    "playmode": "2/2 PASS"
+  },
+  "not_claimed": [
+    "No final D19 route PASS",
+    "No final 1920x1080 three-tier performance PASS",
+    "No fixed-camera/weather matrix PASS"
+  ]
+}

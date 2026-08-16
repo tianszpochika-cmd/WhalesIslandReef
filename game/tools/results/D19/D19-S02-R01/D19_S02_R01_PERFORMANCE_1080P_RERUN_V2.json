@@ -1,0 +1,43 @@
+{
+  "task": "D19-S02-R01",
+  "status": "PARTIAL",
+  "required_capture": {
+    "resolution": [1920, 1080],
+    "quality_tiers": ["Low", "Medium", "High"],
+    "warmup_seconds_per_tier": 30,
+    "sample_seconds_per_tier": 60,
+    "status": "NOT_RUN"
+  },
+  "editor_capture_preserved": {
+    "file": "D19_S02_R01_PERFORMANCE_1080P.json",
+    "status": "RECORDED_EDITOR_CAPTURE",
+    "resolution": [1920, 1080],
+    "average_render_ms": 21.095605850219728,
+    "p95_render_ms": 306.13909912109377,
+    "valid_for_target_device_gate": false
+  },
+  "batch_playmode_probe": {
+    "file": "D19_S02_R01_PERFORMANCE_PLAYMODE_1080P.json",
+    "status": "RECORDED_PLAYMODE_REQUESTED_1080P",
+    "requested_resolution": [1920, 1080],
+    "actual_resolution": [640, 480],
+    "frame_count": 120,
+    "average_frame_ms": 16.6483,
+    "p95_frame_ms": 17.957,
+    "gpu_timing_available": false,
+    "valid_for_target_device_gate": false
+  },
+  "local_player": {
+    "build_status": "PASS",
+    "player_path": "C:/Users/Administrator/Desktop/whalesislandreef_d19_s02_r01_player/whalesislandreef.exe",
+    "window_control_status": "NOT_RUN_USER_ABORT",
+    "reason": "Computer Use was stopped by the user's physical Escape key before window state/input capture.",
+    "valid_for_target_device_gate": false
+  },
+  "missing_metrics": [
+    "Low/Medium/High real Player 60-second samples",
+    "target GPU frame time",
+    "target-device memory and GC capture",
+    "real Player resolution confirmation"
+  ]
+}

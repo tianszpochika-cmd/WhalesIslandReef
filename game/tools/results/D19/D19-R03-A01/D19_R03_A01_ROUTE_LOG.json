@@ -1,0 +1,89 @@
+{
+  "schema": "D19_R03_A01_ROUTE_LOG_V1",
+  "task": "D19-R03-A01",
+  "conclusion": "PARTIAL",
+  "capture": {
+    "started_at_local": "2026-08-16",
+    "player_build": "D19_R03_A01_Player.exe",
+    "scene": "InitialHarbor",
+    "input_mode": "real Player window key taps via computer-use",
+    "continuous_route_seconds": 0,
+    "window_runtime_seconds": 200.90179443359375,
+    "screenshots": 0
+  },
+  "steps": [
+    {
+      "step": "new_game",
+      "stable_id": "flow.new_game",
+      "input": "click New Game; type R03RouteProbe; click confirm",
+      "result": "PASS",
+      "feedback": "Player loaded InitialHarbor and created D2_PlayerAvatar",
+      "timestamp_seconds": 0
+    },
+    {
+      "step": "spawn_and_ground",
+      "stable_id": "anchor.player.spawn",
+      "input": "none",
+      "result": "PASS",
+      "feedback": "D2 logs report surface D19_TerrainRoot and grounded player",
+      "timestamp_seconds": 31.3
+    },
+    {
+      "step": "movement_probe",
+      "stable_id": "route.movement",
+      "input": "repeated real w/s key taps",
+      "result": "PARTIAL",
+      "feedback": "runtime probe observed movement and approximately 0.23m displacement; no continuous held-WASD route",
+      "timestamp_seconds": 55.55
+    },
+    {
+      "step": "market",
+      "stable_id": "building:market_santa_margarita",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "landmark not reached by probe",
+      "timestamp_seconds": -1
+    },
+    {
+      "step": "warehouse",
+      "stable_id": "building:warehouse_santa_margarita",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "landmark not reached by probe",
+      "timestamp_seconds": -1
+    },
+    {
+      "step": "tavern_and_npc",
+      "stable_id": "building:tavern_santa_margarita",
+      "input": "not reached",
+      "result": "NOT_RUN",
+      "feedback": "landmark not reached; no dialogue feedback recorded",
+      "timestamp_seconds": -1
+    },
+    {
+      "step": "dock_and_berth",
+      "stable_id": "anchor.dock.primary",
+      "input": "real Player movement window",
+      "result": "OBSERVED",
+      "feedback": "probe recorded dock and berth proximity events; no boarding interaction was recorded",
+      "timestamp_seconds": 31.2984
+    },
+    {
+      "step": "board_depart_return",
+      "stable_id": "flow.board_depart_return",
+      "input": "not captured",
+      "result": "NOT_RUN",
+      "feedback": "no B/D/E input evidence",
+      "timestamp_seconds": -1
+    },
+    {
+      "step": "save_reload",
+      "stable_id": "flow.save_reload",
+      "input": "not captured",
+      "result": "NOT_RUN",
+      "feedback": "no F5/save/reload evidence",
+      "timestamp_seconds": -1
+    }
+  ],
+  "source_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE.json"
+}

@@ -1,0 +1,54 @@
+{
+  "task": "D19-R01-S02",
+  "status": "PARTIAL",
+  "capture_kind": "real_standalone_player_keyboard_attempts",
+  "required_continuous_seconds": 300,
+  "main_menu_route": {
+    "status": "NOT_COMPLETED",
+    "player_path": "C:/Users/Administrator/AppData/Local/Temp/whales-d19-r01-b-20260815/Player/WhalesIslandReef_D19_R01_S02.exe",
+    "evidence": [
+      "game/tools/results/D19/D19-R01-S02/route_player.log",
+      "game/tools/results/D19/D19-R01-S02/d19_r01_s02_route_driver.ps1",
+      "game/tools/results/D19/D19-R01-S02/screenshots/route_00_main_menu.png"
+    ],
+    "new_game_to_initialharbor_transition_observed": false,
+    "reason": "The real Player remained at the menu during the scripted New Game attempt; no NewGame/InitialHarbor transition marker was emitted. This is not counted as a completed character-creation route."
+  },
+  "supplemental_direct_initialharbor_route": {
+    "status": "INCOMPLETE",
+    "start_local": "2026-08-15T11:19:42+08:00",
+    "last_valid_frame_local": "2026-08-15T11:23:56+08:00",
+    "observed_continuous_seconds_to_last_frame": 254,
+    "keys_attempted_by_driver": 71,
+    "driver": "game/tools/results/D19/D19-R01-S02/d19_r01_s02_direct_route_driver.ps1",
+    "player_log": "game/tools/results/D19/D19-R01-S02/direct_route_player.log",
+    "driver_result_written": false,
+    "capture_resolution": "1920x1080",
+    "valid_route_frame_count": 10,
+    "valid_route_frames": [
+      "screenshots/route_00_main_menu.png",
+      "screenshots/route_01_spawn.png",
+      "screenshots/route_02.png",
+      "screenshots/route_03.png",
+      "screenshots/route_04.png",
+      "screenshots/route_05.png",
+      "screenshots/route_06.png",
+      "screenshots/route_07.png",
+      "screenshots/route_08.png",
+      "screenshots/route_09.png"
+    ],
+    "steps": [
+      {"node": "出生/落地", "input": "直接进入 InitialHarbor 后真实 W", "stable_id": "D19_Anchor_D2_PlayerAvatar", "result": "出生画面有记录；物理日志持续输出 BeachGround 恢复", "status": "PARTIAL"},
+      {"node": "移动", "input": "真实 W/A", "stable_id": "D19_Anchor_santa_margarita", "result": "按键已由驱动尝试，位置变化和完整路线不可证明", "status": "NOT_CONFIRMED"},
+      {"node": "关键 NPC", "input": "真实 E", "stable_id": "D19_Anchor_npc_santa_margarita_dockhand", "result": "未观察到对话或明确失败反馈；未发现 D9 交互事件日志", "status": "BLOCKED_NO_FEEDBACK"},
+      {"node": "市场", "input": "真实 P/M/Escape", "stable_id": "D19_Anchor_building_market_santa_margarita", "result": "未观察到可复核的市场结算反馈", "status": "NOT_CONFIRMED"},
+      {"node": "码头/泊位", "input": "真实 P/B", "stable_id": "D19_Anchor_berth_santa_margarita", "result": "未观察到泊位页面后的状态转换", "status": "BLOCKED_NO_TRANSITION"},
+      {"node": "登船/下船", "input": "真实 E", "stable_id": "D19_Anchor_GangplankGround", "result": "未观察到 Ship/Character 模式转换", "status": "BLOCKED_NO_TRANSITION"},
+      {"node": "出航", "input": "真实 D", "stable_id": "D19_Anchor_departure_channel_santa_margarita", "result": "未观察到可复核的船舶出航画面", "status": "NOT_CONFIRMED"},
+      {"node": "保存", "input": "真实 F5", "stable_id": "D19_Anchor_save_point_santa_margarita", "result": "Player 日志未给出可复核保存确认", "status": "NOT_CONFIRMED"},
+      {"node": "返港/重载", "input": "真实 N/L/B/F5", "stable_id": "D19_Anchor_return_channel_santa_margarita", "result": "Player 在 route_09 前结束，返港和重载未完成", "status": "BLOCKED_INCOMPLETE_CAPTURE"}
+    ],
+    "limitation": "Direct InitialHarbor entry supplements the failed menu route and cannot prove character creation or a complete 5—10 minute player route."
+  },
+  "route_conclusion": "The required real-player route did not complete; D20-S02 remains locked."
+}

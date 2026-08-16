@@ -1,0 +1,54 @@
+{
+  "schema": "D20_A01_R02_MACHINE_RESULT_V1",
+  "task": "D20-A01-R02",
+  "conclusion": "PASS",
+  "scope": "isolated_player_visual_workbench_only",
+  "historical_results_preserved": true,
+  "evidence": {
+    "interface": "game/tools/results/D20/D20-A01-R02/D20_A01_R02_PLAYER_APPEARANCE_INTERFACE.json",
+    "editor_audit": "game/tools/results/D20/D20-A01-R02/D20_A01_R02_EDITOR_AUDIT.json",
+    "player_build": "game/tools/results/D20/D20-A01-R02/D20_A01_R02_PLAYER_BUILD.json",
+    "player_runtime_log": "game/tools/results/D20/D20-A01-R02/D20_A01_R02_PLAYER_RUNTIME_RERUN34.log",
+    "player_runtime_capture": "game/tools/results/D20/D20-A01-R02/D20_A01_R02_PLAYER_RUNTIME_CAPTURE_RERUN34.png",
+    "demo_bounds": "game/tools/results/D20/D20-A01-R02/D20_A01_R02_DEMO_BOUNDS.json"
+  },
+  "verified": {
+    "valid_humanoid_body_prefabs": 2,
+    "valid_humanoid_avatar_prefabs": 2,
+    "hair_prefabs": 6,
+    "outfit_combinations": 8,
+    "lod_on_body_prefabs": true,
+    "lod_on_hair_prefabs": true,
+    "socket_count_per_body": 9,
+    "runtime_probe_resolution": "1920x1080",
+    "runtime_probe_camera_bounds": "1920x1080",
+    "runtime_probe_log_present": true,
+    "build_exit_succeeded": true,
+    "editor_audit_errors": 0
+  },
+  "compatibility": {
+    "d17_visual_height": "1.80m",
+    "root_scale": "1,1,1",
+    "root_motion": false,
+    "physics_root_changed": false,
+    "character_controller_changed": false,
+    "formal_scene_changed": false,
+    "formal_generator_changed": false,
+    "registry_changed": false,
+    "save_schema_changed": false,
+    "systems_changed": false
+  },
+  "promotion_boundary": {
+    "formal_runtime_consumers": 0,
+    "local_playable_ready": 0,
+    "local_development_ready": 0,
+    "release_approved": 0,
+    "formal_initial_harbor_integration": false,
+    "meaning": "PASS only confirms the isolated visual workbench and evidence are ready for a later action/integration task. It does not promote assets or grant D18-S03/D20-S02 approval."
+  },
+  "remaining_work": [
+    "D20-A02-R02 or equivalent isolated action compatibility must verify animation follow, socket attachment and fallback behavior.",
+    "D18-S03 must review real runtime consumers before any LocalDevelopmentReady promotion.",
+    "D20-S02-R01 remains blocked until D19-R02-S02 is a real PASS."
+  ]
+}

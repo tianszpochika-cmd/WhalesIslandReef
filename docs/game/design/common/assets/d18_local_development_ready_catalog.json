@@ -1,0 +1,40 @@
+{
+  "catalog_kind": "d18_local_development_ready_catalog",
+  "schema_version": 1,
+  "task": "D18-S02",
+  "generated_on": "2026-08-14",
+  "status": "BLOCKED",
+  "release_approved_count": 0,
+  "local_development_ready_count": 0,
+  "eligible_entry_count": 0,
+  "authority": {
+    "manifests": "docs/game/design/common/assets/**/*.manifest.json",
+    "replacement_map": "docs/game/design/common/assets/replacement/d18_placeholder_replacement_map.json",
+    "unity_import_evidence": "game/tools/results/D18/D18-A02 through D18-A06",
+    "registry_changed": false,
+    "asset_state_changed": false,
+    "initial_harbor_integrated": false
+  },
+  "catalog_rule": "Only a candidate with complete license evidence, existing file, ImportVerified evidence, and verified local runtime consumer/Prefab boundary may enter this catalog. ReleaseApproved is never inferred.",
+  "eligible_entries": [],
+  "pending_categories": [
+    {"category": "environment", "candidate_files": 332, "status": "Pending", "blockers": ["no_runtime_consumer", "no_prefab_collision_anchor_lod_evidence"]},
+    {"category": "character", "candidate_files": 6, "status": "Pending", "blockers": ["no_runtime_consumer", "no_formal_prefab_or_animator_evidence"]},
+    {"category": "animal", "candidate_files": 13, "status": "Pending", "blockers": ["bird_not_imported", "no_runtime_consumer", "no_formal_prefab_collision_lod_evidence"]},
+    {"category": "fish", "candidate_files": 7, "status": "Pending", "blockers": ["no_runtime_consumer", "no_formal_prefab_collision_lod_evidence"]},
+    {"category": "ship", "candidate_files": 13, "status": "Pending", "blockers": ["no_runtime_consumer", "no_ship_prefab_anchor_collision_evidence"]},
+    {"category": "building", "candidate_files": 104, "status": "Pending", "blockers": ["no_runtime_consumer", "no_prefab_collision_anchor_lod_evidence"]},
+    {"category": "prop", "candidate_files": 37, "status": "Pending", "blockers": ["no_runtime_consumer", "no_prefab_collision_evidence"]},
+    {"category": "ui", "candidate_files": 1224, "status": "Pending", "blockers": ["no_formal_canvas_consumer", "no_local_runtime_save_or_interaction_evidence"]},
+    {"category": "material", "candidate_files": 91, "status": "Pending", "blockers": ["no_formal_material_consumer", "no_runtime_lighting_or_performance_evidence"]},
+    {"category": "audio", "candidate_files": 30, "status": "Pending", "blockers": ["no_mixer_consumer", "short_audio_warning_review_pending"]}
+  ],
+  "p0_gate": {
+    "status": "BLOCKED",
+    "required_categories": ["player", "key_npc", "saint_margaret_terrain", "dock", "building", "starting_ship", "sea_weather", "core_ui"],
+    "local_development_ready_per_category": {},
+    "reasons": ["zero_candidates_are_LocalDevelopmentReady", "P0_has_no_verified_runtime_consumers", "sea_weather_candidate_missing", "starting_ship_control_point_is_integrated_outside_A07_placeholder_input"]
+  },
+  "next_entry_tasks": ["D19港口/岛屿Prefab与交互锚点", "D20角色动物Prefab与动画/碰撞", "D21船海/海水天气消费者", "D22 UI/音频/材质消费者", "D24全量资源与发布门禁"],
+  "note": "This is an empty ready catalog by design. Pending and Candidate resources remain available through their original manifests; no resource was deleted or silently promoted."
+}

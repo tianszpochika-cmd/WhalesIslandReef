@@ -1,0 +1,115 @@
+{
+  "schema": "D19_R03_A01_REAL_PLAYER_RERUN10_ROUTE_LOG_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN10_NONPOPUP_REAL_PLAYER",
+  "evidence_mode": "真实 Unity Player 键盘/鼠标输入与只读探针；未调用 Inspector 或直接玩法方法",
+  "duration_seconds": 704.296936,
+  "resolution": "1920x1080",
+  "screenshots": {
+    "count": 16,
+    "glob": "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun10_*.png"
+  },
+  "steps": [
+    {
+      "step": "spawn",
+      "stable_id": "anchor.player.spawn",
+      "status": "PASS",
+      "time_seconds": 471.18045,
+      "input": "继续加载后观察；W/S/A/E/F5 等真实 Player 输入",
+      "feedback": "D2_PlayerAvatar found, grounded=true; reload log confirms D19_TerrainRoot landing"
+    },
+    {
+      "step": "market",
+      "stable_id": "building:market_santa_margarita",
+      "status": "NOT_REACHED",
+      "time_seconds": -1,
+      "input": "W/A/S real Player input",
+      "feedback": "landmark not reached; collision recovery was logged"
+    },
+    {
+      "step": "warehouse",
+      "stable_id": "building:warehouse_santa_margarita",
+      "status": "NOT_REACHED",
+      "time_seconds": -1,
+      "input": "W/A/S real Player input",
+      "feedback": "landmark not reached"
+    },
+    {
+      "step": "tavern_or_npc",
+      "stable_id": "building:tavern_santa_margarita",
+      "status": "PASS_LANDMARK_ONLY",
+      "time_seconds": 391.41519,
+      "input": "W/S/E real Player input",
+      "feedback": "tavern landmark reached; no successful NPC dialogue was recorded"
+    },
+    {
+      "step": "dock",
+      "stable_id": "anchor.dock.primary",
+      "status": "PASS",
+      "time_seconds": 41.89846,
+      "input": "W/S real Player input",
+      "feedback": "dock landmark reached"
+    },
+    {
+      "step": "berth",
+      "stable_id": "anchor.berth.primary",
+      "status": "PASS",
+      "time_seconds": 41.89846,
+      "input": "W/S/E real Player input",
+      "feedback": "berth landmark reached; E changed Character to Ship mode"
+    },
+    {
+      "step": "board",
+      "stable_id": "anchor.dock.primary",
+      "status": "PASS",
+      "time_seconds": 34.36794,
+      "input": "E",
+      "feedback": "Player probe observed interaction edge; Player log records D2 control mode Ship"
+    },
+    {
+      "step": "depart",
+      "stable_id": "anchor.return.harbor",
+      "status": "NOT_CONFIRMED",
+      "time_seconds": -1,
+      "input": "T/W/S real Player input",
+      "feedback": "Ship mode samples exist, but open-sea departure was not proven"
+    },
+    {
+      "step": "return",
+      "stable_id": "anchor.return.harbor",
+      "status": "NOT_REACHED",
+      "time_seconds": -1,
+      "input": "E/W/S real Player input",
+      "feedback": "return shoreline landmark not reached"
+    },
+    {
+      "step": "save",
+      "stable_id": "save.checkpoint",
+      "status": "INPUT_OBSERVED",
+      "time_seconds": 416.23355,
+      "input": "F5/C",
+      "feedback": "save_input_observed=true; exact save success was verified by subsequent Continue reload"
+    },
+    {
+      "step": "exit",
+      "stable_id": "player.exit",
+      "status": "PASS",
+      "time_seconds": 704.29694,
+      "input": "window close after Player route",
+      "feedback": "Player process exited without crash"
+    },
+    {
+      "step": "reload",
+      "stable_id": "mainmenu.continue",
+      "status": "PASS",
+      "time_seconds": null,
+      "input": "Main Menu Continue click in a fresh Player",
+      "feedback": "MainMenu log says save load succeeded; InitialHarbor recreated; D2 landing restored"
+    }
+  ],
+  "source_files": [
+    "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN10.json",
+    "game/tools/results/D19/D19-R03-A01/D19_R03_A01_MAINMENU_ROUTE_RERUN10_PLAYER_NOPopup.log",
+    "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RELOAD_AFTER_SAVE_RERUN10_PLAYER.log"
+  ]
+}

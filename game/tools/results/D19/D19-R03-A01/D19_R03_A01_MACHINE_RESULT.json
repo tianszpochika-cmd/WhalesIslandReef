@@ -1,0 +1,73 @@
+{
+  "schema": "D19_R03_A01_MACHINE_RESULT_V1",
+  "task": "D19-R03-A01",
+  "conclusion": "PARTIAL",
+  "evidence": {
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE.json",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_DIAGNOSTIC_PLAYER_RERUN1.log",
+    "player_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD.log",
+    "compile_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_UNITY_COMPILE_RERUN1.log"
+  },
+  "player_runtime": {
+    "scene": "InitialHarbor",
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "duration_seconds": 200.90179443359375,
+    "movement_observed": true,
+    "interaction_input_observed": false,
+    "save_input_observed": false,
+    "landmarks_reached": ["anchor.dock.primary", "anchor.berth.primary"],
+    "landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "building:tavern_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "note": "Real Player window received repeated key taps; movement was observed, but the input method did not provide a continuous held-WASD route or reliable interaction/save capture."
+  },
+  "latest_runtime_revalidation": {
+    "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN4.json",
+    "player_build": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_Player_RERUN14.exe",
+    "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN4_PLAYER_FROM_A02.log",
+    "resolution_arguments": "-screen-width 1920 -screen-height 1080 -screen-fullscreen 0 -popupwindow -force-d3d11",
+    "duration_seconds": 301.169769287109,
+    "player_found": true,
+    "controller_found": true,
+    "router_found": true,
+    "movement_observed": true,
+    "interaction_input_observed": true,
+    "save_input_observed": true,
+    "landmarks_reached": [
+      "anchor.dock.primary",
+      "anchor.berth.primary",
+      "building:tavern_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "anchor.player.spawn"
+    ],
+    "landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "player_observed_feedback": [
+      "E produced real boarding/disembarking feedback in the Player",
+      "B opened the real trade page",
+      "C produced the real save checkpoint toast"
+    ],
+    "route_completion": false,
+    "save_reload_verified": false,
+    "notes": "This is a fresh 301-second real Windows Player observation run after the R03 ship presentation prefab install. It proves duration, movement, interaction input and save input, but not the complete market-to-warehouse-to-tavern-to-dock-to-board-to-depart-to-return-save-reload route. Player logs also record repeated non-walkable-collider recovery warnings; the result remains PARTIAL."
+  },
+  "static_validation": {
+    "unity_compile_exit_code": 0,
+    "unity_compile_warnings": "pre-existing/deprecated API warnings only",
+    "git_diff_check": "NOT_RUN_FOR_THIS_ARTIFACT"
+  },
+  "blocking_reasons": [
+    "仓库、酒馆、NPC 目标未在同一真实 Player 路线中到达。",
+    "没有捕获真实 E/B/T/F5 交互反馈或保存恢复。",
+    "本轮没有 5 分钟完整路线和路线截图，因此不满足 D19-R03-A01 PASS 门槛。"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "D19_R03_A02_VISUAL_QA_RERUN17_V1",
+  "task": "D19-R03-A02",
+  "evidence_mode": "real standalone Windows x64 Player backbuffer screenshots",
+  "screen": "1920x1080",
+  "source_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_FIXED_SHOT_PLAYER_RERUN17.json",
+  "shot_directory": "game/tools/results/D19/D19-R03-A02/fixed_cameras_rerun17/",
+  "shots_expected": 14,
+  "shots_found": 14,
+  "dimension_pass": 14,
+  "dimension_fail": 0,
+  "manual_reviewed_shots": 5,
+  "weather_variants_observed": ["Calm"],
+  "weather_variant_pass": false,
+  "global_checks": {
+    "pink_missing_material": {"status": "PASS", "observed": false},
+    "large_white_proxy_plane": {"status": "PASS", "observed": false},
+    "legacy_tree_and_pale_pole_debt": {"status": "IMPROVED_NOT_CLOSED", "observed": "reduced"},
+    "flat_ground_or_dock_planes": {"status": "FAIL", "observed": true},
+    "blocky_low_detail_architecture": {"status": "FAIL", "observed": true},
+    "nearshore_proxy_geometry": {"status": "FAIL", "observed": true},
+    "player_route_hud_in_fixed_shots": {"status": "OBSERVED", "observed": true},
+    "final_visual_gate": {"status": "FAIL", "reason": "visual debt remains and Calm is the only captured weather"}
+  },
+  "shots": [
+    {"index": 1, "shot_id": "d19_shot_main_menu", "file": "fixed_01_main_menu.png", "status": "CAPTURED", "visual_gate": "NOT_APPLICABLE"},
+    {"index": 2, "shot_id": "d19_shot_spawn", "file": "fixed_02_d19_shot_spawn.png", "status": "CAPTURED", "visual_gate": "FAIL_FLAT_GROUND_BLOCKY_SILHOUETTE"},
+    {"index": 3, "shot_id": "d19_shot_market", "file": "fixed_03_d19_shot_market.png", "status": "CAPTURED", "visual_gate": "FAIL_LOW_DETAIL_ARCHITECTURE"},
+    {"index": 4, "shot_id": "d19_shot_dock_overview", "file": "fixed_04_d19_shot_dock_overview.png", "status": "CAPTURED", "visual_gate": "FAIL_FLAT_DOCK_PROXY_FEEL"},
+    {"index": 5, "shot_id": "d19_shot_tavern_entry", "file": "fixed_05_d19_shot_tavern_entry.png", "status": "CAPTURED", "visual_gate": "FAIL_LOW_DETAIL_ARCHITECTURE"},
+    {"index": 6, "shot_id": "d19_shot_coastline", "file": "fixed_06_d19_shot_coastline.png", "status": "CAPTURED", "visual_gate": "FAIL_FLAT_SHORE_PROXY_ROCKS"},
+    {"index": 7, "shot_id": "d19_shot_boarding", "file": "fixed_07_d19_shot_boarding.png", "status": "CAPTURED", "visual_gate": "FAIL_FLAT_DOCK_PLANE"},
+    {"index": 8, "shot_id": "d19_shot_on_ship", "file": "fixed_08_d19_shot_on_ship.png", "status": "CAPTURED", "visual_gate": "FAIL_PROXY_DETAIL_LEVEL"},
+    {"index": 9, "shot_id": "d19_shot_departure", "file": "fixed_09_d19_shot_departure.png", "status": "CAPTURED", "visual_gate": "FAIL_CALM_ONLY"},
+    {"index": 10, "shot_id": "d19_shot_nearshore", "file": "fixed_10_d19_shot_nearshore.png", "status": "CAPTURED", "visual_gate": "FAIL_NEARSHORE_PROXY_GEOMETRY"},
+    {"index": 11, "shot_id": "d19_shot_weather", "file": "fixed_11_d19_shot_weather.png", "status": "CAPTURED", "visual_gate": "FAIL_WEATHER_VARIANTS_MISSING"},
+    {"index": 12, "shot_id": "d19_shot_return_harbor", "file": "fixed_12_d19_shot_return_harbor.png", "status": "CAPTURED", "visual_gate": "FAIL_FLAT_GROUND_ARCHITECTURE"},
+    {"index": 13, "shot_id": "d19_shot_settings_accessibility", "file": "fixed_13_d19_shot_settings_accessibility.png", "status": "CAPTURED", "visual_gate": "OBSERVED_PLAYER_HUD"},
+    {"index": 14, "shot_id": "d19_shot_debug_boundary", "file": "fixed_14_d19_shot_debug_boundary.png", "status": "CAPTURED", "visual_gate": "NOT_PLAYER_ACCEPTANCE_CAMERA"}
+  ],
+  "conclusion": "PARTIAL",
+  "blocking_reasons": [
+    "真实 Player 只捕获 Calm，未提供 Rain/Storm 变体。",
+    "人工复核的玩家镜头仍显示平坦地表/码头、块状建筑和低细节近岸几何。",
+    "本轮是视觉取证，不包含真实玩家路线、交互或保存恢复。"
+  ]
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.4653803">
+  <test-suite type="TestSuite" id="1078" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="60" result="Failed" site="Child" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.465380" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1070" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="60" result="Failed" site="Child" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.458322" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="33116" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1071" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="60" result="Failed" site="Child" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.457145" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1072" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="60" result="Failed" site="Child" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.456238" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1073" name="D17" fullname="Whalebone.Tests.D17" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.455558" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1001" name="D17ActionQualityPlayModeTests" fullname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests" classname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests" runstate="Runnable" testcasecount="1" result="Failed" site="Child" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.454597" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1002" name="D17A02CharacterActionStateFollowsMovementJumpAndBoarding" fullname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A02CharacterActionStateFollowsMovementJumpAndBoarding" methodname="D17A02CharacterActionStateFollowsMovementJumpAndBoarding" classname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests" runstate="Runnable" seed="512403993" result="Failed" start-time="2026-08-12 19:04:28Z" end-time="2026-08-12 19:04:28Z" duration="0.446984" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[Unhandled log message: '[Error] Step Offset must be less or equal to <scaled Height> + <scaled Radius> * 2'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+                  <stack-trace><![CDATA[UnityEngine.Collider:set_enabled (bool)
+Whalebone.Gameplay.D2.D2CharacterController:MoveTransformWithoutController (UnityEngine.Vector3) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:849)
+Whalebone.Gameplay.D2.D2CharacterController:TryRecoverWalkableGround (single) (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:713)
+Whalebone.Gameplay.D2.D2CharacterController:ApplyPhysicsMotion () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:660)
+Whalebone.Gameplay.D2.D2CharacterController:Update () (at Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:604)
+
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D2] InitialHarbor 运行时入口已创建
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=18，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, center=(0.00, 0.76, 0.00), bodyBoundsMinY=0.96, bodyBoundsMaxY=2.76, visualGroundOffset=-0.14
+[D2/Spawn] 物理初始化前：ship=(0.00, 0.00, 0.00), player=(0.00, 1.10, -6.50), forward=(0.00, 0.00, 1.00)
+[D2/Physics] 玩家已落地：surface=BeachGround, surfaceY=0.28, playerY=0.43
+[D2/Animation] 角色动作控制器已接线：骨骼=8，Animator 状态 + 平滑姿态层
+[D2/Animation] Unity Animator 动作资源已加载：D6CrewAnimator
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.001，calibrations=1
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D2/Physics] 玩家已恢复可行走接地：surface=BeachGround, surfaceY=0.28
+[D2/Physics] 角色移动产生垂直位移：beforeY=0.43, afterY=1.12, grounded=True, collision=none
+Step Offset must be less or equal to <scaled Height> + <scaled Radius> * 2
+[D2/Physics] 玩家已恢复可行走接地：surface=BeachGround, surfaceY=0.28
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

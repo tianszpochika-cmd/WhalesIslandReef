@@ -1,0 +1,77 @@
+{
+  "schema": "D19_R03_A01_RERUN2_MACHINE_RESULT_V1",
+  "task": "D19-R03-A01",
+  "attempt": "RERUN2",
+  "conclusion": "PARTIAL",
+  "historical_result_preserved": true,
+  "evidence": {
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN2.json",
+    "player_build": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN2.exe",
+    "player_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD_RERUN2.log",
+    "compile_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_UNITY_COMPILE_RERUN1.log",
+    "screenshots_directory": "game/tools/results/D19/D19-R03-A01/screenshots/",
+    "screenshot_prefix": "route_rerun2_"
+  },
+  "runtime": {
+    "scene": "InitialHarbor",
+    "player_object": "D2_PlayerAvatar",
+    "controller_found": true,
+    "router_found": true,
+    "duration_seconds": 584.5516357421875,
+    "launch_resolution": "1920x1080",
+    "input_mode": "real Player window keyboard taps via computer-use; no Inspector invocation",
+    "movement_observed": true,
+    "interaction_input_observed": true,
+    "save_input_observed": false,
+    "grounded_observed": true,
+    "control_modes_observed": ["Character", "Ship"],
+    "events_observed": {
+      "movement_observed": 89,
+      "displacement_observed": 516,
+      "interaction_input_observed": 3,
+      "landmark_reached": 4
+    },
+    "landmarks_reached": [
+      "anchor.dock.primary",
+      "anchor.berth.primary",
+      "building:tavern_santa_margarita",
+      "anchor.player.spawn"
+    ],
+    "landmarks_not_reached": [
+      "building:market_santa_margarita",
+      "building:warehouse_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "landmark_resolution_note": "The probe recorded coordinate proximity; object_name lookup remained false for the named landmarks, so this is not an object-resolution pass."
+  },
+  "player_screenshots": {
+    "count": 12,
+    "files": [
+      "route_rerun2_menu_00.jpg",
+      "route_rerun2_create_01.jpg",
+      "route_rerun2_confirm_02.jpg",
+      "route_rerun2_spawn_03.jpg",
+      "route_rerun2_market_01.jpg",
+      "route_rerun2_interaction_02.jpg",
+      "route_rerun2_save_03.jpg",
+      "route_rerun2_disembark_04.jpg",
+      "route_rerun2_tavern_05.jpg",
+      "route_rerun2_dock_06.jpg",
+      "route_rerun2_dock_interaction_07.jpg",
+      "route_rerun2_end_08.jpg"
+    ],
+    "note": "Screenshots are genuine Player captures at the requested launch resolution; the save-named frame is not proof that save succeeded."
+  },
+  "blocking_reasons": [
+    "Real Player route lasted more than five minutes but did not complete market, warehouse, shipyard, return and save/reload as one verified sequence.",
+    "The runtime probe did not observe F5/C save input; no reload-after-save evidence exists.",
+    "Repeated key taps demonstrated movement and interaction, but continuous held-WASD input was not proven.",
+    "The probe landmark object lookup is stale/false for the current R03 presentation, so coordinate proximity cannot be promoted to a complete interaction proof."
+  ],
+  "static_validation": {
+    "unity_compile_exit_code": 0,
+    "player_build_exit_code": 0,
+    "git_diff_check": "PENDING_FINAL_R03_RUN; existing InitialHarbor trailing-whitespace warnings are preserved"
+  }
+}

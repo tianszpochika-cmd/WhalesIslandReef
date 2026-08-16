@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Failed(Child)" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.0718944">
+  <test-suite type="TestSuite" id="1090" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="64" result="Failed" site="Child" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.071894" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1077" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="64" result="Failed" site="Child" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.064752" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="30052" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1078" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.063176" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1079" name="Tests" fullname="WhalesIslandReef.Tests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.062275" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1081" name="D19S02R01" fullname="WhalesIslandReef.Tests.D19S02R01" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.061317" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1003" name="D19S02R01RoutePlayModeTests" fullname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" classname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" runstate="Runnable" testcasecount="2" result="Failed" site="Child" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.058840" total="2" passed="0" failed="2" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1005" name="R01PlayMode1080pFrameAndMemorySample" fullname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests.R01PlayMode1080pFrameAndMemorySample" methodname="R01PlayMode1080pFrameAndMemorySample" classname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" runstate="Runnable" seed="1240375225" result="Failed" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.039496" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  D2RuntimeBootstrap 未加载。
+  Expected: not null
+  But was:  null
+]]></message>
+                  <stack-trace><![CDATA[at WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests+<R01PlayMode1080pFrameAndMemorySample>d__2.MoveNext () [0x00036] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D19S02R01RoutePlayModeTests.cs:159
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@082c24152fd4\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1004" name="R01RouteMovesBoardsSavesAndReloads" fullname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests.R01RouteMovesBoardsSavesAndReloads" methodname="R01RouteMovesBoardsSavesAndReloads" classname="WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests" runstate="Runnable" seed="268294263" result="Failed" start-time="2026-08-14 13:25:17Z" end-time="2026-08-14 13:25:17Z" duration="0.007841" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  D16InputRouter 未加载。
+  Expected: not null
+  But was:  null
+]]></message>
+                  <stack-trace><![CDATA[at WhalesIslandReef.Tests.D19S02R01.D19S02R01RoutePlayModeTests+<R01RouteMovesBoardsSavesAndReloads>d__1.MoveNext () [0x00091] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\PlayMode\D19S02R01RoutePlayModeTests.cs:33
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@082c24152fd4\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

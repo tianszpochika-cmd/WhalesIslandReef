@@ -1,0 +1,30 @@
+{
+    "schema": "D20_A01_R02_PLAYER_APPEARANCE_INTERFACE_V1",
+    "task": "D20-A01-R02",
+    "status": "PASS",
+    "generated_at": "2026-08-15T20:36:26.7941105Z",
+    "rig_interface_ready": true,
+    "body_directions": 2,
+    "hair_variants": 6,
+    "outfit_combinations": 8,
+    "body_prefabs": [
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerVisual_Female.prefab",
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerVisual_Male.prefab"
+    ],
+    "hair_prefabs": [
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_01.prefab",
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_02.prefab",
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_03.prefab",
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_04.prefab",
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_05.prefab",
+        "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_Hair_06.prefab"
+    ],
+    "workbench_prefab": "Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerAppearance_Workbench.prefab",
+    "demo_scene": "Assets/Scenes/D20/R02/Work/D20_A01_R02_PlayerAppearance_Work.unity",
+    "formal_runtime_consumers": 0,
+    "local_development_ready": false,
+    "release_approved": false,
+    "d17_compatibility": "1.80m visual height, foot sockets, no root motion on visual Animator; formal movement/landing/boarding remains D17 owner.",
+    "allowed_consumer": "D20-A02-R02 isolated action compatibility and later D20-S02-R01 formal integration after D19 gate.",
+    "forbidden_consumer": "InitialHarbor, formal generator, Registry, Save, Systems and ReleaseApproved are not modified."
+}

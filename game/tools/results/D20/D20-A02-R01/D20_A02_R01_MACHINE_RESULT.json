@@ -1,0 +1,51 @@
+{
+  "task": "D20-A02-R01",
+  "date": "2026-08-15",
+  "conclusion": "PASS",
+  "historical_preflight_preserved": "game/tools/results/D20/D20-A02/D20_A02_PREFLIGHT_RESULT.json",
+  "a01_gate": {
+    "interface": "game/tools/results/D20/D20-A01/D20_A01_PLAYER_VISUAL_INTERFACE.json",
+    "rig_interface_ready": true,
+    "avatar_asset": "game/Assets/Art/Models/Characters/D20/Player/D20_PlayerHumanoidAvatar_R01.asset",
+    "avatar_valid": true,
+    "avatar_is_human": true
+  },
+  "deliverables": {
+    "controller": "game/Assets/Animations/D20/Player/D20_PlayerAnimation.controller",
+    "clip_directory": "game/Assets/Animations/D20/Player/Clips/",
+    "runtime_adapter": "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20PlayerAnimationPresentationAdapter.cs",
+    "controller_audit": "game/tools/results/D20/D20-A02-R01/D20_A02_R01_CONTROLLER_AUDIT.json",
+    "preview_manifest": "game/tools/results/D20/D20-A02-R01/D20_A02_R01_PREVIEWS.json",
+    "preview_count": 4
+  },
+  "controller": {
+    "state_count": 15,
+    "states": ["Idle", "Walk", "Run", "Jump", "Fall", "Land", "Interact", "Talk", "Carry", "Fish", "Board", "Disembark", "Helm", "Hit", "Recover"],
+    "clip_count": 15,
+    "curves_per_clip": 5,
+    "parameter_count": 6,
+    "root_motion": false,
+    "clip_source": "Project-owned deterministic curves from the admitted A01 skeleton; no unverified Generic external action clip was claimed as retargeted."
+  },
+  "tests": {
+    "compile": {"status": "PASS", "log": "game/tools/results/D20/D20-A02-R01/D20_A02_R01_COMPILE_FINAL.log"},
+    "editmode": {"total": 5, "passed": 5, "failed": 0, "skipped": 0, "xml": "game/tools/results/D20/D20-A02-R01/D20_A02_R01_EDITMODE_TESTS_FINAL3.xml"},
+    "playmode": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "xml": "game/tools/results/D20/D20-A02-R01/D20_A02_R01_PLAYMODE_TESTS_FINAL.xml"},
+    "d17_playmode": {"total": 7, "passed": 7, "failed": 0, "skipped": 0, "xml": "game/tools/results/D20/D20-A02-R01/D20_A02_R01_D17_PLAYMODE.xml"},
+    "git_diff_check": "PASS; exit code 0"
+  },
+  "state_boundaries": {
+    "formal_scene_consumers": 0,
+    "local_development_ready": 0,
+    "release_approved": 0,
+    "d18_s03_required": true,
+    "d19_r02_s02_required_before_d20_s02_r01": true
+  },
+  "preserved_failed_runs": [
+    "game/tools/results/D20/D20-A02-R01/D20_A02_R01_EDITMODE_TESTS.xml",
+    "game/tools/results/D20/D20-A02-R01/D20_A02_R01_PLAYMODE_TESTS.xml",
+    "game/tools/results/D20/D20-A02-R01/D20_A02_R01_PREVIEWS.log",
+    "game/tools/results/D20/D20-A02-R01/D20_A02_R01_PREVIEWS_V2.log",
+    "game/tools/results/D20/D20-A02-R01/D20_A02_R01_PREVIEWS_V3.log"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "D19-R02-A04",
+  "conclusion": "NOT_RUN",
+  "requested_resolution": [1920, 1080],
+  "quality_levels": {
+    "Low": { "status": "NOT_RUN", "warmup_seconds": 30, "sample_seconds": 60 },
+    "Medium": { "status": "NOT_RUN", "warmup_seconds": 30, "sample_seconds": 60 },
+    "High": { "status": "NOT_RUN", "warmup_seconds": 30, "sample_seconds": 60 }
+  },
+  "metrics": {
+    "average_fps": null,
+    "one_percent_low_fps": null,
+    "cpu_frame_ms": null,
+    "gpu_frame_ms": null,
+    "gc_allocations": null,
+    "memory_mb": null
+  },
+  "reason": "The A04 Player build has no approved in-player telemetry capture path. The real window screenshots report 2194x1234, so they cannot prove the requested 1920x1080 backbuffer. No values are inferred from Editor Camera.Render or static scene counts.",
+  "next_owner": "D19-R02-A05",
+  "release_gate": "D19-R02-S02 must rerun real 1080p Low/Medium/High sampling after an approved telemetry path exists."
+}

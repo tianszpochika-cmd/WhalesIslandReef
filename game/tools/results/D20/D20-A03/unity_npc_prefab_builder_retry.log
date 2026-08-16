@@ -1,0 +1,669 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+[Licensing::IpcConnector] Channel LicenseClient-Administrator doesn't exist
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-14T18:25:03Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 19748)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-nographics
+-disable-assembly-updater
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D20\D20-A03\UnityNpcPrefabBuilderProject
+-executeMethod
+NpcPrefabBuilder.Run
+-quit
+-logFile
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D20\D20-A03\unity_npc_prefab_builder_retry.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game\tools\results\D20\D20-A03\UnityNpcPrefabBuilderProject
+C:/Users/Administrator/Desktop/game/first01/game/tools/results/D20/D20-A03/UnityNpcPrefabBuilderProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [11152]  Target information:
+
+Player connection [11152]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 1355367803 [EditorId] 1355367803 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [11152] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [11152] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-21920" after 0.3 seconds.
+Library Redirect Path: Library/
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-14T18:25:04.1646414Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 19748, path: "C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              4493380894b74cd1a41b17352295d4b8
+  Correlation Id:          96f51c0c9feffa821f902c5d48428dc2
+  External correlation Id: 1599654751618545962
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.37s, validation: 0.07s, handshake: 0.03s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-14T18:25:04.2713481Z"
+[Licensing::Module] Connected to LicensingClient (PId: 19748, launch time: 0.00, total connection time: 0.48s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/tools/results/D20/D20-A03/UnityNpcPrefabBuilderProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T19:24:26Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T19:24:26Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 0.52s
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56920
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001606 seconds.
+- Loaded All Assemblies, in  0.279 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.255 seconds
+Domain Reload Profiling: 534ms
+	BeginReloadAssembly (76ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (124ms)
+		LoadAssemblies (72ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (121ms)
+			TypeCache.Refresh (120ms)
+				TypeCache.ScanAssembly (110ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (256ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (224ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (40ms)
+			ProcessInitializeOnLoadAttributes (113ms)
+			ProcessInitializeOnLoadMethodAttributes (49ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-08-24T19:25:04Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Package Manager] Registered 0 packages:
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.00 seconds
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game/tools/results/D20/D20-A03/UnityNpcPrefabBuilderProject
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 5s238ms
+[128/133    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.GridAndSnapModule.dll_B949DC8F0909BD55.mvfrm
+[129/133    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll.mvfrm
+[130/133    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[131/133    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[132/133    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (5.21 seconds), 5 items updated, 133 evaluated
+AssetDatabase: script compilation time: 5.585909s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.416 seconds
+Start importing Assets using Guid(00000000000000001000000000000000) (DefaultImporter) -> (artifact id: '4b55c7cb15071bfc086d0e52a7664a41') in 0.0166363 seconds
+Start importing ProjectSettings/InputManager.asset using Guid(00000000000000002000000000000000) (LibraryAssetImporter) -> (artifact id: '3d278bdfa729973ecf92c670ca181c88') in 0.0023209 seconds
+Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) (LibraryAssetImporter) -> (artifact id: '4aa03ef27a83f311e598313a3ec2fbc3') in 0.0029328 seconds
+Start importing ProjectSettings/ProjectSettings.asset using Guid(00000000000000004000000000000000) (LibraryAssetImporter) -> (artifact id: '0ba75dcc1bf50db3060422ae3f29d1f3') in 0.0014346 seconds
+Start importing ProjectSettings/AudioManager.asset using Guid(00000000000000006000000000000000) (LibraryAssetImporter) -> (artifact id: '22ffb3fe371a5950e3f1d63c04f3be40') in 0.0015426 seconds
+Start importing ProjectSettings/TimeManager.asset using Guid(00000000000000007000000000000000) (LibraryAssetImporter) -> (artifact id: '52c307e924e96ceef905bcc2cea85a00') in 0.0012697 seconds
+Start importing ProjectSettings/DynamicsManager.asset using Guid(00000000000000008000000000000000) (LibraryAssetImporter) -> (artifact id: 'be5c3cc4d9346f9e8fa2ddaee90dd709') in 0.0010765 seconds
+Start importing ProjectSettings/QualitySettings.asset using Guid(00000000000000009000000000000000) (LibraryAssetImporter) -> (artifact id: 'f44ba1262e818bbe4262433f49247514') in 0.0010576 seconds
+Start importing ProjectSettings/EditorBuildSettings.asset using Guid(0000000000000000b000000000000000) (LibraryAssetImporter) -> (artifact id: '1923232d45cb936aef47cec131f33975') in 0.001125 seconds
+Start importing ProjectSettings/EditorSettings.asset using Guid(0000000000000000c000000000000000) (LibraryAssetImporter) -> (artifact id: 'fdcca38f5f1944c9bec0b9f00395ab39') in 0.0011441 seconds
+Start importing ProjectSettings/NavMeshAreas.asset using Guid(00000000000000004100000000000000) (LibraryAssetImporter) -> (artifact id: '4ba0a6bb5cc18b1619eb3b3f4ce570d1') in 0.0011226 seconds
+Start importing ProjectSettings/Physics2DSettings.asset using Guid(00000000000000005100000000000000) (LibraryAssetImporter) -> (artifact id: 'b9a798d8579cfd14a9d003bd527e0b64') in 0.0010924 seconds
+Start importing ProjectSettings/GraphicsSettings.asset using Guid(00000000000000006100000000000000) (LibraryAssetImporter) -> (artifact id: '73a0d0504a18325c463e244f56ec4944') in 0.0012341 seconds
+Start importing ProjectSettings/ClusterInputManager.asset using Guid(00000000000000007100000000000000) (LibraryAssetImporter) -> (artifact id: '5a028a71a6163b7bc9a46219c48662ec') in 0.0013086 seconds
+Start importing ProjectSettings/UnityConnectSettings.asset using Guid(0000000000000000a100000000000000) (LibraryAssetImporter) -> (artifact id: '5a6e69f8200d884ded3f19f546ea756a') in 0.0019557 seconds
+Start importing ProjectSettings/PresetManager.asset using Guid(0000000000000000b100000000000000) (LibraryAssetImporter) -> (artifact id: '669bd2cb5cdf99ef516d1350fa42393e') in 0.0016464 seconds
+Start importing ProjectSettings/VFXManager.asset using Guid(0000000000000000c100000000000000) (LibraryAssetImporter) -> (artifact id: 'd96b989647555359bde1f89c35e57424') in 0.0018205 seconds
+Start importing ProjectSettings/VersionControlSettings.asset using Guid(0000000000000000d100000000000000) (LibraryAssetImporter) -> (artifact id: 'b89f810c452b248c014f182ae5caa680') in 0.001681 seconds
+Start importing ProjectSettings/MemorySettings.asset using Guid(0000000000000000f100000000000000) (LibraryAssetImporter) -> (artifact id: '19f032dc933bd79e61da5c81f7ddd1ac') in 0.0013232 seconds
+Start importing ProjectSettings/MultiplayerManager.asset using Guid(00000000000000000200000000000000) (LibraryAssetImporter) -> (artifact id: '2f864bba7a58beddb6fbf79980c9a838') in 0.0015517 seconds
+Start importing Library/BuildInstructions using Guid(00000000000000002300000000000000) (DefaultImporter) -> (artifact id: 'ade3aeda13ad9960ede0e143cb33502a') in 0.0013169 seconds
+Start importing Assets/Generated using Guid(264ff4950a0561a409f74fa890c144d6) (DefaultImporter) -> (artifact id: 'de6e5da42d53b4f898699c7811734644') in 0.0108018 seconds
+Start importing Assets/Editor using Guid(8c3be8296cf6533429c0ec58012b855f) (DefaultImporter) -> (artifact id: '94432baf958afbfc42bec58fafe06a5d') in 0.006641 seconds
+Start importing Assets/Models using Guid(5f29b7d44fd6dd7459b156001c4768bc) (DefaultImporter) -> (artifact id: '6d349ba7b0cbbdb486322600a0ad815a') in 0.0137678 seconds
+Start importing Assets/Generated/Materials using Guid(315d64d54f533974bafab45e578059be) (DefaultImporter) -> (artifact id: 'b22de731474c8f8ab90ec42711ede056') in 0.0102019 seconds
+Start importing Assets/Generated/Prefabs using Guid(bda22e973964b724687411cfdf24edf9) (DefaultImporter) -> (artifact id: 'b2418b78b7ea11720943b2c8a3e434e8') in 0.008976 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.274 seconds
+Domain Reload Profiling: 691ms
+	BeginReloadAssembly (237ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (130ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (125ms)
+		LoadAssemblies (169ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (8ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (275ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (187ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (58ms)
+			ProcessInitializeOnLoadAttributes (96ms)
+			ProcessInitializeOnLoadMethodAttributes (15ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Start importing Library/BuildPlayer.prefs using Guid(00000000000000005000000000000000) (DefaultImporter) -> (artifact id: '083d37eb6b0e82b8f5c1ec86344d848d') in 0.0292052 seconds
+Start importing Assets/Models/Male_Casual.fbx using Guid(21cf194a6c145e543becea0be1e61ada) (FBXImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '97904ceeef517add28a5b0d0c16f72c3') in 0.7833557 seconds
+Start importing Assets/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 17.067312%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580131%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '5b8899918a459c836724413ce5303dbf') in 0.1165039 seconds
+Start importing Assets/Models/Male_Shirt.fbx using Guid(af1ef9e429b113b4184b530ffe26fea3) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '8a303f0022813d863c0fa1ad936d0cca') in 0.1161209 seconds
+Loading style catalogs (6)
+	StyleSheets/Extensions/base/common.uss
+	UIPackageResources/StyleSheets/Default/Variables/Public/common.uss
+	StyleSheets/Northstar/common.uss
+	StyleSheets/Extensions/fonts/inter.uss
+	StyleSheets/Extensions/base/dark.uss
+	UIPackageResources/StyleSheets/Default/Northstar/Palette/dark.uss
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=81914f11fabba4140816d7bb7cb0a746): Total: 7.648 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=30 (actual=30, local cache=0, cache server=0)
+		Asset DB Process Time: managed=13 ms, native=1514 ms
+		Asset DB Callback time: managed=102 ms, native=9 ms
+		Scripting: domain reloads=1, domain reload time=416 ms, compile time=5587 ms, other=4 ms
+		Project Asset Count: scripts=26, non-scripts=4
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 1.398ms
+	ApplyChangesToAssetFolders: 0.150ms
+	Scan: 59.808ms
+	OnSourceAssetsModified: 0.001ms
+	CategorizeAssetsWithTransientArtifact: 0.033ms
+	ProcessAssetsWithTransientArtifactChanges: 0.106ms
+	CategorizeAssets: 0.129ms
+	ImportOutOfDateAssets: 1428.584ms (-5311.606ms without children)
+		ImportManagerImport: 1152.504ms (5.839ms without children)
+			ImportInProcess: 1146.580ms
+			UpdateCategorizedAssets: 0.084ms
+		CompileScripts: 5587.316ms
+		ReloadNativeAssets: 0.000ms
+		UnloadImportedAssets: 0.216ms
+		ReloadImportedAssets: 0.006ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.003ms
+		InitializingProgressBar: 0.005ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.138ms
+	PostProcessAllAssets: 110.430ms
+	Hotreload: 0.894ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 0.151ms
+	PersistCurrentRevisions: 0.053ms
+	UnloadStreamsEnd: 0.001ms
+	GenerateScriptTypeHashes: 0.001ms
+	Untracked: 6046.073ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.251ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-UnityNpcPrefabBuilderProject
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 18 unused Assets / (467.5 KB). Loaded Objects now: 525.
+Memory consumption went from 83.8 MB to 83.4 MB.
+Total: 3.050800 ms (FindLiveObjects: 0.025300 ms CreateObjectMapping: 0.003300 ms MarkObjects: 2.871400 ms  DeleteObjects: 0.150200 ms)
+
+Asset Pipeline Refresh (id=5b98067df17b9b249b707dce0ffff19b): Total: 0.007 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Shirt.fbx using Guid(af1ef9e429b113b4184b530ffe26fea3) (FBXImporter)Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 10.162602%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580131%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '8a303f0022813d863c0fa1ad936d0cca') in 0.1256653 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=fa3cf35c62ccf244cbbbfb3be4da8593): Total: 0.134 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Shirt.fbx using Guid(af1ef9e429b113b4184b530ffe26fea3) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580131%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '8a303f0022813d863c0fa1ad936d0cca') in 0.1198991 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=805609e80e5b40e41839a10ed728210e): Total: 0.125 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '5b8899918a459c836724413ce5303dbf') in 0.1151107 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=5cf210cf5321e924daffadd7d8552177): Total: 0.121 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '5b8899918a459c836724413ce5303dbf') in 0.1260457 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=08e558806d89a8b4d8380d04058cffc3): Total: 0.133 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Casual.fbx using Guid(21cf194a6c145e543becea0be1e61ada) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067312%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580131%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '97904ceeef517add28a5b0d0c16f72c3') in 0.1149833 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=44f40e6cb9fa8684dbe79cf5bd2ea1d3): Total: 0.120 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Casual.fbx using Guid(21cf194a6c145e543becea0be1e61ada) (FBXImporter)Keyframe reduction: Ratio: 10.162604%;
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 14.356883%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129028%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259919%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '97904ceeef517add28a5b0d0c16f72c3') in 0.1146325 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=ebd8c456f7c77ec4cb9e70703be1f8eb): Total: 0.121 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Shirt.fbx using Guid(af1ef9e429b113b4184b530ffe26fea3) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 16.129030%;
+Keyframe reduction: Ratio: 11.259918%;
+Keyframe reduction: Ratio: 12.580131%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '8a303f0022813d863c0fa1ad936d0cca') in 0.1338268 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=798c734e35df8f14da58ffabc367907a): Total: 0.140 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Casual.fbx using Guid(21cf194a6c145e543becea0be1e61ada) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067312%;
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '97904ceeef517add28a5b0d0c16f72c3') in 0.1172357 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=2926e9fa1c13e044090658e5ebfe7464): Total: 0.124 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 14.356883%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '5b8899918a459c836724413ce5303dbf') in 0.1285548 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=ceb3806ce29bd4b4596fcbfa95795636): Total: 0.138 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 17.067316%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 10.162602%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '5b8899918a459c836724413ce5303dbf') in 0.1211275 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=143e2d07846cce34d884c3977ca01b59): Total: 0.129 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_LongSleeve.fbx using Guid(e5a218b6ed642474eb44b4be320b1823) (FBXImporter)Keyframe reduction: Ratio: 10.162602%;
+Keyframe reduction: Ratio: 11.315361%;
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 14.356883%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 16.129026%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '5b8899918a459c836724413ce5303dbf') in 0.1305289 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a863c50398fa83446b47b45190d1fc57): Total: 0.138 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Models/Male_Casual.fbx using Guid(21cf194a6c145e543becea0be1e61ada) (FBXImporter)Keyframe reduction: Ratio: 10.162603%;
+Keyframe reduction: Ratio: 17.067314%;
+Keyframe reduction: Ratio: 11.315360%;
+Keyframe reduction: Ratio: 14.356881%;
+Keyframe reduction: Ratio: 20.312502%;
+Keyframe reduction: Ratio: 14.823719%;
+Keyframe reduction: Ratio: 16.129028%;
+Keyframe reduction: Ratio: 11.259917%;
+Keyframe reduction: Ratio: 12.580132%;
+Keyframe reduction: Ratio: 2.248350%;
+Keyframe reduction: Ratio: 1.487355%;
+ -> (artifact id: '97904ceeef517add28a5b0d0c16f72c3') in 0.1210229 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b3b4c6d51aac9b3408a3baaa56d2816b): Total: 0.128 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_burgundy.mat using Guid(21c672a61c310b44fa79b8fb8a945a25) (NativeFormatImporter) -> (artifact id: '7d56b5ec513eef9e3ab6ed46f94b2604') in 0.0013608 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=0b8a15137ec77034ab0f112a3fecb1cb): Total: 0.013 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_cream.mat using Guid(42ff581934d989644a1ddddac3bea22d) (NativeFormatImporter) -> (artifact id: '1d34b98efdbe02fc251263423aeb0d72') in 0.0016785 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=06bdcd11a37aa8e4d828f10b7bada99f): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_indigo.mat using Guid(e2998fcd38e1c32459cbce257999f4fe) (NativeFormatImporter) -> (artifact id: '03bc09b59be783081efc633e677527bb') in 0.0013449 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=c31c1748de5776d4ea7c8ff6e2dd2855): Total: 0.013 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_navy.mat using Guid(ce6a61c00b3dada428871b52a2ff7260) (NativeFormatImporter) -> (artifact id: 'f7a25ba3682dccd796a58903658510dd') in 0.0019759 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=06b9d277660a48d47b2d54cd0adb1d05): Total: 0.018 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_ochre.mat using Guid(192b066a8eece6646897f17603f6f9f7) (NativeFormatImporter) -> (artifact id: 'd96a48433f1e8df7a1bdb4839cdd77bc') in 0.0011993 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=5bd5dc92408998841a3987f511c4a727): Total: 0.011 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_russet.mat using Guid(4c90c0624a994bf4db1476ebf7a7f043) (NativeFormatImporter) -> (artifact id: 'f17caaa66fe2c5af40a8e33ee701bb41') in 0.0013489 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=d2d5258753c00a146939bab8c6e8df13): Total: 0.011 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_cloth_sea_green.mat using Guid(db997d491ceda1343b0d9860abf9df08) (NativeFormatImporter) -> (artifact id: '7653110c34da403fadf16e850c89511d') in 0.0011583 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=4445ad6bf30383d478f4e02309367296): Total: 0.016 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_hair_brown.mat using Guid(cab03c6ad3e0df84396049fbcbadfb20) (NativeFormatImporter) -> (artifact id: '8b63ac6c9d76c75b5f853d96b543c892') in 0.0017711 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=62d8dd62b9e526143894d02308b2e6c5): Total: 0.016 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_hair_dark.mat using Guid(00a49aebc0e30824fabbfbae68834f49) (NativeFormatImporter) -> (artifact id: '8ddc26854b81761e7eb1e69113cd4b12') in 0.0012774 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b998b62d4c68b4e40ad4de92cbe7064e): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_prop_iron.mat using Guid(f24a076f98b1ef64c97d5e633e5f137e) (NativeFormatImporter) -> (artifact id: 'a3a382ea0a5ab3192e3505644aef1392') in 0.0019342 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=413ab259160aa82479db582a34fe2ee0): Total: 0.014 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_prop_rope.mat using Guid(5f1d566e1514d2c4bb7fdd99fa40fa7a) (NativeFormatImporter) -> (artifact id: '13c407de23de2ca3243fb9f63a1fcc02') in 0.0011542 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=111811fa67bbc264c9e2b9c45388ee2f): Total: 0.013 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_prop_straw.mat using Guid(d277442361753da43a592b390bc73009) (NativeFormatImporter) -> (artifact id: '47c8fea2b647c711132d7ccaf89ec517') in 0.0022069 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=151df86f44054db4f9a24326fe9dd931): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_prop_wood.mat using Guid(9844fd61a9a926a4fb494b7116d29971) (NativeFormatImporter) -> (artifact id: 'b4e56ee3c93277fb5d165a249d16bff5') in 0.0011712 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=6b12f6682d2dd874799de0465647be55): Total: 0.014 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_skin_deep.mat using Guid(8f320e000caef38448e268e078195bf4) (NativeFormatImporter) -> (artifact id: 'd3d18b7d38d236684bbb1ef8bbd07f47') in 0.0015702 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=24bbba91b6d3ba64ab03d43de4aa7d91): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_skin_medium.mat using Guid(9373c6848ebf4924e829fee910b1786c) (NativeFormatImporter) -> (artifact id: 'cbd5e45445cf1b44dbd975231f4f6767') in 0.0012658 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=0af361dc497ae3e44b498318e5ccdbbb): Total: 0.011 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Materials/npc_d20_skin_warm.mat using Guid(fc75bfac6c7af24419726349d498df26) (NativeFormatImporter) -> (artifact id: '2521c2a2950937cb322d206837a06381') in 0.0026284 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=4d24c138eef67504a8678e6239ee56b4): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=6f16c10d636d3124cb5060b58cf37f8d): Total: 0.020 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_deckhand_01.prefab using Guid(a6a651e9aacbe654b93ab27abb34abe6) (PrefabImporter) -> (artifact id: 'baa74a024e20fe5f8e403523ea09a6d7') in 0.0211241 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=8cb8df690de26d7488f2c5977c9b363f): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_rigger_01.prefab using Guid(369427502795a564bab645c0c8addc17) (PrefabImporter) -> (artifact id: '9a4a96f4abe09d182b913e002ce8d55b') in 0.0191779 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=9cf1c4aa3bb5eda4ba28cab510aa2b0a): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_shore_trader_01.prefab using Guid(146b9c13c5df82544828f0d8a3b10cc2) (PrefabImporter) -> (artifact id: '31e76242f6414367ebafae9abc9ff5c3') in 0.0176762 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=89fd49b8588ccec43be6c41579edd16c): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_shore_trader_02.prefab using Guid(234e2d7535af4074cab9cd2266b6a3d3) (PrefabImporter) -> (artifact id: 'a714a6dff5d35ac889d0889d9f5fe35e') in 0.0197821 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=566484b170bab2d48ba104925ee210f9): Total: 0.033 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_dock_clerk_01.prefab using Guid(f8b7f0ae967333e409be1aebdad09751) (PrefabImporter) -> (artifact id: '08b0ea6a3afc2b4b101b1e0f4f7ee819') in 0.0165485 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=211dea8c80fdedc4e9c209ed41d86d9f): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_net_mender_01.prefab using Guid(0fe31bc845975814b87fcae7beb20d93) (PrefabImporter) -> (artifact id: '768adc4468335d0f5d2301953e88af9f') in 0.0166991 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=0a404f7a4a3724342920f271f255cd84): Total: 0.033 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_fisher_01.prefab using Guid(3edbcf3a04de5244da066bdd5b3428ce) (PrefabImporter) -> (artifact id: '0a126d462d70e7b76156838227a12300') in 0.019131 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=70816a5d45370f646a4a040e3888b29e): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_tavern_cook_01.prefab using Guid(6f0fb961c024f5c4d81ea4644a43c5dd) (PrefabImporter) -> (artifact id: '109c7fa1027c294e5daa46b2503a13f2') in 0.0204452 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=72a22490f20b76244a88198e93ef86e0): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_boatbuilder_01.prefab using Guid(a5f0ed454d649204fa542257ff40c153) (PrefabImporter) -> (artifact id: 'f11d526219b3ec15b2fcb79455972055') in 0.0208407 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=19fe6b9bf8241074c941b7db8bc8af64): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_sailmaker_01.prefab using Guid(db30ac2ab927f16498dded3bccaed22e) (PrefabImporter) -> (artifact id: 'f3903e2c87e4034c4f8473726c314b14') in 0.0152657 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=0df8175d1a0d5f94ea34e92a705341e8): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_harbor_watch_proxy.prefab using Guid(c273fc9568d377c4bba7dd8b43c4f1fc) (PrefabImporter) -> (artifact id: 'e66d74144e6c8f815c637d7a652f4e2f') in 0.0214769 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=d29267c2c003b5646a43be2c92e87e89): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Generated/Prefabs/npc_d20_common_resident_01.prefab using Guid(ab612145fa29b064986a1939bac889a9) (PrefabImporter) -> (artifact id: '540d33ffadeb2e7c8f5cbc3ffcf4a483') in 0.0205264 seconds
+Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f48687a5e193065469f933ac1395d808): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=97175ca8432dbc04da40a32d899905a6): Total: 0.017 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+[Physics::Module] Cleanup current backned.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Administrator-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Administrator channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1786731915442,"processId":21920,"allocatedMemory":9924784,"memoryLabels":[{"Default":28597},{"Permanent":15356},{"NewDelete":72321},{"Thread":4230424},{"Manager":32130},{"VertexData":8},{"Geometry":816},{"VFX":-104},{"Texture":160},{"Shader":78773},{"Material":24},{"GfxDevice":55784},{"Animation":392},{"Audio":4040},{"FontEngine":256},{"Physics":2081},{"Serialization":880},{"Input":14824},{"JobScheduler":33024},{"TextLib":160},{"Mono":32},{"ScriptingNativeRuntime":155060},{"BaseObject":1620112},{"Resource":1304},{"Renderer":2928},{"Transform":4646},{"File":1016},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":44020},{"DynamicArray":74491},{"HashMap":49556},{"Utility":2661166},{"Curl":48},{"PoolAlloc":1768},{"AI":104},{"TypeTree":5005},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7888},{"Director":8240},{"CloudService":16848},{"WebRequest":629},{"VR":45969},{"SceneManager":496},{"Video":64},{"LazyScriptCache":32},{"Camera":17},{"Secure":265},{"Image":16384},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":384},{"Hierarchy":272},{"CoreStats":12536},{"Identifiers":6192},{"Gui":80},{"EditorUtility":27614},{"VersionControl":4},{"Undo":947},{"AssetDatabase":178519},{"EditorGi":328},{"UnityConnect":24184},{"Upm":2036},{"DrivenProperties":72},{"LocalIPC":219},{"ProfilerEditor":9746},{"CoreBusinessMetrics":10879},{"Licensing":1232},{"AssetReference":32},{"IPCStream":32}]}

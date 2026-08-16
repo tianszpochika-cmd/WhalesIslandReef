@@ -1,0 +1,62 @@
+{
+  "schema": "D19_R03_S01_GATE_REVIEW_V4",
+  "task": "D19-R03-S01",
+  "run_id": "RERUN41_CURRENT",
+  "conclusion": "BLOCKED",
+  "inputs": {
+    "route": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_REAL_PLAYER_RERUN41_MACHINE_RESULT.json",
+    "runtime_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN41.json",
+    "performance": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN36_CURRENT.json",
+    "visual_fixed_shots": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT_RERUN35_FIXED.json",
+    "collider_audit": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_SCENE_COLLIDER_AUDIT.json"
+  },
+  "gates": {
+    "real_player_menu_new_game": true,
+    "player_controller_router": true,
+    "movement_input": true,
+    "interaction_input": true,
+    "save_feedback": true,
+    "boarding_disembarking": true,
+    "full_300_second_route": false,
+    "market": true,
+    "warehouse": false,
+    "tavern": true,
+    "shipyard": false,
+    "dock_berth": true,
+    "departure_return": false,
+    "same_run_save_quit_continue": false,
+    "current_scene_perf_low_medium_high": false,
+    "fixed_player_shots_14_of_14": false,
+    "weather_variants_3": false,
+    "visual_debt_closed": false,
+    "external_resource_intake": true,
+    "release_approved": false
+  },
+  "observed": {
+    "runtime_seconds": 59.76485061645508,
+    "resolution_requested": "1920x1080",
+    "landmarks_reached": [
+      "anchor.player.spawn",
+      "building:market_santa_margarita",
+      "building:tavern_santa_margarita",
+      "anchor.dock.primary",
+      "anchor.berth.primary"
+    ],
+    "landmarks_not_reached": [
+      "building:warehouse_santa_margarita",
+      "building:shipyard_santa_margarita",
+      "anchor.return.harbor"
+    ],
+    "current_run_screenshot_count": 0,
+    "weather_screenshot_count": 0
+  },
+  "blocking_reasons": [
+    "The real Player run was 59.76485061645508 seconds and did not complete the required 300-second route.",
+    "Warehouse, shipyard and return-harbor landmarks were not reached; departure/return was not demonstrated.",
+    "Same-run save, quit and Continue reload was not demonstrated in this run.",
+    "Current-scene Low performance retains a valid worst 1% low of 7.903 FPS; the three-run worst-case gate is not closed.",
+    "This run produced no current-run screenshots; fixed-shots and Calm/Rain/Storm visual gates remain unresolved."
+  ],
+  "next_owner": "D19-R03-A01/A02/A03 targeted fixes, then D19-R03-S01",
+  "historical_note": "RERUN29, RERUN35 and RERUN39_CURRENT remain preserved; RERUN41 is an additional partial real-Player record and does not replace prior evidence."
+}

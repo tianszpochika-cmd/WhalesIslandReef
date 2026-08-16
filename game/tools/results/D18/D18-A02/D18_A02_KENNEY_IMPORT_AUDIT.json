@@ -1,0 +1,640 @@
+{
+    "schema_version": 1,
+    "task": "D18-A02",
+    "status": "PASS",
+    "audit_mode": "report_only",
+    "read_only": true,
+    "registry_modified": false,
+    "asset_state_modified": false,
+    "release_approved_asserted": false,
+    "downloaded_assets": false,
+    "scanned_roots": [
+        "docs/game/design/common/assets/manifests/",
+        "Assets/Art/Candidates/Kenney/"
+    ],
+    "manifest_count": 2,
+    "file_count": 7,
+    "model_file_count": 7,
+    "texture_file_count": 0,
+    "audio_file_count": 0,
+    "prefab_file_count": 0,
+    "mesh_count": 15,
+    "animation_clip_count": 27,
+    "material_count": 7,
+    "issue_count": 7,
+    "error_count": 0,
+    "warning_count": 7,
+    "category_counts": [
+        {
+            "category": "Buildings",
+            "count": 2
+        },
+        {
+            "category": "Characters",
+            "count": 1
+        },
+        {
+            "category": "Environment",
+            "count": 2
+        },
+        {
+            "category": "Ships",
+            "count": 1
+        },
+        {
+            "category": "Vegetation",
+            "count": 1
+        }
+    ],
+    "manifests": [
+        {
+            "manifest_path": "docs/game/design/common/assets/manifests/kenney_blocky_characters_vertical_slice.manifest.json",
+            "pack_id": "pack_kenney_blocky_characters_vertical_slice_v1",
+            "review_status": "Candidate",
+            "import_status": "ImportVerified",
+            "declared_file_count": 1,
+            "candidate_files": [
+                "game/Assets/Art/Candidates/Kenney/BlockyCharacters/Models/character-a.fbx"
+            ],
+            "issues": []
+        },
+        {
+            "manifest_path": "docs/game/design/common/assets/manifests/kenney_pirate_kit_vertical_slice.manifest.json",
+            "pack_id": "pack_kenney_pirate_kit_vertical_slice_v1",
+            "review_status": "Candidate",
+            "import_status": "ImportVerified",
+            "declared_file_count": 6,
+            "candidate_files": [
+                "game/Assets/Art/Candidates/Kenney/PirateKit/Models/palm-detailed-straight.fbx",
+                "game/Assets/Art/Candidates/Kenney/PirateKit/Models/patch-sand.fbx",
+                "game/Assets/Art/Candidates/Kenney/PirateKit/Models/rocks-sand-a.fbx",
+                "game/Assets/Art/Candidates/Kenney/PirateKit/Models/ship-pirate-small.fbx",
+                "game/Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-dock-small.fbx",
+                "game/Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-small.fbx"
+            ],
+            "issues": []
+        }
+    ],
+    "assets": [
+        {
+            "path": "Assets/Art/Candidates/Kenney/BlockyCharacters/Models/character-a.fbx",
+            "target_id": "asset_ph_crew_male",
+            "role": "candidate_character_visual",
+            "category": "Characters",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 6,
+            "animation_clip_count": 27,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 6,
+            "mesh_renderer_count": 6,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 8,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -4.0,
+                "y": -1.0,
+                "z": -4.0
+            },
+            "bounds_max": {
+                "x": 4.0,
+                "y": 8.0,
+                "z": 4.0
+            },
+            "max_dimension": 9.0,
+            "target_scale_reference": "character height/foot placement from content scale; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup"
+            ]
+        },
+        {
+            "path": "Assets/Art/Candidates/Kenney/PirateKit/Models/palm-detailed-straight.fbx",
+            "target_id": "island_saint_marys",
+            "role": "candidate_palm_visual",
+            "category": "Vegetation",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 1,
+            "animation_clip_count": 0,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 1,
+            "mesh_renderer_count": 1,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 1,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -1.6080230474472047,
+                "y": 0.0,
+                "z": -1.608022928237915
+            },
+            "bounds_max": {
+                "x": 1.6080230474472047,
+                "y": 4.212889671325684,
+                "z": 1.608022928237915
+            },
+            "max_dimension": 4.212889671325684,
+            "target_scale_reference": "category-specific D18 reference; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup",
+                "Animation import is enabled for a non-animated category; confirm this is intentional"
+            ]
+        },
+        {
+            "path": "Assets/Art/Candidates/Kenney/PirateKit/Models/patch-sand.fbx",
+            "target_id": "island_saint_marys",
+            "role": "candidate_sand_visual",
+            "category": "Environment",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 1,
+            "animation_clip_count": 0,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 1,
+            "mesh_renderer_count": 1,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 1,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -3.8681530952453615,
+                "y": 0.0,
+                "z": -3.018054723739624
+            },
+            "bounds_max": {
+                "x": 3.8681530952453615,
+                "y": 0.25,
+                "z": 3.018054723739624
+            },
+            "max_dimension": 7.736306190490723,
+            "target_scale_reference": "category-specific D18 reference; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup",
+                "Animation import is enabled for a non-animated category; confirm this is intentional"
+            ]
+        },
+        {
+            "path": "Assets/Art/Candidates/Kenney/PirateKit/Models/rocks-sand-a.fbx",
+            "target_id": "island_saint_marys",
+            "role": "candidate_rock_visual",
+            "category": "Environment",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 1,
+            "animation_clip_count": 0,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 1,
+            "mesh_renderer_count": 1,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 1,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -2.417023181915283,
+                "y": 0.0,
+                "z": -2.2530555725097658
+            },
+            "bounds_max": {
+                "x": 2.6955723762512209,
+                "y": 3.2119460105895998,
+                "z": 2.133376121520996
+            },
+            "max_dimension": 5.112595558166504,
+            "target_scale_reference": "category-specific D18 reference; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup",
+                "Animation import is enabled for a non-animated category; confirm this is intentional"
+            ]
+        },
+        {
+            "path": "Assets/Art/Candidates/Kenney/PirateKit/Models/ship-pirate-small.fbx",
+            "target_id": "candidate_ship_pirate_small",
+            "role": "candidate_ship_visual",
+            "category": "Ships",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 4,
+            "animation_clip_count": 0,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 4,
+            "mesh_renderer_count": 4,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 4,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -2.4000000953674318,
+                "y": 0.0,
+                "z": -4.199999809265137
+            },
+            "bounds_max": {
+                "x": 2.4000000953674318,
+                "y": 9.963520050048829,
+                "z": 4.59999942779541
+            },
+            "max_dimension": 9.963520050048829,
+            "target_scale_reference": "ship waterline/keel and content hull dimensions; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup",
+                "Animation import is enabled for a non-animated category; confirm this is intentional"
+            ]
+        },
+        {
+            "path": "Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-dock-small.fbx",
+            "target_id": "building_saint_marys_dock",
+            "role": "candidate_dock_visual",
+            "category": "Buildings",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 1,
+            "animation_clip_count": 0,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 1,
+            "mesh_renderer_count": 1,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 1,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -0.949999988079071,
+                "y": 0.0,
+                "z": -1.2559173107147217
+            },
+            "bounds_max": {
+                "x": 0.949999988079071,
+                "y": 1.3123000860214234,
+                "z": 1.2559173107147217
+            },
+            "max_dimension": 2.5118346214294435,
+            "target_scale_reference": "door/foundation/module dimensions; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup",
+                "Animation import is enabled for a non-animated category; confirm this is intentional"
+            ]
+        },
+        {
+            "path": "Assets/Art/Candidates/Kenney/PirateKit/Models/structure-platform-small.fbx",
+            "target_id": "building_small_boat_pier",
+            "role": "candidate_small_pier_visual",
+            "category": "Buildings",
+            "source_exists": true,
+            "importer_type": "ModelImporter",
+            "main_asset_type": "GameObject",
+            "mesh_count": 1,
+            "animation_clip_count": 0,
+            "material_count": 1,
+            "texture_count": 0,
+            "renderer_count": 1,
+            "mesh_renderer_count": 1,
+            "skinned_mesh_renderer_count": 0,
+            "collider_count": 0,
+            "interaction_anchor_count": 0,
+            "lod_group_count": 0,
+            "missing_script_count": 0,
+            "missing_reference_count": 0,
+            "bone_count": 1,
+            "avatar_present": false,
+            "bounds_valid": true,
+            "naming_valid": false,
+            "bounds_min": {
+                "x": -0.949999988079071,
+                "y": 0.0,
+                "z": -1.2559173107147217
+            },
+            "bounds_max": {
+                "x": 0.949999988079071,
+                "y": 0.8999999761581421,
+                "z": 1.2559173107147217
+            },
+            "max_dimension": 2.5118346214294435,
+            "target_scale_reference": "door/foundation/module dimensions; owner Prefab decides target scale",
+            "texture_width": 0,
+            "texture_height": 0,
+            "audio_channels": 0,
+            "audio_frequency": 0,
+            "audio_length_seconds": 0.0,
+            "settings": {
+                "units_reference": "1 Unity unit = 1 metre; source dimensions are reported, not changed",
+                "axis_reference": "Unity Y-up / Z-forward; importer conversion flags are reported, not changed",
+                "global_scale": "1",
+                "file_scale": "",
+                "axis_conversion": "",
+                "import_normals": "Import",
+                "import_tangents": "CalculateMikk",
+                "mesh_compression": "Off",
+                "read_write": "False",
+                "import_animation": "True",
+                "animation_type": "Generic",
+                "avatar_setup": "NoAvatar",
+                "material_import_mode": "ImportViaMaterialDescription",
+                "material_location": "InPrefab",
+                "texture_type": "",
+                "srgb": "",
+                "texture_max_size": "",
+                "texture_compression": "",
+                "mipmaps": "",
+                "audio_compression": "",
+                "audio_load_type": "",
+                "audio_quality": "",
+                "audio_force_to_mono": "",
+                "audio_load_in_background": "",
+                "audio_preload": ""
+            },
+            "issues": [
+                {
+                    "severity": "warning",
+                    "code": "model_name_not_snake_case",
+                    "message": "Model file name does not match the D18 stable naming rule"
+                }
+            ],
+            "suggestions": [
+                "Raw model inspected without changing it; create a Prefab and run Prefab preflight for collision, interaction anchors and LODGroup",
+                "Animation import is enabled for a non-animated category; confirm this is intentional"
+            ]
+        }
+    ],
+    "prefabs": []
+}

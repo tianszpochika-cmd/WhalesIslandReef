@@ -1,0 +1,23 @@
+{
+  "schema": "D19_R02_S02_VISUAL_QA_RERUN4_V1",
+  "task": "D19-R02-S02",
+  "rerun": "RERUN4",
+  "conclusion": "PARTIAL",
+  "player_frame_count": 18,
+  "fresh_fixed_camera_count": 0,
+  "weather_variant_count": 0,
+  "capture_resolution": "Computer Use readback 1099x648 logical pixels",
+  "requested_player_resolution": "1920x1080",
+  "manual_checks": {
+    "pink_missing_material": {"status": "NOT_OBSERVED", "frames": ["14_rerun4_spawn.jpg", "15_rerun4_e.jpg", "22_rerun4_disembark.jpg", "28_rerun4_continue_loaded.jpg"]},
+    "large_pure_white_plane": {"status": "NOT_OBSERVED", "frames": ["14_rerun4_spawn.jpg", "26_rerun4_300s.jpg"]},
+    "flat_orange_green_surface": {"status": "OBSERVED", "frames": ["14_rerun4_spawn.jpg", "22_rerun4_disembark.jpg", "26_rerun4_300s.jpg"]},
+    "blocky_low_detail_harbor": {"status": "OBSERVED", "frames": ["14_rerun4_spawn.jpg", "15_rerun4_e.jpg", "20_rerun4_settle.jpg"]},
+    "red_linear_dock_placeholder": {"status": "OBSERVED", "frames": ["15_rerun4_e.jpg", "16_rerun4_departure.jpg"]},
+    "debug_route_hud_visible": {"status": "OBSERVED", "frames": ["22_rerun4_disembark.jpg", "26_rerun4_300s.jpg", "28_rerun4_continue_loaded.jpg"]},
+    "camera_crop_or_occlusion": {"status": "NOT_FULLY_ASSESSED", "reason": "Fresh 14-camera Player matrix was not captured."},
+    "weather_variants": {"status": "NOT_RUN"}
+  },
+  "visual_gate_pass": false,
+  "reason": "The frames are genuine Player captures, but they do not satisfy the fresh 14-camera/weather matrix and still show documented greybox/flat-surface debt."
+}

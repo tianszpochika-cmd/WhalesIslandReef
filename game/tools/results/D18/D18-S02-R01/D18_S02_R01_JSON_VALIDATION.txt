@@ -1,0 +1,8 @@
+python -m json.tool docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json => PASS
+python -m json.tool docs/game/design/common/assets/d18_local_development_ready_catalog.json => PASS
+python -m json.tool game/tools/results/D18/D18-S02-R01/D18_S02_R01_MACHINE_RESULT.json => PASS
+python -m json.tool game/tools/results/D18/D18-S02-R01/D18_S02_R01_UPSTREAM_EVIDENCE_AUDIT.json => PASS
+python -m json.tool game/tools/results/D18/D18-S02-R01/D18_S02_R01_CATEGORY_GATE.json => PASS
+python -m json.tool game/tools/results/D18/D18-S02-R01/manifest_audits/D18_S02_R01_ALL_MANIFEST_AUDIT.json => PASS
+python -m json.tool game/tools/results/D18/D18-S02-R01/manifest_audits/D18_S02_R01_CAT_MANIFEST_AUDIT.json => PASS
+python -m json.tool game/tools/results/D18/D18-S02-R01/D18_S02_R01_LEGACY_V2_INTAKE_AUDIT.json => PASS

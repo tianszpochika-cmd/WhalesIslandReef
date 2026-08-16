@@ -1,0 +1,102 @@
+{
+    "task": "D19-S02",
+    "status": "PASS",
+    "generated_on": "2026-08-14",
+    "scene_path": "Assets/Scenes/InitialHarbor.unity",
+    "integration_prefab_path": "Assets/Prefabs/Environment/D19/Integration/D19_SaintMargaret_Root.prefab",
+    "anchor_prefab_path": "Assets/Prefabs/Environment/D19/Integration/D19_StableInteractionAnchors.prefab",
+    "ambience_prefab_path": "Assets/Prefabs/Environment/D19/Integration/D19_AmbienceRoot.prefab",
+    "rollback_point_id": "d19-s02-preintegration-baseline",
+    "formal_initial_harbor_modified": true,
+    "systems_modified": false,
+    "contracts_modified": false,
+    "registry_modified": false,
+    "save_schema_modified": false,
+    "external_asset_state_promoted": false,
+    "dev_overlay_default_off": true,
+    "legacy_compatibility_nodes_preserved": true,
+    "legacy_renderers_hidden": 0,
+    "legacy_lights_hidden": 0,
+    "integrated_prefab_instances": 594,
+    "integrated_renderers": 436,
+    "integrated_colliders": 145,
+    "integrated_lod_groups": 66,
+    "stable_anchor_count": 20,
+    "screenshot_count": 16,
+    "fixed_shot_contract_count": 14,
+    "weather_profiles_checked": 3,
+    "capture_1080p_average_ms": 20.182300567626954,
+    "capture_1080p_p95_ms": 295.7037048339844,
+    "performance_scope": "Editor Camera.Render at 1920x1080; not a target-device or PlayMode budget claim.",
+    "screenshots": [
+        "tools/results/D19/D19-S02/screenshots/d19_shot_main_menu.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_spawn.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_market.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_dock_overview.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_tavern_entry.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_coastline.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_boarding.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_on_ship.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_departure.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_nearshore.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_weather_calm.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_weather_rain.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_weather_storm.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_return_harbor.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_settings_accessibility.png",
+        "tools/results/D19/D19-S02/screenshots/d19_shot_debug_boundary.png"
+    ],
+    "weather_profile_ids": [
+        "clear_day",
+        "overcast_rain",
+        "storm"
+    ],
+    "warnings": [],
+    "stages": [
+        {
+            "stage": "lock_evidence",
+            "status": "PASS",
+            "source": "D19-S01 Attempt 2 + D18-S02-v2",
+            "prefab_instances": 0,
+            "renderers": 0,
+            "colliders": 0,
+            "note": "Prefab-only integration root; external candidate state is unchanged."
+        },
+        {
+            "stage": "integrate_ambience",
+            "status": "PASS",
+            "source": "D19-A06",
+            "prefab_instances": 17,
+            "renderers": 12,
+            "colliders": 5,
+            "note": "Prefab-only integration root; external candidate state is unchanged."
+        },
+        {
+            "stage": "integrate_terrain_port_biomes_water_lighting",
+            "status": "PASS",
+            "source": "D19-A01—A05",
+            "prefab_instances": 582,
+            "renderers": 436,
+            "colliders": 145,
+            "note": "Prefab-only integration root; external candidate state is unchanged."
+        },
+        {
+            "stage": "scene_audit",
+            "status": "PASS",
+            "source": "Assets/Scenes/InitialHarbor.unity",
+            "prefab_instances": 594,
+            "renderers": 436,
+            "colliders": 145,
+            "note": "Required D19 roots, stable anchors and compatibility nodes present."
+        },
+        {
+            "stage": "regression_and_evidence",
+            "status": "RECORDED",
+            "source": "D19-S02 fixed shot contract",
+            "prefab_instances": 0,
+            "renderers": 0,
+            "colliders": 0,
+            "note": "Screenshots are formal-scene editor captures; PlayMode/manual route evidence is recorded separately when Unity is available."
+        }
+    ]
+}

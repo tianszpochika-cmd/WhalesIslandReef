@@ -1,0 +1,167 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_V1",
+  "task": "D19-R03-S01",
+  "conclusion": "BLOCKED",
+  "purpose": "R03 preflight and formal D19 revalidation gate",
+  "historical_results_preserved": true,
+  "preflight_inputs": {
+    "route_machine_result": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN2_MACHINE_RESULT.json",
+    "route_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN2_ROUTE_LOG.json",
+    "visual_machine_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT.json",
+    "performance_machine_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT.json",
+    "historical_d19_result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_RERUN8_MACHINE_RESULT.json"
+  },
+  "gate_checks": {
+    "a01_real_player_duration_seconds": 584.5516357421875,
+    "a01_player_movement_and_grounding": true,
+    "a01_interaction_input_observed": true,
+    "a01_complete_market_warehouse_tavern_dock_depart_return_route": false,
+    "a01_save_reload_verified": false,
+    "a02_unity_builder_exit_code": 0,
+    "a02_real_player_visual_check": true,
+    "a02_visual_debt_closed": false,
+    "a02_fixed_player_cameras": 0,
+    "a02_weather_variants": 0,
+    "a03_real_player_1080p_runs": 3,
+    "a03_runtime_quality_names": ["Very Low", "Low", "Medium"],
+    "a03_exact_high_quality_label_proven": false,
+    "d19_editmode_passed": 34,
+    "d19_editmode_failed": 0,
+    "d19_playmode_passed": 8,
+    "d19_playmode_failed": 0,
+    "d19_playmode_skipped": 1,
+    "d17_playmode_passed": 7,
+    "d17_playmode_failed": 0,
+    "d18_python_tests_passed": 11,
+    "resource_state_unchanged": true,
+    "systems_or_save_schema_changed": false
+  },
+  "latest_gate_checks": {
+    "captured_at": "2026-08-16",
+    "a01_rerun4_real_player_duration_seconds": 301.169769287109,
+    "a01_rerun4_player_movement": true,
+    "a01_rerun4_interaction_input_observed": true,
+    "a01_rerun4_save_input_observed": true,
+    "a01_rerun4_complete_route": false,
+    "a01_rerun4_save_reload_verified": false,
+    "a01_rerun4_non_walkable_collider_warnings": true,
+    "a02_rerun14_unity_builder_exit_code": 0,
+    "a02_rerun14_real_player_visual_check": true,
+    "a02_rerun14_r03_renderer_count": 311,
+    "a02_rerun14_r03_enabled_renderer_count": 310,
+    "a02_rerun14_mesh_vertex_sum": 5996,
+    "a02_rerun14_r03_collider_count": 0,
+    "a02_rerun14_fixed_player_cameras": 0,
+    "a02_rerun14_weather_variants": 0,
+    "a03_rerun16_real_player_1080p_runs": 3,
+    "a03_rerun16_actual_quality_names": ["Very Low", "Low", "Medium"],
+    "a03_rerun16_exact_high_quality_label_proven": false,
+    "resource_state_unchanged": true,
+    "systems_or_save_schema_changed": false
+  },
+  "decision": {
+    "formal_d19_r02_s02_allowed": false,
+    "d20_a01_r02_allowed": false,
+    "d20_s02_r01_allowed": false,
+    "reason": "The R03 child work has real progress, but the hard gate still lacks a complete Player route with save/reload, visual fixed-camera/weather evidence, and a clean visual acceptance. Formal revalidation is not started to avoid converting preflight evidence into a final PASS."
+  },
+  "blocking_reasons": [
+    "完整市场→仓库→酒馆/NPC→码头→登船→出航→返港→保存→重载路线未完成。",
+    "保存输入未被探针观察，保存后重载没有真实 Player 证据。",
+    "A02 真实 Player 仍有平坦地表/块状建筑视觉债务，固定镜头为 0/14、天气变体为 0/3。",
+    "A03 的真实档位回读为 Very Low/Low/Medium，不能把请求参数 high 伪称为项目 High。"
+  ],
+  "next_actions": [
+    "在 D19-R03-A01 允许范围内修正路线/保存输入取证并完成真实 Player 闭环。",
+    "在 D19-R03-A02 允许范围内消除港口主镜头的平面与块状视觉债务，并重新采集固定镜头/天气证据。",
+    "完成后新建 D19-R03-S01 重跑结果，再决定是否执行 D19-R02-S02 正式重验。"
+  ],
+  "latest_revalidation": {
+    "captured_at": "2026-08-16",
+    "historical_preflight_preserved": true,
+    "a02_rerun13": {
+      "builder_exit_code": 0,
+      "renderer_count": 311,
+      "enabled_renderer_count": 310,
+      "mesh_vertex_sum": 5996,
+      "generated_mesh_asset_count": 297,
+      "collider_count": 0,
+      "real_player_visual_check": true,
+      "screenshot": "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_spawn_rerun13_player.jpg",
+      "remaining_gate": "persistent geometry is visible, but fixed-camera/weather evidence and final visual debt closure are absent"
+    },
+    "a03_rerun16": {
+      "scene": "InitialHarbor",
+      "screen": "1920x1080",
+      "real_player_runs": 3,
+      "warmup_seconds_each": 30,
+      "sample_seconds_each": 60,
+      "actual_quality_names": ["Very Low", "Low", "Medium"],
+      "average_fps": [59.99666213989258, 59.99421310424805, 59.99443817138672],
+      "one_percent_low_fps": [59.71986770629883, 59.53479766845703, 59.556556701660156],
+      "raw_results": [
+        "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_low_rerun16.json",
+        "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_medium_rerun16.json",
+        "game/tools/results/D19/D19-R03-A03/D19_R03_A03_PERFORMANCE_high_rerun16.json"
+      ],
+      "remaining_gate": "the requested high label is not proven because project QualitySettings names are Very Low/Low/Medium; no names were changed"
+    },
+    "a01_rerun4": {
+      "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN4.json",
+      "player_build": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_Player_RERUN14.exe",
+      "player_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_ROUTE_RERUN4_PLAYER_FROM_A02.log",
+      "screen": "1920x1080",
+      "duration_seconds": 301.169769287109,
+      "movement_observed": true,
+      "interaction_input_observed": true,
+      "save_input_observed": true,
+      "landmarks_reached": [
+        "anchor.dock.primary",
+        "anchor.berth.primary",
+        "building:tavern_santa_margarita",
+        "building:warehouse_santa_margarita",
+        "anchor.player.spawn"
+      ],
+      "landmarks_not_reached": [
+        "building:market_santa_margarita",
+        "building:shipyard_santa_margarita",
+        "anchor.return.harbor"
+      ],
+      "player_observed_feedback": [
+        "E produced real boarding/disembarking feedback",
+        "B opened the real trade page",
+        "C produced the real save checkpoint toast"
+      ],
+      "route_completion": false,
+      "save_reload_verified": false,
+      "remaining_gate": "market, shipyard, departure, return and save/reload were not completed; non-walkable-collider recovery warnings were observed"
+    },
+    "a02_rerun14": {
+      "builder_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_BUILD_RERUN14.log",
+      "editor_audit": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json",
+      "player_build": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_Player_RERUN14.exe",
+      "screenshot": "game/tools/results/D19/D19-R03-A02/screenshots/r03_a02_ship_visual_rerun14_player.jpg",
+      "ship_prefab": "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_ShipVisual.prefab",
+      "r03_renderer_count": 311,
+      "r03_enabled_renderer_count": 310,
+      "mesh_vertex_sum": 5996,
+      "r03_collider_count": 0,
+      "stable_ship_root_renderer_count": 19,
+      "stable_ship_root_enabled_renderer_count": 17,
+      "visual_observation": "ship hull, deck, mast, sail, helm stand and rails are visible in the real Player; no pink material or large white proxy plane was observed, but close roof overlap and rough composition remain",
+      "remaining_gate": "fixed Player cameras, weather variants and final visual debt closure are absent"
+    },
+    "formal_revalidation_started": false,
+    "decision_unchanged": "BLOCKED",
+    "environment_rerun7_fullscreen": {
+      "machine_result": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN7_MACHINE_RESULT.json",
+      "route_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN7_ROUTE_LOG.json",
+      "main_menu_screenshot": "game/tools/results/D19/D19-R03-A01/screenshots/mainmenu_rerun7_system_blocker.jpg",
+      "main_menu_initialized": true,
+      "initial_harbor_loaded": false,
+      "real_route_started": false,
+      "system_security_prompt_touched": false,
+      "effect_on_gate": "No gate credit; S01 remains BLOCKED"
+    }
+  }
+}

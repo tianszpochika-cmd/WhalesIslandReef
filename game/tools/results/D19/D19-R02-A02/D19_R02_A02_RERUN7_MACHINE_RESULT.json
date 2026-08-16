@@ -1,0 +1,61 @@
+{
+  "schema": "D19_R02_A02_MACHINE_RESULT_RERUN7_V1",
+  "task": "D19-R02-A02",
+  "rerun": "RERUN7",
+  "conclusion": "PARTIAL",
+  "gate_pass": false,
+  "generated_at": "2026-08-15T20:45:00+08:00",
+  "historical_policy": {
+    "rerun6_preserved": true,
+    "original_partial_preserved": true,
+    "this_result_adds": "ship-range interaction priority evidence"
+  },
+  "scope": {
+    "changed_files": ["game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs"],
+    "input_owner": "D2ControlRouter",
+    "business_logic_changed": false,
+    "systems_save_registry_changed": false,
+    "scene_or_prefab_changed": false
+  },
+  "root_cause": {
+    "before": "HandleInteraction evaluated TryOpenCrewDialogue before TryToggleShip, so an adjacent NPC could consume E while the player was in the ship boarding range.",
+    "fix": "D2ControlRouter now checks its existing ship boarding-range predicate before the existing NPC dialogue path; outside that range the NPC path remains available.",
+    "duplicate_business_entry": false
+  },
+  "build": {
+    "status": "PASS",
+    "executable": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_Player_RERUN7.exe",
+    "bytes": 671744,
+    "log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_BUILD_RERUN7.log"
+  },
+  "tests": {
+    "editmode": {"total": 3, "passed": 3, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_EDITMODE_TESTS_RERUN7.xml"},
+    "playmode": {"total": 2, "passed": 2, "failed": 0, "skipped": 0, "xml": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYMODE_TESTS_RERUN7.xml"}
+  },
+  "real_player": {
+    "status": "PASS_FOR_D2_SHIP_PRIORITY",
+    "input_was_real_window_input": true,
+    "direct_method_invocation": false,
+    "new_game_to_initial_harbor": "PASS",
+    "boarding": "PASS",
+    "disembarking": "PASS",
+    "observed_log": "[D2/Input] 通过兼容 E 边沿恢复交互入口; [D2/Control] 已进入船只控制; [D2/Control] 已退出船只控制",
+    "screenshots": [
+      "game/tools/results/D19/D19-R02-A02/D19_R02_A02_RERUN7_SPAWN.jpg",
+      "game/tools/results/D19/D19-R02-A02/D19_R02_A02_RERUN7_BOARD.jpg",
+      "game/tools/results/D19/D19-R02-A02/D19_R02_A02_RERUN7_DISEMBARK.jpg"
+    ],
+    "input_log": "game/tools/results/D19/D19-R02-A02/D19_R02_A02_PLAYER_RERUN7_INPUT.log",
+    "player_closed_after_run": true
+  },
+  "remaining_scope_gap": [
+    "A02 does not own the D19 300-second route gate.",
+    "Full warehouse/tavern/NPC route, final visual fixed-camera matrix, weather and three-tier performance remain open.",
+    "D19-R02-S02 must independently rerun the complete route after this code change."
+  ],
+  "git_diff_check": {
+    "scoped_d2_files": "PASS",
+    "command": "git diff --check -- game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs",
+    "workspace_note": "global diff --check remains blocked by pre-existing trailing whitespace in InitialHarbor scene changes owned by D19-R02-A04; A02 did not modify that scene"
+  }
+}

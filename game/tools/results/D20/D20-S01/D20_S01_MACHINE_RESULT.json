@@ -1,0 +1,86 @@
+{
+  "task_id": "D20-S01",
+  "date": "2026-08-14",
+  "status": "PASS",
+  "status_scope": "standard_freeze_only",
+  "project_root": "C:/Users/Administrator/Desktop/game/first01",
+  "main_document": "docs/game/design/common/D20_CHARACTER_RIG_ANIMATION_STANDARD.md",
+  "writes_performed": [
+    "docs/game/design/common/D20_CHARACTER_RIG_ANIMATION_STANDARD.md",
+    "game/tools/results/D20/D20-S01/D20_S01_MACHINE_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-S01_HANDOFF.md",
+    ".workbuddy/memory/2026-08-14.md"
+  ],
+  "writes_forbidden_and_unchanged_by_this_task": [
+    "game/Assets/Prefabs/Characters/",
+    "game/Assets/Art/Models/Characters/",
+    "game/Assets/Animations/",
+    "game/Assets/Scenes/",
+    "game/Assets/Scripts/",
+    "game/Assets/Content/",
+    "contracts/",
+    "server/",
+    "web/"
+  ],
+  "frozen_parameters": {
+    "unit_meters": 1.0,
+    "world_up": "+Y",
+    "character_forward": "+Z",
+    "player_visual_height_m": 1.8,
+    "player_visual_height_tolerance_m": 0.03,
+    "player_capsule_reference": {
+      "height_m": 1.8,
+      "radius_m": 0.32,
+      "center_y_m": 0.9,
+      "slope_limit_deg": 50.0,
+      "world_step_offset_max_m": 0.35
+    },
+    "player_camera_target_offset_y_m": 1.1,
+    "lod_distance_m": [0, 12, 32, 80],
+    "hero_lod0_max_m": 18,
+    "screen_entity_budget_low_medium_high": [96, 128, 160],
+    "screen_npc_budget_low_medium_high": [8, 12, 16],
+    "screen_animal_budget_low_medium_high": [12, 24, 32],
+    "legacy_action_ids_preserved": {
+      "Idle": 0,
+      "Walk": 1,
+      "Run": 2,
+      "Jump": 3,
+      "Boarding": 4,
+      "Disembarking": 5
+    },
+    "root_motion": "disabled_by_default"
+  },
+  "ownership_checks": {
+    "player_movement_and_grounding": "D2CharacterController",
+    "character_ship_mode_and_boarding_request": "D2ControlRouter",
+    "appearance_loadout": "D10AppearanceSystem",
+    "npc_behavior_and_relations": "NPC/Crew/Relation systems",
+    "animal_and_pet_facts": "Animal/Ecology/Pet systems",
+    "presentation": "read_only_adapters_and_animator"
+  },
+  "static_checks": [
+    {"id": "document_exists", "result": "PASS"},
+    {"id": "unit_axis_root_foot_capsule_camera_defined", "result": "PASS"},
+    {"id": "humanoid_generic_avatar_bones_root_motion_defined", "result": "PASS"},
+    {"id": "player_action_matrix_has_trigger_visual_fallback", "result": "PASS"},
+    {"id": "npc_animal_pet_minimum_actions_defined", "result": "PASS"},
+    {"id": "lod_culling_simulation_and_budget_defined", "result": "PASS"},
+    {"id": "appearance_variant_and_data_ownership_defined", "result": "PASS"},
+    {"id": "d20_a01_to_a06_unique_write_directories_defined", "result": "PASS"},
+    {"id": "test_matrix_and_s02_rollback_defined", "result": "PASS"},
+    {"id": "d17_1_8m_ground_boarding_camera_compatibility_defined", "result": "PASS"},
+    {"id": "git_diff_check", "result": "PASS", "command": "git diff --check"}
+  ],
+  "runtime_and_asset_claims": {
+    "formal_prefabs_created": false,
+    "formal_scene_modified": false,
+    "runtime_code_modified": false,
+    "unity_compile_run_in_this_task": false,
+    "playmode_run_in_this_task": false,
+    "local_development_ready_changed": false,
+    "release_approved_changed": false,
+    "note": "D20-S01 freezes acceptance criteria; implementation evidence belongs to D20-A01—A06 and D20-S02."
+  },
+  "next_gate": "D20-A01—A06 work-scene evidence, then D20-S02 formal integration; D18-S03 remains the resource promotion gate."
+}

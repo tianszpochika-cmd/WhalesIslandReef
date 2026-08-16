@@ -1,0 +1,57 @@
+{
+  "schema": "D19_R03_S01_MACHINE_RESULT_RERUN17_V1",
+  "task": "D19-R03-S01",
+  "attempt": "RERUN17_PREFLIGHT",
+  "conclusion": "BLOCKED",
+  "historical_preflight_preserved": "game/tools/results/D19/D19-R03-S01/D19_R03_S01_MACHINE_RESULT.json",
+  "purpose": "汇总 R03-A01 RERUN10、R03-A02 RERUN14、R03-A03 RERUN17 的最新事实；未启动正式 D19-R02-S02。",
+  "inputs": {
+    "route_machine_result": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN10_MACHINE_RESULT.json",
+    "route_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RERUN10_ROUTE_LOG.json",
+    "visual_machine_result": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_MACHINE_RESULT.json",
+    "performance_machine_result": "game/tools/results/D19/D19-R03-A03/D19_R03_A03_MACHINE_RESULT_RERUN17.json",
+    "historical_d19_result": "game/tools/results/D19/D19-R02-S02/D19_R02_S02_RERUN8_MACHINE_RESULT.json"
+  },
+  "gate_checks": {
+    "a01_non_development_player_main_menu_initialized": true,
+    "a01_real_player_route_5_to_10_minutes": false,
+    "a01_complete_market_warehouse_tavern_dock_board_depart_return_route": false,
+    "a01_save_reload_verified": false,
+    "a01_system_overlay_blocker": true,
+    "a02_real_player_visual_check": true,
+    "a02_visual_debt_closed": false,
+    "a02_fixed_player_cameras": 0,
+    "a02_weather_variants": 0,
+    "a03_real_player_1080p_runs": 3,
+    "a03_quality_names": ["Low", "Medium", "High"],
+    "a03_exact_high_quality_label_proven": true,
+    "a03_performance_subtask_passed": true,
+    "d19_editmode_passed": 34,
+    "d19_editmode_failed": 0,
+    "d19_playmode_passed": 8,
+    "d19_playmode_failed": 0,
+    "d19_playmode_skipped": 1,
+    "d17_playmode_passed": 7,
+    "d17_playmode_failed": 0,
+    "d18_python_tests_passed": 11,
+    "resource_state_unchanged": true,
+    "systems_or_save_schema_changed": false
+  },
+  "decision": {
+    "formal_d19_r02_s02_allowed": false,
+    "d20_a01_r02_allowed": false,
+    "d20_a02_r02_allowed": false,
+    "d20_s02_r01_allowed": false,
+    "reason": "A03 performance evidence is now real and exact for Low/Medium/High, but A01 still has no complete Player route/save-reload and A02 still has no 14-camera/weather matrix or visual debt closure."
+  },
+  "blocking_reasons": [
+    "主菜单可启动但 Windows 安全提示覆盖窗口，RERUN10 未能安全发送新游戏输入；历史 RERUN4 也未闭合市场、船坞、出航、返港和保存重载。",
+    "A02 固定 Player 镜头仍为 0/14，天气变体仍为 0/3；局部平坦地表、低细节建筑和近景遮挡仍未关闭。",
+    "正式 D19-R02-S02 尚未启动；不得用子任务 PASS 代替最终场景验收。"
+  ],
+  "next_actions": [
+    "解决不触碰系统安全提示前提下的真实 Player 菜单输入阻断，完成 300—600 秒路线和保存—退出—重载。",
+    "在 R03-A02 责任范围内补齐真实 Player 14 固定镜头、3 天气变体和视觉债务复验。",
+    "两项完成后生成新的 S01 预检并决定是否启动 D19-R02-S02。"
+  ]
+}

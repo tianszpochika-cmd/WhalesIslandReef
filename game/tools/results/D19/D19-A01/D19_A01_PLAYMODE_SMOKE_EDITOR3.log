@@ -1,0 +1,714 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.0/staging' branch; Version is '6000.0.80f1 (2dfd32957da2) revision 3013938'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) Core' Language: 'zh' Physical Memory: 32553 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator" at "2026-08-14T06:17:52.0897722Z"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-08-14T06:17:52Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 6000.0.80f1\Editor\Unity.exe
+-batchmode
+-nographics
+-projectPath
+C:\Users\Administrator\Desktop\game\first01\game
+-executeMethod
+WhalesIslandReef.Editor.D19A01.D19A01TerrainBuilder.RunPlayModeSmoke
+-logFile
+C:\Users\Administrator\Desktop\game\first01\game\tools\results\D19\D19-A01\D19_A01_PLAYMODE_SMOKE_EDITOR3.log
+Successfully changed project path to: C:\Users\Administrator\Desktop\game\first01\game
+C:/Users/Administrator/Desktop/game/first01/game
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [34908]  Target information:
+
+Player connection [34908]  * "[IP] 192.168.50.214 [Port] 55504 [Flags] 2 [Guid] 3590098515 [EditorId] 3590098515 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34908]  * "[IP] 172.16.219.2 [Port] 55504 [Flags] 2 [Guid] 3590098515 [EditorId] 3590098515 [Version] 1048832 [Id] WindowsEditor(7,台式机01) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [34908] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [34908] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-7080" after 0.2 seconds.
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 8 unused hashed content filesRefreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.80f1 (2dfd32957da2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 6000.0.80f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Administrator/Desktop/game/first01/game/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity 6000.0.80f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56080
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 6000.0.80f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001675 seconds.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.17.4+4293ba1
+  Session Id:              d90e44a0bf9f4b32b92135bdc08c66d5
+  Correlation Id:          82c433db7d4a40380a9f70c71eaaee81
+  External correlation Id: 1183431412792941993
+  Machine Id:              U50m5UMVN2pxIRuwWgE2BwhHp5s=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Administrator" (connect: 0.00s, validation: 0.00s, handshake: 0.79s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Administrator-notifications" at "2026-08-14T06:17:52.8829691Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T07:17:28Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T07:17:28Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 0.80s
+- Loaded All Assemblies, in  0.243 seconds
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.223 seconds
+Domain Reload Profiling: 465ms
+	BeginReloadAssembly (65ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (108ms)
+		LoadAssemblies (63ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (106ms)
+			TypeCache.Refresh (104ms)
+				TypeCache.ScanAssembly (95ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (223ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (196ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (18ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (37ms)
+			ProcessInitializeOnLoadAttributes (98ms)
+			ProcessInitializeOnLoadMethodAttributes (39ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-YDQB-K8QU-8563-AC7N-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2026-09-21T07:17:28Z
+[Licensing::Module] License group:
+  Id: ewogICJzdWJzR3JvdXAiIDogInVuaXR5IGVkaXRvciIsCiAgIm5hbWVzcGFjZSIgOiAidW5pdHlfZWRpdG9yIiwKICAidHlwZSIgOiAiRURJVE9SIiwKICAidGFnIiA6ICJVbml0eVBlcnNvbmFsXXXX
+  Product: Unity Personal Version
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 55 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.cinemachine@3.1.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.cinemachine@b2e7bffab772)
+    com.unity.ide.visualstudio@2.0.22 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ide.visualstudio@8140e851d83e)
+    com.unity.inputsystem@1.11.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.inputsystem@3c4a97c3950f)
+    com.unity.timeline@1.8.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.timeline@c58b4ee65782)
+    com.unity.visualscripting@1.9.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.visualscripting@1b53f46e931b)
+    com.unity.splines@2.8.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.splines@9b00833aca09)
+    com.unity.searcher@4.9.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.searcher@1e17ce91558d)
+    com.unity.burst@1.8.29 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.burst@6bb9aca3ef38)
+    com.unity.mathematics@1.3.2 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.mathematics@8017b507cc74)
+    com.unity.collections@2.6.7 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.collections@31e963071226)
+    com.unity.settings-manager@2.1.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.settings-manager@41738c275190)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.5.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework.performance@8b56083ec0f0)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal@9c1decc64651)
+    com.unity.test-framework@1.6.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.test-framework@082c24152fd4)
+    com.unity.textmeshpro@5.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.textmeshpro@53f43edfd2e0)
+    com.unity.ugui@2.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ugui@4601c9db1b9b)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.ext.nunit@031a54704bff)
+    com.unity.render-pipelines.core@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.core@8e828b9223c8)
+    com.unity.shadergraph@17.0.4 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.shadergraph@14250cfec0ec)
+    com.unity.render-pipelines.universal-config@17.0.3 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.render-pipelines.universal-config@dd206bf35d04)
+    com.unity.rendering.light-transport@1.0.1 (location: C:\Users\Administrator\Desktop\game\first01\game\Library\PackageCache\com.unity.rendering.light-transport@9bd588f963c0)
+[Package Manager] com.unity.textmeshpro is deprecated: This package is no longer supported. TextMeshPro functionalities are now included in the com.unity.ugui package. To continue using them, consider adding it to your project dependencies.
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+Assembly for Assembly Definition File 'Assets/Tests/EditMode/D19/D19A02.Tests.asmdef' will not be compiled, because it has no scripts associated with it.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:LogFormat (UnityEngine.LogType,string,object[])
+UnityEngine.Debug:LogWarningFormat (string,object[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:WarnIfThereAreAssembliesWithoutAnyScripts (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings,UnityEditor.Scripting.ScriptCompilation.ScriptAssembly[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScriptsWithSettings (UnityEditor.Scripting.ScriptCompilation.ScriptAssemblySettings)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilation:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface/<>c__DisplayClass21_0:<CompileScripts>b__0 ()
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:EmitExceptionAsError<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus> (System.Func`1<UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus>,UnityEditor.Scripting.ScriptCompilation.EditorCompilation/CompileStatus)
+UnityEditor.Scripting.ScriptCompilation.EditorCompilationInterface:CompileScripts (UnityEditor.Scripting.ScriptCompilation.EditorScriptCompilationOptions,UnityEditor.BuildTarget,int,string[])
+
+Starting: C:\Program Files\Unity 6000.0.80f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Administrator/Desktop/game/first01/game
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s210ms
+[676/869    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.19 seconds), 1 items updated, 869 evaluated
+AssetDatabase: script compilation time: 0.530032s
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.626 seconds
+'Packages/com.unity.cinemachine/Editor/Editors/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.cinemachine/Editor/Obsolete/CinemachineVirtualCameraBaseEditor.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Start importing Assets/Prefabs/Environment/D19/Water/Materials using Guid(9797cf44dbaee704ea731b850fb50087) (DefaultImporter) -> (artifact id: 'ceebaea6ab0c80f08cce3e290dbac53f') in 0.0110041 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Meshes using Guid(2dc0b55e36dcb494b8160c0659d8e38c) (DefaultImporter) -> (artifact id: '289d0e69b130247e9d9a856106d71a8d') in 0.0005586 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.038 seconds
+Domain Reload Profiling: 2662ms
+	BeginReloadAssembly (225ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (13ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (126ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (343ms)
+		LoadAssemblies (231ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (158ms)
+			TypeCache.Refresh (101ms)
+				TypeCache.ScanAssembly (93ms)
+			BuildScriptInfoCaches (45ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (2039ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1892ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (2ms)
+			BeforeProcessingInitializeOnLoad (90ms)
+			ProcessInitializeOnLoadAttributes (1730ms)
+			ProcessInitializeOnLoadMethodAttributes (57ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Start importing Assets/Scenes/D19/Work/D19_Water_Work.unity using Guid(365bb4ab75b2be24c9ddd0bbdb4d6373) (DefaultImporter) -> (artifact id: 'c9eaf888b736efcb6f821710accfb020') in 0.0006302 seconds
+Start importing Assets/Shaders/D19/D19WaterSurface.shader using Guid(d8ad12967cd07504cb83683362d3cbcc) (ShaderImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+ -> (artifact id: '10cd914dae72d264a7725a7819fb50e3') in 0.0348131 seconds
+Start importing Assets/Shaders/D19/D19UnderwaterVolume.shader using Guid(d957ed3c7c388924fb5c4c181c30a85e) (ShaderImporter) -> (artifact id: '56425aad119094d52a6b57ae187e75ec') in 0.0055536 seconds
+Start importing Assets/Shaders/D19/D19WaterFoam.shader using Guid(6dab788adcc862347ac83810ee37f5e7) (ShaderImporter) -> (artifact id: 'ec461c6c41a4620e42f18decfdb200b4') in 0.0058885 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Reef_CoralMud.mat using Guid(b037783e58fbd064fb3f87c2b2712dc5) (NativeFormatImporter) -> (artifact id: '73b60710227ed53995426be4cce6c628') in 0.0020071 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Water_Foam.mat using Guid(0313af645dcecfc499f4a27d8cc7570f) (NativeFormatImporter) -> (artifact id: 'e3c82490863035b5ad5aaecb90ead34b') in 0.0038243 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Test_Dock_Wood.mat using Guid(485a2afc2251ea24e91a4916351a7894) (NativeFormatImporter) -> (artifact id: 'cfb61bac308164fc6a6df0c0c0d902c7') in 0.0017745 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Water_High.mat using Guid(d806fabfdfbe3084ea54ac01fc102061) (NativeFormatImporter) -> (artifact id: 'd265977c4257138e94527c790fdfbe28') in 0.0058215 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Water_Medium.mat using Guid(3ce8be99a6bd8884d91bd97626f0971b) (NativeFormatImporter) -> (artifact id: '237c1413786cb2af579b1118709beaf4') in 0.0014404 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Water_Low.mat using Guid(2d4315790721dbe42aa5d0cb8917715f) (NativeFormatImporter) -> (artifact id: '501ce36d69f7f9cb68b4024eb5becb56') in 0.0013926 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Shore_Sand.mat using Guid(2d5a5ed7a591e59449fb0b2b192d96ba) (NativeFormatImporter) -> (artifact id: 'e7291ce0a3481a1a4e7c257196c07fc4') in 0.0013503 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Materials/D19_Underwater_Tint.mat using Guid(cfbc6e10b306b664f82293168e1972f7) (NativeFormatImporter) -> (artifact id: '22da83150d621686835264c747a77c1d') in 0.0017697 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Meshes/D19_Water_TestShore_Mesh.asset using Guid(735ff6ffd7c6e1444a27ec86e967b501) (NativeFormatImporter) -> (artifact id: '2808f39eab231f3de1be6a9237cce8b9') in 0.0015185 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Meshes/D19_Water_ReefRock_Mesh.asset using Guid(1871a40796680c944ab0cf1588c449b2) (NativeFormatImporter) -> (artifact id: '1aa3c0200bad7ef148adc95f8b9a2ae5') in 0.0012873 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Meshes/D19_Water_Surface_Mesh.asset using Guid(f8c1bacf027a33a43bd35d8f5cb165b3) (NativeFormatImporter) -> (artifact id: '324c7dadd44cca57b5715c7fe7a53f37') in 0.0016746 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/Meshes/D19_Water_ShoreFoam_Mesh.asset using Guid(5c108ef8c26fdae4aab3681ba80ff148) (NativeFormatImporter) -> (artifact id: '9cf1d98d1735deb37fa1e69c2234dcbc') in 0.0024297 seconds
+Start importing Assets/Prefabs/Environment/D19/Water/WaterRoot.prefab using Guid(0d40fd347a7b54e41b9fdf176dd41f05) (PrefabImporter) -> (artifact id: '977b0b4492dcaff40003247b8367dcdc') in 0.008672 seconds
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=d0b3d690a9c497e449b0c69427bf9b9d): Total: 4.200 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=18 (actual=18, local cache=0, cache server=0)
+		Asset DB Process Time: managed=4 ms, native=2610 ms
+		Asset DB Callback time: managed=325 ms, native=67 ms
+		Scripting: domain reloads=1, domain reload time=626 ms, compile time=531 ms, other=34 ms
+		Project Asset Count: scripts=1355, non-scripts=7216
+		Asset File Changes: new=20, changed=20, moved=0, deleted=4
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.002ms
+	InvokePackagesCallback: 20.358ms
+	ApplyChangesToAssetFolders: 0.479ms
+	Scan: 215.396ms
+	OnSourceAssetsModified: 25.341ms
+	CategorizeAssetsWithTransientArtifact: 36.078ms
+	ProcessAssetsWithTransientArtifactChanges: 53.929ms
+	UnregisterDeletedAssets: 0.003ms
+	CategorizeAssets: 60.975ms
+	ImportOutOfDateAssets: 2150.506ms (1513.476ms without children)
+		ImportManagerImport: 103.138ms (4.973ms without children)
+			ImportInProcess: 97.911ms
+			UpdateCategorizedAssets: 0.254ms
+		CompileScripts: 531.128ms
+		ReloadNativeAssets: 0.057ms
+		UnloadImportedAssets: 0.590ms
+		ReloadImportedAssets: 0.001ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.332ms
+		InitializingProgressBar: 0.015ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.769ms
+	PostProcessAllAssets: 346.033ms
+	Hotreload: 2.165ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.002ms
+	UnloadStreamsBegin: 1.036ms
+	PersistCurrentRevisions: 0.447ms
+	UnloadStreamsEnd: 0.023ms
+	GenerateScriptTypeHashes: 2.477ms
+	Untracked: 1287.649ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 1.464ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-WhalesIslandReef
+Unloading 32 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6223 unused Assets / (4.8 MB). Loaded Objects now: 6900.
+Memory consumption went from 203.8 MB to 199.1 MB.
+Total: 7.664100 ms (FindLiveObjects: 0.497200 ms CreateObjectMapping: 0.405700 ms MarkObjects: 4.957700 ms  DeleteObjects: 1.801500 ms)
+
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=ec07e431041d9974f90e443ad179640f): Total: 0.075 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=f2cfead57d3323a4fa93b7febf0a8e5b): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=91bfde3409bfaae4f91fe27bf1927858): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=fdbaeaa93bd47e040b7b97835b5d7859): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.83 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=ee25dda3a1fa1fe4da1478bd10a74b1e): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=be71514aeb30cf14390e55ccdc751ac4): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=787458874b7603d408d50fe3b2599490): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=6a56da287ae9f404d94a51b2200cf219): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=09a60030def74da4c9973d585459ac0a): Total: 0.032 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=74e9d1bc19762824fad3da4e2040234b): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=7560bb34190051349b42096934b37246): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=5993c4055f684a044b0605bbf3b7d627): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=56a2903db0b48f94e974af2388f75ba7): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=80e44dee5c3c3024293030866c575621): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=379df83c77d576f45a85a1784ab1a147): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=624d55f3ff4e1b841823255b552d3679): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=6aa3d88376b468541bc6fdc71a3bb978): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=0ecb6b61d92185748a1a67d44ee5d4f0): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=89a10f8f74d4ea6448cd97aed92fa5d5): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=3c776c8b62d4fe6499c83b1d218a41fc): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=423eeff9b33692348b313e1834b5af55): Total: 0.009 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Sand.mat using Guid(ece6579711358ab42bf35a68364a25a0) (NativeFormatImporter) -> (artifact id: 'b440b05b8afc3be46ae99d730b4cac0e') in 0.0018276 seconds
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=3e948a91f51ad5d43a8569aa169a4599): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Rock.mat using Guid(26f3b2c1258748d4882e36fda6bccb6e) (NativeFormatImporter) -> (artifact id: '928904c3e43881f7562607ff8c95e6b5') in 0.0018531 seconds
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=603cda3cd81e8b242b0722b00578716c): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Grass.mat using Guid(dab30283f920d654b89a19a41e3d615a) (NativeFormatImporter) -> (artifact id: '401d41e77fd0b4d3bb61e340e2fee4cf') in 0.0018911 seconds
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=be7fdbee3a31abe429dafb49356e50c7): Total: 0.029 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Mud.mat using Guid(53def96152ec54a4e916ff9753f31dc4) (NativeFormatImporter) -> (artifact id: '73319c869b7a760524fa141f5e3c0be5') in 0.0019488 seconds
+Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=850074fbf1cd9624c8c248d90824da8f): Total: 0.028 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Art/Materials/D19/A01/D19_A01_CaveInterior.mat using Guid(dfe6b345281e4cf4780fd8f7c4932208) (NativeFormatImporter) -> (artifact id: '58d4014ca586257f834e68043d5a91d4') in 0.0015385 seconds
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a797c2423ad275f44b56f3f88e6205de): Total: 0.028 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D19/Work/Data/D19_SaintMargaret_TerrainData.asset using Guid(1271f48241d0eeb42b6db7e87b1edc97) (NativeFormatImporter) -> (artifact id: '79ee21aa0553d17358a860b8efdd0504') in 0.0015716 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b96f8ab2a1225dd48952629a3adb6387): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=abc8bf59fc99a8142a7651318356b123): Total: 0.025 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=a592b453de2c95243b2f3d45ddf64a0d): Total: 0.026 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=8bae069a84b8afa48abc9d24d5497b82): Total: 0.025 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 0.62 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=8808c7a1f72b0f74c8edbfcc483cfc74): Total: 0.027 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainRoot.prefab using Guid(0e9a5374794bd684caf3bb36c7adcc45) (PrefabImporter) -> (artifact id: '4a7b546e394c96960da20b703b380f43') in 0.0046579 seconds
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=3570660007787a24197c634b59e02bb7): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainCollision.prefab using Guid(9e8d8ef04b66c4246b6accc9335ea690) (PrefabImporter) -> (artifact id: '544c1c5808a7cc0ac067b06d627ada4e') in 0.0054992 seconds
+Refreshing native plugins compatible for Editor in 0.84 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=5ca8ee1f20a55074cb5a9577c406d316): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainAnchors.prefab using Guid(d7c824a56bc04dc4b9501604c415be50) (PrefabImporter) -> (artifact id: '7b616a3db237a50acde7f549276d4da7') in 0.0037521 seconds
+Refreshing native plugins compatible for Editor in 0.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=41b6f275e2114e04ea2e7ce1a4e04f88): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_CaveFissure.prefab using Guid(40ebee9b5ba582f46b7f75606e206d8d) (PrefabImporter) -> (artifact id: 'aa3165cbd484665af0517983c953cbc5') in 0.004452 seconds
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=e0cdd2ca9143e0442bc9a235ee548671): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainSurfaceSet.prefab using Guid(07de2ea67e5ae534d998e4f14163b118) (PrefabImporter) -> (artifact id: 'c7ed8e8a9e2b127f2e584346ca4e4c7e') in 0.0191087 seconds
+Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=33adf00eaa8b9cb478277c6366388df1): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainPresentation.prefab using Guid(5f5308b9f53067b40b44f239dacbc44e) (PrefabImporter) -> (artifact id: '613a57c90b49f23554cf8d978aecb65e') in 0.0047672 seconds
+Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=830fe2f28cd64354995853ea7a8ec7d1): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainRuntimeProbe.prefab using Guid(020f0e1bfe36d5d40b445dd58f12ff5b) (PrefabImporter) -> (artifact id: '43a3b4b6871e609ebaa0cd30c68bacba') in 0.0042751 seconds
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=48532fa4640377b4ba234334431a6f92): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 183 unused Assets / (39.5 KB). Loaded Objects now: 6916.
+Memory consumption went from 182.5 MB to 182.5 MB.
+Total: 5.633200 ms (FindLiveObjects: 0.372300 ms CreateObjectMapping: 0.340200 ms MarkObjects: 4.750100 ms  DeleteObjects: 0.168700 ms)
+
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=6d797d1870b209e43a1e58b9406124f5): Total: 0.042 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Prefabs/Environment/D19/Terrain/D19_TerrainNavMesh.prefab using Guid(6b262df77f9ebea418f2a5965af40e8a) (PrefabImporter) -> (artifact id: '1a401f4c2f76c256cc056713ddc06807') in 0.0042047 seconds
+Refreshing native plugins compatible for Editor in 0.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=7281b7692496f7c41813679cefe81e88): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Mud.mat using Guid(53def96152ec54a4e916ff9753f31dc4) (NativeFormatImporter) -> (artifact id: '55ebb41a7722fe94df78d7ad87e5a792') in 0.0019168 seconds
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Rock.mat using Guid(26f3b2c1258748d4882e36fda6bccb6e) (NativeFormatImporter) -> (artifact id: '8b9573d08cdcfd486f1879f8a5fe1e05') in 0.0015048 seconds
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Grass.mat using Guid(dab30283f920d654b89a19a41e3d615a) (NativeFormatImporter) -> (artifact id: 'addfe532dbb30703b6e6ce831f7bdf47') in 0.001335 seconds
+Start importing Assets/Art/Materials/D19/A01/D19_A01_Sand.mat using Guid(ece6579711358ab42bf35a68364a25a0) (NativeFormatImporter) -> (artifact id: '7f070ee69b3d68ed87820a5abdb80779') in 0.001444 seconds
+Start importing Assets/Art/Materials/D19/A01/D19_A01_CaveInterior.mat using Guid(dfe6b345281e4cf4780fd8f7c4932208) (NativeFormatImporter) -> (artifact id: '1c3d206818df82a39ba59d77fda42028') in 0.0014005 seconds
+Start importing Assets/Scenes/D19/Work/Data/D19_SaintMargaret_TerrainData.asset using Guid(1271f48241d0eeb42b6db7e87b1edc97) (NativeFormatImporter) -> (artifact id: '8fec6621540e3a2817955699a480a93f') in 0.0014088 seconds
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=7430d411e58a26549bf24df074a4bb09): Total: 0.039 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/D19/Work/D19_Terrain_Work.unity using Guid(af2be968c741aab40a37e6545c5a7be9) (DefaultImporter) -> (artifact id: 'b606084fd385eb2c85154f5a607d2bb2') in 0.0007456 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=b932b84e2166c594c8638d85b5cd5ff7): Total: 0.033 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=12db7976de9b7b04ebe1e9ec9964dce1): Total: 0.007 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+[D19-A01] Terrain Work Scene built: Assets/Scenes/D19/Work/D19_Terrain_Work.unity
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+WhalesIslandReef.Editor.D19A01.D19A01TerrainBuilder:BuildTerrainWorkScene () (at Assets/Editor/D19A01/D19A01TerrainBuilder.cs:89)
+WhalesIslandReef.Editor.D19A01.D19A01TerrainBuilder:RunPlayModeSmoke () (at Assets/Editor/D19A01/D19A01TerrainBuilder.cs:102)
+
+(Filename: Assets/Editor/D19A01/D19A01TerrainBuilder.cs Line: 89)
+
+Opening scene 'Assets/Scenes/D19/Work/D19_Terrain_Work.unity'
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/D19/Work/D19_Terrain_Work.unity'
+	Deserialize:            0.627 ms
+	Integration:            124.239 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.008 ms
+	Total Operation Time:   124.879 ms
+Unloading 36 unused Assets / (12.5 MB). Loaded Objects now: 7171.
+Memory consumption went from 205.6 MB to 193.1 MB.
+Total: 4.505800 ms (FindLiveObjects: 0.237000 ms CreateObjectMapping: 0.137500 ms MarkObjects: 4.029200 ms  DeleteObjects: 0.101300 ms)
+
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+[Project] Loading completed in 8.159 seconds
+	Project init time: 				5.991 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.220 seconds
+		Asset Database init time: 		0.214 seconds
+		Global illumination init time: 	0.002 seconds
+		Assemblies load time: 			0.480 seconds
+		Unity extensions init time: 	0.007 seconds
+		Asset Database refresh time: 	4.201 seconds
+	Scene opening time: 			2.134 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1786688280230,"processId":7080,"projectLoad":8.1594742,"projectInit":5.9914762,"templateInit":0.0,"packageManagerInit":0.2201009,"assetDatabaseInit":0.2141664,"globalIlluminationInit":0.0018672,"assembliesLoad":0.4799251,"unityExtensionsInit":0.0065901,"assetDatabaseRefresh":4.2005229,"sceneOpening":2.1337819}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1786688280230,"processId":7080,"editorVersion":"6000.0.80f1 (2dfd32957da2)","branch":"6000.0/staging","buildType":"Release","platform":"Windows"}
+Reloading assemblies for play mode.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.456 seconds
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.561 seconds
+Domain Reload Profiling: 1018ms
+	BeginReloadAssembly (238ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (15ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (157ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (169ms)
+		LoadAssemblies (73ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (138ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (117ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (562ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (361ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (205ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (15ms)
+Asset Pipeline Refresh (id=d40ff57932aa8eb43bd48399193cdf25): Total: 1.154 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=663 ms
+		Asset DB Callback time: managed=23 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=465 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1355, non-scripts=7216
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 1.089ms
+	ApplyChangesToAssetFolders: 0.258ms
+	Scan: 0.000ms
+	OnSourceAssetsModified: 0.001ms
+	CategorizeAssetsWithTransientArtifact: 0.005ms
+	ProcessAssetsWithTransientArtifactChanges: 3.351ms
+	CategorizeAssets: 64.686ms
+	ImportOutOfDateAssets: 567.990ms (563.077ms without children)
+		CompileScripts: 1.004ms
+		CollectScriptTypesHashes: 1.832ms
+		ReloadNativeAssets: 0.662ms
+		UnloadImportedAssets: 0.087ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.932ms
+		InitializingProgressBar: 0.000ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.000ms
+		OnDemandSchedulerStart: 0.395ms
+	PostProcessAllAssets: 23.872ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.282ms
+	UnloadStreamsBegin: 0.044ms
+	PersistCurrentRevisions: 0.393ms
+	UnloadStreamsEnd: 0.003ms
+	GenerateScriptTypeHashes: 3.154ms
+	Untracked: 492.269ms
+
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            2.685 ms
+	Integration:            269.170 ms
+	Integration of assets:  0.099 ms
+	Thread Wait Time:       0.004 ms
+	Total Operation Time:   271.958 ms
+Asset Pipeline Refresh (id=6da3ad4d7d9177249ad1f5245171ab30): Total: 0.065 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[WhaleboneSetup] Unity 6：activeInputHandler 由 manifest.json 中的 com.unity.inputsystem 包自动启用
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.EditorTools.WhaleboneProjectSetup:RunOnce () (at Assets/Editor/WhaleboneProjectSetup.cs:41)
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+(Filename: Assets/Editor/WhaleboneProjectSetup.cs Line: 41)
+
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime:ApplyToSceneUi () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:130)
+Whalebone.Gameplay.UI.D16.D16AccessibilityRuntime/<ApplyNextFrame>d__11:MoveNext () (at Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs:85)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/Scripts/Gameplay/UI/D16/D16AccessibilityRuntime.cs Line: 130)
+
+[D19-A01] Terrain PlayMode probe PARTIAL: route_navmesh_samples=0
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+WhalesIslandReef.D19A01.D19A01TerrainRuntimeProbe/<Run>d__2:MoveNext () (at Assets/Scenes/D19/Work/D19A01TerrainRuntimeProbe.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)
+
+(Filename: Assets/Scenes/D19/Work/D19A01TerrainRuntimeProbe.cs Line: 47)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            1.088 ms
+	Integration:            136.392 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.009 ms
+	Total Operation Time:   137.492 ms
+Unloading 6 unused Assets / (6.2 MB). Loaded Objects now: 7248.
+Memory consumption went from 217.5 MB to 211.3 MB.
+Total: 5.295400 ms (FindLiveObjects: 0.257900 ms CreateObjectMapping: 0.156800 ms MarkObjects: 4.818600 ms  DeleteObjects: 0.061200 ms)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at C:/Users/Administrator/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.021s, timestamps: [9.662 - 9.683]
+TrimDiskCacheJob: Current cache size 0mb

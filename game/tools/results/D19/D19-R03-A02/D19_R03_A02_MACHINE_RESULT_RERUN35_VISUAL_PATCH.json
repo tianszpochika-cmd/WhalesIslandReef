@@ -1,0 +1,56 @@
+{
+  "schema": "D19_R03_A02_MACHINE_RESULT_RERUN35_VISUAL_PATCH_V1",
+  "task": "D19-R03-A02",
+  "rerun": "RERUN35",
+  "conclusion": "PARTIAL",
+  "scope": "D19-R03 Integration presentation only",
+  "build": {
+    "unity_exit_code": 0,
+    "log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_UNITY_BUILD_RERUN35_VISUAL_COLLAPSE.log",
+    "player_build_exit_code": 0,
+    "player_build_log": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_PLAYER_BUILD_RERUN29_VISUALPATCH.log",
+    "player": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_Player_RERUN29.exe"
+  },
+  "editor_audit": {
+    "exit_code": 0,
+    "report": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json",
+    "renderer_count": 315,
+    "enabled_renderer_count": 314,
+    "mesh_vertex_sum": 6457,
+    "integration_collider_count": 1,
+    "external_candidate_count": 8
+  },
+  "real_player_observation": {
+    "resolution": "1920x1080",
+    "duration_seconds": 254.287841796875,
+    "route_log": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_RUNTIME_VISUALPATCH_PLAYER_RERUN35.log",
+    "probe": "game/tools/results/D19/D19-R03-A02/D19_R03_A02_RUNTIME_VISUALPATCH_PLAYER_RERUN35.json",
+    "screenshots": [
+      "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun29_00.png",
+      "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun29_01.png",
+      "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun29_02.png",
+      "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun29_03.png",
+      "game/tools/results/D19/D19-R03-A01/screenshots/route_rerun29_04.png"
+    ],
+    "visual_patch_observed": true,
+    "input_movement_observed_this_run": false,
+    "save_input_observed_this_run": false,
+    "weather_variants_observed": 0,
+    "not_route_evidence": true
+  },
+  "visual_findings": {
+    "improved": [
+      "building roof and canopy depth reduced to avoid near-camera ceiling occlusion",
+      "market entry frame reduced to a low-profile sign frame",
+      "backdrop rock and palm scale reduced"
+    ],
+    "remaining": [
+      "flat ground and dock planes remain visible",
+      "procedural buildings remain low-detail in close shots",
+      "weather matrix is not captured",
+      "complete player route and save/reload are not demonstrated"
+    ]
+  },
+  "resource_state_unchanged": true,
+  "formal_integration_gate": "D19-R03-S01 remains BLOCKED"
+}
