@@ -1,0 +1,26 @@
+{
+  "task_id": "D19-L39",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T02:00:00+08:00",
+  "summary": "编写并执行历史旧存档兼容与迁移单元测试 game/Assets/Tests/EditMode/D19/D19LegacySaveTests.cs（纯 C# EditMode，零 Unity 依赖）：构建 8 类完整旧存档夹具（缺失 D19 块、旧 port/berth 别名与迁移提示、SchemaVersion=0 升级、未来/负数不支持版本拦截、Berthed 缺泊位数据损失拒绝、跨港泊位冲突拒绝、损坏不可能状态拦截及迁移幂等性），全面覆盖 L21 D19PortSaveMigration 的全部边界分支，不修改生产代码。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D19/D19LegacySaveTests.cs",
+    "game/tools/results/D19/D19-L39/D19_L39_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L39_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (D19LegacySaveTests suite covering 8 legacy fixtures)",
+      "result": "PASS: ALL 8 D19-L39 Legacy Save Compatibility Tests Passed"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L39 status synced to LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L39_LOGIC_HANDOFF.md"
+}

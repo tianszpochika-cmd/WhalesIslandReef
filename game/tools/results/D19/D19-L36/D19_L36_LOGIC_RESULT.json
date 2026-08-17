@@ -1,0 +1,31 @@
+{
+  "task_id": "D19-L36",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T01:00:00+08:00",
+  "summary": "实现确定性港口全流程剧本单元测试 game/Assets/Tests/EditMode/D19/D19DeterministicPortScenarioTests.cs（D19-L36，纯 C#，零 Unity 依赖）：构建完整的无场景主干剧本（到港 -> 靠岸 -> 泊位分配 -> 幂等重放 -> 市场服务 -> 完成服务 -> 登船 -> 离港 -> 返港）与失败/补偿分支；结合 L35 事件顺序审计器验证全流程 8 步事件序列单调性、因果关联与状态重放完全一致，证明同一剧本重复运行具有严格的字节与结构等价性。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D19/D19DeterministicPortScenarioTests.cs",
+    "game/tools/results/D19/D19-L36/D19_L36_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L36_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (temp_test_build test harness executing D19DeterministicPortScenarioTests)",
+      "result": "PASS: 2/2 tests passed, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L36 status synced to LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS: exit 0"
+    }
+  ],
+  "runtime_deferred": [
+    "D23 跨系统剧本实机 PlayMode 自动化漫游",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L36_LOGIC_HANDOFF.md"
+}

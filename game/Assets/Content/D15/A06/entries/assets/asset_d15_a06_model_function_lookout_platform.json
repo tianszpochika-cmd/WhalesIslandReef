@@ -50,7 +50,7 @@
   "status": "production",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-D15-A06-MODEL-FUNCTION-028",
-  "reviewer": "D15-A06*",
+  "reviewer": "D16-A04-REVIEWER-01",
   "resource_path": "game/Assets/Content/D15/A06/assets/models/functional_points/ship_function_lookout_platform.obj",
   "asset_state": "integrated",
   "production_batch": "D15-A06*",
@@ -65,11 +65,25 @@
     "lod2": "generated",
     "lod3": "generated"
   },
-  "historical_review": "Pending",
+  "historical_review": "Approved",
   "review_evidence_refs": [
     "game/Assets/Content/D15/A06",
-    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/common/reviews/D16_A04_002/asset_d15_a06_model_function_lookout_platform_evidence.md"
   ],
   "content_warning_ids": [],
-  "skip_allowed": false
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "decision": "Approved",
+    "basis": "经审查，桅顶瞭望台功能点模型符合17世纪主桅/前桅桅盘观察哨结构，项目原创组件资产定义，无版权风险与敏感争议。",
+    "reviewer": "D16-A04-REVIEWER-01",
+    "reviewed_at": "2026-08-17",
+    "evidence_refs": [
+      "game/Assets/Content/D15/A06",
+      "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+      "docs/game/design/common/reviews/D16_A04_002/asset_d15_a06_model_function_lookout_platform_evidence.md"
+    ],
+    "explicit_human_decision": true,
+    "automated_approval": false
+  }
 }

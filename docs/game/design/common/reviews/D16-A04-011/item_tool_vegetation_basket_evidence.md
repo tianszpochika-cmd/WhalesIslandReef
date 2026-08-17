@@ -1,0 +1,9 @@
+# D16-A04 人工审查证据：item_tool_vegetation_basket
+
+- 条目 ID: `item_tool_vegetation_basket`
+- 审查批次: `D16-A04-011`
+- 责任审核人: `D16-A04-REVIEWER-01`
+- 审查日期: `2026-08-18`
+- 决定: `Approved`
+- 决定依据: 经审查，采集篮（item_tool_vegetation_basket）为项目原创历史内容设计，符合1675年加勒比时代风帆与殖民地贸易背景。无侵权与敏感争议。
+- 来源与权利状态: 项目原创技术/历史设计内容，符合商业使用与修改许可，无侵权风险。

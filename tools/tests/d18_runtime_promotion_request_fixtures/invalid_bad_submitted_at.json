@@ -1,0 +1,28 @@
+{
+  "request_kind": "d18_runtime_promotion_request",
+  "schema_version": 1,
+  "asset_id": "asset_fixture_invalid_case",
+  "current_state": "IntakeEligible",
+  "target_usage_scene": "d19_invalid_work_prefab",
+  "descriptors": [
+    {
+      "kind": "d18_import_descriptor",
+      "path": "docs/fixtures/descriptors/invalid.json"
+    }
+  ],
+  "requirements": {
+    "collision": "none",
+    "lod": "none",
+    "animation": "none"
+  },
+  "approver": "human:fixture_lead",
+  "risks": [
+    "fixture risk"
+  ],
+  "rollback": {
+    "reference": "placeholder_invalid",
+    "description": "fixture rollback"
+  },
+  "submitted_at": "not-a-date",
+  "declares_approval": false
+}

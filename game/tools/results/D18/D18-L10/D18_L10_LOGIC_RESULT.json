@@ -1,0 +1,44 @@
+{
+  "task_id": "D18-L10",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:52:32+08:00",
+  "summary": "实现只读资源包边界验证器 tools/d18_package_boundary_validator.py：校验资源记录可追溯到一个 pack、声明文件清单与仓库内相对路径、许可证证据位于包内（Candidates 根 + 包自身分类子树 + 真实非空文件）、禁止文件被不兼容来源重复声明/跨包重复归属/证据共享或引用其他包文件；33/33 单测通过，真实 30 个 manifest 扫描 20 通过 / 10 个 polyhaven 包因许可证证据位于 docs/ 而被正确标记 license_evidence_outside_pack，1,865 条准入记录全部可追溯。",
+  "changed_files": [
+    "tools/d18_package_boundary_validator.py",
+    "tools/tests/test_d18_package_boundary_validator.py",
+    "game/tools/results/D18/D18-L10/D18_L10_LOGIC_RESULT.json",
+    "game/tools/results/D18/D18-L10/D18_L10_REAL_SCAN_EVIDENCE.json",
+    "docs/game/design/common/handoffs/D18/D18-L10_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test_d18_package_boundary_validator.py\"",
+      "result": "PASS：33/33 通过（合法包通过；包外证据、许可证不在包内、无清单、重复归属、同源跨包重复、清单内重复、证据共享/引用他包文件、类别子树不符、缺文件/空证据、路径逃逸、记录不可追溯、只读性等正负用例）"
+    },
+    {
+      "command": "python tools/d18_package_boundary_validator.py --manifest-root docs/game/design/common/assets/packs --manifest docs/game/design/common/assets/manifests --records docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json",
+      "result": "BLOCKED（工具正确检出真实违规）：30 个 manifest 扫描，20 通过 / 10 失败；issue_counts={license_evidence_outside_pack:10}，全部为 polyhaven 系包（environment 8 + ui_materials_audio 2）许可证证据指向 docs/ 而非包内 Candidates 目录；1,865 条 eligible_entries 记录全部可追溯（record failed=0）；无重复归属、无缺文件、无路径逃逸。完整证据：game/tools/results/D18/D18-L10/D18_L10_REAL_SCAN_EVIDENCE.json"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test*.py\"（全量）",
+      "result": "384 tests, 10 failures：其中 4 项为基线已记录的 SUPERSEDED test_d18_s02_r01_intake_refresh 断言；6 项属于并行任务 L15/L16 的 test_d18_content_id_asset_link_validator(1)/test_d18_resource_key_validator(5) 自身在途测试，非本任务写入范围；test_d18_package_boundary_validator 0 失败"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L10 刷新为 LOGIC_PASS，280 任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，无尾随空白/空白错误（既有 LF→CRLF 警告为工作区既有未提交文件，与 L01 记录一致）"
+    }
+  ],
+  "runtime_deferred": [
+    "10 个 polyhaven 包（pack_polyhaven_*）的许可证证据位于 docs/game/design/common/assets/packs/ 而非包内 game/Assets/Art/Candidates/，已被验证器 BLOCKED；修复需修改 A 系列 manifest（全章禁区），留给 L33/L34/L42 对账与编译门禁处理，本任务不越权修复",
+    "逐文件 SHA-256 完整性（L06/L31 真实计算）与真实导入后的网格/材质/动画验证属 Runtime 阶段",
+    "Prefab/场景/Canvas 集成、碰撞、LOD、Animator 装配与保存/恢复回退验证",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L10_LOGIC_HANDOFF.md"
+}

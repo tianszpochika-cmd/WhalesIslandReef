@@ -1,0 +1,32 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_animal_pet_dog",
+  "type": "animal",
+  "units": "meters",
+  "axes": { "up": "y", "forward": "z" },
+  "bounds": { "width_m": 0.4, "depth_m": 0.9, "height_m": 0.6 },
+  "material_slots": [
+    { "slot_name": "fur", "slot_role": "organic" }
+  ],
+  "skeleton_type": "animal",
+  "animation_list": [
+    { "animation_key": "idle", "role": "idle" },
+    { "animation_key": "walk", "role": "walk", "root_motion": true },
+    { "animation_key": "run", "role": "run", "root_motion": true }
+  ],
+  "root_motion": "required",
+  "collision_intent": "capsule_agent",
+  "lod_intent": { "levels": 2, "generate_automatically": true },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_url": "https://example.invalid/license/cc0",
+    "license_evidence_path": "docs/fixtures/license_cc0.txt",
+    "attribution_required": false
+  },
+  "fallback": {
+    "reference": "placeholder_animal_pet_dog",
+    "description": "keep placeholder until real skeleton and clips are verified"
+  },
+  "represents_imported_asset": false
+}

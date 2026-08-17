@@ -50,11 +50,12 @@
   "status": "production",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-D15-ASSET-MEDICINAL",
-  "reviewer": "D15-A02*",
-  "historical_review": "Pending",
+  "reviewer": "D16-A04-REVIEWER-01",
+  "historical_review": "Approved",
   "review_evidence_refs": [
     "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
-    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "C:/Users/Administrator/Desktop/game/first01/docs/game/design/common/reviews/D16-A04-008/asset_vegetation_profile_medicinal_evidence.md"
   ],
   "content_warning_ids": [],
   "skip_allowed": false,
@@ -93,5 +94,18 @@
   "test_cases": [
     "D15-A02-ASSET-LOAD-MEDICINAL",
     "D15-A02-ASSET-MATERIAL-MEDICINAL"
-  ]
+  ],
+  "review_decision_basis": {
+    "decision": "Approved",
+    "basis": "经人工审查，条目 asset_vegetation_profile_medicinal 属于项目原创技术/美术定义资产或符合17世纪加勒比风帆航海背景的功能组件/植物生态配置，授权清晰，符合商业使用与修改许可，无侵权争议。",
+    "reviewer": "D16-A04-REVIEWER-01",
+    "reviewed_at": "2026-08-18",
+    "evidence_refs": [
+      "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+      "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+      "C:/Users/Administrator/Desktop/game/first01/docs/game/design/common/reviews/D16-A04-008/asset_vegetation_profile_medicinal_evidence.md"
+    ],
+    "explicit_human_decision": true,
+    "automated_approval": false
+  }
 }

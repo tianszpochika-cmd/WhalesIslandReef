@@ -1,0 +1,54 @@
+{
+  "task_id": "D18-L24",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:08:01+08:00",
+  "summary": "建立 ambientCG 静态来源目录 d18_ambientcg_logic_catalog.json：真实盘点确认仓库内没有任何 ambientCG 单项资源（0 下载文件/0 manifest/0 逐项哈希/0 资产页快照），因此 records 为空且不产生任何批准；来源级 2026-08-14 CC0 官方声明被如实登记为 is_per_item_evidence=false（站点许可不能替代单项证据）；用 L02 Schema（records 空数组 0 错误）、L04 许可标准化（CC0-1.0 NORMALIZED，仅来源级）、L05 来源验证器（站点声明探针 FAIL：missing_download_date/missing_original_filename，证明无法以站点许可通过单项验证）、L06 哈希验证器（0 输入 BLOCKED no_records，approved_count=0）复现验证结论，并列出 P0 真实缺口（无单项证据/站点许可非单项证据/无逐项哈希）与 Runtime 延期项；未下载、未导入、未创建任何 Unity 材质。",
+  "changed_files": [
+    "docs/game/design/common/assets/sources/d18_ambientcg_logic_catalog.json",
+    "game/tools/results/D18/D18-L24/D18_L24_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L24_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m json.tool docs/game/design/common/assets/sources/d18_ambientcg_logic_catalog.json",
+      "result": "PASS：JSON 结构合法；目录内全部相对证据路径存在（D18_FREE_ASSET_SOURCE_CATALOG.md、D18-A01_HANDOFF.md、D18_A03_PREREQUISITE_CHECK.json、D18_TAXONOMY_UI_AUDIO.md）"
+    },
+    {
+      "command": "python（jsonschema Draft202012Validator）：d18_logic_asset_record.schema.json 自检 + records 空数组校验",
+      "result": "PASS：schema_self_check PASS；empty_records_schema_errors=0"
+    },
+    {
+      "command": "python tools/d18_provenance_validator.py（L05，来源级探针：仅站点声明 + 既有证据文件，download_date=null）",
+      "result": "FAIL（预期）：missing_download_date、missing_original_filename；证据文件存在性 PASS。证明站点级证据无法通过单项来源验证，来源级登记只保留在 source 块"
+    },
+    {
+      "command": "python tools/d18_license_normalizer.py normalize_license（L04，来源级 CC0 声明）",
+      "result": "NORMALIZED：CC0-1.0 / attribution_required=false / commercial_allowed=true / modification_allowed=true / redistribution_allowed=true，errors=0；仅来源级，非单项批准"
+    },
+    {
+      "command": "python tools/d18_hash_validator.py --records <空列表>（L06）",
+      "result": "BLOCKED：no_records（no records were supplied; nothing was verified）；approved_count=0；不合成哈希"
+    },
+    {
+      "command": "真实盘点：rg -i ambientcg 于 game/、docs/game/design/common/assets/*.json、d18_prefab_candidate_intake_catalog.json；候选目录 5 顶层目录扫描",
+      "result": "PASS：仓库内 0 个 ambientcg 单项文件/manifest/哈希；仅文档级来源声明与 D18-A03 历史 deferred 占位记录（source_ambientcg_single_asset_pending，CC0_source_level_only）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L24 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无空白错误；仅工作区既有未提交文件的 LF→CRLF 警告"
+    }
+  ],
+  "runtime_deferred": [
+    "ambientCG 单项资源下载、资产页快照、官方/包内许可证原文与逐文件 SHA-256（资源任务与 L06/L31 真实计算）",
+    "Unity 材质创建、导入、颜色空间/压缩/Shader 接线（本逻辑阶段禁止；L27 描述器与 Runtime 阶段）",
+    "官方 license information 页面可访问性与当日内容确认（人工复核，2026-08-14 归档时点未核验）",
+    "未来任何下载必须重新核对官方页与许可入口，不能沿用 2026-08-14 归档结论"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L24_LOGIC_HANDOFF.md"
+}

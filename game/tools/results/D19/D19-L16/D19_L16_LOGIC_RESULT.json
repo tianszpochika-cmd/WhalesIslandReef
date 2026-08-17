@@ -1,0 +1,38 @@
+{
+  "task_id": "D19-L16",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:30:00+08:00",
+  "summary": "定义可重放的港口领域事件契约（game/Assets/Scripts/Systems/D19/D19PortEventContracts.cs，纯 C#、无 Unity 依赖）：稳定 event_id（d19pe_<type>_<commandId>_<occurrence>，可解析回 command/type/occurrence）、D19PortEventType 十类枚举（到港/泊位预留/泊位释放/服务结果/登船/下船/离港/返港/补偿/拒绝）、schema_version=1（未知版本由 EnsureSupportedVersion 抛 EventSchemaVersionException 安全拒绝）、port/ship/actor/command 关联（input_facts 前缀 command:/port:/ship:/berth:/service:，actor_ids/cause_ids 因果引用）、逻辑时间（world_day + save_revision，无 DateTime/真实时钟）、不可变 payload（result.values 仅允许安全字符串，含控制字符拒绝）、序列化边界（result.summary 必须是 d19.port.* 本地化 key，禁止 UI 文案；result_code 必须 port. 前缀；无 Unity 对象/可变系统引用）；事件接入既有 EventLog（去重键 event_id+save_revision、单调 log_sequence 由 EventLog 授予）；未知事件类型（未知 owner/类型）由 TryGetPortEventType 安全拒绝；补偿事件强制 cause_ids 引用原事件、拒绝事件强制 port.reject_reason。临时 dotnet 工程（仓库外）编译 0 警告 0 错误 + 33 项确定性运行时检查全 PASS（含全生命周期 8 事件序列、快照重放顺序保持、去重、未知版本/类型拒绝、UI 文案/非法 payload 拒绝）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortEventContracts.cs",
+    "game/tools/results/D19/D19-L16/D19_L16_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L16_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build（临时工程，引用真实 Event/EventContracts.cs + Event/EventLog.cs + 本文件，netstandard2.1/C#9）",
+      "result": "PASS：0 警告 / 0 错误"
+    },
+    {
+      "command": "dotnet run（临时控制台，33 项确定性断言：event_id 构造/解析、未知类型与畸形 ID 拒绝、未知版本拒绝、外来 owner 拒绝、全生命周期 8 事件 EventLog 追加序列 1—8、重复投递去重、快照重放顺序保持、逐事件守卫校验、非法 payload/UI 文案/无 cause 补偿拒绝）",
+      "result": "PASS：ALL CHECKS PASS（33/33）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D19-L16 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "真实港口场景中的事件消费（Prefab/场景/输入/HUD 属 Runtime 阶段，基线 §5）",
+    "D19-L22 命令幂等与 L34 补偿策略的最终接入（事件契约已冻结，编排逻辑由后续任务实现）",
+    "D19-L35 事件顺序审计对真实事件流的全量运行（本任务已提供 event_id 解析与守卫接口）",
+    "D20/D21 章节落地后 actor/行为事件的联合重放验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L16_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,43 @@
+{
+  "task_id": "D18-L32",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:12:32+08:00",
+  "summary": "实现只读命名冲突审计（tools/d18_name_collision_audit.py）：检查 canonical_id/ResourceKey/content_id/显示名/原始文件名之间的冲突与弃用别名循环，输出冲突对/字段/严重度（P0 阻断、P1 卫生、P2 提示）/推荐动作；大小写变体（P0）、多类别同显示名合法、同 basename 不同路径合法、同类别同显示名 P2 均有测试；报告确定性排序，绝不自动重命名或改 Registry；28 项测试 PASS；真实数据扫描 1,127 条记录（30 manifest + 1,097 content 分组）CLEARED、0 冲突。",
+  "changed_files": [
+    "tools/d18_name_collision_audit.py",
+    "tools/tests/test_d18_name_collision_audit.py",
+    "game/tools/results/D18/D18-L32/D18_L32_LOGIC_RESULT.json",
+    "game/tools/results/D18/D18-L32/d18_l32_real_records.json",
+    "game/tools/results/D18/D18-L32/d18_l32_real_scan.json",
+    "docs/game/design/common/handoffs/D18/D18-L32_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/tests/test_d18_name_collision_audit.py",
+      "result": "PASS：28/28 OK。覆盖：干净集合、canonical_id==自身 resource_key 合法、大小写变体 P0、显示名大小写 P2、别名（合法链/二节点环/三节点环/自引用 P0、目标缺失 P1）、重复 canonical_id P0、canonical↔resource_key/content_id 跨字段碰撞 P0、id 被复用为显示名 P1、跨类别同显示名合法、同类别同显示名 P2、同 basename 不同路径合法、同完整路径 P0、反斜杠路径归一化、id==文件名/显示名 P1、报告确定性（乱序输入输出一致）、只读/不重命名声明、冲突含 pair/fields/severity/action、无网络导入"
+    },
+    {
+      "command": "python tools/d18_name_collision_audit.py --records game/tools/results/D18/D18-L32/d18_l32_real_records.json --output game/tools/results/D18/D18-L32/d18_l32_real_scan.json",
+      "result": "PASS：真实数据只读扫描 1,127 条（manifest 30 + intake content 分组 1,097），verdict=CLEARED、conflict_count=0、P0/P1/P2 全 0；CLI 退出码 0；初版记录构造把 manifest 与 content 视图重复声明同一文件路径产生 1,865 个假 same_path_duplicate，已改为单粒度（每条记录=一个逻辑资源）后归零——数据形状问题非工具缺陷，记录于 handoff"
+    },
+    {
+      "command": "python -m py_compile tools/d18_name_collision_audit.py tools/tests/test_d18_name_collision_audit.py",
+      "result": "PASS：两个文件编译通过"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L32 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅工作区既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "冲突项的最终裁定与登记变更属人工/L42 目录编译器职责（本工具只输出建议动作）",
+    "L31 重复身份（哈希级）与 L44 游戏引用审计是相邻防线，本工具不替代"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L32_LOGIC_HANDOFF.md"
+}

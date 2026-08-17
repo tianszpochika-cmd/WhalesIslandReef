@@ -1,0 +1,77 @@
+{
+  "task_id": "D18-L51",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T00:16:34+08:00",
+  "summary": "建立双层分类契约并完成 61 条 Quaternius 精确迁移：L02 `category` 保持 11 值大类不变；新增可选 `taxonomy_category`（Schema 增加受约束字段，13 个必填字段/状态机/Runtime 边界不变）；新建机器可读版本化映射 d18_taxonomy_category_map.json（8 个实际使用细分类：terrestrial_animal/aquatic_animal/bird/pet→animal，npc_visual/player_visual/hair/outfit→character，各含 parent_category/owner_document/version）。61 条迁移计数：21 animal + 40 character，细分类逐条保留（10/7/1/3/8/1/7/24）。L39 与 L42 同语义：非法大类/未知细分类/父类不匹配一律 P0 拒绝；无 taxonomy_category 的旧记录仍合法。验证全绿：L02 Schema 161/161 合法；L39 测试 22/22、L42 测试 23/23（含 L02 Schema fixtures、L39/L42 一致性、两次编译字节一致）；L39 audit records=161/P0=0（4 条 HDRI hash_pending 如实保留为 P1）；L42 compile input=161/compiled=161/rejected=0/conflicts=0。文档同步双层定义（基线字段词典、CHARACTERS、ECOLOGY、UI_AUDIO，链接机器映射）。全量 933 项仅 5 项失败：4 项既有遗留（R01 基线）+ 1 项预期（L45 测试断言已修复的旧 category 分裂，属数据修复后的测试更新需求，列后续项不静默跳过）。",
+  "changed_files": [
+    "tools/schemas/d18_logic_asset_record.schema.json",
+    "tools/schemas/d18_taxonomy_category_map.json",
+    "docs/game/design/common/D18_LOGIC_GOVERNANCE_BASELINE.md",
+    "docs/game/design/common/assets/D18_TAXONOMY_CHARACTERS.md",
+    "docs/game/design/common/assets/D18_TAXONOMY_ECOLOGY.md",
+    "docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md",
+    "docs/game/design/common/assets/sources/d18_quaternius_logic_catalog.json",
+    "tools/d18_logic_audit.py",
+    "tools/d18_logic_catalog_compiler.py",
+    "tools/tests/test_d18_logic_audit.py",
+    "tools/tests/test_d18_logic_catalog_compiler.py",
+    "tools/tests/d18_logic_asset_record_fixtures/valid_taxonomy_category.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_taxonomy_category_format.json",
+    "tools/tests/d18_logic_asset_record_fixtures/README.md",
+    "game/tools/results/D18/D18-L51/D18_L51_LOGIC_AUDIT.json",
+    "game/tools/results/D18/D18-L51/D18_L51_COMPILED_CATALOG.json",
+    "game/tools/results/D18/D18-L51/D18_L51_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L51_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "L02 Schema 校验（L42 镜像 + taxonomy map，四个真实来源 catalog）",
+      "result": "PASS：161/161 合法，0 失败"
+    },
+    {
+      "command": "python -m unittest tools.tests.test_d18_logic_audit -v",
+      "result": "PASS：22/22（新增 7 项双层契约测试：无 taxonomy 旧记录合法、8 细分类父类映射合法、未知细分类 P0、父类不匹配 P0、非法大类 P0、映射文件加载、迁移后真实来源 P0=0）"
+    },
+    {
+      "command": "python -m unittest tools.tests.test_d18_logic_catalog_compiler -v",
+      "result": "PASS：23/23（新增 8 项：未迁移细分类拒绝、未知细分类拒绝、父类不匹配拒绝、格式拒绝、8 映射编译、旧记录合法、L39/L42 一致、L02 Schema fixtures、61 条迁移计数精确）"
+    },
+    {
+      "command": "相关 L02 Schema 测试（test_l02_schema_fixtures_with_taxonomy + jsonschema 直接校验）",
+      "result": "PASS：valid/valid_taxonomy VALID，invalid_taxonomy_category_format INVALID（pattern 失败）"
+    },
+    {
+      "command": "python tools/d18_logic_audit.py --output game/tools/results/D18/D18-L51/D18_L51_LOGIC_AUDIT.json",
+      "result": "PASS：exit 0、status=PASS、records=161、P0=0、P1=4（hash_pending：asset_hdri_green_point_park/asset_hdri_joburg_central_sunset/asset_hdri_kloppenheim_06/asset_hdri_venice_sunset 如实保留）"
+    },
+    {
+      "command": "python tools/d18_logic_catalog_compiler.py --output game/tools/results/D18/D18-L51/D18_L51_COMPILED_CATALOG.json",
+      "result": "PASS：exit 0、input=161、compiled=161、rejected=0、conflicts=0、merged=0、pending=4"
+    },
+    {
+      "command": "确定性复验（test_real_sources_compile_deterministically）",
+      "result": "PASS：相同输入两次编译字节一致"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS（如实）：933 项，5 项失败——4 项既有遗留（R01 SUPERSEDED 基线，非本任务引入）+ 1 项预期（test_d18_schema_compatibility_audit 的 test_real_audit_blocks_on_known_category_split 断言已修复的旧 category 分裂；数据修复后该断言过时，L45 测试更新不在本任务允许范围，列为后续项不静默跳过）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：总览重新生成（L51 为 D18 外新编号，不在 sync 的 50 项注册表内，结果由本 JSON 与 handoff 作为事实源）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "4 条 HDRI（asset_hdri_green_point_park/asset_hdri_joburg_central_sunset/asset_hdri_kloppenheim_06/asset_hdri_venice_sunset）sha256=null 保持 Pending，由 L06/L31 对真实文件补证，不补猜",
+    "模型/网格、贴图/材质、骨架/Avatar/动画、碰撞、LOD、UI、音频、性能、保存恢复/输入路线/截图/人工验收（全部未来 Runtime 阶段）",
+    "RuntimeApproved/ReleaseApproved 授予（本阶段禁止，均为 0）",
+    "D19LightingProfileCatalog.json 的 candidate_hdri_* 引用修复（L44 检出，归 L52/D19/D21，本任务未触碰）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L51_LOGIC_HANDOFF.md"
+}

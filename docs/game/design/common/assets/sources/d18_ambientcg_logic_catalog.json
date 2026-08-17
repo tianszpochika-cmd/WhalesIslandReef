@@ -1,0 +1,120 @@
+{
+  "catalog_id": "d18_ambientcg_logic_catalog",
+  "catalog_kind": "d18_source_logic_catalog",
+  "schema_version": 1,
+  "task_id": "D18-L24",
+  "as_of": "2026-08-16",
+  "source": {
+    "source_id": "source_ambientcg",
+    "source_url": "https://ambientcg.com/",
+    "license_information_url": "https://docs.ambientcg.com/books/website-licensing/page/license-information",
+    "intended_categories": [
+      {
+        "taxonomy_key": "material",
+        "schema_category": "material",
+        "definition": "PBR 材质贴图组（albedo/normal/roughness/ao 组合）",
+        "source": "docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md（L14）"
+      },
+      {
+        "taxonomy_key": "texture",
+        "schema_category": "material",
+        "definition": "独立贴图（非 PBR 组件/UI 切片）",
+        "source": "docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md（L14）"
+      },
+      {
+        "taxonomy_key": "hdri",
+        "schema_category": "lighting_reference",
+        "definition": "HDRI 天空/光照参考",
+        "source": "docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md（L14）"
+      }
+    ],
+    "archived_source_level_statement": {
+      "archived_on": "2026-08-14",
+      "statement": "官方站及资产页写明可下载资产为 CC0、可商业使用且无需署名（来源级声明）",
+      "evidence_paths": [
+        "docs/game/design/common/D18_FREE_ASSET_SOURCE_CATALOG.md",
+        "docs/game/design/common/handoffs/D18/D18-A01_HANDOFF.md",
+        "game/tools/results/D18/D18-A03/D18_A03_PREREQUISITE_CHECK.json"
+      ],
+      "is_per_item_evidence": false,
+      "normalized_license": {
+        "canonical_license": "CC0-1.0",
+        "attribution_required": false,
+        "commercial_allowed": true,
+        "modification_allowed": true,
+        "redistribution_allowed": true,
+        "status": "NORMALIZED",
+        "status_reason": "license normalized; no restriction relaxed",
+        "scope_note": "仅来源级许可标准化；不构成任何单项资源的批准、哈希或文件证据"
+      }
+    },
+    "historical_deferred_candidate": {
+      "record": "source_ambientcg_single_asset_pending",
+      "fact": "D18-A03 前置检查记录：未选定具体单项、未下载；sha256=null、CC0_source_level_only、NotImported",
+      "evidence_path": "game/tools/results/D18/D18-A03/D18_A03_PREREQUISITE_CHECK.json",
+      "note": "历史证据只读引用，不作为 L 任务通过条件（D18-L01 基线第 4 节）"
+    }
+  },
+  "facts": {
+    "single_item_records": 0,
+    "downloaded_items_in_repository": 0,
+    "item_manifests": 0,
+    "per_item_sha256": 0,
+    "per_item_evidence_files": 0,
+    "approved_items": 0,
+    "intake_eligible_items": 0,
+    "source_level_license_statements": 1
+  },
+  "records": [],
+  "gaps": [
+    {
+      "id": "no_single_item_evidence",
+      "severity": "P0",
+      "field": "records",
+      "detail": "仓库内没有任何 ambientCG 单项资源：候选目录无 ambientCG 文件、无包级 manifest、无逐项 SHA-256、无资产页快照。按 D18-L01 基线 §6.1 与 L05/L06 口径，来源级 CC0 声明不是单项证据，因此 records 为空且不产生任何批准。",
+      "resolution": "由资源任务实际下载单项资产并保存资产页快照、官方/包内许可证原文与逐文件哈希后，由 L42 编译器生成记录；在此之前保持 Candidate/Pending。"
+    },
+    {
+      "id": "site_license_not_item_evidence",
+      "severity": "P0",
+      "field": "source.archived_source_level_statement.is_per_item_evidence",
+      "detail": "当前唯一可用的 ambientCG 许可证事实是 2026-08-14 来源级官方声明。L24 任务卡与 L14 分类词典（hdri 行）均明确：站点许可不能替代单项证据；官方 license information 页面当日是否可访问未核验，保持人工复核（D18-A01 规则）。",
+      "resolution": "单项下载时逐项保存资产页与许可证入口；不可访问当日不补猜，保持人工复核。"
+    },
+    {
+      "id": "no_item_hash",
+      "severity": "P0",
+      "field": "sha256",
+      "detail": "逐项 SHA-256 全部缺失；L06 哈希验证器在 0 条输入下返回 BLOCKED/no_records（approved_count=0），不合成任何哈希。",
+      "resolution": "下载后由 L06/L31 真实计算逐文件哈希。"
+    }
+  ],
+  "validation": [
+    {
+      "command": "python（jsonschema Draft202012Validator）：d18_logic_asset_record.schema.json 自检 + records 空数组校验",
+      "result": "PASS：schema_self_check PASS；empty_records_schema_errors=0"
+    },
+    {
+      "command": "python tools/d18_provenance_validator.py（L05，来源级探针：仅站点声明 + 既有证据文件，download_date=null）",
+      "result": "FAIL（预期，用于证明站点许可不能通过单项验证）：missing_download_date、missing_original_filename；证据文件存在性 PASS。来源级登记保留在 source 块，不进入 records。"
+    },
+    {
+      "command": "python tools/d18_license_normalizer.py normalize_license（L04，来源级 CC0 声明）",
+      "result": "NORMALIZED：canonical_license=CC0-1.0、attribution_required=false、commercial_allowed=true、modification_allowed=true、redistribution_allowed=true、errors=0；仅来源级，非单项批准"
+    },
+    {
+      "command": "python tools/d18_hash_validator.py --records <空列表>（L06）",
+      "result": "BLOCKED：no_records（no records were supplied; nothing was verified）；approved_count=0"
+    },
+    {
+      "command": "L07 分发权利 / L09 署名 / L10 包边界验证器",
+      "result": "无输入：0 条单项记录，全部无验证对象（真实缺口，非 PASS）；不把 L04 来源级结果当作单项权利证据"
+    }
+  ],
+  "runtime_deferred": [
+    "ambientCG 单项资源下载、资产页快照、官方/包内许可证原文与逐文件 SHA-256（资源任务与 L06/L31）",
+    "Unity 材质创建、导入、颜色空间/压缩/Shader 接线（本逻辑阶段禁止；L27 描述器与 Runtime 阶段）",
+    "官方 license information 页面可访问性与当日内容的确认（人工复核）",
+    "任何未来下载必须重新核对官方页与许可入口，不能沿用 2026-08-14 归档结论（D18-A01 规则）"
+  ]
+}

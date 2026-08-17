@@ -1,0 +1,43 @@
+{
+  "task_id": "D19-L18",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:32:51+08:00",
+  "summary": "建立 D19 港口本地化逻辑键清单 game/Assets/Scripts/Systems/D19/D19PortLocalizationKeys.cs（纯 C#，零 Unity 依赖）：61 个稳定 key 常量覆盖生命周期（命令 9 + 迁移原因 9）、服务（5）、失败（13，与 D19-L02 冻结的 D19PortFailureCode 一一对应，L17 失败码目录可直接消费）、补偿（3）、迁移提示（3）、读模型反馈（8）、港口事件摘要（10，d19.port.* 与 D19-L16 冻结的 LocalizationKeyPattern 兼容）；纯检查 API 含命名规则 IsValidKey（d19.<domain>.<name>，每段 [a-z0-9_]+）、TryGetFailureKey/FailureKeyOrMissing（未注册码显式返回 MissingKey 哨兵，绝不静默成功）、TryGetTransitionReasonKey/TryGetServiceKey/TryGetEventSummaryKey、ValidateRegistry（重复检测 + 命名校验 + 经反射自动报告缺 key 的失败码，L17 扩展枚举时自动生效）；未添加/翻译任何显示文案。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortLocalizationKeys.cs",
+    "game/tools/results/D19/D19-L18/D19_L18_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L18_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md",
+    "docs/game/LOGIC_TASK_STATUS.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build（仓库外临时工程，链接真实 D19PortLocalizationKeys.cs + D19PortLifecycleContracts.cs + D19PortEventContracts.cs + EventContracts.cs，net9.0/LangVersion 9.0 与项目一致）",
+      "result": "PASS：0 警告 / 0 错误（与既有 D19 契约文件同编译，验证了 L02/L16 接口一致性）"
+    },
+    {
+      "command": "临时控制台断言（75 项，仓库外执行）",
+      "result": "PASS：75/75（TotalKeyCount=61 唯一；ValidateRegistry 无重复/非法/缺失败码 key；13 个 D19PortFailureCode 全部 1:1 有 key 且合法；未注册码 (D19PortFailureCode)999 返回 false + MissingKey 哨兵；命名规则正反例 8 项；9 个迁移原因 key；None 显式缺 key；5 个服务 key；Unknown 服务缺 key；10 个事件类型摘要 key 全部命中 D19-L16 冻结正则 ^d19\\\\.port\\\\.[a-z0-9_.]+$；Unknown 事件显式缺 key）"
+    },
+    {
+      "command": "静态扫描：代码（去注释后）无 UnityEngine/TMPro/Localization./TextMesh/Canvas/uGUI 引用；字符串字面量 65 个全部为 key/前缀/服务 ID，无中文显示文案",
+      "result": "PASS：0 处 Unity 本地化 API、0 处散落显示字符串（中文仅存在于文档注释）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L18 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无空白错误；仅工作区既有未提交文件的 LF→CRLF 警告"
+    }
+  ],
+  "runtime_deferred": [
+    "D19-L17 失败码目录尚未落地（PLANNED）：本文件已按 L02 冻结的 D19PortFailureCode 13 值 1:1 注册 key，L17 若扩展枚举，ValidateRegistry 通过反射自动报告缺 key；L17 落地后应重跑注册表检查确认无缺 key",
+    "实际 UI/Canvas/字符串表接入与中英文显示文案（本逻辑阶段禁止；显示文案由未来本地化任务添加，本文件只定义逻辑键）",
+    "Unity Localization 资源导入与运行时解析验证（Runtime 阶段）",
+    "读模型/适配器/工作流对 key 的消费（D19-L05/L11—L15/L19 等任务按各自前置落地后消费本清单）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L18_LOGIC_HANDOFF.md"
+}

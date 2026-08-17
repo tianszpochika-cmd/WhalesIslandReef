@@ -1,0 +1,31 @@
+{
+  "task_id": "D18-L08",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:52:00+08:00",
+  "summary": "新建只读资源路径边界验证器：冻结 Candidate/逻辑元数据/忽略缓存/未来正式资源四类根，拒绝绝对路径、驱动器/UNC、..、环境变量与临时缓存路径，运行时引用字段禁止直接指向 Candidate 二进制；真实准入目录 1,865 条目 / 9,325 路径字段 0 违规。",
+  "changed_files": [
+    "tools/d18_asset_path_validator.py",
+    "tools/tests/test_d18_asset_path_validator.py",
+    "game/tools/results/D18/D18-L08/D18_L08_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L08_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {"command": "python -m unittest tools.tests.test_d18_asset_path_validator", "result": "PASS：38/38 通过"},
+    {"command": "python tools/d18_asset_path_validator.py --check-catalog", "result": "PASS：entries_checked=1865、path_fields_checked=9325、violation_count=0、read_only=true"},
+    {"command": "python tools/d18_asset_path_validator.py --kind candidate --field candidate_file_path game/Assets/Art/Candidates/UIMaterialsAudio/UI/KenneyUiPack/icon.png", "result": "PASS：合法路径输出 [PASS] 与规范化路径"},
+    {"command": "python tools/d18_asset_path_validator.py --kind runtime_reference --field runtime_reference_paths game/Assets/Art/Candidates/Kenney/Models/tree.fbx", "result": "PASS：exit 1，输出 candidate_binary_in_runtime_reference、允许根与违规路径"},
+    {"command": "python -m py_compile tools/d18_asset_path_validator.py", "result": "PASS"},
+    {"command": "python -m unittest discover -s tools/tests -p 'test*.py'", "result": "384 项：L08 38/38 通过；仅 6 项失败且均非本任务（4 项为基线第 1.3 节已知 SUPERSEDED test_d18_s02_r01_intake_refresh 断言，2 项为并行 D18-L16 进行中文件）"},
+    {"command": "python tools/sync_logic_task_status.py", "result": "PASS：D18-L08 刷新为 LOGIC_PASS"},
+    {"command": "git diff --check", "result": "PASS：exit 0，无空白错误（仅既有 LF→CRLF 警告）"}
+  ],
+  "runtime_deferred": [
+    "路径仅做词法边界校验，未做磁盘存在性/大小写逐段比对（属 L33/L34 静态对账与 Runtime 阶段）",
+    "根前缀之外子段大小写正确性不在此验证，依赖磁盘真实文件复核",
+    "忽略缓存段清单冻结于 2026-08-16 已提交 .gitignore；未来 .gitignore 变更需人工复核，工具不改 .gitignore",
+    "RuntimeApproved/ReleaseApproved 授予仍按基线第 2 节禁止"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L08_LOGIC_HANDOFF.md"
+}

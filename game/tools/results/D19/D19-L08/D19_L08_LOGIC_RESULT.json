@@ -1,0 +1,42 @@
+{
+  "task_id": "D19-L08",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:39:22+08:00",
+  "summary": "实现纯业务登船/下船工作流 game/Assets/Scripts/Systems/D19/D19BoardingWorkflow.cs（D19-L08）：D19BoardingRequest（CommandId/ActorId/ShipId/PortId/Type/MemberIds）+ D19MemberPosition（成员 ID + D19CrewLocation 逻辑位置 + Moved + L24 verdict）+ D19BoardingResult（Success/ProposedLocations/事件草案/Failure/Rejection）。成员位置只用逻辑枚举与稳定实体 ID（无 Transform/动画/碰撞/输入）。校验链确定性：命令 ID→授权（L23 Validate）→生命周期状态（Board 走 L24 CheckCommand；Disembark 要求船在港口）→船一致→每成员（未知成员 unknown_member / L24 CheckCrewLocation 已在目标位置拒绝）。部分成员失败=原子拒绝：保留每成员各自 verdict、零移动（无 ProposedLocations）、1 个 L16 拒绝事件；成功=全部通过后输出 ProposedLocations（调用方应用，不写 D20/船员/Save）+ 1 个 Boarded/Disembarked 事件。幂等：同 CommandId 返回既有稳定结果（复制字段、Events 置空、零副作用）。冒烟 8 场景全过（登船/下船/幂等/已在目标位置/未知成员/非法生命周期/无权/部分失败原子拒绝）。验证：Roslyn csc 编译 exit 0（L02/L04/L16/L17/L18/L23/L24+EventContracts 依赖链）+ 临时冒烟 RUN exit 0；修复 2 处缺陷（原子拒绝错误分发首个 verdict、幂等命中返回缓存事件对象）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19BoardingWorkflow.cs",
+    "game/tools/results/D19/D19-L08/D19_L08_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L08_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "Roslyn csc.dll /target:library（D19PortLifecycleContracts/D19PortAnchorCatalog/D19PortEventContracts/D19PortFailureCatalog/D19PortLocalizationKeys/D19PortAuthorityValidator/D19InvalidStateGuard/D19PortVisitSystem/D19BoardingWorkflow + Event/EventContracts）",
+      "result": "PASS：exit 0（旧 .NET Framework csc 不支持 L04 的 C#6 插值，改用 dotnet SDK Roslyn；含 D19 全目录编译时 L11 MarketPortAdapter 依赖 D3 类型未含，故按本任务依赖链编译）"
+    },
+    {
+      "command": "临时冒烟程序（dotnet 运行，runtimeconfig 关联）",
+      "result": "PASS：RUN exit 0——登船成功（1 事件+1 移动）、下船成功（1 事件+1 移动）、重复 b1 幂等 0 事件、已在目标位置拒绝 already_on_board（原子 prop=0）、未知成员拒绝 unknown_member、None 状态 Board 拒绝 NotMoored、跨船无权拒绝、部分失败（合法+已在目标位置）原子拒绝且每成员各自 verdict"
+    },
+    {
+      "command": "静态自检：无 Transform/动画/碰撞/输入；不直接改 D20/船员/Save（ProposedLocations 为输出，调用方应用）",
+      "result": "PASS：grep 复查；工作流仅以输入快照驱动并输出提议位置"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L08 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "成员位置的实际应用（ProposedLocations 由 D20/船员系统在运行阶段消费）与角色 Transform/动画/碰撞验证",
+    "事件落日志（EventLog）与存档投影运行时行为",
+    "真实输入/UI 命令来源（命令经 L33 路由）",
+    "RuntimeApproved/ReleaseApproved（均为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L08_LOGIC_HANDOFF.md"
+}

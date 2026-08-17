@@ -1,0 +1,54 @@
+{
+  "task_id": "D18-L02",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:37:52+08:00",
+  "summary": "定义并机器验证资源逻辑记录 Schema（tools/schemas/d18_logic_asset_record.schema.json）：13 个必填字段（canonical_asset_id/category/source_id/source_url/license/rights/download_date/original_filename/sha256/state/content_ids/evidence_paths/runtime_deferred），冻结七个状态枚举并禁止未知批准状态，evidence/license 路径拒绝绝对路径/盘符/UNC/反斜杠/前导斜杠/../ 越界；提供 1 个合法 + 8 个非法夹具，全部经仓库既有方式（jsonschema Draft202012Validator）按预期字段通过/失败；夹具全部为合成数据，未对真实候选补造任何数据。",
+  "changed_files": [
+    "tools/schemas/d18_logic_asset_record.schema.json",
+    "tools/tests/d18_logic_asset_record_fixtures/README.md",
+    "tools/tests/d18_logic_asset_record_fixtures/valid.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_missing_license.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_bad_sha256.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_state_jump.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_empty_source.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_absolute_path.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_unknown_state.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_empty_content_ids.json",
+    "tools/tests/d18_logic_asset_record_fixtures/invalid_rights_incomplete.json",
+    "game/tools/results/D18/D18-L02/D18_L02_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L02_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\opencode\\d18_l02_validate_fixtures.py C:\\Users\\Administrator\\Desktop\\game\\first01（Draft202012Validator.check_schema 校验 Schema 本身为合法 draft 2020-12，再逐夹具断言：合法夹具必须通过、非法夹具必须因预期字段失败）",
+      "result": "PASS：check_schema 无异常；valid.json=VALID；8 个非法夹具全部 INVALID 且分别命中预期字段——invalid_missing_license（缺 license）、invalid_bad_sha256（sha256 不匹配 64 位十六进制）、invalid_state_jump（ReleaseApproved 缺 human_reviewer/human_review_date/release_evidence_path 条件必填）、invalid_empty_source（source_id='' 不匹配 pattern 且缺 source_url）、invalid_absolute_path（evidence_paths 含盘符绝对路径）、invalid_unknown_state（'Approved' 不在七个冻结状态枚举）、invalid_empty_content_ids（空数组）、invalid_rights_incomplete（缺 distribution_with_game）"
+    },
+    {
+      "command": "python -c 路径边界定向断言（同一临时脚本内）：repo_relative_path 对 '../escape.txt'、'docs/x/../../y.txt'、'\\\\server\\share\\f.txt'、'/etc/passwd'、'C:\\Users\\x\\f.txt'、'C:/Users/x/f.txt'、'..'、'tools\\\\tests\\\\x.json' 必须拒绝；对 'Assets/Art/Candidates/a.png'、'./rel/f.png'、'tools/tests/x.json'、docs 相对路径必须接受",
+      "result": "PASS：8 个越界/绝对形态全部 REJECTED，4 个仓库相对路径全部 ACCEPTED（首轮发现 '/etc/passwd' 前导斜杠可被字符类放行，已在唯一写入范围内修复 pattern 为 '^[A-Za-z0-9_.][A-Za-z0-9_./-]*$' 后复验通过）"
+    },
+    {
+      "command": "夹具内容抽查：全部 9 个 JSON 可解析；canonical_asset_id 均为 asset_fixture_*，来源域 example.invalid，sha256 采用空输入串公开摘要（e3b0c442…2b855），不指向任何真实候选或真实哈希",
+      "result": "PASS：夹具为合成数据，未对真实候选补造数据"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误；本次新增文件无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L02 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "RuntimeApproved/ReleaseApproved 授予：本逻辑阶段禁止；Schema 仅要求这些状态携带证据字段，真实运行时消费证据（Prefab/场景消费者、保存/恢复、回退）在 Runtime 阶段验证",
+    "逐文件 SHA-256 完整性：本 Schema 只约束格式（64 位十六进制，缺原文件可为 null）；真实文件摘要由 L06/L31 计算，最终完整性校验属 Runtime",
+    "许可证语义（未知/冲突/NC）与四项权利一致性：本 Schema 只要求结构完整，语义规范化归 L04、权利核对归 L07",
+    "content_id 存在性与引用方向：本 Schema 只约束格式；存在性与禁止游戏数据反向依赖候选文件由 L15 校验",
+    "状态迁移顺序（越级迁移的时序校验）：单记录 Schema 只做状态证据条件，迁移表驱动校验由 L35 审计",
+    "category 分类词典：本 Schema 的 11 个枚举值以真实 intake 目录 domain 与本地就绪类别为起点，权威词典由 L11—L14 冻结，L45 做一致性审计；若 L11—L14 冻结出新的类别值，本 Schema 枚举需在后续任务跟进（已记录为已知依赖，不是 P0 blocker）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L02_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,37 @@
+{
+  "task_id": "D18-L20",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:55:07+08:00",
+  "summary": "建立无二进制、无审批伪造的 D18 逻辑资源单页入口（assets/D18_LOGIC_RESOURCE_INDEX.md）：索引 Schema（L02 已交付 + L25/L37 预定位置）、状态机（L03）、四份分类词典（L11—L14）、11 个验证器（L04—L10/L15—L18，含工具已落盘但结果未提交的如实标注）、来源 catalog 预定位置（L21—L24）、唯一写者（指向基线 2.6）、下游 D19—D24 读取边界、Runtime 延期清单与结果/交接约定；第 10 节 Pending 声明与第 11 节机器可读 JSON 明确未完成项；写盘时点快照与并行提交同步（L04/L08/L10/L15/L19 已随总览更新为 LOGIC_PASS）。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_LOGIC_RESOURCE_INDEX.md",
+    "game/tools/results/D18/D18-L20/D18_L20_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L20_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 链接检查脚本：解析 D18_LOGIC_RESOURCE_INDEX.md 全部相对链接并验证存在 + 第 11 节 JSON 块解析 + 尾随空白检查 + 预定位置存在性检查",
+      "result": "PASS：链接 31 个缺失 0；JSON 块 1 个合法（artifacts 268 项、pending_at_freeze 32 项）；尾随空白行 0；L25/L37 Schema 与 sources/ 四个 catalog 预定位置确认不存在（如实标 Pending），L19 文档已随并行提交存在（索引已更新为 LOGIC_PASS）"
+    },
+    {
+      "command": "与 docs/game/LOGIC_TASK_STATUS.md 交叉核对写盘时点状态（L04/L08/L10/L15/L17/L18/L19 与 L21—L24 等）",
+      "result": "PASS：索引状态列与总览一致；L17/L18 工具已落盘但结果未提交 → 如实标注 Pending；未把任何未完成项写成 PASS"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L20 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅工作区既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止；本索引不改变任何状态）",
+    "逐文件 SHA-256 全量、Unity 导入、Prefab/场景集成、保存恢复验证（基线 §9 与 L48 展开文档）",
+    "来源 catalog（L21—L24）与 L25—L50 波次 2—4 交付物尚未存在，本索引仅登记预定位置"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L20_LOGIC_HANDOFF.md"
+}

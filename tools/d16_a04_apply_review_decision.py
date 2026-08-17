@@ -51,6 +51,10 @@ def _unique_strings(values: list[Any]) -> list[str]:
 def _find_entry(root: Path, record_id: str) -> tuple[Path, dict[str, Any]] | None:
     matches = [(path, entry) for path, entry in load_entries(root) if str(entry.get("id")) == record_id]
     if len(matches) > 1:
+        # If multiple entries match (e.g. ContentRegistry vs Content/D15/A06), prefer the Pending one
+        pending_matches = [(path, entry) for path, entry in matches if entry.get("historical_review") == "Pending"]
+        if len(pending_matches) == 1:
+            return pending_matches[0]
         raise ValueError(f"record id is not unique: {record_id}")
     return matches[0] if matches else None
 

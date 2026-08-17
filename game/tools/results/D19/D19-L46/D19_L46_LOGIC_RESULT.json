@@ -1,0 +1,35 @@
+{
+  "task_id": "D19-L46",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T03:45:00+08:00",
+  "summary": "建立 D19 未来运行时（D20—D24）唯一延期待测清单 docs/game/design/common/D19_RUNTIME_DEFERRED_REGISTER.md：明确梳理 9 项运行时延期事项（场景锚点实际 3D 坐标、靠泊物理碰撞对齐、登船空间触发器、NPC 3D 视觉与 NavMesh 寻路、输入系统映射、UI/HUD 视图与面板互斥、3D 模型/Prefab 资产完整性、URP 光照画面渲染、实机异步加载与内存性能），详细列明逻辑接口、核心风险、未来验收方式以及禁止在当前纯逻辑阶段宣称通过的理由，清晰划分逻辑已通过与实机待测边界。",
+  "changed_files": [
+    "docs/game/design/common/D19_RUNTIME_DEFERRED_REGISTER.md",
+    "game/tools/results/D19/D19-L46/D19_L46_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L46_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d19_logic_test_runner.py",
+      "result": "PASS: Verified all prerequisites for D19-L46"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L46 status synced to LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "RT-01 场景锚点真实 3D 坐标",
+    "RT-02 船只靠泊物理对齐与碰撞",
+    "RT-03 船员登船触发器与空间交互",
+    "RT-04 NPC 3D 视觉与 NavMesh 寻路",
+    "RT-05 玩家输入映射与快捷键",
+    "RT-06 UI/HUD 视图与面板互斥",
+    "RT-07 港口 3D 模型与 Prefab 资产",
+    "RT-08 关卡光照、HDRI 与画面渲染",
+    "RT-09 实机加载耗时与内存占用",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L46_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,32 @@
+{
+  "task_id": "D19-L27",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T00:25:00+08:00",
+  "summary": "实现港口酒馆适配器纯逻辑确定性单元测试 game/Assets/Tests/EditMode/D19/D19TavernPortAdapterTests.cs（D19-L27，纯 C#，零 Unity 依赖）：全面覆盖酒馆休整（Visit）、招募（Recruit）与社交（Social）的合法执行与事件草案产出，L05 可用性（设施关闭/无人员配置）与靠泊前置阻断，L23 权限（跨船/跨港泊位）拒绝，D9/D3 费用拒绝（资金不足映射至 d19.trade.funds_insufficient 且资金不变），D9 编制满员与重复招募拒绝（映射至 capacity_exceeded / operation_failed 并保留原始码），D10 社交敏感内容警告拦截（warning_required 映射至 permission_denied），空请求与缺 ID 阻断，以及数据所有权红线断言（适配器无写路径，所有数值变更由 D9/D10/D3 原系统裁决）。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D19/D19TavernPortAdapterTests.cs",
+    "game/tools/results/D19/D19-L27/D19_L27_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L27_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (temp_test_build test harness executing all 16 test methods in D19TavernPortAdapterTests)",
+      "result": "PASS: 16/16 tests passed, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L27 status synced to LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS: exit 0"
+    }
+  ],
+  "runtime_deferred": [
+    "D10 酒馆内 NPC 对话与行为树运行（属于 D20/表现层）",
+    "D19-L38 港口社会场景跨系统全流程集成验证",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L27_LOGIC_HANDOFF.md"
+}

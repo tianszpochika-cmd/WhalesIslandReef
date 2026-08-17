@@ -1,0 +1,48 @@
+{
+  "task_id": "D18-L11",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:45:23+08:00",
+  "summary": "冻结船舶/港口/建筑分类词典（docs/game/design/common/assets/D18_TAXONOMY_SHIPS_PORT.md）：7 个逻辑类别（ship/hull_component/port_service/dock/berth/building/prop）与子类、稳定 content_id 命名规则（ship_/ship_module_/ship_function_/port_service_/dock_/berth_/building_/prop_，字符集 [a-z0-9_]）、子类到 L02 category 枚举的唯一映射、弃用映射（A 系列 intake 角色/domain、D4 船型裸键 small_fishing vs 设计文档 fishing_boat 的差异、占位符规则）与 8 条不可混用关系；明确分类只服务数据/资源映射、不改变船舶/港口/经济/场景状态、不统计模型、不声称模型存在；每类给出命名例子、允许资源类型、所有者和 D19/D21 使用边界。全部内容基于真实设计文档与 Registry/intake 事实，未改 catalog、资源、Unity 或 Systems。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_TAXONOMY_SHIPS_PORT.md",
+    "game/tools/results/D18/D18-L11/D18_L11_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L11_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 读取 docs/game/design/common/assets/d18_prefab_candidate_intake_catalog.json：抽取 domain=ship（21 条）与 domain=building（112 条）的真实角色/文件名/manifest_id；抽取全部 1,865 条 content_id 字符集（[a-z0-9_]）",
+      "result": "PASS：真实角色锚定子类——ship_hull_playable_or_distant/ship_hull_pirate_variant/ship_damage_variant/ship_distant_silhouette/ship_mast_rigging/ship_weapon_prop/boat_tender/port_dock_pier_module/port_platform_module/building_shell_module/building_opening_module/building_access_module/building_roof_module/building_drainage_module/port_building_module/port_flag_sign_prop/port_storage_prop；content_id 全部为 [a-z0-9_]+"
+    },
+    {
+      "command": "python 读取 docs/game/design/common/assets/replacement/d18_placeholder_replacement_map.json 与真实 Registry 前缀：building_ 80 条（building_market/building_customs_house/building_cargo_wharf/building_drydock 等），ship_/prop_/dock_/berth_/port_service_ 前缀无 Registry 记录",
+      "result": "PASS：弃用映射与命名规则以真实 Registry 为据；未补造 ship_/prop_/dock_/berth_/port_service_ 占位或数量"
+    },
+    {
+      "command": "只读读取 game/Assets/Scripts/Systems/Save/Models/ShipTypeDef.cs 与 SeedData.cs：确认 D4 运行时船型裸键 sloop/small_fishing；对照 design/ship/02_SHIP_TYPES.md 的 fishing_boat 键",
+      "result": "PASS：命名差异（small_fishing vs fishing_boat）如实登记进弃用映射，以代码/注册表真实键为准，本词典不裁决船型开放顺序"
+    },
+    {
+      "command": "python 链接检查：解析 D18_TAXONOMY_SHIPS_PORT.md 全部 17 个相对链接并验证存在",
+      "result": "PASS：17 个链接，缺失 0"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L11 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "码头/泊位/建筑/船舶的碰撞、缆桩、跳板、潮位断缆、通行、排队、抓取/摆放 Pivot 等一切场景行为",
+    "船体 Hull Prefab 预检（Pivot、甲板基准、吃水、登船点）与可驾驶评估（D21）",
+    "独立帆/舵/锚/系船柱/灯具/渔具/招牌证据包（当前缺口，禁止缩放补数）",
+    "建筑实例状态（缺货/停工/关闭/火灾/洪水/战争损伤/占领/封锁/修复/废弃）",
+    "D19 PortVisit 状态机与 D21 船状态机的真实实现（D19-L02/D21 任务卡）",
+    "真实资源映射证据：ship_*/prop_*/dock_*/berth_*/port_service_* 无 Registry 记录，需 L21—L24/L31/L33/L34 用真实证据建立；本词典不补造"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L11_LOGIC_HANDOFF.md"
+}

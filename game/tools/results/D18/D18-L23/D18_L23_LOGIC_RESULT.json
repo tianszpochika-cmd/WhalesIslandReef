@@ -1,0 +1,76 @@
+{
+  "task_id": "D18-L23",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T22:10:00+08:00",
+  "summary": "建立 Poly Haven 单项静态来源目录 docs/game/design/common/assets/sources/d18_polyhaven_logic_catalog.json：91 条 L02 Schema 合法记录（选中材质 map 79 + 环境沙滩/海床材质 map 8 + HDRI 4），全部 state=Candidate、许可 CC0-1.0、attribution_required=false；87 条带真实逐文件 SHA-256（来源 polyhaven_selected_assets.json 与 8 个 manifest），4 条 HDRI 因逐文件哈希未记录而 sha256=null 登记 Pending（绝不补猜）；站点许可明确声明不能替代单项文件/来源/哈希记录；未下载任何 Poly Haven 模型故不建模型记录；标明未来材质用途（木材/沙地/岩石/布革/金属组、beach_material/seabed_material 角色）但不创建材质、不接 Shader、不导入。验证：L02 Schema 91/91、L04 许可 91/91 NORMALIZED、L05 来源 91/91 PASS、L06 哈希 87/87 真实匹配（全量 91 报 4 条 missing_sha256 缺证据）、L07 权利 91/91 允许、L09 署名 91/91 合法、L08 路径 93 条唯一 evidence 路径全 PASS、L16 资源键（asset_ 形式）CLEARED；L15 内容映射 formal content_ids 尚未在 ContentRegistry 登记 → missing_content_id（真实缺口登记 Pending）；L18 发布声称守卫仅既有 D18-L18 自身 handoff 1 处自引用误报，本次零新增。",
+  "changed_files": [
+    "docs/game/design/common/assets/sources/d18_polyhaven_logic_catalog.json",
+    "game/tools/results/D18/D18-L23/D18_L23_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L23_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "生成器（临时脚本，不落仓库）：读取 polyhaven_selected_assets.json（20 materials/79 maps + 4 HDRIs）与 8 个 environment polyhaven manifest，按 L02 Schema 生成 91 条记录",
+      "result": "PASS：79 选中材质 map + 8 环境材质 map + 4 HDRI；canonical_id 无重复；summary 与磁盘/准入目录事实一致（intake polyhaven 91 条 1:1）"
+    },
+    {
+      "command": "L02 Schema 校验（jsonschema Draft202012Validator，仓库既有方式）",
+      "result": "PASS：91/91 记录合法，0 错误"
+    },
+    {
+      "command": "L04 许可证规范化（tools/d18_license_normalizer.py 派生视图 91 条）",
+      "result": "PASS：91/91 NORMALIZED（CC0-1.0，attribution=false，commercial/modification/redistribution 全部显式为真），0 错误"
+    },
+    {
+      "command": "L05 来源验证器（tools/d18_provenance_validator.py validate_source_record，每条记录单独校验，organization=Poly Haven，as-of=2026-08-16）",
+      "result": "PASS：91/91 PASS；evidence 文件全部存在且非空、无越界、无异源 token"
+    },
+    {
+      "command": "L06 哈希验证器（tools/d18_hash_validator.py，派生逐文件记录：87 条带真实 sha256 + 4 条 HDRI 无记录）",
+      "result": "PASS（87/87 真实匹配）；全量 91 条运行时 4 条 missing_sha256（HDRI 逐文件哈希未记录 → 缺证据，approved_count 恒 0）"
+    },
+    {
+      "command": "L07 分发权利验证器（tools/d18_distribution_rights_validator.py validate_record 派生视图 91 条）",
+      "result": "PASS：91/91 四项权利显式 allowed，migration_allowed=true；无 free/downloadable 声明被当作权利证据"
+    },
+    {
+      "command": "L09 署名验证器（tools/d18_attribution_validator.py validate_attribution，catalog 记录直接输入）",
+      "result": "PASS：91/91 valid；CC0 无伪造必须署名；commercial_rights_inferred=false"
+    },
+    {
+      "command": "L08 路径边界验证器 CLI（93 条唯一 evidence/license 路径，--kind evidence）",
+      "result": "PASS：exit 0，全部 [PASS]"
+    },
+    {
+      "command": "L15 content_id 关联验证器（--records catalog + intake catalog + registry.json 前缀表）",
+      "result": "真实缺口：formal content_ids（asset_material_*/asset_hdri_*）尚未在 ContentRegistry 登记 → missing_content_id 91 条（BLOCKED）；不提供 catalog 时 → catalog_missing PENDING。缺口登记为 Pending，由 L42/D8 内容登记后复跑，不影响本任务静态来源登记"
+    },
+    {
+      "command": "L16 ResourceKey 验证器（派生键：asset_ 形式 91 条 + L14 d18: 命名空间形式 91 条）",
+      "result": "asset_ 形式 CLEARED（0 issues）；L14 d18: 命名空间形式 BLOCKED（unknown_namespace 91，L16 冻结命名空间暂为 d10/d20）——L14 与 L16 命名空间冻结差异登记为 L45 一致性核对项"
+    },
+    {
+      "command": "L18 发布声称守卫（python tools/d18_release_claim_guard.py）",
+      "result": "本次零新增：仅 1 处既有 doc_overstep_claim（D18-L18 自身 handoff 第 41 行描述错误码表格的自引用，波次 1 既有事实，非本任务引入）；本任务文件无 RuntimeApproved/ReleaseApproved/可发布等越级声明"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：总览重新生成，D18-L23=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，本任务新增文件无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "4 条 HDRI 逐文件 SHA-256 未记录（selected_assets.json hdris 无 files 条目）→ sha256=null 登记 Pending，由 L06/Runtime 真实计算，绝不补猜",
+    "formal content_ids（asset_material_*/asset_hdri_*）尚未在 ContentRegistry 登记 → L15 missing_content_id；内容登记属 D8/L42 后续",
+    "L14 定义的 d18: 命名空间 ResourceKey 与 L16 冻结命名空间（d10/d20）差异 → L45 一致性核对",
+    "材质/HDRI 实际导入、颜色空间、压缩、Unity Material 实例、Shader 接线、天空盒/光照组件接线全部 Runtime 延期",
+    "未下载任何 Poly Haven 模型（站点模型为 CC0 但无单项证据）→ 不建记录，模型选择属 Runtime 阶段",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止；本任务全部记录 state=Candidate）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L23_LOGIC_HANDOFF.md"
+}

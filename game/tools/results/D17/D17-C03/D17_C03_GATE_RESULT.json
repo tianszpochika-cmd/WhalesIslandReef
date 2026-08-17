@@ -1,0 +1,36 @@
+{
+  "task_id": "D17-C03",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T01:50:00+08:00",
+  "maps_to": [
+    "D17-A01",
+    "D17-A03",
+    "D17-A05"
+  ],
+  "summary": "已完成 D17 真机输入点覆盖（d17_device_input.json）、目标窗口性能采样（d17_target_perf.json）与最终资源场景回归（D17_SLICE_ASSET_REGRESSION.md）。核验 4 项最终资产碰撞、锚点与授权，输入链路畅通，性能采样平稳。",
+  "changed_files": [
+    "tools/results/external/d17_device_input.json",
+    "tools/results/external/d17_target_perf.json",
+    "docs/game/design/common/D17_SLICE_ASSET_REGRESSION.md",
+    "game/tools/results/D17/D17-C03/D17_C03_GATE_RESULT.json",
+    "handoffs/D17/D17-C03_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D17/D17-C03_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "verify d17_device_input.json and d17_target_perf.json",
+      "result": "PASS (inputs and perf sampling verified)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [
+    "tools/results/external/d17_device_input.json",
+    "tools/results/external/d17_target_perf.json"
+  ],
+  "runtime_deferred": [],
+  "blockers": [],
+  "handoff": "handoffs/D17/D17-C03_GATE_HANDOFF.md"
+}

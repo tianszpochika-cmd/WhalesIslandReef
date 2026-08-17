@@ -1,0 +1,64 @@
+{
+  "fixture_kind": "d18_logic_invalid_record",
+  "fixture_class": "duplicate_identity",
+  "task": "D18-L41",
+  "note": "重复 identity 夹具：两条不同 canonical_asset_id 记录声明相同 path 与相同真实 sha256（evidence/dup_target.txt 真实摘要）；L31 输出 duplicate_record。",
+  "records": [
+    {
+      "canonical_asset_id": "asset_ship_medium_v01",
+      "category": "ship",
+      "source_id": "source_kenney",
+      "source_url": "https://kenney.nl/assets/pirate-kit",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-16",
+      "original_filename": "fixture_ship_medium_pack.zip",
+      "sha256": "9D558839FD141B16216482D0FFB2F10558A16FD89991EA29AE678C7E0D42FC6F",
+      "state": "Candidate",
+      "content_ids": ["ship_medium_v01"],
+      "evidence_paths": [
+        "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt"
+      ],
+      "runtime_deferred": [],
+      "path": "tools/tests/fixtures/d18_logic_invalid/evidence/dup_target.txt"
+    },
+    {
+      "canonical_asset_id": "asset_ship_medium_v02",
+      "category": "ship",
+      "source_id": "source_kenney",
+      "source_url": "https://kenney.nl/assets/pirate-kit",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-16",
+      "original_filename": "fixture_ship_medium_pack.zip",
+      "sha256": "9D558839FD141B16216482D0FFB2F10558A16FD89991EA29AE678C7E0D42FC6F",
+      "state": "Candidate",
+      "content_ids": ["ship_medium_v02"],
+      "evidence_paths": [
+        "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt"
+      ],
+      "runtime_deferred": [],
+      "path": "tools/tests/fixtures/d18_logic_invalid/evidence/dup_target.txt"
+    }
+  ]
+}

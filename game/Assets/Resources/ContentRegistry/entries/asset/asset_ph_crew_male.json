@@ -25,50 +25,61 @@
   "source": {
     "kind": "external-asset",
     "author": "Quaternius",
-    "reference": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md#老水手模型"
+    "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
   },
   "license": {
     "status": "CC0-1.0",
     "holder": "Quaternius",
-    "reference": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "reference": "artifacts/external_sources/d16_c08_slice/Quaternius_License_Standard.txt",
     "commercial_use": true,
-    "attribution_required": false,
     "modification_allowed": true
   },
   "authorization": {
-    "authorization_id": "auth_quaternius_cc0_crew_male",
+    "authorization_id": "auth-d16-c08-quaternius-male-peasant",
     "rights_holder": "Quaternius",
-    "license_ref": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
-    "source_url_or_path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md#老水手模型",
-    "acquired_at": "2026-08-11",
+    "license_ref": "artifacts/external_sources/d16_c08_slice/Quaternius_License_Standard.txt",
+    "source_url_or_path": "https://quaternius.com",
+    "acquired_at": "2026-08-18",
     "commercial_use": true,
-    "attribution_required": false,
     "modification_allowed": true,
-    "expiry_or_scope": "CC0-1.0; project placeholder crew model",
-    "evidence_ref": "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+    "expiry_or_scope": "CC0-1.0; D16-C08 slice crew mesh",
+    "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
   },
   "historical_tag": "inferred",
   "phase": "D8",
   "status": "prototyped",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-ASSET-002",
-  "reviewer": "D8-A02",
-  "resource_path": "game/Assets/Art/Placeholder/Models/Crew/ph_crew_male.fbx",
-  "runtime_prefab_path": "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
-  "asset_state": "placeholder",
-  "production_stage": "prototype_placeholder",
+  "reviewer": "D16-A05-REVIEWER-01",
+  "resource_path": "game/Assets/Art/SliceFinal/D16C08/crew_male_final.fbx",
+  "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/crew_male_final.prefab",
+  "asset_state": "integrated",
+  "production_stage": "slice_final",
   "test_cases": [
     "d16-a05-asset-ph-crew-male-load",
     "d16-a05-asset-ph-crew-male-runtime-prefab-reference",
     "d16-a05-asset-ph-crew-male-placeholder-state",
     "d16-a05-asset-ph-crew-male-save-restore"
   ],
-  "lod_profile": "d16_a05_placeholder_crew_lod_na",
-  "historical_review": "Pending",
+  "lod_profile": "crew_slice_lod3",
+  "historical_review": "Approved",
   "review_evidence_refs": [
     "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
-    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt"
+    "game/Assets/Art/Placeholder/PH_QUATERNIUS_LICENSE.txt",
+    "C:/Users/Administrator/Desktop/game/first01/docs/game/design/common/reviews/D16-A04-007/asset_ph_crew_male_evidence.md",
+    "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"
   ],
   "content_warning_ids": [],
-  "skip_allowed": false
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "decision": "Approved",
+    "basis": "D16-C08 Plan B slice replacement after preflight can_apply=true",
+    "reviewer": "D16-A05-REVIEWER-01",
+    "reviewed_at": "2026-08-18",
+    "evidence_refs": [
+      "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"
+    ],
+    "explicit_human_decision": true,
+    "automated_approval": false
+  }
 }

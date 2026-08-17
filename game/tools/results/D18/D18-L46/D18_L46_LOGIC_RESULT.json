@@ -1,0 +1,38 @@
+{
+  "task_id": "D18-L46",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T00:33:00+08:00",
+  "summary": "发布 D19—D24 只读逻辑交接接口 docs/game/design/common/D18_LOGIC_HANDOFF_INTERFACE.md（D18-L46，波次 3 第 8 项）：汇总有效 Schema 与版本（L02/L25/L37/historical manifest，schema_version 全 1）、ResourceKey/content_id 规则（d10/d20 冻结命名空间、前缀映射、candidate_ 仅作 deprecated alias、snake_case 业务键）、七状态含义与不可消费状态（Candidate/Rejected/Revoked/Pending hash）、跨 11 个工具的冻结错误码总表、来源 catalog 与 L42 编译产物（100 合法 + 61 rejected + 4 Pending）、L39/L42/L44/L45 审计命令、唯一写者表（L01 §2.6 + 各任务）、Runtime Deferred 清单与下游使用契约。红线明确：不得引用 Candidate 二进制、不得声称资源已导入（represents_imported_asset 恒 false、RuntimeApproved/ReleaseApproved 均为 0）。8/8 文档链接存在；未创建任何运行时资源/Registry/批准条目。 L53 收尾更新（2026-08-17）：接口文档新增 §3.4 双层分类契约（category=11 值大类、taxonomy_category=可选细分类、未知/父类不匹配 P0、下游只读静态数据）与错误码 category_invalid/unknown_taxonomy_category/taxonomy_parent_mismatch；§3.3 注明 candidate_hdri_* 已由 L52 修复。",
+  "changed_files": [
+    "docs/game/design/common/D18_LOGIC_HANDOFF_INTERFACE.md",
+    "game/tools/results/D18/D18-L46/D18_L46_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L46_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 链接检查：docs/game/design/common/D18_LOGIC_HANDOFF_INTERFACE.md 全部相对链接存在性",
+      "result": "PASS：8 个链接全部存在（初检 5 处层级错误已修正为 ../../../../tools）"
+    },
+    {
+      "command": "python -c \"json.load(各 Schema)”与各审计机器结果交叉核对（§2—§6 数字）",
+      "result": "PASS：schema_version 全 1、状态/枚举与 L45 审计输出一致、来源 catalog 数字与 L43 机器结果一致（100/61/4）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L46 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "category 权威映射（8 细分类 vs 11 值枚举）待 L50 验收前定案（L45 blocker）",
+    "D19LightingProfileCatalog.json 的 candidate_hdri_* 引用修复（L44 检出，归 D19/D21）",
+    "Unity 导入/Prefab/场景/碰撞/LOD/Animator/保存恢复/性能（未来 Runtime 阶段）",
+    "RuntimeApproved/ReleaseApproved 授予（本阶段禁止，均为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L46_LOGIC_HANDOFF.md"
+}

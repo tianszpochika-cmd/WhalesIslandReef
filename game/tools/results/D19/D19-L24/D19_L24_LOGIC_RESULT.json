@@ -1,0 +1,43 @@
+{
+  "task_id": "D19-L24",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:47:33+08:00",
+  "summary": "实现集中式不变式/非法状态防护 game/Assets/Scripts/Systems/D19/D19InvalidStateGuard.cs（纯 C#，零 Unity 依赖，精确前置 L02/L17/L18 均 LOGIC_PASS）：统一校验语义覆盖生命周期迁移（封装 L02 CanTransition/ResolveRejectionCode，拒绝时原状态不变）、港口/泊位/服务归属（封装 L04 锚点目录，跨港泊位/跨港服务/未知键/格式非法全部拒绝并保留精确子原因）、命令 ID（空/空白/控制符/超长拒绝）、服务前置（归属 + 必须 Berthed）、船员位置语义（OnShore→OnBoard/OnBoard→OnShore 允许，重复登船/下船/未知位置拒绝，不自动猜测）、状态组合（None 不得带 ID、Berthed/InService 必须持本港泊位、Boarded/Departed 必须船员 OnBoard）与命令级组合（CheckCommand 供 L03/L05—L10 与命令路由复用，Compensate 不做正向迁移校验）；每次拒绝返回 L17 业务码 + L18 key + 重试建议 + 白名单参数（只透传条目 ParamWhitelist 内稳定标量）；异常策略：业务输入非法 → 显式 D19GuardVerdict，null 基础设施引用与不可解析业务码 → 异常向上传播（InvalidOperationException），绝不 try/catch 吞掉、绝不用 bool 默认值自动修复；防护器只校验，不拥有/不写入市场、库存、船舶、保存。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19InvalidStateGuard.cs",
+    "game/tools/results/D19/D19-L24/D19_L24_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L24_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md",
+    "docs/game/LOGIC_TASK_STATUS.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build（仓库外临时工程，链接真实 D19 全部 6 个契约/防护文件 + EventContracts.cs，net9.0/LangVersion 9.0）",
+      "result": "PASS：0 警告 / 0 错误（与 L02/L04/L16/L17/L18 同编译，接口一致）"
+    },
+    {
+      "command": "临时控制台断言（56 项，仓库外执行）",
+      "result": "PASS：56/56（生命周期 8 项含原状态不变与拒绝码映射；港口/泊位/服务归属 10 项含跨港与格式；服务前置 2 项；命令 ID 4 项；船员位置 5 项；状态组合 7 项；不变式 2 项；命令级组合 10 项含 AssignBerth 跨港拒绝/StartService 持当前泊位放行/直飞离港；异常策略 2 项：null catalog 传播 NullReferenceException、不可解析业务码抛 InvalidOperationException；全量拒绝 6 项逐一断言 L17 码+L18 key 有效且参数全部在白名单内）"
+    },
+    {
+      "command": "静态扫描：D19InvalidStateGuard.cs 无 UnityEngine/TMPro/Localization./TextMesh/Canvas 代码引用（仅文档注释提及）；无 try/catch 吞异常结构",
+      "result": "PASS：0 处 Unity 依赖；防护器只读消费 L02/L04/L17/L18，无市场/库存/船舶/保存引用"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L24 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无空白错误；仅工作区既有未提交文件的 LF→CRLF 警告"
+    }
+  ],
+  "runtime_deferred": [
+    "真实命令路由/工作流对防护器的接入（D19-L03/L05—L10/L22/L33 等按各自前置落地后调用 CheckCommand/单项检查）",
+    "船员位置事实的来源（D4 船员/存档投影；本防护器只消费 D19CrewLocation 逻辑输入，不读取 D4 内部状态）",
+    "泊位租期/占用事实（D19-L06 泊位系统裁决；防护器只校验键归属，不裁决占用）",
+    "UI 反馈/本地化文案展示（Runtime 阶段；本文件只产出 L17 码 + L18 key）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L24_LOGIC_HANDOFF.md"
+}

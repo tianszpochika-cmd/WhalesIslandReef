@@ -1,0 +1,42 @@
+{
+  "task_id": "D19-L11",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:41:17+08:00",
+  "summary": "实现港口市场适配器（game/Assets/Scripts/Systems/D19/D19MarketPortAdapter.cs，纯 C#、零 Unity、无写路径）：封装港口市场请求的港口上下文、权限/服务前置（L23 权威校验 + L05 可用性门）、命令 ID 透传（D3 幂等 revision）与 D3 公开调用（TradeEconomySystem.Buy/Sell 幂等入口）；将 D3 成功/失败投影为 L17 失败码、L18 本地化 key 与 L16 事件草案（ServiceResult，result_code port.*，不追加）；D3 原始失败码永远保留在 OriginalD3Code 不吞掉；D3 独占价格/货币/库存裁决（不缓存可写库存/货币引用，活 state 只透传）；任何 D3 接口不匹配（null 请求/state/economy、缺 command_id/commodity_id、非正数量、非 market 服务、未映射 D3 码）明确阻断，未调用 D3 前返回 Blocked。D3→L17 投影表冻结（not_enough_money→d19.trade.funds_insufficient、market_empty→d19.service.unavailable（近似）、weight_full/cargo_full→d19.inventory.capacity_exceeded、invalid_revision→d19.save.conflict、duplicate_settlement 以 DuplicateSettlement=true 透传幂等）并内置 Validate 自检。SaveRevision 与事件草案可被 L22 幂等/L20 保存消费。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19MarketPortAdapter.cs",
+    "game/tools/results/D19/D19-L11/D19_L11_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L11_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build/run（临时 net9.0 工程，链接真实 D19 八文件 + D3 四文件 + Event 契约 + AgentCore 配置，仓库外）",
+      "result": "PASS：编译 0 warning 0 error（exit 0）；适配器零 Unity 依赖可独立编译"
+    },
+    {
+      "command": "dotnet 确定性断言 harness（33 项，仓库外）",
+      "result": "PASS：33/33。覆盖：成功买入经 D3（钱/库存真实变化、SaveRevision 透传、事件草案生成）；同命令+同 revision 重放 → DuplicateSettlement 且不双花；卖出成功；not_enough_money→L17 funds_insufficient 且 OriginalD3Code 保留；market_empty 投影且码保留；cargo_full→L17 capacity_exceeded；跨港/跨船被 L23 权威拒绝（L17 码 + authority 说明）；注入的 L05 关闭门阻断买入；null 请求/state、零数量、非 market 服务在调用 D3 前阻断且钱不变；事件草案 id 可解析（L22/L35 可消费）、result_code port.*、summary d19.port.*；无隐藏状态（同输入同输出）"
+    },
+    {
+      "command": "开发期真实修复：L23 权威校验的 ServiceId 期望 L04 锚点目录键（service_<port>_market），而请求方使用 L18 裸 ID（market）→ 适配器按已解析端口构造目录键后复验 33/33 全过",
+      "result": "PASS：修复后全过；未修改 L23/L04/L18 文件"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L11 状态刷新为 LOGIC_PASS，283 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "真实 UI/输入路径：命令 ID、actor/ship 身份、权威声明（claims）的真实来源由 L33 命令路由接入",
+    "L05 可用性门的真实输入（开放时间/势力/天气/设施状态读模型）由后续整合任务注入",
+    "事件草案的追加与去重（EventLog）、L20 保存投影、L22 幂等路由",
+    "价格/货币/库存的一切数值仍由 D3 独占裁决；本适配器永不缓存或改写"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L11_LOGIC_HANDOFF.md"
+}

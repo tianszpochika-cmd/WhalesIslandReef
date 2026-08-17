@@ -1,0 +1,44 @@
+{
+  "task_id": "D19-L23",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:20:00+08:00",
+  "summary": "实现纯权限校验器 game/Assets/Scripts/Systems/D19/D19PortAuthorityValidator.cs（纯 C#，零 Unity/网络/登录依赖）：以调用方明确传入的 actor_id/ship_id/port_id/berth_id/service_id/货物归属船与授权声明（D19AuthorityClaims：ActorOwnsShip/ActorIsCrewOfShip/ShipCurrentPortId）为输入，判定 D19-L02 九种港口命令谁能请求；只返回允许/拒绝 + D19-L17 失败码目录条目（code+LocKey）与稳定拒绝原因（D19DenialCause 15 值）；拒绝跨船（声明船≠请求船、货物归属船≠请求船）、跨港（请求港≠声明停靠港、泊位/服务归属其他港）、跨玩家（actor 与船无任何授权/成员关系）与伪造服务访问（非服务命令携带服务 ID）；绝不修正归属、绝不创建授权、绝不查询网络、绝不读取登录状态（停靠港作为声明传入只做一致性比较）；无任何跨实体状态写入（纯函数、零可变状态、相同输入可重放）；只读消费 D19-L04 锚点目录（含 D3/D9 历史别名解析与跨港泊位/服务拒绝）与 D19-L17 失败码目录（UnknownPort 拒绝指向 d19.port.unknown_port 条目，其余指向 d19.port.permission_denied 条目）；提供 VerifyMapping 自检。验证：仓库外临时 dotnet 工程编译真实 Event/D19 七文件 0 错误 0 警告；33 项确定性断言全 PASS（允许路径 8、Compensate 无港、跨玩家/跨船/跨港/跨船货物/未知港口/跨港泊位/未知泊位/缺泊位/伪造服务/缺服务/跨港服务/未知服务/空输入 14 类拒绝、历史别名解析、可重放一致性、VerifyMapping 空、L17 目录自检仍空）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortAuthorityValidator.cs",
+    "game/tools/results/D19/D19-L23/D19_L23_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L23_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "前置核对：D19-L02 / D19-L04 / D19-L17 / D19-L18 状态",
+      "result": "PASS：全部 LOGIC_PASS（D19-L02=2026-08-17T21:27 / L04=21:31 / L17=22:40 / L18=21:32）"
+    },
+    {
+      "command": "只读消费盘点：D19PortAnchorCatalog（L04 Resolve*/跨港泊位/服务拒绝）、D19PortFailureCatalog（L17 d19.port.permission_denied / d19.port.unknown_port 条目）、D19PortLifecycleContracts（L02 D19PortCommandKind）",
+      "result": "PASS：三文件只读引用，未修改任何既有文件"
+    },
+    {
+      "command": "仓库外临时 dotnet 工程（引用真实 EventContracts/EventLog/D19PortLifecycleContracts/D19PortEventContracts/D19PortLocalizationKeys/D19PortFailureCatalog/D19PortAnchorCatalog/D19PortAuthorityValidator）dotnet run",
+      "result": "PASS：编译 0 错误 0 警告；33 项确定性断言 0 失败（允许 8 路径 + Compensate；拒绝 14 类：跨玩家/跨船/跨船货物/跨港/未知港口/跨港泊位/未知泊位/缺泊位/伪造服务/缺服务/跨港服务/未知服务/空 actor/ship/port/null；D3 港口别名 santa_margarita 与 D9 废弃泊位 building_saint_marys_dock 解析为规范键；可重放两次结果逐字段一致；VerifyMapping 空；L17 Validate 仍空）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：总览重新生成，D19-L23=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，本任务新增文件无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "真实登录/玩家身份会话（本校验器不读取登录状态；登录身份映射由上游调用方注入声明）",
+    "船-玩家-船员归属关系的运行时维护（声明由调用方从各自领域读模型构造）",
+    "D9/D3/D4 所有者命令的最终执行（校验器只做前置权限判断，不调用所有者）",
+    "L17 新增 key（permission_denied 等 7 个）在 D19PortLocalizationKeys 注册（L18 扩展待办，同 L17 报告）",
+    "UI 文案/错误展示绑定（本校验器只输出 L17 code+key）",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L23_LOGIC_HANDOFF.md"
+}

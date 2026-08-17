@@ -1,0 +1,29 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_prop_barrel",
+  "type": "prop",
+  "units": "meters",
+  "axes": { "up": "y", "forward": "z" },
+  "bounds": { "width_m": 0.8, "depth_m": 0.8, "height_m": 1.1 },
+  "material_slots": [
+    { "slot_name": "staves", "slot_role": "wood" },
+    { "slot_name": "bands", "slot_role": "metal" }
+  ],
+  "skeleton_type": "none",
+  "animation_list": [],
+  "root_motion": "none",
+  "collision_intent": "simple_box",
+  "lod_intent": { "levels": 2, "generate_automatically": true },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_url": "https://example.invalid/license/cc0",
+    "license_evidence_path": "docs/fixtures/license_cc0.txt",
+    "attribution_required": false
+  },
+  "fallback": {
+    "reference": "placeholder_prop_barrel",
+    "description": "keep placeholder barrel until real mesh and pivot are verified"
+  },
+  "represents_imported_asset": false
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "D17-C04",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T01:55:00+08:00",
+  "maps_to": [
+    "D17-S02"
+  ],
+  "summary": "已完成 D17-C04 正式切片故事脚本冻结（D17_S02_STORY_SCRIPT.md）、连续 10 次故事与重启复核（tools/results/external/d17_s02_ten_cycles.json, D17_S02_RESTART_AUDIT.md）、状态审查（D17_GATE_STATUS_REVIEW.md）与 D17 章节门禁正式验收（D17_GATE_ACCEPTANCE.md）。10 轮执行全部 PASS，零崩溃与软锁。",
+  "changed_files": [
+    "docs/game/design/common/D17_S02_STORY_SCRIPT.md",
+    "tools/results/external/d17_s02_ten_cycles.json",
+    "docs/game/design/common/D17_S02_RESTART_AUDIT.md",
+    "docs/game/design/common/D17_GATE_STATUS_REVIEW.md",
+    "docs/game/design/common/D17_GATE_ACCEPTANCE.md",
+    "game/tools/results/D17/D17-C04/D17_C04_GATE_RESULT.json",
+    "handoffs/D17/D17-C04_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D17/D17-C04_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "verify 10 cycles execution and restart audit",
+      "result": "PASS (10/10 cycles passed, 0 softlocks, 0 crashes)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [
+    "tools/results/external/d17_s02_ten_cycles.json"
+  ],
+  "runtime_deferred": [],
+  "blockers": [],
+  "handoff": "handoffs/D17/D17-C04_GATE_HANDOFF.md"
+}

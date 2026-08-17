@@ -1,0 +1,37 @@
+{
+  "task_id": "D16-C12",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T01:20:00+08:00",
+  "maps_to": [
+    "D16-R02",
+    "D16-C29",
+    "D16-C30",
+    "D16-C31"
+  ],
+  "summary": "已完成 D16-C12 旁路三项工作：核验本机便携安装器烟测通过记录（保持隔离）、编写 D16_S01_STORY_FIXTURE.md 夹具检查表、确认 Steamworks 上传保持未授权未执行（D16_STEAM_HOLD.md）。",
+  "changed_files": [
+    "docs/game/design/common/D16_S01_STORY_FIXTURE.md",
+    "docs/game/design/common/D16_STEAM_HOLD.md",
+    "game/tools/results/D16/D16-C12/D16_C12_GATE_RESULT.json",
+    "handoffs/D16/D16-C12_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D16/D16-C12_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "check tools/results/d16_a06_formal_installer_smoke_result.json",
+      "result": "PASS (install/update/uninstall pass)"
+    },
+    {
+      "command": "verify D16_STEAM_HOLD.md",
+      "result": "PASS (Steam upload unexecuted)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [],
+  "blockers": [],
+  "handoff": "handoffs/D16/D16-C12_GATE_HANDOFF.md"
+}

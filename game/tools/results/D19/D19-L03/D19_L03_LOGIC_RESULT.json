@@ -1,0 +1,43 @@
+{
+  "task_id": "D19-L03",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:40:54+08:00",
+  "summary": "实现纯领域到港/离港访问状态机 game/Assets/Scripts/Systems/D19/D19PortVisitSystem.cs（D19-L03）：以不可变 D19PortCommand（CommandId/Kind/PortId/BerthId）驱动 D19-L02 冻结迁移表，输出新状态、L16 事件草案（D19PortEventFactory，resultCode 为稳定机器码 port.*）与 L17 失败码（D19PortFailureCatalog.ForLifecycleCode 解析，未登记码用 port.lifecycle.rejected 回退并保留原码）。幂等：同一 CommandId 重复投递返回既有稳定结果、零新事件、零状态副作用（字典缓存）；非法迁移原状态不变、仅生成拒绝事件草案（CreateRejection）；缺命令 ID 拒绝且不生成事件（无 ID 无法关联）。状态只由本系统拥有（构造绑定 shipId，只读暴露 State/PortId/BerthId）；外部经 Execute() 公开适配接口消费。不触碰 Transform/NavMesh/真实时间/坐标；不直接修改任何航海系统数值；只读引用 L02/L16/L17 类型不复制。验证：csc 编译 exit 0（L02/L16/L17/L18+EventContracts 依赖链）+ 临时冒烟程序运行 exit 0（完整剧本 8 步全成功每步 1 事件、幂等 0 事件、非法迁移拒绝且状态不变、空命令 ID 安全拒绝）；修复 1 处缺陷（空命令 ID 拒绝路径不再尝试创建事件）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortVisitSystem.cs",
+    "game/tools/results/D19/D19-L03/D19_L03_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L03_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "& C:/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe /nologo /target:library /out:<temp>/d19_l03.dll D19PortLifecycleContracts.cs D19PortEventContracts.cs D19PortFailureCatalog.cs D19PortLocalizationKeys.cs D19PortVisitSystem.cs Event/EventContracts.cs",
+      "result": "PASS：exit 0（L04 AnchorCatalog 的 C#6 字符串插值被旧 csc 拒绝，已从本任务依赖链排除——非本任务文件，未修改）"
+    },
+    {
+      "command": "临时冒烟程序编译运行（完整剧本/幂等/非法迁移/空命令 ID）",
+      "result": "PASS：RUN exit 0；8 步剧本（EnterPort→Dock→AssignBerth→StartService→CompleteService→Board→Depart→Return）全成功且每步恰 1 事件；重复 c3 返回既有 Berthed 结果且 0 事件；Returned 下 Board 拒绝 NotMoored 且状态不变、1 拒绝事件；空 CommandId 拒绝 MissingCommandId 且不崩溃"
+    },
+    {
+      "command": "静态自检：无 Transform/NavMesh/坐标/真实时间/UI 字符串；状态仅本系统持有；只读引用 L02/L16/L17",
+      "result": "PASS：grep 复查无 Unity/坐标引用；Execute() 为唯一公开适配入口"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L03 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "事件落日志（EventLog 追加/去重）与存档投影的实际运行时行为（L16/L20 逻辑层验证，运行时验证延期）",
+    "泊位租期/占用事实（AssignBerth 事件占位租期 0，由 D19-L06 泊位系统裁决）",
+    "港口场景/坐标/碰撞/HUD/输入手感（全部 Runtime 阶段）",
+    "补偿策略（Compensate 命令目前无迁移规则，归 D19-L34）",
+    "RuntimeApproved/ReleaseApproved（均为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L03_LOGIC_HANDOFF.md"
+}

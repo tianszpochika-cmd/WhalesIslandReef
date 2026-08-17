@@ -1,0 +1,30 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_ship_hull_small",
+  "type": "ship",
+  "units": "meters",
+  "axes": { "up": "y", "forward": "z" },
+  "bounds": { "width_m": 4.8, "depth_m": 10.6, "height_m": 3.2 },
+  "material_slots": [
+    { "slot_name": "hull", "slot_role": "wood" },
+    { "slot_name": "sail", "slot_role": "fabric" },
+    { "slot_name": "metal_bits", "slot_role": "metal" }
+  ],
+  "skeleton_type": "static",
+  "animation_list": [],
+  "root_motion": "none",
+  "collision_intent": "convex_mesh",
+  "lod_intent": { "levels": 3, "generate_automatically": true },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_url": "https://example.invalid/license/cc0",
+    "license_evidence_path": "docs/fixtures/license_cc0.txt",
+    "attribution_required": false
+  },
+  "fallback": {
+    "reference": "asset_fixture_ship_hull_small",
+    "description": "reject at runtime gate if pivot, deck line or waterline evidence is missing"
+  },
+  "represents_imported_asset": false
+}

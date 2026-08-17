@@ -1,0 +1,50 @@
+{
+  "task_id": "D18-L38",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:34:28+08:00",
+  "summary": "实现生成物谱系守卫 tools/d18_generated_asset_guard.py：只读校验原件/转换件/派生件/生成件谱系目录，派生记录必须指向原始来源与转换步骤，禁止生成物伪装为第三方原件或放宽许可/权利，缺谱系 P0 阻断；可选与 L02 资源记录交叉检查，批准状态记录谱系无效即阻断；正负谱系夹具 31/31 通过，不生成任何贴图/模型/二进制，不修改真实资源。",
+  "changed_files": [
+    "tools/d18_generated_asset_guard.py",
+    "tools/tests/test_d18_generated_asset_guard.py",
+    "game/tools/results/D18/D18-L38/D18_L38_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L38_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_generated_asset_guard -v",
+      "result": "PASS：31/31 通过（10 个正谱系夹具 + 20 个负谱系夹具 + 只读/可序列化契约）"
+    },
+    {
+      "command": "python tools/d18_generated_asset_guard.py --lineage-catalog <临时正夹具> --project-root . --output <结果>",
+      "result": "PASS：status=PASS、exit 0；真实 Kenney License.txt 证据路径存在校验通过"
+    },
+    {
+      "command": "python tools/d18_generated_asset_guard.py --lineage-catalog <临时负夹具> --project-root . --output <结果>",
+      "result": "PASS：status=BLOCKED、exit 2；规则 generated_masquerading_as_original 命中"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS：738 项测试，仅 4 项既有失败（test_d18_s02_r01_intake_refresh 断言历史 R01 目录，已知 SUPERSEDED 基线，非本任务引入）；L38 新增测试全通过"
+    },
+    {
+      "command": "python -m py_compile tools/d18_generated_asset_guard.py tools/tests/test_d18_generated_asset_guard.py",
+      "result": "PASS：exit 0"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L38 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "谱系目录的真实填充与 L42 编译器集成（本任务只冻结校验规则与格式，不生成真实目录数据）",
+    "生成物伪装第三方原件的最终检查需覆盖全部真实候选/派生文件（当前由 L43/L44 使用本守卫复核）",
+    "真实 Unity 生成流程（AvatarBuilder 等）产生的生成件谱系记录需在消费任务（D19—D22）与 Runtime 阶段登记"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L38_LOGIC_HANDOFF.md"
+}

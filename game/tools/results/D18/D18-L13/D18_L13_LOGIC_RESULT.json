@@ -1,0 +1,38 @@
+{
+  "task_id": "D18-L13",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:43:55+08:00",
+  "summary": "冻结生态分类词典：8 个逻辑分类键（陆生动物/鸟类/水生动物/珍稀物种/宠物/植被/地形/水域），每类定义 content_id 前缀规则、生态所有者（EcologySystem/AnimalCareSystem/CollectionSystem/无）与资源映射边界（17 个 intake role→category 映射，全部与真实准入目录角色一致）；每类有缺失/弃用规则；三类\"不\"声明（不生成物种数量/不决定种群/不导入模型），无候选资源被写为已运行时接入；第 8 节内嵌机器可校验 JSON 供 L45/D20-L21/D20-L32/D21-L13/D24-L09 消费。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_TAXONOMY_ECOLOGY.md",
+    "game/tools/results/D18/D18-L13/D18_L13_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L13_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 校验脚本：解析第 8 节 JSON 块 + 相对链接存在性 + 尾随空白 + role 映射与真实准入目录一致性",
+      "result": "PASS：JSON 块 1 个合法（8 个 category_keys、17 个 role 映射）；链接 1 个缺失 0；尾随空白行 0；17 个映射角色全部存在于真实准入目录，生态相关角色无未映射项"
+    },
+    {
+      "command": "python 盘点 ContentRegistry registry.json 前缀分布与 D15-A03/D15-A07/D11 文档交叉核对",
+      "result": "PASS：2,812 条；animal 171 / fish 134 / plant 1,211 / pet 6 / island 50 / asset 229 等，与词典附录一致；D15-A03 300 条目子类→8 类映射确定化（terrestrial/reptiles/insects=85、coastal/birds=55、sea_turtles 等+freshwater_estuary=水生 174）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L13 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅工作区既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "任何物种数量、种群、刷新、行为、法律采集结果均属 EcologySystem 运行时裁决，不在本词典生成",
+    "珍稀物种（rare_species）无独立计数：以 legal_profile/图鉴标记判定，最终保护/监管决定需人工复核（A04 267 条 Pending 相关）",
+    "地形/水域为场景/岛屿数据，无生态所有者；其候选资源接入需 Runtime 阶段场景集成证据",
+    "候选资源映射（animal 21 条、environment 329 条）仍为 Candidate 登记；LocalDevelopmentReady=0、ReleaseApproved=0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L13_LOGIC_HANDOFF.md"
+}

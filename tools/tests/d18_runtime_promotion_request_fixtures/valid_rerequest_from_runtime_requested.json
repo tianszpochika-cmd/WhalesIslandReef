@@ -1,0 +1,26 @@
+{
+  "request_kind": "d18_runtime_promotion_request",
+  "schema_version": 1,
+  "asset_id": "asset_fixture_animal_pet_dog",
+  "current_state": "RuntimeRequested",
+  "target_usage_scene": "d20_animal_work_prefab",
+  "descriptors": [
+    { "kind": "d18_import_descriptor", "path": "docs/fixtures/descriptors/animal_pet_dog_import.json" },
+    { "kind": "d18_animation_descriptor", "path": "docs/fixtures/descriptors/animal_pet_dog_animation.json" }
+  ],
+  "requirements": {
+    "collision": "capsule agent, quadruped proportions",
+    "lod": "2 levels, automatic generation",
+    "animation": "idle, walk, run"
+  },
+  "approver": "human:animal_design_lead",
+  "risks": [
+    "previous request lacked clip evidence; clips still pending Runtime extraction"
+  ],
+  "rollback": {
+    "reference": "placeholder_animal_pet_dog",
+    "description": "keep placeholder pet until real skeleton and clips are verified"
+  },
+  "submitted_at": "2026-08-16T14:30:00+08:00",
+  "declares_approval": false
+}

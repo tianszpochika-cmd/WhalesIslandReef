@@ -1,0 +1,2728 @@
+{
+  "header": {
+    "catalog_kind": "d18_source_logic_catalog",
+    "schema_version": 1,
+    "task_id": "D18-L22",
+    "source": "quaternius",
+    "generated_on": "2026-08-16",
+    "status": "candidate_registration_only",
+    "frozen_reference": "docs/game/design/common/D18_LOGIC_GOVERNANCE_BASELINE.md",
+    "record_shape": "tools/schemas/d18_logic_asset_record.schema.json",
+    "canonical_asset_id_rule": "intake content_id prefixed with asset_ kept as-is; otherwise the first prefix token (crew_/animal_/fish_/candidate_) is stripped and asset_ is prepended; deterministic, no invented names",
+    "category_vocabulary_note": "category uses L11-L14 frozen taxonomy keys (L12: player_visual/npc_visual/hair/outfit; L13: terrestrial_animal/pet/bird/aquatic_animal); mapping from intake role documented in handoff; reconciliation of the L02 schema domain enum with the taxonomy keys is the D18-L45 schema compatibility audit scope",
+    "rights_mapping_note": "manifest source_redistribution==allowed -> rights.repository_storage; build_distribution==allowed -> rights.distribution_with_game",
+    "counts": {
+      "declared_records": 61,
+      "state_candidate": 61,
+      "sha256_computed_from_disk": 61,
+      "sha256_pending": 0,
+      "files_exist_on_disk": 61,
+      "by_manifest": {
+        "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1": 1,
+        "pack_quaternius_animal_pack_vol2_cat_d18_a04_r02_c_v1": 1,
+        "pack_quaternius_animated_fish_d18_a04_v1": 7,
+        "pack_quaternius_animated_men_d18_a04_v1": 4,
+        "pack_quaternius_animated_women_d18_a04_r02_f_v1": 4,
+        "pack_quaternius_modular_character_outfits_fantasy_standard_v01": 24,
+        "pack_quaternius_ultimate_animated_animals_d18_a04_v1": 12,
+        "pack_quaternius_universal_base_characters_standard_v01": 8
+      },
+      "by_category": {
+        "aquatic_animal": 7,
+        "bird": 1,
+        "hair": 7,
+        "npc_visual": 8,
+        "outfit": 24,
+        "pet": 3,
+        "player_visual": 1,
+        "terrestrial_animal": 10
+      }
+    },
+    "source_manifest_refs": [
+      "docs/game/design/common/assets/packs/characters_animals/quaternius_animated_men.manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/quaternius_animated_fish.manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/quaternius_ultimate_animated_animals.manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/gap_fill/cat/D18_A04_R02_C_manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/gap_fill/bird/quaternius_animal_pack_vol2_bird_d18_a04_r02_b.manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/pack_quaternius_universal_base_characters_standard_v01.manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/pack_quaternius_modular_character_outfits_fantasy_standard_v01.manifest.json",
+      "docs/game/design/common/assets/packs/characters_animals/gap_fill/female_neutral/d18_a04_r02_f.manifest.json"
+    ],
+    "notes": [
+      "every record is state=Candidate; nothing in this catalog grants IntakeEligible/RuntimeApproved/ReleaseApproved",
+      "sha256 values are real SHA-256 of the on-disk candidate files, computed read-only on 2026-08-16",
+      "4 female records are real on-disk candidates but were excluded from intake eligibility (D18-A04-R02-F: no formal Unity import; R01 isolated import produced a non-human Avatar)",
+      "historical A-series evidence paths are referenced read-only; they are not L-series gates"
+    ]
+  },
+  "records": [
+    {
+      "canonical_asset_id": "asset_quaternius_alpaca_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Alpaca.fbx",
+      "sha256": "0292F5199A6C3586263B2A7481E16A4766DE7B86BA2E900AD645D5BDA2725C10",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_alpaca_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Alpaca.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_bull_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Bull.fbx",
+      "sha256": "9C34D1156FBB376C7624DDC268186AFFDB064EA26B889FAFAD6E047DF01BFB0A",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_bull_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Bull.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_cat_pack_vol2_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://opengameart.org/content/animated-animales-low-poly",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Cat/Source/LICENSE_CC0_1.0.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Cat.fbx",
+      "sha256": "24D03762BCBCDF5414516354B0D80C6580A0FFD7B5ABE4D8EDD26AD7BF7A0DB5",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_cat_pack_vol2_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Cat/Source/Cat.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Cat/Source/LICENSE_CC0_1.0.txt",
+        "game/tools/results/D18/D18-A04-R02-C/D18_A04_R02_C_UNITY_IMPORT_AUDIT.json",
+        "game/tools/results/D18/D18-A04-R02-C/D18_A04_R02_C_EVIDENCE_AUDIT.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "L05 provenance: source_url_domain_mismatch (official_page does not contain source token 'quaternius') — manifest fact kept, resolution belongs to the manifest owner",
+        "path contains characters outside the frozen repo-relative path pattern and cannot be an evidence_paths value: game/tools/results/D18/D18-A04-R02-C/Animal Pack Vol.2 by @Quaternius.zip"
+      ],
+      "taxonomy_category": "pet"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_cow_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Cow.fbx",
+      "sha256": "097BA8D23692D901A9F821D569DE579032AEB43B9E52D89E73D0999387337D74",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_cow_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Cow.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_deer_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Deer.fbx",
+      "sha256": "B79F07AC3FD702AB98F5D1B606168618A318F10F57028AAAEFD420C468BE2618",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_deer_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Deer.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_dolphin_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Dolphin.fbx",
+      "sha256": "4B6F1FF9487BF25BD3DD7E3397723A356579EE9E3D62E915F978C003EE41644F",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_dolphin_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Dolphin.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_donkey_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Donkey.fbx",
+      "sha256": "BB507C0EAF5BA401B210DA3E6329D559E89156E23389315DD15B184281FD4734",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_donkey_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Donkey.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_eagle_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/LICENSE_EVIDENCE_QUATERNIUS_CC0.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "eagle.fbx",
+      "sha256": "C3504C8E0904EAB7B14E695609A861417F089CF724B94BDA821EA4A3BBC6F505",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_eagle_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/Models/eagle.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/LICENSE_EVIDENCE_QUATERNIUS_CC0.md",
+        "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_UNITY_IMPORT_AUDIT.json",
+        "game/tools/results/D18/D18-A04-R02-B/D18_A04_R02_B_RESULT.json",
+        "game/tools/results/D18/D18-A04-R02-B/source_archives/Animal_Pack_Vol2_Quaternius.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "bird"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_fox_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Fox.fbx",
+      "sha256": "24DA24DBD2800BE0B268ADE50429FB7D815423A92A9A39178A4FC460D7B832DE",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_fox_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Fox.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_horse_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Horse.fbx",
+      "sha256": "BABB40391B8C3E217BE2BB9C1F7C4D21910E943C28840363509DDE7E88B54CBA",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_horse_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Horse.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_horse_white_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Horse_White.fbx",
+      "sha256": "86FFA68F845C6B3744C7B7C3D3F9AF630A90E1FD7B7E506B60EBC837552BBEC9",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_horse_white_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Horse_White.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_husky_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Husky.fbx",
+      "sha256": "2FD68780EBD69E138303FD38A430F6B8A87F6AAFD29770339C95CE15F52D7321",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_husky_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Husky.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "pet"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_manta_ray_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Manta ray.fbx",
+      "sha256": "BDE315D4F35205215E1C0A2443F8256E7F5B3641C765686C941040530AAA81EC",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_manta_ray_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "path contains characters outside the frozen repo-relative path pattern and cannot be an evidence_paths value: game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Manta ray.fbx"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_shark_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Shark.fbx",
+      "sha256": "FEE1CFE578643CEFB06457332B5D323F4883EBA2515EB255AE0F2ABB497A75C9",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_shark_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Shark.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_shiba_inu_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "ShibaInu.fbx",
+      "sha256": "293200761FB96194EBC1E5BC816E344C244A6AE95E2757761FDDAC85BE763A22",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_shiba_inu_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/ShibaInu.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "pet"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_stag_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Stag.fbx",
+      "sha256": "76C4D6ED1FBEFAE722631C3B324C9152A0AD3F0FDA4063212AA599FE2AF84889",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_stag_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Stag.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_whale_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Whale.fbx",
+      "sha256": "56CBDB5A6EEB8F9D334440FE384B7849EB84FBA1CE03D8DF9A997BE981CBB8D9",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_whale_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Whale.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_wolf_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Wolf.fbx",
+      "sha256": "91D5C31678FA291571F82ABB029FDE5C14FDD5932A1569C3AFAA5E9602BEBF94",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_quaternius_wolf_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Wolf.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_ultimate_animated_animals_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "terrestrial_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_animated_women_female_alternative_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedwomen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Alternative.fbx",
+      "sha256": "6096FADC3B31007B1026AA9211560E89917B4B9A16A118629D44CCD269FA7F00",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_quaternius_animated_women_female_alternative_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_Alternative.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "game/tools/results/D18/D18-A04-R02-F-R01/D18_A04_R02_F_R01_ISOLATED_UNITY_IMPORT.json"
+      ],
+      "runtime_deferred": [
+        "intake-excluded: review_status=Candidate; static-only evidence insufficient at intake time",
+        "isolated Unity import (D18-A04-R02-F-R01, PARTIAL): avatar present but NOT a human Avatar (LeftFoot/RightFoot missing); 0 animation clips; not in the formal game project",
+        "Avatar type/scale/axis/bounds/foot placement/material assignment/D20 Humanoid retargeting remain open",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/Animated-Women-Pack-HHSKxnk1mY-zip--1745939261.zip"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_animated_women_female_casual_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedwomen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Casual.fbx",
+      "sha256": "CAF4787B97AEFCF53F94C44D15C4BAF99808DE6D6E806372235DE587DDF6A6B0",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_quaternius_animated_women_female_casual_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_Casual.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "game/tools/results/D18/D18-A04-R02-F-R01/D18_A04_R02_F_R01_ISOLATED_UNITY_IMPORT.json"
+      ],
+      "runtime_deferred": [
+        "intake-excluded: review_status=Candidate; static-only evidence insufficient at intake time",
+        "isolated Unity import (D18-A04-R02-F-R01, PARTIAL): avatar present but NOT a human Avatar (LeftFoot/RightFoot missing); 0 animation clips; not in the formal game project",
+        "Avatar type/scale/axis/bounds/foot placement/material assignment/D20 Humanoid retargeting remain open",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/Animated-Women-Pack-HHSKxnk1mY-zip--1745939261.zip"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_animated_women_female_dress_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedwomen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Dress.fbx",
+      "sha256": "9D806915935520BBE8F70287A9AEF465E10153E855E7D20F7242BB653B211480",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_quaternius_animated_women_female_dress_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_Dress.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "game/tools/results/D18/D18-A04-R02-F-R01/D18_A04_R02_F_R01_ISOLATED_UNITY_IMPORT.json"
+      ],
+      "runtime_deferred": [
+        "intake-excluded: review_status=Candidate; static-only evidence insufficient at intake time",
+        "isolated Unity import (D18-A04-R02-F-R01, PARTIAL): avatar present but NOT a human Avatar (LeftFoot/RightFoot missing); 0 animation clips; not in the formal game project",
+        "Avatar type/scale/axis/bounds/foot placement/material assignment/D20 Humanoid retargeting remain open",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/Animated-Women-Pack-HHSKxnk1mY-zip--1745939261.zip"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_animated_women_female_tank_top_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedwomen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_TankTop.fbx",
+      "sha256": "8825C86A1459A817E400B0AD1396EA3BF99C2D3AA234F5BEC3A9E6F3AF10746D",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_quaternius_animated_women_female_tank_top_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/Models/Female_TankTop.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/FemaleNeutral/LICENSE_EVIDENCE.md",
+        "game/tools/results/D18/D18-A04-R02-F-R01/D18_A04_R02_F_R01_ISOLATED_UNITY_IMPORT.json"
+      ],
+      "runtime_deferred": [
+        "intake-excluded: review_status=Candidate; static-only evidence insufficient at intake time",
+        "isolated Unity import (D18-A04-R02-F-R01, PARTIAL): avatar present but NOT a human Avatar (LeftFoot/RightFoot missing); 0 animation clips; not in the formal game project",
+        "Avatar type/scale/axis/bounds/foot placement/material assignment/D20 Humanoid retargeting remain open",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/Animated-Women-Pack-HHSKxnk1mY-zip--1745939261.zip"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_eyebrows_female_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Eyebrows_Female.fbx",
+      "sha256": "EA6A6D1A3DEDDCF24B984684543C53693425560E670957E8486B4D2BA7B345DC",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_eyebrows_female_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Eyebrows_Female.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_female_peasant_arms_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Peasant_Arms.fbx",
+      "sha256": "35EBFA4A7A67ACDC5E2E06CAE5450A60D7A34FC480678F43A74AC424BD43007D",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_peasant_arms_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Arms.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_peasant_body_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Peasant_Body.fbx",
+      "sha256": "93531D57B49102DE1F310C148D9DB97385C6AA352EF62935FA915DA845B75EE0",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_peasant_body_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Body.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_peasant_feet_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Peasant_Feet.fbx",
+      "sha256": "E90746436F8BC3934E746455D175347AB0B119D2A6D8BA158675333D66BD19EE",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_peasant_feet_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Feet.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_peasant_legs_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Peasant_Legs.fbx",
+      "sha256": "817E5ED6840A29F039D9D3C4FAFA7AA9CEA57A554DCCE8FD8486BBEB081D7595",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_peasant_legs_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Peasant_Legs.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_peasant_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Peasant.fbx",
+      "sha256": "CB33C493852310400CA3974FE6734FCD4E1DA5232B527708A6082A86B90CA5D5",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_peasant_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Female_Peasant.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_acc_pauldrons_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger_Acc_Pauldrons.fbx",
+      "sha256": "992B49CB6AA6FFA32BCD211EE601E92D106B37F7D0D20D6BC8DDECDD1F6D3C7B",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_acc_pauldrons_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Acc_Pauldrons.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_arms_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger_Arms.fbx",
+      "sha256": "C5BA0BA31DCCBD99E959313168A65C01AFDF68E3ACF9767313E7CCAE0E0C86F4",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_arms_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Arms.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_body_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger_Body.fbx",
+      "sha256": "07A455D19F55C6B3663A5423B1B0D9F7B94EFD2FAE8B78D7884E1BBE2AF16D2F",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_body_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Body.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_feet_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger_Feet.fbx",
+      "sha256": "4B25D8D735756EA872EB5E3A617A1636F6FCB4957C580AA344046FCA81132574",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_feet_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Feet.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_head_hood_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger_Head_Hood.fbx",
+      "sha256": "FA5E0B078B0AF1953D053E09BA7AA194E702E6782598CD592F1F04999024A16E",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_head_hood_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Head_Hood.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_legs_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger_Legs.fbx",
+      "sha256": "753EE8AB27A2DA655268178A446C106E6F25C39BAA85E9CD031227ACB1F64F21",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_legs_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Female_Ranger_Legs.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_female_ranger_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Female_Ranger.fbx",
+      "sha256": "63E7804F8129D507E84FCC2D6E17D98EF2BD6C4217A487A6BD4694C2A58447AB",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_female_ranger_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Female_Ranger.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_hair_beard_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Hair_Beard.fbx",
+      "sha256": "00899E7D2CCEEBAB8C07456CA1C25E54E441EB271BB3427C3D12E371C2EF5189",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_hair_beard_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Beard.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_hair_buns_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Hair_Buns.fbx",
+      "sha256": "CB45536C0E8C2B715732D9A75A33849239CA5E788C7DEE4E17998DAA0986FDFC",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_hair_buns_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Buns.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_hair_buzzed_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Hair_Buzzed.fbx",
+      "sha256": "01C5C2EDEDD8B164274147EE8713A7A68CF74CD699FAD6B969CE5E37C1B7B686",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_hair_buzzed_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Buzzed.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_hair_buzzedfemale_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Hair_BuzzedFemale.fbx",
+      "sha256": "AEB3A606D8B9B1818025DBF6B4640FF33F14B0E9676F3CBFE410321E1A1D6A5D",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_hair_buzzedfemale_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_BuzzedFemale.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_hair_long_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Hair_Long.fbx",
+      "sha256": "206F14B69E05758425278F074EB61A730BFE40250E7CC30E0C433AB0B05342C7",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_hair_long_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_Long.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_hair_simpleparted_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Hair_SimpleParted.fbx",
+      "sha256": "5E98ACD3561C814127326FDC78E74F20DFA1C3397760006D17EBAEA4C8D7A24D",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_hair_simpleparted_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Hairstyles/Hair_SimpleParted.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "hair"
+    },
+    {
+      "canonical_asset_id": "asset_male_peasant_arms_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Peasant_Arms.fbx",
+      "sha256": "67E91B9F9054AE0B17BA7B7C2F1A3A6DDCE68704B08EE69CF66C7300993E5B54",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_peasant_arms_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Arms.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_peasant_body_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Peasant_Body.fbx",
+      "sha256": "D875B268F63DDF884257A6F7C7A8C20B48F3AAFA30363755A6115963B1A17349",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_peasant_body_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Body.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_peasant_feet_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Peasant_Feet.fbx",
+      "sha256": "09DEFC77E6FF81DDCC312A52940099079E0F31E5D73E331CDF6391440879EDE4",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_peasant_feet_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Feet.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_peasant_legs_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Peasant_Legs.fbx",
+      "sha256": "547C90E8C7440CC149EBC5164EC0FDA2CF2BE0470CDF53816401545BE0337ABD",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_peasant_legs_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Peasant_Legs.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_peasant_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Peasant.fbx",
+      "sha256": "D083F08A910C739B5A337207E4B6112F70C1235CDC3891C314BA26357C5F4965",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_peasant_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Male_Peasant.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_acc_pauldron_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger_Acc_Pauldron.fbx",
+      "sha256": "B0D28AF472710870E654286682059C0AAA89BDA7AF316CCCC520EA45DFD8CB68",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_acc_pauldron_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Acc_Pauldron.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_arms_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger_Arms.fbx",
+      "sha256": "1F8171FA29E8AD0D4290F2D9C7D99B6DEAD8A79987140DB3B220C3B62EE8CD0B",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_arms_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Arms.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_body_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger_Body.fbx",
+      "sha256": "9F5B7866170DAA1D32A4652C0574188379D93B9889792E13EDB3F2492FED444C",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_body_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Body.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_feet_boots_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger_Feet_Boots.fbx",
+      "sha256": "E60D0F0EAE8A9791DCE407767991CC3B759F2F7660CD8EAE5018E61F11E1AAEF",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_feet_boots_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Feet_Boots.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_head_hood_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger_Head_Hood.fbx",
+      "sha256": "C8B6F4E01B569176A5D91A7255BFC0EB45E83529B7E97EB4640C75DB25F847F2",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_head_hood_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Head_Hood.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_legs_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger_Legs.fbx",
+      "sha256": "F1E30B2E4210086496AB2E18D107D4C163C8BDE7CE72B10CD309CF5125540F63",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_legs_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/ModularParts/Male_Ranger_Legs.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_male_ranger_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Male_Ranger.fbx",
+      "sha256": "F142F1C0FEE43D0B1A635928469289DFF2ABEAAA2C3DAF95DD7B74A8044B244E",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_male_ranger_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/Models/Outfits/Male_Ranger.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusModularCharacterOutfitsFantasy/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_ModularCharacterOutfitsFantasy_Standard.zip"
+      ],
+      "taxonomy_category": "outfit"
+    },
+    {
+      "canonical_asset_id": "asset_superhero_female_fullbody_r03p",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-15",
+      "original_filename": "Superhero_Female_FullBody.fbx",
+      "sha256": "0727E7B236EEEA4115531E07AEB2BB7690C1A58155F743BBF54282944FB97EA9",
+      "state": "Candidate",
+      "content_ids": [
+        "candidate_superhero_female_fullbody_r03p"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/Models/Base/Superhero_Female_FullBody.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/QuaterniusUniversalBaseCharacters/LICENSE_QUATERNIUS_CC0_STANDARD.txt",
+        "game/tools/results/D18/D18-A04-R03-P/D18_A04_R03_P_ISOLATED_UNITY_IMPORT.json",
+        "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/D18_A04_R03_P_PLAYER_APPEARANCE_PACKET.json"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate",
+        "external archive (cache) not used as in-repo evidence; L08 classifies artifacts/external_sources as ignored cache: artifacts/external_sources/D18-A04-R03-P_Quaternius_UniversalBaseCharacters_Standard.zip"
+      ],
+      "taxonomy_category": "player_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_male_casual_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedmen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Male_Casual.fbx",
+      "sha256": "50794F0A51C0FF15AE61C90196B9746F034BC8D459A832D6310C063A1190CF28",
+      "state": "Candidate",
+      "content_ids": [
+        "crew_quaternius_male_casual_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Casual.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_men_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_male_long_sleeve_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedmen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Male_LongSleeve.fbx",
+      "sha256": "E33EC94A0507679B917A80CD8ECDEF62582B1CF20136B9C6041D77BA570E26FC",
+      "state": "Candidate",
+      "content_ids": [
+        "crew_quaternius_male_long_sleeve_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_LongSleeve.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_men_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_male_shirt_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedmen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Male_Shirt.fbx",
+      "sha256": "744A9414ED653865BB8AA8225EF568A79955F3B3467274EBB00ACDD51576B589",
+      "state": "Candidate",
+      "content_ids": [
+        "crew_quaternius_male_shirt_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Shirt.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_men_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_male_suit_v01",
+      "category": "character",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedmen.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Male_Suit.fbx",
+      "sha256": "40661B70631C107C08149ED980BCED0ECBA7E5B2911366D28E405B59E6D00BA6",
+      "state": "Candidate",
+      "content_ids": [
+        "crew_quaternius_male_suit_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/Models/Male_Suit.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedMen/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_men_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "npc_visual"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_fish_01_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Fish1.fbx",
+      "sha256": "1ADEA1CCA2F02F351CF524B60D2448502E3ACB3EF2965F74A21C45A5DFCE77E3",
+      "state": "Candidate",
+      "content_ids": [
+        "fish_quaternius_fish_01_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish1.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_fish_02_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Fish2.fbx",
+      "sha256": "AB12853CBD9C205A3AEB1D2CFF1FD0CCED44E5FAA707020637BFD41634201509",
+      "state": "Candidate",
+      "content_ids": [
+        "fish_quaternius_fish_02_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish2.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    },
+    {
+      "canonical_asset_id": "asset_quaternius_fish_03_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/animatedfish.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "Fish3.fbx",
+      "sha256": "142BB6559B928C61FF839EECBBA4EE0CFAFA964DF37720DB6A6BA3A90B4ED639",
+      "state": "Candidate",
+      "content_ids": [
+        "fish_quaternius_fish_03_v01"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/Models/Fish3.fbx",
+        "game/Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedFish/License.txt",
+        "game/tools/results/D18/D18-A04/D18_A04_UNITY_IMPORT_AUDIT.json",
+        "docs/game/design/common/assets/review_packets/D18-A04-R01/D18_A04_R01_CHARACTER_ANIMAL_REVIEW.json",
+        "game/tools/results/D18/D18-A04/quaternius_animated_fish_fbx_snapshot.zip"
+      ],
+      "runtime_deferred": [
+        "LocalDevelopmentReady requires D18-S03 runtime, save/restore, rollback and performance evidence",
+        "controlled work-scene consumer and Prefab are not created by this refresh",
+        "interaction anchors remain consumer-owned",
+        "raw import has no consumer LODGroup",
+        "raw import has no consumer collision",
+        "source import is Generic/NoAvatar; Humanoid retargeting remains consumer-owned",
+        "state=Candidate: registered as source candidate only; IntakeEligible is granted later by D18-L42 compiler, never by this catalog",
+        "no Avatar/Animator/Prefab/runtime-consumer claim; no playable or imported-in-formal-project claim",
+        "historical A-series Unity import/audit evidence is referenced read-only and is not a D18-L series gate"
+      ],
+      "taxonomy_category": "aquatic_animal"
+    }
+  ]
+}

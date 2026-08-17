@@ -1,0 +1,72 @@
+{
+  "task": "D18-L44",
+  "tool": "tools/d18_game_reference_audit.py",
+  "read_only": true,
+  "status": "PASS",
+  "scan_roots": [
+    "game/Assets/Scripts",
+    "game/Assets/Content",
+    "game/Assets/Resources",
+    "game/Assets/Settings",
+    "game/AgentCore"
+  ],
+  "extensions": [
+    ".cs",
+    ".json"
+  ],
+  "scanned_files_count": 3437,
+  "findings_count": 4,
+  "runtime_findings_count": 0,
+  "blocking_findings_count": 0,
+  "classification_counts": {
+    "editor_only": 4
+  },
+  "owner_counts": {
+    "presentation": 4
+  },
+  "rule_counts": {
+    "candidate_path_reference": 4
+  },
+  "findings": [
+    {
+      "file": "game/Assets/Scripts/Presentation/D20/PetRarePresentation/Editor/D20A06PrefabBuilder.cs",
+      "line": 87,
+      "rule": "candidate_path_reference",
+      "severity": "INFO",
+      "classification": "editor_only",
+      "owner": "presentation",
+      "snippet": "ModelPath = \"Assets/Art/Candidates/CharactersAnimals/GapFill/Cat/Source/Cat.fbx\",",
+      "fix_direction": "运行时不得引用 Assets/Art/Candidates 路径；改为稳定 content_id/ResourceKey（L16/L46 接口）。人工修复。"
+    },
+    {
+      "file": "game/Assets/Scripts/Presentation/D20/PetRarePresentation/Editor/D20A06PrefabBuilder.cs",
+      "line": 98,
+      "rule": "candidate_path_reference",
+      "severity": "INFO",
+      "classification": "editor_only",
+      "owner": "presentation",
+      "snippet": "ModelPath = \"Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/ShibaInu.fbx\",",
+      "fix_direction": "运行时不得引用 Assets/Art/Candidates 路径；改为稳定 content_id/ResourceKey（L16/L46 接口）。人工修复。"
+    },
+    {
+      "file": "game/Assets/Scripts/Presentation/D20/PetRarePresentation/Editor/D20A06PrefabBuilder.cs",
+      "line": 109,
+      "rule": "candidate_path_reference",
+      "severity": "INFO",
+      "classification": "editor_only",
+      "owner": "presentation",
+      "snippet": "ModelPath = \"Assets/Art/Candidates/CharactersAnimals/GapFill/Bird/Models/eagle.fbx\",",
+      "fix_direction": "运行时不得引用 Assets/Art/Candidates 路径；改为稳定 content_id/ResourceKey（L16/L46 接口）。人工修复。"
+    },
+    {
+      "file": "game/Assets/Scripts/Presentation/D20/PetRarePresentation/Editor/D20A06PrefabBuilder.cs",
+      "line": 120,
+      "rule": "candidate_path_reference",
+      "severity": "INFO",
+      "classification": "editor_only",
+      "owner": "presentation",
+      "snippet": "ModelPath = \"Assets/Art/Candidates/CharactersAnimals/QuaterniusAnimatedAnimals/Models/Fox.fbx\",",
+      "fix_direction": "运行时不得引用 Assets/Art/Candidates 路径；改为稳定 content_id/ResourceKey（L16/L46 接口）。人工修复。"
+    }
+  ]
+}

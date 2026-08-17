@@ -1,0 +1,51 @@
+{
+  "task_id": "D18-L42",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T23:08:05+08:00",
+  "summary": "实现只读规范目录编译器 tools/d18_logic_catalog_compiler.py（D18-L42，波次 3 第 4 项）：从 L21—L24 四个静态来源目录编译单一规范逻辑 catalog——canonical_asset_id 稳定排序、无时间戳、确定性输出（CLI 两次字节一致，SHA-256 0290404…）；内置 D18-L02 Schema 门（自包含镜像，13 必需字段+枚举+格式），仅 Schema 合法记录进入 compiled，非法记录带稳定原因进入 rejected；Pending（sha256=null）与 Rejected/Revoked 状态记录保留；多来源合并：同 id 同内容去重（merged_duplicates），同 id 不同内容排除并列入 conflicts（含冲突字段）；输出审计摘要（input/compiled/rejected/merged/conflicts/state 分布/pending_hash/source_errors）。真实编译：4 来源 161 输入 → 100 compiled（全 Candidate、4 pending_hash）+ 61 rejected（全部为 L21—L24 细分类 outfit/terrestrial_animal/npc_visual/hair/aquatic_animal/pet/bird/player_visual 不在 L02 11 值枚举，如实拒绝，交 L45 核对），0 冲突。编译器只写自身 --output，不写 Unity Assets/Prefab/Registry/审批状态/下载缓存。15/15 测试通过；全量 896 项仅 4 项既有遗留失败（R01 基线）。",
+  "changed_files": [
+    "tools/d18_logic_catalog_compiler.py",
+    "tools/tests/test_d18_logic_catalog_compiler.py",
+    "game/tools/results/D18/D18-L42/D18_L42_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L42_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d18_logic_catalog_compiler.py --output <a> 与 --output <b> 各一次，比较 SHA-256",
+      "result": "PASS：两次输出字节一致（SHA-256 0290404640E05DF1A54A5F53E39A77C76242FA31F88D4EEC1F7E569ED0B611AF），确定性成立"
+    },
+    {
+      "command": "python tools/d18_logic_catalog_compiler.py --output <临时结果>",
+      "result": "PASS：exit 0；4 来源 161 输入 → compiled 100（state 全 Candidate、pending_hash 4、排序稳定唯一）、rejected 61（细分类 category 非法）、conflicts 0、source_errors 0"
+    },
+    {
+      "command": "python -m unittest tools.tests.test_d18_logic_catalog_compiler -v",
+      "result": "PASS：15/15（确定性、排序唯一、Pending/Rejected/Revoked 保留、去重、冲突排除、细分类拒绝回归、坏输入 exit 2、无时间戳、无审批授予、只读契约、可序列化）"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS：896 项测试，仅 4 项既有失败（test_d18_s02_r01_intake_refresh 断言历史 R01 目录，已知 SUPERSEDED 基线，非本任务引入）；L42 测试全通过"
+    },
+    {
+      "command": "python -m py_compile tools/d18_logic_catalog_compiler.py tools/tests/test_d18_logic_catalog_compiler.py",
+      "result": "PASS：exit 0"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L42 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "细分类（outfit/terrestrial_animal/aquatic_animal/bird/pet/npc_visual/player_visual/hair）与 L02 11 值 category 枚举的一致性映射，由 L45 schema 兼容审计核对；在 L45 结论前，这些记录保持 rejected（不补猜映射）",
+    "4 条 HDRI 记录 sha256=null 保持 Pending（编译器保留并计数，不补猜哈希；由 L06/L31 对真实文件补证）",
+    "编译产物（100 条合法记录的规范目录）的语义完整性（license 证据文件存在性等）由 L43/L44 对真实数据复核",
+    "任何 RuntimeApproved/ReleaseApproved 结论（本阶段禁止，仍为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L42_LOGIC_HANDOFF.md"
+}

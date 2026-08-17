@@ -1,0 +1,45 @@
+{
+  "task_id": "D18-L01",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:28:14+08:00",
+  "summary": "冻结 D18 纯逻辑资源治理基线：盘点现有 manifest/候选/audit 工具/真实结果，冻结七个资源状态与迁移/拒绝/撤销/唯一写者，冻结逻辑阶段验证边界，列出 SUPERSEDED 隔离清单，并为 L02—L50 写入波次可开始条件、共享字段词典、结果 JSON 格式与冲突写入边界。",
+  "changed_files": [
+    "docs/game/design/common/D18_LOGIC_GOVERNANCE_BASELINE.md",
+    "game/tools/results/D18/D18-L01/D18_L01_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L01_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "Get-ChildItem game/Assets/Art/Candidates -Recurse (非 .meta 文件计数)；python 读取 d18_prefab_candidate_intake_catalog.json 与 d18_local_development_ready_catalog.json、d18_placeholder_replacement_map.json",
+      "result": "PASS：候选文件 2,124（CharactersAnimals 128 / Environment 338 / Kenney 10 / ShipsPortProps 305 / UIMaterialsAudio 1,343）；准入目录 manifest_total 30 / intake_eligible 26 / candidate_file_total 1895 / intake_eligible_file_total 1865 / excluded 4 / errors 0 / eligible_entries 1865；LocalDevelopmentReady 0 / ReleaseApproved 0 / 10 个 Pending 类别；replacement map 2264/2264、mapped 1107、unmapped 1157"
+    },
+    {
+      "command": "盘点 docs/game/design/common/assets/packs/**/*.manifest.json（28）、assets/manifests/（2）、tools/d18_*.py（9）、tools/schemas/、tools/tests/test_d18_*（6）、game/tools/results/D18/ 历史目录与 handoffs/D18/（21 个 handoff）",
+      "result": "PASS：清单与基线第 1/4 节一致；未发现任何 RuntimeApproved/ReleaseApproved 持有者"
+    },
+    {
+      "command": "python 链接检查：解析 docs/game/design/common/D18_LOGIC_GOVERNANCE_BASELINE.md 全部相对链接并验证存在",
+      "result": "PASS：11 个链接，缺失 0。初检发现 2 处损坏（L03 未来交付物链接、tools schema 相对层级），已在允许写入范围内最小修复（改纯文本引用、../../../../tools 层级）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告（工作区既有未提交文件），无尾随空白错误；本次新增文件无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L01 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止；真实运行时消费证据缺失）",
+    "逐文件 SHA-256 完整性（准入目录 hash_evidence 为归档级/所选文件级 digest；逐文件哈希待 L06/L31 真实计算）",
+    "Unity 导入后的实际网格/材质/动画验证（L26—L28 只做描述器静态验证）",
+    "Prefab/场景/Canvas 集成、碰撞、LOD、Animator 装配",
+    "保存/恢复与回退在真实运行时的验证",
+    "A04 人工审核 267 条 Pending 与 D16 外部证据（非 D18 章节责任）",
+    "候选磁盘文件 2,124 与准入目录声明 1,895 的数量差异（229）对账（L31/L33/L34 静态对账，Runtime 阶段复核）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L01_LOGIC_HANDOFF.md"
+}

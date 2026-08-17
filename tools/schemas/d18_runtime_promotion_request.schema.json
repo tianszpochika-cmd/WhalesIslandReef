@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whalesislandreef.local/schema/d18_runtime_promotion_request.schema.json",
+  "title": "WhalesIslandReef D18 runtime promotion request",
+  "description": "Static, machine-verifiable REQUEST for future Runtime promotion of a D18 logic asset record (D18-L37). It expresses only a request: asset_id, current_state (IntakeEligible or RuntimeRequested only), target_usage_scene, descriptors, requirements, approver, risks, rollback and submitted_at. This schema CANNOT express any grant: it has no approval-result field, no approval-status field, no target state, and declares_approval is fixed to false. RuntimeApproved and ReleaseApproved can never be produced by or through this schema; a valid request produces only a RUNTIME_REQUEST audit record in the logic phase.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_kind",
+    "schema_version",
+    "asset_id",
+    "current_state",
+    "target_usage_scene",
+    "descriptors",
+    "requirements",
+    "approver",
+    "risks",
+    "rollback",
+    "submitted_at",
+    "declares_approval"
+  ],
+  "$defs": {
+    "repo_relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative path only. Absolute paths, drive letters (C:), UNC names (\\\\server), backslashes, leading slashes, whitespace and '..' traversal segments are forbidden.",
+      "pattern": "^[A-Za-z0-9_.][A-Za-z0-9_./-]*$",
+      "not": { "pattern": "(^|/)\\.\\.(/|$)" }
+    }
+  },
+  "properties": {
+    "request_kind": {
+      "const": "d18_runtime_promotion_request",
+      "description": "Fixed discriminator; distinguishes this schema from manifests, catalogs, descriptors and result JSON."
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "asset_id": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 128,
+      "pattern": "^asset_[a-z0-9_]+$",
+      "description": "Business key of the asset being requested, referencing the D18-L02 canonical_asset_id. Never a disk path or display name."
+    },
+    "current_state": {
+      "type": "string",
+      "enum": ["IntakeEligible", "RuntimeRequested"],
+      "description": "State of the asset at request time. Only IntakeEligible (first request) and RuntimeRequested (re-request) are legal; Candidate direct requests are an illegal overstep and approval states are never requestable."
+    },
+    "target_usage_scene": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Identifier of the controlled work scene / Prefab the request targets (D19-D22 consumer scope). A request has no target state: promotion targets a usage scene, never an approval."
+    },
+    "descriptors": {
+      "type": "array",
+      "minItems": 1,
+      "description": "References to the D18-L25-L29 descriptor records (mesh / material / animation / ui_audio). At least one evidence reference is required; missing references make the request invalid.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "d18_import_descriptor",
+              "d18_mesh_descriptor",
+              "d18_material_descriptor",
+              "d18_animation_descriptor",
+              "d18_ui_audio_descriptor"
+            ]
+          },
+          "path": {
+            "$ref": "#/$defs/repo_relative_path"
+          }
+        }
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Declared collision / LOD / animation requirements for the future Runtime consumer. Declarations only; they create nothing.",
+      "properties": {
+        "collision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "animation": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "approver": {
+      "type": "string",
+      "pattern": "^human:[a-z0-9_]+$",
+      "description": "Responsible human approver role. Tools can never be approvers (tool:<...> is rejected by pattern)."
+    },
+    "risks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Honest risk list for the requested usage. An empty risk list is invalid.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "description"],
+      "description": "Mandatory rollback statement: reference must be the placeholder content id or an asset record id, description explains the degradation if the request is declined or the asset fails at Runtime.",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "pattern": "^(asset_[a-z0-9_]+|placeholder_[a-z0-9_]+)$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$",
+      "description": "Request submission time, ISO-8601 with timezone."
+    },
+    "declares_approval": {
+      "const": false,
+      "description": "Fixed false. This schema expresses a request only and can never declare any approval; any true value is invalid by construction."
+    }
+  }
+}

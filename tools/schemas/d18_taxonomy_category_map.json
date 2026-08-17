@@ -1,0 +1,51 @@
+{
+  "map_kind": "d18_taxonomy_category_map",
+  "schema_version": 1,
+  "version": 1,
+  "frozen_by": "D18-L51",
+  "frozen_on": "2026-08-16",
+  "purpose": "双层分类契约：L02 `category` 永远是 11 值资源大类；可选 `taxonomy_category` 表示领域细分类。本映射只登记本章词典（L12 角色 / L13 生态）实际使用、且能映射到 11 值大类的细分类；未登记的细分类一律非法（P0）。",
+  "constraint": "当 taxonomy_category 存在时，映射出的 parent_category 必须等于记录的 category；未知细分类或父类不匹配必须产生 P0。没有 taxonomy_category 的既有大类记录仍然合法。fish 是独立大类，不受本映射影响。",
+  "entries": {
+    "terrestrial_animal": {
+      "parent_category": "animal",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_ECOLOGY.md",
+      "definition": "陆生动物细分类（D13 生态词典，d15_category 语义）"
+    },
+    "aquatic_animal": {
+      "parent_category": "animal",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_ECOLOGY.md",
+      "definition": "水生动物细分类（海豚/鲨鱼/蝠鲼等；区别于独立大类 fish 的真实鱼类资源）"
+    },
+    "bird": {
+      "parent_category": "animal",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_ECOLOGY.md",
+      "definition": "鸟类细分类"
+    },
+    "pet": {
+      "parent_category": "animal",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_ECOLOGY.md",
+      "definition": "宠物细分类（猫/狗/雪橇犬等）"
+    },
+    "npc_visual": {
+      "parent_category": "character",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_CHARACTERS.md",
+      "definition": "普通 NPC 视觉变体细分类"
+    },
+    "player_visual": {
+      "parent_category": "character",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_CHARACTERS.md",
+      "definition": "玩家视觉核心细分类"
+    },
+    "hair": {
+      "parent_category": "character",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_CHARACTERS.md",
+      "definition": "发型/发色表现层细分类"
+    },
+    "outfit": {
+      "parent_category": "character",
+      "owner_document": "docs/game/design/common/assets/D18_TAXONOMY_CHARACTERS.md",
+      "definition": "服装表现层细分类"
+    }
+  }
+}

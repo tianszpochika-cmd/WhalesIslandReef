@@ -1,0 +1,44 @@
+{
+  "task_id": "D19-L13",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:50:00+08:00",
+  "summary": "实现港口酒馆适配器 game/Assets/Scripts/Systems/D19/D19TavernPortAdapter.cs（纯 C#，零 Unity 依赖，静态纯函数无写路径）：封装酒馆服务（Visit）、招募（Recruit）与社交（Social）请求的港口上下文；先 L05 判定服务/NPC 逻辑可用性、L23 判定权限（含跨船/跨玩家/跨港/伪造服务拒绝），再由原系统（D9PortShipPreparationSystem.VisitTavern/Recruit、D10TavernSocialSystem.RequestAction）裁决费用、关系、候选船员与状态修改；D19 只投影为稳定命令结果、L17 失败码、L18 key 与 L16 事件草案（只构造不追加）；原系统原始失败码永远保留在 OriginalOwnerCode（不吞掉），映射缺失明确阻断（owner_code_unmapped）。成功标准六类全部可审计且无双重副作用：服务关闭（L05 前置，D9 不被调用，断言 trade 资金不变）、权限不足（L23）、费用失败（not_enough_money→d19.trade.funds_insufficient，无入列副作用）、底层拒绝（crew_full→capacity_exceeded、invalid_rest_hours→operation_failed 等）、重复命令（D10 duplicate_tavern_request 幂等透传 DuplicateSettlement=true，不重复副作用）、关系前置（D9/D10 请求层当前不产生关系失败码，原码经投影或 unmapped 阻断保留，登记说明）。验证：仓库外临时 dotnet 工程（真实 D19/D9/D10/D3/Event/Save/Agent 源文件，仅对话 LLM 层用临时桩）编译 0 错误 0 警告；53 项确定性断言 0 失败（含 D9 恰一次入列副作用、closed 无副作用、可重放逐字段一致、L16 事件守卫通过、四依赖自检空）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19TavernPortAdapter.cs",
+    "game/tools/results/D19/D19-L13/D19_L13_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L13_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "前置核对：D19-L05 / D19-L17 / D19-L18 / D19-L23 状态",
+      "result": "PASS：全部 LOGIC_PASS（L05=21:46 / L17=22:40 / L18=21:32 / L23=23:20）"
+    },
+    {
+      "command": "原系统真实公开命令盘点：D9PortShipPreparationSystem.VisitTavern/Recruit（D9PreparationResult 真实码 not_enough_money/crew_full/already_recruited/invalid_candidate/invalid_state/invalid_port/not_moored/invalid_quantity/duplicate_settlement）、D10TavernSocialSystem.RequestAction（D10TavernRequestResult 状态 Accepted/Duplicate/WarningRequired/Skipped/Rejected 与真实码 warning_required/tavern_request_accepted/duplicate_tavern_request/request_required/actor_required/port_required/invalid_rest_hours 等）",
+      "result": "PASS：全部真实码登记进 D9ToL17/D10ToL17 投影表；D9.Duplicate 工厂 Code=duplicate_settlement（Accepted=true+Duplicate=true）确认"
+    },
+    {
+      "command": "仓库外临时 dotnet 工程（真实 Event/D3/D4/Save/Agent/D9/D10/D19 源文件，AgentCore 对话 LLM 层以临时桩替代，桩不落仓库）dotnet run",
+      "result": "PASS：编译 0 错误 0 警告；53 项确定性断言 0 失败（Visit 成功含费用/事件码；Recruit 成功且 D9 恰一次入列；费用失败无副作用且原码保留；crew_full→capacity_exceeded；closed 服务 D9 不调用（trade.Money 不变）；跨玩家/跨港泊位→permission_denied；招募 L05 覆盖缺口不伪造结论由 D9 门裁决；Social 成功/重复幂等透传/敏感警告拒绝/校验拒绝；接口不匹配阻断 4 例；可重放逐字段一致；L16 事件守卫通过；适配器/L17/L23/L05 四项自检全空）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：总览重新生成，D19-L13=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，本任务新增文件无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "L18 服务注册表未收录 recruitment（真实覆盖缺口）：本适配器本地定义 RecruitmentServiceId，L05 KnownServiceIds 同样不含它 → 招募可用性由 D9 CheckService 原系统裁决；L18 扩展或 L45 一致性核对补齐",
+    "D10 港口键约定（saint_marys）与 D19 规范键（port_santa_margarita）跨章对齐：适配器不重写 D10 请求，交 L45 接口核对",
+    "D9/D10 请求层当前不产生关系前置失败码（D10.Resolve 阶段经 owners 裁决关系）：关系前置失败事实经投影或 owner_code_unmapped 阻断保留，登记为待 L19/L21 消费确认",
+    "D19 事件草案追加与去重（EventLog event_id+save_revision）由调用方/L22 幂等执行，本适配器只构造",
+    "真实 UI/对话绑定、NPC 行为呈现（原系统裁决后由各自章节运行时消费）",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L13_LOGIC_HANDOFF.md"
+}

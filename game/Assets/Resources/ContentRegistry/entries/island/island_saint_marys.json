@@ -54,16 +54,15 @@
   ],
   "source_note": "D15-A01 项目自有 石灰岩与喀斯特岛 内容定义；自然档案、生态/建筑/任务入口可扫描，当前模型与材质为可替换占位，不代表最终表现已完成。",
   "source": {
-    "kind": "project-authored",
-    "author": "Whalebone team",
-    "reference": "docs/game/design/islands/01_ISLAND_OVERVIEW.md"
+    "kind": "external-asset",
+    "author": "Kenney",
+    "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
   },
   "license": {
-    "status": "internal-authored",
-    "holder": "Whalebone project",
-    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "status": "CC0-1.0",
+    "holder": "Kenney",
+    "reference": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
     "commercial_use": true,
-    "attribution_required": false,
     "modification_allowed": true
   },
   "historical_tag": "fictional",
@@ -71,16 +70,16 @@
   "status": "production",
   "owner_system": "IslandSystem",
   "test_id": "D8-A02-D15-A01-ISLAND-009",
-  "reviewer": "D15-A01",
+  "reviewer": "D16-A05-REVIEWER-01",
   "production_batch": "D15-A01*",
   "representative_sample": "island_saint_marys",
-  "production_stage": "integrated",
+  "production_stage": "slice_final",
   "behavior_profile": "island_natural_profile_deterministic",
-  "asset_state": "placeholder",
-  "model_ref": "asset_ph_palm_leaves",
+  "asset_state": "integrated",
+  "model_ref": "game/Assets/Art/SliceFinal/D16C08/saint_marys_sand_final.fbx",
   "material_ref": "placeholder_terrain_material_kar",
-  "collision_ref": "collision_island_saint_marys",
-  "lod_profile": "island_terrain_lod3",
+  "collision_ref": "box_beach_ground",
+  "lod_profile": "island_slice_sand_lod3",
   "test_cases": [
     "D15-A01-LOAD-009",
     "D15-A01-SAVE-009",
@@ -90,7 +89,8 @@
   "historical_review": "Approved",
   "review_evidence_refs": [
     "docs/game/design/islands/06_ISLAND_QA.md",
-    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"
   ],
   "content_warning_ids": [],
   "skip_allowed": true,
@@ -475,5 +475,31 @@
       "quest_recovery": "QuestSystem",
       "no_permanent_island_lock": true
     }
+  },
+  "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_sand_final.prefab",
+  "anchor_refs": [
+    "anchor_beach_ground"
+  ],
+  "authorization": {
+    "authorization_id": "auth-d16-c08-kenney-sand",
+    "rights_holder": "Kenney",
+    "license_ref": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+    "source_url_or_path": "https://kenney.nl/assets/pirate-kit",
+    "acquired_at": "2026-08-18",
+    "commercial_use": true,
+    "modification_allowed": true,
+    "expiry_or_scope": "CC0; D16-C08 slice sand mesh; quality-downgrade; not full island terrain",
+    "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+  },
+  "review_decision_basis": {
+    "decision": "ApprovedWithWarning",
+    "basis": "D16-C08 Plan B slice replacement after preflight can_apply=true",
+    "reviewer": "D16-A05-REVIEWER-01",
+    "reviewed_at": "2026-08-18",
+    "evidence_refs": [
+      "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"
+    ],
+    "explicit_human_decision": true,
+    "automated_approval": false
   }
 }

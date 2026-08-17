@@ -1,0 +1,46 @@
+{
+  "task_id": "D19-L04",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:31:25+08:00",
+  "summary": "实现纯数据港口锚点目录（game/Assets/Scripts/Systems/D19/D19PortAnchorCatalog.cs，零 Unity 依赖）：稳定 port_id（port_santa_margarita/port_green_cay/port_driftwood_isle，与 D3 PortCatalog 对应）、berth_id（berth_<port>_<zone>_<n>，含大船/小船/货运/外锚地/码头）、service_id（service_<port>_<name>，词汇来自 D9PortService 与港口设计文档；荒岛无服务）及别名/废弃映射（D3 裸键 santa_margarita/green_cay/driftwood_isle 与 D9 泊位 building_saint_marys_dock 为废弃键，解析成功并返回可审计迁移提示）；确定性解析 API（ResolvePort/ResolveBerth/ResolveService/TryResolve）与稳定错误码（invalid_key_format/unknown_port_key/unknown_berth_key/unknown_service_key/cross_port_berth/cross_port_service/alias_cycle/duplicate_key）；TryCreate 构造校验：键格式、重复键、跨种类重复、别名存在性、单向无环（DFS）、废弃键必有迁移提示、归属港口存在。锚点仅为业务语义键，不含 Vector3/GameObject/Transform/路径/场景断言。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortAnchorCatalog.cs",
+    "game/tools/results/D19/D19-L04/D19_L04_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L04_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build/run（临时 net9.0 控制台工程，直接链接 game/Assets/Scripts/Systems/D19/D19PortAnchorCatalog.cs，仓库外）",
+      "result": "PASS：编译成功 0 warning 0 error（exit 0），证实文件零 Unity 依赖可独立编译"
+    },
+    {
+      "command": "dotnet 确定性断言 harness（39 项，仓库外临时 Program.cs）",
+      "result": "PASS：39/39。覆盖：相同输入 2000 次得到相同规范键；规范键自解析；D3 港口裸键与 D9 building_saint_marys_dock 废弃解析 + 迁移提示（无 candidate/路径内容）；未知 port/berth/service 稳定错误码；路径/盘符/显示名/空/null 输入 invalid_key_format；跨港泊位/服务 cross_port_*；泊位归属港口一致；荒岛无服务；重复键构造拒绝；循环别名构造拒绝（DFS）；运行时别名循环防御（alias_cycle）；目录键不含 Unity 类型与路径字符；每泊位归属港口存在"
+    },
+    {
+      "command": "开发期修复记录：DeprecatedAlias 助手最初把规范目标误传为 port 字段，构造校验（cross_port: 归属港口不存在）当场拦截，修复后复验全过——构造期校验真实生效",
+      "result": "PASS：修复后 39/39 全过"
+    },
+    {
+      "command": "grep 检查：D19PortAnchorCatalog.cs 无 UnityEngine/Vector3/GameObject/Transform/NavMesh/Scene/Resources/Assets/Art 引用（仅文档注释声明排除）",
+      "result": "PASS：纯 BCL（System/System.Collections.Generic/System.Linq）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L04 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "锚点与场景对象的绑定（Transform/坐标/GameObject）——本目录明确不含，由 Runtime 阶段场景集成完成",
+    "泊位容量/租期/冲突裁决（D19-L06）、服务可用性（D19-L05）、靠泊规则（D19-L07）依赖本目录键但属各自任务",
+    "吃水/潮位/航道判定、缆桩/跳板/碰撞等物理行为（Runtime）",
+    "D9 历史键（building_saint_marys_dock 等）在 D9 系统内的实际迁移与退役属后续整合任务，本目录只提供迁移提示"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L04_LOGIC_HANDOFF.md"
+}

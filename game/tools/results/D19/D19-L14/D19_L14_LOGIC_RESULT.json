@@ -1,0 +1,42 @@
+{
+  "task_id": "D19-L14",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:43:42+08:00",
+  "summary": "实现船坞港口适配器 game/Assets/Scripts/Systems/D19/D19ShipyardPortAdapter.cs（D19-L14）：船坞服务的上下文/授权/命令适配，纯 C# 零 Unity 依赖。前置精确核验：D19-L17（失败码目录）、D19-L18（本地化键）、D19-L23（权限校验器）均 LOGIC_PASS；D4 真实公开入口源码盘点确认（D4ShipyardSystem.TryUpgrade/TryUnlockShip/Level/GetModifiers、D4ShipCatalog.Find；ShipyardResult 无稳定失败码；D4 无公开检修 API）。执行链冻结：command_id → 幂等命中（按 L03 同款 _completedResults 重放既有结果，无第二次 D4 副作用）→ 服务匹配 → 港口解析+权限（L23，服务键按 L05 口径构造 service_<port>_<shipyard>）→ 服务可用性（L05：设施/势力/天气/时段/人手）→ 生命周期前置（L02：StartService 仅由 Berthed 进入）→ D4 唯一裁决。五种稳定行为：不支持改装（未知槽位/已满级读 D4 公开 Level/未知船型/检修未实现 repair_unimplemented 诚实 BLOCKED）、无权（L17 d19.port.permission_denied）、服务关闭（L17 d19.service.unavailable）、底层拒绝（D4 Accepted=false → UnderlyingRejected，reason port.shipyard.rejected，不编造资金/声望原因）、重复请求（重放+DuplicateSubmission 标记）。适配器只转换结果/失败码/本地化 key/事件草案（L16 CreateServiceResult/CreateRejection，result_code port.shipyard.applied/port.rejected），不写船舶数值/Prefab/模型/候选资源；Money 以局部副本透传 ref，只报告 MoneyAfter。含 Validate() 自检（L17/L18/L23 目录与映射、L16 key 合规、D4 入口留痕）。验证：仓库外临时 dotnet 工程编译真实 D19/D4/Event 源文件 0 错误 0 警告；57 项确定性断言 0 失败。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19ShipyardPortAdapter.cs",
+    "game/tools/results/D19/D19-L14/D19_L14_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L14_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "前置核验：docs/game/LOGIC_TASK_STATUS.md 中 D19-L17 / D19-L18 / D19-L23 状态",
+      "result": "PASS：三项均 LOGIC_PASS（L17=2026-08-17T22:40 / L18=21:32 / L23=23:20 前序记录）；D4 公开入口源码盘点：D4ShipyardSystem.TryUpgrade(D4UpgradeSlot, ref int money, int reputation)/TryUnlockShip(string shipTypeId, int reputation, ref int money)/Level/GetModifiers、D4ShipCatalog.Find 全部真实存在；ShipyardResult 无稳定失败码（L17 冻结事实）；D4 无公开检修 API（Repair 诚实 BLOCKED）"
+    },
+    {
+      "command": "仓库外临时 dotnet 工程（net9.0）编译真实 EventContracts/NumericEnumConfiguration/D4Contracts/D4Catalogs/D4ShipyardSystem + D19 九文件 + D19ShipyardPortAdapter.cs",
+      "result": "PASS：0 错误 0 警告（Build succeeded）"
+    },
+    {
+      "command": "确定性断言 harness（57 项，临时工程 Program.cs）",
+      "result": "PASS：57/57（成功改装 cost=180/level=1/money 扣减由 D4 裁决；已满级不触达 D4 不扣钱；未知槽位；检修未实现；解锁 sloop cost=850；未知船型；资金不足→UnderlyingRejected 不编造原因；声望不足同态；跨玩家/跨港→NotAuthorized+d19.port.permission_denied；设施关闭/夜间/人手不足/未分配泊位→ServiceUnavailable+d19.service.unavailable；未知港口→d19.port.unknown_port；缺 command_id→L18 key；错误服务 ID→InvalidRequest；重复请求重放无新事件无二次 D4 副作用；拒绝结果同样重放；全新 D4 状态确定性一致；D4 状态只由 D4 改变；协议留痕齐全）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L14 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "真实船坞服务在 Player 中的接线（D19-L33 路由器编排、D19-L28 EditMode 测试、UI/场景接入）",
+    "D4 检修（耐久修复）API：D4 当前无公开入口，适配器 Repair 保持诚实 BLOCKED；D4 提供后由本适配器扩展",
+    "D4 ShipyardResult 底层拒绝原因细分（资金/声望）需 D4 提供稳定失败码后才能映射，本适配器不编造",
+    "命令 ID 幂等表持久化（当前为实例内缓存，跨存档/重启的幂等由 D19-L22 与保存投影负责）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L14_LOGIC_HANDOFF.md"
+}

@@ -50,18 +50,19 @@
 ## 2026-08-12 当前验收快照
 
 - ✅ D15-S02 内容 QA 已通过：8 批次、2,700 个批次条目、Content Registry 2,812 条；统一 QA `errors=0 warnings=0`。
-- ⏳ D16-A01—A06 的本机代码/自动化子门禁已复验，但总体仍未完成：目标设备、跨平台/断电、真机可访问性、267 条人工审查、2,264 个 placeholder 和目标机原生崩溃/隐私证据仍缺；D16-S01/S02 保持未完成。
+- ⏳ D16 开发阶段：C01—C08、C12 已过；C09/C10/C11 因真机实测缺证据保持 `GATE_BLOCKED`。**用户裁定真机四门暂不列入开发必做**，见 `docs/game/design/common/D16_EXTERNAL_HARDWARE_DEFERRED.md`。禁止把 BLOCKED 改成 PASS。A04 审查与切片 4 项资源已在 C07/C08 处理。
+- ⏳ D16-A01—A06 目标设备、断电、真机 a11y、目标机发布/隐私仍缺真实 envelope；S01 正式长线与章节放行推迟到预发布波次。
 - ✅ D17 本机垂直切片基线已完成：D17-S02 本机十循环 **1/1 PASS**，Unity PlayMode **60/60 PASS**，工具测试 **77/77 PASS**；这不是正式 D17-S01/S02，也不绕过 D16 外部门禁。
 
 - ✅ 项目公开产品名已统一为 `WhalesIslandReef`，并完成旧 `Whalebone` 存档目录的保留式迁移保护；这项本地发布技术缺口已用 Unity 全量回归验证。
-- ✅ D16 外部门禁已有保守证据入口：`tools/d16_external_gate_audit.py`；当前 A01—A06 六个真实证据 envelope 均缺失，审计保持 BLOCKED，不以本机回归替代目标设备/人工/授权证据。
+- ✅ D16 外部门禁已有保守证据入口：`tools/d16_external_gate_audit.py`；A01/A02/A03/A06 真实 envelope 仍缺失，审计保持 BLOCKED 是开发阶段预期状态，不以本机回归替代。
 
 ## 当前开发入口
 
 当前有两条不能混淆的轨道：
 
 - **本地开发轨**：用户于 2026-08-13 明确授权继续画面、UI、真实免费资源和完整可玩体验，入口为 `docs/game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md` 与 `AGENT_DEVELOPMENT_TASKS.md` 第 10—16 章；从 `D18-S01` 开始。
-- **正式发布门禁轨**：继续按 `D17_POST_D16_DEVELOPMENT_PLAN.md` 完成 D16-R01—R06 → D16-S01 → D16-S02；D17 既有编号与本机基线保持，不重编号。
+- **正式发布门禁轨**：剩余工作按 [第 9B 章](game/AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATES.md) 分派。当前有效编号是 `D16-C01`—`C12`、`D17-C01`—`C04`（2026-08-17 已合并；`C01`—`C05` 保留）。D17-C01 必须等 `D16-C11 GATE_PASS`。旧 A/R/S 与旧 `D16-C13`—`C31` / `D17-C05`—`C16` 禁止再派。
 
 D18—D24 可以推进本机资源、场景和玩法集成，但不能把 D16 未完成的目标设备、跨平台、真实断电、人工审查、隐私或 Steam 证据写成通过。
 

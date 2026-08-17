@@ -1,0 +1,27 @@
+{
+  "request_kind": "d18_runtime_promotion_request",
+  "schema_version": 1,
+  "asset_id": "asset_fixture_ship_hull_small",
+  "current_state": "IntakeEligible",
+  "target_usage_scene": "d21_hull_work_prefab",
+  "descriptors": [
+    { "kind": "d18_import_descriptor", "path": "docs/fixtures/descriptors/ship_hull_small_import.json" },
+    { "kind": "d18_mesh_descriptor", "path": "docs/fixtures/descriptors/ship_hull_small_mesh.json" }
+  ],
+  "requirements": {
+    "collision": "convex mesh hull, deck line and waterline evidence required",
+    "lod": "3 levels, automatic generation",
+    "animation": "none"
+  },
+  "approver": "human:ship_design_lead",
+  "risks": [
+    "pivot and axes must be re-verified against Y-up/Z-forward",
+    "no sail/rigging animation clips exist in the candidate"
+  ],
+  "rollback": {
+    "reference": "asset_fixture_ship_hull_small",
+    "description": "reject at the Runtime gate if pivot, deck line or waterline evidence is missing"
+  },
+  "submitted_at": "2026-08-16T13:00:00+08:00",
+  "declares_approval": false
+}

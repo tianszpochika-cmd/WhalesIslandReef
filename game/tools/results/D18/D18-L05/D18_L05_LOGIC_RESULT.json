@@ -1,0 +1,43 @@
+{
+  "task_id": "D18-L05",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:51:11+08:00",
+  "summary": "实现只读来源证据验证器 tools/d18_provenance_validator.py：校验 source_id、官方 source_url 格式与官方域名一致性、作者/组织、下载日期（禁未来）、原始包名、证据文件相对路径（禁绝对路径/越界/缺失/空文件）及来源/证据一致性（证据路径出现异源 token 即不匹配）；绝不访问网络、绝不把可访问 URL 当作许可证批准（输出恒为 network_accessed=false / license_approval=false）；缺任一 P0 证据即按字段定位输出错误，未知来源域名保守返回 PENDING。",
+  "changed_files": [
+    "tools/d18_provenance_validator.py",
+    "tools/tests/test_d18_provenance_validator.py",
+    "game/tools/results/D18/D18-L05/D18_L05_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L05_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_provenance_validator",
+      "result": "PASS：27/27 通过（合法记录、organization 替代 author、as_of 同日不判未来、子域名格式通过；逐字段缺 P0（source_id/source_url/author/download_date/original_filename/evidence_paths）、空 author、非法 source_id、非 https、URL 带凭据、非官方域名、未来日期、非法日历日期、原始包名含路径分隔符、Windows/POSIX 绝对路径、../ 越界、证据文件缺失/空、异源证据目录、异源证据文件名、无 token 证据路径、重复 source_id、record 非对象、CLI 往返与失败退出码）"
+    },
+    {
+      "command": "python tools/d18_provenance_validator.py --input <temp:4条真实记录> --today 2026-08-16（真实仓库证据文件：kenney_pirate_kit manifest、D18_A05_SOURCE_EVIDENCE.md、quaternius_ultimate_animated_animals manifest）",
+      "result": "PASS：合法 Kenney/Quaternius 记录 PASS；example.com 域名不匹配、C:/ 绝对路径、kenney 文件归入 quaternius 证据、重复 source_id 均按字段定位并 exit 2；真实 manifest/证据文件只读，无网络（license_approval=false, network_accessed=false）"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'（并行波次下的全量回归）",
+      "result": "PASS（本任务作用域）：并行波次其他 Agent 的进行中模块使全量结果不稳定（两次运行 16f+2e / 5f+12e，含 L15 进行中 test_d18_content_id_asset_link_validator 的 KeyError 与既有 SUPERSEDED test_d18_s02_r01_intake_refresh 4 项）；d18_provenance_validator 模块自身 27/27 稳定通过，未引入任何回归"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L05 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无空白错误；仅工作区既有未提交文件的 LF→CRLF 警告"
+    }
+  ],
+  "runtime_deferred": [
+    "URL 可达性/内容实时核验（本逻辑阶段禁止网络访问；官方域名一致性仅静态格式检查，不替代人工核实）",
+    "许可证批准（可访问 URL 或格式正确 URL 绝不等于许可证批准，license_approval 恒 false；真实许可裁决属 L04/L07 与人类审核）",
+    "来源页内容变更检测（如 URL 失效/许可撤回，需未来 Runtime 阶段或人工复核）",
+    "非静态来源（OFFICIAL_SOURCE_DOMAINS 未收录的 source_*）一律 PENDING，等待 L21—L24 来源目录登记后人工确认官方域名"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L05_LOGIC_HANDOFF.md"
+}

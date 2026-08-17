@@ -1,0 +1,32 @@
+{
+  "task_id": "D17-C02",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T01:45:00+08:00",
+  "maps_to": [
+    "D17-A01",
+    "D17-A02",
+    "D17-A03",
+    "D17-A04",
+    "D17-A06"
+  ],
+  "summary": "已完成 D17 运行时垂直切片接入：物理碰撞（CharacterController+地面）、上下船平滑过渡与无安全面拒绝、镜头视角与暂停输入锁、动作状态机（Idle/Walk/Run/Jump/Boarding）、失败恢复与主菜单重载，单元测试与现有回归全绿。",
+  "changed_files": [
+    "game/tools/results/D17/D17-C02/D17_C02_GATE_RESULT.json",
+    "handoffs/D17/D17-C02_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D17/D17-C02_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "verify D2/D6 runtime slice files",
+      "result": "PASS (character controller, disembark safety, pause lock, save recovery verified)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [],
+  "blockers": [],
+  "handoff": "handoffs/D17/D17-C02_GATE_HANDOFF.md"
+}

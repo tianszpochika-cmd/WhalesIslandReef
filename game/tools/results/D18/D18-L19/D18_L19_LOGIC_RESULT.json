@@ -1,0 +1,47 @@
+{
+  "task_id": "D18-L19",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:59:31+08:00",
+  "summary": "冻结可审计的拒绝/挂起/豁免/撤销规则（D18_WAIVER_AND_REJECTION_RULES.md）：定义 Rejected、Pending、WaiverRequested、Revoked 的触发条件、证据、审批角色、期限、可读范围、恢复方式与记录字段；明确 Pending/WaiverRequested 是审查语义而非资源状态（与 L02/L03 七状态闭合枚举一致）；八条触发矩阵覆盖缺许可、冲突来源、重复哈希、不可再分发、证据缺失/被推翻、越级申请、豁免过期；双 no-go 定理硬性声明 waiver 不能绕过商业授权、不能变成 Runtime/Release 批准；未修改任何真实条目状态。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_WAIVER_AND_REJECTION_RULES.md",
+    "game/tools/results/D18/D18-L19/D18_L19_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L19_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 一次性校验脚本（临时目录，不落仓库）：解析第 12 节机器 JSON；states_unchanged 与 L03 七状态枚举逐项一致；trigger_matrix 八条触发与第 4 节表一一对应；waiver 白名单/黑名单无交集且商业授权与 Runtime/Release 需求在黑名单；双 no-go 定理、期限（expires_at 必填/到期自动失效）、审批角色（waiver_grant/re_register 仅 human）字段齐全；waiver 记录字段全集匹配",
+      "result": "PASS：全部断言通过"
+    },
+    {
+      "command": "python 与 L03 状态机交叉核对（只读解析 D18_ASSET_STATE_MACHINE.md 4.4 JSON 矩阵）：REJECT/REVOKE/RE_REGISTER 事件存在，REVOKE 覆盖 any_revocable 且逻辑阶段允许，RE_REGISTER 仅 human_reviewer，ReleaseApproved→Rejected 不在允许边；L03 7.2 第 5 条（过期豁免+批准→FAIL）已纳入本文件第 4 节 #8 与 no-go 定理 2",
+      "result": "PASS：T5/T6/T7 语义一致"
+    },
+    {
+      "command": "python 只读核对真实事实：准入目录 known_gaps 非空（1,865 条）、local_development_ready_catalog BLOCKED 0/0、A04 Pending 267；确认本任务未创建/修改任何真实条目状态或豁免记录",
+      "result": "PASS：真实条目状态未修改"
+    },
+    {
+      "command": "python 相对链接存在性检查（解析 D18_WAIVER_AND_REJECTION_RULES.md 全部相对链接）",
+      "result": "PASS：15 个链接，缺失 0"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：280 项总览重新生成，D18-L19=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "豁免审批：只有责任人类审核者可批准；本逻辑阶段不产生任何豁免记录",
+    "真实拒绝/撤销记录写入：由人类复核或 L35/L43 在各自任务中产生，本文件只定义规则",
+    "Revoked → Candidate 重新登记：仅人类复核后执行",
+    "A04 人工审核 267 条 Pending（非 D18 章节责任）",
+    "重复哈希的 L31 裁定（重复先登记挂起，不删除）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L19_LOGIC_HANDOFF.md"
+}

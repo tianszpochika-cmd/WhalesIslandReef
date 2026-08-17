@@ -1,0 +1,54 @@
+{
+  "task_id": "D16-C01",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-17T23:30:00+08:00",
+  "maps_to": [
+    "D16-A01",
+    "D16-A02",
+    "D16-A03",
+    "D16-A04",
+    "D16-A05",
+    "D16-A06",
+    "D16-R01",
+    "D16-R02",
+    "D16-R03",
+    "D16-R04",
+    "D16-R05",
+    "D16-R06",
+    "D16-S01",
+    "D16-S02"
+  ],
+  "summary": "已完成 D16 剩余门禁基线冻结，盘点真实缺口、建立旧门禁到 D16-C02—C31 映射表、规范六份外部 envelope 路径与必填字段、列出禁止伪通过红线并明确各波次准入条件。",
+  "changed_files": [
+    "docs/game/design/common/D16_GATE_CLOSURE_BASELINE.md",
+    "game/tools/results/D16/D16-C01/D16_C01_GATE_RESULT.json",
+    "docs/game/design/common/handoffs/D16/D16-C01_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d16_external_gate_audit.py game --evidence-root tools/results/external",
+      "result": "PASS (只读盘点确认 6 项外部 envelope 当前缺失，诚实报告真实缺口)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS (状态看板成功更新)"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS (无空白字符错误或格式异常)"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [
+    "D16-A01: 目标设备及低端机 >=60 秒实测数据",
+    "D16-A02: 真实断电演练及跨平台文件系统恢复",
+    "D16-A03: 真实物理手柄及目标分辨率人工无障碍检查",
+    "D16-A04: 267 条 Pending 人工逐条历史/敏感审查决定",
+    "D16-A05: 2264 个 placeholder 的最终商业授权资产替换",
+    "D16-A06: 目标机安装/更新/卸载、原生崩溃行为与最终隐私审核",
+    "D16-S01: 全流程长线真实故事验收",
+    "Steam 保持未授权未执行"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D16/D16-C01_GATE_HANDOFF.md"
+}

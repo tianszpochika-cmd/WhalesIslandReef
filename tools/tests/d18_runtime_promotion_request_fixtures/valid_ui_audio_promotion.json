@@ -1,0 +1,25 @@
+{
+  "request_kind": "d18_runtime_promotion_request",
+  "schema_version": 1,
+  "asset_id": "asset_fixture_audio_button_click",
+  "current_state": "IntakeEligible",
+  "target_usage_scene": "d22_ui_audio_work_prefab",
+  "descriptors": [
+    { "kind": "d18_ui_audio_descriptor", "path": "docs/fixtures/descriptors/audio_button_click.json" }
+  ],
+  "requirements": {
+    "collision": "none",
+    "lod": "none",
+    "animation": "none"
+  },
+  "approver": "human:audio_ui_design_lead",
+  "risks": [
+    "volume and attenuation must stay outside game logic until D22 verification"
+  ],
+  "rollback": {
+    "reference": "placeholder_audio_button_click",
+    "description": "silence fallback for the click cue until the real ogg is verified"
+  },
+  "submitted_at": "2026-08-16T14:00:00+08:00",
+  "declares_approval": false
+}

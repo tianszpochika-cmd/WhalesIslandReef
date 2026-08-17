@@ -1,0 +1,44 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_invalid_case",
+  "type": "character",
+  "units": "meters",
+  "axes": {
+    "up": "y",
+    "forward": "z"
+  },
+  "bounds": {
+    "width_m": 0.6,
+    "depth_m": 0.6,
+    "height_m": 1.8
+  },
+  "material_slots": [
+    {
+      "slot_name": "body",
+      "slot_role": "body"
+    }
+  ],
+  "skeleton_type": "humanoid",
+  "animation_list": [
+    {
+      "animation_key": "idle",
+      "role": "idle"
+    }
+  ],
+  "root_motion": "none",
+  "collision_intent": "capsule_agent",
+  "lod_intent": {
+    "levels": 2,
+    "generate_automatically": true
+  },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_evidence_path": "C:/Windows/evil.txt"
+  },
+  "fallback": {
+    "reference": "placeholder_invalid",
+    "description": "fixture fallback"
+  },
+  "represents_imported_asset": false
+}

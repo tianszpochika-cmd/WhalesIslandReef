@@ -1,0 +1,64 @@
+{
+  "task_id": "D16-C05",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-17T23:50:00+08:00",
+  "maps_to": [
+    "D16-A04"
+  ],
+  "summary": "已完成 D16-A04 批次 004（D16-C05）25条船体与功能模块模型资产的人工历史/权利复核，新增25份本地证据文件，单条写回Registry，本批Pending完全清零（Remaining Pending=0）。",
+  "changed_files": [
+    "docs/game/design/common/reviews/D16_A04_BATCH_004.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_longwake_barque_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_mangrove_punt_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_privateer_brigantine_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_raincrown_schooner_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_reef_runner_sloop_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_sable_fin_skiff_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_saint_marys_ketch_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_saltwind_schooner_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_auxiliary_staysail_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_ballast_rack_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_bilge_drain_pump_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_boarding_net_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_braced_cargo_shelves_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_braced_frames_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_braced_gun_carriage_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_braced_mast_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_captains_cabin_refit_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_cargo_davit_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_cargo_winch_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_carpenter_workbench_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_chain_shot_rack_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_concealed_cargo_compartment_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_confinement_isolation_cabin_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_council_table_evidence.md",
+    "docs/game/design/common/reviews/D16_A04_004/asset_d15_a06_model_ship_module_crew_rest_area_evidence.md",
+    "game/tools/results/D16/D16-C05/D16_C05_GATE_RESULT.json",
+    "handoffs/D16/D16-C05_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d16_a04_review_audit.py game/Assets/Content/D15/A06",
+      "result": "PASS (0 结构错误, 本批 25 条已由 Pending 转为 Approved, 剩余 Pending 降至 104)"
+    },
+    {
+      "command": "python -c \"check batch 004 remaining pending\"",
+      "result": "PASS (Batch 004 Remaining Pending: 0)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS (门禁状态看板成功更新)"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS (无格式异常或多余空白符)"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [
+    "A04 其余批次（D16-C02, D16-C03, D16-C04, D16-C06~C13）仍需对应责任审核者完成审查",
+    "D16-A01/A02/A03/A05/A06 外部设备、物理测试与最终资源替换项"
+  ],
+  "blockers": [],
+  "handoff": "handoffs/D16/D16-C05_GATE_HANDOFF.md"
+}

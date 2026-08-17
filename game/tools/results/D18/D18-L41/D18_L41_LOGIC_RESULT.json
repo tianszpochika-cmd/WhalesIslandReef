@@ -1,0 +1,57 @@
+{
+  "task_id": "D18-L41",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T23:01:36+08:00",
+  "summary": "建立十类 P0 违规最小负夹具（tools/tests/fixtures/d18_logic_invalid/）：缺来源/许可冲突/缺 hash/路径越界/状态越级/无分发权利（L39 聚合逐规则断言正确 rule+severity，state_jump 使整体 BLOCKED）、重复 identity（L31 duplicate_record）、坏 content_id（L15 path_like_content_id）、生成物无谱系（L38 non_original_missing_lineage P0）、伪发布声明（L18 doc_overstep_claim error）。每项负例均稳定失败且原因断言固定（两轮运行 gap_counts 一致）；缺 hash 按 L06 语义为 hash_pending=P1（Pending 不批准、不补猜）并单测断言 p0=0。11/11 测试通过；夹具树无二进制、dup_target 哈希为真实文件摘要；全部验证器只读（夹具字节不变）；未修改生产 catalog 与工具逻辑。全量 881 项仅 4 项既有遗留失败（R01 基线）。",
+  "changed_files": [
+    "tools/tests/test_d18_logic_invalid_records.py",
+    "tools/tests/fixtures/d18_logic_invalid/missing_source.json",
+    "tools/tests/fixtures/d18_logic_invalid/license_conflict.json",
+    "tools/tests/fixtures/d18_logic_invalid/missing_hash.json",
+    "tools/tests/fixtures/d18_logic_invalid/path_escape.json",
+    "tools/tests/fixtures/d18_logic_invalid/state_jump.json",
+    "tools/tests/fixtures/d18_logic_invalid/no_distribution_rights.json",
+    "tools/tests/fixtures/d18_logic_invalid/duplicate_identity.json",
+    "tools/tests/fixtures/d18_logic_invalid/bad_content_id.json",
+    "tools/tests/fixtures/d18_logic_invalid/generated_without_lineage.json",
+    "tools/tests/fixtures/d18_logic_invalid/false_release_claim.md",
+    "tools/tests/fixtures/d18_logic_invalid/evidence/dup_target.txt",
+    "game/tools/results/D18/D18-L41/D18_L41_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L41_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_logic_invalid_records -v",
+      "result": "PASS：11/11 通过（L39 六规则+严重度、最小且稳定缺口、hash Pending 语义、L31/L15/L38/L18 四子工具、无二进制、只读契约、真实哈希校验、规则冻结）"
+    },
+    {
+      "command": "python 探测脚本（逐夹具验证命中规则）",
+      "result": "PASS：missing_source=P0、license_suspect=P0、hash_pending=P1、path_escape=P0、approval_state_in_logic_phase=P0、missing_rights=P0、duplicate_record、path_like_content_id=1、non_original_missing_lineage=1；L18 需按扫描范围构造临时 root（docs/game/design/common/D18_*.md）后 doc_overstep_claim 命中"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS：881 项测试，仅 4 项既有失败（test_d18_s02_r01_intake_refresh 断言历史 R01 目录，已知 SUPERSEDED 基线，非本任务引入）；L41 测试全通过"
+    },
+    {
+      "command": "python -m py_compile tools/tests/test_d18_logic_invalid_records.py",
+      "result": "PASS：exit 0"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L41 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "负夹具的真实文件级复核（如 path_escape 的绝对路径在真实环境同样被 L08/L39 拒绝，无需 Runtime）",
+    "伪发布声明的真实仓库全量扫描（L18 run_guard 对真实仓库 PASS 已确认；后续 L44/L49 复用）",
+    "重复 identity 夹具使用真实文本哈希（dup_target.txt）；真实资源的逐文件哈希与去重复核由 L06/L31 在 L43 阶段对真实数据执行",
+    "任何 RuntimeApproved/ReleaseApproved 结论（本阶段禁止，仍为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L41_LOGIC_HANDOFF.md"
+}

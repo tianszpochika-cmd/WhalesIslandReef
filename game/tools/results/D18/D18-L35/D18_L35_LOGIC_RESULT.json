@@ -1,0 +1,43 @@
+{
+  "task_id": "D18-L35",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:15:27+08:00",
+  "summary": "实现表驱动状态迁移审计 tools/d18_status_transition_audit.py：内置矩阵与 L03 4.4 冻结文档完全一致（--matrix-doc 可复现校验，不一致即拒绝），按事件/状态/操作者/原因/prior 引用/证据/waiver/阶段门逐条审计，覆盖 T1—T7 允许迁移、4.2 全部禁止迁移（含 Candidate 越级到 RuntimeRequested/RuntimeApproved/ReleaseApproved）、Revoked 恢复（仅 RE_REGISTER+human）、过期 waiver 阻断一切批准并引导 REJECT/REVOKE、ReleaseApproved 伪造（operator 非 human / from 非 RuntimeApproved / 无 prior 指向 RuntimeApproved 授予）、审计完整性（REJECT/REVOKE/RE_REGISTER 缺 reason、REVOKE/RELEASE_APPROVE 缺 prior、result_state 不一致、链断裂/重复 ID/prior 状态不符）、未知事件/状态/矩阵外迁移；逻辑阶段 RUNTIME_APPROVE/RELEASE_APPROVE 一律 logic_phase_forbidden 且计数；56/56 单测通过；真实只读扫描 70 条来源目录记录（kenney 9 + quaternius 61）0 状态持有 0 失败，运行前后 3 个真实 catalog 文件 SHA-256 完全不变。",
+  "changed_files": [
+    "tools/d18_status_transition_audit.py",
+    "tools/tests/test_d18_status_transition_audit.py",
+    "game/tools/results/D18/D18-L35/D18_L35_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L35_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_status_transition_audit",
+      "result": "PASS：56/56 通过（T1—T7、4.2 全部禁止迁移、Candidate 越级、Revoked 恢复、过期 waiver 正反例、ReleaseApproved 伪造、审计完整性、未知输入、链审计、矩阵一致性/可达性、真实 catalog 只读 SHA-256 前后一致、CLI 退出码与矩阵文档不一致拒绝）"
+    },
+    {
+      "command": "python tools/d18_status_transition_audit.py --matrix-doc docs/game/design/common/assets/D18_ASSET_STATE_MACHINE.md",
+      "result": "PASS：exit 0，嵌入矩阵与 L03 4.4 冻结文档 JSON 块完全一致"
+    },
+    {
+      "command": "python tools/d18_status_transition_audit.py --catalog sources/d18_kenney_logic_catalog.json --catalog sources/d18_quaternius_logic_catalog.json --catalog assets/d18_prefab_candidate_intake_catalog.json --project-root . --output <tmp>",
+      "result": "PASS：exit 0；扫描 70 条真实记录（kenney 9 + quaternius 61，均为 Candidate 登记），catalog_state_holds=0、失败 0；intake catalog 1,865 条无 L02 state 字段按设计跳过；运行前后 3 个真实文件 SHA-256 完全一致"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L35 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无空白错误；仅工作区既有未提交文件的 LF→CRLF 警告"
+    }
+  ],
+  "runtime_deferred": [
+    "RUNTIME_APPROVE / RELEASE_APPROVE 的真实授予（本逻辑阶段禁止；工具在 logic 相位一律判定 logic_phase_forbidden 并计数）",
+    "真实迁移审计链：当前仓库尚无任何 L02 审计记录（TR-*）与 Rejected/Revoked/waiver 持有者；Runtime 阶段开始产生迁移后，本工具可用 --records 直接审计链完整性",
+    "豁免（waiver）的人工审批流程（L19）：工具只校验记录级 waiver 字段与过期阻断，不裁决豁免申请本身",
+    "ReleaseApproved 的人类审核结论（含 Steam/外部分发）无法由工具验证，只能校验 operator/prior/证据形态"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L35_LOGIC_HANDOFF.md"
+}

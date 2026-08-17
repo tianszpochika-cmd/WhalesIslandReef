@@ -1,0 +1,34 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_character_sailor",
+  "type": "character",
+  "units": "meters",
+  "axes": { "up": "y", "forward": "z" },
+  "bounds": { "width_m": 0.6, "depth_m": 0.6, "height_m": 1.8 },
+  "material_slots": [
+    { "slot_name": "body", "slot_role": "body" },
+    { "slot_name": "outfit", "slot_role": "outfit", "material_asset_id": "asset_fixture_sailor_outfit" }
+  ],
+  "skeleton_type": "humanoid",
+  "animation_list": [
+    { "animation_key": "idle", "role": "idle", "root_motion": false },
+    { "animation_key": "walk", "role": "walk", "root_motion": true },
+    { "animation_key": "run", "role": "run", "root_motion": true },
+    { "animation_key": "work_cargo", "role": "work", "root_motion": false }
+  ],
+  "root_motion": "derived",
+  "collision_intent": "capsule_agent",
+  "lod_intent": { "levels": 2, "generate_automatically": true },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_url": "https://example.invalid/license/cc0",
+    "license_evidence_path": "docs/fixtures/license_cc0.txt",
+    "attribution_required": false
+  },
+  "fallback": {
+    "reference": "placeholder_character_sailor",
+    "description": "keep the placeholder character until the real rig and clips are verified"
+  },
+  "represents_imported_asset": false
+}

@@ -1,0 +1,31 @@
+{
+  "task_id": "D19-L41",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T02:30:00+08:00",
+  "summary": "编写并执行 D19 统一离线逻辑测试运行器 tools/d19_logic_test_runner.py 与单元测试 tools/tests/test_d19_logic_test_runner.py：按固定顺序调度静态边界审计、单元测试套件及任务状态同步与完整性检查，采集精确退出码、耗时与标准输出，输出机器可读的聚合 JSON 报告。单元测试覆盖发现顺序、子项失败总状态传播、诚实错误报告，全量套件运行全部 PASS。",
+  "changed_files": [
+    "tools/d19_logic_test_runner.py",
+    "tools/tests/test_d19_logic_test_runner.py",
+    "game/tools/results/D19/D19-L41/D19_L41_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L41_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools/tests/test_d19_logic_test_runner.py",
+      "result": "PASS: 4/4 tests passed (sub-suite execution, exit code verification, failure propagation)"
+    },
+    {
+      "command": "python tools/d19_logic_test_runner.py",
+      "result": "PASS: Unified runner executed all 3 sub-suites successfully, total duration 679ms"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L41 status synced to LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L41_LOGIC_HANDOFF.md"
+}

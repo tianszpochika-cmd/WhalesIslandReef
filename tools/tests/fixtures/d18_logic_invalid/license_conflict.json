@@ -1,0 +1,35 @@
+{
+  "fixture_kind": "d18_logic_invalid_record",
+  "fixture_class": "license_conflict",
+  "task": "D18-L41",
+  "note": "最小 P0 违规夹具：仅破坏 license_id（NC），其余字段合法；L04/L07 语义为未知/冲突/NC 一律保守阻断。",
+  "records": [
+    {
+      "canonical_asset_id": "asset_ship_medium_v01",
+      "category": "ship",
+      "source_id": "source_kenney",
+      "source_url": "https://kenney.nl/assets/pirate-kit",
+      "license": {
+        "license_id": "CC-BY-NC-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+        "attribution_required": true
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-16",
+      "original_filename": "fixture_ship_medium_pack.zip",
+      "sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "state": "Candidate",
+      "content_ids": ["ship_medium_v01"],
+      "evidence_paths": [
+        "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt"
+      ],
+      "runtime_deferred": []
+    }
+  ]
+}

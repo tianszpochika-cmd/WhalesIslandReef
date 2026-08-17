@@ -23,6 +23,8 @@ Steam 目标（大陆个人开发者，无版号海外发行路径）。三端�
 - 设计宪法：`docs/game/DESIGN_PILLARS.md` ｜ 边界：`docs/game/design/DESIGN_BOUNDARIES.md`
 - 需求：`docs/game/REQUIREMENTS.md`（v1.0 过审）｜ 创意池：`docs/game/IDEA_BANK.md`
 - 数据模型：`docs/game/design/DATA_MODELS.md`
+- D16/D17 剩余门禁：`docs/game/AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATES.md`（C 编号；有效 `D16-C01`—`C12`、`D17-C01`—`C04`，与 D19 的 L 编号分轨）
+- 真机推迟：`docs/game/design/common/D16_EXTERNAL_HARDWARE_DEFERRED.md`（C09/C10/C11 开发阶段不跑真机，保持 BLOCKED，禁止改 PASS）
 
 ## 关键技术决策（勿轻易推翻）
 

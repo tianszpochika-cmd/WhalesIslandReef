@@ -1,0 +1,44 @@
+{
+  "task_id": "D19-L17",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:40:00+08:00",
+  "summary": "建立 D19 唯一失败码/重试建议目录 game/Assets/Scripts/Systems/D19/D19PortFailureCatalog.cs（纯 C#，零 Unity 依赖）：13 条冻结条目覆盖任务卡全部十个业务域（未知港口、权限不足、非法生命周期、泊位冲突/过期、服务关闭、资金/库存/容量失败、登船失败、离港失败、保存冲突、不支持旧存档），每条目含稳定业务码（d19.<domain>.<name>，全局唯一）、本地化 key（6 条引用 D19-L18 既有常量，7 条新 key 在本文件定义并列入 CatalogDefinedKeys 供 L18 后续扩展）、重试建议（NoRetry/RetrySafe/RetryAfterCorrection）与参数白名单（仅稳定标量 ID/数量/版本/状态名，禁词含 transform/unity/gameobject/component/snapshot/canvas/input/pointer/object/ref，不泄露内部对象）；只读消费 D19-L02 D19PortFailureCode 枚举与 D19-L18 key 注册表（未修改二者）；不吞掉既有系统原始失败事实：每条目记录真实来源 API 与真实码（D3 TradeResult.Code=not_enough_money/market_empty、D9 D9PreparationResult.Code=not_moored/no_crew/insufficient_supplies/invalid_port/not_in_port/invalid_destination/not_enough_money、Save SaveMigrationStatus.UnsupportedVersion、D3InventorySystem bool+error、D4 ShipyardResult.Accepted=false 无码不编造），D19 新领域（权限/泊位租期/登船/离港流程）明确标注 planned 不补造映射；提供 Find/TryResolve/ForLifecycleCode/Validate 纯检查 API。验证：临时 dotnet 工程（仓库外）编译真实 D19/Event 源文件 0 错误 0 警告；382 项确定性断言全 PASS（含 Validate() 空问题、十域覆盖、码/key 唯一、白名单禁词、生命周期映射、L18 注册表零缺 key）；不写任何中文/英文 UI 文案。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortFailureCatalog.cs",
+    "game/tools/results/D19/D19-L17/D19_L17_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L17_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "源码盘点：D3 TradeEconomySystem/D3Contracts、D3InventorySystem、D4 D4ShipyardSystem、D9 D9PortShipPreparationSystem/Contracts、Save SaveSystem/SaveMigration、D19 D19PortLifecycleContracts/D19PortLocalizationKeys/D19PortEventContracts（真实失败码/事实提取）",
+      "result": "PASS：D3 TradeResult.Code ∈ {invalid_state, invalid_reference, invalid_quantity, invalid_revision, market_empty, not_enough_money, duplicate_settlement}；D9 D9PreparationResult.Code ∈ {invalid_state, invalid_port, still_sailing, voyage_failed, unknown_berth, unknown_supply, not_moored, no_crew, insufficient_supplies, not_in_port, invalid_destination, not_enough_money, already_repaired, quantity_exceeds_damage, missing_material, duplicate}；D4 ShipyardResult 仅 Accepted=false+Message（无稳定码）；D3InventorySystem Try* 返回 bool+out string error（无码）；Save SaveMigrationStatus.UnsupportedVersion 真实；D19-L18 FailureKeys 13 个枚举码全部注册 key"
+    },
+    {
+      "command": "临时 dotnet 工程（仓库外，引用真实 EventContracts.cs/EventLog.cs/D19PortLifecycleContracts.cs/D19PortEventContracts.cs/D19PortLocalizationKeys.cs/D19PortFailureCatalog.cs）dotnet run",
+      "result": "PASS：编译 0 错误 0 警告；382 项确定性断言 0 失败（Validate() 空问题、13 条目/10 域覆盖、码/key 唯一、LocKey 命名规则、参数白名单禁词逐参数、ForLifecycleCode 映射、既有真实码保留、L18 ValidateRegistry 零缺 key）"
+    },
+    {
+      "command": "git 状态核对（D19 目录）",
+      "result": "PASS：唯一新增 game/Assets/Scripts/Systems/D19/D19PortFailureCatalog.cs；未修改 D19PortLifecycleContracts.cs/D19PortLocalizationKeys.cs/D19PortEventContracts.cs/D19PortAnchorCatalog.cs 或任何其他系统/UI/本地化资源"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：总览重新生成，D19-L17=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，本任务新增文件无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "7 个新本地化 key（permission_denied/berth_expired/funds_insufficient/inventory_operation_failed/capacity_exceeded/boarding_failed/departure_failed）尚未在 D19PortLocalizationKeys.AllKeys 注册 —— 已列入本目录 CatalogDefinedKeys，待 L18 扩展或 L45 一致性核对（L18 ValidateRegistry 对既有枚举码零缺 key，不受影响）",
+    "D4 无稳定失败码（仅 ShipyardResult.Accepted=false+显示文本）：D19 保留 Accepted=false 事实，不编造映射；若需稳定码由 D4 章节任务登记",
+    "D3InventorySystem 无稳定失败码（bool+out string error）：同上，error 为显示文本不映射",
+    "权限不足/泊位租期过期/登船/离港流程失败码归属 D19-L23/L06/L08/L09 新领域（planned），相关系统落地后消费本目录",
+    "UI 文案/本地化资源绑定、真实存档冲突检测运行时行为（D19-L20/L18 后续）",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L17_LOGIC_HANDOFF.md"
+}

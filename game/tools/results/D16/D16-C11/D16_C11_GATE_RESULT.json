@@ -1,0 +1,36 @@
+{
+  "task_id": "D16-C11",
+  "status": "GATE_BLOCKED",
+  "updated_at": "2026-08-18T01:35:00+08:00",
+  "maps_to": [
+    "D16-S02",
+    "D16-C27",
+    "D16-C28"
+  ],
+  "summary": "已完成 S02 交接文档与 D16 章节验收报告。只读盘点确认 C01—C08、C12 均为 GATE_PASS，但 C09（外部硬件证据）与 C10（S01长线全量验收）处于 GATE_BLOCKED。按红线禁止伪通过，做出 D16 章节不予正式发布放行的仲裁结论（GATE_BLOCKED）。",
+  "changed_files": [
+    "docs/game/design/common/D16_FINAL_HANDOFF_INDEX.md",
+    "docs/game/design/common/D16_GATE_ACCEPTANCE.md",
+    "game/tools/results/D16/D16-C11/D16_C11_GATE_RESULT.json",
+    "handoffs/D16/D16-C11_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D16/D16-C11_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "audit C01-C10, C12",
+      "result": "BLOCKED (C09/C10 blocked, chapter cannot release)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [
+    "D16 全量正式发布放行需等待目标硬件环境到位"
+  ],
+  "blockers": [
+    "prerequisite_gates_c09_c10_blocked"
+  ],
+  "handoff": "handoffs/D16/D16-C11_GATE_HANDOFF.md"
+}

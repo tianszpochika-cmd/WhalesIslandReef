@@ -1,0 +1,41 @@
+{
+  "task_id": "D19-L09",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:18:00+08:00",
+  "summary": "实现离港工作流确定性编排（game/Assets/Scripts/Systems/D19/D19DepartureWorkflow.cs，纯 C#、零 Unity、纯逻辑编排、无写路径）：实现离港全流程验证与编排（L22 幂等记录拦截重复提交、L24 基础格式与安全校验、L04/L24 港口与目的地合法性、L23 权限声明校验、L02/L24 生命周期状态校验、L08 船员全员 OnBoard 位置校验、L15 出航准备汇总清单检查、L06 泊位释放编排、L03 状态机推进与 L16 离港事件草案构造）。中途失败（如状态机拒绝）具备可审计补偿机制（发出 L16 补偿事件草案），绝不留下“已离泊但未开始航程”的半状态孤儿。只能通过 D2/D4/D9 公开命令与读模型编排，禁止直接修改 SailingSystem、船只、库存或船员内部数值。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19DepartureWorkflow.cs",
+    "game/tools/results/D19/D19-L09/D19_L09_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L09_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "7 项精确前置结果 JSON 状态复核（D19-L07/L08/L15/L16/L17/L22/L24）",
+      "result": "PASS：7 项精确前置均为 LOGIC_PASS"
+    },
+    {
+      "command": "dotnet build / run（独立 net9.0 测试应用程序，链接真实 D19/Event/D3/D9/Save 源码）",
+      "result": "PASS：编译 0 warning 0 error（exit 0）；5 项确定性断言全部 PASS（正常离港全流程释放泊位与离港事件、重复提交 CommandId 幂等重放零新事件、船员非 OnBoard 拒绝、出航准备不满足阻断列表透传拒绝、目的地与出发港相同拒绝）"
+    },
+    {
+      "command": "静态规范检查（纯逻辑编排、无 Unity UI/Canvas/Transform/物理、无跨系统私写）",
+      "result": "PASS：零 UnityEngine.UI 引用；所有状态变更通过 L06/L03 公开契约或由调用方驱动"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L09 状态刷新为 LOGIC_PASS，总览重新同步"
+    }
+  ],
+  "runtime_deferred": [
+    "航程实际启动后的物理位移、Crest Ocean 水体交互与航海 HUD 渲染属于 Runtime 阶段",
+    "玩家交互触发离港按钮及离港确认弹窗属于 Presentation 阶段",
+    "RuntimeApproved / ReleaseApproved（均为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L09_LOGIC_HANDOFF.md"
+}

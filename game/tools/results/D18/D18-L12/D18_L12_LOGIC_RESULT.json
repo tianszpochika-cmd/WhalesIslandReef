@@ -1,0 +1,35 @@
+{
+  "task_id": "D18-L12",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:05:00+08:00",
+  "summary": "发布角色分类词典（assets/D18_TAXONOMY_CHARACTERS.md）：冻结 player_visual/npc_visual/hair/outfit/accessory/role_variant/body/injury_overlay/shared_body 九类逻辑分类（含机器可读 JSON 词典）、content_id 前缀与 ResourceKey 约束、性别/体型/职业非裁决映射、视觉键写入禁区（身份/关系/特质/金钱/库存/NPC 行为/健康/任务）、敏感历史表达只复用既有审查标签（historical_tag 三值、historical_review 三值、5 个既有 content_warning_ids）；D20-L09/L10/L32 可据此建立纯逻辑接口，无需 Humanoid/Avatar/Prefab/模型；全部数字经真实 registry 只读交叉核对。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_TAXONOMY_CHARACTERS.md",
+    "game/tools/results/D18/D18-L12/D18_L12_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L12_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python temp/d18_l12_verify.py（2.1 JSON 词典与第 2 节表一致性、禁止分类/前缀/ResourceKey/视觉禁区/审查标签枚举、真实 registry 只读交叉核对、链接存在性、尾随空白）",
+      "result": "PASS：9 分类与表一致且唯一；禁止作 category 的 gameplay_role 清单无重叠；前缀规则与 D8 一致；ResourceKey 格式 d10:appearance:<content_id> 与禁止项完整；视觉键禁区 8 项齐全；审查枚举正确；真实计数 outfit 180 / crew 61 / asset 229 / historical_tag 125+2442+245 / historical_review 101+2620+91 / career_id 24 / culture 13 / content_warning_ids 5 个既有值 / 准入目录 character domain 37 条全部命中；链接 19 个缺失 0；无尾随空白"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误（新增文件已通过尾随空白扫描）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D18-L12 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "角色网格/材质/贴图实际导入与验证（L26/L27 仅描述器静态验证）",
+    "Humanoid Avatar / 骨骼 / Animator / Prefab / 场景接入 / 碰撞 / LOD",
+    "动画分类（待机/走路/奔跑/工作/战斗等）仅登记设计类别，不建立资源分类",
+    "D10/Appearance/ 运行时资源路径可用性（不验证、不声称）",
+    "服装/发型/体型真实视觉表现验证（截图/视觉 QA 属 Runtime 阶段）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L12_LOGIC_HANDOFF.md"
+}

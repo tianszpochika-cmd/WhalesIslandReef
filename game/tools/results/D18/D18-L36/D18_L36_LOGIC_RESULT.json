@@ -1,0 +1,47 @@
+{
+  "task_id": "D18-L36",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:26:33+08:00",
+  "summary": "实现 LocalDevelopmentReady 守卫（tools/d18_local_development_guard.py + 39 个单测）：按 D18-L03 第 7.3 节冻结的最小逻辑条件 C1—C10 逐条判定（来源完整/许可可用非 NC-ND-SA/来源验证 L05/哈希格式+文件匹配 L06/四项权利显式/分类命中 L11—L14 词典/content_ids 合法且存在 L15/ResourceKey 唯一稳定 L16/描述器完整 L25—L29/状态链合法 L35 且本逻辑阶段禁止 RuntimeApproved/ReleaseApproved），输出缺失条件清单；C11 反伪造：旧 Player 截图、Player 日志、RERUN 结果等历史视觉/运行产物在任何情况下都不能满足条件、不能导致 Ready；输出明确声明 LocalDevelopmentReady 不等于 Unity 导入、Prefab、运行时消费者、性能或 ReleaseApproved；工具只读（approved_count 恒为 0，不写任何审批字段）。正负夹具 39 个全过；对真实 L21 Kenney 记录烟测：诚实 NOT_READY 并列出 C3/C4/C7/C8/C9/C10 真实缺口，未补猜。",
+  "changed_files": [
+    "tools/d18_local_development_guard.py",
+    "tools/tests/test_d18_local_development_guard.py",
+    "game/tools/results/D18/D18-L36/D18_L36_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L36_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_local_development_guard",
+      "result": "PASS：39/39 通过。覆盖：完整记录 READY；缺来源/坏 URL/NC/ND/SA/未知许可/缺许可证据文件/来源验证 PENDING 或缺失/坏 hash/null hash/文件不匹配/权利不全或缺失/分类越词典（11 域全命中）/candidate 前缀 content key/缺存在性裁决/空 content_ids/路径式或重复 ResourceKey/缺 L16 裁决/描述器不全或缺证据/Rejected/Revoked/RuntimeApproved/ReleaseApproved/未知状态/状态链裁决缺失/截图-only 证据不产生 Ready/视觉产物不阻塞真实 Ready/旧候选无证据/历史 R03 PASS 记录不产生 Ready/多记录聚合/空记录/非法记录/确定性/只读/CLI 退出码"
+    },
+    {
+      "command": "python -m py_compile tools/d18_local_development_guard.py",
+      "result": "PASS：exit 0"
+    },
+    {
+      "command": "真实记录烟测：python tools/d18_local_development_guard.py --input <临时输入>（记录为 L21 生成的 asset_kenney_pirate_kit_ships_port_props_v1，携带真实来源/许可/归档哈希）",
+      "result": "PASS：结果 NOT_READY（exit 1），如实列出缺失条件 C3（无 L05 外部裁决）、C4（无 L06 文件匹配裁决）、C7（无 L15 存在性裁决）、C8（无 L16 裁决）、C9（无 L25—L29 描述器裁决）、C10（无 L35 链裁决）；未因任何旧证据或补猜转为 Ready"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test*.py\"（全量回归）",
+      "result": "PASS（含既有基线事实）：738 个测试，仅 4 个失败，全部为已知 SUPERSEDED test_d18_s02_r01_intake_refresh.py 的 R01 断言（基线第 1.3 节记录，非 L 任务门禁）；本任务未引入任何新失败"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L36 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "LocalDevelopmentReady 只是逻辑结论：Unity 导入、Prefab 可用、运行时消费者、性能与 ReleaseApproved 均需 Runtime 阶段真实证据",
+    "逐文件哈希与内容存在性依赖 L06/L15/L16/L25—L29/L35 的外部裁决；裁决缺失时守卫如实报 NOT_READY，不自行满足",
+    "旧 Player 截图/日志/RERUN 历史材料永久不能作为 Ready 证据（C11 反伪造）",
+    "A04 人工审核 267 条 Pending 与 D16 外部证据（非 D18 章节责任）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L36_LOGIC_HANDOFF.md"
+}

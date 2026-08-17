@@ -1,0 +1,49 @@
+{
+  "task_id": "D18-L17",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:01:41+08:00",
+  "summary": "实现候选资源运行时引用防线（tools/d18_candidate_runtime_guard.py，只读静态扫描）：检测运行时代码/配置/Registry 对 Assets/Art/Candidates、临时下载缓存（WhalesIslandReef/D18/cache）、外部归档（artifacts/external_sources、压缩包路径）与 Candidate 状态的直接引用；区分注释/文档、Editor-only（Editor 目录与 #if UNITY_EDITOR 块）和实际运行时引用；每条发现输出文件、行号、规则、严重度、分类、片段与修复方向；JSON 结构化检查 Registry 中 Candidate 状态不得声明任何运行时路径、placeholder 状态不得声明非占位路径（占位引用白名单：ph_/asset_ph_/placeholder_/unity-primitive:///路径含 placeholder）。17 个正负单测全过；对真实仓库扫描 3,417 个文件：0 条运行时违规（PASS），仅 D20A06PrefabBuilder.cs 4 条 Candidates 引用被正确分类为 editor_only（INFO，非阻断）；未修改任何 game 代码、未升级任何候选。",
+  "changed_files": [
+    "tools/d18_candidate_runtime_guard.py",
+    "tools/tests/test_d18_candidate_runtime_guard.py",
+    "game/tools/results/D18/D18-L17/D18_L17_REAL_SCAN.json",
+    "game/tools/results/D18/D18-L17/D18_L17_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L17_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_candidate_runtime_guard",
+      "result": "PASS：17/17 通过。覆盖：干净运行时代码（placeholder ResourceKey/正式 Prefab 路径）无发现；注释/文档提及 Candidates 分类为 comment_or_documentation(INFO) 不阻断；Editor 目录与 #if UNITY_EDITOR 块分类为 editor_only 不阻断；运行时 .cs 直引 Candidates 路径、反斜杠路径、配置 JSON 直引、Registry Candidate 状态+resource_path、placeholder 状态+正式路径、临时缓存路径、外部归档路径均按预期规则 BLOCKED；GpuCounterCandidates 等仅含 candidates 的变量名无误报；多行块注释正确分类；工具只读（文件内容不变）"
+    },
+    {
+      "command": "python tools/d18_candidate_runtime_guard.py --output game/tools/results/D18/D18-L17/D18_L17_REAL_SCAN.json（默认扫描 game/Assets/Scripts、Content、Settings、Resources）",
+      "result": "PASS：status=PASS，exit 0；扫描 3,417 个文件；findings 4、runtime_findings 0、editor_findings 4（D20A06PrefabBuilder.cs 行 87/98/109/120 的 Candidates 模型路径，分类 editor_only/INFO）；candidate_path 4、candidate_state 0、temp_cache 0、external_archive 0。Registry 结构检查确认 2,264 条 placeholder 状态条目引用 unity-primitive:// 与 ph_/placeholder 命名占位为合法占位，不误报；无任何真实 Candidate 状态条目"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test_d18_candidate_runtime_guard.py\" 与 python -m py_compile tools/d18_candidate_runtime_guard.py",
+      "result": "PASS：discover 17/17 OK；py_compile exit 0"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test*.py\"（全量回归）",
+      "result": "PASS（含既有基线事实）：417 个测试，仅 4 个失败，全部为已知 SUPERSEDED test_d18_s02_r01_intake_refresh.py 的 R01 断言（基线第 1.3 节记录，非 L 任务门禁）；本任务未引入任何新失败"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L17 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "真实运行时消费验证：本工具只做静态文本/结构扫描，不能证明 Prefab/场景加载路径在运行时不引用候选（最终由 Runtime 阶段与 D18-S03 等价门禁验证）",
+    "动态拼装引用：字符串拼接生成的路径（如 var p = root + \"/Art/Candidates/\" + name）静态扫描只能命中可识别的字面片段；完整覆盖依赖 L30 依赖图与 Runtime 实测",
+    "Unity .meta/GUID 引用：候选 FBX 的 .meta GUID 若被运行时引用，静态文本扫描不解析 GUID（L44 游戏引用审计与 Runtime 阶段处理）",
+    "Editor 工具引用 Candidates：D20A06PrefabBuilder.cs 等 Editor 构建器允许受控工作场景装配（intake-eligible 范围），其产物必须经未来 Runtime 晋级门禁后才能被正式消费",
+    "Registry 占位状态（2,264 条 placeholder）与 324 条项目自有资产引用：当前合法；升级为真实资源需 L35 迁移审计与 Runtime 证据"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L17_LOGIC_HANDOFF.md"
+}

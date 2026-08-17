@@ -1,0 +1,35 @@
+{
+  "task_id": "D18-L03",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:40:00+08:00",
+  "summary": "发布 D18 资源状态机完整规范（assets/D18_ASSET_STATE_MACHINE.md）：七个状态的证据/唯一写者/允许禁止迁移/撤销规则/下游读取范围、表驱动迁移矩阵（Markdown 表 + 机器可读 JSON 镜像）、批准拒绝撤销的可审计记录格式与 append-only 规则、L02/L35/L36/L37 字段与测试接口规格、逻辑阶段与 Runtime 阶段边界；机器验证无任何 Candidate 直达 RuntimeApproved/ReleaseApproved 的路径，当前未授予任何 RuntimeApproved/ReleaseApproved。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_ASSET_STATE_MACHINE.md",
+    "game/tools/results/D18/D18-L03/D18_L03_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L03_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python temp/d18_l03_verify.py（解析文档 4.4 JSON 矩阵 + 4.1 表一致性 + 可达性 BFS + 链接存在性 + 尾随空白）",
+      "result": "PASS：状态枚举 7 个、事件枚举 7 个；allowed 展开 14 条边、forbidden 展开 17 条边；allowed 与 forbidden 互斥（唯一显式例外 RuntimeApproved→ReleaseApproved=T4）；Rejected/Revoked 无出边；4.1 表与 JSON 完全一致；不存在 Candidate→RuntimeRequested/RuntimeApproved/ReleaseApproved、IntakeEligible→RuntimeApproved/ReleaseApproved、RuntimeRequested→ReleaseApproved 等任何直达边；BFS 验证到 RuntimeApproved/ReleaseApproved 的唯一路径必经 IntakeEligible→RuntimeRequested→RuntimeApproved（→T4）；链接 10 个缺失 0；无尾随空白"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误（新增文件已通过尾随空白扫描）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D18-L03 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "RUNTIME_APPROVE 授予（RuntimeApproved 需未来 Runtime 阶段真实运行时证据；本逻辑阶段禁止，当前持有者 0）",
+    "RELEASE_APPROVE 授予（需责任人类审核者含 Steam/外部分发结论；当前持有者 0）",
+    "真实运行时验证（导入、Prefab/场景集成、保存/恢复、回退入口）",
+    "L35/L36/L37 实现与测试（波次 2 任务，本文只冻结接口规格，不实现）",
+    "L31/L33/L34 对账、逐文件 SHA-256、A04 人工审核 267 条 Pending（非本章责任）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L03_LOGIC_HANDOFF.md"
+}

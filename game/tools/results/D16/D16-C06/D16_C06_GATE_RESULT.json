@@ -1,0 +1,31 @@
+{
+  "task_id": "D16-C06",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T00:30:00+08:00",
+  "maps_to": [
+    "D16-A04"
+  ],
+  "summary": "已完成 A04 剩余资产审查批次 005—008（合计 86 条），逐条留存独立证据并单条写回 Registry，批次 005—008 Remaining Pending 全部清零。",
+  "changed_files": [
+    "docs/game/design/common/reviews/D16_A04_BATCH_005.md",
+    "docs/game/design/common/reviews/D16_A04_BATCH_006.md",
+    "docs/game/design/common/reviews/D16_A04_BATCH_007.md",
+    "docs/game/design/common/reviews/D16_A04_BATCH_008.md",
+    "game/tools/results/D16/D16-C06/D16_C06_GATE_RESULT.json",
+    "handoffs/D16/D16-C06_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d16_a04_review_audit.py game",
+      "result": "PASS (批次 005—008 86 条全部 Approved，0 结构错误)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [],
+  "blockers": [],
+  "handoff": "handoffs/D16/D16-C06_GATE_HANDOFF.md"
+}

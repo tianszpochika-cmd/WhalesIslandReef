@@ -1,0 +1,31 @@
+{
+  "task_id": "D17-C01",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T01:40:00+08:00",
+  "maps_to": [
+    "D17-S01"
+  ],
+  "summary": "已完成 D17 垂直切片范围冻结（D17_SLICE_FREEZE.md）与最终角色/环境/船舶资源登记（D17_SLICE_CHARACTER_ASSETS.md, D17_SLICE_ENV_ASSETS.md）。冻结一座港/一名真人水手/一艘船/上下船/保存恢复闭环，零运行时与 Systems 代码修改。",
+  "changed_files": [
+    "docs/game/design/common/D17_SLICE_FREEZE.md",
+    "docs/game/design/common/D17_SLICE_CHARACTER_ASSETS.md",
+    "docs/game/design/common/D17_SLICE_ENV_ASSETS.md",
+    "game/tools/results/D17/D17-C01/D17_C01_GATE_RESULT.json",
+    "handoffs/D17/D17-C01_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D17/D17-C01_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "verify slice asset existence and preflight",
+      "result": "PASS (4 final FBX and Prefabs verified)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [],
+  "blockers": [],
+  "handoff": "handoffs/D17/D17-C01_GATE_HANDOFF.md"
+}

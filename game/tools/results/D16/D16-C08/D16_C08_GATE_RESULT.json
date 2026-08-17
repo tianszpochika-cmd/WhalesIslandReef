@@ -1,0 +1,41 @@
+{
+  "task_id": "D16-C08",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-18T00:58:00+08:00",
+  "maps_to": ["D16-A05"],
+  "summary": "方案 B：4 项切片最终资源已本地落地（Quaternius CC0 男性平民水手 + Kenney Pirate Kit CC0 码头/泊位/沙滩降级），预检 can_apply=true，仅这 4 条从 placeholder 接到最终路径。全库 placeholder 2260，未清零。",
+  "changed_files": [
+    "artifacts/external_sources/d16_c08_slice/",
+    "game/Assets/Art/SliceFinal/D16C08/",
+    "game/Assets/Prefabs/SliceFinal/D16C08/",
+    "tools/results/d16_a05_replacement_manifest.json",
+    "tools/results/d16_a05_replacement_preflight_current.json",
+    "docs/game/design/common/D16_A05_SLICE_RESOURCE_PACKET.md",
+    "docs/game/design/common/D16_A05_SLICE_INTEGRATION_PLAN.md",
+    "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md",
+    "tools/results/external/d16_a05_final_assets.json",
+    "game/Assets/Resources/ContentRegistry/entries/asset/asset_ph_crew_male.json",
+    "game/Assets/Resources/ContentRegistry/entries/building/building_saint_marys_dock.json",
+    "game/Assets/Resources/ContentRegistry/entries/building/building_small_boat_pier.json",
+    "game/Assets/Resources/ContentRegistry/entries/island/island_saint_marys.json",
+    "game/tools/results/D16/D16-C08/D16_C08_GATE_RESULT.json",
+    "docs/game/design/common/handoffs/D16/D16-C08_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d16_a05_replacement_preflight.py . tools/results/d16_a05_replacement_manifest.json --json-out tools/results/d16_a05_replacement_preflight_current.json",
+      "result": "PASS (can_apply=true, validated_count=4, issues=[])"
+    },
+    {
+      "command": "python -c count ContentRegistry placeholders",
+      "result": "PASS (placeholder_count=2260, final_replaced_count=4, not zeroed)"
+    }
+  ],
+  "external_evidence": ["tools/results/external/d16_a05_final_assets.json"],
+  "runtime_deferred": [
+    "2260 remaining placeholders are not in this task",
+    "Kenney Pirate Kit dock/pier/sand are quality-downgrade, not photoreal 1675 docks"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D16/D16-C08_GATE_HANDOFF.md"
+}

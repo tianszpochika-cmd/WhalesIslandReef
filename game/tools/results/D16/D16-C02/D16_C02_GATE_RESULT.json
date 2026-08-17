@@ -1,0 +1,44 @@
+{
+  "task_id": "D16-C02",
+  "status": "GATE_PASS",
+  "updated_at": "2026-08-17T23:38:00+08:00",
+  "maps_to": [
+    "D16-A04",
+    "D16-R01"
+  ],
+  "summary": "已完成 A04 人工审查批次 001（25 条记录，asset_blockade_order 到 asset_d15_a06_model_function_cargo_davit）。逐条提供本地证据文件并通过 apply_review_decision 单条写回，本批 Pending 清零。",
+  "changed_files": [
+    "docs/game/design/common/reviews/D16_A04_BATCH_001.md",
+    "docs/game/design/common/reviews/D16_A04_001/",
+    "game/Assets/Resources/ContentRegistry/entries/asset/asset_blockade_order.json",
+    "game/Assets/Resources/ContentRegistry/entries/asset/asset_cargo_seizure_writ.json",
+    "game/Assets/Content/D15/A06/entries/assets/",
+    "game/tools/results/D16/D16-C02/D16_C02_GATE_RESULT.json",
+    "docs/game/design/common/handoffs/D16/D16-C02_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d16_a04_review_audit.py game",
+      "result": "PASS (Pending 从 267 降至 192，本批 25 条全部 Approved)"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test_d16_a04_*.py'",
+      "result": "PASS (A04 审计与单条写回机制测试全部通过)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS (D16-C02 标记为 GATE_PASS)"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS (格式无错误)"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [
+    "剩余 11 个批次（共 192 条 Pending）的人工审查（D16-C03—C13）",
+    "A04 关闭审计与外部 envelope 生成（D16-C14）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D16/D16-C02_GATE_HANDOFF.md"
+}

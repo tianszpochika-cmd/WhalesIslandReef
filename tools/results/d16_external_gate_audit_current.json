@@ -1,0 +1,112 @@
+{
+  "task": "D16-EXTERNAL-GATES",
+  "status": "BLOCKED",
+  "project": "game",
+  "evidence_root": "tools\\results\\external",
+  "gates": {
+    "D16-A01": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a01_target_device.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A02": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a02_power_cross_platform.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A03": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a03_device_accessibility.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    },
+    "D16-A04": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a04_manual_review.json",
+      "errors": [
+        "missing:evidence_kind",
+        "missing:captured_at",
+        "missing:reviewer_id",
+        "missing:decision_log_ref",
+        "missing:reviewed_count",
+        "missing:pending_count",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_001.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_002.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_003.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_004.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_005.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_006.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_007.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_008.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_009.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_010.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_011.md",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_A04_BATCH_012.md",
+        "pending_count_not_zero",
+        "reviewed_count_not_positive"
+      ],
+      "operator": "D16-A04-REVIEWER-01",
+      "device_id": "STATION-AUDIT-01",
+      "raw_artifact_count": 12
+    },
+    "D16-A05": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a05_final_assets.json",
+      "errors": [
+        "missing:reviewer_id",
+        "missing:asset_manifest_ref",
+        "missing:final_asset_count",
+        "missing:placeholder_count",
+        "missing:scene_regression_pass",
+        "raw_artifact_missing:artifacts/external_sources/d16_c08_slice/SOURCE.md",
+        "raw_artifact_missing:artifacts/external_sources/d16_c08_slice/Quaternius_License_Standard.txt",
+        "raw_artifact_missing:artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "raw_artifact_missing:docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md",
+        "raw_artifact_missing:tools/results/d16_a05_replacement_manifest.json",
+        "raw_artifact_missing:tools/results/d16_a05_replacement_preflight_current.json",
+        "raw_artifact_missing:game/Assets/Art/SliceFinal/D16C08/crew_male_final.fbx",
+        "raw_artifact_missing:game/Assets/Art/SliceFinal/D16C08/saint_marys_dock_final.fbx",
+        "raw_artifact_missing:game/Assets/Art/SliceFinal/D16C08/small_boat_pier_final.fbx",
+        "raw_artifact_missing:game/Assets/Art/SliceFinal/D16C08/saint_marys_sand_final.fbx",
+        "raw_artifact_missing:game/Assets/Prefabs/SliceFinal/D16C08/crew_male_final.prefab",
+        "raw_artifact_missing:game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_dock_final.prefab",
+        "raw_artifact_missing:game/Assets/Prefabs/SliceFinal/D16C08/small_boat_pier_final.prefab",
+        "raw_artifact_missing:game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_sand_final.prefab",
+        "placeholder_count_not_zero",
+        "final_asset_count_not_positive",
+        "scene_regression_not_PASS"
+      ],
+      "operator": "D16-A05-REVIEWER-01",
+      "device_id": "STATION-AUDIT-01",
+      "raw_artifact_count": 14
+    },
+    "D16-A06": {
+      "status": "BLOCKED",
+      "evidence_file": "tools\\results\\external\\d16_a06_target_release_privacy.json",
+      "errors": [
+        "missing_evidence_file"
+      ]
+    }
+  },
+  "all_external_gates_pass": false,
+  "steam_upload_authorized": false,
+  "blocking_reasons": [
+    "D16-A01",
+    "D16-A02",
+    "D16-A03",
+    "D16-A04",
+    "D16-A05",
+    "D16-A06",
+    "steam_upload_not_authorized"
+  ],
+  "policy": {
+    "this_tool_never_approves_content": true,
+    "this_tool_never_changes_registry": true,
+    "this_tool_never_uploads": true
+  }
+}

@@ -19,15 +19,21 @@ class D18S02R01IntakeRefreshTests(unittest.TestCase):
         cls.entries = cls.catalog["eligible_entries"]
 
     def test_refresh_catalog_is_pass_and_has_expected_real_counts(self):
-        self.assertEqual(self.catalog["task"], "D18-S02-R01")
+        # 断言当前磁盘目录（D18-S02-R02，R01 为历史快照）的真实事实。
+        self.assertEqual(self.catalog["task"], "D18-S02-R02")
         self.assertEqual(self.catalog["status"], "PASS")
-        self.assertEqual(self.catalog["counts"]["manifest_total"], 28)
-        self.assertEqual(self.catalog["counts"]["candidate_file_total"], 1863)
-        self.assertEqual(self.catalog["counts"]["intake_eligible_file_total"], 1833)
-        self.assertEqual(self.catalog["counts"]["refresh_admitted_file_total"], 159)
+        self.assertEqual(self.catalog["counts"]["manifest_total"], 30)
+        self.assertEqual(self.catalog["counts"]["candidate_file_total"], 1895)
+        self.assertEqual(self.catalog["counts"]["intake_eligible_file_total"], 1865)
+        self.assertEqual(self.catalog["counts"]["refresh_admitted_file_total"], 191)
         self.assertEqual(validate_catalog(ROOT, self.catalog), [])
+        # 历史 R01 快照保留在目录内（previous_r01_catalog_snapshot），不被覆盖。
+        snapshot = self.catalog["previous_r01_catalog_snapshot"]
+        self.assertEqual(snapshot["task"], "D18-S02-R01")
+        self.assertEqual(snapshot["counts"]["intake_eligible_file_total"], 1833)
 
     def test_runtime_promotion_is_not_inferred(self):
+        # 历史兼容行为：准入目录绝不推断 Runtime/Release 审批。
         authority = self.catalog["authority"]
         self.assertFalse(authority["release_approved_inferred"])
         promotion = self.catalog["refresh"]["runtime_promotion"]
@@ -40,30 +46,31 @@ class D18S02R01IntakeRefreshTests(unittest.TestCase):
     def test_upstream_admission_counts_and_exclusions_are_explicit(self):
         admitted = {item["task"]: item["records_admitted"] for item in self.catalog["refresh"]["admitted_from_upstream"]}
         self.assertEqual(admitted, {
-            "D18-A04-R01": 24,
-            "D18-A04-R02-F": 0,
-            "D18-A04-R02-C": 1,
-            "D18-A04-R02-B": 1,
-            "D18-A05-R01": 133,
+            "D18-S02-R01": 1865,
+            "D18-A04-R02-F-R01": 0,
+            "D18-A04-R03-P": 32,
         })
         content_ids = {entry.get("content_id") for entry in self.entries}
         self.assertNotIn("animal_quaternius_eagle_blend_only_v01", content_ids)
         self.assertNotIn("asset_quaternius_animated_women_female_alternative_v01", content_ids)
-        a05 = next(item for item in self.catalog["refresh"]["upstream_reviews"] if item["task"] == "D18-A05-R01")
-        self.assertEqual(a05["records_processed"], 151)
+        reviews = {item["task"]: item["records_processed"] for item in self.catalog["refresh"]["upstream_reviews"]}
+        self.assertEqual(reviews["D18-A04-R03-P"], 32)
 
     def test_category_gate_keeps_real_gaps(self):
         categories = self.catalog["category_summary"]
-        self.assertEqual(categories["player_visual_core"]["intake_eligible_count"], 1)
+        self.assertEqual(categories["player_visual_core"]["intake_eligible_count"], 33)
         self.assertEqual(categories["npc_visual_core"]["intake_eligible_count"], 4)
         self.assertEqual(categories["wildlife_core"]["intake_eligible_count"], 18)
         self.assertEqual(categories["pet_core"]["intake_eligible_count"], 3)
         self.assertEqual(categories["port_structure_core"]["intake_eligible_count"], 96)
         self.assertEqual(categories["dock_and_shipyard_core"]["intake_eligible_count"], 6)
         self.assertEqual(categories["market_prop_core"]["intake_eligible_count"], 16)
-        self.assertEqual(categories["female_or_neutral_human_gap"]["intake_eligible_count"], 0)
+        self.assertEqual(categories["female_or_neutral_human_gap"]["intake_eligible_count"], 1)
+        self.assertEqual(categories["cat_gap"]["intake_eligible_count"], 1)
+        self.assertEqual(categories["bird_gap"]["intake_eligible_count"], 1)
         self.assertEqual(categories["sail_rig_gap"]["intake_eligible_count"], 0)
         self.assertEqual(categories["rudder_anchor_gap"]["intake_eligible_count"], 0)
+        self.assertEqual(categories["player_appearance_module"]["intake_eligible_count"], 32)
 
     def test_intake_id_formula_is_stable(self):
         for entry in self.entries[::137]:
@@ -93,7 +100,7 @@ class D18S02R01IntakeRefreshTests(unittest.TestCase):
             self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
             result = json.loads(output.read_text(encoding="utf-8"))
             self.assertEqual(result["status"], "PASS")
-            self.assertEqual(result["counts"]["intake_eligible_file_total"], 1833)
+            self.assertEqual(result["counts"]["intake_eligible_file_total"], 1865)
             self.assertEqual(result["audit"]["catalog_validation_errors"], [])
 
     def test_path_escape_is_rejected(self):

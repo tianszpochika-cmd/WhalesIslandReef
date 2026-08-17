@@ -1,0 +1,72 @@
+{
+  "fixture_kind": "d18_logic_valid_record",
+  "fixture_class": "material",
+  "task": "D18-L40",
+  "note": "合成合法夹具：不指向任何真实下载、真实二进制或伪造下载证据；仅用于验证器回归。",
+  "resource_key": "d10:material:material_wood_planks_v01",
+  "content_ids": [
+    "material_wood_planks_v01"
+  ],
+  "descriptor": {
+    "descriptor_kind": "d18_import_descriptor",
+    "schema_version": 1,
+    "source_asset_id": "asset_material_wood_planks_v01",
+    "type": "material",
+    "units": "unknown",
+    "axes": {
+      "up": "y",
+      "forward": "z"
+    },
+    "bounds": null,
+    "material_slots": [],
+    "skeleton_type": "none",
+    "animation_list": [],
+    "root_motion": "none",
+    "collision_intent": "none",
+    "lod_intent": null,
+    "license_dependency": {
+      "license_id": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+      "attribution_required": false
+    },
+    "fallback": {
+      "reference": "placeholder_ph_material_wood",
+      "description": "keep placeholder until Runtime import"
+    },
+    "represents_imported_asset": false
+  },
+  "records": [
+    {
+      "canonical_asset_id": "asset_material_wood_planks_v01",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wooden_planks",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-16",
+      "original_filename": "fixture_wooden_planks_1k.zip",
+      "sha256": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+      "state": "Candidate",
+      "content_ids": [
+        "material_wood_planks_v01"
+      ],
+      "evidence_paths": [
+        "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt"
+      ],
+      "runtime_deferred": [
+        "夹具不进行颜色空间/压缩/材质导入或运行时验证（Runtime 阶段延期）"
+      ]
+    }
+  ]
+}

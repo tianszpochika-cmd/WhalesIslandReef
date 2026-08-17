@@ -42,16 +42,15 @@
   ],
   "source_note": "D15-A04 项目自有功能建筑批量定义；模型、碰撞、锚点和音频暂以可替换占位引用登记，运行时状态不写入目录。",
   "source": {
-    "kind": "project-authored",
-    "author": "Whalebone team",
-    "reference": "docs/game/design/buildings/01_BUILDING_OVERVIEW.md"
+    "kind": "external-asset",
+    "author": "Kenney",
+    "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
   },
   "license": {
-    "status": "internal-authored",
-    "holder": "Whalebone project",
-    "reference": "docs/game/design/common/D8_CONTENT_ID_REGISTRY.md#sample-licensing",
+    "status": "CC0-1.0",
+    "holder": "Kenney",
+    "reference": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
     "commercial_use": true,
-    "attribution_required": false,
     "modification_allowed": true
   },
   "historical_tag": "inferred",
@@ -59,20 +58,18 @@
   "status": "production",
   "owner_system": "BuildingSystem",
   "test_id": "D8-A02-D15-A04-BUILDING-006",
-  "reviewer": "D15-A04",
+  "reviewer": "D16-A05-REVIEWER-01",
   "production_batch": "D15-A04*",
   "representative_sample": "building_green_cay_water_well",
-  "production_stage": "cataloged",
+  "production_stage": "slice_final",
   "behavior_profile": "building_behavior_profile_small_craft_landing",
-  "asset_state": "placeholder",
-  "model_ref": "asset_ph_building_modular_placeholder",
+  "asset_state": "integrated",
+  "model_ref": "game/Assets/Art/SliceFinal/D16C08/small_boat_pier_final.fbx",
   "material_ref": "placeholder_building_material_port",
-  "collision_ref": "asset_ph_building_collision_placeholder",
-  "lod_profile": "building_functional_lod3",
+  "collision_ref": "box_pier_root",
+  "lod_profile": "pier_slice_lod3",
   "anchor_refs": [
-    "anchor_building_small_boat_pier_entry",
-    "anchor_building_small_boat_pier_service",
-    "anchor_building_small_boat_pier_state"
+    "anchor_pier_board"
   ],
   "audio_profile": "asset_ph_building_audio_placeholder",
   "function_tags": [
@@ -90,7 +87,8 @@
   "quality_level": "Q2",
   "historical_review": "Approved",
   "review_evidence_refs": [
-    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"
   ],
   "content_warning_ids": [],
   "context_note_key": "",
@@ -98,5 +96,28 @@
   "presentation_levels": [
     "Full",
     "LowIntensity"
-  ]
+  ],
+  "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/small_boat_pier_final.prefab",
+  "authorization": {
+    "authorization_id": "auth-d16-c08-kenney-pier",
+    "rights_holder": "Kenney",
+    "license_ref": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+    "source_url_or_path": "https://kenney.nl/assets/pirate-kit",
+    "acquired_at": "2026-08-18",
+    "commercial_use": true,
+    "modification_allowed": true,
+    "expiry_or_scope": "CC0; D16-C08 slice pier mesh; quality-downgrade",
+    "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+  },
+  "review_decision_basis": {
+    "decision": "ApprovedWithWarning",
+    "basis": "D16-C08 Plan B slice replacement after preflight can_apply=true",
+    "reviewer": "D16-A05-REVIEWER-01",
+    "reviewed_at": "2026-08-18",
+    "evidence_refs": [
+      "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"
+    ],
+    "explicit_human_decision": true,
+    "automated_approval": false
+  }
 }

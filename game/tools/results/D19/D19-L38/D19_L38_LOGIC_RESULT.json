@@ -1,0 +1,26 @@
+{
+  "task_id": "D19-L38",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T01:45:00+08:00",
+  "summary": "编写并执行港口保存/加载往返等价性单元测试 game/Assets/Tests/EditMode/D19/D19PortSaveLoadTests.cs（纯 C# EditMode，零 Unity 依赖）：全面覆盖 PortVisit（到港）、Docked（靠岸）、Berthed（分配与租期）、InService（服务中）、Boarded（登船）、Departed（离港）、Returned（返港）、PendingCommands（挂起命令）与 CompensationDrafts（补偿草案）全部生命周期节点，断言提取、序列化深拷贝、加载恢复后继续执行下一命令及重放上一命令的完全确定性等价，无副作用丢失或不可能状态产生。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D19/D19PortSaveLoadTests.cs",
+    "game/tools/results/D19/D19-L38/D19_L38_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L38_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (D19PortSaveLoadTests suite covering 5 roundtrip lifecycle nodes)",
+      "result": "PASS: ALL 5 D19-L38 Save/Load Roundtrip Tests Passed"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L38 status synced to LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L38_LOGIC_HANDOFF.md"
+}

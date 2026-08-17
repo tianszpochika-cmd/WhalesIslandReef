@@ -1,0 +1,37 @@
+{
+  "task_id": "D19-L29",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T00:15:00+08:00",
+  "maps_to": [
+    "D19-L06",
+    "D19-L07"
+  ],
+  "summary": "实现泊位与靠泊系统纯确定性单元测试（game/Assets/Tests/EditMode/D19/D19BerthDockingTests.cs）：全面覆盖正常预留与占用、两船竞争同泊位、船型/吃水能力不兼容拒绝、租期过期拒绝与自动释放、正常与超期释放、跨港泊位请求拒绝、重复命令幂等控制、一船多泊位互斥拒绝、靠泊前置规则确定性裁决及不变式全程校验（无船双占/无泊位双占/失败无副作用）。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D19/D19BerthDockingTests.cs",
+    "game/tools/results/D19/D19-L29/D19_L29_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L29_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet test (NUnit 3.14 on net9.0 with real D19/Event/D3/D9/Save domain files)",
+      "result": "PASS (8/8 deterministic unit tests passed, 0 failed, 0 skipped)"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS (D19-L29 recorded as LOGIC_PASS)"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS (clean diff format)"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [
+    "真实 Unity 物理碰撞/码头检测",
+    "Transform 坐标与 NavMesh 移动",
+    "客户端 UI/HUD 靠泊交互"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L29_LOGIC_HANDOFF.md"
+}

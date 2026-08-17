@@ -1,0 +1,26 @@
+{
+  "request_kind": "d18_runtime_promotion_request",
+  "schema_version": 1,
+  "asset_id": "asset_fixture_env_island_patch",
+  "current_state": "IntakeEligible",
+  "target_usage_scene": "d19_environment_work_scene",
+  "descriptors": [
+    { "kind": "d18_import_descriptor", "path": "docs/fixtures/descriptors/env_island_patch_import.json" }
+  ],
+  "requirements": {
+    "collision": "terrain surface, no walkable overlaps with docks",
+    "lod": "3 levels, hand-authored LODs expected",
+    "animation": "none"
+  },
+  "approver": "human:environment_design_lead",
+  "risks": [
+    "patch scale must be re-measured against the harbor layout",
+    "vegetation collision is intentionally absent"
+  ],
+  "rollback": {
+    "reference": "placeholder_env_island_patch",
+    "description": "keep the placeholder terrain if the patch fails at Runtime"
+  },
+  "submitted_at": "2026-08-16T13:30:00+08:00",
+  "declares_approval": false
+}

@@ -1,0 +1,38 @@
+{
+  "task_id": "D19-L12",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:00:00+08:00",
+  "summary": "实现港口仓库取放编排适配器（game/Assets/Scripts/Systems/D19/D19WarehousePortAdapter.cs，纯 C#、零 Unity 依赖）：Store/Withdraw 共用编排流程——校验命令 ID → 权限（D19-L23：actor/ship/port/warehouse 服务/货物归属声明，跨船/跨港/伪造服务拒绝）→ 服务可用性（D19-L05：warehouse 夜间关闭等）→ 透传命令 ID 调用原库存/容量唯一写者 D3InventorySystem（TryAddCargo/TryRemoveCargo）→ 返回规范 D19 结果 + L16 事件草案（成功 ServiceResult / 失败 Rejection）。源码盘点事实（如实记录）：D3/D9 均无港口侧仓库存储态（D3InventoryState 只有船货舱 Cargo 与 PersonalItems；D9 无仓库 API），因此适配器不持有任何库存集合或数量事实（不复制库存系统），仓库存取定义为经 D3 所有者对船货舱的存取编排；D13 的 warehouse 建筑服务属另一章节、不在 D19 基线冻结依赖内，不引用 D13 类型。确定性结果：未知物品（invalid_cargo/invalid_item → d19.warehouse.unknown_item）、容量满（cargo_full/weight_full/overflow → d19.warehouse.capacity_full 等，永不写成成功）、货舱不足（not_enough_cargo）、跨实体货物（权限拒绝）、重复命令（同命令同参返回存储结果无副作用；同命令异参 → duplicate_command）、服务不可用（d19.service.unavailable）；容量/数量/归属唯一写者=D3InventorySystem，适配器零直写 D3/D9 字段、零复制集合、零 UI。临时 dotnet 工程（仓库外）netstandard2.1 编译 0 警告 0 错误 + 29 项确定性检查全 PASS。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19WarehousePortAdapter.cs",
+    "game/tools/results/D19/D19-L12/D19_L12_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L12_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build（临时工程 netstandard2.1，引用真实 Event/D3(D3Contracts+D3InventorySystem+CommodityCatalog+WorldCatalog)/D9(D9WeatherSeaState)/L02/L04/L05/L16/L17/L18/L23 源码 + 本文件）",
+      "result": "PASS：0 警告 / 0 错误"
+    },
+    {
+      "command": "dotnet run（临时控制台 29 项确定性断言：Store/Withdraw 成功并经所有者写入、未知物品、容量满/重量满/溢出、货舱不足、跨实体货物、缺命令 ID、同命令同参幂等重放无副作用、同命令异参 DuplicateCommand、夜间 warehouse 不可用、未知港口/跨港声明拒绝、L16 事件草案全部通过 D19PortEventGuard、确定性与只读经所有者 API）",
+      "result": "PASS：ALL CHECKS PASS（29/29）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D19-L12 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "港口侧仓库存储态（D3/D9 当前不存在；若未来 D3 章节或 Runtime 阶段引入港口仓库容量模型，本适配器的 Store 目标语义需随之扩展并重新评审）",
+    "D13 warehouse 建筑服务接入（D13 章节范围，需 D19 基线更新冻结依赖后另行任务）",
+    "真实场景/UI 消费（Prefab/场景/输入/HUD 属 Runtime 阶段）",
+    "L17 目录扩展：d19.warehouse.unknown_item / capacity_full / weight_full / overflow / not_enough_cargo / invalid_request / duplicate_command / missing_command_id 等新领域原因 ID 待 L17 注册（本系统未修改 L17）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L12_LOGIC_HANDOFF.md"
+}

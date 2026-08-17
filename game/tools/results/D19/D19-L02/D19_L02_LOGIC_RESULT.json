@@ -1,0 +1,38 @@
+{
+  "task_id": "D19-L02",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:27:18+08:00",
+  "summary": "D19 港口生命周期契约（唯一写入文件 game/Assets/Scripts/Systems/D19/D19PortLifecycleContracts.cs，纯 C#）：冻结 D19PortVisitState（None/PortVisit/Docked/Berthed/InService/Boarded/Departed/Returned，互斥枚举不用 bool）、D19PortTransitionReason（9 个迁移原因）、D19PortFailureCode（13 个稳定失败码）、表驱动 D19PortTransitionRule（13 条冻结迁移规则：前态+原因→目标态+原因 ID+拒绝失败码）、D19PortCommandKind/D19PortCommand/D19PortCommandResult/D19PortFailure（命令/结果/失败载体 DTO，CommandId 幂等关联）、D19PortLifecycleContracts.CanTransition/ResolveRejectionCode/ValidateInvariant（迁移判定、拒绝码解析、不变式：Berthed 必须带 BerthId）。公共类型全部带 XML 注释（拥有者+含义）。无 Unity/坐标/Transform/UI 字符串/网络/LLM 依赖；不复制 D2/D3/D4/D9/Save 任何状态字段。验证：.NET Framework csc.exe 编译为 library exit 0（实际命令已记录）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortLifecycleContracts.cs",
+    "game/tools/results/D19/D19-L02/D19_L02_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L02_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "& C:/Windows/Microsoft.NET/Framework64/v4.0.30319/csc.exe /nologo /target:library /out:<temp>/d19_l02.dll game/Assets/Scripts/Systems/D19/D19PortLifecycleContracts.cs",
+      "result": "PASS：exit 0、生成 dll（初检 5 处 C# 7.2 readonly 字段修饰符被旧 csc 拒绝，已移除修饰符后编译通过）"
+    },
+    {
+      "command": "静态自检：迁移表 13 条规则逐一覆盖七状态；无 bool 组合状态；无 Transform/坐标/UI 字符串/网络/LLM 引用（grep 复查）",
+      "result": "PASS：契约文件仅 using System/System.Collections.Generic；全部公共类型含 XML 注释"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L02 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "港口场景/坐标/碰撞/路径/HUD/输入手感（全部 Runtime 阶段，契约不承载坐标）",
+    "实际靠泊/泊位分配的真实服务可用性（时间/势力/天气逻辑输入由 D19-L05 消费，真实运行验证延期）",
+    "事件落盘、存档投影与幂等重放的实际运行时行为（L16/L20/L22 逻辑层验证，运行时验证延期）",
+    "RuntimeApproved/ReleaseApproved（均为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L02_LOGIC_HANDOFF.md"
+}

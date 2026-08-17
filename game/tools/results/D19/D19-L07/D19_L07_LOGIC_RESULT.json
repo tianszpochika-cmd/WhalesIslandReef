@@ -1,0 +1,44 @@
+{
+  "task_id": "D19-L07",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:35:19+08:00",
+  "summary": "实现靠泊前置规则的纯校验 game/Assets/Scripts/Systems/D19/D19DockingRules.cs（纯 C#，零 Unity 依赖，精确前置 L03/L05/L06/L17/L23/L24 均 LOGIC_PASS）：确定性裁决管道 Adjudicate（首个失败即返回，顺序固定）——命令 ID（L24）→ 港口/泊位归属（L24 封装 L04）→ 港口访问状态（L03 快照，仅 Docked/Returned 允许，None/Departed→not_in_port、PortVisit→not_moored、Berthed/InService→ship_already_berthed）→ 船只逻辑状态（本船已持泊位→ship_already_berthed，同一泊位→duplicate_request NoRetry）→ 服务可用性（消费 L05 裁决结果，设施关闭/封锁→d19.service.unavailable）→ 权限（L23，跨玩家/跨港→d19.port.permission_denied + authority_denied.<cause>）→ 船型能力（L06 冻结能力表，tier 越界→ship_tier_incompatible、浅吃水进深水泊位→draft_incompatible、缺能力→capability_missing）→ 泊位状态（L06 分配事实，他人占用→occupied、他人预留→reserved_by_other、本人持有→duplicate_request）→ 状态组合一致性（L24）；失败保持所有状态不变并给出 L17 码 + L18 key + 重试建议 + 精确 ReasonId；AdjudicateReservation 只在裁决通过后消费 L06 Reserve 命令（未通过 ReserveResult=null、泊位状态不变）；绝不实现物理碰撞/距离/Transform/NavMesh/自动移动。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19DockingRules.cs",
+    "game/tools/results/D19/D19-L07/D19_L07_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L07_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md",
+    "docs/game/LOGIC_TASK_STATUS.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build（仓库外临时工程，链接真实 D19 全部 11 个契约/系统文件 + EventContracts.cs，net9.0/LangVersion 9.0）",
+      "result": "PASS：0 警告 / 0 错误（与 L03/L05/L06/L17/L23/L24 同编译，接口一致）"
+    },
+    {
+      "command": "临时控制台断言（30 项，仓库外执行）",
+      "result": "PASS：30/30（全因子通过→允许并带规范键；确定性同输入同结果；船型 2 项（tier 越界/浅吃水）；无访问 4 态；无权 2 项（cross_player/cross_port）；占用/预留他人 2 项；重复请求 3 项（同泊位持有/reserved by self/他泊位持有）含 NoRetry；服务关闭 2 项（facility_closed/blockaded）；非法状态 4 项（键格式/跨港泊位/未知港/缺命令 ID）；AdjudicateReservation 允许→L06 Reserve 成功且不变式成立、拒绝→ReserveResult null 且泊位系统不变；Adjudicate 纯只读；全部拒绝均携带可解析 L17 码与合法 L18 key）"
+    },
+    {
+      "command": "静态扫描：D19DockingRules.cs 无 UnityEngine/TMPro/Localization./TextMesh/Canvas/NavMesh/Transform 引用（仅文档注释提及）；无物理/移动实现",
+      "result": "PASS：0 处 Unity/物理依赖；只读消费 L03/L05/L06/L23/L24，唯一写路径是裁决通过后消费 L06 Reserve 命令"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L07 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无空白错误；仅工作区既有未提交文件的 LF→CRLF 警告"
+    }
+  ],
+  "runtime_deferred": [
+    "真实泊位占用/租期事实（L06 分配数据当前只在测试构造；运行时由 L06 系统与保存投影提供）",
+    "船只逻辑状态/船员位置事实来源（D4 船舶数据与 D19CrewLocation 逻辑输入；本系统只消费调用方传入的快照）",
+    "港口访问状态真实来源（L03 D19PortVisitSystem 实例在运行时提供 State 快照）",
+    "物理碰撞、距离、Transform、NavMesh、自动移动船只（明确禁止，属 Runtime 表现层）",
+    "UI 文案展示（本系统只产出 L17 码 + L18 key）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L07_LOGIC_HANDOFF.md"
+}

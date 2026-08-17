@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whalesislandreef.local/schema/d18_logic_asset_record.schema.json",
+  "title": "WhalesIslandReef D18 logic asset record",
+  "description": "Canonical machine-verifiable logical record for a candidate external asset (D18-L02). It records provenance, license, rights, hash, state, content mapping and evidence as static data only; it never grants approval, imports assets or edits the Content Registry. Records claiming RuntimeApproved or ReleaseApproved must carry the corresponding evidence fields; the logic phase itself never produces such grants. Field semantics follow the D18_LOGIC_GOVERNANCE_BASELINE section 6.1 frozen dictionary.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "canonical_asset_id",
+    "category",
+    "source_id",
+    "source_url",
+    "license",
+    "rights",
+    "download_date",
+    "original_filename",
+    "sha256",
+    "state",
+    "content_ids",
+    "evidence_paths",
+    "runtime_deferred"
+  ],
+  "$defs": {
+    "repo_relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative path only. Absolute paths, drive letters (C:), UNC names (\\\\server), backslashes, leading slashes, whitespace and '..' traversal segments are forbidden.",
+      "pattern": "^[A-Za-z0-9_.][A-Za-z0-9_./-]*$",
+      "not": { "pattern": "(^|/)\\.\\.(/|$)" }
+    },
+    "https_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[^\\s]+$"
+    },
+    "iso_date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    }
+  },
+  "properties": {
+    "canonical_asset_id": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 128,
+      "pattern": "^asset_[a-z0-9_]+$",
+      "description": "Stable business key in lower snake_case (asset_<...>). Never a disk path, an absolute path or a display name."
+    },
+    "category": {
+      "type": "string",
+      "description": "Logical category. Starter vocabulary is grounded in the real intake catalog domains and the local-development-ready categories (2026-08-16 baseline snapshot); the authoritative taxonomy dictionary is frozen by L11-L14 and cross-checked by L45.",
+      "enum": [
+        "animal",
+        "audio",
+        "building",
+        "character",
+        "environment",
+        "fish",
+        "lighting_reference",
+        "material",
+        "prop",
+        "ship",
+        "ui"
+      ]
+    },
+    "taxonomy_category": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z0-9_]+$",
+      "description": "Optional domain fine-grained category (two-layer contract, D18-L51). When present, its value must exist in tools/schemas/d18_taxonomy_category_map.json and the mapped parent_category must equal the record's category; an unknown taxonomy_category or a parent mismatch is invalid (P0). Records without taxonomy_category remain legal. It never replaces category, never widens the 11-value enum and never implies any runtime or release right."
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^source_[a-z0-9_]+$",
+      "description": "source_<source_name>; one registration per source."
+    },
+    "source_url": {
+      "$ref": "#/$defs/https_url",
+      "description": "Official source URL. Recorded statically; never fetched over the network."
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "license_id",
+        "license_url",
+        "license_evidence_path",
+        "attribution_required"
+      ],
+      "description": "Normalized license object (L04 normalizes; unknown/conflicting/NC must be blocked or pending, never guessed as CC0).",
+      "properties": {
+        "license_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Normalized license identifier, e.g. CC0-1.0."
+        },
+        "license_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://[^\\s]+$"
+        },
+        "license_evidence_path": {
+          "$ref": "#/$defs/repo_relative_path",
+          "description": "Repo-relative license evidence file path."
+        },
+        "attribution_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Four distribution rights, each explicitly recorded (L07 validates them against the license).",
+      "required": [
+        "commercial_use",
+        "modification_allowed",
+        "repository_storage",
+        "distribution_with_game"
+      ],
+      "properties": {
+        "commercial_use": { "type": "boolean" },
+        "modification_allowed": { "type": "boolean" },
+        "repository_storage": { "type": "boolean" },
+        "distribution_with_game": { "type": "boolean" }
+      }
+    },
+    "download_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Actual download date; null when not downloaded. Never invent a date."
+    },
+    "original_filename": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/\\\\:]+$",
+      "description": "Original package/file name. Renaming must not create a new pack identity."
+    },
+    "sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-fA-F]{64}$",
+      "description": "Real 64-hex digest of the file/archive; null (pending) when the original file is missing. Never guessed."
+    },
+    "state": {
+      "type": "string",
+      "description": "One of the seven frozen states (baseline section 2). Unknown or historical approval states (e.g. Approved, LocalDevelopmentReady) are rejected. Transition order is validated by L35; this schema only enforces the evidence each state requires.",
+      "enum": [
+        "Candidate",
+        "IntakeEligible",
+        "RuntimeRequested",
+        "RuntimeApproved",
+        "ReleaseApproved",
+        "Rejected",
+        "Revoked"
+      ]
+    },
+    "content_ids": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Content mapping keys in lower snake_case (grounded in the 1,865 real intake entries). Referenced keys must exist; L15 checks existence and forbids game data depending on candidate files.",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+      }
+    },
+    "evidence_paths": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Repo-relative evidence file paths; no absolute-path leaks.",
+      "items": { "$ref": "#/$defs/repo_relative_path" }
+    },
+    "runtime_deferred": {
+      "type": "array",
+      "description": "Per-record runtime risks, honestly registered; deferral never replaces a passing gate.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "human_reviewer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Required only when state is ReleaseApproved."
+    },
+    "human_review_date": {
+      "$ref": "#/$defs/iso_date",
+      "description": "Required only when state is ReleaseApproved."
+    },
+    "release_evidence_path": {
+      "$ref": "#/$defs/repo_relative_path",
+      "description": "Required only when state is ReleaseApproved."
+    },
+    "runtime_consumers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Controlled consumers of an approved record; required only when state is RuntimeApproved.",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "state": { "const": "ReleaseApproved" } } },
+      "then": {
+        "required": ["human_reviewer", "human_review_date", "release_evidence_path"]
+      }
+    },
+    {
+      "if": { "properties": { "state": { "const": "RuntimeApproved" } } },
+      "then": {
+        "required": ["runtime_consumers"]
+      }
+    }
+  ]
+}

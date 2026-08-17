@@ -1,0 +1,29 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_env_island_patch",
+  "type": "environment",
+  "units": "meters",
+  "axes": { "up": "y", "forward": "z" },
+  "bounds": { "width_m": 20.0, "depth_m": 20.0, "height_m": 6.0 },
+  "material_slots": [
+    { "slot_name": "ground", "slot_role": "stone" },
+    { "slot_name": "vegetation", "slot_role": "organic" }
+  ],
+  "skeleton_type": "none",
+  "animation_list": [],
+  "root_motion": "none",
+  "collision_intent": "terrain",
+  "lod_intent": { "levels": 3, "generate_automatically": false },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_url": "https://example.invalid/license/cc0",
+    "license_evidence_path": "docs/fixtures/license_cc0.txt",
+    "attribution_required": false
+  },
+  "fallback": {
+    "reference": "placeholder_env_island_patch",
+    "description": "keep the placeholder terrain until real patch and collision are verified"
+  },
+  "represents_imported_asset": false
+}

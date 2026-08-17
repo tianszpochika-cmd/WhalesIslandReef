@@ -1,0 +1,32 @@
+{
+  "task_id": "D19-L21",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:35:00+08:00",
+  "summary": "实现旧存档缺少 D19 字段、旧 key、旧版本和不可能状态时的安全迁移 game/Assets/Scripts/Systems/D19/D19PortSaveMigration.cs（D19-L21，纯 C#，零 Unity 依赖）：合法缺字段安全映射到保守确定默认值（CreateDefault 语义）；旧 D3 裸键（santa_margarita 等）与 D9 历史泊位别名（building_saint_marys_dock 等）经 L04 锚点目录平滑规范化并保留 MigrationHint；不可能状态/不可逆数据损失（如 Berthed 缺失 BerthId、跨港泊位冲突、重复/无效分配或成员、负数世界日）严格返回 L17 错误码（d19.save.unsupported_version / d19.save.conflict / d19.berth.occupied / d19.boarding.failed 等）与人工恢复提示；迁移保证版本单调与幂等性；绝不提升权限、自动开服务或产生业务副作用。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortSaveMigration.cs",
+    "game/tools/results/D19/D19-L21/D19_L21_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L21_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (temp_test_build comprehensive test suite: 19 scenarios covering null default, up-to-date idempotency, v0->v1 upgrade, future version rejection, negative time rejection, alias migration, berth impossible states, cross port conflict, member safe defaults, duplicate member/berth rejection, original preservation)",
+      "result": "PASS: ALL 19 D19PortSaveMigration COMPREHENSIVE CHECKS PASSED, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L21 status synced to LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS: exit 0"
+    }
+  ],
+  "runtime_deferred": [
+    "既有 SaveSystem 统一入口（SaveMigration.cs）的全局调度与 SQLite 表写入对齐",
+    "D19-L39 保存与迁移测试整合验证",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L21_LOGIC_HANDOFF.md"
+}

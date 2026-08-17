@@ -1,0 +1,39 @@
+{
+  "task_id": "D18-L22",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T22:05:00+08:00",
+  "summary": "将真实存在的 Quaternius 候选写为 Schema 合法静态目录（sources/d18_quaternius_logic_catalog.json，61 条记录）：57 条来自准入目录 eligible_entries（8 个 manifest 的真实来源/包内 CC0 许可证/哈希/文件证据逐条保留）+ 4 条 intake 排除的 Animated Women 真实候选（含 D18-A04-R02-F-R01 隔离导入 PARTIAL 事实：Avatar 非 human、0 动画剪辑）。61 条记录全部 state=Candidate（仅登记，不批准）、全部真实 SHA-256 由磁盘只读计算并与文件匹配（L06 61/61 PASS）；分类只用 L11—L14 冻结 key（npc_visual/player_visual/hair/outfit/terrestrial_animal/pet/bird/aquatic_animal）；Schema（taxonomy 枚举）61/61 通过，原 L02 枚举仅 category 枚举差异 61 条、无其他字段失败（L45 对账点）；L04 许可 61/61 NORMALIZED、L07 权利 61/61 CLEARED、L08 路径 263 字段 0 违规、L09 无问题、L10 包边界 57 条 PASS、L05 60 PASS + 1 真实缺口（cat 包 official_page 为 opengameart.org 与 source 令牌不一致，已登记）；L15 25 条 content 链接通过、32 条 R03 派生记录因 candidate_ 派生键被诚实标记（非业务 content）、4 条 women 内容未注册——均保持 Candidate，不产生 IntakeEligible/Approved。无伪造 Avatar、动画、导入或可玩结论。",
+  "changed_files": [
+    "docs/game/design/common/assets/sources/d18_quaternius_logic_catalog.json",
+    "game/tools/results/D18/D18-L22/D18_L22_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L22_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python temp/d18_l22_verify.py（jsonschema 校验 + L04/L05/L06/L07/L08/L09/L10/L15 全部只读验证器）",
+      "result": "PASS（结论明细）：Schema taxonomy 枚举 61/61 通过；原 L02 枚举仅 category 差异 61 条、0 其他失败；L04 CC0 61/61 NORMALIZED；L05 60 PASS + 1 FAIL（asset_quaternius_cat_pack_vol2_v01 source_url_domain_mismatch，真实 manifest 缺口已登记）；L06 61/61 真实哈希匹配；L07 61/61 CLEARED；L08 263 证据路径 0 违规；L09 0 issue；L10 57/57 包边界 PASS；L15 25 通过 + 32 candidate_key_leak（R03 派生键，诚实标记非业务 content）+ 4 missing_content_id（women 内容未注册），状态保持 Candidate"
+    },
+    {
+      "command": "生成脚本（临时目录）确定性重建 + 真实磁盘检查：61/61 文件存在、61/61 许可证证据存在、61/61 导入证据存在、61/61 归档文件存在、61/61 哈希证据文件存在",
+      "result": "PASS：所有数量可由记录计算（by_manifest/by_category 与记录一一对应）；catalog header.counts 与记录集合程序一致"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D18-L22 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "IntakeEligible 授予：由 D18-L42 编译器依据波次 1 验证器结果决定，本目录只登记 Candidate",
+    "32 条 R03 派生记录的业务 content_id 注册（当前引用 candidate_ 派生键，L15 诚实标记；需 L38 谱系检查与内容注册后由 L42 处理）",
+    "4 条 Animated Women 记录：正式 Unity 导入、human Avatar 验证、动画剪辑、D20 Humanoid retargeting（R01 隔离导入为 PARTIAL 历史证据，非 L 门禁）",
+    "cat 包 official_page 来源不一致（opengameart.org vs source_quaternius）：归 manifest 所有者修复，不影响本目录记录",
+    "Unity 导入后的真实网格/材质/动画验证、Prefab/场景接入、保存/恢复、性能（基线第 9 节）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L22_LOGIC_HANDOFF.md"
+}

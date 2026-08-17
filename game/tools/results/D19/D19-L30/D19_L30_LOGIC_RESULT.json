@@ -1,0 +1,23 @@
+{
+  "task_id": "D19-L30",
+  "date": "2026-08-17",
+  "status": "LOGIC_PASS",
+  "summary": "实现登船与离港工作流纯确定性测试 game/Assets/Tests/EditMode/D19/D19BoardingDepartureTests.cs（D19-L30，纯 C#，零 Unity 依赖）：全面覆盖上下船成功（从 OnShore 迁移至 OnBoard 并产出 Boarded 事件草案；从 OnBoard 迁移至 OnShore 产出 Disembarked 事件草案）、成员已在目标位置原子拒绝（AlreadyBoarded，零位置变动）、成员/权限失败（跨船声明/未知成员拒绝）、离港准备不足拒绝（Preparation Summary 未就绪拦截）、离泊与状态机前置保护（状态保持原态、泊位无孤儿状态）、重复离港命令幂等控制（同参重放原结果且无二次事件副作用）。10 项确定性测试全部 PASS。",
+  "verifications": [
+    {
+      "name": "dotnet_nunit_runner",
+      "status": "PASS",
+      "details": "10 个测试用例全部执行通过（10 passed, 0 failed）"
+    },
+    {
+      "name": "static_boundary_audit",
+      "status": "PASS",
+      "details": "零 GameObject/Player，零 Transform/输入/物理/D20表现，零生产/Save根模型修改"
+    }
+  ],
+  "files_written": [
+    "game/Assets/Tests/EditMode/D19/D19BoardingDepartureTests.cs",
+    "game/tools/results/D19/D19-L30/D19_L30_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L30_LOGIC_HANDOFF.md"
+  ]
+}

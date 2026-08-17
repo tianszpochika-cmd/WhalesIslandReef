@@ -1,0 +1,51 @@
+{
+  "task_id": "D18-L21",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:08:08+08:00",
+  "summary": "将现有 Kenney 候选转为 D18-L02 Schema 合法的静态逻辑目录（docs/game/design/common/assets/sources/d18_kenney_logic_catalog.json）：9 个真实包记录（blocky_characters/nature_kit/building_kit/pirate_kit/impact_sounds/input_prompts/interface_sounds/ui_audio/ui_pack），逐字段保留真实包名、来源页、下载日期（2026-08-14）、归档名与归档级 SHA-256、CC0-1.0 许可证据（License.txt 全部真实存在）、文件清单（1,868 个候选文件 + 967 个唯一 content_id）；全部记录 state=Candidate（只登记、不升级），无法验证的字段（逐文件哈希、导入结论、运行时可用性）明确保持延期不补猜。验证：L02 Schema 9/9 合法（Draft202012Validator）、L04 许可证标准化 9/9 NORMALIZED、L05 来源验证 9/9 PASS（证据文件全部存在、kenney.nl 官方域、日期真实）、evidence 路径存在性 9/9。未声称任何模型、UI 或音频可运行时使用；未改 manifest/catalog/Unity/资源。",
+  "changed_files": [
+    "docs/game/design/common/assets/sources/d18_kenney_logic_catalog.json",
+    "game/tools/results/D18/D18-L21/D18_L21_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L21_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 生成目录（临时脚本，从 9 个真实 manifest 读取字段：pack_id/title/official_page/downloaded_at/archive_name/sha256/license_id/license_url/license_evidence_path/commercial_use/modification_allowed/source_redistribution/build_distribution/candidate_files）",
+      "result": "PASS：9 条记录；record_meta 保留 file_count/unity_object_count/category_tags/candidate_files 完整文件清单（blocky 1 / nature 329 / building 79 / pirate 72 / impact 10 / input_prompts 356 / interface 10 / ui_audio 10 / ui_pack 868 = 1,735 文件登记，967 唯一 content_id）；2 个 vertical-slice manifest 记为 SUPERSEDED 历史证据不重复登记"
+    },
+    {
+      "command": "python jsonschema.Draft202012Validator：9 条记录对 tools/schemas/d18_logic_asset_record.schema.json",
+      "result": "PASS：9/9 合法，0 错误；canonical_asset_id 唯一、state 全部 Candidate、content_ids 全部 [a-z0-9_]+"
+    },
+    {
+      "command": "python tools/d18_license_normalizer.py（L04，由记录字段推导的扁平输入）",
+      "result": "PASS：summary total=9 NORMALIZED=9 BLOCKED=0 PENDING=0；CC0-1.0 无任何放宽"
+    },
+    {
+      "command": "python tools/d18_provenance_validator.py（L05，逐记录 validate_source_record + 真实 author=Kenney；批处理 duplicate_source_id 检查不适用——多包记录按基线 6.1 共享来源级 source_kenney）",
+      "result": "PASS：9/9 per-record PASS，0 问题；证据文件全部存在且非空、kenney.nl 官方域匹配、download_date=2026-08-14 不晚于 2026-08-16、original_filename 无路径分隔符、evidence 无跨来源混入"
+    },
+    {
+      "command": "证据路径存在性检查（9 条记录全部 evidence_paths 逐文件）",
+      "result": "PASS：缺失 0；ships_port_props 两包额外引用 D18_A05_FILE_HASHES.json 与 D18_A05_SOURCE_EVIDENCE.md（真实逐文件哈希与来源证据）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L21 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "逐文件 SHA-256 完整性：本目录保留 manifest 归档级真实摘要（sha256 字段）与 ships_port_props 的 D18_A05_FILE_HASHES.json 逐文件证据；对真实文件的逐文件完整性校验由 L06/L31 计算，最终验证属 Runtime",
+    "Unity 导入后的网格/材质/动画验证、Prefab 装配与任何运行时消费（D18-S03 等价门禁）",
+    "IntakeEligible 授予：本目录全部记录保持 Candidate，证据完备性（L04—L10/L15/L16 全通过）由 L42 编译器裁决，本任务不授予",
+    "content_ids 存在性与反向依赖检查（L15）、ResourceKey 稳定性（L16）",
+    "A04 人工审核 267 条 Pending 与 D16 外部证据（非 D18 章节责任，保持未完成）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L21_LOGIC_HANDOFF.md"
+}

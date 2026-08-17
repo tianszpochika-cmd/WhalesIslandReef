@@ -1,0 +1,43 @@
+{
+  "task_id": "D19-L01",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T01:09:26+08:00",
+  "summary": "D19 唯一冻结任务完成：只读盘点 D2 航海（SailingSystem/D2Contracts）、D3 贸易库存（TradeEconomySystem/D3InventorySystem/D3Contracts）、D4 船舶船员（D4ShipyardSystem/D4Catalogs）、D9 港口准备（D9PortShipPreparationSystem，EnterPort/AssignBerth/Buy/BuySupply/Repair/Recruit/VisitTavern/SettleWages/Upgrade/PrepareDeparture/Depart/RecordDeparture/BuildSnapshot）、Save（SaveSystem Save/Load/LoadD9Runtime 等投影 + GameState）的公开命令/读模型/事件/ID/拥有者/禁止直写字段；冻结 D19 编排矩阵（PortVisit/泊位/港口服务/登船/离港/返港/命令幂等/事件/保存投影各主题的『可编排什么/唯一裁决者/禁止写』）与 8 条红线；列出可消费 D18 稳定键（11 值 category + 8 细分类映射、asset_hdri_* 正式键、L16 ResourceKey 规则）与全部 Runtime Deferred；旧 D19-R01—R03/RERUN/A-S 结果、文档、场景/Prefab 工作成果列为 SUPERSEDED 历史证据（禁止作通过条件，禁止重跑）。6/6 链接存在；未修改任何 C#/contracts/资源/场景/Prefab。",
+  "changed_files": [
+    "docs/game/design/common/D19_LOGIC_BOUNDARY_BASELINE.md",
+    "game/tools/results/D19/D19-L01/D19_L01_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L01_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "只读盘点脚本：提取 D2/D3/D4/D9/Save 公开类/方法/事件（正则扫描 13 个源码文件）",
+      "result": "PASS：D2 3 方法 + 5 契约类；D3 Trade 9 方法 + 25 契约类 + Inventory 13 方法；D4 Shipyard 4 方法 + 目录；D9 港口准备 13 公开命令 + 3 契约类；Save 27+ 投影方法 + GameState"
+    },
+    {
+      "command": "D19_LOGIC_BOUNDARY_BASELINE.md 相对链接存在性检查",
+      "result": "PASS：6/6 链接存在（初检 2 处 ../D18_LOGIC_HANDOFF_INTERFACE.md 层级错误已修正为同目录引用）"
+    },
+    {
+      "command": "旧 D19-Rxx/RERUN 清单盘点（results/docs/handoffs）",
+      "result": "PASS：21 个结果目录、18 个 R 文档、24 个 handoff 全部列为 SUPERSEDED；未修改任何历史文件"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L01 状态刷新为 LOGIC_PASS（D19 章节 48 项注册表）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "港口场景/碰撞/路径/Transform 锚点实测、HUD/Canvas/UI 可读性、输入手感",
+    "真实航行、天气视觉、性能/FPS/加载、截图与 Player 路线",
+    "模型导入、Prefab 装配、画面质量（D18 放行范围之外全部视觉/运行项）",
+    "4 条 HDRI 逐文件哈希（Pending，不补猜）；RuntimeApproved/ReleaseApproved 均为 0",
+    "D19-L46 将登记完整 Runtime Deferred 清单（锚点、碰撞、输入、HUD、路线、画面、性能）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L01_LOGIC_HANDOFF.md"
+}

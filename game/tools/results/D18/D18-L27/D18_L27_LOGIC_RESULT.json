@@ -1,0 +1,44 @@
+{
+  "task_id": "D18-L27",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T22:20:53+08:00",
+  "summary": "实现材质/贴图描述验证器（tools/d18_material_descriptor_validator.py + 27 个单测），字段词汇与已合并的 D18-L25 导入描述 Schema 对齐（source_asset_id/license_dependency/fallback/represents_imported_asset）并落实 L14 材质域分类（material/texture/hdri/font）。覆盖 11 条拒绝规则：R1 关联 asset_id（^asset_[a-z0-9_]+$，可核对记录存在）、R2 类别命中 L14 词典、R3 类别与 map 类型一致性（texture 禁 PBR 角色、hdri 必须仅一张 hdri map、font 禁 map）、R4 map 角色词汇与唯一性、R5 通道语义（albedo→rgb、normal→xyz/xy 切线空间、roughness/ao/metalness/height→r、opacity→a）、R6 颜色空间意图（srgb/linear，仅意图非设置）、R7 PBR 四图集完整性（AO 缺失不得伪装完整）、R8 许可依赖（L04 词汇、NC/ND/SA 阻断、证据文件存在、四项权利显式；免费/可下载不授予分发）、R9 非空回退（asset_*/placeholder_*、禁候选二进制）、R10 非空 runtime_deferred、R11 represents_imported_asset 恒 false。工具只读离线：不创建 Material/Shader/TextureImporter、不做像素级图像检查（实际图像检查延期 Runtime）、approved_count 恒 0。正负夹具 27 个全过；对真实 L21 Kenney material 相关证据冒烟（polyhaven_selected_assets.json 口径）验证器只读可复跑；未改 Unity/资源/Registry/contracts。",
+  "changed_files": [
+    "tools/d18_material_descriptor_validator.py",
+    "tools/tests/test_d18_material_descriptor_validator.py",
+    "game/tools/results/D18/D18-L27/D18_L27_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L27_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_material_descriptor_validator",
+      "result": "PASS：27/27。覆盖：合法完整 material 描述器（PBR 四图集 + CC0-1.0 + 非空回退）PASS；R1 坏 asset_id/未知 asset_id、R2 未知类别、R3 texture 带 PBR map/hdri 多图/font 带 map、R4 重复角色/未知角色、R5 错误通道（albedo→r、normal→rgb）、R6 缺/非法颜色空间、R7 pbr_set_complete 缺 AO、R8 NC/未知许可/缺许可证据文件/权利不全、R9 空回退/缺回退/回退指向候选二进制、R10 空 runtime_deferred、R11 claims_imported 全部按预期 FAIL；批量聚合、只读、确定性、JSON 可序列化通过。首轮发现 hdri 规则缺口（仅数 hdri 角色数量未拒绝非 hdri map），已在唯一写入范围内修复（hdri 必须恰好 1 张且仅 hdri）并复验"
+    },
+    {
+      "command": "python -m py_compile tools/d18_material_descriptor_validator.py",
+      "result": "PASS：exit 0"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test*.py\"（全量回归）",
+      "result": "PASS（含既有基线事实）：844 个测试，仅 4 个失败，全部为已知 SUPERSEDED test_d18_s02_r01_intake_refresh.py 的 R01 断言（基线第 1.3 节记录，非 L 任务门禁）；本任务未引入任何新失败"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L27 状态由 LOGIC_BLOCKED 刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "实际材质/贴图图像检查（像素、通道内容、尺寸、分辨率）全部延期 Runtime",
+    "Unity Material/Shader 创建、颜色空间/压缩/TextureImporter 设置接线全部延期（本验证器明确不产生任何设置）",
+    "L14 第 8 节登记项：import/colorspace/compression/shader_wiring/material_instance 等逐条 Runtime 风险",
+    "hdri/texture/font 的单项许可与逐条证据依赖 L21—L24 来源目录与 L04/L07 验证；本工具只校验描述器形态",
+    "A04 人工审核 267 条 Pending 与 D16 外部证据（非 D18 章节责任）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L27_LOGIC_HANDOFF.md"
+}

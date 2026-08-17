@@ -1,0 +1,47 @@
+{
+  "task_id": "D18-L30",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:23:00+08:00",
+  "summary": "新增只读资源依赖图工具 tools/d18_asset_dependency_graph.py（D18-L30，波次 2，并行）：从静态 asset record（L02 形态）与 import-descriptor 式输入契约生成确定性有向图（节点/边排序固定、fingerprint=SHA-256 规范序列化），检测五类错误：cycle（Tarjan 强连通分量+自环）、dangling_reference（悬挂目标）、cross_package_incompatibility（全局 incompatible_pairs 或节点级 incompatible_packages）、state_skip_edge（按冻结状态机 D18_ASSET_STATE_MACHINE §4.2/4.4 禁止对展开，含 Candidate→RuntimeApproved/ReleaseApproved 越级、Rejected 无出边、ReleaseApproved 禁拒、除 T4 外任何状态→ReleaseApproved，T4 RuntimeApproved→ReleaseApproved 显式放行）与 missing_license/missing_license_evidence（缺 license 对象/未指定 license_id/缺证据路径）。输出固定 JSON 只读结果（approved_count 恒 0、catalog_modified=false），exit 0=PASS/2=BLOCKED；不扫描/不导入二进制、不改 catalog；descriptor 输入契约为 L30 自有图输入契约，明示非 L25 Schema（L25 未交付，字段级收割留给波次 3/L45 对齐）。单测 42/42 PASS；CLI 正负夹具冒烟 exit 0/2、重复运行结果逐字节一致、输入文件哈希不变；全量套件 671 项仅 8 项写入范围外失败（L36 并行任务自身测试 4 项 + 基线已声明 SUPERSEDED 的 intake_refresh 4 项）。",
+  "changed_files": [
+    "tools/d18_asset_dependency_graph.py",
+    "tools/tests/test_d18_asset_dependency_graph.py",
+    "game/tools/results/D18/D18-L30/D18_L30_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L30_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m py_compile tools/d18_asset_dependency_graph.py tools/tests/test_d18_asset_dependency_graph.py",
+      "result": "PASS：两文件编译通过"
+    },
+    {
+      "command": "python -m unittest tools.tests.test_d18_asset_dependency_graph",
+      "result": "PASS：42/42 通过（循环/自环/悬挂/跨包不兼容/全部越级对/缺许可/确定性/只读/输入形态/状态枚举）"
+    },
+    {
+      "command": "CLI 冒烟（仓库外临时目录）：正向夹具 --records/--packages → exit 0、PASS；重复运行输出逐字节一致（deterministic=True）、输入文件 SHA-256 前后不变（input_unchanged=True）；负向夹具（循环+悬挂+越级+缺许可）→ exit 2、BLOCKED，issue_counts={cycle:1,dangling_reference:1,missing_license:5,state_skip_edge:1}",
+      "result": "PASS：只读、确定性、五类错误全部可检出"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test_*.py\"",
+      "result": "671 项运行，8 项失败且全部写入范围外：test_d18_local_development_guard 4 项（D18-L36 并行任务自身在途测试）、test_d18_s02_r01_intake_refresh 4 项（基线已声明 SUPERSEDED 断言）；本模块 42/42 通过"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L30 刷新为 LOGIC_PASS，280 项总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅工作区既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "L25 import descriptor Schema 尚未交付（PLANNED）：本工具读取 L30 自有图输入契约（asset_id + dependencies + 可选 package/state/license），L25 字段级引用（材质槽/骨架/动画/bounds 等）的收割与对齐留给波次 3/L45，不得把图输入契约当作 L25 Schema",
+    "真实 catalog/来源目录（L21—L24）全量图构建与跨包不兼容事实对账待来源目录交付后由波次 3 执行；本工具不改 catalog、不授予任何状态",
+    "RuntimeApproved/ReleaseApproved 节点检测仅覆盖静态边声明；真实 Unity 导入/引用关系、运行时依赖解析属 Runtime 阶段",
+    "二进制扫描、FBX/OBJ/音频读取、Unity 导入验证一律不执行（逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L30_LOGIC_HANDOFF.md"
+}

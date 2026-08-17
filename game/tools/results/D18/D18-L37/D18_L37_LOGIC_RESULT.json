@@ -1,0 +1,44 @@
+{
+  "task_id": "D18-L37",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:14:21+08:00",
+  "summary": "定义未来 Runtime 阶段“请求”Schema tools/schemas/d18_runtime_promotion_request.schema.json（D18-L37，按 L03 第 7.4 节冻结接口）：asset_id（引用 L02 asset_*）、current_state（仅 IntakeEligible/RuntimeRequested 两个合法值，Candidate 直达申请即非法）、target_usage_scene（受控工作场景/Prefab 标识，无目标状态机制）、descriptors（L25—L29 描述器引用，至少 1 条证据）、requirements（碰撞/LOD/动画需求声明）、approver（必须 human:*，tool:* 被模式拒绝）、risks（至少 1 项）、rollback（必填：reference+description）、submitted_at（ISO-8601 带时区，正则强制）。Schema 只能表达 request：declares_approval 恒为 false，无任何批准结果/批准状态/目标状态字段，additionalProperties=false 拒绝 grant/approval_result/target_state/decision 等混入；合法申请在逻辑阶段只产生 RUNTIME_REQUEST 审计记录，绝不产生 RuntimeApproved/ReleaseApproved。新增 5 个合法夹具（角色/船/环境/UI音频晋级 + RuntimeRequested 续申）与 15 个非法夹具（越级 Candidate、缺回退、非法目标状态、缺证据、tool 审批人、批准字段混入、坏枚举/路径/时间等），双向校验全过；未改任何审批目录。",
+  "changed_files": [
+    "tools/schemas/d18_runtime_promotion_request.schema.json",
+    "tools/tests/d18_runtime_promotion_request_fixtures/README.md",
+    "tools/tests/d18_runtime_promotion_request_fixtures/valid_*.json（5 个）",
+    "tools/tests/d18_runtime_promotion_request_fixtures/invalid_*.json（15 个）",
+    "game/tools/results/D18/D18-L37/D18_L37_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L37_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -c \"...Draft202012Validator.check_schema(s)...\"（tools/schemas/d18_runtime_promotion_request.schema.json）",
+      "result": "PASS：schema ok（Draft 2020-12 合法）"
+    },
+    {
+      "command": "python -c \"...valid_*.json 全部 is_valid / invalid_*.json 全部 !is_valid...\"",
+      "result": "PASS：5/5 合法夹具 VALID、15/15 非法夹具 INVALID，双向零偏差；错误原因抽查正确（Candidate→'Candidate' is not one of ['IntakeEligible','RuntimeRequested']；grant/approval_result 混入→Additional properties are not allowed；tool: 审批人→不匹配 ^human:；target_state=ReleaseApproved→Additional properties are not allowed）"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS（最终复跑）：702 项，697 通过、5 失败；4 项为既有 SUPERSEDED test_d18_s02_r01_intake_refresh.py 历史断言（基线第 1.3 节，非 L 门禁），1 项（test_d18_generated_asset_guard）为并行 L38 Agent 中途写入的瞬时状态，单独复跑 31/31 OK；本任务产物（Schema+夹具）不参与 Python 测试套件"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L37 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "真实 Runtime 晋级授予（RuntimeApproved/ReleaseApproved 属未来 Runtime 阶段门禁与责任人类审核者；本 Schema 只能表达请求）",
+    "描述器真实内容校验（L26—L29 验证器静态校验，L37 只引用路径）",
+    "审批执行与 RUNTIME_REQUEST 审计记录落库（L35 表驱动审计）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L37_LOGIC_HANDOFF.md"
+}

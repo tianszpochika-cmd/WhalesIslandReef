@@ -1,0 +1,43 @@
+{
+  "task_id": "D19-L15",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:47:55+08:00",
+  "summary": "实现出航准备适配器 game/Assets/Scripts/Systems/D19/D19PreparationPortAdapter.cs（纯 C#）：补给/船员/货舱/船只/航线/港口/生命周期 7+1 项只读检查，全部读数取自所有者公开读模型（D9 D9PortShipPreparationSnapshot、D3 D3RuntimeSnapshot/D3InventorySystem.UsedCargo、D4/Save ShipState），每条保留原所有者、原始 D9 失败码（not_moored/no_crew/insufficient_supplies/invalid_port/not_in_port/invalid_destination）与 D19 稳定失败码/本地化 key（L17 d19.departure.failed + L18 key）；未知/冲突/缺输入 → Unknown 保守拒绝（CanDepart=false）；产出确定性汇总（固定检查顺序 + BlockingCheckIds/BlockingOriginalCodes）与纯数据离港意图（D19DepartureIntent）供 L09 读取；绝不调用 D9 PrepareDeparture/Depart/BuySupply/Recruit 等副作用入口、不自动补货/扣钱/改船员/启动航程。前置确认：D19-L17/L18/L23 全部 LOGIC_PASS，D9/D2/D4 出航准备公开读模型/命令已盘点（D9 PrepareDeparture/Depart/BuildSnapshot、D3 VoyageStatus、D4 ShipState、D2 SailingSnapshot 属表现层不引用）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PreparationPortAdapter.cs",
+    "game/tools/results/D19/D19-L15/D19_L15_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L15_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "前置核对：D19-L17 / D19-L18 / D19-L23 状态 + D9/D2/D4 出航准备公开读模型/命令盘点",
+      "result": "PASS：三前置均 LOGIC_PASS（L17=22:40 / L18=21:32 / L23=23:20）；D9 D9PortShipPreparationSystem.PrepareDeparture/Depart/BuildSnapshot 为出航准备公开命令与读模型（原始码集 not_moored/no_crew/insufficient_supplies/invalid_port/not_in_port/invalid_destination 与 L17 目录条目 #11 一致）；D3 D3RuntimeSnapshot.VoyageStatus/CurrentLocationId/DestinationId 与 D3InventorySystem.UsedCargo 为航线/货舱只读事实；D4/Save ShipState 为船只/船员事实来源；D2 SailingSnapshot 属航行表现层不引用"
+    },
+    {
+      "command": "仓库外临时 dotnet 工程（net9.0/LangVersion 9.0/Nullable disable，引用真实 NumericEnumConfiguration/D3Contracts/D3InventorySystem/CommodityCatalog/D9WeatherSeaState/D9PortShipPreparationContracts/ShipTypeDef/ShipState/EventContracts/EventLog/D19 六文件 + 本文件）dotnet run",
+      "result": "PASS：编译 0 错误 0 警告；60 项确定性断言 0 失败（全通过含 Boarded 生命周期、无生命周期输入 7 项、Docked 阻断+FailureCodeId/LocKey、water=0→insufficient_supplies、crew=0→no_crew、moored=false→not_moored、目的地空/相同/航行中→invalid_destination×2+not_in_port、portId 空→invalid_port、端口冲突→Unknown、d9=null 六项 Unknown+HasUnknown、D3↔D9 货舱读数冲突→Unknown、hull=0 阻断、hull>hullMax→Unknown、负货舱→NotReady、阻断顺序确定性 port→moored→crew→supplies→…→lifecycle 与原始码一一对应、相同输入两次构建逐字段一致、意图 Executable 与 CanDepart 一致且构建无副作用（VoyageStatus/DestinationId 不变）、Validate() 空、去注释源码静态扫描无 UnityEngine/Transform/Canvas/Input./DateTime/HttpClient/EventLog/AppendFact/PrepareDeparture(/Depart(/BuySupply/Recruit("
+    },
+    {
+      "command": "git 状态核对（D19 目录）",
+      "result": "PASS：唯一新增 game/Assets/Scripts/Systems/D19/D19PreparationPortAdapter.cs；未修改任何既有 D19/D3/D9/D4/Save/Event 文件"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L15 状态刷新为 LOGIC_PASS，总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，本任务新增文件无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "真实离港执行链（D9 Depart 经 L09 编排）与航程启动后的运行验证属 Runtime 阶段",
+    "D2 SailingSnapshot 表现层引用、场景/UI 接入（本适配器无任何场景/UI/运行时依赖）",
+    "L19 港口只读模型（D19PortReadModel）落地后如需整合本汇总为投影，由 L19 消费，本文件不改",
+    "权限（L23）/泊位（L06）/登船（L08）/幂等（L22）在 L09 离港工作流中的组合验证属 L09 职责",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L15_LOGIC_HANDOFF.md"
+}

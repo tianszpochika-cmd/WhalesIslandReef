@@ -10,7 +10,9 @@
 - [D7 后统一开发路线](game/DEV_ROADMAP.md)：D8—D16 历史执行线、D17 保留基线和 D18—D24 本地开发轨；
 - [D18—D24 画面与完整本地可玩路线](game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md)：免费资源、样板岛、角色、船海、UI、完整闭环和扩量原则；
 - [D18 免费资源库准入验收（S02 v2）](game/design/common/D18_FREE_ASSET_LIBRARY_ADMISSION_ACCEPTANCE.md)：资源证据准入、受控开发解锁与 D18-S03 运行时晋级门；
-- [Agent 开发任务总索引](game/AGENT_DEVELOPMENT_TASKS.md)：列出全部章节、编号和执行顺序；实际提示词位于 D8—D16、D18—D24 独立章节文件；
+- [Agent 开发任务总索引](game/AGENT_DEVELOPMENT_TASKS.md)：列出全部章节、编号和执行顺序；实际提示词位于 D8—D16、D18—D24 独立章节文件，以及 D16/D17 剩余门禁第 9B 章；
+- [D19 港口业务逻辑详细提示词](game/AGENT_DEVELOPMENT_CHAPTER_11_D19_PROMPTS.md)：48 个可直接复制的纯逻辑开发任务、精确前置和结果留痕位置；
+- [D16/D17 剩余门禁任务卡](game/AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATES.md) 与 [详细提示词](game/AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATE_PROMPTS.md)：47 个可复制分派的 `D16-C` / `D17-C` 任务；协议见 [GATE_TASK_PROTOCOL.md](game/GATE_TASK_PROTOCOL.md)，状态见 [GATE_TASK_STATUS.md](game/GATE_TASK_STATUS.md)；
 - [技术架构](ARCHITECTURE.md)：三端、契约和目录规则；
 - [开发规范](DEVELOPMENT_STANDARDS.md)：工程边界和验收要求；
 - [D8 数值与枚举统一配置](game/design/common/D8_NUMERIC_ENUM_CONFIG.md)：统一单位、范围、枚举、所有权和配置检查入口；

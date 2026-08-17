@@ -1,0 +1,42 @@
+{
+  "task_id": "D19-L05",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T21:46:18+08:00",
+  "summary": "实现纯函数/纯状态的服务可用性裁决（game/Assets/Scripts/Systems/D19/D19PortAvailabilitySystem.cs，零 Unity 依赖、无写路径）：根据显式传入的 portId/serviceId/逻辑时间段/势力许可/天气逻辑标签/设施状态/staffed 标记计算 Available/Unavailable/Rejected，输出原因码（全部来自 D19-L17 失败码目录，Find 可解析）、重试建议（L17 RetrySafe + 稳定 RetryHint）与本地化 key（全部来自 D19-L18 注册表）；不读系统时钟/场景天气/NPC GameObject/资源（NPC 仅以 staffed 逻辑标记表示）；未知/冲突输入保守拒绝（未知港口→L17 d19.port.unknown_port，未知服务/越界枚举/OutOfStock 声明于非补货服务→Rejected）。冻结确定性优先级链：设施状态→势力→天气（Storm 关市场/补给、Rain 关市场）→时段（Night 关市场/仓库/船坞）→人手→可用；港口别名经 L04 锚点目录解析；服务未登记于该港→Unavailable(NotRegistered)。内置 Validate() 自检（L17 目录、L18 注册表、映射表齐全）。开发期修复：L18 冻结单数 supply 与 L04 冻结复数 supplies 的跨任务键差，在 L05 内部以只读映射表对齐并纳入自检。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortAvailabilitySystem.cs",
+    "game/tools/results/D19/D19-L05/D19_L05_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L05_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build/run（临时 net9.0 工程，链接真实 D19 五个系统文件 + Event 契约，仓库外）",
+      "result": "PASS：编译 0 warning 0 error（exit 0）；文件零 Unity 依赖可独立编译"
+    },
+    {
+      "command": "dotnet 确定性断言 harness（57 项，仓库外）",
+      "result": "PASS：57/57。覆盖：3000 次同输入同输出；L17/L18 目录自检全净；全部原因码可被 L17 Find 解析、全部 key 合法且在 L18 注册表；优先级链逐项（Closed/UnderRepair/Blockaded/OutOfStock/FactionDenied/Storm 关露天/Rain 关市场/Night 关市场仓库船坞/未配人/未登记）；酒馆风暴与夜间仍可用；港口 D3 别名解析；未知港口→L17 d19.port.unknown_port；未知服务/越界枚举/空输入/OutOfStock 于酒馆→保守拒绝；500 轮裁决零副作用（目录键数不变）"
+    },
+    {
+      "command": "开发期真实修复：L18 ServiceIdSupply=supply 与 L04 锚点目录 supplies 后缀不一致（supply 服务被误判 NotRegistered）；在 L05 唯一写入范围内增加只读 CatalogServiceSuffix 映射并纳入 Validate 自检，复验 57/57 全过",
+      "result": "PASS：修复后全过；未修改 L04/L18 文件"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L05 状态刷新为 LOGIC_PASS，283 个任务总览重新生成"
+    }
+  ],
+  "runtime_deferred": [
+    "真实开放时间/天气/势力/设施状态来源：本系统只消费显式传入的逻辑输入；接入真实读模型（D9 BuildSnapshot.Services、天气系统标签）与真实势力/设施状态属后续集成任务",
+    "NPC 从业状态（staffed 标记的来源）与场景内 NPC 行为完全无关，真实 NPC 模拟属 Runtime",
+    "服务排队、费用、工期与关闭的具体实现（D19-L13/L14/L15 适配器）",
+    "场景天气、系统时钟、建筑状态机的真实联动（Runtime 阶段）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L05_LOGIC_HANDOFF.md"
+}

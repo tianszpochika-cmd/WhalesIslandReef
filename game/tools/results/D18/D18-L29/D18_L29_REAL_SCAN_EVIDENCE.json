@@ -1,0 +1,34 @@
+{
+  "task": "D18-L29",
+  "tool": "tools/d18_ui_audio_descriptor_validator.py",
+  "read_only": true,
+  "registry_modified": false,
+  "status": "BLOCKED",
+  "descriptor_count": 0,
+  "descriptor_files": [],
+  "descriptor_summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "failed_descriptor_ids": []
+  },
+  "taxonomy_check": {
+    "document": "docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md",
+    "matched": true,
+    "errors": []
+  },
+  "error_count": 1,
+  "issue_count": 1,
+  "issue_counts": {
+    "no_descriptors": 1
+  },
+  "issues": [
+    {
+      "code": "no_descriptors",
+      "message": "no d18_ui_audio_descriptor files were found (L42 catalog compiler produces them)",
+      "severity": "error"
+    }
+  ],
+  "localization_files": 2,
+  "localization_key_count": 452
+}

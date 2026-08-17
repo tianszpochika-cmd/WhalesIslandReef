@@ -1,0 +1,39 @@
+{
+  "task_id": "D19-L06",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:45:00+08:00",
+  "summary": "实现泊位原子领域系统（game/Assets/Scripts/Systems/D19/D19BerthSystem.cs，纯 C#、零 Unity 依赖）：预留/确认占用/释放/过期推进/冲突探测五操作全部先校验后单点变更（无半写）；稳定 berth_id/ship_id/command_id + 逻辑时间（world_day + save_revision），无坐标/物理检测；不变式（同一船一泊位、同一泊位一船、预留必有租期、占用无租期）由 ValidateInvariants 全程校验；幂等（同命令同参数重复投递返回存储结果无副作用，同命令不同操作 → DuplicateCommand）；失败返回 L17 已注册码（d19.berth.occupied / d19.berth.expired / d19.port.unknown_port）与同格式稳定原因 ID（船型/租期/跨港/重复命令等新领域缺口，注明 L17 待扩展，未修改 L17）；成功/失败均生成 L16 事件草案（预留/释放/拒绝，全部通过 L16 Guard 校验），不追加 EventLog；锚点解析只读消费 D19-L04 目录（含跨港检测），能力表为本系统冻结泊位事实；不修改 D19-L04 目录、不触碰 D4 船只数值。临时 dotnet 工程（仓库外）netstandard2.1 编译 0 警告 0 错误 + 45 项确定性检查全 PASS（含重复投递无副作用、冲突拒绝保持原占用、过期推进幂等、拒绝事件草案、不变式全程成立）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19BerthSystem.cs",
+    "game/tools/results/D19/D19-L06/D19_L06_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L06_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build（临时工程 netstandard2.1，引用真实 Event/L02/L04/L16/L17/L18 源码 + 本文件）",
+      "result": "PASS：0 警告 / 0 错误"
+    },
+    {
+      "command": "dotnet run（临时控制台 45 项确定性断言：预留/确认/释放/过期/冲突五操作、一船一泊位、一泊位一船、船型档位/深水能力不匹配、零时长/超上限租期、跨港、未知港/泊位、缺命令 ID、同命令同参幂等重放无副作用、同命令异操作 DuplicateCommand、过期释放 reason=expired、AdvanceTime 过期推进且幂等、确认过期无副作用、冲突探测只读、失败拒绝保持原占用、逐阶段 ValidateInvariants 为空、L16 事件草案全部通过 D19PortEventGuard）",
+      "result": "PASS：ALL CHECKS PASS（45/45）"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D19-L06 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "真实港口场景中的泊位消费（Prefab/场景/碰撞/输入属 Runtime 阶段，基线 §5）",
+    "D19-L22 命令幂等对泊位命令的最终路由接入（本系统已内置同命令幂等，路由层负责接入 EventLog 追加）",
+    "D19-L20 保存投影把泊位分配事实写入既有 Save 模型（本系统提供 GetAllocations 只读副本）",
+    "L17 目录扩展：d19.berth.ship_type_mismatch / invalid_term / cross_port / duplicate_command / unknown / ship_already_berthed / not_reserved / capability_missing 等新领域原因 ID 待 L17 注册（本系统不修改 L17）",
+    "新泊位锚点加入 L04 目录时需同步本系统能力表（否则返回 capability_missing）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L06_LOGIC_HANDOFF.md"
+}

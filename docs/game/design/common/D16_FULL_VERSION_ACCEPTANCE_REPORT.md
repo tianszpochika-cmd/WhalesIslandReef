@@ -198,3 +198,11 @@ D16-S01 重新启动时必须按固定顺序记录：
 - 使用候选导入审计后的工程重新执行 Unity PlayMode，`game/tools/results/d17_playmode_full_after_candidate_import_20260813.xml` 为 **60/60 PASS**，失败 0、跳过 0。
 - 同一回归日志记录 D17-S02 本机十轮循环 **10/10 passed**；本机回归链保持稳定。
 - 该证据不关闭 A04 267 条 Pending、A05 2,264 个 placeholder、六项外部门禁或 Steam 授权要求；D16-S01/S02、正式 D17 和 D18+ 仍未完成。
+
+
+## 2026-08-18 D16-C10 本轮增量节（外部审计与S01就绪）
+
+- **外部审计快照**: `tools/results/d16_external_gate_audit_current.json`，结论为 `BLOCKED`（缺失 D16-A01/A02/A03/A06 4 项外部硬件实测 envelope）；
+- **S01 就绪检查**: 运行 `tools/d16_s01_readiness.py` 评估，判定为 `BLOCKED`（因前置外部硬件门禁未达成真实 PASS）；
+- **长线故事执行**: 由于前置门禁未满足，根据门禁协议红线，不启动 S01 真实长线故事，不以开发机测试冒充全版本验收；
+- **任务结论**: `D16-C10` 诚实记录为 `GATE_BLOCKED`。

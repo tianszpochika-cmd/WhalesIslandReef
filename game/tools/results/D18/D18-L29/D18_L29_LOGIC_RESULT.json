@@ -1,0 +1,49 @@
+{
+  "task_id": "D18-L29",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:16:38+08:00",
+  "summary": "实现只读 UI/音频描述验证器 tools/d18_ui_audio_descriptor_validator.py：按 L14 分类词典冻结的五类（ui_icon/input_prompt/audio_cue/music/font）校验用途词汇、license（L04 标准化 + L07 权利 + 音频 distribution_with_game + 字体 OFL 政策）、localization/accessibility 标签（替代文本/字幕 key、禁止硬编码文本、输入动作 ID 引用）、替代文本/静音回退声明（subtitle/alt_text/visual_indicator/silent/none+reason）与运行时意图（冻结词汇 + L14 第 7 节红线：音量/混音/AudioSource/Canvas/Sprite/Shader/压缩/导入设置字段一律越界拒绝）；52/52 单测通过，L14 taxonomy 机器 JSON 交叉核对 matched，真实 452 个本地化 key（38 audio.* 全含 subtitle）按冻结规则 0 违规；仓库尚无 UI/音频描述器（L42 编译器产出），工具正确检出 no_descriptors。",
+  "changed_files": [
+    "tools/d18_ui_audio_descriptor_validator.py",
+    "tools/tests/test_d18_ui_audio_descriptor_validator.py",
+    "game/tools/results/D18/D18-L29/D18_L29_LOGIC_RESULT.json",
+    "game/tools/results/D18/D18-L29/D18_L29_REAL_SCAN_EVIDENCE.json",
+    "docs/game/design/common/handoffs/D18/D18-L29_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test_d18_ui_audio_descriptor_validator.py\"",
+      "result": "PASS：52/52（合法 ui_icon/input_prompt/audio_cue/music/font 通过；未知用途、用途-分类错配、未知/缺失分类、缺许可/缺字段/NC、音频缺 distribution_with_game、字体非 OFL、缺替代文本/字幕 key、硬编码标签文本、非法 key 格式、缺输入动作 ID、缺回退/回退引用缺失与错配/silent/none+reason、缺/未知运行时意图、用途-意图错配、越界运行时字段（volume/import_settings）、缺/空 runtime_deferred、非法 asset/source id、变体引用、本地化 key 存在性、taxonomy 交叉核对、只读快照比对、真实 taxonomy+localization 扫描）"
+    },
+    {
+      "command": "python tools/d18_ui_audio_descriptor_validator.py --descriptor-root docs/game/design/common/assets/packs --taxonomy docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md --localization game/Assets/Resources/Localization/D15_A08",
+      "result": "BLOCKED（工具正确检出真实状态）：taxonomy_check matched=true（冻结常量与 L14 机器 JSON 完全一致）；localization_files=2、localization_key_count=452（与 L14 第 10 节事实一致）；descriptor_count=0 → no_descriptors（仓库尚无 UI/音频描述器，由 L42 编译器产出）。完整证据：game/tools/results/D18/D18-L29/D18_L29_REAL_SCAN_EVIDENCE.json"
+    },
+    {
+      "command": "真实本地化 key 规则核对（Python 只读扫描 D15_A08 452 keys）",
+      "result": "PASS：452 个 key 全部为小写点分格式（0 硬编码文本）；38 个 audio.* key 全部匹配冻结 audio.<batch>.<asset_id>.<field> 格式，38 个含 .subtitle（与 L14 第 5/10 节一致）"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p \"test*.py\"（全量）",
+      "result": "588 tests, 6 failures：4 项为基线已记录的 SUPERSEDED test_d18_s02_r01_intake_refresh 断言；2 项属并行任务 L34 的 test_d18_missing_evidence_audit 自身在途测试（写入范围外）；test_d18_ui_audio_descriptor_validator 0 失败"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L29 刷新为 LOGIC_PASS，280 任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，无尾随空白/空白错误（既有 LF→CRLF 警告为工作区既有未提交文件，与 L01 记录一致）"
+    }
+  ],
+  "runtime_deferred": [
+    "实际导入（PNG/OGG/JPG/HDR/OTF → Unity 资源）、音量/衰减/混音、Canvas/Sprite/Text 装配、Shader/材质实例、字体嵌入验证、可访问性实测（D22-L14/L34）全部属 Runtime 阶段（L14 第 8 节登记，本工具只做静态描述验证）",
+    "真实 UI/音频描述器记录尚不存在：由 L42 目录编译器按本工具验证规则产出；当前 no_descriptors 为真实状态",
+    "D18-L25 导入描述 Schema 在本次执行时未合并：本工具只使用波次 1 已冻结字段（L01 基线第 6 节 / L02 / L04 / L07 / L14），未复制 L25 字段定义（units/axes/bounds/材质槽/骨架/root-motion/碰撞/LOD）；L25 合并后由 L45 一致性审计核对接口",
+    "D22-L01 逻辑边界基线在本次执行时未合并：D22 接口口径以 L14 第 6/7 节已冻结的 D22-L07/L11/L12/L14/L15 边界为准",
+    "RuntimeApproved/ReleaseApproved 授予（本逻辑阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L29_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,35 @@
+{
+  "fixture_kind": "d18_logic_invalid_record",
+  "fixture_class": "missing_source",
+  "task": "D18-L41",
+  "note": "最小 P0 违规夹具：仅破坏 source_url，其余字段与 L40 合法记录一致。",
+  "records": [
+    {
+      "canonical_asset_id": "asset_ship_medium_v01",
+      "category": "ship",
+      "source_id": "source_kenney",
+      "source_url": "not-a-url",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-16",
+      "original_filename": "fixture_ship_medium_pack.zip",
+      "sha256": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "state": "Candidate",
+      "content_ids": ["ship_medium_v01"],
+      "evidence_paths": [
+        "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt"
+      ],
+      "runtime_deferred": []
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "task_id": "D18-L47",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T00:34:00+08:00",
+  "summary": "L53 收尾重跑（2026-08-17）：证据矩阵扩展至 53 个 D18 任务（L01—L53），52/52 已交付任务结果 JSON/handoff 齐全（L53 为本任务进行中）；L39/L42/L44/L45 复跑与本次机器输出一致（L39 PASS 161/P0=0、L42 161/161/0/0、L44 PASS runtime=0、L45 PASS 5/5 槽 0 分裂）。只读复核 L02—L46（波次 4 第 1 项，汇合门禁）：45 项任务全部 LOGIC_PASS，任务级 P0 证据矩阵（D18_L47_EVIDENCE_MATRIX.json）显示 45/45 交付物存在、结果 JSON task_id/status 合法、handoff 齐全、无缺口；实际运行复核：L39 复跑 PASS（与 L43 机器结果字节一致）、L42 复跑 161→100/61/4（一致）、L44 复跑 BLOCKED（5 P0+4 INFO，一致）、L45 复跑 BLOCKED（2 个真实 category 分裂，一致；唯一差异 file_count 44→46 因 L45/L46 结果 JSON 后加入，行为正确）；关键 L 测试 74/74 通过；全量 918 项仅 4 项既有遗留失败（R01 SUPERSEDED 基线）；范围越界检查：git 无 InitialHarbor/Systems/Prefabs/.unity/contracts 改动。记录 1 项 P1 观察（L45 file_count 随结果目录增长，建议 L50/D24 以最小阈值断言）；未作任何 Release/Runtime 结论。",
+  "changed_files": [
+    "game/tools/results/D18/D18-L47/D18_L47_EVIDENCE_MATRIX.json",
+    "game/tools/results/D18/D18-L47/D18_L47_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L47_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "任务级证据矩阵检查（45 项交付物/结果 JSON/handoff 存在性脚本）",
+      "result": "PASS：45/45 交付物存在、结果 task_id+status 合法、handoff 齐全、issues=0；矩阵已存 D18_L47_EVIDENCE_MATRIX.json"
+    },
+    {
+      "command": "python tools/d18_logic_audit.py --output <复跑> 与 L43 已存结果字节对比",
+      "result": "PASS：status=PASS，与 D18_L43_L39_AUDIT.json 字节一致（确定性复现）"
+    },
+    {
+      "command": "python tools/d18_logic_catalog_compiler.py --output <复跑> 与 L43 已存结果对比",
+      "result": "PASS：161 输入 → compiled 100 / rejected 61 / pending_hash 4 / conflicts 0，字节一致"
+    },
+    {
+      "command": "python tools/d18_game_reference_audit.py --output <复跑> 与 L44 已存结果对比",
+      "result": "PASS：BLOCKED（5 P0 runtime + 4 INFO editor_only），字节一致"
+    },
+    {
+      "command": "python tools/d18_schema_compatibility_audit.py --output <复跑> 与 L45 已存结果对比",
+      "result": "PASS：BLOCKED（2 个真实 P0 category 分裂）；唯一差异 file_count 44→46（L45/L46 结果 JSON 后加入，非缺陷，记录为 P1 观察）"
+    },
+    {
+      "command": "python -m unittest 关键 L 测试子集（L39/L40/L41/L42/L44/L45 共 74 项）",
+      "result": "PASS：74/74"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS：918 项，仅 4 项既有失败（test_d18_s02_r01_intake_refresh 断言历史 R01 目录，SUPERSEDED 基线，非 L 系列任务）"
+    },
+    {
+      "command": "git status 范围越界检查（InitialHarbor/Systems/Prefabs/.unity/contracts）",
+      "result": "PASS：无禁区文件改动"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L47 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "所有 Runtime 验证（导入/碰撞/LOD/动画/保存/性能/截图/输入路线）仍延期，本复核不产生任何 Runtime 通过结论",
+    "RuntimeApproved/ReleaseApproved 授予（本阶段禁止，均为 0）",
+    "category 权威映射（L45 blocker）与 D19LightingProfileCatalog.json 引用修复（L44 检出）保持开放，待 L50 验收/D19—D21 处理"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L47_LOGIC_HANDOFF.md"
+}

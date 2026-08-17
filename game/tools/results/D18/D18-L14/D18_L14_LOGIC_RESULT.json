@@ -1,0 +1,46 @@
+{
+  "task_id": "D18-L14",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:49:23+08:00",
+  "summary": "冻结 UI/音频/材质分类词典：定义 ui_icon/input_prompt/audio_cue/music/material/texture/hdri/weather_presentation/font 共 9 类，含许可字段（L04/L07 口径）、content_id 与 ResourceKey 规则、本地化/可访问性标签；明确红线：不接入 Canvas、Shader、AudioSource 或视觉效果；实际导入、音量、颜色空间、视觉效果全部登记为 Runtime Deferred；真实数据（intake 1,345 条、7 manifest、Poly Haven 20/4、font audit、452 本地化 key）交叉核对通过。",
+  "changed_files": [
+    "docs/game/design/common/assets/D18_TAXONOMY_UI_AUDIO.md",
+    "game/tools/results/D18/D18-L14/D18_L14_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L14_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python 一次性校验脚本（临时目录，不落仓库）：解析词典机器 JSON 块，9 分类与表格一一对应，schema_category_map 全部命中 L02 Schema category 枚举，intake_role_category_map 逐条覆盖准入目录 ui/audio/material/lighting_reference 全部 1,345 条，前缀规则与 D8 13 前缀一致，ResourceKey/本地化/可访问性/红线字段齐全",
+      "result": "PASS：9/9 分类；1,345 条 role 映射无遗漏（ui 1,224 / audio 30 / material 87 / lighting_reference 4）；正式前缀仅 asset_；禁止新增 ui_/audio_/material_/hdri_/music_/font_/texture_ 前缀"
+    },
+    {
+      "command": "python 只读交叉核对：7 个 ui_materials_audio manifest file_count、polyhaven_selected_assets（20 materials/4 HDRIs、全 CC0-1.0）、font_license_audit（PASS_WITH_SCOPE/1 条）、Localization/D15_A08 双 locale 各 452 keys（content.*/audio.*）",
+      "result": "PASS：868/356/10/10/10/79/4 全部一致；本地化 key 集 zh-CN/en-US 完全一致"
+    },
+    {
+      "command": "python 相对链接存在性检查（解析 D18_TAXONOMY_UI_AUDIO.md 全部相对链接）",
+      "result": "PASS：18 个链接，缺失 0（初检发现 L02 Schema 链接层级差 1，已最小修复）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：280 项总览重新生成，D18-L14=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "实际导入（PNG/OGG/JPG/HDR/OTF → Unity 资源）与导入设置（压缩/Mipmap/最大尺寸）",
+    "音量/衰减/空间化/混音（不接线 AudioSource/AudioMixer）",
+    "颜色空间（sRGB/线性）与 Shader/Material 实例/URP 管线",
+    "Canvas/Sprite/Text 组件装配、九宫格缩放与 D22 布局/分辨率实测",
+    "视觉效果：天空盒/雾/粒子/降水/风暴（Calm-only 现状保留，Rain/Storm 表现未制作）",
+    "字体嵌入验证（OFL 许可证文本随附）与正式字体选择（占位 ph_font_noto_sans_cjk_sc.otf 不覆盖）",
+    "可访问性实测（缩放/对比/字幕/减少动态效果，D22-L14/L34）",
+    "weather_presentation 与 D21 天气状态（Calm/Rain/Storm）的实际表现绑定"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L14_LOGIC_HANDOFF.md"
+}

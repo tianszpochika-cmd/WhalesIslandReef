@@ -1,0 +1,30 @@
+{
+  "descriptor_kind": "d18_import_descriptor",
+  "schema_version": 1,
+  "source_asset_id": "asset_fixture_fish_parrot",
+  "type": "fish",
+  "units": "meters",
+  "axes": { "up": "y", "forward": "z" },
+  "bounds": { "width_m": 0.2, "depth_m": 0.5, "height_m": 0.25 },
+  "material_slots": [
+    { "slot_name": "scales", "slot_role": "organic" }
+  ],
+  "skeleton_type": "fish",
+  "animation_list": [
+    { "animation_key": "swim", "role": "swim", "root_motion": true }
+  ],
+  "root_motion": "required",
+  "collision_intent": "none",
+  "lod_intent": { "levels": 2, "generate_automatically": true },
+  "license_dependency": {
+    "license_id": "CC0-1.0",
+    "license_url": "https://example.invalid/license/cc0",
+    "license_evidence_path": "docs/fixtures/license_cc0.txt",
+    "attribution_required": false
+  },
+  "fallback": {
+    "reference": "placeholder_fish_parrot",
+    "description": "keep placeholder fish until real mesh and swim clip are verified"
+  },
+  "represents_imported_asset": false
+}

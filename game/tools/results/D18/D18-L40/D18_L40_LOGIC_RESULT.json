@@ -1,0 +1,53 @@
+{
+  "task_id": "D18-L40",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T22:51:11+08:00",
+  "summary": "为五类（船港/角色/生态/UI-音频/材质）建立 6 个完全合法的静态记录夹具（tools/tests/fixtures/d18_logic_valid/），每类覆盖来源、许可、权利、hash、分类、content_id、ResourceKey、状态与 L25 描述器维度；测试直接调用已交付验证器断言合法性（L39 aggregate_record 零缺口、L26 validate_descriptor 无 P0 且类别匹配、L16 validate_records CLEARED），不复制验证逻辑；断言夹具状态仅限 Candidate/IntakeEligible 且不含 RuntimeApproved/ReleaseApproved 字面量，夹具树仅 .json/.txt 无二进制、证据为合成文本标记不伪造下载；run_audit 对夹具聚合 PASS（6 记录、P0=0、state_issues=0）。11/11 测试通过；全量 870 项仅 4 项既有遗留失败（R01 基线）。",
+  "changed_files": [
+    "tools/tests/test_d18_logic_valid_records.py",
+    "tools/tests/fixtures/d18_logic_valid/ships_port.json",
+    "tools/tests/fixtures/d18_logic_valid/character.json",
+    "tools/tests/fixtures/d18_logic_valid/ecology.json",
+    "tools/tests/fixtures/d18_logic_valid/ui.json",
+    "tools/tests/fixtures/d18_logic_valid/audio.json",
+    "tools/tests/fixtures/d18_logic_valid/material.json",
+    "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+    "tools/tests/fixtures/d18_logic_valid/evidence/license_ccby.txt",
+    "game/tools/results/D18/D18-L40/D18_L40_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L40_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_logic_valid_records -v",
+      "result": "PASS：11/11 通过（五类覆盖、L39/L26/L16 逐夹具合法断言、无批准状态、无二进制、ResourceKey 唯一、聚合审计 PASS）"
+    },
+    {
+      "command": "python 夹具 JSON 解析与记录数核对（tools/tests/fixtures/d18_logic_valid/*.json）",
+      "result": "PASS：6 个文件 6 条记录，类分布 ships_port/character/ecology/ui_audio×2/material，JSON 全合法"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS：870 项测试，仅 4 项既有失败（test_d18_s02_r01_intake_refresh 断言历史 R01 目录，已知 SUPERSEDED 基线，非本任务引入）；L40 测试全通过"
+    },
+    {
+      "command": "python -m py_compile tools/tests/test_d18_logic_valid_records.py",
+      "result": "PASS：exit 0"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L40 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "夹具记录/描述器的真实导入、碰撞、LOD、动画、Canvas/Mixer 装配（全部 Runtime 阶段，夹具 runtime_deferred 字段已声明）",
+    "夹具证据为合成文本标记，不代表真实下载证据；真实逐文件哈希由 L06/L31 对真实文件计算",
+    "任何 RuntimeApproved/ReleaseApproved 结论（夹具与全库均为 0，本阶段禁止）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L40_LOGIC_HANDOFF.md"
+}

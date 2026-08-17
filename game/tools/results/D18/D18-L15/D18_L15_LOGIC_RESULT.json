@@ -1,0 +1,46 @@
+{
+  "task_id": "D18-L15",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:20:00+08:00",
+  "summary": "实现 content_id 与资源记录关联验证器（tools/d18_content_id_asset_link_validator.py + 25 项单测）：content_ids 必须存在（missing_content_id）、前缀注册与类型匹配（unknown_prefix/type_mismatch）、记录内与跨记录不重复（duplicate_content_id/duplicate_content_id_across_records）、已弃用 ID（deprecated_content_id 带 replacement）、候选路径泄漏三类拦截（path_like_content_id/candidate_key_leak/candidate_path_leak）；工具只读 catalog/定义，approved_count 恒为 0；无 catalog 时存在性验证为 PENDING 不通过；真实仓库只读冒烟：2,812 条真实 ContentRegistry + 真实 registry.json 前缀表，合法记录 PASS、candidate_/路径/缺失 ID 记录 BLOCKED。",
+  "changed_files": [
+    "tools/d18_content_id_asset_link_validator.py",
+    "tools/tests/test_d18_content_id_asset_link_validator.py",
+    "game/tools/results/D18/D18-L15/D18_L15_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L15_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_content_id_asset_link_validator -v",
+      "result": "PASS：25/25 通过（缺 ID、错误类型、重复、已弃用 ID、候选路径泄漏、PENDING 不通过、只读性、加载器正反例、D8 前缀冻结）"
+    },
+    {
+      "command": "python tools/d18_content_id_asset_link_validator.py --records <temp smoke good> --catalog <temp 真实 2812 条合并目录> --registry game/Assets/Resources/ContentRegistry/registry.json --output <temp>",
+      "result": "PASS：status=PASS，verified=2/2，approved_count=0，catalog_entry_count=2812（真实 ContentRegistry 只读冒烟）"
+    },
+    {
+      "command": "同上工具，非法记录（candidate_hair_buzzed_r03p / Assets/Art/Candidates/Kenney/a.fbx / outfit_hair_missing_x）",
+      "result": "PASS：status=BLOCKED exit=2，issue_counts={candidate_key_leak:1, path_like_content_id:1, missing_content_id:1}，逐条含 record_id/content_id/原因"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test_d18_*.py'",
+      "result": "部分：299 个工具测试中本模块 25/25 通过；7 项失败全部位于本任务写入范围之外（4 项 test_d18_s02_r01_intake_refresh 属基线 1.3 声明的 SUPERSEDED 断言，非 L 任务门禁；3 项 test_d18_candidate_runtime_guard 属 L17 并行写入范围，且并行 Agent 正实时修改套件，多次运行失败集在变）。未修改任何他人测试。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D18-L15 刷新为 LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "content_ids 指向的真实资源运行时加载（不导入、不加载，属 Runtime 阶段）",
+    "L21—L24 来源目录产出的真实逻辑记录全量校验（工具已就绪，待 L42 编译器后的波次 3 审计执行）",
+    "真实 catalog 中 candidate_/env_/d18a05_/material_ 前缀的 intake 级键不进入业务 content_ids（本工具默认 D8 13 前缀；如需扩展前缀须经 registry/prefix map 显式声明）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L15_LOGIC_HANDOFF.md"
+}

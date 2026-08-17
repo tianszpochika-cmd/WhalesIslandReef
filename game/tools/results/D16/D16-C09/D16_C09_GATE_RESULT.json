@@ -1,0 +1,41 @@
+{
+  "task_id": "D16-C09",
+  "status": "GATE_BLOCKED",
+  "updated_at": "2026-08-18T01:10:00+08:00",
+  "maps_to": [
+    "D16-A01",
+    "D16-A02",
+    "D16-A03",
+    "D16-A06"
+  ],
+  "summary": "外部四项真实证据门禁审计：当前环境缺失目标硬件设备（独立SteamDeck/低端机）60秒采样原始日志、物理断电及两平台真实恢复证据、物理已唤醒手柄及人工无障碍签字、目标机安装更新崩溃隐私实测材料。按门禁红线严禁使用开发机RTX 4070 Ti/编辑器PlayMode/合成事件替代，诚实判定为 GATE_BLOCKED。",
+  "changed_files": [
+    "game/tools/results/D16/D16-C09/D16_C09_GATE_RESULT.json",
+    "handoffs/D16/D16-C09_GATE_HANDOFF.md",
+    "docs/game/design/common/handoffs/D16/D16-C09_GATE_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d16_external_gate_audit.py game --evidence-root tools/results/external",
+      "result": "BLOCKED (4 external envelopes missing: d16_a01, d16_a02, d16_a03, d16_a06)"
+    },
+    {
+      "command": "python tools/sync_gate_task_status.py",
+      "result": "PASS"
+    }
+  ],
+  "external_evidence": [],
+  "runtime_deferred": [
+    "D16-A01: 目标硬件设备及低端设备 >=60 秒实测日志",
+    "D16-A02: 物理断电及双平台真实文件系统恢复数据",
+    "D16-A03: 物理手柄与目标分辨率人工无障碍检查记录",
+    "D16-A06: 目标机发布安装卸载、崩溃与最终隐私人工复核"
+  ],
+  "blockers": [
+    "missing_external_target_device_telemetry_a01",
+    "missing_external_power_loss_cross_platform_artifacts_a02",
+    "missing_external_physical_gamepad_accessibility_records_a03",
+    "missing_external_target_release_privacy_verification_a06"
+  ],
+  "handoff": "handoffs/D16/D16-C09_GATE_HANDOFF.md"
+}

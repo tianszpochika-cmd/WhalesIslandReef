@@ -1,0 +1,44 @@
+{
+  "task_id": "D18-L28",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T23:05:00+08:00",
+  "summary": "实现动画描述验证器（tools/d18_animation_descriptor_validator.py + 35 项单测 35/35 PASS）：按 L25 冻结字段 + D20 动作意图词汇校验动画用途（clip role 词汇与 type 兼容，fish+walk/静态+clip 冲突失败）、骨架类型（与 type 匹配、none 带 clip 失败、static 船可承载 sail clip 意图）、循环（idle/walk/run/work 禁 looping=false、combat/emote/interact/sail 禁 looping=true）、root-motion 策略（顶层与逐 clip 一致性、unknown 为 PENDING 不通过）、动作意图（action_intent_map 键必须为 D20 walk/run/interact/talk/fish/board/helm/hit、目标 clip 必须存在且 role 兼容、缺失必需角色 character→walk/animal→walk/fish→swim/ship→sail 失败）、所需 fallback（L25 语义，缺失/空/非法引用失败）、许可证依赖（L04 词表禁 NC/ND/SA、证据文件存在）与状态机归属（player/npc/animal/none 与 type 一致、有 clip 必填）；禁止 Animator/Avatar/clip 导入/retarget/blendtree/.anim 等 Unity 运行时概念 token；工具纯离线不涉及 Unity、approved_count=0、CLI PASS/PENDING/FAIL 退出码 0/1/2；真实 CLI 冒烟（character 描述器）PASS；全量套件仅剩基线声明的 SUPERSEDED intake-refresh 4 项失败（非 L 门禁）。覆盖玩家/NPC/动物/鱼/船/缺动作/冲突/缺 fallback 全部正负夹具。",
+  "changed_files": [
+    "tools/d18_animation_descriptor_validator.py",
+    "tools/tests/test_d18_animation_descriptor_validator.py",
+    "game/tools/results/D18/D18-L28/D18_L28_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L28_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m unittest tools.tests.test_d18_animation_descriptor_validator -v",
+      "result": "PASS：35/35（玩家/NPC 合法；动物 walk、鱼 swim、船 sail 必需角色；缺动作、role_type_conflict、skeleton_type_conflict、static+clip、非几何+clip、未知/缺失/冲突 action intent、缺/空/非法 fallback、NC/未知/证据缺失 license、owner 缺失/冲突、looping 冲突、root-motion 冲突与 unknown PENDING、import_claim、Unity token、重复 clip、空输入、确定性、只读、聚合）"
+    },
+    {
+      "command": "python tools/d18_animation_descriptor_validator.py --input <temp character 描述器> --project-root . --output <temp>",
+      "result": "PASS：status=PASS exit=0，pass_count=1，approved_count=0，issue_counts={}"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test_d18_*.py'",
+      "result": "部分：744 项工具测试中本模块 35/35 通过；4 项失败全部为 test_d18_s02_r01_intake_refresh（基线 1.3 声明的 SUPERSEDED 断言，非 L 任务门禁）；未修改任何他人测试"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有未提交文件的 LF→CRLF 警告，无空白错误"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：状态总览重新生成，D18-L28 刷新为 LOGIC_PASS（覆盖此前波次 2 门禁期遗留的 LOGIC_BLOCKED 结果）"
+    }
+  ],
+  "runtime_deferred": [
+    "动画 clip 真实导入/提取（L28 只验证静态描述；clip 导入属 Runtime 阶段）",
+    "Animator/AnimatorController/BlendTree/Humanoid Avatar/retargeting 装配（本工具明确禁止这些概念出现在描述器，装配属 Runtime 阶段）",
+    "真实 clip 数量/时长/循环数据的实测（描述器的 looping/root_motion 是声明意图，非实测）",
+    "D20 动作意图契约的实际落地（D20 章节任务实现后由 D20-L32 等验证）",
+    "真实动画描述器的生产（由 L42 编译器产出后由本工具与 L39 聚合审计运行）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L28_LOGIC_HANDOFF.md"
+}

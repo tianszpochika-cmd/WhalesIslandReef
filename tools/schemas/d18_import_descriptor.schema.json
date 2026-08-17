@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whalesislandreef.local/schema/d18_import_descriptor.schema.json",
+  "title": "WhalesIslandReef D18 future import descriptor",
+  "description": "Static, machine-verifiable future-Runtime import description for a D18 logic asset record (D18-L25). It declares expected units, axes, bounds, material slots, skeleton type, animation list, root-motion, collision intent, LOD intent, license dependency and fallback. This is NOT Unity Import Settings: it contains no importer options (no mesh/material/animation importer values, no compression, no per-platform overrides) and it never states that an asset was imported, is playable, is runtime-ready or is approved. represents_imported_asset is fixed to false. The descriptor imports nothing, modifies nothing and grants nothing; actual import happens only in a future Runtime phase gate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "descriptor_kind",
+    "schema_version",
+    "source_asset_id",
+    "type",
+    "units",
+    "axes",
+    "bounds",
+    "material_slots",
+    "skeleton_type",
+    "animation_list",
+    "root_motion",
+    "collision_intent",
+    "lod_intent",
+    "license_dependency",
+    "fallback",
+    "represents_imported_asset"
+  ],
+  "$defs": {
+    "repo_relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative path only. Absolute paths, drive letters (C:), UNC names (\\\\server), backslashes, leading slashes, whitespace and '..' traversal segments are forbidden.",
+      "pattern": "^[A-Za-z0-9_.][A-Za-z0-9_./-]*$",
+      "not": { "pattern": "(^|/)\\.\\.(/|$)" }
+    },
+    "https_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[^\\s]+$"
+    },
+    "positive_meters": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Length in meters; must be a positive finite number."
+    }
+  },
+  "properties": {
+    "descriptor_kind": {
+      "const": "d18_import_descriptor",
+      "description": "Fixed discriminator; distinguishes this schema from manifests, catalogs and result JSON."
+    },
+    "schema_version": {
+      "const": 1,
+      "description": "Frozen schema version."
+    },
+    "source_asset_id": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 128,
+      "pattern": "^asset_[a-z0-9_]+$",
+      "description": "Reference to the D18-L02 logic asset record canonical_asset_id (asset_<...>). Never a disk path or display name; the referenced record is the sole source of provenance/license/state facts."
+    },
+    "type": {
+      "type": "string",
+      "description": "Logical asset category; must equal the D18-L02 record category (L45 cross-checks). Character, ship, environment, UI and audio have different descriptor shapes enforced by the allOf conditions below.",
+      "enum": [
+        "animal",
+        "audio",
+        "building",
+        "character",
+        "environment",
+        "fish",
+        "lighting_reference",
+        "material",
+        "prop",
+        "ship",
+        "ui"
+      ]
+    },
+    "units": {
+      "type": "string",
+      "enum": ["meters", "centimeters", "inches", "feet", "unknown"],
+      "description": "Expected linear units of the source asset. meters is the target convention; unknown must be resolved before Runtime import."
+    },
+    "axes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["up", "forward"],
+      "description": "Expected coordinate conventions of the source asset. Target convention for the game is Y-up / Z-forward; any other declared convention must be handled by a Runtime import transform, never by silent assumption.",
+      "properties": {
+        "up": {
+          "type": "string",
+          "enum": ["y", "z", "unknown"]
+        },
+        "forward": {
+          "type": "string",
+          "enum": ["z", "x", "-z", "-x", "unknown"]
+        }
+      }
+    },
+    "bounds": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width_m", "depth_m", "height_m"],
+          "description": "Expected axis-aligned bounding box in meters (width = x, depth = z, height = y). Declared expectation only; real bounds are measured by L26 mesh-descriptor validation, never invented here.",
+          "properties": {
+            "width_m": { "$ref": "#/$defs/positive_meters" },
+            "depth_m": { "$ref": "#/$defs/positive_meters" },
+            "height_m": { "$ref": "#/$defs/positive_meters" }
+          }
+        }
+      ]
+    },
+    "material_slots": {
+      "type": "array",
+      "description": "Expected material slots of the source asset (slot name + role). Empty for assets without materials (audio, pure data). Slot roles follow the frozen taxonomy (body/outfit for characters, wood/metal for ships and props, ground/leaf for environment, ui for interface materials).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slot_name", "slot_role"],
+        "properties": {
+          "slot_name": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$",
+            "description": "Stable lower snake_case slot name."
+          },
+          "slot_role": {
+            "type": "string",
+            "enum": [
+              "body",
+              "outfit",
+              "fabric",
+              "wood",
+              "metal",
+              "glass",
+              "emissive",
+              "water",
+              "stone",
+              "organic",
+              "ui",
+              "misc"
+            ]
+          },
+          "material_asset_id": {
+            "type": "string",
+            "pattern": "^asset_[a-z0-9_]+$",
+            "description": "Optional reference to a D18-L02 material record backing this slot."
+          }
+        }
+      }
+    },
+    "skeleton_type": {
+      "type": "string",
+      "enum": ["none", "static", "generic", "humanoid", "animal", "fish", "mech"],
+      "description": "Expected skeleton/rig type of the source asset. humanoid implies Humanoid Avatar intent for characters; none/static apply to environment, ships, props, UI and audio; animal/fish apply to the ecology taxonomy. This is a declared intent for a future Runtime import, not an Avatar or Animator creation."
+    },
+    "animation_list": {
+      "type": "array",
+      "description": "Expected animation clips of the source asset, as design keys only. Roles follow the character animation categories (idle/walk/run/work/combat/...), ship sailing (sail), ecology (swim/fly) and interaction (interact). No clip is imported; real clip extraction belongs to a future Runtime phase.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["animation_key", "role"],
+        "properties": {
+          "animation_key": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$",
+            "description": "Stable lower snake_case clip key."
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "walk",
+              "run",
+              "work",
+              "combat",
+              "sail",
+              "swim",
+              "fly",
+              "emote",
+              "interact",
+              "other"
+            ]
+          },
+          "root_motion": {
+            "type": "boolean",
+            "description": "Optional per-clip expectation of root-motion baked into the clip."
+          }
+        }
+      }
+    },
+    "root_motion": {
+      "type": "string",
+      "enum": ["none", "required", "derived", "unknown"],
+      "description": "Declared root-motion handling intent: none (no root motion expected), required (clip-driven locomotion), derived (compute/derive at import), unknown (must be resolved before Runtime import)."
+    },
+    "collision_intent": {
+      "type": "string",
+      "enum": [
+        "none",
+        "simple_box",
+        "convex_mesh",
+        "capsule_agent",
+        "terrain",
+        "interaction_anchor_only",
+        "unknown"
+      ],
+      "description": "Declared collision intent for the future Runtime consumer: capsule_agent for characters/animals, convex_mesh/simple_box for ships and props, terrain for environment, none for UI/audio. This declares intent only; it creates no collider and grants no runtime right."
+    },
+    "lod_intent": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["levels", "generate_automatically"],
+          "description": "Declared LOD intent for geometric assets: number of levels (1-5) and whether LODs are expected to be generated automatically at Runtime import. null for non-geometric assets (UI/audio/material).",
+          "properties": {
+            "levels": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            "generate_automatically": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "license_dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["license_id", "license_evidence_path"],
+      "description": "License the future import depends on. Must mirror the referenced D18-L02 record license; unknown/conflicting/NC licenses never grant import rights.",
+      "properties": {
+        "license_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "license_url": {
+          "$ref": "#/$defs/https_url"
+        },
+        "license_evidence_path": {
+          "$ref": "#/$defs/repo_relative_path"
+        },
+        "attribution_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "description"],
+      "description": "Declared fallback if the asset cannot be imported at Runtime: reference must be the placeholder content id or an asset record id, description explains the degradation (e.g. keep placeholder, keep candidate-only, reject). A missing or empty fallback is invalid: every import attempt needs an honest rollback statement.",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "pattern": "^(asset_[a-z0-9_]+|placeholder_[a-z0-9_]+)$"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "represents_imported_asset": {
+      "const": false,
+      "description": "Fixed false. This schema must never claim an asset was imported. Any true value is invalid by construction."
+    }
+  },
+  "allOf": [
+    {
+      "description": "Non-geometric types (audio, ui, material, lighting_reference) carry no geometry, skeleton, collision, LOD, bounds or animation.",
+      "if": {
+        "properties": { "type": { "enum": ["audio", "ui", "material", "lighting_reference"] } }
+      },
+      "then": {
+        "properties": {
+          "bounds": { "const": null },
+          "skeleton_type": { "const": "none" },
+          "collision_intent": { "const": "none" },
+          "root_motion": { "const": "none" },
+          "lod_intent": { "const": null },
+          "animation_list": { "maxItems": 0 }
+        }
+      }
+    },
+    {
+      "description": "Geometric types must declare expected bounds; a null bounds is invalid for them.",
+      "if": {
+        "properties": {
+          "type": { "enum": ["character", "animal", "fish", "ship", "environment", "prop", "building"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "bounds": { "not": { "const": null } }
+        }
+      }
+    },
+    {
+      "description": "Character descriptors require a character skeleton intent.",
+      "if": {
+        "properties": { "type": { "const": "character" } }
+      },
+      "then": {
+        "properties": {
+          "skeleton_type": { "enum": ["humanoid", "generic"] }
+        }
+      }
+    },
+    {
+      "description": "Ecology descriptors require the matching ecology skeleton intent.",
+      "if": {
+        "properties": { "type": { "const": "animal" } }
+      },
+      "then": {
+        "properties": {
+          "skeleton_type": { "enum": ["animal", "generic"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "fish" } }
+      },
+      "then": {
+        "properties": {
+          "skeleton_type": { "enum": ["fish", "generic"] }
+        }
+      }
+    },
+    {
+      "description": "Static geometry (ship, environment, prop, building) is declared as none/static skeleton intent.",
+      "if": {
+        "properties": { "type": { "enum": ["ship", "environment", "prop", "building"] } }
+      },
+      "then": {
+        "properties": {
+          "skeleton_type": { "enum": ["none", "static"] }
+        }
+      }
+    }
+  ]
+}

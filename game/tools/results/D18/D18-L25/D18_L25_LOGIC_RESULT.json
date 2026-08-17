@@ -1,0 +1,52 @@
+{
+  "task_id": "D18-L25",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:07:10+08:00",
+  "summary": "定义未来 Runtime 导入描述 Schema tools/schemas/d18_import_descriptor.schema.json（D18-L25）：source_asset_id（引用 L02 canonical_asset_id）、type（L02 11 值枚举）、units、axes、bounds、material_slots、skeleton_type、animation_list、root_motion、collision_intent、lod_intent、license_dependency、fallback。Schema 显式标明不是 Unity Import Settings（无 importer 选项字段、additionalProperties=false 拒绝 import_settings 混入）且不能表示资源已导入（represents_imported_asset 恒为 false，true 即非法）；非几何类型（audio/ui/material/lighting_reference）强制 null/空几何字段，几何类型强制声明 bounds，角色/动物/鱼/静态几何各有骨架意图条件约束。新增 9 个合法夹具覆盖角色/船/环境/UI/音频/生态/道具/材质差异、17 个非法夹具覆盖越级声称已导入、Unity 设置混入、未知类型、负 bounds、音频带骨架、坏枚举值、LOD 越界、缺回退、路径越界等，双向校验全过；无任何 Unity API/Prefab 改动。",
+  "changed_files": [
+    "tools/schemas/d18_import_descriptor.schema.json",
+    "tools/tests/d18_import_descriptor_fixtures/README.md",
+    "tools/tests/d18_import_descriptor_fixtures/valid_character.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_ship.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_environment.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_ui.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_audio.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_animal.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_fish.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_prop.json",
+    "tools/tests/d18_import_descriptor_fixtures/valid_material.json",
+    "tools/tests/d18_import_descriptor_fixtures/invalid_*.json（17 个）",
+    "game/tools/results/D18/D18-L25/D18_L25_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D18/D18-L25_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python -c \"...Draft202012Validator.check_schema(s)...\"（tools/schemas/d18_import_descriptor.schema.json）",
+      "result": "PASS：schema ok（Draft 2020-12 合法）"
+    },
+    {
+      "command": "python -c \"...valid_*.json 全部 is_valid / invalid_*.json 全部 !is_valid...\"",
+      "result": "PASS：9/9 合法夹具 VALID、17/17 非法夹具 INVALID，双向零偏差；抽查错误原因正确（represents_imported_asset=True→False was expected；audio+humanoid→'none' was expected；import_settings 混入→Additional properties are not allowed）"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS（本轮）：417 项，413 通过、4 失败；4 项失败全部为既有 SUPERSEDED test_d18_s02_r01_intake_refresh.py 历史断言（基线第 1.3 节记录，不是 L 门禁）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L25 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "真实资源导入（Unity 导入、Importer 设置、Prefab/场景接入）属未来 Runtime 阶段；本 Schema 只描述预期，不导入任何资源",
+    "真实 bounds/骨架/动画提取验证（L26—L29 描述器验证器静态校验）",
+    "碰撞体、LODGroup、Animator 装配与 Pivot/轴向转换验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L25_LOGIC_HANDOFF.md"
+}

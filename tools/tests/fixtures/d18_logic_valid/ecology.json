@@ -1,0 +1,97 @@
+{
+  "fixture_kind": "d18_logic_valid_record",
+  "fixture_class": "ecology",
+  "task": "D18-L40",
+  "note": "合成合法夹具：不指向任何真实下载、真实二进制或伪造下载证据；仅用于验证器回归。",
+  "resource_key": "d10:animal:animal_fox_v01",
+  "content_ids": [
+    "animal_fox_v01"
+  ],
+  "descriptor": {
+    "descriptor_kind": "d18_import_descriptor",
+    "schema_version": 1,
+    "source_asset_id": "asset_animal_fox_v01",
+    "type": "animal",
+    "units": "meters",
+    "axes": {
+      "up": "y",
+      "forward": "z"
+    },
+    "bounds": {
+      "width_m": 0.5,
+      "depth_m": 1.2,
+      "height_m": 0.8
+    },
+    "material_slots": [
+      {
+        "slot_name": "fur",
+        "slot_role": "organic"
+      }
+    ],
+    "skeleton_type": "animal",
+    "animation_list": [
+      {
+        "animation_key": "idle",
+        "role": "idle"
+      },
+      {
+        "animation_key": "walk",
+        "role": "walk"
+      },
+      {
+        "animation_key": "run",
+        "role": "run"
+      }
+    ],
+    "root_motion": "none",
+    "collision_intent": "capsule_agent",
+    "lod_intent": {
+      "levels": 2,
+      "generate_automatically": true
+    },
+    "license_dependency": {
+      "license_id": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+      "attribution_required": false
+    },
+    "fallback": {
+      "reference": "placeholder_ph_animal_fox",
+      "description": "keep placeholder until Runtime import"
+    },
+    "represents_imported_asset": false
+  },
+  "records": [
+    {
+      "canonical_asset_id": "asset_animal_fox_v01",
+      "category": "animal",
+      "source_id": "source_quaternius",
+      "source_url": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-16",
+      "original_filename": "fixture_animal_pack.zip",
+      "sha256": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+      "state": "Candidate",
+      "content_ids": [
+        "animal_fox_v01"
+      ],
+      "evidence_paths": [
+        "tools/tests/fixtures/d18_logic_valid/evidence/license_cc0.txt"
+      ],
+      "runtime_deferred": [
+        "夹具不进行动物骨骼/动画/碰撞装配或运行时验证（Runtime 阶段延期）"
+      ]
+    }
+  ]
+}

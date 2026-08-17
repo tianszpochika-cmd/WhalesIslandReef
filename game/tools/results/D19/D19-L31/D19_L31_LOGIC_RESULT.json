@@ -1,0 +1,23 @@
+{
+  "task_id": "D19-L31",
+  "date": "2026-08-18",
+  "status": "LOGIC_PASS",
+  "summary": "实现返港与再靠泊纯确定性测试 game/Assets/Tests/EditMode/D19/D19ArrivalReturnTests.cs（D19-L31，纯 C#，零 Unity 依赖）：全面覆盖在航合法返港并分配泊位（推进至 Berthed、产生航程结束意图 D19VoyageEndIntent）、无目标泊位返港（推进至 Returned）、泊位规则拒绝（他人占用/船型尺寸不匹配拦截，在航状态不变，绝不产生半写）、非法前态拒绝（InService 等非在航状态拒绝，状态保持原态）、重复返港命令幂等控制（同参重放原结果且无二次事件副作用）、服务状态恢复（稳定排序）、中断与状态机拒绝自动补偿保护（自动释放已分配泊位，产出 cause_ids 补偿事件草案，消除孤儿泊位与双重航程状态）。7 项确定性测试全部 PASS。",
+  "verifications": [
+    {
+      "name": "dotnet_nunit_runner",
+      "status": "PASS",
+      "details": "7 个测试用例全部执行通过（7 passed, 0 failed）"
+    },
+    {
+      "name": "static_boundary_audit",
+      "status": "PASS",
+      "details": "零 GameObject/Player，零坐标/碰撞/NavMesh依赖，零生产/Save根模型修改"
+    }
+  ],
+  "files_written": [
+    "game/Assets/Tests/EditMode/D19/D19ArrivalReturnTests.cs",
+    "game/tools/results/D19/D19-L31/D19_L31_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L31_LOGIC_HANDOFF.md"
+  ]
+}

@@ -1,8 +1,11 @@
 # D16 外部真实性验收包
 
-状态：**BLOCKED / 等待真实证据**（2026-08-12）
+状态：**BLOCKED / 等待真实证据**（2026-08-12）  
+开发阶段：**真机四门暂缓采集**（2026-08-18，见 [D16_EXTERNAL_HARDWARE_DEFERRED.md](D16_EXTERNAL_HARDWARE_DEFERRED.md)）
 
-这份运行手册只定义证据格式和复核顺序，不替代目标设备、人工内容审核、授权资产或发布授权。当前工作区没有任何外部 PASS 证据；缺失状态由 `tools/d16_external_gate_audit.py` 保持为 BLOCKED。
+这份运行手册只定义证据格式和复核顺序，不替代目标设备、人工内容审核、授权资产或发布授权。当前工作区没有 A01/A02/A03/A06 外部 PASS 证据；缺失状态由 `tools/d16_external_gate_audit.py` 保持为 BLOCKED。
+
+**开发阶段注释**：用户已裁定上述真实测试暂不列入开发必做。Agent 不得为过审计而补假 envelope。审计继续报 BLOCKED 是预期状态，不是开发阻塞。
 
 ## 统一证据规则
 

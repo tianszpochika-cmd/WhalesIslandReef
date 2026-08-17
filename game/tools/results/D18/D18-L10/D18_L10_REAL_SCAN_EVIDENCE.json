@@ -1,0 +1,163 @@
+{
+  "task": "D18-L10",
+  "tool": "tools/d18_package_boundary_validator.py",
+  "read_only": true,
+  "registry_modified": false,
+  "status": "BLOCKED",
+  "manifest_count": 30,
+  "manifest_files": [
+    "docs/game/design/common/assets/manifests/kenney_blocky_characters_vertical_slice.manifest.json",
+    "docs/game/design/common/assets/manifests/kenney_pirate_kit_vertical_slice.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/gap_fill/bird/quaternius_animal_pack_vol2_bird_d18_a04_r02_b.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/gap_fill/cat/D18_A04_R02_C_manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/gap_fill/female_neutral/d18_a04_r02_f.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/pack_quaternius_modular_character_outfits_fantasy_standard_v01.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/gap_fill/player_appearance/pack_quaternius_universal_base_characters_standard_v01.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/kenney_blocky_characters.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/opengameart_bird.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/quaternius_animated_fish.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/quaternius_animated_men.manifest.json",
+    "docs/game/design/common/assets/packs/characters_animals/quaternius_ultimate_animated_animals.manifest.json",
+    "docs/game/design/common/assets/packs/environment/kenney_nature_kit_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json",
+    "docs/game/design/common/assets/packs/ships_port_props/kenney_building_kit_ships_port_props.manifest.json",
+    "docs/game/design/common/assets/packs/ships_port_props/kenney_pirate_kit_ships_port_props.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/kenney_impact_sounds_v1.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/kenney_input_prompts_v15.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/kenney_interface_sounds_v1.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/kenney_ui_audio_v1.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/kenney_ui_v2.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_hdri_sky_references_v1.manifest.json",
+    "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+  ],
+  "pack_summary": {
+    "total": 30,
+    "passed": 20,
+    "failed": 10,
+    "failed_pack_ids": [
+      "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1",
+      "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1",
+      "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1",
+      "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1",
+      "pack_polyhaven_hdri_sky_references_v1",
+      "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1",
+      "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1",
+      "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1",
+      "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1",
+      "pack_polyhaven_ui_materials_selected_v1"
+    ],
+    "passing_pack_ids": [
+      "pack_kenney_blocky_characters_d18_a04_v1",
+      "pack_kenney_blocky_characters_vertical_slice_v1",
+      "pack_kenney_building_kit_ships_port_props_v1",
+      "pack_kenney_impact_sounds_v1",
+      "pack_kenney_input_prompts_v15",
+      "pack_kenney_interface_sounds_v1",
+      "pack_kenney_nature_kit_d18_a03_v1",
+      "pack_kenney_pirate_kit_ships_port_props_v1",
+      "pack_kenney_pirate_kit_vertical_slice_v1",
+      "pack_kenney_ui_audio_v1",
+      "pack_kenney_ui_pack_v2",
+      "pack_opengameart_bird_d18_a04_v1",
+      "pack_quaternius_animal_pack_vol2_bird_d18_a04_r02_b_v1",
+      "pack_quaternius_animal_pack_vol2_cat_d18_a04_r02_c_v1",
+      "pack_quaternius_animated_fish_d18_a04_v1",
+      "pack_quaternius_animated_men_d18_a04_v1",
+      "pack_quaternius_animated_women_d18_a04_r02_f_v1",
+      "pack_quaternius_modular_character_outfits_fantasy_standard_v01",
+      "pack_quaternius_ultimate_animated_animals_d18_a04_v1",
+      "pack_quaternius_universal_base_characters_standard_v01"
+    ]
+  },
+  "error_count": 10,
+  "issue_count": 10,
+  "issue_counts": {
+    "license_evidence_outside_pack": 10
+  },
+  "issues": [
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_ao_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_diff_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_nor_gl_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_coral_mud_01_rough_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_ao_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_diff_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_nor_gl_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json",
+      "pack_id": "pack_polyhaven_sand_01_rough_jpg_d18_a03_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_hdri_sky_references_v1.manifest.json",
+      "pack_id": "pack_polyhaven_hdri_sky_references_v1"
+    },
+    {
+      "code": "license_evidence_outside_pack",
+      "message": "license_evidence_path: docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt — 路径不在允许根内；允许根：game/Assets/Art/Candidates。",
+      "severity": "error",
+      "manifest": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json",
+      "pack_id": "pack_polyhaven_ui_materials_selected_v1"
+    }
+  ],
+  "record_count": 1865,
+  "record_summary": {
+    "total": 1865,
+    "failed": 0,
+    "passing": 1865,
+    "passed": true
+  }
+}

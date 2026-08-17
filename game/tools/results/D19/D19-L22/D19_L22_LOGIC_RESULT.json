@@ -1,0 +1,46 @@
+{
+  "task_id": "D19-L22",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T22:35:10+08:00",
+  "summary": "实现港口命令幂等控制 game/Assets/Scripts/Systems/D19/D19CommandIdempotency.cs（D19-L22，纯 C#、零 Unity/时钟/全局静态缓存）：每船实例提供命令 ID + 确定性命令指纹（BuildFingerprint，规范化+转义防拼接歧义）、处理中标记（InProgress 中断残留可审计可恢复、绝不伪造完成结果）、相同 ID+相同指纹返回原结果（Completed，含原 resultCode/summaryKey/occurrence）、相同 ID+不同指纹明确冲突（Conflict 状态不变）、过期策略（按世界日保留期+数量上限，处理中残留永不自动清除）、Aborted 终态安全结果（重试须新命令 ID）、可保存最小投影（BuildSaveProjection/RestoreFromProjection，稳定字段供 D19-L20 落盘）。覆盖市场/仓库/泊位/登船/离港/保存六类命令域，不替任何适配器执行副作用（仅 New 授权 SideEffectAuthorized）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19CommandIdempotency.cs",
+    "game/tools/results/D19/D19-L22/D19_L22_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L22_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "前置门禁检查：D19-L02/L03/L06/L16/L17/L24 状态",
+      "result": "PASS：六项前置全部 LOGIC_PASS（L02 21:27 / L03 21:40 / L06 22:45 / L16 21:30 / L17 22:40 / L24 21:47）"
+    },
+    {
+      "command": "csc 编译 game/Assets/Scripts/Systems/D19/D19CommandIdempotency.cs /nologo /target:library",
+      "result": "PASS：exit 0（文件自包含，仅 System 命名空间，无 L02/L16/L17 依赖复制）"
+    },
+    {
+      "command": "临时冒烟程序（仓库外）编译运行：10 组 28 项断言",
+      "result": "PASS：RUN exit 0；市场 3 次投递仅 1 次扣款、泊位 3 次投递仅 1 次占泊、重复投递返回原结果+原 occurrence、同 ID 异指纹 Conflict 状态不变、中断 InProgress 可恢复不伪造、Abort 终态安全结果、过期记录按世界日驱逐且 ID 可复用、投影往返后原结果一致、指纹确定性、缺 ID/未知命令稳定拒绝"
+    },
+    {
+      "command": "静态自检：Transform/NavMesh/UnityEngine/DateTime/Time./Environment/全局静态字典扫描",
+      "result": "PASS：0 处真实引用（唯一命中为注释中的约束说明行）；无真实时钟、无全局静态缓存、无 Unity API"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：280 项总览重新生成，D19-L22=LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0，仅既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "真实存档落盘与读档恢复（L20 投影接口消费本系统的 BuildSaveProjection；运行时验证延期）",
+    "适配器（市场/仓库/泊位/登船/离港/保存）接入幂等控制的实际副作用执行（D19-L11—L15/L09/L10 各自实现）",
+    "中断/异常后的补偿策略落地（D19-L34 补偿任务）",
+    "事件实际落日志（EventLog 追加/去重，L16 逻辑层验证，运行时延期）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L22_LOGIC_HANDOFF.md"
+}

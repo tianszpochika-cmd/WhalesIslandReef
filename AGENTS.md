@@ -39,6 +39,7 @@
 | `docs/game/DEV_ROADMAP.md` | D7 后唯一开发路线 |
 | `docs/game/D18_D24_VISUAL_PLAYABLE_ROADMAP.md` | 下一目标：免费资源、画面重建、UI 与完整本地可玩体验 |
 | `docs/game/AGENT_DEVELOPMENT_TASKS.md` | Agent 开发任务总索引；实际提示词在 D8—D16、D18—D24 独立章节文件中 |
+| `docs/game/design/common/D16_EXTERNAL_HARDWARE_DEFERRED.md` | C09/C10/C11 真机实测暂不列入开发阶段；保持 BLOCKED，禁止改 PASS |
 | `contracts/` | 跨端契约（单一事实源） |
 
 ## 快速否决（看到即停）

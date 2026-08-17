@@ -1,0 +1,38 @@
+{
+  "task_id": "D19-L10",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:25:00+08:00",
+  "summary": "实现返港/到港工作流确定性编排 game/Assets/Scripts/Systems/D19/D19ArrivalWorkflow.cs（D19-L10）：D19ArrivalWorkflowRequest（CommandId/ActorId/ShipId/PortId/TargetBerthId/CurrentVisitState/VoyageStatus/ShipProfile/AuthorityClaims/FacilityAvailability/ReservationTermDays/ConfirmOccupancy）+ D19VoyageEndIntent（纯数据航程结束意图，供 D3 结算消费，不直接结算货币或写库存/船员）+ D19ArrivalWorkflowResult（Success/StateAfter/AllocatedBerthId/BerthAllocated/BerthConfirmed/VoyageEndIntent/AvailableServices/Compensated/Failure/FailureVerdict/Events/Note）。执行链确定性：命令 ID→L22 幂等判定→L24 命令与目标港归属校验→L23 权限校验（跨玩家/跨船/跨港拦截）→在航/返港前态校验（允许 Departed、None、Returned）→L07 靠泊前置纯规则裁决与 L06 泊位预留/占用确认→L03 访问状态机推进至 Returned/Berthed→生成航程结束意图（D19VoyageEndIntent）→恢复目标港可用服务列表（稳定排序）→输出 L16 领域事件草案（Return / BerthReserved / Rejection / Compensation）。中途失败（如状态机拒绝）自动触发确定性可审计补偿（释放已分配泊位并发出 cause_ids 补偿事件，绝不留孤儿泊位或双重状态）。幂等命中返回既有稳定结果且零新事件。验证：dotnet net9.0 编译通过，6 组确定性测试全 PASS（正常返港/无泊位返港/幂等与冲突/泊位深水与占用规则拒绝/非法前态拒绝/状态机失败补偿与孤儿泊位消除）。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19ArrivalWorkflow.cs",
+    "game/tools/results/D19/D19-L10/D19_L10_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L10_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run --project temp_test_build/TestApp.csproj（D19PortLifecycleContracts/D19PortAnchorCatalog/D19PortEventContracts/D19PortFailureCatalog/D19PortLocalizationKeys/D19PortAuthorityValidator/D19PortVisitSystem/D19BerthSystem/D19PortAvailabilitySystem/D19DockingRules/D19CommandIdempotency/D19InvalidStateGuard/D19BoardingWorkflow/D19ArrivalWorkflow + D3Contracts + Event/EventContracts/EventLog）",
+      "result": "PASS：6 组测试场景全通过（1. 正常返港含泊位预留与占用确认；2. 无泊位返港返回 Returned 状态；3. 幂等重复投递 0 事件与冲突参数 DuplicateCommand 拒绝；4. 泊位尺寸/吃水/占用/跨港规则拒绝；5. 非法前态拒绝；6. 状态机拒绝时的确定性补偿、释放泊位与孤儿泊位消除）"
+    },
+    {
+      "command": "静态自检：无真实位置、坐标、碰撞、距离或场景检测（纯逻辑输入驱动）；不直接结算 D2 航程或写 D3 货币/库存/船员数值",
+      "result": "PASS：代码审查确认 D19VoyageEndIntent 为只读数据意图，无 UnityEngine/物理/场景依赖"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L10 状态刷新为 LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅既有 LF->CRLF 警告，无空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "航程实际结算（D19VoyageEndIntent 由 D3/D9 系统在运行时结算消费）",
+    "港口服务恢复的运行时 UI/HUD 展示刷新",
+    "真实到港场景加载、锚地渲染与物理停泊（属于表现层/Runtime 阶段）",
+    "RuntimeApproved/ReleaseApproved（均为 0）"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L10_LOGIC_HANDOFF.md"
+}

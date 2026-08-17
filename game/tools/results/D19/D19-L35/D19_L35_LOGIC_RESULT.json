@@ -1,0 +1,31 @@
+{
+  "task_id": "D19-L35",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T00:55:00+08:00",
+  "summary": "实现港口事件顺序审计与状态重放系统 game/Assets/Scripts/Systems/D19/D19PortEventOrderAudit.cs（D19-L35，纯 C#，零 Unity 依赖）：全面覆盖事件序列单调性（LogSequence）、event_id 唯一性、command_id 关联性、预期生命周期状态转换规则（L02 迁移表）、补偿事件 cause_ids 引用、禁止同一命令产生重复副作用，以及从事件流确定性重建只读港口访问与泊位状态。审计器只读审计，不修改历史事件，不使用真实时钟。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortEventOrderAudit.cs",
+    "game/tools/results/D19/D19-L35/D19_L35_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L35_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (temp_test_build test harness verifying Legal Sequence Replay, Non-monotonic Sequence Detection, Compensation Cause Detection)",
+      "result": "PASS: ALL D19PortEventOrderAudit CHECKS PASSED, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L35 status synced to LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS: exit 0"
+    }
+  ],
+  "runtime_deferred": [
+    "D23 跨系统剧本事件流大规模重放验证",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L35_LOGIC_HANDOFF.md"
+}

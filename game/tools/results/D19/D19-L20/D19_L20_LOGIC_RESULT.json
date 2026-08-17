@@ -1,0 +1,29 @@
+{
+  "task_id": "D19-L20",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-17T23:20:00+08:00",
+  "summary": "定义 D19 港口领域可保存/可恢复纯投影模型 game/Assets/Scripts/Systems/D19/D19PortSaveProjection.cs（D19-L20，纯 C#，零 Unity 依赖）：全面覆盖访问状态（VisitState, PortId, BerthId, ShipId）、泊位分配与租期（Allocations）、服务状态（ServiceStates）、成员逻辑位置（MemberLocations）、命令幂等记录（Idempotency）、未完成命令（PendingCommands）、补偿草案（CompensationDrafts）、事件游标与版本（SchemaVersion, SaveRevision, LastEventId, LastEventSequence）。通过既有 Save 的公开扩展点对接，不复制/替换 Save 根模型，无不可保存的全局静态状态，旧 Save 缺字段处理留给 L21。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortSaveProjection.cs",
+    "game/tools/results/D19/D19-L20/D19_L20_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L20_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (test suite over D19PortSaveProjection.cs)",
+      "result": "PASS: 18/18 assertions passed, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L20 status synced to LOGIC_PASS"
+    }
+  ],
+  "runtime_deferred": [
+    "既有 SaveSystem.Save / Load 与 Sqlite 序列化落盘真实集成",
+    "L21 旧存档兼容与数据迁移实现",
+    "L34 补偿草案真实对账执行",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L20_LOGIC_HANDOFF.md"
+}

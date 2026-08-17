@@ -1,0 +1,3296 @@
+{
+  "catalog_kind": "d18_source_logic_catalog",
+  "catalog_task": "D18-L23",
+  "schema_version": 1,
+  "source_id": "source_polyhaven",
+  "source_name": "Poly Haven",
+  "official_license_page": "https://polyhaven.com/license",
+  "site_license_statement": "官方许可页写明 HDRI、纹理和模型为 CC0；站点 Logo、缩略图、文本与元数据不随 CC0 资产授权",
+  "site_license_is_not_item_evidence": true,
+  "item_evidence_rule": "站点许可不能替代单项文件/来源/哈希记录；每条记录必须可由静态证据解释，缺项 Pending",
+  "models_policy": "未下载任何 Poly Haven 模型；不为不存在或无单项证据的模型建立记录",
+  "created_at": "2026-08-16",
+  "record_count": 91,
+  "summary": {
+    "record_count": 91,
+    "selected_material_map_files": 79,
+    "environment_material_map_files": 8,
+    "hdri_files": 4,
+    "records_with_sha256": 87,
+    "records_pending_sha256": 4,
+    "state_candidate": 91,
+    "license_cc0": 91,
+    "attribution_required_false": 91,
+    "models": 0
+  },
+  "records": [
+    {
+      "canonical_asset_id": "asset_hdri_green_point_park",
+      "category": "lighting_reference",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/green_point_park",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "green_point_park_1k.hdr",
+      "sha256": null,
+      "state": "Candidate",
+      "content_ids": [
+        "asset_hdri_green_point_park"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/green_point_park_1k.hdr",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_hdri_sky_references_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "逐文件 SHA-256 未记录（selected_assets.json 的 hdris 无 files 条目）→ 登记 Pending，由 L06/Runtime 真实计算，绝不补猜",
+        "只作光照参考登记；天空盒/光照组件接线 Runtime 延期",
+        "站点许可页（polyhaven.com/license）不替代单项页面/API 证据；本条 official_page 为单项记录"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_hdri_joburg_central_sunset",
+      "category": "lighting_reference",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/joburg_central_sunset",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "joburg_central_sunset_1k.hdr",
+      "sha256": null,
+      "state": "Candidate",
+      "content_ids": [
+        "asset_hdri_joburg_central_sunset"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/joburg_central_sunset_1k.hdr",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_hdri_sky_references_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "逐文件 SHA-256 未记录（selected_assets.json 的 hdris 无 files 条目）→ 登记 Pending，由 L06/Runtime 真实计算，绝不补猜",
+        "只作光照参考登记；天空盒/光照组件接线 Runtime 延期",
+        "站点许可页（polyhaven.com/license）不替代单项页面/API 证据；本条 official_page 为单项记录"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_hdri_kloppenheim_06",
+      "category": "lighting_reference",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/kloppenheim_06",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "kloppenheim_06_1k.hdr",
+      "sha256": null,
+      "state": "Candidate",
+      "content_ids": [
+        "asset_hdri_kloppenheim_06"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/kloppenheim_06_1k.hdr",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_hdri_sky_references_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "逐文件 SHA-256 未记录（selected_assets.json 的 hdris 无 files 条目）→ 登记 Pending，由 L06/Runtime 真实计算，绝不补猜",
+        "只作光照参考登记；天空盒/光照组件接线 Runtime 延期",
+        "站点许可页（polyhaven.com/license）不替代单项页面/API 证据；本条 official_page 为单项记录"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_hdri_venice_sunset",
+      "category": "lighting_reference",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/venice_sunset",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "venice_sunset_1k.hdr",
+      "sha256": null,
+      "state": "Candidate",
+      "content_ids": [
+        "asset_hdri_venice_sunset"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/HDRI/PolyHaven/venice_sunset_1k.hdr",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_hdri_sky_references_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "逐文件 SHA-256 未记录（selected_assets.json 的 hdris 无 files 条目）→ 登记 Pending，由 L06/Runtime 真实计算，绝不补猜",
+        "只作光照参考登记；天空盒/光照组件接线 Runtime 延期",
+        "站点许可页（polyhaven.com/license）不替代单项页面/API 证据；本条 official_page 为单项记录"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_grass_rock_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_grass_rock",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_grass_rock_albedo.jpg",
+      "sha256": "57B8041BFE0D0F01430E4DBAAD45E7DDDDF0A9FC97317F90DBC51F7B0D9E1B5D",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_grass_rock_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_grass_rock/aerial_grass_rock_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_grass_rock_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_grass_rock",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_grass_rock_ao.jpg",
+      "sha256": "4AD3B0C6D03F3A427A2195C115BB3A9C05924383D04309C7F2B1B14086AA4B9D",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_grass_rock_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_grass_rock/aerial_grass_rock_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_grass_rock_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_grass_rock",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_grass_rock_normal.jpg",
+      "sha256": "1AA3E23BFF453F152E089B9F83AA36B4901651E019F7E2CA01D5331A9BBBDA78",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_grass_rock_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_grass_rock/aerial_grass_rock_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_grass_rock_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_grass_rock",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_grass_rock_roughness.jpg",
+      "sha256": "B9F3F76ABA74007F708333C0DBE73C52EB83EA0C4187A13E2E994F888A25114A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_grass_rock_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_grass_rock/aerial_grass_rock_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_rocks_01_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_rocks_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_rocks_01_albedo.jpg",
+      "sha256": "0F184F4A1DA57342D240086B5ABFB804BB129BC649024C9546B054BB918264B7",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_rocks_01_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_rocks_01/aerial_rocks_01_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_rocks_01_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_rocks_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_rocks_01_ao.jpg",
+      "sha256": "B2D3435A518A2FD1111BB6BA7D83C54462CF5A8AD0BAF6576DDDA0D75A18EE6E",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_rocks_01_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_rocks_01/aerial_rocks_01_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_rocks_01_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_rocks_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_rocks_01_normal.jpg",
+      "sha256": "641120D07A70D7BB04032DEFAE96E2B549EDFA0E59D73C80A32668E432DC0BEB",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_rocks_01_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_rocks_01/aerial_rocks_01_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_aerial_rocks_01_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/aerial_rocks_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "aerial_rocks_01_roughness.jpg",
+      "sha256": "165A51A04C35CEF89151F1E5766615BF10CD4397EB46FF547868B5F3C2A3311F",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_aerial_rocks_01_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/aerial_rocks_01/aerial_rocks_01_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_bark_brown_01_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/bark_brown_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "bark_brown_01_albedo.jpg",
+      "sha256": "4213441AEBCB72B9911F5A860E9CE74A61A8F6CE3B9C23D1F204173E7E7F6066",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_bark_brown_01_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/bark_brown_01/bark_brown_01_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_bark_brown_01_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/bark_brown_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "bark_brown_01_ao.jpg",
+      "sha256": "665069474C3A28D170BBDAF508A8E88C5BFA3FE3823716280038AD2D0C81A198",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_bark_brown_01_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/bark_brown_01/bark_brown_01_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_bark_brown_01_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/bark_brown_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "bark_brown_01_normal.jpg",
+      "sha256": "9D1537B3429579436A62890BB7C5050A0172A15CE768787EACDE81C5CCEFC9CC",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_bark_brown_01_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/bark_brown_01/bark_brown_01_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_bark_brown_01_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/bark_brown_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "bark_brown_01_roughness.jpg",
+      "sha256": "4E7F62508CF77FAEBFEEE15FFB571FF02C45C18D5174AA19FCB8B98506359C5C",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_bark_brown_01_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/bark_brown_01/bark_brown_01_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_blue_metal_plate_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/blue_metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "blue_metal_plate_albedo.jpg",
+      "sha256": "A0162BFFCE47D4A35613A12AF22571B28C18412DC5805CBB69EAC343554EF750",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_blue_metal_plate_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/blue_metal_plate/blue_metal_plate_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_blue_metal_plate_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/blue_metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "blue_metal_plate_ao.jpg",
+      "sha256": "453E4EB26A20B185ADA77B9719037FD6E5F3FC81766CF439C785E6A17F594D7B",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_blue_metal_plate_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/blue_metal_plate/blue_metal_plate_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_blue_metal_plate_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/blue_metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "blue_metal_plate_normal.jpg",
+      "sha256": "970F0273C9E2E3B4FC8338BFD58A28C413B70AC4D1734D9DC8A136724BDE56E6",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_blue_metal_plate_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/blue_metal_plate/blue_metal_plate_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_blue_metal_plate_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/blue_metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "blue_metal_plate_roughness.jpg",
+      "sha256": "37168CF57144DB28DD0743DAB47FBEBC09147FAC919D5E2B5610B069C0B13A46",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_blue_metal_plate_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/blue_metal_plate/blue_metal_plate_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_leather_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_leather",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_leather_albedo.jpg",
+      "sha256": "7E9E1D6566D1FD91D4CEB4966C4820361E85D53A7A828B6BAB3B2A093A876CD1",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_leather_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_leather/brown_leather_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_leather_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_leather",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_leather_ao.jpg",
+      "sha256": "97492C06EFCA0AB7BDEE4D948BCB8E440615065D0B71CD755958DC1E5C2F343C",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_leather_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_leather/brown_leather_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_leather_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_leather",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_leather_normal.jpg",
+      "sha256": "506A0B7650C2DEA285E247F26ED2D0D6EC38FC10DD584359F0D203E9C082236D",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_leather_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_leather/brown_leather_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_leather_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_leather",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_leather_roughness.jpg",
+      "sha256": "F9739EF2DA2E3D17B9EC253F5042F61B10DC10F3AE28F6CF6491650D3D1B0CA3",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_leather_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_leather/brown_leather_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_albedo.jpg",
+      "sha256": "DF3F135C899F10A3B018738343B222CBC67D13E7C76C5D8DA834A3D34C984417",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud/brown_mud_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_ao.jpg",
+      "sha256": "2C93B70C163AB249740BC203F1125A0ECCB2A5D8DFD5400C7D67B2D234D61BE8",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud/brown_mud_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_dry_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud_dry",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_dry_albedo.jpg",
+      "sha256": "A56281B644DE614787340F3DB45E28D2F72EC32FC19A442F99002BAE0AB11398",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_dry_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud_dry/brown_mud_dry_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_dry_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud_dry",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_dry_ao.jpg",
+      "sha256": "C212423E0A5FDA2C1ED514E142A8B3CAE0195F5A37096C549C8FF0ED6A875F9E",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_dry_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud_dry/brown_mud_dry_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_dry_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud_dry",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_dry_normal.jpg",
+      "sha256": "4DD82ECB3E810D4DE49D34C7D6CC30152129434A58B3BD786BC9952BC8874877",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_dry_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud_dry/brown_mud_dry_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_dry_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud_dry",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_dry_roughness.jpg",
+      "sha256": "31FB99629F533924B1150A7DAC8D9432DE85450BB45CDA5033E3EB723F8DDA04",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_dry_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud_dry/brown_mud_dry_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_normal.jpg",
+      "sha256": "AC517CA39EB507AE0F27E2B3DB431C60888F9B5C3C52BEC49D2C0775DA0920CB",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud/brown_mud_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_mud_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_mud",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_mud_roughness.jpg",
+      "sha256": "AE9FB57C1173CCB4579F40EDF8321A30BDCA815042FFD72015A2A707C7E2E7BA",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_mud_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_mud/brown_mud_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_planks_03_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_planks_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_planks_03_albedo.jpg",
+      "sha256": "8DFAE22286FA9BB0ED62CE7326E8BC14C284E567D38FD64B5A453838080ECF19",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_planks_03_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_planks_03/brown_planks_03_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_planks_03_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_planks_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_planks_03_ao.jpg",
+      "sha256": "6E2EABD3BB2DC61BD658D3F107D3CF1E04C0025BB33B311C2E5EE824ECD24DAA",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_planks_03_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_planks_03/brown_planks_03_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_planks_03_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_planks_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_planks_03_normal.jpg",
+      "sha256": "868C153165ECAA7DD7259CB58214F06F6F86C80AC71FC92A827DFF07708BE077",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_planks_03_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_planks_03/brown_planks_03_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_brown_planks_03_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/brown_planks_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "brown_planks_03_roughness.jpg",
+      "sha256": "0395027C927A48B62C5D0615A055A369E5718C01B11189F53AAAC5FF5879C05A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_brown_planks_03_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/brown_planks_03/brown_planks_03_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_clean_pebbles_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/clean_pebbles",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "clean_pebbles_albedo.jpg",
+      "sha256": "902B115C4C0ACE069862368B751E4799F338164CEE62B53B61DF3B6994165D95",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_clean_pebbles_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/clean_pebbles/clean_pebbles_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_clean_pebbles_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/clean_pebbles",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "clean_pebbles_ao.jpg",
+      "sha256": "D87E8532E0E73A5C955C4E8AA6BB6DCADB6D06B4C47B56EF635223F159B2057E",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_clean_pebbles_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/clean_pebbles/clean_pebbles_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_clean_pebbles_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/clean_pebbles",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "clean_pebbles_normal.jpg",
+      "sha256": "9D8BC7221E200AEFF6D7072BB617BE7182802B52C9D185E67D1E63E950B09132",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_clean_pebbles_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/clean_pebbles/clean_pebbles_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_clean_pebbles_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/clean_pebbles",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "clean_pebbles_roughness.jpg",
+      "sha256": "89DBB0482C9E16DE1F501A752C42FEAF4E27B8B23A3791ADA768E046863EF0E5",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_clean_pebbles_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/clean_pebbles/clean_pebbles_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_01_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_01_albedo.jpg",
+      "sha256": "58AF2E40100F7F405703A86D593AF64379F822C4786850DEF23ECFC921450D54",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_01_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_01/coast_sand_01_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_01_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_01_ao.jpg",
+      "sha256": "8876CF6F88179996EFAAF3BDA9A072B8C571530EE5797E850C7A730448C588C6",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_01_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_01/coast_sand_01_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_01_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_01_normal.jpg",
+      "sha256": "FE4D045AEC99E71E80F682FCF0AD958D2DFF1FE614B73178B304D1BAC047B54A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_01_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_01/coast_sand_01_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_01_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_01_roughness.jpg",
+      "sha256": "CBC3E0BF2214E04318A643C9DC81F50F33CC5F7B935A20016C5D9EFD9A6D1696",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_01_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_01/coast_sand_01_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_02_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_02",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_02_albedo.jpg",
+      "sha256": "6854BC49936D7B2971B579095C21342AD2C8FD1495AA3382B840335202964F53",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_02_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_02/coast_sand_02_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_02_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_02",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_02_ao.jpg",
+      "sha256": "E68C7F1D4AC588AB8E561121FDD7CF594CCCFA97164BE20BB64BBD1288AC1E3A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_02_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_02/coast_sand_02_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_02_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_02",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_02_normal.jpg",
+      "sha256": "285A9B5C7F39215A1446C51A69D81228A01277EBAFC48B9AEEBD115066B4F796",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_02_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_02/coast_sand_02_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_02_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_02",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_02_roughness.jpg",
+      "sha256": "F2B99B9F81C7BD467107F61551AB6517CFA090EFCDB10CC19BC2FC4EA347FD7F",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_02_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_02/coast_sand_02_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_03_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_03_albedo.jpg",
+      "sha256": "83F048D3D2931F193E498E7E9E687FBA116C227FBA827998614003707CD27C38",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_03_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_03/coast_sand_03_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_03_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_03_ao.jpg",
+      "sha256": "DD7EA511051745717381A08CE1DF9289A9746D45EBEAE4A5119D78B98EE389F1",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_03_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_03/coast_sand_03_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_03_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_03_normal.jpg",
+      "sha256": "9FBC52583F761577DF65556F8CCA80B33FB54094CDA8B5DEAE3025AB56BEDFB2",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_03_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_03/coast_sand_03_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_03_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_03",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_03_roughness.jpg",
+      "sha256": "A241157BDFB97D00A097670081B219EA81B4642E2570F3F3084D9890C7798822",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_03_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_03/coast_sand_03_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_04_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_04",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_04_albedo.jpg",
+      "sha256": "2A016AF5B70E86124CBFE044AFF71367DAC8884EC013F9FFDAE1878B329F295C",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_04_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_04/coast_sand_04_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_04_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_04",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_04_ao.jpg",
+      "sha256": "FB0399D2105C0CC25DFA8C86F7FC8E4A439392C6565A63FD9BE1CBDC700A93AA",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_04_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_04/coast_sand_04_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_04_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_04",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_04_normal.jpg",
+      "sha256": "DF52DB3B8A02000EBB411D7DCBEE06A005E9F75242EB0E92EE086A29704E2FF8",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_04_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_04/coast_sand_04_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coast_sand_04_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coast_sand_04",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coast_sand_04_roughness.jpg",
+      "sha256": "119384BC339DAC5721B0893E487F8B3041DA706FCE5411E25A3EABEC72F7E0E3",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coast_sand_04_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/coast_sand_04/coast_sand_04_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：沙地/泥地/水岸（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coral_mud_01_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coral_mud_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coral_mud_01_ao_1k.jpg",
+      "sha256": "FB0C6B07FEE149527D553F83D683855A9E1DDEBEC94FD80AB8FC9B878FD62B07",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coral_mud_01_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/coral_mud_01_ao_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_ao_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：seabed_material_ao（coral_mud_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coral_mud_01_diff",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coral_mud_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coral_mud_01_diff_1k.jpg",
+      "sha256": "42FDAEA6FD0263678F70332ADD3C109FDD54E4C32B61FC98CC054D4F1A9DEAD1",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coral_mud_01_diff"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/coral_mud_01_diff_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_diff_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：seabed_material（coral_mud_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coral_mud_01_nor_gl",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coral_mud_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coral_mud_01_nor_gl_1k.jpg",
+      "sha256": "D19D8AC5CAB1B4C524E51EA91DBEB12DC3D986772B5D280D434096228E5DDA38",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coral_mud_01_nor_gl"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/coral_mud_01_nor_gl_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_nor_gl_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：seabed_material_normal（coral_mud_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_coral_mud_01_rough",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/coral_mud_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "coral_mud_01_rough_1k.jpg",
+      "sha256": "CD841F419432F31253AED9FD12E775041A961CFB01AF59BF3BAED5E4459D035A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_coral_mud_01_rough"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/coral_mud_01_rough_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_coral_mud_01_rough_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：seabed_material_roughness（coral_mud_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fabric_pattern_05_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fabric_pattern_05",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fabric_pattern_05_ao.jpg",
+      "sha256": "7EDBD4861ECF61A75F3FAB7BFF5BA39224F94E957B3980A80B5C38F2D203C73A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fabric_pattern_05_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fabric_pattern_05/fabric_pattern_05_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fabric_pattern_05_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fabric_pattern_05",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fabric_pattern_05_normal.jpg",
+      "sha256": "CAA5A948C768C7173B1D8647AA2618D39B4EC5BA4575820E02FB500DAC54596D",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fabric_pattern_05_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fabric_pattern_05/fabric_pattern_05_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fabric_pattern_05_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fabric_pattern_05",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fabric_pattern_05_roughness.jpg",
+      "sha256": "E48D14E87A5493BC4EF9BEA61E85B4397EC41F93D1C3FD1AC17494475781610E",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fabric_pattern_05_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fabric_pattern_05/fabric_pattern_05_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：布/皮革（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fine_grained_wood_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fine_grained_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fine_grained_wood_albedo.jpg",
+      "sha256": "D171F45EF01BC6E239B00DFAA4961BCD27F7D8E93E3962DA3BD3D0CE703D802C",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fine_grained_wood_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fine_grained_wood/fine_grained_wood_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fine_grained_wood_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fine_grained_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fine_grained_wood_ao.jpg",
+      "sha256": "C77F62FCB7B36F525B1143842D7BE3E327A14B0B9D2616E3187AA961E3B1D9B4",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fine_grained_wood_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fine_grained_wood/fine_grained_wood_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fine_grained_wood_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fine_grained_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fine_grained_wood_normal.jpg",
+      "sha256": "BA95EADC009818E161D0F753191F1BACC3FC861E593BE0BC6D82B437F9EC8044",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fine_grained_wood_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fine_grained_wood/fine_grained_wood_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_fine_grained_wood_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/fine_grained_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "fine_grained_wood_roughness.jpg",
+      "sha256": "F281F682E62FE322303DFEAA13DAC18B5CB9E113617FE0ACA43605B49161D82B",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_fine_grained_wood_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/fine_grained_wood/fine_grained_wood_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_metal_plate_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "metal_plate_albedo.jpg",
+      "sha256": "C6B6739EAC2C75CCC898E753D7833DF24EAFBDB9AA92FB6EABFB92ABD1A680A5",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_metal_plate_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/metal_plate/metal_plate_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_metal_plate_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "metal_plate_ao.jpg",
+      "sha256": "715F90D663AF5366FF7839369161B6AD42786AED5F3FC1409BA20FA635AAEACD",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_metal_plate_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/metal_plate/metal_plate_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_metal_plate_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "metal_plate_normal.jpg",
+      "sha256": "994F851A84D52B51E97906021A1B7070EE6EAC9A789FEF041132268DE47D8E6B",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_metal_plate_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/metal_plate/metal_plate_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_metal_plate_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/metal_plate",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "metal_plate_roughness.jpg",
+      "sha256": "756308485CE742A52831453C296452F48CF0ADEAD7D85ADFFFD34C08DCE23EC1",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_metal_plate_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/metal_plate/metal_plate_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：金属（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rock_face_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rock_face",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rock_face_albedo.jpg",
+      "sha256": "CCE4B50517161264BDEF196F5E247E328CA3739083CD6044AD3CC54D88CB82E2",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rock_face_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rock_face/rock_face_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rock_face_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rock_face",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rock_face_ao.jpg",
+      "sha256": "EEA694F92D0CB0658A07915707D2F1D0D34231B534483901A107824824D54D03",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rock_face_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rock_face/rock_face_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rock_face_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rock_face",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rock_face_normal.jpg",
+      "sha256": "E2682E1286C8B6ACA7E01BA7B8FE1726CB6606042B9EE70D097AA67470D410EF",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rock_face_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rock_face/rock_face_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rock_face_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rock_face",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rock_face_roughness.jpg",
+      "sha256": "70DDFC5D7F292909D18AD56DBB1FF7C3A65809DC031854356C7A6978CB446219",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rock_face_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rock_face/rock_face_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：岩石/碎石（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rough_wood_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rough_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rough_wood_albedo.jpg",
+      "sha256": "ABC46D8E3163D911220F4EC3A4043B68D2B0C6D750513F80871211ACFEFB2A98",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rough_wood_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rough_wood/rough_wood_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rough_wood_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rough_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rough_wood_ao.jpg",
+      "sha256": "52C7B7FC1F9024F740598F4368520B933E674BEE4187D1B37E67248935B9BB28",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rough_wood_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rough_wood/rough_wood_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rough_wood_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rough_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rough_wood_normal.jpg",
+      "sha256": "3D1C6F098B66D93E52071B41834DD14A424D8CD2F7C4130C62DC062ACFA65011",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rough_wood_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rough_wood/rough_wood_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_rough_wood_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/rough_wood",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "rough_wood_roughness.jpg",
+      "sha256": "4E9EA9962A7E8B69057937E6723C4B0134B949C1EE5CDB5F3687A54113027B09",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_rough_wood_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/rough_wood/rough_wood_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_sand_01_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "sand_01_ao_1k.jpg",
+      "sha256": "BE5FED35A2B259088682241CE4CF1EB0EE5D36B820F520E3F5E7F353BD1F627A",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_sand_01_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/sand_01_ao_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_ao_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：beach_material_ao（sand_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_sand_01_diff",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "sand_01_diff_1k.jpg",
+      "sha256": "A73B90EAA6D675EF57E7D48A8CF23E1F412E353AB2E29CF73930B8ECD4E76875",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_sand_01_diff"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/sand_01_diff_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_diff_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：beach_material（sand_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_sand_01_nor_gl",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "sand_01_nor_gl_1k.jpg",
+      "sha256": "73984AECDC35B1FFBC322D64B7F8D8165B06970D11F37DD47010609FCB532704",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_sand_01_nor_gl"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/sand_01_nor_gl_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_nor_gl_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：beach_material_normal（sand_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_sand_01_rough",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/sand_01",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://polyhaven.com/license",
+        "license_evidence_path": "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "sand_01_rough_1k.jpg",
+      "sha256": "CCB179B12C56A9032D60E4F4E2DA690B3612A58E1784EB14576372690CDCD1CB",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_sand_01_rough"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/Environment/PolyHaven/Textures/sand_01_rough_1k.jpg",
+        "docs/game/design/common/assets/packs/environment/licenses/polyhaven_license_evidence_2026-08-14.md",
+        "docs/game/design/common/assets/packs/environment/polyhaven_sand_01_rough_1k_jpg_d18_a03.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：beach_material_roughness（sand_01 单项 1K JPG；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 manifest 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wood_floor_deck_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wood_floor_deck",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wood_floor_deck_albedo.jpg",
+      "sha256": "1F2C623E87B0EE905F6F4EC8664DD19B4B135207C96E86198FF2919770B47166",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wood_floor_deck_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wood_floor_deck/wood_floor_deck_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wood_floor_deck_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wood_floor_deck",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wood_floor_deck_ao.jpg",
+      "sha256": "7B94640A2BCA0F482AE10693FF1082DE5F245DBDF3DF1EA8F0F2DC8EFFCC92C1",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wood_floor_deck_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wood_floor_deck/wood_floor_deck_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wood_floor_deck_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wood_floor_deck",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wood_floor_deck_normal.jpg",
+      "sha256": "2FA427B9196099C0FF72D1A1AB472E2A79CA2A76906A5C46D134F8A86E086D23",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wood_floor_deck_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wood_floor_deck/wood_floor_deck_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wood_floor_deck_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wood_floor_deck",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wood_floor_deck_roughness.jpg",
+      "sha256": "5754D2C2A91A288BB257E0FA8C697D97B48472C9FB77C4C7F0FFCC302F3F60A2",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wood_floor_deck_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wood_floor_deck/wood_floor_deck_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wooden_planks_albedo",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wooden_planks",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wooden_planks_albedo.jpg",
+      "sha256": "1273876D6F92FB1A1D29C1BB28F548A9256154187531E84F993B56E347F1D17B",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wooden_planks_albedo"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wooden_planks/wooden_planks_albedo.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wooden_planks_ao",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wooden_planks",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wooden_planks_ao.jpg",
+      "sha256": "F47617E92AA618AAE3C288C01DF81C42037FB4E7B1476706CAACCF85145D0BFC",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wooden_planks_ao"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wooden_planks/wooden_planks_ao.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wooden_planks_normal",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wooden_planks",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wooden_planks_normal.jpg",
+      "sha256": "6C85FF0A410A2993CC09D25859D7D735BC05E9F15DC51393D2E58AA2CE8A0916",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wooden_planks_normal"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wooden_planks/wooden_planks_normal.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    },
+    {
+      "canonical_asset_id": "asset_material_wooden_planks_roughness",
+      "category": "material",
+      "source_id": "source_polyhaven",
+      "source_url": "https://polyhaven.com/a/wooden_planks",
+      "license": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_evidence_path": "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "attribution_required": false
+      },
+      "rights": {
+        "commercial_use": true,
+        "modification_allowed": true,
+        "repository_storage": true,
+        "distribution_with_game": true
+      },
+      "download_date": "2026-08-14",
+      "original_filename": "wooden_planks_roughness.jpg",
+      "sha256": "C1B1A7E3266A082D66F1C786A28A05674227158684D655E42AB2420E47AE746E",
+      "state": "Candidate",
+      "content_ids": [
+        "asset_material_wooden_planks_roughness"
+      ],
+      "evidence_paths": [
+        "game/Assets/Art/Candidates/UIMaterialsAudio/Materials/PolyHaven/wooden_planks/wooden_planks_roughness.jpg",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_cc0_evidence_2026-08-14.txt",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_selected_assets.json",
+        "docs/game/design/common/assets/packs/ui_materials_audio/polyhaven_ui_materials_selected_v1.manifest.json"
+      ],
+      "runtime_deferred": [
+        "未来材质用途：木材/甲板（D18-A06 选集记录；不创建 Unity Material、不接 Shader）",
+        "导入/颜色空间/压缩/导入设置 Runtime 延期",
+        "本条 sha256 为 polyhaven_selected_assets.json 真实逐文件记录；逐文件完整性最终复验属 Runtime"
+      ]
+    }
+  ]
+}

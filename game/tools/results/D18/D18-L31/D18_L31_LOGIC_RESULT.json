@@ -1,0 +1,47 @@
+{
+  "task_id": "D18-L31",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T21:27:36+08:00",
+  "summary": "实现只登记式重复身份审计工具 tools/d18_duplicate_identity_audit.py：按 sha256、source_id、pack/canonical_id、original_filename 四维身份检测并分类 精确重复（byte_identical_copy/duplicate_record）、疑似重复（renamed_copy/path_hash_conflict/canonical_identity_collision）与合法变体（legal_mirror/named_variant），每个发现输出触发字段值作可复核原因；工具只登记（fixed_count 恒 0、files_deleted/renamed/moved 恒 0），绝不删除/重命名/移动资源或声称任何内容已被修复。27 项单元测试覆盖全部分类与成功状态（同名不同 hash 与同 hash 合法镜像均落入合法变体、绝不进入重复或已修复）；真实证据扫描 2,196 条（A05 FILE_HASHES 302 条只读引用 + 30 个 pack manifest 逐文件真实哈希，151 条跨来源同路径合并）输出 DUPLICATES_REGISTERED：精确 20 / 疑似 104 / 合法变体 107，均为真实登记，未修改任何 manifest/catalog/资源。",
+  "changed_files": [
+    "tools/d18_duplicate_identity_audit.py",
+    "tools/tests/test_d18_duplicate_identity_audit.py",
+    "game/tools/results/D18/D18-L31/D18_L31_LOGIC_RESULT.json",
+    "game/tools/results/D18/D18-L31/d18_l31_real_scan.json",
+    "docs/game/design/common/handoffs/D18/D18-L31_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/tests/test_d18_duplicate_identity_audit.py",
+      "result": "PASS：27/27 OK。覆盖：byte_identical_copy 精确重复（PENDING_ADJUDICATION）、duplicate_record、renamed_copy、canonical_identity_collision、path_hash_conflict、同名不同 hash→named_variant 合法变体且 CLEARED 不写已修复、同 hash 跨来源→legal_mirror 合法变体不写已修复、同源跨包→legal_mirror、大小写不敏感比较、跨输入同路径同 hash 合并（co_declared）、跨输入同路径异 hash 冲突、manifest 真实哈希计算与缺文件 PENDING、非法 manifest、缺 sha256/格式错/路径错/越界/非对象/空记录 BLOCKED、三形态 load_records、只读不触碰源文件（files_deleted/renamed/moved/fixed_count 恒 0）、确定性输出、CLI 退出码 0/1/2、manifests 不存在 BLOCKED、无网络导入"
+    },
+    {
+      "command": "python -m py_compile tools/d18_duplicate_identity_audit.py tools/tests/test_d18_duplicate_identity_audit.py",
+      "result": "PASS：两个文件编译通过"
+    },
+    {
+      "command": "python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "PASS（本轮）：738 项，734 通过、4 失败；4 项失败全部为既有 SUPERSEDED test_d18_s02_r01_intake_refresh.py 历史断言（基线第 1.3 节记录，不是 L 任务门禁）；本任务 27 项全过。首次运行中的 test_d18_local_development_guard 波动为并行 L36 模块写入中，复跑稳定通过"
+    },
+    {
+      "command": "python tools/d18_duplicate_identity_audit.py --records docs/game/design/common/assets/packs/ships_port_props/D18_A05_FILE_HASHES.json --manifests docs/game/design/common/assets/packs --manifests docs/game/design/common/assets/manifests --output game/tools/results/D18/D18-L31/d18_l31_real_scan.json",
+      "result": "PASS：2,196 条真实记录（302 条 A05 历史逐文件哈希只读引用 + 30 个 pack manifest 候选文件逐文件真实 SHA-256，缺文件 0），status=DUPLICATES_REGISTERED、counts={exact_duplicate:20, suspected_duplicate:104, legitimate_variant:107}、issue_counts={}、co_declared_paths=151（A05 与 ships_port_props manifest 同路径同 hash 合并并补全 source/pack/canonical 字段）、fixed_count=0、files_deleted/renamed/moved=0；重跑两次输出 SHA-256 完全一致（确定性）"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L31 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅工作区既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "重复发现的最终裁定（Pending→Rejected/保留）属 L19 第 5 条流程与 L42 目录编译/人类复核；本工具只登记 PENDING_ADJUDICATION，不产生任何状态迁移",
+    "manifest 逐文件哈希与 A05 FILE_HASHES 的完整性复核属 L06/L33 与 Runtime 阶段；本工具仅用真实磁盘哈希做身份对账，不宣称完整性通过",
+    "Kenney UI 包颜色目录（Blue/Green/Grey/Red/Yellow）与垂直切片镜像的具体去留决策属资源管线人工裁定；本工具只登记可复核证据"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L31_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,43 @@
+{
+  "task_id": "D18-L16",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-16T20:50:16+08:00",
+  "summary": "实现只读 ResourceKey 验证器：唯一性（重复 key/跨类别碰撞）、稳定命名（小写 snake_case、禁路径/扩展名/显示名/空 key/Unity GUID/双下划线）、弃用别名与迁移规则（目标存在、无自引用、无环、类别一致、候选前缀只允许作弃用别名）、类别匹配（L02 11 类枚举 + 26 个前缀→类别映射）；key 独立于二进制资源/GUID 存在，不改 Registry 与运行时引用；33 项测试 PASS，真实 D20 历史 29 个 key 只读扫描 CLEARED（candidate_ 键声明为弃用别名后）。",
+  "changed_files": [
+    "tools/d18_resource_key_validator.py",
+    "tools/tests/test_d18_resource_key_validator.py",
+    "game/tools/results/D18/D18-L16/D18_L16_LOGIC_RESULT.json",
+    "game/tools/results/D18/D18-L16/d18_l16_real_key_scan.json",
+    "docs/game/design/common/handoffs/D18/D18-L16_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-16.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/tests/test_d18_resource_key_validator.py",
+      "result": "PASS：33/33 OK。正负夹具覆盖：合法裸键/命名空间键（d10:appearance:...）、磁盘路径（正反斜杠/盘符/../Assets/）、扩展名、显示名（空格/大写/非 ASCII/localization key/display_name==key）、空 key、重复 key、跨类别碰撞、未知类别、前缀类别不匹配、未知前缀、Unity GUID、双下划线、弃用别名（合法/目标缺失/自引用/环/跨类别/候选前缀作别名）、迁移（合法/源缺失/环/跨类别）、真实 D20 历史 29 键确定性分类、无网络导入"
+    },
+    {
+      "command": "python tools/d18_resource_key_validator.py --records <29 个真实 D20 历史 key 记录> --output game/tools/results/D18/D18-L16/d18_l16_real_key_scan.json",
+      "result": "PASS：record_count=29、verdict=CLEARED、issue_kind_counts={}；candidate_superhero_female_fullbody_r03p 声明 deprecated_alias_of 后通过；无 candidate_ 键被当作活动键；CLI 退出码 0"
+    },
+    {
+      "command": "python -m py_compile tools/d18_resource_key_validator.py tools/tests/test_d18_resource_key_validator.py",
+      "result": "PASS：两个文件编译通过"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D18-L16 状态刷新为 LOGIC_PASS，280 个任务总览重新生成"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：exit 0；仅工作区既有 LF→CRLF 警告，无尾随空白错误"
+    }
+  ],
+  "runtime_deferred": [
+    "运行时 Unity Resources 路径（如 D10/Appearance/<assetId>）是 Runtime 阶段实现细节，本验证器只冻结逻辑键规则",
+    "弃用别名/迁移的最终生效需 L42 目录编译与 L44 游戏引用审计消费；本工具只验证键记录本身",
+    "真实 key 的类别归属（如 D20 展示键 wildlife_*）与二进制资源存在性验证属 Runtime 阶段"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D18/D18-L16_LOGIC_HANDOFF.md"
+}

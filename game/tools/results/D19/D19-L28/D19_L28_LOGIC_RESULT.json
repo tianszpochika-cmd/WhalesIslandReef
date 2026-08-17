@@ -1,0 +1,32 @@
+{
+  "task_id": "D19-L28",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T00:15:00+08:00",
+  "summary": "实现船坞港口适配器纯逻辑确定性单元测试 game/Assets/Tests/EditMode/D19/D19ShipyardPortAdapterTests.cs（D19-L28，纯 C#，零 Unity 依赖）：全面覆盖合法改装与解锁请求透传、检修未实现（Repair）诚实 BLOCKED、服务可用性（设施关闭/夜间/非 Berthed）前置阻断、权限拒绝（跨船/跨港/服务不匹配）、槽位与船型不支持（未知槽位/满级/未知船型）、D4 底层拒绝（资金不足/声望不足稳定映射至 UnderlyingRejected 与拒绝事件草案）、重复命令幂等控制（重放既有结果无二次副作用）及数据所有权红线断言（适配器不直接修改船舶属性与金钱，成功变更只能来自 D4 裁决）。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D19/D19ShipyardPortAdapterTests.cs",
+    "game/tools/results/D19/D19-L28/D19_L28_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L28_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (temp_test_build test harness executing all 16 test methods in D19ShipyardPortAdapterTests)",
+      "result": "PASS: 16/16 tests passed, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L28 status synced to LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS: exit 0"
+    }
+  ],
+  "runtime_deferred": [
+    "D4 船体/帆改装在 Unity 场景与表现层模型上的挂载和视觉表现",
+    "D19-L38 船坞与港口全流程跨系统回归集成测试",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L28_LOGIC_HANDOFF.md"
+}

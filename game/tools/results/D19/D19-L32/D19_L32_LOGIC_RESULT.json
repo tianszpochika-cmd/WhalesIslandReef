@@ -1,0 +1,33 @@
+{
+  "task_id": "D19-L32",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T00:25:00+08:00",
+  "summary": "实现并执行港口服务可用性与 NPC 逻辑确定性测试（game/Assets/Tests/EditMode/D19/D19AvailabilityAndNpcTests.cs）：纯逻辑输入断言天气标签、时间段、势力许可、设施状态与 NPC 逻辑服务标识（staffed 布尔）对港口服务裁决及只读模型聚合的确定性影响；覆盖未知输入、冲突输入、关闭服务、无可用 NPC、稳定排序、失败 key/code；断言同输入 1,000 轮结果绝对一致、不可用服务零副作用，覆盖 L05 与 L19 全部边界；23/23 项 NUnit 测试全部一次性通过，零 Unity/行为树/模型/NavMesh/场景依赖。",
+  "verification": [
+    "dotnet test (NUnit 23/23 tests passed, exit code 0)",
+    "Adjudicate_SameInputs_ProducesIdenticalResultsRepeatedly (1000 轮确定性循环验证通过)",
+    "Adjudicate_AllStandardServices_AvailableUnderNominalConditions (5 大标准服务基准开放验证通过)",
+    "FacilityState 4 种异常状态 (Closed/UnderRepair/Blockaded/OutOfStock) 隔离裁决验证通过",
+    "FactionPermission_Denied 全局阻断验证通过",
+    "WeatherLabel 露天限制 (Storm 关 Market/Supply, Rain 关 Market, Tavern/Warehouse/Shipyard 开放) 验证通过",
+    "ServiceTimePeriod 夜间限制 (Night 关 Market/Warehouse/Shipyard, Tavern/Supply 开放) 验证通过",
+    "Staffed_False (无可用 NPC / 未配人) 阻断全部服务验证通过",
+    "优先级链冻结判定 (设施状态 > 势力 > 天气 > 时段 > 未配人 > 可用) 4 组全覆盖验证通过",
+    "保守拒绝 (未知港口、非法/空服务、越界枚举、荒岛未注册服务) 5 组验证通过",
+    "零副作用 (UnavailableService 注入后 Buy 不扣款、不改库存、不追加事件) 验证通过",
+    "只读模型 D19ServicesSummaryReadModel 稳定排序与全服务聚合覆盖验证通过",
+    "只读模型 D19PortReadModel 根快照确定性指纹 (SnapshotFingerprint) 验证通过"
+  ],
+  "handoff_document": "docs/game/design/common/handoffs/D19/D19-L32_LOGIC_HANDOFF.md",
+  "written_files": [
+    "game/Assets/Tests/EditMode/D19/D19AvailabilityAndNpcTests.cs",
+    "game/tools/results/D19/D19-L32/D19_L32_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L32_LOGIC_HANDOFF.md"
+  ],
+  "runtime_deferred": [
+    "NPC 真实 3D 模型、Avatar、骨骼与外观装配（属于 Presentation 阶段）",
+    "NPC 行为树决策、移动寻路与场景物理触发（属于 Presentation/Runtime 阶段）",
+    "真实天气过渡曲线与场景后处理表现（属于 Presentation 阶段）",
+    "真实昼夜交替与光照天空盒渐变（属于 Presentation 阶段）"
+  ]
+}

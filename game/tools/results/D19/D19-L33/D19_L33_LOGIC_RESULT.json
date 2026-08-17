@@ -1,0 +1,31 @@
+{
+  "task_id": "D19-L33",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-08-18T00:35:00+08:00",
+  "summary": "实现唯一港口命令路由器 game/Assets/Scripts/Systems/D19/D19PortCommandRouter.cs（D19-L33，纯 C#，零 Unity 依赖）：将所有 D19 公开命令汇合为唯一入口，统一执行指纹与命令 ID 预检、幂等记录检查、L23 权限与归属校验、L24 状态组合与生命周期守卫、各适配器与工作流分派，按确定性顺序生成 L16 领域事件草案并预留 L34 补偿草案；路由器只做分派与编排，绝不夺取市场、库存、船舶或 Save 的裁决权。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D19/D19PortCommandRouter.cs",
+    "game/tools/results/D19/D19-L33/D19_L33_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D19/D19-L33_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet run (temp_test_build test harness verifying EnterPort, Dock, AssignBerth, Idempotency Replay, Authority Rejection)",
+      "result": "PASS: ALL D19PortCommandRouter CHECKS PASSED, 0 errors, 0 warnings"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS: D19-L33 status synced to LOGIC_PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS: exit 0"
+    }
+  ],
+  "runtime_deferred": [
+    "D22 UI 命令层向本路由器的真实分派绑定",
+    "ReleaseApproved / RuntimeApproved = 0"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L33_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "task": "D16-A05-REPLACEMENT",
+  "operator": "D16-A05-REVIEWER-01",
+  "captured_at": "2026-08-18T00:55:00+08:00",
+  "raw_artifacts": [
+    "artifacts/external_sources/d16_c08_slice/SOURCE.md",
+    "artifacts/external_sources/d16_c08_slice/Quaternius_License_Standard.txt",
+    "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+    "docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md",
+    "game/Assets/Art/SliceFinal/D16C08/crew_male_final.fbx",
+    "game/Assets/Art/SliceFinal/D16C08/saint_marys_dock_final.fbx",
+    "game/Assets/Art/SliceFinal/D16C08/small_boat_pier_final.fbx",
+    "game/Assets/Art/SliceFinal/D16C08/saint_marys_sand_final.fbx",
+    "game/Assets/Prefabs/SliceFinal/D16C08/crew_male_final.prefab",
+    "game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_dock_final.prefab",
+    "game/Assets/Prefabs/SliceFinal/D16C08/small_boat_pier_final.prefab",
+    "game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_sand_final.prefab"
+  ],
+  "replacements": [
+    {
+      "id": "asset_ph_crew_male",
+      "final_resource_path": "game/Assets/Art/SliceFinal/D16C08/crew_male_final.fbx",
+      "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/crew_male_final.prefab",
+      "lod_profile": "crew_slice_lod3",
+      "collision_ref": "capsule_crew_male_root",
+      "anchor_refs": ["anchor_crew_foot"],
+      "test_cases": ["d16-c08-crew-male-mesh-exists", "d16-c08-crew-male-prefab-exists"],
+      "source": {
+        "kind": "external-asset",
+        "author": "Quaternius",
+        "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "license": {
+        "status": "CC0-1.0",
+        "holder": "Quaternius",
+        "reference": "artifacts/external_sources/d16_c08_slice/Quaternius_License_Standard.txt",
+        "commercial_use": true,
+        "modification_allowed": true
+      },
+      "authorization": {
+        "authorization_id": "auth-d16-c08-quaternius-male-peasant",
+        "rights_holder": "Quaternius",
+        "license_ref": "artifacts/external_sources/d16_c08_slice/Quaternius_License_Standard.txt",
+        "source_url_or_path": "https://quaternius.com",
+        "acquired_at": "2026-08-18",
+        "commercial_use": true,
+        "modification_allowed": true,
+        "expiry_or_scope": "CC0-1.0; D16-C08 slice crew mesh",
+        "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "review": {
+        "decision": "Approved",
+        "reviewer": "D16-A05-REVIEWER-01",
+        "evidence_refs": ["docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"]
+      }
+    },
+    {
+      "id": "building_saint_marys_dock",
+      "final_resource_path": "game/Assets/Art/SliceFinal/D16C08/saint_marys_dock_final.fbx",
+      "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_dock_final.prefab",
+      "lod_profile": "dock_slice_lod3",
+      "collision_ref": "box_dock_root",
+      "anchor_refs": ["anchor_dock_entry"],
+      "test_cases": ["d16-c08-dock-mesh-exists", "d16-c08-dock-prefab-exists"],
+      "source": {
+        "kind": "external-asset",
+        "author": "Kenney",
+        "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "license": {
+        "status": "CC0-1.0",
+        "holder": "Kenney",
+        "reference": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "commercial_use": true,
+        "modification_allowed": true
+      },
+      "authorization": {
+        "authorization_id": "auth-d16-c08-kenney-dock",
+        "rights_holder": "Kenney",
+        "license_ref": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "source_url_or_path": "https://kenney.nl/assets/pirate-kit",
+        "acquired_at": "2026-08-18",
+        "commercial_use": true,
+        "modification_allowed": true,
+        "expiry_or_scope": "CC0; D16-C08 slice dock mesh; quality-downgrade",
+        "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "review": {
+        "decision": "ApprovedWithWarning",
+        "reviewer": "D16-A05-REVIEWER-01",
+        "evidence_refs": ["docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"]
+      }
+    },
+    {
+      "id": "building_small_boat_pier",
+      "final_resource_path": "game/Assets/Art/SliceFinal/D16C08/small_boat_pier_final.fbx",
+      "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/small_boat_pier_final.prefab",
+      "lod_profile": "pier_slice_lod3",
+      "collision_ref": "box_pier_root",
+      "anchor_refs": ["anchor_pier_board"],
+      "test_cases": ["d16-c08-pier-mesh-exists", "d16-c08-pier-prefab-exists"],
+      "source": {
+        "kind": "external-asset",
+        "author": "Kenney",
+        "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "license": {
+        "status": "CC0-1.0",
+        "holder": "Kenney",
+        "reference": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "commercial_use": true,
+        "modification_allowed": true
+      },
+      "authorization": {
+        "authorization_id": "auth-d16-c08-kenney-pier",
+        "rights_holder": "Kenney",
+        "license_ref": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "source_url_or_path": "https://kenney.nl/assets/pirate-kit",
+        "acquired_at": "2026-08-18",
+        "commercial_use": true,
+        "modification_allowed": true,
+        "expiry_or_scope": "CC0; D16-C08 slice pier mesh; quality-downgrade",
+        "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "review": {
+        "decision": "ApprovedWithWarning",
+        "reviewer": "D16-A05-REVIEWER-01",
+        "evidence_refs": ["docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"]
+      }
+    },
+    {
+      "id": "island_saint_marys",
+      "final_resource_path": "game/Assets/Art/SliceFinal/D16C08/saint_marys_sand_final.fbx",
+      "runtime_prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_sand_final.prefab",
+      "lod_profile": "island_slice_sand_lod3",
+      "collision_ref": "box_beach_ground",
+      "anchor_refs": ["anchor_beach_ground"],
+      "test_cases": ["d16-c08-sand-mesh-exists", "d16-c08-sand-prefab-exists"],
+      "source": {
+        "kind": "external-asset",
+        "author": "Kenney",
+        "reference": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "license": {
+        "status": "CC0-1.0",
+        "holder": "Kenney",
+        "reference": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "commercial_use": true,
+        "modification_allowed": true
+      },
+      "authorization": {
+        "authorization_id": "auth-d16-c08-kenney-sand",
+        "rights_holder": "Kenney",
+        "license_ref": "artifacts/external_sources/d16_c08_slice/Kenney_PirateKit_License.txt",
+        "source_url_or_path": "https://kenney.nl/assets/pirate-kit",
+        "acquired_at": "2026-08-18",
+        "commercial_use": true,
+        "modification_allowed": true,
+        "expiry_or_scope": "CC0; D16-C08 slice sand mesh; quality-downgrade; not full island terrain",
+        "evidence_ref": "artifacts/external_sources/d16_c08_slice/SOURCE.md"
+      },
+      "review": {
+        "decision": "ApprovedWithWarning",
+        "reviewer": "D16-A05-REVIEWER-01",
+        "evidence_refs": ["docs/game/design/common/reviews/D16_C08_SLICE_REVIEW.md"]
+      }
+    }
+  ]
+}

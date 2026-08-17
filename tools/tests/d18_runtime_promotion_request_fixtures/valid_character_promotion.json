@@ -1,0 +1,27 @@
+{
+  "request_kind": "d18_runtime_promotion_request",
+  "schema_version": 1,
+  "asset_id": "asset_fixture_character_sailor",
+  "current_state": "IntakeEligible",
+  "target_usage_scene": "d19_character_work_prefab",
+  "descriptors": [
+    { "kind": "d18_import_descriptor", "path": "docs/fixtures/descriptors/character_sailor_import.json" },
+    { "kind": "d18_animation_descriptor", "path": "docs/fixtures/descriptors/character_sailor_animation.json" }
+  ],
+  "requirements": {
+    "collision": "capsule agent, radius 0.3 m, height 1.8 m",
+    "lod": "2 levels, automatic generation",
+    "animation": "idle, walk, run, work_cargo"
+  },
+  "approver": "human:character_design_lead",
+  "risks": [
+    "skeleton scale may differ from the target unit convention",
+    "clip root-motion must be re-derived at Runtime import"
+  ],
+  "rollback": {
+    "reference": "placeholder_character_sailor",
+    "description": "keep the placeholder character if the request is declined or the rig fails at Runtime"
+  },
+  "submitted_at": "2026-08-16T12:00:00+08:00",
+  "declares_approval": false
+}

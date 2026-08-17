@@ -50,7 +50,7 @@
   "status": "production",
   "owner_system": "AssetRegistry",
   "test_id": "D8-A02-D15-A06-MODEL-MODULE-042",
-  "reviewer": "D15-A06*",
+  "reviewer": "D16-A04-REVIEWER-01",
   "resource_path": "game/Assets/Content/D15/A06/assets/models/modules/item_ship_module_heavy_gun_mount.obj",
   "asset_state": "integrated",
   "production_batch": "D15-A06*",
@@ -65,11 +65,25 @@
     "lod2": "generated",
     "lod3": "generated"
   },
-  "historical_review": "Pending",
+  "historical_review": "Approved",
   "review_evidence_refs": [
     "game/Assets/Content/D15/A06",
-    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md"
+    "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+    "docs/game/design/common/reviews/D16_A04_005/asset_d15_a06_model_ship_module_heavy_gun_mount_evidence.md"
   ],
   "content_warning_ids": [],
-  "skip_allowed": false
+  "skip_allowed": false,
+  "review_decision_basis": {
+    "decision": "Approved",
+    "basis": "经审查，重型炮位改装模块模型符合17世纪加固甲板横梁与大型加农炮制退索具定位装置，项目原创功能组件定义，授权合规无风险。",
+    "reviewer": "D16-A04-REVIEWER-01",
+    "reviewed_at": "2026-08-18",
+    "evidence_refs": [
+      "game/Assets/Content/D15/A06",
+      "docs/game/design/common/D15_CONTENT_PRODUCTION_FREEZE.md",
+      "docs/game/design/common/reviews/D16_A04_005/asset_d15_a06_model_ship_module_heavy_gun_mount_evidence.md"
+    ],
+    "explicit_human_decision": true,
+    "automated_approval": false
+  }
 }
