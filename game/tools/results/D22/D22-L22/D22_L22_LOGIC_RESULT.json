@@ -1,0 +1,32 @@
+{
+  "task_id": "D22-L22",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:45:00+08:00",
+  "summary": "完成 D12/D14 任务只读 UI 适配：输出任务状态、目标进度、失败/恢复引用、奖励请求与奖励发放状态，采用稳定任务/奖励排序并保留 owner 结果。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22QuestReadModelAdapter.cs",
+    "game/Assets/Tests/EditMode/D22/D22ReadModelAdapterTests.cs",
+    "game/tools/results/D22/D22-L22/D22_L22_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L22_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet exec Roslyn csc.dll with all D20/D22 sources, selected D21 public contracts, Whalebone.Systems.dll, Agent.Runtime.dll and D22ReadModelAdapterTests.cs",
+      "result": "PASS — independent source compilation completed with 0 warnings and 0 errors."
+    },
+    {
+      "command": "Reflection execution of NUnit [Test] methods in D22ReadModelAdapterTests",
+      "result": "PASS — 10/10 tests passed; objective progress, reward grant matching, result status and source-text isolation assertions included."
+    },
+    {
+      "command": "dotnet build game/Assembly-CSharp.csproj --no-restore",
+      "result": "PASS — generated Unity-side project build completed with 0 warnings and 0 errors."
+    }
+  ],
+  "runtime_deferred": [
+    "D12 quest facts/commands and D14 reward grants remain the sole domain owners；适配器不发放奖励。",
+    "任务日志 UI、文案资源、Canvas/UGUI、输入、Player/PlayMode、性能和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L22_LOGIC_HANDOFF.md"
+}

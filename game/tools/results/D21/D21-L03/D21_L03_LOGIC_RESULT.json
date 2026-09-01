@@ -1,0 +1,48 @@
+{
+  "task_id": "D21-L03",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:06:23+08:00",
+  "summary": "完成船体组件安装、移除、启用状态、动力组合、必需组件和组件组合不变式；状态修改只在 D21HullComponentSystem owner 内进行并支持命令幂等。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21HullComponentSystem.cs",
+    "game/tools/results/D21/D21-L03/D21_L03_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L03_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "Framework64\\csc.exe /nologo /target:library /warnaserror+ /doc:%TEMP%\\d21-logic-l03\\D21-L03.xml /out:%TEMP%\\d21-logic-l03\\D21-L03.dll D21ShipIdentityContracts.cs D21HullComponentSystem.cs",
+      "result": "PASS — csc_exit=0"
+    },
+    {
+      "command": "PowerShell Add-Type D21-L03.dll; starter validation, explicit install, replay idempotency, invalid anchor removal and snapshot isolation smoke",
+      "result": "PASS — D21-L03 smoke: PASS (5 checks)"
+    },
+    {
+      "command": "PowerShell executable-line forbidden-reference scan for D21-L02—L08 sources",
+      "result": "PASS — forbidden_executable_reference_hits=0"
+    },
+    {
+      "command": "python JSON parse and fixed-key audit for D21-L02—L08 result files",
+      "result": "PASS — executed after all seven result files were written"
+    },
+    {
+      "command": "git diff --check plus artifact trailing-whitespace audit for D21-L02—L08 deliverables",
+      "result": "PASS — executed after all seven result files and handoffs were written"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "NOT_RUN_BY_SCOPE — coordinator owns shared status synchronization"
+    },
+    {
+      "command": "Unity Player/PlayMode, scene, visual, physics, input, performance and real-device validation",
+      "result": "NOT_APPLICABLE — pure logic task; Runtime Deferred"
+    }
+  ],
+  "runtime_deferred": [
+    "组件模型、Prefab、场景、Transform、Collider 和物理约束",
+    "实际航行、驾驶、输入、相机、海况表现、VFX、音频和 UI",
+    "性能、平台、真机和发布门禁"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L03_LOGIC_HANDOFF.md"
+}

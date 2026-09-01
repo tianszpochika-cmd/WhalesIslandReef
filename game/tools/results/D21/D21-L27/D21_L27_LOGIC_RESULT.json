@@ -1,0 +1,113 @@
+{
+  "task_id": "D21-L27",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:13:49+08:00",
+  "summary": "完成 D21-L27 纯逻辑长航程与命令服务证据：固定种子直接系统长跑和真实 D21VoyageCommandService Start + 10,000 ResolveTick 均通过；补给 owner 采用不可变 ApplicationId 历史链与轻量重放记录，事件日志追加使用 dedupe 索引，避免长历史 O(n²) 复制/扫描，同时保留原子提交、幂等重放、冲突/短缺无突变、历史顺序与保存投影语义。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21ProvisionConsumptionSystem.cs",
+    "game/Assets/Scripts/Systems/D21/D21VoyageEventContracts.cs",
+    "game/Assets/Tests/EditMode/D21/D21LongVoyageSimulationTests.cs",
+    ".codex-temp/d21-compile/D21IntegrationCompile.csproj",
+    ".codex-temp/d21-tests/D21IntegrationTestsProgram.cs",
+    "game/tools/results/D21/D21-L27/D21_L27_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L27_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d21-tests/D21IntegrationTests.csproj --no-restore --verbosity:minimal",
+      "evidence": "EXIT=0；D21IntegrationCompile、D21IntegrationTests 及 D21 生产依赖编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "fixed_seed_10000_tick_simulation",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；FixedSeed_10000Ticks 通过 10,000 个显式固定 Tick，最终事件日志为 10,001 条，food/water 始终非负，arrivedCount=0，时间状态连续且未死锁。"
+    },
+    {
+      "check": "command_resolution_prefix_and_replay",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "同一 runner 中 CommandService_IntegratesResolutionAndProvisionOwners_ForBoundedPrefix 通过 128 Tick，ReplayingSameTick 通过无第二次补给/事件；当前 runner 输出 D21_INTEGRATION_BASE_CASES=8、D21_CREW_PROJECTION_ASSERTIONS=16、D21_INTEGRATION_CASES=11、D21_INTEGRATION_FAILURES=0。"
+    },
+    {
+      "check": "full_command_service_10000_owner_path",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "实际通过 D21VoyageCommandService.Route：Start 后连续 10,000 个 ResolveTick；每 tick Resolution/ProvisionResult 均 Applied 且未失败，最终 elapsed_ticks=10,000、LastTickIndex=9,999、状态为 Sailing，food/water=10,000，事件日志 40,001 条且 dedupe key 全部唯一。"
+    },
+    {
+      "check": "long_history_snapshot_replay_and_atomicity",
+      "status": "PASS",
+      "command": "D21LongVoyageSimulationTests.ProvisionHistory_IsOrderedDefensive_AndReplayKeepsLedgerStable",
+      "evidence": "覆盖相同 ApplicationId + 相同指纹重放、ApplicationConflict、重复 tick、历史顺序和返回列表防御性，以及食物/淡水同时短缺时无账本创建或部分扣减。"
+    },
+    {
+      "check": "history_copy_strategy_static_check",
+      "status": "PASS",
+      "command": "rg -n \"D21ProvisionApplicationHistory|ApplicationReplayRecord|AppliedApplicationIds\" game/Assets/Scripts/Systems/D21/D21ProvisionConsumptionSystem.cs",
+      "evidence": "生产代码仅在 AppliedApplicationIds 公共 getter 中显式物化列表；提交路径追加一个不可变历史节点，重放记录共享不可变快照，不保存每个 tick 的完整历史副本。"
+    },
+    {
+      "check": "runner_wall_time_observation",
+      "status": "PASS",
+      "command": "Measure-Command { dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore *> $null }",
+      "evidence": "本机离线测试入口 EXIT=0，墙钟观测约 29,336 ms；这是测试 harness 的本地观测，不是产品性能承诺，也未据此关闭运行时/发行门禁。"
+    },
+    {
+      "check": "boundary_audit",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；扫描 D21 Systems 与 EditMode tests 共 29 个 C# 文件，D21-AUDIT-001—005 violations=0。"
+    },
+    {
+      "check": "boundary_audit_self_test",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py --self-test",
+      "evidence": "EXIT=0；注释、普通字符串、verbatim 字符串中的伪违规被排除，执行代码中的 Unity/network/clock 违规被识别。"
+    },
+    {
+      "check": "boundary_audit_unit_test",
+      "status": "PASS",
+      "command": "python -m unittest tools/tests/test_d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；Ran 3 tests，OK。"
+    },
+    {
+      "check": "python_syntax_compile",
+      "status": "PASS",
+      "command": "python -m py_compile tools/d21_logic_boundary_audit.py tools/tests/test_d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check",
+      "evidence": "EXIT=0；命令仅报告既有工作区文件的 LF/CRLF 转换提示，没有 whitespace error。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "D20-L40 公开 crew projection 的真实 owner 接入；本次 10k 命令服务证据使用显式已校验 CrewDecision，相关 D21 投影断言不关闭 D20 门禁",
+    "Unity Editor 测试发现、场景/Prefab、Canvas、Input、Transform、Animator、物理、平台、真机和发行验证",
+    "完整 SaveSystem 磁盘/云端/崩溃恢复迁移验证"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L27_LOGIC_HANDOFF.md",
+    "next": "协调者保留 D20-L40 crew projection 依赖和 Unity/runtime/release 未验证边界；不要修改 D21-L06/L24 或用本次离线证据关闭 D20 门禁。",
+    "release_statement": "D21-L27 LOGIC_PASS 仅表示离线纯 C# 的固定种子长跑和真实 command-service Start + 10,000 ResolveTick 已通过；不表示 D21 章节、D20 crew owner 闭环、Unity 运行时或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L27 已完成不可变补给历史链/轻量重放记录和事件 dedupe 索引，真实 D21VoyageCommandService Start + 10,000 ResolveTick 通过；当前 runner 输出 11 cases、16 crew assertions、0 failures。共享当天记忆文件按范围未修改。"
+  }
+}

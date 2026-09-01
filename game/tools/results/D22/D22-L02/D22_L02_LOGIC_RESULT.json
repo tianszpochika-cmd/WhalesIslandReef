@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L02",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "建立 D22 屏幕、面板、模态与叠加层的稳定逻辑 ID 注册表，并以防御性副本提供定义读取；不含显示文案、Unity 运行时或业务事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22ScreenContracts.cs",
+    "game/tools/results/D22/D22-L02/D22_L02_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L02_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — L02 registry, known-ID and defensive-copy assertions included; 28 total assertions passed."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — no Unity, Canvas/EventSystem/InputSystem, network, LLM or PlayerPrefs symbols in executable source."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "Canvas/UGUI/EventSystem、真实键盘鼠标手柄触摸输入、焦点选择与点击行为留给 Runtime 阶段。",
+    "Player/PlayMode、场景/Prefab、视觉布局、本地化渲染、音频、设备、性能与发布验证未执行。",
+    "本批次只提供稳定逻辑 ID 与 DTO 定义，不接入 domain owner、网络、LLM 或真实业务写入。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L02_LOGIC_HANDOFF.md"
+}

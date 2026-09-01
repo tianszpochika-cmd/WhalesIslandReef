@@ -1,0 +1,435 @@
+{
+  "blockers": [],
+  "failed_suites": 0,
+  "pass_eligible": true,
+  "passed_suites": 6,
+  "protocol_matrix": {
+    "chapter_counts": {
+      "D18": {
+        "expected": 53,
+        "handoffs": 53,
+        "logic_pass": 53,
+        "results": 53
+      },
+      "D19": {
+        "expected": 48,
+        "handoffs": 48,
+        "logic_pass": 48,
+        "results": 48
+      },
+      "D20": {
+        "expected": 40,
+        "handoffs": 40,
+        "logic_pass": 40,
+        "results": 40
+      },
+      "D21": {
+        "expected": 32,
+        "handoffs": 32,
+        "logic_pass": 32,
+        "results": 32
+      },
+      "D22": {
+        "expected": 36,
+        "handoffs": 36,
+        "logic_pass": 36,
+        "results": 36
+      },
+      "D23": {
+        "expected": 38,
+        "handoffs": 38,
+        "logic_pass": 38,
+        "results": 38
+      }
+    },
+    "compatibility_findings": [
+      "D18-L53: handoff omits an explicit result path",
+      "D19-L29: legacy/extended result fields accepted: maps_to,external_evidence",
+      "D20-L36: handoff omits an explicit result path",
+      "D20-L37: handoff omits an explicit result path",
+      "D20-L38: handoff omits an explicit result path",
+      "D20-L39: handoff omits an explicit result path",
+      "D20-L40: handoff omits an explicit result path",
+      "D21-L15: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L15: handoff omits an explicit result path",
+      "D21-L16: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L16: handoff omits an explicit result path",
+      "D21-L17: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L17: handoff omits an explicit result path",
+      "D21-L18: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L18: handoff omits an explicit result path",
+      "D21-L19: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L19: handoff omits an explicit result path",
+      "D21-L20: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L20: handoff omits an explicit result path",
+      "D21-L21: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L21: handoff omits an explicit result path",
+      "D21-L22: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L22: handoff omits an explicit result path",
+      "D21-L23: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L23: handoff omits an explicit result path",
+      "D21-L24: handoff omits an explicit result path",
+      "D21-L27: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L29: handoff omits an explicit LOGIC_PASS marker",
+      "D21-L30: handoff omits an explicit result path",
+      "D21-L31: handoff omits an explicit result path",
+      "D22-L33: legacy/extended result fields accepted: runner_report,convergence_gate",
+      "D22-L34: legacy/extended result fields accepted: runner_report,convergence_gate,runtime_deferred_register",
+      "D22-L35: legacy/extended result fields accepted: runner_report,convergence_gate,status_review",
+      "D22-L36: legacy/extended result fields accepted: runner_report,convergence_gate,acceptance_document"
+    ],
+    "expected_tasks": 247,
+    "handoff_count": 247,
+    "input_digest": "684829def1b4346946609f9be8d32c31cbfe69230226274df75207cdfa2ef0c5",
+    "issues": [],
+    "logic_pass_count": 247,
+    "result_count": 247,
+    "status": "PASS"
+  },
+  "runner_name": "D24 Unified Pure Logic Regression Runner",
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实输入、物理、视觉、音频和相机未执行。",
+    "真实设备、分辨率布局、性能采样、网络服务、LLM/Agent runtime、真实 SaveSystem 介质和发行验证未执行。",
+    "LOGIC_PASS/logic candidate 不等于 playable、RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "schema_version": "d24.logic-regression.v1",
+  "scope": {
+    "network_llm_executed": false,
+    "performance_sampling_executed": false,
+    "scene_prefab_canvas_input_executed": false,
+    "unity_player_playmode_executed": false
+  },
+  "status": "PASS",
+  "suite_count": 6,
+  "suites": [
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' -m py_compile tools/d24_logic_regression_runner.py",
+      "exit_code": 0,
+      "id": "D24-PYTHON-SYNTAX",
+      "status": "PASS"
+    },
+    {
+      "children": [
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_accessibility_logic_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-00.json'",
+          "exit_code": 0,
+          "id": "d24_accessibility_logic_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_asset_provenance_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-01.json'",
+          "exit_code": 0,
+          "id": "d24_asset_provenance_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_content_catalog_coverage_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-02.json'",
+          "exit_code": 0,
+          "id": "d24_content_catalog_coverage_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_content_id_uniqueness_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-03.json'",
+          "exit_code": 0,
+          "id": "d24_content_id_uniqueness_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_contract_compatibility_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-04.json'",
+          "exit_code": 0,
+          "id": "d24_contract_compatibility_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 2,
+            "check_statuses": [
+              "PASS",
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_currency_invariant_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-05.json'",
+          "exit_code": 0,
+          "id": "d24_currency_invariant_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_data_ownership_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-06.json'",
+          "exit_code": 0,
+          "id": "d24_data_ownership_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_deterministic_seed_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-07.json'",
+          "exit_code": 0,
+          "id": "d24_deterministic_seed_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_error_catalog_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-08.json'",
+          "exit_code": 0,
+          "id": "d24_error_catalog_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_event_integrity_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-09.json'",
+          "exit_code": 0,
+          "id": "d24_event_integrity_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_historical_debt_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-10.json'",
+          "exit_code": 0,
+          "id": "d24_historical_debt_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_inventory_invariant_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-11.json'",
+          "exit_code": 0,
+          "id": "d24_inventory_invariant_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_localization_key_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-12.json'",
+          "exit_code": 0,
+          "id": "d24_localization_key_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_save_migration_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-13.json'",
+          "exit_code": 0,
+          "id": "d24_save_migration_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        },
+        {
+          "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_test_matrix_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\audit-14.json'",
+          "exit_code": 0,
+          "id": "d24_test_matrix_audit.py",
+          "json_valid": true,
+          "payload_passed": true,
+          "payload_status": "PASS",
+          "payload_summary": {
+            "check_count": 1,
+            "check_statuses": [
+              "PASS"
+            ],
+            "schema_version": "d24.logic-audit.v2"
+          },
+          "status": "PASS"
+        }
+      ],
+      "count": 15,
+      "exit_code": 0,
+      "id": "D24-AUDITS",
+      "passed": 15,
+      "status": "PASS"
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_logic_test_runner.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --task all --configuration Release --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\d24-csharp.json'",
+      "exit_code": 0,
+      "id": "D24-CSHARP-L17-L22",
+      "json_valid": true,
+      "payload_passed": true,
+      "payload_status": "PASS",
+      "payload_summary": {
+        "schema_version": "d24.standalone-csharp.v1",
+        "task_count": 6,
+        "task_statuses": [
+          "PASS",
+          "PASS",
+          "PASS",
+          "PASS",
+          "PASS",
+          "PASS"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d24_agentcore_build_audit.py' --root 'C:\\Users\\Administrator\\Desktop\\game\\first01' --configuration Release --json-out 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\agentcore.json'",
+      "exit_code": 0,
+      "id": "D24-AGENTCORE-L23",
+      "json_valid": true,
+      "payload_passed": true,
+      "payload_status": "PASS",
+      "payload_summary": {
+        "check_count": 2,
+        "check_statuses": [
+          "PASS",
+          "PASS"
+        ],
+        "schema_version": "d24.agentcore-build.v1"
+      },
+      "status": "PASS"
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' 'C:\\Users\\Administrator\\Desktop\\game\\first01\\tools\\d23_scenario_runner.py' --output 'C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\d23-runner.json'",
+      "exit_code": 0,
+      "id": "D23-SCENARIO-26-CASE",
+      "json_valid": true,
+      "observed_markers": {
+        "assertion_count": 13925,
+        "case_count": 26,
+        "failure_count": 0,
+        "pass_eligible": true
+      },
+      "status": "PASS",
+      "summary": {
+        "assertion_count": 13925,
+        "case_count": 26,
+        "failed_suites": 0,
+        "failure_count": 0,
+        "passed_suites": 5,
+        "suite_count": 5
+      }
+    },
+    {
+      "assertion_count": 7003,
+      "build_exit_code": 0,
+      "build_stdout_tail": "正在确定要还原的项目…\n  已还原 C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\D24FullLogicRegression.csproj (用时 41 毫秒)。\n  D24FullLogicRegression -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d24-regression-wvg7n9gn\\bin\\Release\\net8.0\\D24FullLogicRegression.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.77",
+      "command": "dotnet build/run temporary D24FullLogicRegression project",
+      "exit_code": 0,
+      "failure_count": 0,
+      "id": "D24-L27",
+      "run_exit_code": 0,
+      "run_stdout_tail": "D24_ASSERTIONS=7003\nD24_FAILURES=0",
+      "status": "PASS",
+      "stderr_tail": "\n"
+    }
+  ],
+  "updated_at": "2026-09-02T03:23:33+08:00"
+}

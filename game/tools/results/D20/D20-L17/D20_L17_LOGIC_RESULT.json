@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L17",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:13:23+08:00",
+  "summary": "实现纯 C# NPC 行为状态机：覆盖 Idle、Work、Trade、Talk、Rest、Alarm、Refuse、Injured，按日程/危险/天气/可用性/岗位能力确定性转移，拒绝非法转换并提供受伤、危险、休息、拒绝和 owner 恢复策略。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20NpcBehaviorStateMachine.cs",
+    "game/tools/results/D20/D20-L17/D20_L17_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L17_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell: dotnet SDK Roslyn csc.dll /nologo /noconfig /nostdlib+ /target:library /langversion:9 /warnaserror+ 编译 D20-L14/L15、D20-L02 与 D20-L16—L19 依赖链",
+      "result": "PASS — CSC_EXIT=0；纯 C# library 编译无错误、无警告。"
+    },
+    {
+      "command": "PowerShell: deterministic behavior smoke（Trade/Talk/Alarm/Injured/Recover/Rest、非法 Unknown→Work 转移）",
+      "result": "PASS — 汇合 smoke 输出 LOGIC_SMOKE=PASS；全部 25 项确定性检查通过。"
+    },
+    {
+      "command": "PowerShell: scoped forbidden-reference scan（四个 D20-L16—L19 源文件）",
+      "result": "PASS — FORBIDDEN_REFERENCE_HITS=0；TRAILING_WHITESPACE_HITS=0。"
+    },
+    {
+      "command": "PowerShell: ConvertFrom-Json 解析 D20-L16—L19 四项结果 JSON 并校验 task_id/status/changed_files",
+      "result": "PASS — D20-L16、D20-L17、D20-L18、D20-L19 四个 JSON 均解析成功。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0；仅报告工作区既有 LF/CRLF 转换提示，无空白错误。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player、PlayMode、场景、输入、动画或设备；状态到寻路/动画的表现映射、真实健康 owner 输入和正式 NPC 场景闭环留给 Runtime/集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L17_LOGIC_HANDOFF.md"
+}

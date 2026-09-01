@@ -1,0 +1,83 @@
+{
+  "baseline": "C:/Users/Administrator/Desktop/game/first01/game/tools/results/D24/D24-L26/D24_L26_BASELINE.json",
+  "baseline_id": "D24-L25-2026-09-02-logic-candidate",
+  "checks": [
+    {
+      "evidence": "status=PASS pass_eligible=True",
+      "id": "current_report_is_logic_pass",
+      "status": "PASS"
+    },
+    {
+      "evidence": "{\"expected_tasks\": {\"minimum\": 247, \"observed\": 247}, \"handoff_count\": {\"minimum\": 247, \"observed\": 247}, \"logic_pass_count\": {\"minimum\": 247, \"observed\": 247}, \"result_count\": {\"minimum\": 247, \"observed\": 247}}",
+      "id": "protocol_matrix_not_reduced",
+      "status": "PASS"
+    },
+    {
+      "evidence": "missing=[] failed=[]",
+      "id": "required_suites_present_and_pass",
+      "status": "PASS"
+    },
+    {
+      "evidence": "count=15 passed=15",
+      "id": "d24_audit_count_not_reduced",
+      "status": "PASS"
+    },
+    {
+      "evidence": "task_count=6 statuses=['PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS']",
+      "id": "d24_csharp_task_coverage_not_reduced",
+      "status": "PASS"
+    },
+    {
+      "evidence": "check_count=2 statuses=['PASS', 'PASS']",
+      "id": "agentcore_checks_not_reduced",
+      "status": "PASS"
+    },
+    {
+      "evidence": "{\"assertion_count\": 13925, \"case_count\": 26, \"failure_count\": 0, \"pass_eligible\": true}",
+      "id": "d23_scenario_markers_not_reduced",
+      "status": "PASS"
+    },
+    {
+      "details": [
+        {
+          "missing_patterns": [],
+          "path": "game/Assets/Scripts/Systems/D19/D19PortSaveMigration.cs",
+          "status": "PASS"
+        },
+        {
+          "missing_patterns": [],
+          "path": "game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs",
+          "status": "PASS"
+        },
+        {
+          "missing_patterns": [],
+          "path": "game/Assets/Scripts/Systems/D21/D21ShipSaveProjection.cs",
+          "status": "PASS"
+        },
+        {
+          "missing_patterns": [],
+          "path": "game/Assets/Scripts/Systems/D19/D19PortFailureCatalog.cs",
+          "status": "PASS"
+        },
+        {
+          "missing_patterns": [],
+          "path": "game/Assets/Scripts/Systems/D22/D22FeedbackCatalog.cs",
+          "status": "PASS"
+        },
+        {
+          "missing_patterns": [],
+          "path": "game/Assets/Tests/EditMode/D24/D24FullLogicRegressionTests.cs",
+          "status": "PASS"
+        }
+      ],
+      "evidence": "6 source records checked",
+      "id": "migration_and_error_markers_preserved",
+      "status": "PASS"
+    }
+  ],
+  "current": "C:/Users/Administrator/Desktop/game/first01/game/tools/results/D24/D24-L25/D24_L25_RUNNER_REPORT.json",
+  "issues": [],
+  "passed": true,
+  "schema_version": "d24.regression-baseline-compare.v1",
+  "status": "PASS"
+}

@@ -49,3 +49,11 @@
 - 修正：独立重跑 4 个审计（D18_L53_C01_{L39_AUDIT,L42_COMPILE,GAME_REFERENCE_AUDIT,SCHEMA_COMPATIBILITY}.json，全部 PASS/满足条件）+ 全量工具测试单次运行 **936 项全部通过、exit code=0**；D18-L50 结果 JSON verification 全部替换为本次真实命令与结果，旧证据全部移除；L50 handoff 重写为"首次 2026-08-16 为 LOGIC_PARTIAL，原因已由 L51/L52 修复；当前基于本次审计为 LOGIC_PASS"。
 - 已更新文件：game/tools/results/D18/D18-L50/D18_L50_LOGIC_RESULT.json、docs/game/design/common/handoffs/D18/D18-L50_LOGIC_HANDOFF.md、本文件与 D18_L53_LOGIC_RESULT.json（追加 C01 说明）。
 - 未修改 Schema/catalog/来源许可哈希事实/C#/D19 设置/Registry；未删除或弱化任何测试；未伪造全量通过（936 项为真实单次运行结果）；4 条 HDRI sha256 保持 Pending。
+
+## D18-L53-C02 当前复审（2026-08-31）
+
+- 复审初始发现 16 条 D18 运行时引用 P0：4 个 `ContentRegistry` 条目引用被 `.gitignore` 的 `artifacts/external_sources/d16_c08_slice/`，其中角色条目另含 1 个本机绝对路径。
+- 已将 4 个条目的来源/许可/证据字段改为仓库内相对路径：角色使用 `game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md` 与 `PH_QUATERNIUS_LICENSE.txt`；Kenney 船舶/港口条目使用 `docs/game/design/common/assets/packs/ships_port_props/D18_A05_SOURCE_EVIDENCE.md`；绝对路径改为仓库相对路径。
+- 复审机器证据已写入 `game/tools/results/D18/D18-L53/D18_L53_C02_{L39_AUDIT,L42_COMPILE,GAME_REFERENCE_SCAN,SCHEMA_COMPATIBILITY_AUDIT}.json`：L39 `PASS`（161 条、P0=0、P1=4、37/37 冒烟），L42 `161/161/0/0`，L44 `PASS`（runtime=0、blocking=0），L45 `PASS`（5/5 槽一致、P0=0）。
+- 专项回归：D18 命名测试 `836/836` 通过；D19 命名测试 `13/13` 通过；D19 Unity EditMode 程序集 `117/117` 通过。全仓库基线为 `943/949`，5 个失败、1 个错误均属于 D15/D16/D9 旧内容字段或历史 packet 计数，不属于 D18/D19 逻辑门禁，也不是 C02 路径修复引入。
+- 本 C02 只修复运行时目录中的证据路径，不改变资源状态、Schema、分类、二进制、Prefab、Scene、RuntimeApproved 或 ReleaseApproved；D18 逻辑结论仍为 `LOGIC_PASS`。

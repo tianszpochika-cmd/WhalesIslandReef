@@ -1,0 +1,65 @@
+{
+  "task_id": "D23-L38",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T02:58:50+08:00",
+  "summary": "D23-L38 纯逻辑最终验收通过：五项上游 gate、L01—L38 结果/handoff、26-case deterministic full-loop runner、边界审计和收口文档均具备真实证据；Runtime/Release 保持延期。",
+  "changed_files": [
+    "docs/game/design/common/D23_LOGIC_ACCEPTANCE.md",
+    "docs/game/design/common/D23_LOGIC_SCENARIO_BASELINE.md",
+    "docs/game/design/common/D23_LOGIC_SCENARIO_CATALOG.md",
+    "docs/game/design/common/D23_LOGIC_FULL_LOOP_INTERFACE.md",
+    "docs/game/design/common/D23_RUNTIME_DEFERRED_REGISTER.md",
+    "docs/game/design/common/D23_LOGIC_DEBT_REGISTER.md",
+    "docs/game/design/common/D23_LOGIC_SAVE_AUDIT.md",
+    "docs/game/design/common/D23_LOGIC_STATUS_REVIEW.md",
+    "docs/README.md",
+    "tools/d23_cross_system_boundary_audit.py",
+    "tools/d23_scenario_runner.py",
+    "game/tools/results/D23/D23-L31/D23_L31_RUNNER_REPORT.json",
+    "game/tools/results/D23/D23-L38/D23_L38_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D23/D23-L38_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "final_d23_runner",
+      "status": "PASS",
+      "command": "python tools/d23_scenario_runner.py --write-results",
+      "exit_code": 0,
+      "evidence": "runner PASS；five suites PASS；D23_CASES=26、D23_ASSERTIONS=13925、D23_FAILURES=0；blockers=[]。"
+    },
+    {
+      "check": "csharp_build",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d23-compile/D23IntegrationTests.csproj --no-restore --verbosity:minimal",
+      "exit_code": 0,
+      "evidence": "0 个警告、0 个错误。"
+    },
+    {
+      "check": "boundary_audit",
+      "status": "PASS",
+      "command": "python tools/d23_cross_system_boundary_audit.py --json",
+      "exit_code": 0,
+      "evidence": "28 files scanned、issues=[]。"
+    },
+    {
+      "check": "result_protocol_and_handoff_audit",
+      "status": "PASS",
+      "command": "PowerShell ConvertFrom-Json protocol audit for D23-L01..D23-L38",
+      "exit_code": 0,
+      "evidence": "38/38 results 与 38/38 handoffs 完整，九字段协议和指针一致。"
+    },
+    {
+      "check": "runtime_or_release_gate",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "exit_code": 0,
+      "evidence": "本结果不授予 RuntimeApproved/ReleaseApproved；Unity、设备、性能、网络、LLM、真实 SaveSystem 介质和发行验证均延期。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景/Prefab/Canvas、真实 UI/输入、设备/性能、画面/音频。",
+    "网络、LLM/Agent runtime、真实 SaveSystem 介质、崩溃恢复、Steam 和发行验收。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D23/D23-L38_LOGIC_HANDOFF.md"
+}

@@ -1,23 +1,36 @@
 {
   "task_id": "D19-L30",
-  "date": "2026-08-17",
   "status": "LOGIC_PASS",
-  "summary": "实现登船与离港工作流纯确定性测试 game/Assets/Tests/EditMode/D19/D19BoardingDepartureTests.cs（D19-L30，纯 C#，零 Unity 依赖）：全面覆盖上下船成功（从 OnShore 迁移至 OnBoard 并产出 Boarded 事件草案；从 OnBoard 迁移至 OnShore 产出 Disembarked 事件草案）、成员已在目标位置原子拒绝（AlreadyBoarded，零位置变动）、成员/权限失败（跨船声明/未知成员拒绝）、离港准备不足拒绝（Preparation Summary 未就绪拦截）、离泊与状态机前置保护（状态保持原态、泊位无孤儿状态）、重复离港命令幂等控制（同参重放原结果且无二次事件副作用）。10 项确定性测试全部 PASS。",
-  "verifications": [
-    {
-      "name": "dotnet_nunit_runner",
-      "status": "PASS",
-      "details": "10 个测试用例全部执行通过（10 passed, 0 failed）"
-    },
-    {
-      "name": "static_boundary_audit",
-      "status": "PASS",
-      "details": "零 GameObject/Player，零 Transform/输入/物理/D20表现，零生产/Save根模型修改"
-    }
-  ],
-  "files_written": [
+  "updated_at": "2026-08-31T21:57:30+08:00",
+  "summary": "协议一致性复核：登船/离港工作流确定性测试覆盖上下船迁移、成员与权限拒绝、准备度门禁、泊位释放、状态机保护与幂等；原始 10 项测试记录全部 PASS，未引入 Unity、输入、物理或 D20 表现依赖。",
+  "changed_files": [
     "game/Assets/Tests/EditMode/D19/D19BoardingDepartureTests.cs",
     "game/tools/results/D19/D19-L30/D19_L30_LOGIC_RESULT.json",
-    "docs/game/design/common/handoffs/D19/D19-L30_LOGIC_HANDOFF.md"
-  ]
+    "docs/game/design/common/handoffs/D19/D19-L30_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-17.md",
+    "docs/game/LOGIC_TASK_STATUS.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet_nunit_runner（历史交付记录）",
+      "result": "PASS：10 个测试用例全部执行通过（10 passed, 0 failed）。"
+    },
+    {
+      "command": "static_boundary_audit（历史交付记录）",
+      "result": "PASS：零 GameObject/Player、零 Transform/输入/物理/D20 表现、零生产/Save 根模型修改。"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L30 状态为 LOGIC_PASS。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无尾随空白错误。"
+    }
+  ],
+  "runtime_deferred": [
+    "未进行 Player/PlayMode、场景、Prefab、物理或输入验证；RuntimeApproved / ReleaseApproved 保持 0。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L30_LOGIC_HANDOFF.md"
 }

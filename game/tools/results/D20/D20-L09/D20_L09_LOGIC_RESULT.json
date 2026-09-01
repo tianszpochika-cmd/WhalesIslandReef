@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L09",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "新增 D20 外观选择纯规则：只消费 D10 公共外观定义/快照与 D18 content_id/resource_key，校验槽位、上下文、所有权、伤病保护和互斥组合，返回需交给 D10 owner 的只读投影。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20AppearanceSelectionRules.cs",
+    "game/tools/results/D20/D20-L09/D20_L09_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L09_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore -t:Rebuild",
+      "result": "PASS — D20 源文件精确 C# harness 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project game/Temp/D20LogicSmoke/D20LogicSmoke.csproj -- D20-L09",
+      "result": "PASS — 合法预览、placeholder 声明、非法资源键拒绝和 D10 目录校验均通过。"
+    },
+    {
+      "command": "scoped forbidden-reference scan over the five D20-L06..L10 production files",
+      "result": "PASS — 无 Unity/引擎对象、网络、LLM、时间或随机引用。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0，无 whitespace error。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json parse of D20-L06..L10 LOGIC_RESULT.json",
+      "result": "PASS — 五份机器结果均为有效 JSON，字段集合符合约定。"
+    }
+  ],
+  "runtime_deferred": [
+    "未读取或加载真实资源、未启动 Unity/场景/角色创建流程；实际装备写入、资源可用性和视觉替换仍由 D10 owner 与后续 Runtime 任务负责。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L09_LOGIC_HANDOFF.md"
+}

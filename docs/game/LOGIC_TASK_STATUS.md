@@ -2,17 +2,17 @@
 
 > 自动生成：`python tools/sync_logic_task_status.py`。每个任务的唯一事实源是其 `*_LOGIC_RESULT.json`；不要手动编辑本文件。
 
-> 最后同步（UTC）：2026-08-17T17:47:58+00:00
+> 最后同步（UTC）：2026-09-01T19:40:30+00:00
 
 | 章节 | 计划任务 | LOGIC_PASS | PARTIAL | BLOCKED | Runtime 延期 | 进行中 | 未开始 |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | D18 | 53 | 53 | 0 | 0 | 0 | 0 | 0 |
 | D19 | 48 | 48 | 0 | 0 | 0 | 0 | 0 |
-| D20 | 40 | 0 | 0 | 0 | 0 | 0 | 40 |
-| D21 | 32 | 0 | 0 | 0 | 0 | 0 | 32 |
-| D22 | 36 | 0 | 0 | 0 | 0 | 0 | 36 |
-| D23 | 38 | 0 | 0 | 0 | 0 | 0 | 38 |
-| D24 | 36 | 0 | 0 | 0 | 0 | 0 | 36 |
+| D20 | 40 | 40 | 0 | 0 | 0 | 0 | 0 |
+| D21 | 32 | 32 | 0 | 0 | 0 | 0 | 0 |
+| D22 | 36 | 36 | 0 | 0 | 0 | 0 | 0 |
+| D23 | 38 | 38 | 0 | 0 | 0 | 0 | 0 |
+| D24 | 36 | 36 | 0 | 0 | 0 | 0 | 0 |
 
 ## D18
 
@@ -70,7 +70,7 @@
 | D18-L50 | LOGIC_PASS | 2026-08-17T00:45:00+08:00 | [D18_L50_LOGIC_RESULT.json](../../game/tools/results/D18/D18-L50/D18_L50_LOGIC_RESULT.json) | D18 章节唯一验收（最终结论 LOGIC_PASS，D18-L53-C01 证据一致性修正版）。历史：首次验收（2026-08-16）为 LOGIC_PARTIAL——L21—L24 来源目录把 8 个细分类直接写入 category 导致 L39 接受/L42 拒绝；根因已由 D18-L51（双层分类契约 + 61 条 Quaternius 精确迁移）与 D18-L52（D19LightingProfileCatalog 五处候选键修复）消除。当前基于 D18-L53-C01 独立审计：L39 PASS（161 记录、P0=0）、L42 161/161/0/0、L44 PASS（runtime=0）、L45 PASS（5/5 槽、无分类分裂）、全量工具测试 936 项 exit 0；11 项 P0 条件全部有 PASS 证据 → LOGIC_PASS。放行 D19 的仅为逻辑资源接口与静态审计输入（161 条合法记录 + 稳定键规则），只读使用；模型导入、Prefab、画面、UI、性能、Player 路线、RuntimeApproved/ReleaseApproved 全部 Runtime Deferred。 |
 | D18-L51 | LOGIC_PASS | 2026-08-17T00:16:34+08:00 | [D18_L51_LOGIC_RESULT.json](../../game/tools/results/D18/D18-L51/D18_L51_LOGIC_RESULT.json) | 建立双层分类契约并完成 61 条 Quaternius 精确迁移：L02 `category` 保持 11 值大类不变；新增可选 `taxonomy_category`（Schema 增加受约束字段，13 个必填字段/状态机/Runtime 边界不变）；新建机器可读版本化映射 d18_taxonomy_category_map.json（8 个实际使用细分类：terrestrial_animal/aquatic_animal/bird/pet→animal，npc_visual/player_visual/hair/outfit→character，各含 parent_category/owner_document/version）。61 条迁移计数：21 animal + 40 character，细分类逐条保留（10/7/1/3/8/1/7/24）。L39 与 L42 同语义：非法大类/未知细分类/父类不匹配一律 P0 拒绝；无 taxonomy_category 的旧记录仍合法。验证全绿：L02 Schema 161/161 合法；L39 测试 22/22、L42 测试 23/23（含 L02 Schema fixtures、L39/L42 一致性、两次编译字节一致）；L39 audit records=161/P0=0（4 条 HDRI hash_pending 如实保留为 P1）；L42 compile input=161/compiled=161/rejected=0/conflicts=0。文档同步双层定义（基线字段词典、CHARACTERS、ECOLOGY、UI_AUDIO，链接机器映射）。全量 933 项仅 5 项失败：4 项既有遗留（R01 基线）+ 1 项预期（L45 测试断言已修复的旧 category 分裂，属数据修复后的测试更新需求，列后续项不静默跳过）。 |
 | D18-L52 | LOGIC_PASS | 2026-08-17T00:22:53+08:00 | [D18_L52_LOGIC_RESULT.json](../../game/tools/results/D18/D18-L52/D18_L52_LOGIC_RESULT.json) | 配置键修复（收尾修复第 2 项）：将 D19LightingProfileCatalog.json 五个 sky_reference_asset 从候选键改为已登记稳定键——candidate_hdri_green_point_park→asset_hdri_green_point_park、candidate_hdri_kloppenheim_06→asset_hdri_kloppenheim_06（两处）、candidate_hdri_joburg_central_sunset→asset_hdri_joburg_central_sunset、candidate_hdri_venice_sunset→asset_hdri_venice_sunset；仅改 5 行（git diff 5+/5-），未动天气映射/颜色/数值/profile_id/许可证/资源状态/C#/Scene/Prefab/Canvas/候选二进制。验证全绿：①Python 标准库解析断言 5 处 sky_reference_asset 全部属于四个 asset_hdri_*；②Poly Haven 静态目录 content_ids 全部可解析；③rg candidate_hdri_ game/Assets/Settings 无命中；④L44 测试 14/14；⑤L44 扫描 status=PASS、runtime_findings_count=0（仅 4 个 editor_only INFO 保留，未写成已修复的 Runtime 引用）；⑥sync + git diff --check exit 0。无 D19 设置测试断言旧候选键（无需改测试）。asset_hdri_* 仍是 Candidate 静态记录，本任务不声明导入/RuntimeApproved/ReleaseApproved。 |
-| D18-L53 | LOGIC_PASS | 2026-08-17T00:46:00+08:00 | [D18_L53_LOGIC_RESULT.json](../../game/tools/results/D18/D18-L53/D18_L53_LOGIC_RESULT.json) | D18 最终收尾门禁（L51/L52 硬前置均 PASS）：按严格顺序重跑全部受影响事实证据链，L50 由首次 LOGIC_PARTIAL 诚实升级为 LOGIC_PASS（历史保留、根因由 L51 双层分类契约 + L52 配置键修复消除）。步骤 1—10 全部通过：①L39 重跑 records=161、P0=0（4 条 HDRI hash_pending 保持 P1/Pending）；②L42 重跑 input=161/compiled=161/rejected=0/conflicts=0；③L43 审计报告重写（数字全部来自本次机器输出）；④L44 重跑 runtime_findings_count=0（4 个 editor INFO 列 Runtime Deferred）；⑤L45 更新并重跑 PASS、5/5 槽一致、category_split_real_data=0、cross_tool_acceptance_split=0，新增注入负向测试（未知细分类/错误父类/非法大类仍 BLOCKED）11/11；⑥L46 接口文档双层分类契约 §3.4 + 新错误码；⑦L47/L48/L49 重跑（矩阵 53 项、收尾零越界、53 任务核对）；⑧L50 升级 LOGIC_PASS（保留首次 PARTIAL 历史）；⑨全量工具测试 936 项 exit 0（修复 test_d18_s02_r01_intake_refresh 过时断言为当前 R02 真实事实 + 历史兼容不推断审批）；⑩sync 状态面板 D18=53/53 PASS、PARTIAL=0、BLOCKED=0、PLANNED=0（L53 提交后）+ git diff --check exit 0。D18 只放行给 D19 的是静态逻辑资源接口与稳定键规则（161 条合法记录）；模型导入、Prefab、画面、UI、性能、Player 路线、RuntimeApproved/ReleaseApproved 全部 Runtime Deferred。 [D18-L53-C01 证据一致性修正 2026-08-17]：D18-L50 结果 JSON/handoff 的 verification 已替换为本次 C01 独立审计证据（旧 10/11、100/61/4、L44 BLOCKED、L45 BLOCKED、L50=PARTIAL、总数 50 等首次失败证据全部移除）；C01 独立审计：L39 PASS 161/P0=0（4 HDRI P1）、L42 161/161/0/0、L44 PASS runtime=0、L45 PASS 5/5 槽 0 分裂；全量工具测试单次运行 936 项全部通过、真实 exit code=0；状态面板 D18=53、LOGIC_PASS=53。L50 当前结论与验收文档、状态面板一致为 LOGIC_PASS（首次 PARTIAL 保留为历史说明）。 |
+| D18-L53 | LOGIC_PASS | 2026-08-31T22:32:07+08:00 | [D18_L53_LOGIC_RESULT.json](../../game/tools/results/D18/D18-L53/D18_L53_LOGIC_RESULT.json) | D18 最终收尾门禁（L51/L52 硬前置均 PASS）：按严格顺序重跑全部受影响事实证据链，L50 由首次 LOGIC_PARTIAL 诚实升级为 LOGIC_PASS（历史保留、根因由 L51 双层分类契约 + L52 配置键修复消除）。步骤 1—10 全部通过：①L39 重跑 records=161、P0=0（4 条 HDRI hash_pending 保持 P1/Pending）；②L42 重跑 input=161/compiled=161/rejected=0/conflicts=0；③L43 审计报告重写（数字全部来自本次机器输出）；④L44 重跑 runtime_findings_count=0（4 个 editor INFO 列 Runtime Deferred）；⑤L45 更新并重跑 PASS、5/5 槽一致、category_split_real_data=0、cross_tool_acceptance_split=0，新增注入负向测试（未知细分类/错误父类/非法大类仍 BLOCKED）11/11；⑥L46 接口文档双层分类契约 §3.4 + 新错误码；⑦L47/L48/L49 重跑（矩阵 53 项、收尾零越界、53 任务核对）；⑧L50 升级 LOGIC_PASS（保留首次 PARTIAL 历史）；⑨全量工具测试 936 项 exit 0（修复 test_d18_s02_r01_intake_refresh 过时断言为当前 R02 真实事实 + 历史兼容不推断审批）；⑩sync 状态面板 D18=53/53 PASS、PARTIAL=0、BLOCKED=0、PLANNED=0（L53 提交后）+ git diff --check exit 0。D18 只放行给 D19 的是静态逻辑资源接口与稳定键规则（161 条合法记录）；模型导入、Prefab、画面、UI、性能、Player 路线、RuntimeApproved/ReleaseApproved 全部 Runtime Deferred。 [D18-L53-C01 证据一致性修正 2026-08-17]：D18-L50 结果 JSON/handoff 的 verification 已替换为本次 C01 独立审计证据（旧 10/11、100/61/4、L44 BLOCKED、L45 BLOCKED、L50=PARTIAL、总数 50 等首次失败证据全部移除）；C01 独立审计：L39 PASS 161/P0=0（4 HDRI P1）、L42 161/161/0/0、L44 PASS runtime=0、L45 PASS 5/5 槽 0 分裂；全量工具测试单次运行 936 项全部通过、真实 exit code=0；状态面板 D18=53、LOGIC_PASS=53。L50 当前结论与验收文档、状态面板一致为 LOGIC_PASS（首次 PARTIAL 保留为历史说明）。 |
 
 ## D19
 
@@ -101,13 +101,13 @@
 | D19-L23 | LOGIC_PASS | 2026-08-17T23:20:00+08:00 | [D19_L23_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L23/D19_L23_LOGIC_RESULT.json) | 实现纯权限校验器 game/Assets/Scripts/Systems/D19/D19PortAuthorityValidator.cs（纯 C#，零 Unity/网络/登录依赖）：以调用方明确传入的 actor_id/ship_id/port_id/berth_id/service_id/货物归属船与授权声明（D19AuthorityClaims：ActorOwnsShip/ActorIsCrewOfShip/ShipCurrentPortId）为输入，判定 D19-L02 九种港口命令谁能请求；只返回允许/拒绝 + D19-L17 失败码目录条目（code+LocKey）与稳定拒绝原因（D19DenialCause 15 值）；拒绝跨船（声明船≠请求船、货物归属船≠请求船）、跨港（请求港≠声明停靠港、泊位/服务归属其他港）、跨玩家（actor 与船无任何授权/成员关系）与伪造服务访问（非服务命令携带服务 ID）；绝不修正归属、绝不创建授权、绝不查询网络、绝不读取登录状态（停靠港作为声明传入只做一致性比较）；无任何跨实体状态写入（纯函数、零可变状态、相同输入可重放）；只读消费 D19-L04 锚点目录（含 D3/D9 历史别名解析与跨港泊位/服务拒绝）与 D19-L17 失败码目录（UnknownPort 拒绝指向 d19.port.unknown_port 条目，其余指向 d19.port.permission_denied 条目）；提供 VerifyMapping 自检。验证：仓库外临时 dotnet 工程编译真实 Event/D19 七文件 0 错误 0 警告；33 项确定性断言全 PASS（允许路径 8、Compensate 无港、跨玩家/跨船/跨港/跨船货物/未知港口/跨港泊位/未知泊位/缺泊位/伪造服务/缺服务/跨港服务/未知服务/空输入 14 类拒绝、历史别名解析、可重放一致性、VerifyMapping 空、L17 目录自检仍空）。 |
 | D19-L24 | LOGIC_PASS | 2026-08-17T21:47:33+08:00 | [D19_L24_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L24/D19_L24_LOGIC_RESULT.json) | 实现集中式不变式/非法状态防护 game/Assets/Scripts/Systems/D19/D19InvalidStateGuard.cs（纯 C#，零 Unity 依赖，精确前置 L02/L17/L18 均 LOGIC_PASS）：统一校验语义覆盖生命周期迁移（封装 L02 CanTransition/ResolveRejectionCode，拒绝时原状态不变）、港口/泊位/服务归属（封装 L04 锚点目录，跨港泊位/跨港服务/未知键/格式非法全部拒绝并保留精确子原因）、命令 ID（空/空白/控制符/超长拒绝）、服务前置（归属 + 必须 Berthed）、船员位置语义（OnShore→OnBoard/OnBoard→OnShore 允许，重复登船/下船/未知位置拒绝，不自动猜测）、状态组合（None 不得带 ID、Berthed/InService 必须持本港泊位、Boarded/Departed 必须船员 OnBoard）与命令级组合（CheckCommand 供 L03/L05—L10 与命令路由复用，Compensate 不做正向迁移校验）；每次拒绝返回 L17 业务码 + L18 key + 重试建议 + 白名单参数（只透传条目 ParamWhitelist 内稳定标量）；异常策略：业务输入非法 → 显式 D19GuardVerdict，null 基础设施引用与不可解析业务码 → 异常向上传播（InvalidOperationException），绝不 try/catch 吞掉、绝不用 bool 默认值自动修复；防护器只校验，不拥有/不写入市场、库存、船舶、保存。 |
 | D19-L25 | LOGIC_PASS | 2026-08-17T23:45:00+08:00 | [D19_L25_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L25/D19_L25_LOGIC_RESULT.json) | 编写港口市场适配器确定性单元测试（game/Assets/Tests/EditMode/D19/D19MarketPortAdapterTests.cs，纯 NUnit、无场景、无网络）：只测试 D19-L11 D19MarketPortAdapter 现有公共接口，未修改任何生产代码。覆盖 8 项核心业务不变式测试：合法买入（校验金额/货舱/市场库存及 L16 事件草案）、合法卖出（重入市场库存与货舱扣减）、资金不足（not_enough_money → d19.trade.funds_insufficient，资金不变且保留 D3 原始失败码）、库存/容量超限（cargo_full → d19.inventory.capacity_exceeded 且保留原始码）、权限越权拦截（跨港声明拦截且不调用 D3）、服务可用性关闭门阻断（L05 判定 Unavailable 立即阻断）、幂等重放（相同 command_id 重放 DuplicateSettlement=true 不重复扣款/发事件）、接口不匹配阻断（空请求/缺失 command_id/非正数量/非 market 服务明确阻断）。 |
-| D19-L26 | LOGIC_PASS | — | [D19_L26_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L26/D19_L26_LOGIC_RESULT.json) | 实现港口仓库适配器确定性单元测试 game/Assets/Tests/EditMode/D19/D19WarehousePortAdapterTests.cs（D19-L26，纯 C#，零 Unity 依赖）：全面覆盖入库增加/出库减少、空堆栈清理、容量满原子拒绝（无丢物品、无重复物品、无负数容量）、跨实体归属拒绝（跨船/跨港）、底层库存失败映射稳定原因（UnknownItem/NotEnoughCargo）、重复命令幂等控制（同参重放无副作用、异参 DuplicateCommand 冲突）、仓库相关港口投影保存/恢复后等价（D19PortSaveProjection Roundtrip，零 UnityEngine 引用）。10 项确定性测试全部 PASS。 |
+| D19-L26 | LOGIC_PASS | 2026-08-31T21:57:30+08:00 | [D19_L26_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L26/D19_L26_LOGIC_RESULT.json) | 协议一致性复核：港口仓库适配器确定性单元测试覆盖入库/出库、容量满原子拒绝、跨实体归属、稳定失败码、幂等与保存投影往返；原始 10 项测试记录全部 PASS，未引入 Unity 或生产 Save 根模型依赖。 |
 | D19-L27 | LOGIC_PASS | 2026-08-18T00:25:00+08:00 | [D19_L27_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L27/D19_L27_LOGIC_RESULT.json) | 实现港口酒馆适配器纯逻辑确定性单元测试 game/Assets/Tests/EditMode/D19/D19TavernPortAdapterTests.cs（D19-L27，纯 C#，零 Unity 依赖）：全面覆盖酒馆休整（Visit）、招募（Recruit）与社交（Social）的合法执行与事件草案产出，L05 可用性（设施关闭/无人员配置）与靠泊前置阻断，L23 权限（跨船/跨港泊位）拒绝，D9/D3 费用拒绝（资金不足映射至 d19.trade.funds_insufficient 且资金不变），D9 编制满员与重复招募拒绝（映射至 capacity_exceeded / operation_failed 并保留原始码），D10 社交敏感内容警告拦截（warning_required 映射至 permission_denied），空请求与缺 ID 阻断，以及数据所有权红线断言（适配器无写路径，所有数值变更由 D9/D10/D3 原系统裁决）。 |
 | D19-L28 | LOGIC_PASS | 2026-08-18T00:15:00+08:00 | [D19_L28_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L28/D19_L28_LOGIC_RESULT.json) | 实现船坞港口适配器纯逻辑确定性单元测试 game/Assets/Tests/EditMode/D19/D19ShipyardPortAdapterTests.cs（D19-L28，纯 C#，零 Unity 依赖）：全面覆盖合法改装与解锁请求透传、检修未实现（Repair）诚实 BLOCKED、服务可用性（设施关闭/夜间/非 Berthed）前置阻断、权限拒绝（跨船/跨港/服务不匹配）、槽位与船型不支持（未知槽位/满级/未知船型）、D4 底层拒绝（资金不足/声望不足稳定映射至 UnderlyingRejected 与拒绝事件草案）、重复命令幂等控制（重放既有结果无二次副作用）及数据所有权红线断言（适配器不直接修改船舶属性与金钱，成功变更只能来自 D4 裁决）。 |
 | D19-L29 | LOGIC_PASS | 2026-08-18T00:15:00+08:00 | [D19_L29_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L29/D19_L29_LOGIC_RESULT.json) | 实现泊位与靠泊系统纯确定性单元测试（game/Assets/Tests/EditMode/D19/D19BerthDockingTests.cs）：全面覆盖正常预留与占用、两船竞争同泊位、船型/吃水能力不兼容拒绝、租期过期拒绝与自动释放、正常与超期释放、跨港泊位请求拒绝、重复命令幂等控制、一船多泊位互斥拒绝、靠泊前置规则确定性裁决及不变式全程校验（无船双占/无泊位双占/失败无副作用）。 |
-| D19-L30 | LOGIC_PASS | — | [D19_L30_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L30/D19_L30_LOGIC_RESULT.json) | 实现登船与离港工作流纯确定性测试 game/Assets/Tests/EditMode/D19/D19BoardingDepartureTests.cs（D19-L30，纯 C#，零 Unity 依赖）：全面覆盖上下船成功（从 OnShore 迁移至 OnBoard 并产出 Boarded 事件草案；从 OnBoard 迁移至 OnShore 产出 Disembarked 事件草案）、成员已在目标位置原子拒绝（AlreadyBoarded，零位置变动）、成员/权限失败（跨船声明/未知成员拒绝）、离港准备不足拒绝（Preparation Summary 未就绪拦截）、离泊与状态机前置保护（状态保持原态、泊位无孤儿状态）、重复离港命令幂等控制（同参重放原结果且无二次事件副作用）。10 项确定性测试全部 PASS。 |
-| D19-L31 | LOGIC_PASS | — | [D19_L31_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L31/D19_L31_LOGIC_RESULT.json) | 实现返港与再靠泊纯确定性测试 game/Assets/Tests/EditMode/D19/D19ArrivalReturnTests.cs（D19-L31，纯 C#，零 Unity 依赖）：全面覆盖在航合法返港并分配泊位（推进至 Berthed、产生航程结束意图 D19VoyageEndIntent）、无目标泊位返港（推进至 Returned）、泊位规则拒绝（他人占用/船型尺寸不匹配拦截，在航状态不变，绝不产生半写）、非法前态拒绝（InService 等非在航状态拒绝，状态保持原态）、重复返港命令幂等控制（同参重放原结果且无二次事件副作用）、服务状态恢复（稳定排序）、中断与状态机拒绝自动补偿保护（自动释放已分配泊位，产出 cause_ids 补偿事件草案，消除孤儿泊位与双重航程状态）。7 项确定性测试全部 PASS。 |
-| D19-L32 | LOGIC_PASS | 2026-08-18T00:25:00+08:00 | [D19_L32_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L32/D19_L32_LOGIC_RESULT.json) | 实现并执行港口服务可用性与 NPC 逻辑确定性测试（game/Assets/Tests/EditMode/D19/D19AvailabilityAndNpcTests.cs）：纯逻辑输入断言天气标签、时间段、势力许可、设施状态与 NPC 逻辑服务标识（staffed 布尔）对港口服务裁决及只读模型聚合的确定性影响；覆盖未知输入、冲突输入、关闭服务、无可用 NPC、稳定排序、失败 key/code；断言同输入 1,000 轮结果绝对一致、不可用服务零副作用，覆盖 L05 与 L19 全部边界；23/23 项 NUnit 测试全部一次性通过，零 Unity/行为树/模型/NavMesh/场景依赖。 |
+| D19-L30 | LOGIC_PASS | 2026-08-31T21:57:30+08:00 | [D19_L30_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L30/D19_L30_LOGIC_RESULT.json) | 协议一致性复核：登船/离港工作流确定性测试覆盖上下船迁移、成员与权限拒绝、准备度门禁、泊位释放、状态机保护与幂等；原始 10 项测试记录全部 PASS，未引入 Unity、输入、物理或 D20 表现依赖。 |
+| D19-L31 | LOGIC_PASS | 2026-08-31T21:57:30+08:00 | [D19_L31_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L31/D19_L31_LOGIC_RESULT.json) | 协议一致性复核：返港与再靠泊确定性测试覆盖合法返港、泊位分配、无目标泊位、占用/尺寸拒绝、非法前态、幂等、稳定服务恢复与自动补偿；原始 7 项测试记录全部 PASS，未引入 Unity、坐标、碰撞或 NavMesh 依赖。 |
+| D19-L32 | LOGIC_PASS | 2026-08-31T21:57:30+08:00 | [D19_L32_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L32/D19_L32_LOGIC_RESULT.json) | 协议一致性复核：港口服务可用性与 NPC 逻辑测试覆盖天气、时段、势力许可、设施状态、staffed 标识、稳定排序、失败码、零副作用与 1,000 轮确定性；原始 23/23 项 NUnit 测试记录全部 PASS，零 Unity/行为树/模型/NavMesh/场景依赖。 |
 | D19-L33 | LOGIC_PASS | 2026-08-18T00:35:00+08:00 | [D19_L33_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L33/D19_L33_LOGIC_RESULT.json) | 实现唯一港口命令路由器 game/Assets/Scripts/Systems/D19/D19PortCommandRouter.cs（D19-L33，纯 C#，零 Unity 依赖）：将所有 D19 公开命令汇合为唯一入口，统一执行指纹与命令 ID 预检、幂等记录检查、L23 权限与归属校验、L24 状态组合与生命周期守卫、各适配器与工作流分派，按确定性顺序生成 L16 领域事件草案并预留 L34 补偿草案；路由器只做分派与编排，绝不夺取市场、库存、船舶或 Save 的裁决权。 |
 | D19-L34 | LOGIC_PASS | 2026-08-18T00:50:00+08:00 | [D19_L34_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L34/D19_L34_LOGIC_RESULT.json) | 实现港口补偿策略与执行系统 game/Assets/Scripts/Systems/D19/D19PortCompensation.cs（D19-L34，纯 C#，零 Unity 依赖）：为市场、泊位、登船、离港、返港和服务中途失败定义可审计的逆序补偿计划与确定性执行逻辑；对可逆动作调用拥有者公开释放/回滚接口，对不可逆或未知跨系统操作保守停止并登记人工恢复提示；补偿命令具备独立 cmp_ 幂等键与 cause_ids 事件草案关联，绝不破坏历史事件，绝不产生二次副作用循环，无“catch 后悄悄成功”。 |
 | D19-L35 | LOGIC_PASS | 2026-08-18T00:55:00+08:00 | [D19_L35_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L35/D19_L35_LOGIC_RESULT.json) | 实现港口事件顺序审计与状态重放系统 game/Assets/Scripts/Systems/D19/D19PortEventOrderAudit.cs（D19-L35，纯 C#，零 Unity 依赖）：全面覆盖事件序列单调性（LogSequence）、event_id 唯一性、command_id 关联性、预期生命周期状态转换规则（L02 迁移表）、补偿事件 cause_ids 引用、禁止同一命令产生重复副作用，以及从事件流确定性重建只读港口访问与泊位状态。审计器只读审计，不修改历史事件，不使用真实时钟。 |
@@ -116,218 +116,218 @@
 | D19-L38 | LOGIC_PASS | 2026-08-18T01:45:00+08:00 | [D19_L38_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L38/D19_L38_LOGIC_RESULT.json) | 编写并执行港口保存/加载往返等价性单元测试 game/Assets/Tests/EditMode/D19/D19PortSaveLoadTests.cs（纯 C# EditMode，零 Unity 依赖）：全面覆盖 PortVisit（到港）、Docked（靠岸）、Berthed（分配与租期）、InService（服务中）、Boarded（登船）、Departed（离港）、Returned（返港）、PendingCommands（挂起命令）与 CompensationDrafts（补偿草案）全部生命周期节点，断言提取、序列化深拷贝、加载恢复后继续执行下一命令及重放上一命令的完全确定性等价，无副作用丢失或不可能状态产生。 |
 | D19-L39 | LOGIC_PASS | 2026-08-18T02:00:00+08:00 | [D19_L39_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L39/D19_L39_LOGIC_RESULT.json) | 编写并执行历史旧存档兼容与迁移单元测试 game/Assets/Tests/EditMode/D19/D19LegacySaveTests.cs（纯 C# EditMode，零 Unity 依赖）：构建 8 类完整旧存档夹具（缺失 D19 块、旧 port/berth 别名与迁移提示、SchemaVersion=0 升级、未来/负数不支持版本拦截、Berthed 缺泊位数据损失拒绝、跨港泊位冲突拒绝、损坏不可能状态拦截及迁移幂等性），全面覆盖 L21 D19PortSaveMigration 的全部边界分支，不修改生产代码。 |
 | D19-L40 | LOGIC_PASS | 2026-08-18T02:15:00+08:00 | [D19_L40_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L40/D19_L40_LOGIC_RESULT.json) | 编写并执行 D19 逻辑边界静态审计工具 tools/d19_logic_boundary_audit.py 与单元测试 tools/tests/test_d19_logic_boundary_audit.py：严格对 D19 新增 38 个源码与测试文件执行只读静态审计，P0 规则验证零 UnityEngine/GameObject/Transform/Canvas/NavMesh、零网络/LLM/HTTP、零系统时钟/非确定随机、零跨系统私有状态直写，单元测试（正例通过、各类违规注入拦截）与全库扫描 100% PASS。 |
-| D19-L41 | LOGIC_PASS | 2026-08-18T02:30:00+08:00 | [D19_L41_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L41/D19_L41_LOGIC_RESULT.json) | 编写并执行 D19 统一离线逻辑测试运行器 tools/d19_logic_test_runner.py 与单元测试 tools/tests/test_d19_logic_test_runner.py：按固定顺序调度静态边界审计、单元测试套件及任务状态同步与完整性检查，采集精确退出码、耗时与标准输出，输出机器可读的聚合 JSON 报告。单元测试覆盖发现顺序、子项失败总状态传播、诚实错误报告，全量套件运行全部 PASS。 |
+| D19-L41 | LOGIC_PASS | 2026-08-31T22:32:07+08:00 | [D19_L41_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L41/D19_L41_LOGIC_RESULT.json) | D19 统一离线逻辑测试运行器复核：按固定顺序执行逻辑边界审计、边界审计单测、D19-L01..L48 结果协议完整性审计和状态同步；任一子项失败都会传播为失败，并输出机器可读汇总。Unity EditMode 测试不在 Python 运行器内伪装执行，统一在 D19-L48 终审证据中单独留痕。 |
 | D19-L42 | LOGIC_PASS | 2026-08-18T02:45:00+08:00 | [D19_L42_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L42/D19_L42_LOGIC_RESULT.json) | 发布面向后续章节（D20—D23）的只读港口领域逻辑接口规范文档 docs/game/design/common/D19_LOGIC_PORT_INTERFACE.md：详尽定义唯一命令入口 D19PortCommandRouter.Route、请求/结果 DTO、生命周期状态、只读读模型、持久化与迁移契约、禁止跨系统直写清单，逐项链接底层 C# 实现与测试验证证据，单列 Runtime Deferred（物理坐标、碰撞、输入、UI、NPC 动画与场景），声明后续章节只读消费 API、不得修改 D19 内部实现。 |
 | D19-L43 | LOGIC_PASS | 2026-08-18T03:00:00+08:00 | [D19_L43_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L43/D19_L43_LOGIC_RESULT.json) | 只读复核 D19 港口领域逻辑全部 P0 核心证据：逐一核对 L01—L42 的结果 JSON、任务交接文档、L41 统一运行器汇总与 L40 静态审计结果，建立全维 P0 矩阵（覆盖访问生命周期、授权校验、泊位分配与租期、服务可用性、市场/仓库/酒馆/船坞适配器、出航准备/登船/离港/返港工作流、事件契约与 L35 顺序审计、命令幂等性控制、保存投影与 L38 往返等价、历史旧档 L39 兼容迁移、L36 确定性端到端剧本测试、L37 逾 4,400 次不变式模糊测试、L40 静态边界零违规审计），所有证据真实存在且全部为 LOGIC_PASS，无 P0 blocker。 |
 | D19-L44 | LOGIC_PASS | 2026-08-18T03:15:00+08:00 | [D19_L44_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L44/D19_L44_LOGIC_RESULT.json) | 只读审计 D19 全部可变业务事实的持久化与所有权归属，产出审计报告 docs/game/design/common/D19_LOGIC_PERSISTENCE_AUDIT.md：核实访问状态、停靠港、泊位分配表、成员逻辑位置、服务状态、命令幂等记录、挂起未完成命令、补偿草案及事件游标共 10 项可变事实均具有唯一写者（Single Writer），全部落盘于纯 DTO D19PortSaveProjection（SchemaVersion=1），经 L38 往返等价测试与 L39 旧档迁移测试验证无数据丢失与不可能状态，经 L40 静态审计核对零外部私有字段直写，无无主可变状态、无全局不可保存状态、无双写者。 |
 | D19-L45 | LOGIC_PASS | 2026-08-18T03:30:00+08:00 | [D19_L45_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L45/D19_L45_LOGIC_RESULT.json) | 只读复核 D19 端到端工作流与核心不变式，产出审计报告 docs/game/design/common/D19_LOGIC_WORKFLOW_AUDIT.md：核验主干生命周期全流程、泊位冲突与逆序补偿、出航准备不足拦截、底层业务服务拒绝、保存中断恢复与历史旧档迁移等场景均具备当前真实测试证据（L36、L37、L38、L39、L40、L41）；逐项验证无负数/假成功、无船双泊位、无泊位双占、无成员双位置、无非法生命周期跃迁、无重复副作用、无孤儿事件等 7 大领域不变式全部成立。 |
 | D19-L46 | LOGIC_PASS | 2026-08-18T03:45:00+08:00 | [D19_L46_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L46/D19_L46_LOGIC_RESULT.json) | 建立 D19 未来运行时（D20—D24）唯一延期待测清单 docs/game/design/common/D19_RUNTIME_DEFERRED_REGISTER.md：明确梳理 9 项运行时延期事项（场景锚点实际 3D 坐标、靠泊物理碰撞对齐、登船空间触发器、NPC 3D 视觉与 NavMesh 寻路、输入系统映射、UI/HUD 视图与面板互斥、3D 模型/Prefab 资产完整性、URP 光照画面渲染、实机异步加载与内存性能），详细列明逻辑接口、核心风险、未来验收方式以及禁止在当前纯逻辑阶段宣称通过的理由，清晰划分逻辑已通过与实机待测边界。 |
 | D19-L47 | LOGIC_PASS | 2026-08-18T04:00:00+08:00 | [D19_L47_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L47/D19_L47_LOGIC_RESULT.json) | 只读审查 D19-L01 至 D19-L46 的全部 46 项前置任务，产出章节状态审查报告 docs/game/design/common/D19_LOGIC_STATUS_REVIEW.md：核实 46 项任务的结果 JSON、交接文档、当天记忆记录均完备存在且全部为真实的 LOGIC_PASS，无重复/缺失任务编号、无 PLANNED/PARTIAL/BLOCKED 状态、无旧代号混入、无越权或运行时伪通过，统计为 46/46 100% 通过。 |
-| D19-L48 | LOGIC_PASS | 2026-08-18T04:15:00+08:00 | [D19_L48_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L48/D19_L48_LOGIC_RESULT.json) | 执行 D19 章节终审唯一逻辑验收，产出验收报告 docs/game/design/common/D19_LOGIC_ACCEPTANCE.md：依据 L43 P0 证据复核、L44 持久化所有权审计、L45 工作流与不变式审计、L46 运行时延期登记、L47 状态审查及 L41 机器汇总，确认 D19-L01 至 D19-L48 全部 48 个新 L 任务 100% 达到 LOGIC_PASS（0 阻塞、0 异常），正式做出对后续章节 D20（港口场景/资源）、D21（港口交互）、D22（UI/HUD）与 D23（NPC/社会模拟）的只读 API 消费放行裁决，同时明确单列 Runtime Deferred 边界，D19 逻辑轨完满收官。 |
+| D19-L48 | LOGIC_PASS | 2026-08-31T22:32:07+08:00 | [D19_L48_LOGIC_RESULT.json](../../game/tools/results/D19/D19-L48/D19_L48_LOGIC_RESULT.json) | D19 章节终审逻辑复核：48 个任务结果全部通过固定协议完整性审计；逻辑边界审计 38/38 文件零违规；Unity EditMode 测试程序集 WhalesIslandReef.D19A02.Tests 实测 117/117 通过。确认 D19-L01 至 D19-L48 达到 LOGIC_PASS，并放行后续章节只读消费 D19 API；Player、场景、画面、输入、性能与发布状态仍明确属于 Runtime Deferred。 |
 
 ## D20
 
 | 任务 | 状态 | 更新时间 | 结果文件 | 摘要 |
 |---|---|---|---|---|
-| D20-L01 | PLANNED | — | — | 尚未提交结果 |
-| D20-L02 | PLANNED | — | — | 尚未提交结果 |
-| D20-L03 | PLANNED | — | — | 尚未提交结果 |
-| D20-L04 | PLANNED | — | — | 尚未提交结果 |
-| D20-L05 | PLANNED | — | — | 尚未提交结果 |
-| D20-L06 | PLANNED | — | — | 尚未提交结果 |
-| D20-L07 | PLANNED | — | — | 尚未提交结果 |
-| D20-L08 | PLANNED | — | — | 尚未提交结果 |
-| D20-L09 | PLANNED | — | — | 尚未提交结果 |
-| D20-L10 | PLANNED | — | — | 尚未提交结果 |
-| D20-L11 | PLANNED | — | — | 尚未提交结果 |
-| D20-L12 | PLANNED | — | — | 尚未提交结果 |
-| D20-L13 | PLANNED | — | — | 尚未提交结果 |
-| D20-L14 | PLANNED | — | — | 尚未提交结果 |
-| D20-L15 | PLANNED | — | — | 尚未提交结果 |
-| D20-L16 | PLANNED | — | — | 尚未提交结果 |
-| D20-L17 | PLANNED | — | — | 尚未提交结果 |
-| D20-L18 | PLANNED | — | — | 尚未提交结果 |
-| D20-L19 | PLANNED | — | — | 尚未提交结果 |
-| D20-L20 | PLANNED | — | — | 尚未提交结果 |
-| D20-L21 | PLANNED | — | — | 尚未提交结果 |
-| D20-L22 | PLANNED | — | — | 尚未提交结果 |
-| D20-L23 | PLANNED | — | — | 尚未提交结果 |
-| D20-L24 | PLANNED | — | — | 尚未提交结果 |
-| D20-L25 | PLANNED | — | — | 尚未提交结果 |
-| D20-L26 | PLANNED | — | — | 尚未提交结果 |
-| D20-L27 | PLANNED | — | — | 尚未提交结果 |
-| D20-L28 | PLANNED | — | — | 尚未提交结果 |
-| D20-L29 | PLANNED | — | — | 尚未提交结果 |
-| D20-L30 | PLANNED | — | — | 尚未提交结果 |
-| D20-L31 | PLANNED | — | — | 尚未提交结果 |
-| D20-L32 | PLANNED | — | — | 尚未提交结果 |
-| D20-L33 | PLANNED | — | — | 尚未提交结果 |
-| D20-L34 | PLANNED | — | — | 尚未提交结果 |
-| D20-L35 | PLANNED | — | — | 尚未提交结果 |
-| D20-L36 | PLANNED | — | — | 尚未提交结果 |
-| D20-L37 | PLANNED | — | — | 尚未提交结果 |
-| D20-L38 | PLANNED | — | — | 尚未提交结果 |
-| D20-L39 | PLANNED | — | — | 尚未提交结果 |
-| D20-L40 | PLANNED | — | — | 尚未提交结果 |
+| D20-L01 | LOGIC_PASS | 2026-09-01T08:33:00+08:00 | [D20_L01_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L01/D20_L01_LOGIC_RESULT.json) | 冻结 D20 角色/NPC/动物纯逻辑边界：明确玩家、NPC、动物/宠物、Presentation 与 D10/D11/D19 的唯一写者、公开读模型/命令/事件/存档边界；确认 D19-L48 LOGIC_PASS 可作为港口命令前置；明确 D20-L02—L27 并行、L28—L35 串行、L36—L40 汇合门禁及 D21—D24 下游依赖；逐项隔离旧 D20-A01—A06、D20-S01/S02 视觉/运行时结果，不将其作为逻辑或发布证据。 |
+| D20-L02 | LOGIC_PASS | 2026-09-01T08:48:03+08:00 | [D20_L02_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L02/D20_L02_LOGIC_RESULT.json) | 建立 D20 角色身份纯 C# 契约：稳定角色 ID、玩家/NPC 类别、生命阶段、可用性、不可变字段副本/指纹、版本化身份投影、克隆与校验；不复制 D10 姓名/证件/外观或其他领域事实。 |
+| D20-L03 | LOGIC_PASS | 2026-09-01T08:53:43+08:00 | [D20_L03_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L03/D20_L03_LOGIC_RESULT.json) | 实现 D20 玩家 presence 纯逻辑系统：以 Port/Ship/Voyage/Unavailable 互斥状态表达语义存在，使用显式迁移原因、稳定失败码、恢复前态、版本化快照和命令回执；不依赖空间或表现对象。 |
+| D20-L04 | LOGIC_PASS | 2026-09-01T08:58:23+08:00 | [D20_L04_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L04/D20_L04_LOGIC_RESULT.json) | 建立 D20 动作意图纯 C# 契约：冻结 walk/run/interact/talk/fish/board/helm/hit 八个稳定动作键，定义 owner/目标/逻辑位置元数据、可序列化请求字段、参数/因果引用和严格校验结果。 |
+| D20-L05 | LOGIC_PASS | 2026-09-01T09:06:39+08:00 | [D20_L05_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L05/D20_L05_LOGIC_RESULT.json) | 建立 D20 动作优先级、互斥与可打断纯 C# 规则表：消费 L04 八个稳定动作意图，统一处理角色可用性、presence、目标、owner 权限前置，并以确定性优先级裁决同组动作和受击打断；不执行动作或业务结算。 |
+| D20-L06 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D20_L06_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L06/D20_L06_LOGIC_RESULT.json) | 新增 D20 动作打断唯一写者：消费 L04 动作意图、L05 优先级结果和已裁决的 presence 结果，提供暂停/恢复、受击、失能、presence 变化、取消、完成及确定性安全回退；只写 D20 自有动作投影并保留可重放命令回执。 |
+| D20-L07 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D20_L07_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L07/D20_L07_LOGIC_RESULT.json) | 新增只读 D20 表现事件契约：将 L06 动作结果和 L03 presence 结果映射为稳定、不可变、可校验的表现事件，重复动作回执不重复发出事件。 |
+| D20-L08 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D20_L08_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L08/D20_L08_LOGIC_RESULT.json) | 新增 D20 动作只读读模型：从 L04 意图、L05 判定、L06 回执/快照和可选 L07 事件建立统一动作状态、回退、优先级与可用性投影，所有嵌套数据均防御性复制。 |
+| D20-L09 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D20_L09_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L09/D20_L09_LOGIC_RESULT.json) | 新增 D20 外观选择纯规则：只消费 D10 公共外观定义/快照与 D18 content_id/resource_key，校验槽位、上下文、所有权、伤病保护和互斥组合，返回需交给 D10 owner 的只读投影。 |
+| D20-L10 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D20_L10_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L10/D20_L10_LOGIC_RESULT.json) | 新增 D20 身份只读表现映射：消费 D10 身份公开快照，输出姓名、称谓、本地化文本、代词和安全历史投影，默认脱敏敏感历史且不复制或写入法律/关系/外观事实。 |
+| D20-L11 | LOGIC_PASS | 2026-09-01T09:39:08+08:00 | [D20_L11_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L11/D20_L11_LOGIC_RESULT.json) | 新增只读 Trait→Action 资格适配器：复用 D5TraitSystem 的特质集合校验与 Modifier 读取，把已有特质投影为动作资格、匹配特质和稳定反馈码，不复制或修改 D5 特质事实。 |
+| D20-L12 | LOGIC_PASS | 2026-09-01T09:39:08+08:00 | [D20_L12_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L12/D20_L12_LOGIC_RESULT.json) | 新增只读 CharacterCondition 适配器：消费公开 CrewStats 与 D10CrewBehaviorState，按 D10 canonical 阈值生成动作限制、条件等级和稳定失败/反馈码，不写回健康、疲劳或行为状态。 |
+| D20-L13 | LOGIC_PASS | 2026-09-01T09:39:08+08:00 | [D20_L13_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L13/D20_L13_LOGIC_RESULT.json) | 新增只读 RelationAction 适配器：消费 RelationSystem 的已知角色和关系边公开副本，为对话/合作生成资格、关系证据和稳定反馈码；不改变 affinity、trust、respect、fear 或 canonical relation graph。 |
+| D20-L14 | LOGIC_PASS | 2026-09-01T09:39:08+08:00 | [D20_L14_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L14/D20_L14_LOGIC_RESULT.json) | 新增纯 C# NPC 身份契约：冻结 NPC ID、角色/派系/内容引用、可用性和迁移状态字段，提供只读弃用 ID 映射，并原样保留未知/非法来源值以避免静默合并实体。 |
+| D20-L15 | LOGIC_PASS | 2026-09-01T09:39:08+08:00 | [D20_L15_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L15/D20_L15_LOGIC_RESULT.json) | 新增只读 NPC 岗位目录：覆盖 merchant、dockhand、tavern、shipyard、guard、harbor_clerk、lookout、fisher 等逻辑岗位，提供能力标签、建议引用和弃用/未知岗位解析，不保存或改变 NPC 状态。 |
+| D20-L16 | LOGIC_PASS | 2026-09-01T10:13:23+08:00 | [D20_L16_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L16/D20_L16_LOGIC_RESULT.json) | 新增纯 C# NPC 日程输入契约：定义世界日、六个时段、活动、天气、危险、可用性、忙碌、休息、受伤和语义避难输入，并拒绝非法 ID、版本、枚举、负修订及缺失工作活动。 |
+| D20-L17 | LOGIC_PASS | 2026-09-01T10:13:23+08:00 | [D20_L17_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L17/D20_L17_LOGIC_RESULT.json) | 实现纯 C# NPC 行为状态机：覆盖 Idle、Work、Trade、Talk、Rest、Alarm、Refuse、Injured，按日程/危险/天气/可用性/岗位能力确定性转移，拒绝非法转换并提供受伤、危险、休息、拒绝和 owner 恢复策略。 |
+| D20-L18 | LOGIC_PASS | 2026-09-01T10:13:23+08:00 | [D20_L18_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L18/D20_L18_LOGIC_RESULT.json) | 新增纯 C# NPC 交互可用性只读评估：统一可用、忙碌、不可达、拒绝、冷却、受伤、警戒、休息、终止和岗位能力缺失原因，并为每类不可用结果提供稳定本地化键与重试策略。 |
+| D20-L19 | LOGIC_PASS | 2026-09-01T10:13:23+08:00 | [D20_L19_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L19/D20_L19_LOGIC_RESULT.json) | 实现纯 C# NPC 行为权限守卫：只允许 D20 行为投影由指定状态机写入，外部经济/关系/库存/任务/AgentCore 等域只能提交 proposal，静态声明审计会拒绝越权事实写入。 |
+| D20-L20 | LOGIC_PASS | 2026-09-01T09:57:56+08:00 | [D20_L20_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L20/D20_L20_LOGIC_RESULT.json) | 新增纯 C# 动物身份契约，冻结 D18 animal_/fish_/pet_ content_id 规则、物种引用、陆生/鸟类/水生/珍稀/宠物分类、野生/家养/宠物语义、归属引用、生命周期日期与版本化边界校验；不复制 D11/D4 的生态、宠物照料或健康事实。 |
+| D20-L21 | LOGIC_PASS | 2026-09-01T10:03:12+08:00 | [D20_L21_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L21/D20_L21_LOGIC_RESULT.json) | 建立 D20 纯逻辑动物物种目录，使用 D18/D11 已冻结的 9 个 animal_/fish_/pet_ content_id，覆盖陆生、鸟类、水生、RareSpecies 横切和宠物，并提供只读能力位/稳定标签；不导入或伪造任何资源、数量或视觉事实。 |
+| D20-L22 | LOGIC_PASS | 2026-09-01T10:17:00+08:00 | [D20_L22_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L22/D20_L22_LOGIC_RESULT.json) | 新增纯 C# 动物行为状态机，使用显式输入实现休息、觅食、警觉、逃离、跟随、受伤、恢复、死亡及取消/完成回退；提供稳定失败码、能力前置、事件 ID、命令幂等回执和快照恢复，不拥有生态、健康、宠物照料、位置或表现事实。 |
+| D20-L23 | LOGIC_PASS | 2026-09-01T10:14:04+08:00 | [D20_L23_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L23/D20_L23_LOGIC_RESULT.json) | 通过 D11PetSystem/AnimalCareSystem 的公开边界实现 D20 宠物所有权投影：owner_id 与 pet_id 注册、领养、照料、跟随资格、走失和搜索找回；D20 不二写 D11 的生命/照料/位置/走失事实，也不接库存、关系、生态、网络或 Unity。 |
+| D20-L24 | LOGIC_PASS | 2026-09-01T10:14:04+08:00 | [D20_L24_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L24/D20_L24_LOGIC_RESULT.json) | 以 D4EcologySystem 的公开 Snapshot 只读适配动物、鱼群与栖息地人口读模型，输出 present/depleted/dead/collected/invalid 状态、观察/交互资格和风险等级；不写 EcologySystem，也不复制缺失的 D20-L20/L21/L22 类型。 |
+| D20-L25 | LOGIC_PASS | 2026-09-01T10:14:04+08:00 | [D20_L25_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L25/D20_L25_LOGIC_RESULT.json) | 以 D4 ecology Snapshot 与 D11WhaleDolphinSystem 的公开 Snapshot/Encounter/read snapshot 只读适配鱼群、鲸和海豚行为交互资格，覆盖观察、捕鱼、护航、救援与捕鲸策略状态；不修改生态或海洋 owner 事实。 |
+| D20-L26 | LOGIC_PASS | 2026-09-01T10:41:42+08:00 | [D20_L26_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L26/D20_L26_LOGIC_RESULT.json) | 建立 D20 角色保存投影：映射玩家 D20 身份、presence、动作与身份表现，NPC 身份/行为，动物身份/行为和宠物所有权；保存事件游标、因果引用、幂等回执载体及 D10/D11/D19 owner 快照引用，不复制外部事实，也不侵入 SaveSystem。 |
+| D20-L27 | LOGIC_PASS | 2026-09-01T10:41:42+08:00 | [D20_L27_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L27/D20_L27_LOGIC_RESULT.json) | 实现 D20 角色保存迁移：确定性处理根/嵌套 v0 到 v1、动作/NPC/动物/宠物/事件/owner 引用缺失字段安全默认；迁移不创建已发生事实，重复运行幂等，未来/负数/非法状态拒绝并保留原始投影副本。 |
+| D20-L28 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L28_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L28/D20_L28_LOGIC_RESULT.json) | 新增 D20 角色命令服务，统一 presence、action、appearance、NPC interaction 与 D19 port command 输入；命令回执采用确定性 fingerprint 并对重复命令幂等处理，港口命令经注入的 D19PortCommandRouter 路由。 |
+| D20-L29 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L29_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L29/D20_L29_LOGIC_RESULT.json) | 新增 D20 NPC 行为服务，维护行为状态、identity、schedule 和 owner read projection；命令回执确定性幂等，owner 事实只读并通过 D20 authority guard 做提案/写入边界判定。 |
+| D20-L30 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L30_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L30/D20_L30_LOGIC_RESULT.json) | 新增 D20 动物行为服务，连接 D20 动物行为状态机、宠物 follow eligibility、wildlife read adapter 与 aquatic read adapter；动物行为可重放，外部生态事实保持只读。 |
+| D20-L31 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L31_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L31/D20_L31_LOGIC_RESULT.json) | 新增 D20 action event router，将角色/NPC/动物命令按 CommandReceived、Validation、OwnerResult、DomainFact、D20StateProjectionUpdated、PresentationReadOnly/Failure 顺序路由；domain fact 仅接受 owner 成功结果，事件可确定性重放。 |
+| D20-L32 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L32_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L32/D20_L32_LOGIC_RESULT.json) | 新增 D20 content_id 集成测试，验证角色身份、NPC 兼容别名、动物 catalog、外观资源键的稳定性、未知项保留和纯逻辑路径约束。 |
+| D20-L33 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L33_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L33/D20_L33_LOGIC_RESULT.json) | 新增 D20 角色保存/加载测试，覆盖角色、presence、action、NPC、动物、宠物、事件游标和 owner snapshot reference 的投影、深拷贝校验与重建一致性；不复制外部 owner 事实。 |
+| D20-L34 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L34_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L34/D20_L34_LOGIC_RESULT.json) | 新增 D20 确定性行为测试，使用固定 LCG 和固定输入覆盖动物 1000 tick、伤势恢复与动作 1000 次启动/完成循环，验证相同初始状态产生相同状态且无永久锁死。 |
+| D20-L35 | LOGIC_PASS | 2026-09-01T11:37:52+08:00 | [D20_L35_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L35/D20_L35_LOGIC_RESULT.json) | 新增 D20 行为不变量测试，验证 NPC authority guard、动物重复/冲突与终态、动作取消、非法 NPC migration，以及 D19 命令必须经公开 port router 且缺失 router fail-closed。 |
+| D20-L36 | LOGIC_PASS | 2026-09-01T21:29:00+08:00 | [D20_L36_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L36/D20_L36_LOGIC_RESULT.json) | 建立 D20 纯逻辑边界静态审计，扫描 34 个生产/逻辑测试文件，识别 Unity、网络/LLM、系统时钟、非确定随机和外部 owner 直写；自测覆盖违规夹具与合法 Input DTO。 |
+| D20-L37 | LOGIC_PASS | 2026-09-01T21:29:00+08:00 | [D20_L37_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L37/D20_L37_LOGIC_RESULT.json) | 建立 D20 纯逻辑统一测试入口，真实执行边界自测/扫描、Systems 编译、D20 smoke、L28-L35 batch 编译/执行和 L01-L35 证据协议完整性检查。 |
+| D20-L38 | LOGIC_PASS | 2026-09-01T21:29:00+08:00 | [D20_L38_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L38/D20_L38_LOGIC_RESULT.json) | 发布 D20 对 D21-D23 可消费的角色、NPC、动物命令/读模型/事件/失败码/保存引用与唯一写者边界。 |
+| D20-L39 | LOGIC_PASS | 2026-09-01T21:29:00+08:00 | [D20_L39_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L39/D20_L39_LOGIC_RESULT.json) | 建立 D20 Runtime Deferred Register，逐项登记模型、Prefab、Animator、Input、物理、寻路、UI、Save 介质、天气画面、性能和发行验证风险。 |
+| D20-L40 | LOGIC_PASS | 2026-09-01T22:13:54+08:00 | [D20_L40_LOGIC_RESULT.json](../../game/tools/results/D20/D20-L40/D20_L40_LOGIC_RESULT.json) | D20 纯逻辑章节最终验收通过：L01-L35 全部 LOGIC_PASS，L36 边界审计与 L37 统一 runner 通过，L38 接口文档和 L39 Runtime 延期登记完整；D20-L40 补齐了可审计的船员公共只读投影，供 D21-L06/L24 真实消费。 |
 
 ## D21
 
 | 任务 | 状态 | 更新时间 | 结果文件 | 摘要 |
 |---|---|---|---|---|
-| D21-L01 | PLANNED | — | — | 尚未提交结果 |
-| D21-L02 | PLANNED | — | — | 尚未提交结果 |
-| D21-L03 | PLANNED | — | — | 尚未提交结果 |
-| D21-L04 | PLANNED | — | — | 尚未提交结果 |
-| D21-L05 | PLANNED | — | — | 尚未提交结果 |
-| D21-L06 | PLANNED | — | — | 尚未提交结果 |
-| D21-L07 | PLANNED | — | — | 尚未提交结果 |
-| D21-L08 | PLANNED | — | — | 尚未提交结果 |
-| D21-L09 | PLANNED | — | — | 尚未提交结果 |
-| D21-L10 | PLANNED | — | — | 尚未提交结果 |
-| D21-L11 | PLANNED | — | — | 尚未提交结果 |
-| D21-L12 | PLANNED | — | — | 尚未提交结果 |
-| D21-L13 | PLANNED | — | — | 尚未提交结果 |
-| D21-L14 | PLANNED | — | — | 尚未提交结果 |
-| D21-L15 | PLANNED | — | — | 尚未提交结果 |
-| D21-L16 | PLANNED | — | — | 尚未提交结果 |
-| D21-L17 | PLANNED | — | — | 尚未提交结果 |
-| D21-L18 | PLANNED | — | — | 尚未提交结果 |
-| D21-L19 | PLANNED | — | — | 尚未提交结果 |
-| D21-L20 | PLANNED | — | — | 尚未提交结果 |
-| D21-L21 | PLANNED | — | — | 尚未提交结果 |
-| D21-L22 | PLANNED | — | — | 尚未提交结果 |
-| D21-L23 | PLANNED | — | — | 尚未提交结果 |
-| D21-L24 | PLANNED | — | — | 尚未提交结果 |
-| D21-L25 | PLANNED | — | — | 尚未提交结果 |
-| D21-L26 | PLANNED | — | — | 尚未提交结果 |
-| D21-L27 | PLANNED | — | — | 尚未提交结果 |
-| D21-L28 | PLANNED | — | — | 尚未提交结果 |
-| D21-L29 | PLANNED | — | — | 尚未提交结果 |
-| D21-L30 | PLANNED | — | — | 尚未提交结果 |
-| D21-L31 | PLANNED | — | — | 尚未提交结果 |
-| D21-L32 | PLANNED | — | — | 尚未提交结果 |
+| D21-L01 | LOGIC_PASS | 2026-09-01T08:53:32+08:00 | [D21_L01_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L01/D21_L01_LOGIC_RESULT.json) | 完成 D21-L01：冻结 D2/D4/D9/D19/D20 到 D21 的公开入口、唯一写者、航线/天气/海况/锚泊/船况/补给/存档责任、任务波次和 Runtime Deferred。该状态仅表示基线文档通过，不表示 D21-L02—L32、可玩性、运行时、性能或发行通过。 |
+| D21-L02 | LOGIC_PASS | 2026-09-01T10:06:23+08:00 | [D21_L02_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L02/D21_L02_LOGIC_RESULT.json) | 完成船只身份、所有权、旗帜、注册状态和稳定 ID 契约；冻结 20 个目标船型 ID，并将 legacy small_fishing 显式迁移到 fishing_boat，ship_moonwake 仅作为内容 ID。 |
+| D21-L03 | LOGIC_PASS | 2026-09-01T10:06:23+08:00 | [D21_L03_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L03/D21_L03_LOGIC_RESULT.json) | 完成船体组件安装、移除、启用状态、动力组合、必需组件和组件组合不变式；状态修改只在 D21HullComponentSystem owner 内进行并支持命令幂等。 |
+| D21-L04 | LOGIC_PASS | 2026-09-01T10:06:23+08:00 | [D21_L04_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L04/D21_L04_LOGIC_RESULT.json) | 完成船况耐久、进水、倾斜、损伤事实、适航等级、船上/船厂维修资格和命令幂等；损伤必须带稳定来源事实，物理输入仍在逻辑边界之外。 |
+| D21-L05 | LOGIC_PASS | 2026-09-01T10:06:23+08:00 | [D21_L05_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L05/D21_L05_LOGIC_RESULT.json) | 完成货物重量/体积容量评估、危险货物隔离校验、D3 只读 mutation request seam 和分级超载后果；D21 不写入 D3 货物数量。 |
+| D21-L06 | LOGIC_PASS | 2026-09-01T22:13:54+08:00 | [D21_L06_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L06/D21_L06_LOGIC_RESULT.json) | D21-L06 已真实消费 D20 公共船员只读投影：D20→D21 映射、未知岗位拒绝、确定性岗位分配、最低/标准/最大人数、必需岗位和士气/疲劳/健康阈值规则在纯 C# 中闭环通过；D10/Crew owner 仍是唯一写者。 |
+| D21-L07 | LOGIC_PASS | 2026-09-01T10:06:23+08:00 | [D21_L07_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L07/D21_L07_LOGIC_RESULT.json) | 完成船侧下锚、抓持/走锚风险、收锚和系泊状态机；D19 港口/泊位只通过 opaque ID 与 permission 输入，D21 不写港口状态。 |
+| D21-L08 | LOGIC_PASS | 2026-09-01T10:06:23+08:00 | [D21_L08_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L08/D21_L08_LOGIC_RESULT.json) | 完成路线/航点/危险区/发现记录契约以及基于发现状态、吃水深度和危险容忍度的确定性路线使用评估；不引入坐标、路径搜索或场景导航 owner。 |
+| D21-L09 | LOGIC_PASS | 2026-09-01T09:48:31+08:00 | [D21_L09_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L09/D21_L09_LOGIC_RESULT.json) | 完成 D21-L09：出航适配器只构造公开 D19RoutedPortCommand 并调用 D19PortCommandRouter.Route，结果映射为 D21 只读航程启动效果；输入拒绝、D19 拒绝和重复命令均保留稳定结果，不复制或写入港口/泊位事实。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。 |
+| D21-L10 | LOGIC_PASS | 2026-09-01T09:48:31+08:00 | [D21_L10_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L10/D21_L10_LOGIC_RESULT.json) | 完成 D21-L10：返港适配器先以公开 D19 Return 命令结束航程；声明目标泊位时再以派生的稳定 AssignBerth 命令请求靠泊。返港和靠泊结果分开保留，重复/拒绝/中途靠泊失败不被伪装成单一成功。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。 |
+| D21-L11 | LOGIC_PASS | 2026-09-01T09:48:31+08:00 | [D21_L11_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L11/D21_L11_LOGIC_RESULT.json) | 完成 D21-L11：冻结天气输入契约，显式约束季节、风向/风力、降水毫米每小时、能见度、气压、世界日、存档修订和稳定引用；未知枚举、负数、NaN/Infinity、越界值和 Calm+非零风力均显式拒绝。输入包只标识 D9.EnvironmentSystem owner，不提供第二天气写入口。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。 |
+| D21-L12 | LOGIC_PASS | 2026-09-01T09:48:31+08:00 | [D21_L12_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L12/D21_L12_LOGIC_RESULT.json) | 完成 D21-L12：以已校验天气输入确定性计算海况等级、风险、事件概率、可航行性和稳定事件种子；风力阈值与降水/能见度/气压/季节压力共同参与规则，非法输入不部分计算，不使用系统时钟或随机源，也不写 D9、船况、路线、船员或事件日志。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。 |
+| D21-L13 | LOGIC_PASS | 2026-09-01T09:48:31+08:00 | [D21_L13_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L13/D21_L13_LOGIC_RESULT.json) | 完成 D21-L13：基于天气输入和匹配的海况结果，纯函数产出船体风险、航速、补给/淡水/食物/燃料倍率、船员疲劳/士气/健康风险、捕鱼活动/收获倍率及港口可用性；所有结果只读且通过副本隔离，任何 owner 事实不在本系统写入。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。 |
+| D21-L14 | LOGIC_PASS | 2026-09-01T22:13:49+08:00 | [D21_L14_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L14/D21_L14_LOGIC_RESULT.json) | 完成 D21-L14：建立独立于 D3 货物库存的航程补给账本，按固定请求计算食物/淡水消耗和损耗，原子拒绝短缺/冲突，记录饥饿与口渴阈值，耗尽时显式返回 VoyageFailed 和失败码；相同 ApplicationId 重放原结果，冲突和重复 tick 不改变账本。补充持久化 ApplicationId 历史链和轻量重放记录，避免每个 tick 复制完整历史，同时保持公开历史顺序、快照防御性和既有保存投影语义。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。 |
+| D21-L15 | LOGIC_PASS | 2026-09-01T09:30:00+08:00 | [D21_L15_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L15/D21_L15_LOGIC_RESULT.json) | 完成 D21-L15：以固定 15 分钟 Tick、逻辑日历和定点千海里单位推进航程，计算昼夜阶段、到达状态和到达估算；拒绝非连续 Tick、时钟漂移、ID/航线不一致与非法输入。未宣称 Unity 运行时、物理、场景、输入、性能或发行通过。 |
+| D21-L16 | LOGIC_PASS | 2026-09-01T09:30:00+08:00 | [D21_L16_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L16/D21_L16_LOGIC_RESULT.json) | 完成 D21-L16：实现设定航向、改航、停船、避险命令的纯逻辑校验与裁决，包含固定角度量化、航次/船只/修订边界、锚泊限制、船况/船员前置、冷却和成功命令幂等。未宣称输入、物理、场景、运行时或发行通过。 |
+| D21-L17 | LOGIC_PASS | 2026-09-01T09:30:00+08:00 | [D21_L17_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L17/D21_L17_LOGIC_RESULT.json) | 完成 D21-L17：消费 D9 天气、D11 生态和 D4 生存公开快照，压缩为带来源事实 ID 的风险输入，并按固定顺序计算暗礁、风暴、敌对和疾病资格、阈值、确定性种子与 roll；不写天气、生态、船员或船况事实。未宣称真实天气/生态运行时通过。 |
+| D21-L18 | LOGIC_PASS | 2026-09-01T09:30:00+08:00 | [D21_L18_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L18/D21_L18_LOGIC_RESULT.json) | 完成 D21-L18：定义航程事件类型、结果、输入事实、因果 ID、恢复路由和追加序列，提供显式 WorldEvent 适配、稳定 JSON 编解码、事件日志追加去重与 Save snapshot 恢复；失败/中断事件必须带恢复路由，恢复事件必须有因果来源。未宣称事件总线运行时或存档发布通过。 |
+| D21-L19 | LOGIC_PASS | 2026-09-01T09:30:00+08:00 | [D21_L19_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L19/D21_L19_LOGIC_RESULT.json) | 完成 D21-L19：建立船舶 Save projection，集中投影船身份引用、锚泊、航线/航程、天气种子、补给账本、事件游标/日志和上游快照引用，并提供版本化字段校验、稳定 JSON 编解码和 round-trip 指纹校验；不复制上游 owner 事实。未宣称真实磁盘 Save、迁移、云同步或运行时通过。 |
+| D21-L20 | LOGIC_PASS | 2026-09-01T10:27:27+08:00 | [D21_L20_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L20/D21_L20_LOGIC_RESULT.json) | 为 D21-L20 增加纯 C# EditMode 测试，覆盖 20 个 canonical ship type、starter hull 组件组合与原子拒绝、事实驱动损伤/维修、适航等级边界、货舱容量/危险货物与只读 owner mutation request。 |
+| D21-L21 | LOGIC_PASS | 2026-09-01T10:27:27+08:00 | [D21_L21_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L21/D21_L21_LOGIC_RESULT.json) | 为 D21-L21 增加天气/海况/风险资格纯 C# EditMode 测试，覆盖同输入同 seed 的海况、影响投影和风险资格确定性，天气边界与 Calm 约束，以及海况指纹错配拒绝。 |
+| D21-L22 | LOGIC_PASS | 2026-09-01T10:27:27+08:00 | [D21_L22_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L22/D21_L22_LOGIC_RESULT.json) | 为 D21-L22 增加港口出航/返港适配器纯 C# EditMode 测试；通过 D19PortCommandRouter 公开入口验证出航幂等、非法请求原子拒绝、返港后靠泊，以及泊位冲突时保留返港事实并返回补偿草案。 |
+| D21-L23 | LOGIC_PASS | 2026-09-01T10:27:27+08:00 | [D21_L23_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L23/D21_L23_LOGIC_RESULT.json) | 为 D21-L23 增加航程节点 Save→Load→Continue 纯 C# EditMode 测试，验证 D21ShipSaveProjection 稳定 JSON/Fingerprint round-trip 后，加载的航程时间状态与连续执行拥有相同 tick、距离、逻辑时钟、昼夜阶段和到达结果，并验证跳 tick 被拒绝且状态不变。 |
+| D21-L24 | LOGIC_PASS | 2026-09-01T22:13:54+08:00 | [D21_L24_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L24/D21_L24_LOGIC_RESULT.json) | D21-L24 已完成航程唯一命令聚合入口对 D20 公共船员只读投影的真实接入：Start 按优先级读取、映射并重新评估 crew，保留来源审计字段，同时维持命令指纹、幂等/冲突拒绝和缺失/非法依赖的 fail-closed 语义。 |
+| D21-L25 | LOGIC_PASS | 2026-09-01T11:44:00+08:00 | [D21_L25_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L25/D21_L25_LOGIC_RESULT.json) | 新增 D21VoyageResolutionSystem，以显式 15 分钟 Tick 按天气/海况、船况、航向速度、时间、风险、补给、事件和 Save projection 的固定顺序提交航程结果，并保留失败、到达、中断恢复和命令幂等语义。 |
+| D21-L26 | LOGIC_PASS | 2026-09-01T11:44:00+08:00 | [D21_L26_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L26/D21_L26_LOGIC_RESULT.json) | 新增 D21VoyageEventRouter，提供事件批次预检、固定同 Tick 顺序、跨航程隔离、event_id+save_revision 幂等、冲突拒绝、失败补偿草案和 Save projection 游标重建，并保持事件批次原子提交。 |
+| D21-L27 | LOGIC_PASS | 2026-09-01T22:13:49+08:00 | [D21_L27_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L27/D21_L27_LOGIC_RESULT.json) | 完成 D21-L27 纯逻辑长航程与命令服务证据：固定种子直接系统长跑和真实 D21VoyageCommandService Start + 10,000 ResolveTick 均通过；补给 owner 采用不可变 ApplicationId 历史链与轻量重放记录，事件日志追加使用 dedupe 索引，避免长历史 O(n²) 复制/扫描，同时保留原子提交、幂等重放、冲突/短缺无突变、历史顺序与保存投影语义。 |
+| D21-L28 | LOGIC_PASS | 2026-09-01T11:44:00+08:00 | [D21_L28_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L28/D21_L28_LOGIC_RESULT.json) | 新增航程聚合不变量与负向测试，覆盖锚泊/航行互斥、严重损坏拒绝、缺少 crew projection 的依赖阻塞、重复命令/命令 ID 冲突和事件逆序批次原子拒绝。 |
+| D21-L29 | LOGIC_PASS | 2026-09-01T22:13:49+08:00 | [D21_L29_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L29/D21_L29_LOGIC_RESULT.json) | 完成 D21-L29 逻辑边界审计：扫描器现在以状态机剥离行注释、块注释、普通字符串、字符字面量和 C# verbatim 字符串内容，避免注释/字符串伪违规漏判或误报；新增单元测试、自测夹具和真实 D21 全量扫描均通过。 |
+| D21-L30 | LOGIC_PASS | 2026-09-01T22:40:00+08:00 | [D21_L30_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L30/D21_L30_LOGIC_RESULT.json) | D21 纯逻辑统一 runner 通过：9/9 离线 suites、32/32 结果与 handoff 证据完整，D21 集成与 D20/D21 crew projection 断言均通过。 |
+| D21-L31 | LOGIC_PASS | 2026-09-01T22:34:44+08:00 | [D21_L31_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L31/D21_L31_LOGIC_RESULT.json) | 完成 D21 Runtime Deferred 登记：登记船体/Prefab、海水 Shader、天气表现、驾驶输入、相机、物理碰撞、港口坐标、船员运行时、Save 介质、性能、真机和发行边界，并与纯逻辑接口明确分离。 |
+| D21-L32 | LOGIC_PASS | 2026-09-01T22:40:00+08:00 | [D21_L32_LOGIC_RESULT.json](../../game/tools/results/D21/D21-L32/D21_L32_LOGIC_RESULT.json) | D21 章节逻辑验收通过：船只身份、船体/船况、货舱、船员投影、锚泊、天气海况、航行 Tick、事件、保存投影和错误恢复均有公开纯逻辑接口与真实离线证据。 |
 
 ## D22
 
 | 任务 | 状态 | 更新时间 | 结果文件 | 摘要 |
 |---|---|---|---|---|
-| D22-L01 | PLANNED | — | — | 尚未提交结果 |
-| D22-L02 | PLANNED | — | — | 尚未提交结果 |
-| D22-L03 | PLANNED | — | — | 尚未提交结果 |
-| D22-L04 | PLANNED | — | — | 尚未提交结果 |
-| D22-L05 | PLANNED | — | — | 尚未提交结果 |
-| D22-L06 | PLANNED | — | — | 尚未提交结果 |
-| D22-L07 | PLANNED | — | — | 尚未提交结果 |
-| D22-L08 | PLANNED | — | — | 尚未提交结果 |
-| D22-L09 | PLANNED | — | — | 尚未提交结果 |
-| D22-L10 | PLANNED | — | — | 尚未提交结果 |
-| D22-L11 | PLANNED | — | — | 尚未提交结果 |
-| D22-L12 | PLANNED | — | — | 尚未提交结果 |
-| D22-L13 | PLANNED | — | — | 尚未提交结果 |
-| D22-L14 | PLANNED | — | — | 尚未提交结果 |
-| D22-L15 | PLANNED | — | — | 尚未提交结果 |
-| D22-L16 | PLANNED | — | — | 尚未提交结果 |
-| D22-L17 | PLANNED | — | — | 尚未提交结果 |
-| D22-L18 | PLANNED | — | — | 尚未提交结果 |
-| D22-L19 | PLANNED | — | — | 尚未提交结果 |
-| D22-L20 | PLANNED | — | — | 尚未提交结果 |
-| D22-L21 | PLANNED | — | — | 尚未提交结果 |
-| D22-L22 | PLANNED | — | — | 尚未提交结果 |
-| D22-L23 | PLANNED | — | — | 尚未提交结果 |
-| D22-L24 | PLANNED | — | — | 尚未提交结果 |
-| D22-L25 | PLANNED | — | — | 尚未提交结果 |
-| D22-L26 | PLANNED | — | — | 尚未提交结果 |
-| D22-L27 | PLANNED | — | — | 尚未提交结果 |
-| D22-L28 | PLANNED | — | — | 尚未提交结果 |
-| D22-L29 | PLANNED | — | — | 尚未提交结果 |
-| D22-L30 | PLANNED | — | — | 尚未提交结果 |
-| D22-L31 | PLANNED | — | — | 尚未提交结果 |
-| D22-L32 | PLANNED | — | — | 尚未提交结果 |
-| D22-L33 | PLANNED | — | — | 尚未提交结果 |
-| D22-L34 | PLANNED | — | — | 尚未提交结果 |
-| D22-L35 | PLANNED | — | — | 尚未提交结果 |
-| D22-L36 | PLANNED | — | — | 尚未提交结果 |
+| D22-L01 | LOGIC_PASS | 2026-09-01T08:58:07+08:00 | [D22_L01_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L01/D22_L01_LOGIC_RESULT.json) | 冻结 D22 UI 纯逻辑边界、现有面板来源、命令 owner、read-model 单向方向、modal/focus 职责与 Runtime Deferred 隔离。L01 为文档基线通过，不代表 D22 运行时、可玩性或发布通过。D22-L19 的 D21 ship adapter 依赖已明确登记为 LOGIC_BLOCKED。 |
+| D22-L02 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L02_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L02/D22_L02_LOGIC_RESULT.json) | 建立 D22 屏幕、面板、模态与叠加层的稳定逻辑 ID 注册表，并以防御性副本提供定义读取；不含显示文案、Unity 运行时或业务事实。 |
+| D22-L03 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L03_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L03/D22_L03_LOGIC_RESULT.json) | 实现确定性的屏幕/面板焦点状态机、阻塞模态栈、父子模态约束、关闭恢复与焦点丢失回退；焦点仅为逻辑 token。 |
+| D22-L04 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L04_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L04/D22_L04_LOGIC_RESULT.json) | 实现面板共存与互斥规则：导航面板同屏替换、叠加层共存、模态 owner 必填、阻塞模态冲突及子模态父级约束，输出可解释关闭计划。 |
+| D22-L05 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L05_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L05/D22_L05_LOGIC_RESULT.json) | 建立 UI 命令信封与命令定义：稳定 action/owner、command/correlation ID、目标/修订/因果事件、参数约束、确定性指纹及不承诺业务成功的结果 DTO。 |
+| D22-L06 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L06_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L06/D22_L06_LOGIC_RESULT.json) | 实现纯读取式 UI 命令前置校验：schema/上下文、行为者权限、活动面板/模态焦点、禁用、世界日/存档修订、冷却及重复/冲突命令判断；不登记、不消费、不写状态。 |
+| D22-L07 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L07_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L07/D22_L07_LOGIC_RESULT.json) | 建立稳定反馈目录与反馈读模型：成功/失败/警告/确认/重试分类、严重度、重试策略、确认要求、correlation/source/reason 保留及本地化 key 映射。 |
+| D22-L08 | LOGIC_PASS | 2026-09-01T10:00:00+08:00 | [D22_L08_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L08/D22_L08_LOGIC_RESULT.json) | 实现结构化 owner 前置失败到稳定禁用/帮助原因的只读映射，保留原始 owner/code/correlation/target/修订信息，并支持 D19 风格与 PascalCase 失败码归一化。 |
+| D22-L09 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L09_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L09/D22_L09_LOGIC_RESULT.json) | 实现 D22 面板打开、关闭、返回、替换和不可恢复错误终态的确定性转换；重复操作无副作用，互斥决策复用 L04，所有结果返回防御性状态快照。 |
+| D22-L10 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L10_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L10/D22_L10_LOGIC_RESULT.json) | 实现暂停、恢复和切换意图的纯逻辑状态机；显式校验会话、上下文、修订及加载/保存/迁移等不可暂停阶段，不写游戏时钟或设备状态。 |
+| D22-L11 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L11_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L11/D22_L11_LOGIC_RESULT.json) | 实现 Escape/返回意图的确定性优先级与面板关闭计划：子模态、阻塞模态、普通面板、暂停恢复依次处理，并显式返回无可关闭面板结果。 |
+| D22-L12 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L12_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L12/D22_L12_LOGIC_RESULT.json) | 实现 pointer/mouse 需求读模型：根据显式逻辑上下文输出 Default、Free、Locked、可见性和锁定意图，并在锁定不可用或上下文缺失时稳定降级。 |
+| D22-L13 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L13_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L13/D22_L13_LOGIC_RESULT.json) | 实现通知队列的事件幂等、活动去重键、优先级排序、确认无变化、显式世界日过期、持久化过滤和原子恢复语义。 |
+| D22-L14 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L14_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L14/D22_L14_LOGIC_RESULT.json) | 从 D16AccessibilitySettings 公开契约建立 D22 无障碍读模型，覆盖文本缩放、对比、色觉、减少动态效果、低刺激、字幕和敏感提示，并校验范围。 |
+| D22-L15 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L15_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L15/D22_L15_LOGIC_RESULT.json) | 实现稳定本地化 key 审计：检查 D22 screen/panel/feedback 目录和显式标签引用，区分缺 key、非法格式、硬编码用户可见文本和重复字段。 |
+| D22-L16 | LOGIC_PASS | 2026-09-01T12:00:00+08:00 | [D22_L16_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L16/D22_L16_LOGIC_RESULT.json) | 建立加载、保存、迁移、失败、恢复和缺失模块的 UI 可读状态投影；显式校验槽位、进度、修订、模块状态，并输出稳定状态 localization key/feedback。 |
+| D22-L17 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L17_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L17/D22_L17_LOGIC_RESULT.json) | 完成 D3/D19 市场只读 UI 适配：稳定排序报价与价格原因，保留市场交易结果、失败码、本地化 key 和禁用原因；缺少报价或来源时 fail-closed。 |
+| D22-L18 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L18_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L18/D22_L18_LOGIC_RESULT.json) | 完成 D19 港口只读 UI 适配：投影访问、泊位、服务、登船检查与 action feedback，稳定排序并显式保留缺失 departure checklist 的 Partial 语义。 |
+| D22-L19 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L19_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L19/D22_L19_LOGIC_RESULT.json) | 完成 D21 船舶只读 UI 适配：消费已验收的身份、船况、航线、天气、航程时间和补给公开 DTO，复制结果/失败码并对缺失模块降级，不依赖聚合私有类型或自行裁决船舶事实。 |
+| D22-L20 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L20_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L20/D22_L20_LOGIC_RESULT.json) | 完成 D3 库存只读 UI 适配：输出货舱/随身物品、容量、重量、货币和操作结果；容量统计只在安全副本上调用 owner read helper，空集合与非法数量 fail-closed。 |
+| D22-L21 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L21_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L21/D22_L21_LOGIC_RESULT.json) | 完成 D20 NPC 只读 UI 适配：复制身份、岗位能力、可用性与对话资格，保留 interaction failure/retry/localization 结果并按 NPC ID 稳定排序。 |
+| D22-L22 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L22_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L22/D22_L22_LOGIC_RESULT.json) | 完成 D12/D14 任务只读 UI 适配：输出任务状态、目标进度、失败/恢复引用、奖励请求与奖励发放状态，采用稳定任务/奖励排序并保留 owner 结果。 |
+| D22-L23 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L23_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L23/D22_L23_LOGIC_RESULT.json) | 完成 SaveSystem 只读 UI 适配：复制已公开的 LoadState、槽位完整性、缺失模块与迁移结果，不执行迁移、不读取路径、不写 SaveSystem 或 PlayerPrefs。 |
+| D22-L24 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L24_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L24/D22_L24_LOGIC_RESULT.json) | 完成 focus/panel 纯逻辑定向测试并合并到允许的 D22ReadModelAdapterTests.cs：明确断言 focus 激活、panel 上下文、命令面板可用和纯逻辑状态结果。 |
+| D22-L25 | LOGIC_PASS | 2026-09-01T22:45:00+08:00 | [D22_L25_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L25/D22_L25_LOGIC_RESULT.json) | 完成命令/反馈纯逻辑定向测试并合并到允许的 D22ReadModelAdapterTests.cs：明确断言合法命令形状、目标 ID、稳定 feedback code/localization key 与 owner rejection 映射。 |
+| D22-L26 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L26_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L26/D22_L26_LOGIC_RESULT.json) | 实现 D22 UI 命令路由：只读校验、注入公开 owner handler、关联反馈、fail-closed 缺 owner 结果、重复/冲突幂等与 UI 投影快照均已落地；未把缺失的上游 owner 接线伪装成成功。 |
+| D22-L27 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L27_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L27/D22_L27_LOGIC_RESULT.json) | 实现 D22 ViewModel Composer：组合既有 D22 快照与注入的公开只读 source adapter，按固定模块顺序输出，缺失/失败/重复/版本不匹配均显式降级并保留 reason/localization/fingerprint。 |
+| D22-L28 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L28_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L28/D22_L28_LOGIC_RESULT.json) | 新增无运行时对象依赖的确定性 UI 场景测试，重放港口、市场、船舶和保存面板命令，并验证 owner 回执、重复命令、拒绝与 ViewModel 缺失/版本降级。 |
+| D22-L29 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L29_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L29/D22_L29_LOGIC_RESULT.json) | 新增固定种子 UI 状态 fuzz：执行 1,000 个序列、每序列 16 个逻辑操作，检查 modal 栈、焦点 token、面板快照可读且无永久焦点死锁；缺失船舶 owner 永不成功。 |
+| D22-L30 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L30_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L30/D22_L30_LOGIC_RESULT.json) | 新增通知队列、暂停意图、可恢复面板/焦点及 Router 幂等投影的 Save/Load 边界测试；快照恢复保持顺序、去重、暂停状态与缺失依赖原因。 |
+| D22-L31 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L31_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L31/D22_L31_LOGIC_RESULT.json) | 新增 D22 纯逻辑边界审计脚本：先词法剥离 C# 注释、普通/逐字/raw 字符串与字符字面量，再拦截 Canvas、EventSystem、设备输入、Unity UI、网络、LLM、墙钟、不可控随机和业务私写。 |
+| D22-L32 | LOGIC_PASS | 2026-09-01T22:52:21+08:00 | [D22_L32_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L32/D22_L32_LOGIC_RESULT.json) | 发布 D23 可消费的 D22 UI 命令、owner 路由、反馈/本地化、ViewModel 模块降级、Save 投影和 Runtime Deferred 接线规则；明确 D21 ship 依赖不得伪造成功。 |
+| D22-L33 | LOGIC_PASS | 2026-09-01T23:13:53+08:00 | [D22_L33_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L33/D22_L33_LOGIC_RESULT.json) | D22 纯逻辑汇合 runner 已执行离线源清单、D21 上游审计、D22-L01—L32 证据审计、边界审计、纯 C# 编译和定向测试。 |
+| D22-L34 | LOGIC_PASS | 2026-09-01T23:13:53+08:00 | [D22_L34_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L34/D22_L34_LOGIC_RESULT.json) | 已登记 D22 UI 逻辑交接后的 Runtime Deferred 范围；Runtime/Release 仍与逻辑门禁分离。 |
+| D22-L35 | LOGIC_PASS | 2026-09-01T23:13:53+08:00 | [D22_L35_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L35/D22_L35_LOGIC_RESULT.json) | 已完成 D22 结果、handoff、D21 上游、边界审计和命令证据状态复核。 |
+| D22-L36 | LOGIC_PASS | 2026-09-01T23:13:53+08:00 | [D22_L36_LOGIC_RESULT.json](../../game/tools/results/D22/D22-L36/D22_L36_LOGIC_RESULT.json) | D22 纯逻辑汇合验收通过，可向 D23 提供稳定 UI 命令/读模型边界；Runtime/Release 仍未放行。 |
 
 ## D23
 
 | 任务 | 状态 | 更新时间 | 结果文件 | 摘要 |
 |---|---|---|---|---|
-| D23-L01 | PLANNED | — | — | 尚未提交结果 |
-| D23-L02 | PLANNED | — | — | 尚未提交结果 |
-| D23-L03 | PLANNED | — | — | 尚未提交结果 |
-| D23-L04 | PLANNED | — | — | 尚未提交结果 |
-| D23-L05 | PLANNED | — | — | 尚未提交结果 |
-| D23-L06 | PLANNED | — | — | 尚未提交结果 |
-| D23-L07 | PLANNED | — | — | 尚未提交结果 |
-| D23-L08 | PLANNED | — | — | 尚未提交结果 |
-| D23-L09 | PLANNED | — | — | 尚未提交结果 |
-| D23-L10 | PLANNED | — | — | 尚未提交结果 |
-| D23-L11 | PLANNED | — | — | 尚未提交结果 |
-| D23-L12 | PLANNED | — | — | 尚未提交结果 |
-| D23-L13 | PLANNED | — | — | 尚未提交结果 |
-| D23-L14 | PLANNED | — | — | 尚未提交结果 |
-| D23-L15 | PLANNED | — | — | 尚未提交结果 |
-| D23-L16 | PLANNED | — | — | 尚未提交结果 |
-| D23-L17 | PLANNED | — | — | 尚未提交结果 |
-| D23-L18 | PLANNED | — | — | 尚未提交结果 |
-| D23-L19 | PLANNED | — | — | 尚未提交结果 |
-| D23-L20 | PLANNED | — | — | 尚未提交结果 |
-| D23-L21 | PLANNED | — | — | 尚未提交结果 |
-| D23-L22 | PLANNED | — | — | 尚未提交结果 |
-| D23-L23 | PLANNED | — | — | 尚未提交结果 |
-| D23-L24 | PLANNED | — | — | 尚未提交结果 |
-| D23-L25 | PLANNED | — | — | 尚未提交结果 |
-| D23-L26 | PLANNED | — | — | 尚未提交结果 |
-| D23-L27 | PLANNED | — | — | 尚未提交结果 |
-| D23-L28 | PLANNED | — | — | 尚未提交结果 |
-| D23-L29 | PLANNED | — | — | 尚未提交结果 |
-| D23-L30 | PLANNED | — | — | 尚未提交结果 |
-| D23-L31 | PLANNED | — | — | 尚未提交结果 |
-| D23-L32 | PLANNED | — | — | 尚未提交结果 |
-| D23-L33 | PLANNED | — | — | 尚未提交结果 |
-| D23-L34 | PLANNED | — | — | 尚未提交结果 |
-| D23-L35 | PLANNED | — | — | 尚未提交结果 |
-| D23-L36 | PLANNED | — | — | 尚未提交结果 |
-| D23-L37 | PLANNED | — | — | 尚未提交结果 |
-| D23-L38 | PLANNED | — | — | 尚未提交结果 |
+| D23-L01 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L01_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L01/D23_L01_LOGIC_RESULT.json) | D23 纯逻辑场景基线已在五项上游 LOGIC_PASS 闭合后复核，固定输入、owner 边界与真实 26-case 证据一致。 |
+| D23-L02 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L02_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L02/D23_L02_LOGIC_RESULT.json) | D23 固定种子夹具已在真实 26-case runner 中构造并复用，初始身份、presence、船、天气、时间、save/UI projection 校验通过。 |
+| D23-L03 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L03_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L03/D23_L03_LOGIC_RESULT.json) | NewGame 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L04 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L04_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L04/D23_L04_LOGIC_RESULT.json) | CharacterSetup 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L05 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L05_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L05/D23_L05_LOGIC_RESULT.json) | PortEntry 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L06 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L06_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L06/D23_L06_LOGIC_RESULT.json) | Market 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L07 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L07_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L07/D23_L07_LOGIC_RESULT.json) | Warehouse 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L08 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L08_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L08/D23_L08_LOGIC_RESULT.json) | Tavern 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L09 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L09_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L09/D23_L09_LOGIC_RESULT.json) | Shipyard 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L10 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L10_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L10/D23_L10_LOGIC_RESULT.json) | Preparation 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L11 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L11_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L11/D23_L11_LOGIC_RESULT.json) | Boarding 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L12 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L12_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L12/D23_L12_LOGIC_RESULT.json) | Departure 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L13 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L13_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L13/D23_L13_LOGIC_RESULT.json) | Voyage 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L14 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L14_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L14/D23_L14_LOGIC_RESULT.json) | Return 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L15 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L15_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L15/D23_L15_LOGIC_RESULT.json) | EventLog 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L16 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L16_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L16/D23_L16_LOGIC_RESULT.json) | SavePoint 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L17 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L17_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L17/D23_L17_LOGIC_RESULT.json) | TimeAdvance 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L18 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L18_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L18/D23_L18_LOGIC_RESULT.json) | FailureRecovery 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L19 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L19_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L19/D23_L19_LOGIC_RESULT.json) | CurrencyInventory 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L20 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L20_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L20/D23_L20_LOGIC_RESULT.json) | PetAnimal 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L21 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L21_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L21/D23_L21_LOGIC_RESULT.json) | FishingCollection 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L22 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L22_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L22/D23_L22_LOGIC_RESULT.json) | FactionConsequence 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L23 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L23_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L23/D23_L23_LOGIC_RESULT.json) | UiCommand 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L24 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L24_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L24/D23_L24_LOGIC_RESULT.json) | ContractCompatibility 场景已在 D23 26-case 真实纯 C# full-loop runner 中重新执行；不再使用旧 gate-only 阻断结论。 |
+| D23-L25 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L25_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L25/D23_L25_LOGIC_RESULT.json) | D23-L03—L24 场景目录已由真实 runner 重新收口，L01—L34 结果与 handoff 协议证据完整。 |
+| D23-L26 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L26_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L26/D23_L26_LOGIC_RESULT.json) | 完整新游戏→角色/港口→市场/仓库→登船→出航→40 Tick→抵达→返港→保存/恢复主剧本真实通过。 |
+| D23-L27 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L27_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L27/D23_L27_LOGIC_RESULT.json) | 相同固定种子和命令重复 20 次，结果、D21 事件、D8 事实和保存摘要指纹一致。 |
+| D23-L28 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L28_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L28/D23_L28_LOGIC_RESULT.json) | 覆盖非法港口出航、非法 Tick、Tick 重放、D8/D21 snapshot restore 的中断/恢复矩阵。 |
+| D23-L29 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L29_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L29/D23_L29_LOGIC_RESULT.json) | 单一固定航程连续运行 50 个 D21 逻辑 Tick，距离、补给、事件和保存投影无漂移。 |
+| D23-L30 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L30_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L30/D23_L30_LOGIC_RESULT.json) | D23 C# 剧本跨系统边界静态审计和审计器自检通过。 |
+| D23-L31 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L31_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L31/D23_L31_LOGIC_RESULT.json) | 统一 runner 已真实执行语法、边界审计、上游门禁、C# build/run，并产出机器报告。 |
+| D23-L32 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L32_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L32/D23_L32_LOGIC_RESULT.json) | 发布主剧本步骤、owner 边界、断点、保存摘要和 Runtime 映射。 |
+| D23-L33 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L33_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L33/D23_L33_LOGIC_RESULT.json) | 登记 Unity/Player/设备/输入/视觉/性能/发行等逻辑门禁之外的延期项。 |
+| D23-L34 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L34_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L34/D23_L34_LOGIC_RESULT.json) | 区分已修复逻辑缺口、非 P0 逻辑债务与 Runtime Deferred。 |
+| D23-L35 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L35_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L35/D23_L35_LOGIC_RESULT.json) | D23-L35 场景、回放、长跑、中断和跨系统边界已由统一纯逻辑 runner 真实收口；26 个 case、13925 assertions、0 failures。 |
+| D23-L36 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L36_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L36/D23_L36_LOGIC_RESULT.json) | D23-L36 完成纯逻辑存档审计：D19/D21/D8 projection、event log 和 snapshot 在主剧本、长跑及中断矩阵中可恢复且稳定；真实 SaveSystem 介质继续延期。 |
+| D23-L37 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L37_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L37/D23_L37_LOGIC_RESULT.json) | D23-L37 已复核五项上游 gate、D23-L01—L34 结果/handoff、统一 runner、边界审计和 Runtime Deferred；纯逻辑状态闭合。 |
+| D23-L38 | LOGIC_PASS | 2026-09-02T02:58:50+08:00 | [D23_L38_LOGIC_RESULT.json](../../game/tools/results/D23/D23-L38/D23_L38_LOGIC_RESULT.json) | D23-L38 纯逻辑最终验收通过：五项上游 gate、L01—L38 结果/handoff、26-case deterministic full-loop runner、边界审计和收口文档均具备真实证据；Runtime/Release 保持延期。 |
 
 ## D24
 
 | 任务 | 状态 | 更新时间 | 结果文件 | 摘要 |
 |---|---|---|---|---|
-| D24-L01 | PLANNED | — | — | 尚未提交结果 |
-| D24-L02 | PLANNED | — | — | 尚未提交结果 |
-| D24-L03 | PLANNED | — | — | 尚未提交结果 |
-| D24-L04 | PLANNED | — | — | 尚未提交结果 |
-| D24-L05 | PLANNED | — | — | 尚未提交结果 |
-| D24-L06 | PLANNED | — | — | 尚未提交结果 |
-| D24-L07 | PLANNED | — | — | 尚未提交结果 |
-| D24-L08 | PLANNED | — | — | 尚未提交结果 |
-| D24-L09 | PLANNED | — | — | 尚未提交结果 |
-| D24-L10 | PLANNED | — | — | 尚未提交结果 |
-| D24-L11 | PLANNED | — | — | 尚未提交结果 |
-| D24-L12 | PLANNED | — | — | 尚未提交结果 |
-| D24-L13 | PLANNED | — | — | 尚未提交结果 |
-| D24-L14 | PLANNED | — | — | 尚未提交结果 |
-| D24-L15 | PLANNED | — | — | 尚未提交结果 |
-| D24-L16 | PLANNED | — | — | 尚未提交结果 |
-| D24-L17 | PLANNED | — | — | 尚未提交结果 |
-| D24-L18 | PLANNED | — | — | 尚未提交结果 |
-| D24-L19 | PLANNED | — | — | 尚未提交结果 |
-| D24-L20 | PLANNED | — | — | 尚未提交结果 |
-| D24-L21 | PLANNED | — | — | 尚未提交结果 |
-| D24-L22 | PLANNED | — | — | 尚未提交结果 |
-| D24-L23 | PLANNED | — | — | 尚未提交结果 |
-| D24-L24 | PLANNED | — | — | 尚未提交结果 |
-| D24-L25 | PLANNED | — | — | 尚未提交结果 |
-| D24-L26 | PLANNED | — | — | 尚未提交结果 |
-| D24-L27 | PLANNED | — | — | 尚未提交结果 |
-| D24-L28 | PLANNED | — | — | 尚未提交结果 |
-| D24-L29 | PLANNED | — | — | 尚未提交结果 |
-| D24-L30 | PLANNED | — | — | 尚未提交结果 |
-| D24-L31 | PLANNED | — | — | 尚未提交结果 |
-| D24-L32 | PLANNED | — | — | 尚未提交结果 |
-| D24-L33 | PLANNED | — | — | 尚未提交结果 |
-| D24-L34 | PLANNED | — | — | 尚未提交结果 |
-| D24-L35 | PLANNED | — | — | 尚未提交结果 |
-| D24-L36 | PLANNED | — | — | 尚未提交结果 |
+| D24-L01 | LOGIC_PASS | 2026-09-02T03:40:00+08:00 | [D24_L01_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L01/D24_L01_LOGIC_RESULT.json) | 冻结 D24 纯逻辑候选版基线：D18—D23 终审入口、契约/投影版本、D23 固定种子与 ID、可重复回归命令、唯一写者/迁移边界和 Runtime/发行隔离均引用当前真实源。 |
+| D24-L02 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L02_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L02/D24_L02_LOGIC_RESULT.json) | 内容目录覆盖审计通过：真实注册条目具备稳定 ID、所有者、来源、弃用/生命周期和测试覆盖字段。 |
+| D24-L03 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L03_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L03/D24_L03_LOGIC_RESULT.json) | 跨章节 content key/resource key/事件相关 ID 唯一性审计通过，未发现重复条目。 |
+| D24-L04 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L04_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L04/D24_L04_LOGIC_RESULT.json) | 单一写者审计按真实 owner 规则通过；D20 save projection 内的 presentation 归一化写入被明确分类为合法 owner 写入。 |
+| D24-L05 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L05_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L05/D24_L05_LOGIC_RESULT.json) | canonical contracts JSON/YAML/OpenAPI 兼容性与全仓 JSON 可解析性审计通过，未新增私有协议。 |
+| D24-L06 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L06_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L06/D24_L06_LOGIC_RESULT.json) | D19/D20/D21 存档投影与迁移源码审计通过，所需 owner 文件存在且迁移/未知字段/失败策略模式完整。 |
+| D24-L07 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L07_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L07/D24_L07_LOGIC_RESULT.json) | 确定性时间/随机/环境依赖审计通过，活跃 D19-D22 System 源码没有未注入的墙钟、随机或阻塞等待。 |
+| D24-L08 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L08_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L08/D24_L08_LOGIC_RESULT.json) | 货币 owner 与守恒边界审计通过，贸易、船坞、酒馆、奖励和金融相关纯逻辑来源均可定位。 |
+| D24-L09 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L09_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L09/D24_L09_LOGIC_RESULT.json) | 库存、货舱、仓库、宠物/采集物、容量和归属 owner 审计通过，未发现绕过 owner 的纯逻辑写入。 |
+| D24-L10 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L10_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L10/D24_L10_LOGIC_RESULT.json) | 事件 ID、因果、顺序、幂等、重放与存档关联审计通过。 |
+| D24-L11 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L11_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L11/D24_L11_LOGIC_RESULT.json) | 错误码可定位、本地化 key 完整、无硬编码可见文案且无吞错的纯逻辑审计通过。 |
+| D24-L12 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L12_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L12/D24_L12_LOGIC_RESULT.json) | D18-D23 用户可见逻辑 localization key 的缺失、重复和弃用审计通过。 |
+| D24-L13 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L13_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L13/D24_L13_LOGIC_RESULT.json) | 可访问性读模型、禁用原因和反馈逻辑来源审计通过，不把视觉表现误报为逻辑完成。 |
+| D24-L14 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L14_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L14/D24_L14_LOGIC_RESULT.json) | 资产 provenance 逻辑前置审计通过；D18 证据链存在且候选/运行时/发布状态未越级。 |
+| D24-L15 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L15_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L15/D24_L15_LOGIC_RESULT.json) | P0 领域需求到实际单元/契约/模拟测试的结果矩阵审计通过，未将缺失证据改写为通过。 |
+| D24-L16 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L16_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L16/D24_L16_LOGIC_RESULT.json) | 历史运行时债务审计通过；D18 与 D20 deferred register 均存在、格式完整且没有伪造 RuntimeApproved/ReleaseApproved。 |
+| D24-L17 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L17_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L17/D24_L17_LOGIC_RESULT.json) | 完成固定输入、固定种子与重复执行回放；覆盖 D19 港口命令链、状态转移与重复命令幂等性。 |
+| D24-L18 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L18_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L18/D24_L18_LOGIC_RESULT.json) | 完成跨 D18-D23 公开枚举与代表性状态拒绝路径的纯 C# 覆盖入口，确保非法状态不是静默成功。 |
+| D24-L19 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L19_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L19/D24_L19_LOGIC_RESULT.json) | 完成 D19/D21/D22 公开 DTO 的 System.Text.Json 往返测试，并验证未知字段不会改变已验证状态。 |
+| D24-L20 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L20_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L20/D24_L20_LOGIC_RESULT.json) | 完成 D18-D23 现有 System 源码的纯静态禁用依赖扫描，阻止 Unity、网络、时钟、随机和线程等待进入强逻辑目录。 |
+| D24-L21 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L21_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L21/D24_L21_LOGIC_RESULT.json) | 以仓库实际 AgentCore.csproj 为准完成纯 C# 依赖闭包审计，确认 AgentCore 不引用 Unity、第三方 Package 或项目引用。 |
+| D24-L22 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L22_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L22/D24_L22_LOGIC_RESULT.json) | 已验证共享 AgentReply 契约 ID 以及 game/server/web 三端真实消费者；Web consumer 包含版本、顶层字段、引用、范围、禁止结果字段和 noop/relation 约束。 |
+| D24-L23 | LOGIC_PASS | 2026-09-01T23:04:50+08:00 | [D24_L23_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L23/D24_L23_LOGIC_RESULT.json) | 完成 AgentCore 真实 csproj 的无警告构建与离线 D9 自测入口；未执行会探测外部服务的交互模型分支。 |
+| D24-L24 | LOGIC_PASS | 2026-09-01T23:27:32+08:00 | [D24_L24_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L24/D24_L24_LOGIC_RESULT.json) | 完成 D24 工具链在干净临时工作目录中的重复执行与语义 JSON 比对；含 D18 deferred register 修复后历史欠账审计保持稳定。 |
+| D24-L25 | LOGIC_PASS | 2026-09-02T03:24:40+08:00 | [D24_L25_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L25/D24_L25_LOGIC_RESULT.json) | D24 纯逻辑总回归 runner 真实通过：D18—D23 协议矩阵 247/247 结果、247/247 handoff、247/247 LOGIC_PASS；D24 静态审计 15/15、D24-L17—L22 纯 C# 6/6、AgentCore build 与离线 d9-check 2/2、D23 场景 26 case/13925 assertions/0 failures。 |
+| D24-L26 | LOGIC_PASS | 2026-09-02T03:24:40+08:00 | [D24_L26_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L26/D24_L26_LOGIC_RESULT.json) | D24 固定回归基线比对通过：D23 26 case/13925 assertions/0 failures、D18—D23 247 项结果与 handoff、D24 审计/C# 和 AgentCore 覆盖未下降；迁移器、关键错误码和 D24 回归入口源码 marker 均保留。 |
+| D24-L27 | LOGIC_PASS | 2026-09-02T03:24:40+08:00 | [D24_L27_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L27/D24_L27_LOGIC_RESULT.json) | D24 跨章节纯 C# 回归通过：临时工程引用已编译的 D23/D22/Systems/AgentCore 逻辑 DLL，运行 D24FullLogicRegressionTests，10 次 full-loop 摘要回放、中断矩阵和 50 Tick 长跑共 7003 assertions、0 failures。 |
+| D24-L28 | LOGIC_PASS | 2026-09-02T03:28:18+08:00 | [D24_L28_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L28/D24_L28_LOGIC_RESULT.json) | 发布 D24 迁移兼容说明：冻结 D19/D20 Save migration 与 D21 projection 的支持边界、clone/fail-closed/unknown-field 策略、稳定错误码和真实 SaveSystem 尚未验证的数据风险。 |
+| D24-L29 | LOGIC_PASS | 2026-09-02T03:28:18+08:00 | [D24_L29_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L29/D24_L29_LOGIC_RESULT.json) | 发布 D24 逻辑内容覆盖矩阵：覆盖契约、稳定 ID、所有权、迁移、确定性、货币/库存/事件、错误/本地化/可访问性、AgentCore/Systems 边界和 D23/D24 跨章节场景，并明确未实现 Runtime/P1 风险。 |
+| D24-L30 | LOGIC_PASS | 2026-09-02T03:28:18+08:00 | [D24_L30_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L30/D24_L30_LOGIC_RESULT.json) | 建立 D24 后续 Runtime Validation Backlog：按 P0/P1 登记 Player/场景、港口航海、Save/Continue、资源导入、UI/可访问性、画面物理、设备性能、网络 Agent runtime 和 Steam 发布入口，并为每项定义证据与停止规则。 |
+| D24-L31 | LOGIC_PASS | 2026-09-02T03:28:18+08:00 | [D24_L31_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L31/D24_L31_LOGIC_RESULT.json) | 发布 D24 逻辑候选版说明：列出 D24-L01/L25-L27 的真实证据、已完成纯逻辑范围、已知历史风险和禁止误读，明确候选版不是可玩候选版、Runtime candidate 或 Release candidate。 |
+| D24-L32 | LOGIC_PASS | 2026-09-02T03:35:00+08:00 | [D24_L32_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L32/D24_L32_LOGIC_RESULT.json) | 审核 D24 总回归、失败分类、可重复性和证据路径：L25/L26/L27 真实报告均通过；D18—D23 247 项证据闭合；兼容形状和首次 L27 工程接线问题均已分类并保留审计记录。 |
+| D24-L33 | LOGIC_PASS | 2026-09-02T03:35:00+08:00 | [D24_L33_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L33/D24_L33_LOGIC_RESULT.json) | 完成 D24 逻辑边界审计：单一写者、game/server/web 契约、Systems 无网络/LLM、AgentCore 独立性、资源状态和 Runtime 隔离均有真实静态/离线证据；未发现新的 D24 P0 越界。 |
+| D24-L34 | LOGIC_PASS | 2026-09-02T03:35:00+08:00 | [D24_L34_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L34/D24_L34_LOGIC_RESULT.json) | 完成 D24 状态复核：按状态同步脚本核对 D18—D24 共 283 项计划任务、结果 JSON、handoff、D24 reports 与 2026-09-02 记忆日志的责任边界，保留任务卡 280 项文案滞后的差异说明。 |
+| D24-L35 | LOGIC_PASS | 2026-09-02T03:35:56+08:00 | [D24_L35_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L35/D24_L35_LOGIC_RESULT.json) | D24 纯逻辑候选版验收通过：D18—D23 上游 247/247/247 协议证据、D24-L01—L34 34/34 结果与 handoff、统一回归 6/6 套件、15/15 审计、D23 26 cases/13925 assertions/0 failures、D24-L27 7003 assertions/0 failures 和 L26 8/8 基线比较均通过。该状态仅表示逻辑候选版，不表示 RuntimeApproved、ReleaseApproved、playable 或发行通过。 |
+| D24-L36 | LOGIC_PASS | 2026-09-02T03:37:16+08:00 | [D24_L36_LOGIC_RESULT.json](../../game/tools/results/D24/D24-L36/D24_L36_LOGIC_RESULT.json) | 完成 D24 后续 Runtime 阶段的有限首轮交接：定义 L35 逻辑候选版进入条件、P0 启动/InitialHarbor/港口到出航/航行返港/真实 Save-Load-Continue 范围、停止规则和证据分栏；本任务只交接范围，未执行 Runtime。 |

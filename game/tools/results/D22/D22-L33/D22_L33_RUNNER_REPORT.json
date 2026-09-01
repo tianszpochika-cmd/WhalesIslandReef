@@ -1,0 +1,451 @@
+{
+  "runner_name": "D22 Unified Pure Logic Convergence Gate Runner",
+  "timestamp": "2026-09-01T23:13:53+08:00",
+  "status": "PASS",
+  "scope": {
+    "expected_logic_tasks": "D22-L01..L36",
+    "upstream_evidence_tasks": "D22-L01..L32",
+    "d21_upstream_tasks": "D21-L01..L32",
+    "unity_player_playmode_executed": false,
+    "scene_prefab_ui_executed": false,
+    "input_device_performance_executed": false,
+    "status_sync_executed": false,
+    "d21_runner_reexecuted": false
+  },
+  "suite_count": 8,
+  "passed_suites": 8,
+  "failed_suites": 0,
+  "suites": [
+    {
+      "id": "D22-PYTHON-SYNTAX",
+      "name": "D22 runner and boundary audit Python syntax",
+      "command": "'C:\\Program Files\\Python310\\python.exe' -m py_compile tools/d22_logic_test_runner.py tools/d22_logic_boundary_audit.py",
+      "exit_code": 0,
+      "duration_ms": 47,
+      "status": "PASS",
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "observed_markers": {},
+      "expected_markers": {},
+      "marker_status": "NOT_APPLICABLE",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "id": "D22-SOURCE-INVENTORY",
+      "name": "D22 isolated pure-source inventory",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_test_runner.py --audit-source-inventory",
+      "exit_code": 0,
+      "duration_ms": 77,
+      "status": "PASS",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"groups\": {\n    \"d20_sources\": [\n      \"D20ActionEventRouter.cs\",\n      \"D20ActionIntentContracts.cs\",\n      \"D20ActionInterruptSystem.cs\",\n      \"D20ActionPriorityRules.cs\",\n      \"D20ActionReadModel.cs\",\n      \"D20AnimalBehaviorService.cs\",\n      \"D20AnimalBehaviorStateMachine.cs\",\n      \"D20AnimalIdentityContracts.cs\",\n      \"D20AnimalSpeciesCatalog.cs\",\n      \"D20AppearanceSelectionRules.cs\",\n      \"D20AquaticBehaviorAdapter.cs\",\n      \"D20CharacterCommandService.cs\",\n      \"D20CharacterConditionAdapter.cs\",\n      \"D20CharacterIdentityContracts.cs\",\n      \"D20CharacterSaveMigration.cs\",\n      \"D20CharacterSaveProjection.cs\",\n      \"D20CrewProjectionContracts.cs\",\n      \"D20IdentityPresentationRules.cs\",\n      \"D20NpcBehaviorAuthorityGuard.cs\",\n      \"D20NpcBehaviorService.cs\",\n      \"D20NpcBehaviorStateMachine.cs\",\n      \"D20NpcIdentityContracts.cs\",\n      \"D20NpcInteractionAvailability.cs\",\n      \"D20NpcRoleCatalog.cs\",\n      \"D20NpcScheduleInput.cs\",\n      \"D20PetOwnershipSystem.cs\",\n      \"D20PlayerPresenceSystem.cs\",\n      \"D20PresentationEventContracts.cs\",\n      \"D20RelationActionAdapter.cs\",\n      \"D20TraitActionAdapter.cs\",\n      \"D20WildlifePopulationAdapter.cs\"\n    ],\n    \"d21_sources\": [\n      \"D21AnchorMooringSystem.cs\",\n      \"D21CargoCapacityRules.cs\",\n      \"D21CourseCommandSystem.cs\",\n      \"D21CrewProjectionAdapter.cs\",\n      \"D21CrewRequirementRules.cs\",\n      \"D21HullComponentSystem.cs\",\n      \"D21NavigationRouteContracts.cs\",\n      \"D21PortDepartureAdapter.cs\",\n      \"D21PortReturnAdapter.cs\",\n      \"D21ProvisionConsumptionSystem.cs\",\n      \"D21SeaStateSystem.cs\",\n      \"D21ShipConditionSystem.cs\",\n      \"D21ShipIdentityContracts.cs\",\n      \"D21ShipSaveProjection.cs\",\n      \"D21VoyageCommandService.cs\",\n      \"D21VoyageEventContracts.cs\",\n      \"D21VoyageEventRouter.cs\",\n      \"D21VoyageResolutionSystem.cs\",\n      \"D21VoyageRiskSystem.cs\",\n      \"D21VoyageTimeSystem.cs\",\n      \"D21WeatherImpactRules.cs\",\n      \"D21WeatherInputContracts.cs\"\n    ],\n    \"d22_sources\": [\n      \"D22AccessibilityReadModel.cs\",\n      \"D22DisabledReasonResolver.cs\",\n      \"D22EscapeIntentSystem.cs\",\n      \"D22FeedbackCatalog.cs\",\n      \"D22FocusStateMachine.cs\",\n      \"D22InventoryReadModelAdapter.cs\",\n      \"D22LoadStateReadModel.cs\",\n      \"D22LocalizationKeyAudit.cs\",\n      \"D22MarketReadModelAdapter.cs\",\n      \"D22NotificationQueue.cs\",\n      \"D22NpcReadModelAdapter.cs\",\n      \"D22PanelExclusivityRules.cs\",\n      \"D22PanelTransitionSystem.cs\",\n      \"D22PauseIntentSystem.cs\",\n      \"D22PointerModeReadModel.cs\",\n      \"D22PortReadModelAdapter.cs\",\n      \"D22QuestReadModelAdapter.cs\",\n      \"D22SaveReadModelAdapter.cs\",\n      \"D22ScreenContracts.cs\",\n      \"D22ShipReadModelAdapter.cs\",\n      \"D22UiCommandContracts.cs\",\n      \"D22UiCommandRouter.cs\",\n      \"D22UiCommandValidator.cs\",\n      \"D22ViewModelComposer.cs\"\n    ],\n    \"d22_tests\": [\n      \"D22CommandFeedbackTests.cs\",\n      \"D22DeterministicUiScenarioTests.cs\",\n      \"D22FocusAndPanelTests.cs\",\n      \"D22ReadModelAdapterTests.cs\",\n      \"D22UiSaveLoadTests.cs\",\n      \"D22UiStateFuzzTests.cs\"\n    ]\n  },\n  \"counts\": {\n    \"d20_sources\": 31,\n    \"d21_sources\": 22,\n    \"d22_sources\": 24,\n    \"d22_tests\": 6\n  },\n  \"missing_expected_d22_sources\": [],\n  \"missing_expected_d22_tests\": [],\n  \"issues\": []\n}\nD22_SOURCE_FILES=24\nD22_TEST_FILES=6\nD22_SOURCE_INVENTORY_PASS=1",
+      "stderr_tail": "",
+      "observed_markers": {
+        "D22_SOURCE_FILES": 24,
+        "D22_TEST_FILES": 6,
+        "D22_SOURCE_INVENTORY_PASS": 1
+      },
+      "expected_markers": {
+        "D22_SOURCE_FILES": 24,
+        "D22_TEST_FILES": 6,
+        "D22_SOURCE_INVENTORY_PASS": 1
+      },
+      "marker_status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D22_SOURCE_FILES": 24,
+          "D22_TEST_FILES": 6,
+          "D22_SOURCE_INVENTORY_PASS": 1
+        },
+        "observed_markers": {
+          "D22_SOURCE_FILES": 24,
+          "D22_TEST_FILES": 6,
+          "D22_SOURCE_INVENTORY_PASS": 1
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "id": "D22-BOUNDARY-SELF-TEST",
+      "name": "D22 logic boundary audit self-test",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_boundary_audit.py --self-test",
+      "exit_code": 0,
+      "duration_ms": 375,
+      "status": "PASS",
+      "stdout_tail": "D22 boundary audit self-test PASS\nD22 boundary audit PASS: 30 file(s), 0 issue(s)",
+      "stderr_tail": "",
+      "observed_markers": {},
+      "expected_markers": {},
+      "marker_status": "NOT_APPLICABLE",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "id": "D22-BOUNDARY-AUDIT",
+      "name": "D22 logic boundary static audit",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_boundary_audit.py --json",
+      "exit_code": 0,
+      "duration_ms": 375,
+      "status": "PASS",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"files_scanned\": 30,\n  \"issues\": [],\n  \"rules\": [\n    \"CANVAS\",\n    \"EVENT_SYSTEM\",\n    \"INPUT\",\n    \"UNITY_UI\",\n    \"NETWORK\",\n    \"LLM\",\n    \"WALL_CLOCK\",\n    \"UNCONTROLLED_RANDOM\",\n    \"BUSINESS_PRIVATE_WRITE\",\n    \"DOMAIN_OWNER_PRIVATE_WRITE\"\n  ]\n}",
+      "stderr_tail": "",
+      "observed_markers": {},
+      "expected_markers": {},
+      "marker_status": "NOT_APPLICABLE",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "id": "D21-UPSTREAM-AUDIT",
+      "name": "D21 acceptance and result/handoff completeness audit",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_test_runner.py --audit-upstream",
+      "exit_code": 0,
+      "duration_ms": 93,
+      "status": "PASS",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"acceptance_path\": \"docs/game/design/common/D21_LOGIC_ACCEPTANCE.md\",\n  \"runner_report_path\": \"game/tools/results/D21/D21-L30/D21_L30_RUNNER_REPORT.json\",\n  \"acceptance_pass\": true,\n  \"runner_report_pass\": true,\n  \"evidence\": {\n    \"status\": \"PASS\",\n    \"expected_results\": 32,\n    \"present_results\": 32,\n    \"present_handoffs\": 32,\n    \"missing\": [],\n    \"invalid_json\": [],\n    \"issues\": []\n  },\n  \"report_summary\": {\n    \"status\": \"PASS\",\n    \"suite_count\": 9\n  },\n  \"issues\": []\n}\nD21_UPSTREAM_RESULTS=32\nD21_UPSTREAM_HANDOFFS=32\nD21_UPSTREAM_ACCEPTANCE_PASS=1\nD21_UPSTREAM_REPORT_PASS=1\nD21_UPSTREAM_ISSUES=0\nD21_UPSTREAM_PASS=1",
+      "stderr_tail": "",
+      "observed_markers": {
+        "D21_UPSTREAM_RESULTS": 32,
+        "D21_UPSTREAM_HANDOFFS": 32,
+        "D21_UPSTREAM_ACCEPTANCE_PASS": 1,
+        "D21_UPSTREAM_REPORT_PASS": 1,
+        "D21_UPSTREAM_ISSUES": 0,
+        "D21_UPSTREAM_PASS": 1
+      },
+      "expected_markers": {
+        "D21_UPSTREAM_RESULTS": 32,
+        "D21_UPSTREAM_HANDOFFS": 32,
+        "D21_UPSTREAM_ACCEPTANCE_PASS": 1,
+        "D21_UPSTREAM_REPORT_PASS": 1,
+        "D21_UPSTREAM_ISSUES": 0,
+        "D21_UPSTREAM_PASS": 1
+      },
+      "marker_status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D21_UPSTREAM_RESULTS": 32,
+          "D21_UPSTREAM_HANDOFFS": 32,
+          "D21_UPSTREAM_ACCEPTANCE_PASS": 1,
+          "D21_UPSTREAM_REPORT_PASS": 1,
+          "D21_UPSTREAM_ISSUES": 0,
+          "D21_UPSTREAM_PASS": 1
+        },
+        "observed_markers": {
+          "D21_UPSTREAM_RESULTS": 32,
+          "D21_UPSTREAM_HANDOFFS": 32,
+          "D21_UPSTREAM_ACCEPTANCE_PASS": 1,
+          "D21_UPSTREAM_REPORT_PASS": 1,
+          "D21_UPSTREAM_ISSUES": 0,
+          "D21_UPSTREAM_PASS": 1
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "id": "D22-EVIDENCE-AUDIT",
+      "name": "D22-L01..L32 result and handoff protocol audit",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_test_runner.py --audit-d22-evidence",
+      "exit_code": 0,
+      "duration_ms": 93,
+      "status": "PASS",
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"expected_results\": 32,\n  \"present_results\": 32,\n  \"present_handoffs\": 32,\n  \"missing\": [],\n  \"invalid_json\": [],\n  \"issues\": []\n}\nD22_EVIDENCE_RESULTS=32\nD22_EVIDENCE_HANDOFFS=32\nD22_EVIDENCE_ISSUES=0\nD22_EVIDENCE_PASS=1",
+      "stderr_tail": "",
+      "observed_markers": {
+        "D22_EVIDENCE_RESULTS": 32,
+        "D22_EVIDENCE_HANDOFFS": 32,
+        "D22_EVIDENCE_ISSUES": 0,
+        "D22_EVIDENCE_PASS": 1
+      },
+      "expected_markers": {
+        "D22_EVIDENCE_RESULTS": 32,
+        "D22_EVIDENCE_HANDOFFS": 32,
+        "D22_EVIDENCE_ISSUES": 0,
+        "D22_EVIDENCE_PASS": 1
+      },
+      "marker_status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D22_EVIDENCE_RESULTS": 32,
+          "D22_EVIDENCE_HANDOFFS": 32,
+          "D22_EVIDENCE_ISSUES": 0,
+          "D22_EVIDENCE_PASS": 1
+        },
+        "observed_markers": {
+          "D22_EVIDENCE_RESULTS": 32,
+          "D22_EVIDENCE_HANDOFFS": 32,
+          "D22_EVIDENCE_ISSUES": 0,
+          "D22_EVIDENCE_PASS": 1
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "id": "D22-CSHARP-BUILD",
+      "name": "D22 full pure C# offline build",
+      "command": "dotnet build .codex-temp/d22-logic/D22LogicTests.csproj --nologo -warnaserror",
+      "exit_code": 0,
+      "duration_ms": 1531,
+      "status": "PASS",
+      "stdout_tail": "正在确定要还原的项目…\n  所有项目均是最新的，无法还原。\n  Whalebone.Agent.Runtime -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Agent.Runtime.dll\n  Whalebone.Systems -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Systems.dll\n  D22LogicTests -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d22-logic\\bin\\Debug\\net8.0\\D22LogicTests.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:01.33",
+      "stderr_tail": "",
+      "observed_markers": {},
+      "expected_markers": {},
+      "marker_status": "NOT_APPLICABLE",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "id": "D22-CSHARP-TEST-RUN",
+      "name": "D22 deterministic pure C# targeted test run",
+      "command": "dotnet run --project .codex-temp/d22-logic/D22LogicTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "duration_ms": 8516,
+      "status": "PASS",
+      "stdout_tail": "D22_ADAPTER_TEST_CASES=10\nD22_ADAPTER_TEST_FAILURES=0\nD22_FOCUS_PANEL_ASSERTIONS=13\nD22_COMMAND_FEEDBACK_ASSERTIONS=8\nD22_DETERMINISTIC_ASSERTIONS=44\nD22_FUZZ_ASSERTIONS=77817\nD22_SAVELOAD_ASSERTIONS=21\nD22_TEST_FAILURES=0",
+      "stderr_tail": "",
+      "observed_markers": {
+        "D22_ADAPTER_TEST_CASES": 10,
+        "D22_ADAPTER_TEST_FAILURES": 0,
+        "D22_FOCUS_PANEL_ASSERTIONS": 13,
+        "D22_COMMAND_FEEDBACK_ASSERTIONS": 8,
+        "D22_DETERMINISTIC_ASSERTIONS": 44,
+        "D22_FUZZ_ASSERTIONS": 77817,
+        "D22_SAVELOAD_ASSERTIONS": 21,
+        "D22_TEST_FAILURES": 0
+      },
+      "expected_markers": {
+        "D22_ADAPTER_TEST_CASES": 10,
+        "D22_ADAPTER_TEST_FAILURES": 0,
+        "D22_FOCUS_PANEL_ASSERTIONS": 13,
+        "D22_COMMAND_FEEDBACK_ASSERTIONS": 8,
+        "D22_DETERMINISTIC_ASSERTIONS": 44,
+        "D22_FUZZ_ASSERTIONS": 77817,
+        "D22_SAVELOAD_ASSERTIONS": 21,
+        "D22_TEST_FAILURES": 0
+      },
+      "marker_status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D22_ADAPTER_TEST_CASES": 10,
+          "D22_ADAPTER_TEST_FAILURES": 0,
+          "D22_FOCUS_PANEL_ASSERTIONS": 13,
+          "D22_COMMAND_FEEDBACK_ASSERTIONS": 8,
+          "D22_DETERMINISTIC_ASSERTIONS": 44,
+          "D22_FUZZ_ASSERTIONS": 77817,
+          "D22_SAVELOAD_ASSERTIONS": 21,
+          "D22_TEST_FAILURES": 0
+        },
+        "observed_markers": {
+          "D22_ADAPTER_TEST_CASES": 10,
+          "D22_ADAPTER_TEST_FAILURES": 0,
+          "D22_FOCUS_PANEL_ASSERTIONS": 13,
+          "D22_COMMAND_FEEDBACK_ASSERTIONS": 8,
+          "D22_DETERMINISTIC_ASSERTIONS": 44,
+          "D22_FUZZ_ASSERTIONS": 77817,
+          "D22_SAVELOAD_ASSERTIONS": 21,
+          "D22_TEST_FAILURES": 0
+        },
+        "status": "PASS"
+      }
+    }
+  ],
+  "convergence_gate": {
+    "pass_eligible": true,
+    "commands_pass": true,
+    "failed_suite_ids": [],
+    "source_inventory": {
+      "status": "PASS",
+      "groups": {
+        "d20_sources": [
+          "D20ActionEventRouter.cs",
+          "D20ActionIntentContracts.cs",
+          "D20ActionInterruptSystem.cs",
+          "D20ActionPriorityRules.cs",
+          "D20ActionReadModel.cs",
+          "D20AnimalBehaviorService.cs",
+          "D20AnimalBehaviorStateMachine.cs",
+          "D20AnimalIdentityContracts.cs",
+          "D20AnimalSpeciesCatalog.cs",
+          "D20AppearanceSelectionRules.cs",
+          "D20AquaticBehaviorAdapter.cs",
+          "D20CharacterCommandService.cs",
+          "D20CharacterConditionAdapter.cs",
+          "D20CharacterIdentityContracts.cs",
+          "D20CharacterSaveMigration.cs",
+          "D20CharacterSaveProjection.cs",
+          "D20CrewProjectionContracts.cs",
+          "D20IdentityPresentationRules.cs",
+          "D20NpcBehaviorAuthorityGuard.cs",
+          "D20NpcBehaviorService.cs",
+          "D20NpcBehaviorStateMachine.cs",
+          "D20NpcIdentityContracts.cs",
+          "D20NpcInteractionAvailability.cs",
+          "D20NpcRoleCatalog.cs",
+          "D20NpcScheduleInput.cs",
+          "D20PetOwnershipSystem.cs",
+          "D20PlayerPresenceSystem.cs",
+          "D20PresentationEventContracts.cs",
+          "D20RelationActionAdapter.cs",
+          "D20TraitActionAdapter.cs",
+          "D20WildlifePopulationAdapter.cs"
+        ],
+        "d21_sources": [
+          "D21AnchorMooringSystem.cs",
+          "D21CargoCapacityRules.cs",
+          "D21CourseCommandSystem.cs",
+          "D21CrewProjectionAdapter.cs",
+          "D21CrewRequirementRules.cs",
+          "D21HullComponentSystem.cs",
+          "D21NavigationRouteContracts.cs",
+          "D21PortDepartureAdapter.cs",
+          "D21PortReturnAdapter.cs",
+          "D21ProvisionConsumptionSystem.cs",
+          "D21SeaStateSystem.cs",
+          "D21ShipConditionSystem.cs",
+          "D21ShipIdentityContracts.cs",
+          "D21ShipSaveProjection.cs",
+          "D21VoyageCommandService.cs",
+          "D21VoyageEventContracts.cs",
+          "D21VoyageEventRouter.cs",
+          "D21VoyageResolutionSystem.cs",
+          "D21VoyageRiskSystem.cs",
+          "D21VoyageTimeSystem.cs",
+          "D21WeatherImpactRules.cs",
+          "D21WeatherInputContracts.cs"
+        ],
+        "d22_sources": [
+          "D22AccessibilityReadModel.cs",
+          "D22DisabledReasonResolver.cs",
+          "D22EscapeIntentSystem.cs",
+          "D22FeedbackCatalog.cs",
+          "D22FocusStateMachine.cs",
+          "D22InventoryReadModelAdapter.cs",
+          "D22LoadStateReadModel.cs",
+          "D22LocalizationKeyAudit.cs",
+          "D22MarketReadModelAdapter.cs",
+          "D22NotificationQueue.cs",
+          "D22NpcReadModelAdapter.cs",
+          "D22PanelExclusivityRules.cs",
+          "D22PanelTransitionSystem.cs",
+          "D22PauseIntentSystem.cs",
+          "D22PointerModeReadModel.cs",
+          "D22PortReadModelAdapter.cs",
+          "D22QuestReadModelAdapter.cs",
+          "D22SaveReadModelAdapter.cs",
+          "D22ScreenContracts.cs",
+          "D22ShipReadModelAdapter.cs",
+          "D22UiCommandContracts.cs",
+          "D22UiCommandRouter.cs",
+          "D22UiCommandValidator.cs",
+          "D22ViewModelComposer.cs"
+        ],
+        "d22_tests": [
+          "D22CommandFeedbackTests.cs",
+          "D22DeterministicUiScenarioTests.cs",
+          "D22FocusAndPanelTests.cs",
+          "D22ReadModelAdapterTests.cs",
+          "D22UiSaveLoadTests.cs",
+          "D22UiStateFuzzTests.cs"
+        ]
+      },
+      "counts": {
+        "d20_sources": 31,
+        "d21_sources": 22,
+        "d22_sources": 24,
+        "d22_tests": 6
+      },
+      "missing_expected_d22_sources": [],
+      "missing_expected_d22_tests": [],
+      "issues": []
+    },
+    "d21_upstream": {
+      "status": "PASS",
+      "acceptance_path": "docs/game/design/common/D21_LOGIC_ACCEPTANCE.md",
+      "runner_report_path": "game/tools/results/D21/D21-L30/D21_L30_RUNNER_REPORT.json",
+      "acceptance_pass": true,
+      "runner_report_pass": true,
+      "evidence": {
+        "status": "PASS",
+        "expected_results": 32,
+        "present_results": 32,
+        "present_handoffs": 32,
+        "missing": [],
+        "invalid_json": [],
+        "issues": []
+      },
+      "report_summary": {
+        "status": "PASS",
+        "suite_count": 9
+      },
+      "issues": []
+    },
+    "d22_l01_l32_evidence": {
+      "status": "PASS",
+      "expected_results": 32,
+      "present_results": 32,
+      "present_handoffs": 32,
+      "missing": [],
+      "invalid_json": [],
+      "issues": []
+    },
+    "required_documents": {
+      "status": "PASS",
+      "required": [
+        "docs/game/design/common/D22_RUNTIME_DEFERRED_REGISTER.md",
+        "docs/game/design/common/D22_LOGIC_STATUS_REVIEW.md",
+        "docs/game/design/common/D22_LOGIC_ACCEPTANCE.md"
+      ],
+      "missing": []
+    }
+  },
+  "runtime_deferred": [
+    "Canvas/UGUI/EventSystem、真实键鼠手柄/触摸、pointer/cursor、按钮点击和设备焦点未执行。",
+    "场景/Prefab/Transform、Player/PlayMode、真实 owner runtime 接线和真实 SaveSystem 介质未执行。",
+    "布局/分辨率/文本/本地化渲染、动画、字幕/通知视觉、音频、性能、目标设备和发行验证未执行。"
+  ],
+  "not_run_by_scope": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实输入和性能采样。",
+    "python tools/sync_logic_task_status.py（按委派要求不修改共享状态台账）。",
+    "D21 runner 本身（本任务只审计 D21 已接受的 acceptance、结果、handoff 和 runner report）。"
+  ],
+  "duration_ms": 11172,
+  "report_path": "game/tools/results/D22/D22-L33/D22_L33_RUNNER_REPORT.json",
+  "artifacts": {
+    "D22-L33": {
+      "result": "game/tools/results/D22/D22-L33/D22_L33_LOGIC_RESULT.json",
+      "handoff": "docs/game/design/common/handoffs/D22/D22-L33_LOGIC_HANDOFF.md"
+    },
+    "D22-L34": {
+      "result": "game/tools/results/D22/D22-L34/D22_L34_LOGIC_RESULT.json",
+      "handoff": "docs/game/design/common/handoffs/D22/D22-L34_LOGIC_HANDOFF.md"
+    },
+    "D22-L35": {
+      "result": "game/tools/results/D22/D22-L35/D22_L35_LOGIC_RESULT.json",
+      "handoff": "docs/game/design/common/handoffs/D22/D22-L35_LOGIC_HANDOFF.md"
+    },
+    "D22-L36": {
+      "result": "game/tools/results/D22/D22-L36/D22_L36_LOGIC_RESULT.json",
+      "handoff": "docs/game/design/common/handoffs/D22/D22-L36_LOGIC_HANDOFF.md"
+    }
+  }
+}

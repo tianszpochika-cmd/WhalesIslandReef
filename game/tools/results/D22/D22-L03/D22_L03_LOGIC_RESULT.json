@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L03",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "实现确定性的屏幕/面板焦点状态机、阻塞模态栈、父子模态约束、关闭恢复与焦点丢失回退；焦点仅为逻辑 token。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22FocusStateMachine.cs",
+    "game/tools/results/D22/D22-L03/D22_L03_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L03_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — L03 screen activation, focus change, duplicate modal rejection, child modal stack, close restoration, fallback and empty-stack assertions passed."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — no Unity, device input, EventSystem, network or LLM reference in executable source."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "真实设备输入、UGUI selection/EventSystem、pointer/cursor 与实际焦点渲染留给 Runtime 阶段。",
+    "Canvas 层级、视觉可见焦点、分辨率/布局、Player/PlayMode、设备与性能验证未执行。",
+    "状态机不改变 Time.timeScale、业务事实或任何 domain owner 数据。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L03_LOGIC_HANDOFF.md"
+}

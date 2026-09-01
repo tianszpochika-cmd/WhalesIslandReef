@@ -1,0 +1,49 @@
+{
+  "task_id": "D24-L25",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:24:40+08:00",
+  "summary": "D24 纯逻辑总回归 runner 真实通过：D18—D23 协议矩阵 247/247 结果、247/247 handoff、247/247 LOGIC_PASS；D24 静态审计 15/15、D24-L17—L22 纯 C# 6/6、AgentCore build 与离线 d9-check 2/2、D23 场景 26 case/13925 assertions/0 failures。",
+  "changed_files": [
+    "tools/d24_logic_regression_runner.py",
+    "game/tools/results/D24/D24-L25/D24_L25_RUNNER_REPORT.json",
+    "game/tools/results/D24/D24-L25/D24_L25_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L25_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "d18_d23_protocol_matrix",
+      "command": "python tools/d24_logic_regression_runner.py --root . --configuration Release --json-out game/tools/results/D24/D24-L25/D24_L25_RUNNER_REPORT.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D18—D23 预期 247 项；结果 247/247、handoff 247/247、LOGIC_PASS 247/247；issues=[]。旧结果/交接中的 34 个兼容形状被列为 compatibility_findings，不改写历史。"
+    },
+    {
+      "check": "d24_audit_matrix",
+      "command": "D24-L25 runner child suites: 15 D24 Python audits",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "15/15 子审计退出 0 且 JSON passed=true，包含 migration、ownership、contract、invariant、event、localization、historical-debt 和 test-matrix。"
+    },
+    {
+      "check": "d24_csharp_and_agentcore",
+      "command": "D24-L25 runner child suites: d24_logic_test_runner.py; d24_agentcore_build_audit.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D24-L17—L22 纯 C# 6/6 通过；AgentCore build 与离线 --d9-check 2/2 通过。"
+    },
+    {
+      "check": "d23_scenario_regression",
+      "command": "python tools/d23_scenario_runner.py --output <temporary-root-report>",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D23 26 cases、13925 assertions、0 failures，pass_eligible=true；报告写入临时目录，未刷新 D23 结果。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实输入、物理、视觉、音频和相机未执行。",
+    "真实设备、布局、性能、网络、LLM/Agent runtime、真实 SaveSystem 介质和 Steam/发行验证未执行。",
+    "LOGIC_PASS 与逻辑候选版不等于 playable、RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L25_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,48 @@
+{
+  "task_id": "D20-L26",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:41:42+08:00",
+  "summary": "建立 D20 角色保存投影：映射玩家 D20 身份、presence、动作与身份表现，NPC 身份/行为，动物身份/行为和宠物所有权；保存事件游标、因果引用、幂等回执载体及 D10/D11/D19 owner 快照引用，不复制外部事实，也不侵入 SaveSystem。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20CharacterSaveProjection.cs",
+    "game/tools/results/D20/D20-L26/D20_L26_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L26_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — 0 warnings, 0 errors。"
+    },
+    {
+      "command": "dotnet build .codex-temp/D20LogicCompile.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — D20 全目录（含 L26/L27）独立纯 C# 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project .codex-temp/D20LogicSmoke.csproj --nologo",
+      "result": "PASS — D20-L26/L27 LOGIC SMOKE PASS；覆盖投影 save→load clone 等价、嵌套快照副本保护、事件/owner 引用、缺失字段安全默认、迁移幂等及非法版本负向路径。"
+    },
+    {
+      "command": "rg -n -i 'UnityEngine|Transform|GameObject|Animator|NavMesh|Prefab|Canvas|HttpClient|System\\.Net|WebClient|Socket|LLM|OpenAI|DateTime|Random|System\\.Clock|Network' game/Assets/Scripts/Systems/D20/D20CharacterSaveProjection.cs game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs",
+      "result": "PASS — FORBIDDEN_REFERENCE_HITS=0。"
+    },
+    {
+      "command": "Select-String -Path game/Assets/Scripts/Systems/D20/D20CharacterSaveProjection.cs,game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs -Pattern '[ \\t]+$'",
+      "result": "PASS — TRAILING_WHITESPACE_HITS=0。"
+    },
+    {
+      "command": "Get-Content game/tools/results/D20/D20-L26/D20_L26_LOGIC_RESULT.json -Raw | ConvertFrom-Json",
+      "result": "PASS — 结果 JSON 可解析。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode；SaveSystem 根组合与真实读档接线仍由后续整合任务验证。",
+    "场景、Prefab、Canvas、Input、Transform、Animator、模型、设备、性能和真实表现恢复均延期。",
+    "D10/D11/D19 owner 的实际运行时快照恢复仍须由各 owner 的公开 Save 接口与后续集成任务验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L26_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,31 @@
+{
+  "task_id": "D24-L05",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "canonical contracts JSON/YAML/OpenAPI 兼容性与全仓 JSON 可解析性审计通过，未新增私有协议。",
+  "changed_files": [
+    "tools/d24_contract_compatibility_audit.py",
+    "tools/d24_logic_audit_common.py",
+    "game/tools/results/D24/D24-L05/D24_L05_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L05_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "contract_json_yaml_compatibility",
+      "status": "PASS",
+      "command": "python tools/d24_contract_compatibility_audit.py --root .",
+      "evidence": "退出码 0；7 个 canonical contract 文件（6 JSON、1 YAML）通过 schema/OpenAPI 形状和唯一 $id 检查，duplicate_schema_ids={}。"
+    },
+    {
+      "check": "json_parse",
+      "status": "PASS",
+      "command": "python tools/d24_contract_compatibility_audit.py --root .",
+      "evidence": "全仓 2,826 个 JSON 文件可解析，errors=[]。"
+    }
+  ],
+  "runtime_deferred": [
+    "三端真实生成代码、运行时版本协商和部署验证由后续集成阶段执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L05_LOGIC_HANDOFF.md"
+}

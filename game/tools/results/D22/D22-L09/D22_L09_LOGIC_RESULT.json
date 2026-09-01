@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L09",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "实现 D22 面板打开、关闭、返回、替换和不可恢复错误终态的确定性转换；重复操作无副作用，互斥决策复用 L04，所有结果返回防御性状态快照。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22PanelTransitionSystem.cs",
+    "game/tools/results/D22/D22-L09/D22_L09_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L09_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L09 deterministic positive/negative smoke: ActivateScreen, Replace, repeated Replace, Back, repeated Close, child-modal order, UnrecoverableError and ResetSession",
+      "result": "PASS — all assertions passed; invalid/repeated operations did not mutate state."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22PanelTransitionSystem.cs for Unity/Canvas/EventSystem/Input/network/LLM/Time.timeScale",
+      "result": "PASS — no forbidden executable dependency or domain-state writer detected."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L09/D22_L09_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "真实 Canvas/UGUI 对象开关、叠层、点击、焦点渲染、动画、布局和输入设备接线留给 Runtime。",
+    "系统只维护逻辑面板状态；Runtime 必须按 AffectedPanelIds 执行对象生命周期，不得将对象状态反写为业务事实。",
+    "Player/PlayMode、场景/Prefab、设备、性能、音频和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L09_LOGIC_HANDOFF.md"
+}

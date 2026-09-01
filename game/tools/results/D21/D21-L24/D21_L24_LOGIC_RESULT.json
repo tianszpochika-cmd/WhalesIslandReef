@@ -1,0 +1,86 @@
+{
+  "task_id": "D21-L24",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:13:54+08:00",
+  "summary": "D21-L24 已完成航程唯一命令聚合入口对 D20 公共船员只读投影的真实接入：Start 按优先级读取、映射并重新评估 crew，保留来源审计字段，同时维持命令指纹、幂等/冲突拒绝和缺失/非法依赖的 fail-closed 语义。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20CrewProjectionContracts.cs",
+    "game/Assets/Tests/EditMode/D20/D20CrewProjectionTests.cs",
+    "game/Assets/Scripts/Systems/D21/D21CrewProjectionAdapter.cs",
+    "game/Assets/Scripts/Systems/D21/D21CrewRequirementRules.cs",
+    "game/Assets/Scripts/Systems/D21/D21VoyageCommandService.cs",
+    "game/Assets/Tests/EditMode/D21/D21CrewProjectionIntegrationTests.cs",
+    "docs/game/design/common/D20_LOGIC_INTERFACE.md",
+    "docs/game/design/common/D20_LOGIC_ACCEPTANCE.md",
+    "game/tools/results/D21/D21-L24/D21_L24_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L24_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "crew_projection_pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/crew-projection-tests/CrewProjectionTests.csproj --no-restore --nologo -warnaserror",
+      "evidence": "EXIT=0；D20/D21 crew projection 生产代码和测试编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "crew_projection_start_aggregate_execution",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/crew-projection-tests/CrewProjectionTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；D20_CREW_PROJECTION_ASSERTIONS=14、D21_CREW_PROJECTION_ASSERTIONS=16、CREW_PROJECTION_FAILURES=0；覆盖 D21 Start 优先级、来源保留、重新 Evaluate、缺失/非法拒绝和直接 roster 兼容。"
+    },
+    {
+      "check": "d21_integration_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d21-tests/D21IntegrationTests.csproj --no-restore --nologo -warnaserror",
+      "evidence": "EXIT=0；D21 生产依赖、既有 D21-L27/L28 离线回归和新增 crew projection integration 编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "d21_integration_execution",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；D21_INTEGRATION_BASE_CASES=8、D21_CREW_PROJECTION_ASSERTIONS=16、D21_INTEGRATION_CASES=11、D21_INTEGRATION_FAILURES=0。"
+    },
+    {
+      "check": "command_idempotency_and_dependency_boundary",
+      "status": "PASS",
+      "command": "D21VoyageInvariantTests.CommandReplay_IsIdempotent_AndReusingCommandIdWithDifferentPayloadIsRejected plus MissingCrewProjection_IsDependencyBlocked_AndCannotBePresentedAsPass",
+      "evidence": "既有离线回归保持命令幂等、payload 冲突拒绝和缺失 crew projection DependencyBlocked；新增路径对 D20 投影执行船只/修订/岗位/规则校验。"
+    },
+    {
+      "check": "forbidden_dependency_scan",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；扫描 D21 Systems/tests 29 个 C# 文件，0 个 P0 违规。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按任务边界未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check",
+      "evidence": "EXIT=0；本次改动无 whitespace error。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "D19 departure/return adapter 的真实港口生命周期与运行时端到端接线",
+    "Unity Player/PlayMode、场景/Prefab、输入、物理、UI/动画、性能、平台、真机和发行验证",
+    "D21-L27 补给性能文件未在本次任务修改；其既有离线回归不替代 Runtime 证据"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L24_LOGIC_HANDOFF.md",
+    "next": "协调者可继续沿 D20 public crew projection → D21 readonly mapper → D21CrewRequirementRules.Evaluate 使用；运行时港口生命周期和 Unity/平台门禁仍按延期清单处理。",
+    "release_statement": "D21-L24 仅表示唯一命令入口对 D20 crew projection 的纯逻辑聚合、指纹、幂等/冲突和依赖边界通过；不表示真实运行时、性能、真机或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L24 已从缺少 D20 公共投影的 partial 重新验收为 LOGIC_PASS；D20/D21 crew projection 14/14、16/16，联合 D21 runner 退出码 0 且 failure=0。"
+  }
+}

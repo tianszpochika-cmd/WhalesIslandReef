@@ -1,0 +1,61 @@
+{
+  "task_id": "D24-L24",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:27:32+08:00",
+  "summary": "完成 D24 工具链在干净临时工作目录中的重复执行与语义 JSON 比对；含 D18 deferred register 修复后历史欠账审计保持稳定。",
+  "changed_files": [
+    "tools/d24_logic_audit_common.py",
+    "tools/d24_audit_entry.py",
+    "tools/d24_tooling_reproducibility_audit.py",
+    "tools/d24_accessibility_logic_audit.py",
+    "tools/d24_asset_provenance_audit.py",
+    "tools/d24_content_catalog_coverage_audit.py",
+    "tools/d24_content_id_uniqueness_audit.py",
+    "tools/d24_contract_compatibility_audit.py",
+    "tools/d24_currency_invariant_audit.py",
+    "tools/d24_data_ownership_audit.py",
+    "tools/d24_deterministic_seed_audit.py",
+    "tools/d24_error_catalog_audit.py",
+    "tools/d24_event_integrity_audit.py",
+    "tools/d24_historical_debt_audit.py",
+    "tools/d24_inventory_invariant_audit.py",
+    "tools/d24_localization_key_audit.py",
+    "tools/d24_save_migration_audit.py",
+    "tools/d24_test_matrix_audit.py",
+    "docs/game/design/common/D18_RUNTIME_DEFERRED_REGISTER.md",
+    "game/tools/results/D24/D24-L24/D24_L24_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L24_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "tooling_reproducibility",
+      "status": "PASS",
+      "command": "python tools/d24_tooling_reproducibility_audit.py --root . --include-agentcore",
+      "evidence": "临时工作目录中 16/16 工具检查均 valid_json=true、两次退出码均为 0、语义 JSON 完全一致；整体 passed=true。"
+    },
+    {
+      "check": "audit_matrix",
+      "status": "PASS",
+      "command": "PowerShell D24 wrapper audit loop",
+      "evidence": "15/15 D24 Python 审计退出码 0 且 passed=True；data-ownership 的 3 个合法 D20 save projection 写入被分类为 LEGAL_OWNER_WRITE，未用忽略规则掩盖。"
+    },
+    {
+      "check": "historical_debt_register",
+      "status": "PASS",
+      "command": "python tools/d24_historical_debt_audit.py --root .",
+      "evidence": "D18_RUNTIME_DEFERRED_REGISTER.md 与 D20 runtime deferred register 均被发现且格式/状态校验通过；D18 仍为 RUNTIME_DEFERRED，无 RuntimeApproved/ReleaseApproved。"
+    },
+    {
+      "check": "tool_self_test_and_python_compile",
+      "status": "PASS",
+      "command": "python tools/d24_localization_key_audit.py --self-test; python -m py_compile ...",
+      "evidence": "审计公共层 self-test 通过；D24 工具、入口和 unittest 文件 py_compile 通过。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas、Input、物理、视觉、性能、设备、网络、LLM 和发行验证均未执行",
+    "D18_RUNTIME_DEFERRED_REGISTER.md 只登记延期项，不构成 RuntimeApproved/ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L24_LOGIC_HANDOFF.md"
+}

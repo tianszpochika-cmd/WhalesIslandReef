@@ -1,0 +1,38 @@
+{
+  "task_id": "D22-L29",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "新增固定种子 UI 状态 fuzz：执行 1,000 个序列、每序列 16 个逻辑操作，检查 modal 栈、焦点 token、面板快照可读且无永久焦点死锁；缺失船舶 owner 永不成功。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D22/D22UiStateFuzzTests.cs",
+    "game/tools/results/D22/D22-L29/D22_L29_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L29_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type with explicit D22 pure logic sources, D16AccessibilityContracts and D22-L29 test source",
+      "result": "PASS — source and test files compiled in memory."
+    },
+    {
+      "command": "D22UiStateFuzzTests.Run()",
+      "result": "PASS — 77,817 assertions; fixed seed 0xD22F29, 1,000 sequences x 16 operations, no focus deadlock or unreadable modal/panel state."
+    },
+    {
+      "command": "D22UiStateFuzzTests missing-owner route assertions",
+      "result": "PASS — generated ShipAction requests returned only Blocked/Rejected; no owner handler was present and no business success was fabricated."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test; python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — no Canvas/EventSystem/Input/Unity UI/network/LLM/clock/random/business-private-write violation."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing line-ending warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "真实输入、UGUI/EventSystem selection、Canvas 层级、焦点可见效果、Player/PlayMode、设备、性能和发布。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L29_LOGIC_HANDOFF.md"
+}

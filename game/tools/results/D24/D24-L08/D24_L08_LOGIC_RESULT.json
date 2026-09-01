@@ -1,0 +1,25 @@
+{
+  "task_id": "D24-L08",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "货币 owner 与守恒边界审计通过，贸易、船坞、酒馆、奖励和金融相关纯逻辑来源均可定位。",
+  "changed_files": [
+    "tools/d24_currency_invariant_audit.py",
+    "tools/d24_logic_audit_common.py",
+    "game/tools/results/D24/D24-L08/D24_L08_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L08_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "currency_owner_sources",
+      "status": "PASS",
+      "command": "python tools/d24_currency_invariant_audit.py --root .",
+      "evidence": "退出码 0；currency owner 源码、边界和失败路径均通过审计，无未授权货币写入。"
+    }
+  ],
+  "runtime_deferred": [
+    "真实 UI 交易流程、Player、网络和经济长跑验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L08_LOGIC_HANDOFF.md"
+}

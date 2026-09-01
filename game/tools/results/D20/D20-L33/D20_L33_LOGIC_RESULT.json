@@ -1,0 +1,44 @@
+{
+  "task_id": "D20-L33",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T11:37:52+08:00",
+  "summary": "新增 D20 角色保存/加载测试，覆盖角色、presence、action、NPC、动物、宠物、事件游标和 owner snapshot reference 的投影、深拷贝校验与重建一致性；不复制外部 owner 事实。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D20/D20CharacterSaveLoadTests.cs",
+    "game/tools/results/D20/D20-L33/D20_L33_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L33_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — 0 warnings, 0 errors。"
+    },
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — D20 生产代码纯 C# 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project C:/Users/Administrator/AppData/Local/Temp/d20-l28-l35-batch/D20L28L35Batch.csproj --no-build --no-restore",
+      "result": "PASS — D20-L33 PASS ASSERTIONS=16；同批 L28-L32、L34-L35 亦全部 PASS。覆盖 projection build/clone/validate、action/presence/NPC/animal restore 和外部 owner snapshot reference。"
+    },
+    {
+      "command": "rg -n -i 'UnityEngine|GameObject|Transform|Animator|NavMesh|Prefab|Canvas|HttpClient|System\\.Net|WebClient|Socket|LLM|OpenAI|DateTime|Network' game/Assets/Scripts/Systems/D20/D20CharacterCommandService.cs game/Assets/Scripts/Systems/D20/D20NpcBehaviorService.cs game/Assets/Scripts/Systems/D20/D20AnimalBehaviorService.cs game/Assets/Scripts/Systems/D20/D20ActionEventRouter.cs",
+      "result": "PASS — D20 生产逻辑禁用引用 0 hits。"
+    },
+    {
+      "command": "Get-Content game/tools/results/D20/D20-L33/D20_L33_LOGIC_RESULT.json -Raw | ConvertFrom-Json",
+      "result": "PASS — 结果 JSON 可解析。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode；真实 SaveSystem 磁盘读写、场景恢复、Prefab/模型/UI 恢复延期。",
+    "owner snapshot 只保存外部事实引用，不代表 D10/D11/D19 owner 迁移或事务已完成。",
+    "未验证网络、LLM、设备、性能和跨端 Runtime 存档兼容。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L33_LOGIC_HANDOFF.md"
+}

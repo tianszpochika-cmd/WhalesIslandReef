@@ -1,0 +1,47 @@
+{
+  "task_id": "D20-L23",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:14:04+08:00",
+  "summary": "通过 D11PetSystem/AnimalCareSystem 的公开边界实现 D20 宠物所有权投影：owner_id 与 pet_id 注册、领养、照料、跟随资格、走失和搜索找回；D20 不二写 D11 的生命/照料/位置/走失事实，也不接库存、关系、生态、网络或 Unity。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20PetOwnershipSystem.cs",
+    "game/tools/results/D20/D20-L23/D20_L23_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L23_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo",
+      "result": "PASS — 基线 Systems 编译成功；0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet build .codex-temp/D20LogicCompile.csproj --no-restore --nologo",
+      "result": "PASS — D20-L23/L24/L25 目标源文件独立纯 C# 编译成功；0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project .codex-temp/D20LogicSmoke.csproj --no-restore --nologo",
+      "result": "PASS — D20-L23/L24/L25 LOGIC SMOKE PASS；覆盖领养、非 owner 拒绝、走失后跟随拒绝、搜索前置条件拒绝，以及读适配器正/负路径和无副作用断言。"
+    },
+    {
+      "command": "PowerShell scoped forbidden-reference scan for D20-L23/L24/L25",
+      "result": "PASS — Unity/network/LLM/time/random/visual/runtime forbidden references 0 hits。"
+    },
+    {
+      "command": "PowerShell scoped D20-L23 cross-domain owner-boundary scan",
+      "result": "PASS — forbidden owner types 0 hits；仅通过 D11PetSystem 公开 owner API 与公开快照读取。"
+    },
+    {
+      "command": "PowerShell scoped trailing-whitespace scan for D20-L23/L24/L25",
+      "result": "PASS — 目标文件 trailing whitespace 0。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity MonoBehaviour、场景/Prefab、UI、输入、动画、音频、物理、设备与 PlayMode 验证。",
+    "宠物跟随的实际运行时编排、可见表现、存档接线和性能验证；本结果不声明 RuntimeApproved 或发布就绪。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L23_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L15",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "实现稳定本地化 key 审计：检查 D22 screen/panel/feedback 目录和显式标签引用，区分缺 key、非法格式、硬编码用户可见文本和重复字段。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22LocalizationKeyAudit.cs",
+    "game/tools/results/D22/D22-L15/D22_L15_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L15_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L15 deterministic positive/negative smoke: stable ui. key, catalog audit, hardcoded visible text, non-visible invalid format and duplicate reference",
+      "result": "PASS — all assertions passed; existing D22 catalog has no localization audit issues."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22LocalizationKeyAudit.cs for Unity/Canvas/EventSystem/Input/network/LLM/PlayerPrefs",
+      "result": "PASS — audit uses only stable IDs/catalog data and has no runtime or storage dependency."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L15/D22_L15_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "本地化资源加载、语言切换、最终文案解析和 UI 呈现留给 Runtime/presentation edge。",
+    "审计只传递/校验 key，不解析用户可见文本，也不修改 catalog 或业务状态。",
+    "Canvas/UGUI、真实输入、Player/PlayMode、设备、性能和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L15_LOGIC_HANDOFF.md"
+}

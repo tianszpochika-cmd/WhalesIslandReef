@@ -1,0 +1,47 @@
+{
+  "task_id": "D20-L25",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:14:04+08:00",
+  "summary": "以 D4 ecology Snapshot 与 D11WhaleDolphinSystem 的公开 Snapshot/Encounter/read snapshot 只读适配鱼群、鲸和海豚行为交互资格，覆盖观察、捕鱼、护航、救援与捕鲸策略状态；不修改生态或海洋 owner 事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20AquaticBehaviorAdapter.cs",
+    "game/tools/results/D20/D20-L25/D20_L25_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L25_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo",
+      "result": "PASS — 基线 Systems 编译成功；0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet build .codex-temp/D20LogicCompile.csproj --no-restore --nologo",
+      "result": "PASS — D20-L23/L24/L25 目标源文件独立纯 C# 编译成功；0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project .codex-temp/D20LogicSmoke.csproj --no-restore --nologo",
+      "result": "PASS — D20-L23/L24/L25 LOGIC SMOKE PASS；覆盖海洋可见/观察、捕鲸 owner-required、blocked observation 拒绝，以及 marine revision 读取前后不变。"
+    },
+    {
+      "command": "PowerShell scoped forbidden-reference scan for D20-L23/L24/L25",
+      "result": "PASS — Unity/network/LLM/time/random/visual/runtime forbidden references 0 hits。"
+    },
+    {
+      "command": "PowerShell scoped D20-L24/L25 owner-mutation scan",
+      "result": "PASS — Seed/Tick/Move/Advance/Resolve/Harvest/Rescue/写入等 owner mutation calls 0。"
+    },
+    {
+      "command": "PowerShell scoped trailing-whitespace scan for D20-L23/L24/L25",
+      "result": "PASS — 目标文件 trailing whitespace 0。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity 海洋/动物表现、场景/Prefab、UI、输入、音频、物理、设备与 PlayMode 验证。",
+    "真实海洋运行时编排、可见交互、性能与发布验收留给后续 Runtime/集成任务；本结果不声明 RuntimeApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L25_LOGIC_HANDOFF.md"
+}

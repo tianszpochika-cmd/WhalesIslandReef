@@ -1,0 +1,211 @@
+{
+  "task": "D18-L45",
+  "tool": "tools/d18_schema_compatibility_audit.py",
+  "read_only": true,
+  "status": "PASS",
+  "slots": {
+    "state_enum": {
+      "consistent": true,
+      "source_values": {
+        "L02 schema": [
+          "Candidate",
+          "IntakeEligible",
+          "Rejected",
+          "ReleaseApproved",
+          "Revoked",
+          "RuntimeApproved",
+          "RuntimeRequested"
+        ],
+        "L39 aggregator": [
+          "Candidate",
+          "IntakeEligible",
+          "Rejected",
+          "ReleaseApproved",
+          "Revoked",
+          "RuntimeApproved",
+          "RuntimeRequested"
+        ],
+        "L42 compiler": [
+          "Candidate",
+          "IntakeEligible",
+          "Rejected",
+          "ReleaseApproved",
+          "Revoked",
+          "RuntimeApproved",
+          "RuntimeRequested"
+        ],
+        "L18 guard": [
+          "Candidate",
+          "IntakeEligible",
+          "Rejected",
+          "ReleaseApproved",
+          "Revoked",
+          "RuntimeApproved",
+          "RuntimeRequested"
+        ]
+      }
+    },
+    "category_enum": {
+      "consistent": true,
+      "source_values": {
+        "L02 schema": [
+          "animal",
+          "audio",
+          "building",
+          "character",
+          "environment",
+          "fish",
+          "lighting_reference",
+          "material",
+          "prop",
+          "ship",
+          "ui"
+        ],
+        "L42 compiler": [
+          "animal",
+          "audio",
+          "building",
+          "character",
+          "environment",
+          "fish",
+          "lighting_reference",
+          "material",
+          "prop",
+          "ship",
+          "ui"
+        ],
+        "L16 resource keys": [
+          "animal",
+          "audio",
+          "building",
+          "character",
+          "environment",
+          "fish",
+          "lighting_reference",
+          "material",
+          "prop",
+          "ship",
+          "ui"
+        ],
+        "L25 descriptor": [
+          "animal",
+          "audio",
+          "building",
+          "character",
+          "environment",
+          "fish",
+          "lighting_reference",
+          "material",
+          "prop",
+          "ship",
+          "ui"
+        ]
+      }
+    },
+    "schema_version": {
+      "consistent": true,
+      "source_values": {
+        "L25 schema": 1,
+        "L37 schema": 1,
+        "L42 compiler": 1
+      }
+    },
+    "record_required_fields": {
+      "consistent": true,
+      "source_values": {
+        "L02 schema": [
+          "canonical_asset_id",
+          "category",
+          "content_ids",
+          "download_date",
+          "evidence_paths",
+          "license",
+          "original_filename",
+          "rights",
+          "runtime_deferred",
+          "sha256",
+          "source_id",
+          "source_url",
+          "state"
+        ],
+        "L42 compiler": [
+          "canonical_asset_id",
+          "category",
+          "content_ids",
+          "download_date",
+          "evidence_paths",
+          "license",
+          "original_filename",
+          "rights",
+          "runtime_deferred",
+          "sha256",
+          "source_id",
+          "source_url",
+          "state"
+        ]
+      }
+    },
+    "result_status_enum": {
+      "consistent": true,
+      "source_values": {
+        "sync tool": [
+          "IN_PROGRESS",
+          "LOGIC_BLOCKED",
+          "LOGIC_PARTIAL",
+          "LOGIC_PASS",
+          "PLANNED",
+          "RUNTIME_DEFERRED"
+        ]
+      }
+    }
+  },
+  "real_data": {
+    "source_categories": {
+      "categories_used": [
+        "animal",
+        "audio",
+        "building",
+        "character",
+        "environment",
+        "lighting_reference",
+        "material",
+        "ship",
+        "ui"
+      ],
+      "extra_categories": [],
+      "per_file": {
+        "d18_ambientcg_logic_catalog.json": [],
+        "d18_kenney_logic_catalog.json": [
+          "audio",
+          "building",
+          "character",
+          "environment",
+          "ship",
+          "ui"
+        ],
+        "d18_polyhaven_logic_catalog.json": [
+          "lighting_reference",
+          "material"
+        ],
+        "d18_quaternius_logic_catalog.json": [
+          "animal",
+          "character"
+        ]
+      }
+    },
+    "result_jsons": {
+      "file_count": 53,
+      "unreadable_count": 0,
+      "missing_field_count": 0,
+      "bad_status_count": 0,
+      "bad_task_id_count": 0
+    }
+  },
+  "semantic_splits": [],
+  "summary": {
+    "slot_count": 5,
+    "consistent_slots": 5,
+    "p0_findings": 0,
+    "finding_count": 0
+  }
+}

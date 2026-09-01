@@ -41,6 +41,17 @@ namespace Whalebone.Systems.D19.Tests
         private D19PortCompensation _compensation;
         private D19AuthorityClaims _validClaims;
 
+        private static void AppendFact(EventLog log, IList<WorldEvent> history, WorldEvent draft)
+        {
+            Assert.IsNotNull(draft, "事件草案不能为 null");
+            EventAppendResult appended = log.Append(draft);
+            Assert.IsTrue(appended.Succeeded, "事件草案必须成功进入事实日志");
+            if (!appended.IsDuplicate)
+            {
+                history.Add(appended.Fact);
+            }
+        }
+
         [SetUp]
         public void SetUp()
         {
@@ -57,7 +68,7 @@ namespace Whalebone.Systems.D19.Tests
         public void FullDeterministicPortLifecycleScenario_ExecutesSequentiallyAndAuditsSuccessfully()
         {
             var eventHistory = new List<WorldEvent>();
-            long seq = 1;
+            var eventLog = new EventLog();
             int worldDay = 10;
             long saveRevision = 100;
 
@@ -67,7 +78,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resEnter.Success, "EnterPort 应成功");
             Assert.AreEqual(D19PortVisitState.PortVisit, resEnter.StateAfter);
             Assert.IsNotNull(resEnter.EventDraft);
-            eventHistory.Add(new FactEvent(resEnter.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resEnter.EventDraft);
 
             // 2. 靠岸 (Dock)
             var cmdDock = new D19RoutedPortCommand("cmd_scen_02", D19PortCommandKind.Dock, ActorId, ShipId, PortSantaMargarita, worldDay: worldDay, saveRevision: saveRevision, claims: _validClaims);
@@ -75,7 +86,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resDock.Success, "Dock 应成功");
             Assert.AreEqual(D19PortVisitState.Docked, resDock.StateAfter);
             Assert.IsNotNull(resDock.EventDraft);
-            eventHistory.Add(new FactEvent(resDock.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resDock.EventDraft);
 
             // 3. 泊位分配 (AssignBerth)
             var cmdBerth = new D19RoutedPortCommand("cmd_scen_03", D19PortCommandKind.AssignBerth, ActorId, ShipId, PortSantaMargarita, berthId: BerthDock01, worldDay: worldDay, saveRevision: saveRevision, claims: _validClaims);
@@ -83,7 +94,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resBerth.Success, "AssignBerth 应成功");
             Assert.AreEqual(D19PortVisitState.Berthed, resBerth.StateAfter);
             Assert.IsNotNull(resBerth.EventDraft);
-            eventHistory.Add(new FactEvent(resBerth.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resBerth.EventDraft);
 
             // 4. 幂等重放 AssignBerth (Duplicate Replay)
             var resBerthDup = _router.Route(cmdBerth);
@@ -96,7 +107,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resStartSrv.Success, "StartService 应成功");
             Assert.AreEqual(D19PortVisitState.InService, resStartSrv.StateAfter);
             Assert.IsNotNull(resStartSrv.EventDraft);
-            eventHistory.Add(new FactEvent(resStartSrv.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resStartSrv.EventDraft);
 
             // 6. 完成服务 (CompleteService)
             var cmdCompSrv = new D19RoutedPortCommand("cmd_scen_05", D19PortCommandKind.CompleteService, ActorId, ShipId, PortSantaMargarita, berthId: BerthDock01, serviceId: "service_santa_margarita_market", worldDay: worldDay, saveRevision: saveRevision, claims: _validClaims);
@@ -104,7 +115,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resCompSrv.Success, "CompleteService 应成功");
             Assert.AreEqual(D19PortVisitState.Berthed, resCompSrv.StateAfter);
             Assert.IsNotNull(resCompSrv.EventDraft);
-            eventHistory.Add(new FactEvent(resCompSrv.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resCompSrv.EventDraft);
 
             // 7. 登船 (Board)
             var cmdBoard = new D19RoutedPortCommand("cmd_scen_06", D19PortCommandKind.Board, ActorId, ShipId, PortSantaMargarita, berthId: BerthDock01, worldDay: worldDay, saveRevision: saveRevision, claims: _validClaims);
@@ -112,7 +123,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resBoard.Success, "Board 应成功");
             Assert.AreEqual(D19PortVisitState.Boarded, resBoard.StateAfter);
             Assert.IsNotNull(resBoard.EventDraft);
-            eventHistory.Add(new FactEvent(resBoard.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resBoard.EventDraft);
 
             // 8. 离港 (Depart)
             var cmdDepart = new D19RoutedPortCommand("cmd_scen_07", D19PortCommandKind.Depart, ActorId, ShipId, PortSantaMargarita, berthId: BerthDock01, worldDay: worldDay, saveRevision: saveRevision, claims: _validClaims);
@@ -120,7 +131,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resDepart.Success, "Depart 应成功");
             Assert.AreEqual(D19PortVisitState.Departed, resDepart.StateAfter);
             Assert.IsNotNull(resDepart.EventDraft);
-            eventHistory.Add(new FactEvent(resDepart.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resDepart.EventDraft);
 
             // 9. 返港 (Return)
             worldDay++;
@@ -129,7 +140,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.IsTrue(resReturn.Success, "Return 应成功");
             Assert.AreEqual(D19PortVisitState.Returned, resReturn.StateAfter);
             Assert.IsNotNull(resReturn.EventDraft);
-            eventHistory.Add(new FactEvent(resReturn.EventDraft, seq++));
+            AppendFact(eventLog, eventHistory, resReturn.EventDraft);
 
             // 10. 事件流审计与状态重放
             var auditReport = D19PortEventOrderAudit.Audit(eventHistory);
@@ -142,7 +153,7 @@ namespace Whalebone.Systems.D19.Tests
         public void FailureBranchAndCompensation_ExecutesDeterministically()
         {
             var eventHistory = new List<WorldEvent>();
-            long seq = 1;
+            var eventLog = new EventLog();
             int worldDay = 10;
             long saveRevision = 100;
 
@@ -160,7 +171,7 @@ namespace Whalebone.Systems.D19.Tests
             Assert.AreEqual("d19.berth.occupied", resConflict.ReasonCode);
             if (resConflict.EventDraft != null)
             {
-                eventHistory.Add(new FactEvent(resConflict.EventDraft, seq++));
+                AppendFact(eventLog, eventHistory, resConflict.EventDraft);
             }
 
             // 3. 触发补偿草案执行
@@ -178,7 +189,7 @@ namespace Whalebone.Systems.D19.Tests
             var compResult = _compensation.Execute(compDraft, PortSantaMargarita, ShipId, worldDay, saveRevision);
             Assert.AreEqual(D19CompensationStatus.RolledBack, compResult.Status);
             Assert.IsNotNull(compResult.CompensationEvent);
-            eventHistory.Add(new FactEvent(compResult.CompensationEvent, seq++));
+            AppendFact(eventLog, eventHistory, compResult.CompensationEvent);
 
             // 4. 断言泊位已被安全释放，无孤儿占用
             var alloc = _berthSystem.GetAllocation(BerthDock01);

@@ -1,0 +1,37 @@
+{
+  "task_id": "D24-L19",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "完成 D19/D21/D22 公开 DTO 的 System.Text.Json 往返测试，并验证未知字段不会改变已验证状态。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D24/D24SchemaRoundTripTests.cs",
+    "tools/d24_logic_test_runner.py",
+    "game/tools/results/D24/D24-L19/D24_L19_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L19_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "standalone_csharp_build_and_run",
+      "status": "PASS",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L19 --configuration Release",
+      "evidence": "临时独立 csproj 编译退出码 0，运行退出码 0；4 项 DTO round-trip/未知字段断言均输出 [OK]。"
+    },
+    {
+      "check": "schema_round_trip",
+      "status": "PASS",
+      "command": "D24SchemaRoundTripTests.RunAll",
+      "evidence": "D19 save projection、D21 TickContext/State/Input、D22 Request/Context 均完成序列化与反序列化等价性检查。"
+    },
+    {
+      "check": "unknown_field_isolation",
+      "status": "PASS",
+      "command": "D24SchemaRoundTripTests.RunAll",
+      "evidence": "向 D21 state JSON 添加未知字段后，反序列化的已验证状态保持一致。"
+    }
+  ],
+  "runtime_deferred": [
+    "服务端/客户端实际契约生成器与运行时版本协商仍需三端集成验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L19_LOGIC_HANDOFF.md"
+}

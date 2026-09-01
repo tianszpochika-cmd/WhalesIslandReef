@@ -1,22 +1,24 @@
 {
   "task_id": "D19-L41",
   "status": "LOGIC_PASS",
-  "updated_at": "2026-08-18T02:30:00+08:00",
-  "summary": "编写并执行 D19 统一离线逻辑测试运行器 tools/d19_logic_test_runner.py 与单元测试 tools/tests/test_d19_logic_test_runner.py：按固定顺序调度静态边界审计、单元测试套件及任务状态同步与完整性检查，采集精确退出码、耗时与标准输出，输出机器可读的聚合 JSON 报告。单元测试覆盖发现顺序、子项失败总状态传播、诚实错误报告，全量套件运行全部 PASS。",
+  "updated_at": "2026-08-31T22:32:07+08:00",
+  "summary": "D19 统一离线逻辑测试运行器复核：按固定顺序执行逻辑边界审计、边界审计单测、D19-L01..L48 结果协议完整性审计和状态同步；任一子项失败都会传播为失败，并输出机器可读汇总。Unity EditMode 测试不在 Python 运行器内伪装执行，统一在 D19-L48 终审证据中单独留痕。",
   "changed_files": [
     "tools/d19_logic_test_runner.py",
     "tools/tests/test_d19_logic_test_runner.py",
+    "tools/d19_logic_result_integrity_audit.py",
+    "tools/tests/test_d19_logic_result_integrity_audit.py",
     "game/tools/results/D19/D19-L41/D19_L41_LOGIC_RESULT.json",
     "docs/game/design/common/handoffs/D19/D19-L41_LOGIC_HANDOFF.md"
   ],
   "verification": [
     {
-      "command": "python -m unittest tools/tests/test_d19_logic_test_runner.py",
-      "result": "PASS: 4/4 tests passed (sub-suite execution, exit code verification, failure propagation)"
+      "command": "python -m unittest tools/tests/test_d19_logic_test_runner.py tools/tests/test_d19_logic_result_integrity_audit.py tools/tests/test_d19_logic_boundary_audit.py",
+      "result": "PASS：13/13 tests passed（运行器失败传播、边界审计、结果协议完整性与缺失/旧字段负例）。"
     },
     {
       "command": "python tools/d19_logic_test_runner.py",
-      "result": "PASS: Unified runner executed all 3 sub-suites successfully, total duration 679ms"
+      "result": "PASS：4/4 子套件通过；D19-L01..L48 结果文件 48/48、LOGIC_PASS 48/48、交接文件齐全。"
     },
     {
       "command": "python tools/sync_logic_task_status.py",

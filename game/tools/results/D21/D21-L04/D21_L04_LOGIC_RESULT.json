@@ -1,0 +1,52 @@
+{
+  "task_id": "D21-L04",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:06:23+08:00",
+  "summary": "完成船况耐久、进水、倾斜、损伤事实、适航等级、船上/船厂维修资格和命令幂等；损伤必须带稳定来源事实，物理输入仍在逻辑边界之外。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21ShipConditionSystem.cs",
+    "game/tools/results/D21/D21-L04/D21_L04_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L04_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "Framework64\\csc.exe /nologo /target:library /warnaserror+ /doc:%TEMP%\\d21-logic-l04\\D21-L04.xml /out:%TEMP%\\d21-logic-l04\\D21-L04.dll D21ShipIdentityContracts.cs D21ShipConditionSystem.cs",
+      "result": "PASS — csc_exit=0"
+    },
+    {
+      "command": "PowerShell Add-Type D21-L04.dll; damage application, replay idempotency, repair eligibility, missing source fact and full dock repair smoke",
+      "result": "PASS — D21-L04 smoke: PASS (5 checks)"
+    },
+    {
+      "command": "Framework64\\csc.exe /nologo /target:library /warnaserror+ /doc:%TEMP%\\d21-logic-all-l02-l08-final\\D21-L02-L08.xml /out:%TEMP%\\d21-logic-all-l02-l08-final\\D21-L02-L08.dll D21-L02—L08 sources",
+      "result": "PASS — all seven requested production files compiled together"
+    },
+    {
+      "command": "PowerShell executable-line forbidden-reference scan for D21-L02—L08 sources",
+      "result": "PASS — forbidden_executable_reference_hits=0"
+    },
+    {
+      "command": "python JSON parse and fixed-key audit for D21-L02—L08 result files",
+      "result": "PASS — executed after all seven result files were written"
+    },
+    {
+      "command": "git diff --check plus artifact trailing-whitespace audit for D21-L02—L08 deliverables",
+      "result": "PASS — executed after all seven result files and handoffs were written"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "NOT_RUN_BY_SCOPE — coordinator owns shared status synchronization"
+    },
+    {
+      "command": "Unity Player/PlayMode, scene, visual, physics, input, performance and real-device validation",
+      "result": "NOT_APPLICABLE — pure logic task; Runtime Deferred"
+    }
+  ],
+  "runtime_deferred": [
+    "真实碰撞/搁浅/火灾/天气采样、Rigidbody、浮力、沉没和物理表现",
+    "维修动画、VFX、音频、UI、输入、场景和模型",
+    "性能、真机和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L04_LOGIC_HANDOFF.md"
+}

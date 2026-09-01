@@ -1,0 +1,31 @@
+{
+  "task_id": "D20-L01",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T08:33:00+08:00",
+  "summary": "冻结 D20 角色/NPC/动物纯逻辑边界：明确玩家、NPC、动物/宠物、Presentation 与 D10/D11/D19 的唯一写者、公开读模型/命令/事件/存档边界；确认 D19-L48 LOGIC_PASS 可作为港口命令前置；明确 D20-L02—L27 并行、L28—L35 串行、L36—L40 汇合门禁及 D21—D24 下游依赖；逐项隔离旧 D20-A01—A06、D20-S01/S02 视觉/运行时结果，不将其作为逻辑或发布证据。",
+  "changed_files": [
+    "docs/game/design/common/D20_LOGIC_BOUNDARY_BASELINE.md",
+    "game/tools/results/D20/D20-L01/D20_L01_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L01_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-09-01.md",
+    "docs/game/LOGIC_TASK_STATUS.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS — Wrote docs\\game\\LOGIC_TASK_STATUS.md for 283 tasks."
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0; Git only emitted LF-to-CRLF working-copy warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "Player/NPC/动物/宠物/珍稀动物模型、骨架、Avatar、Animator、动作覆盖和表现质量未在本任务执行。",
+    "Prefab、Scene、Transform、碰撞、CharacterController、NavMesh、相机、输入、Canvas、音频、VFX、真实设备和性能验证延期。",
+    "D18 Candidate/IntakeEligible 资源的真实运行时消费者、LocalDevelopmentReady、RuntimeApproved、ReleaseApproved 保持未开启。",
+    "D20-S02 正式场景闭环、PlayMode、截图、存档场景恢复和发布回滚需未来运行时任务重新取得证据。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L01_LOGIC_HANDOFF.md"
+}

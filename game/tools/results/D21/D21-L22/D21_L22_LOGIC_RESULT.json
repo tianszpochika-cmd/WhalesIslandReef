@@ -1,0 +1,68 @@
+{
+  "task_id": "D21-L22",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:27:27+08:00",
+  "summary": "为 D21-L22 增加港口出航/返港适配器纯 C# EditMode 测试；通过 D19PortCommandRouter 公开入口验证出航幂等、非法请求原子拒绝、返港后靠泊，以及泊位冲突时保留返港事实并返回补偿草案。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D21/D21PortVoyageAdapterTests.cs",
+    "game/Assets/Tests/EditMode/D21/D21PortVoyageAdapterTests.cs.meta",
+    "game/tools/results/D21/D21-L22/D21_L22_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L22_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d21-logic-runner/D21LogicRunner.csproj --no-restore",
+      "evidence": "EXIT=0；D21/D19 纯逻辑依赖、四个 EditMode 测试文件和直接调用 runner 编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "offline_logic_execution",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-logic-runner/D21LogicRunner.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；D21_LOGIC_CASES=14、D21_LOGIC_FAILURES=0；L22.Departure、InvalidDeparture、Return、Compensation 全部 PASS。测试只通过 D19PortCommandRouter.Route 及公开 D19 读模型/泊位 API。"
+    },
+    {
+      "check": "forbidden_dependency_scan",
+      "status": "PASS",
+      "command": "PowerShell executable-line scan over game/Assets/Tests/EditMode/D21/*.cs for UnityEngine/network/LLM/clock/random/physics/reflection references",
+      "evidence": "FORBIDDEN_EXECUTABLE_REFERENCE_HITS=0；未使用反射、D19 私有字段或第二港口写者。"
+    },
+    {
+      "check": "json_and_asset_metadata",
+      "status": "PASS",
+      "command": "PowerShell ConvertFrom-Json fixed-key audit for D21-L22 result",
+      "evidence": "结果 JSON 必需键齐全且可解析。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check plus untracked D21 artifact trailing-whitespace scan",
+      "evidence": "EXIT=0；本任务新增文件无尾随空白或空白错误。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Editor 对新增 asmdef 的实际 EditMode discovery 与测试窗口执行",
+    "真实港口运行时、场景/Prefab、移动/物理/输入、UI、网络、性能、平台和真机验证",
+    "D19 Save projection 恢复后的真实运行时接线与发行门禁"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L22_LOGIC_HANDOFF.md",
+    "next": "协调者可在 Unity Editor 刷新 asmdef 后运行测试；港口事实继续由 D19 router/visit/berth owner 写入，D21 只消费返回结果。",
+    "release_statement": "D21-L22 仅表示 D19 边界适配器的离线纯逻辑测试通过；不表示真实港口运行时、场景、网络或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L22 已通过公开 D19 router 验证出航幂等、返港/靠泊成功和泊位冲突补偿语义；离线 L22 四项通过，未越权写入 D19 私有状态。"
+  }
+}

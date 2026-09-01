@@ -1,0 +1,70 @@
+{
+  "task_id": "D20-L40",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:13:54+08:00",
+  "summary": "D20 纯逻辑章节最终验收通过：L01-L35 全部 LOGIC_PASS，L36 边界审计与 L37 统一 runner 通过，L38 接口文档和 L39 Runtime 延期登记完整；D20-L40 补齐了可审计的船员公共只读投影，供 D21-L06/L24 真实消费。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20CrewProjectionContracts.cs",
+    "game/Assets/Tests/EditMode/D20/D20CrewProjectionTests.cs",
+    "docs/game/design/common/D20_LOGIC_INTERFACE.md",
+    "docs/game/design/common/D20_LOGIC_ACCEPTANCE.md",
+    "game/tools/results/D20/D20-L40/D20_L40_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L40_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "crew_projection_pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/crew-projection-tests/CrewProjectionTests.csproj --no-restore --nologo -warnaserror",
+      "evidence": "EXIT=0；D20/D21 crew projection 纯 C# 生产代码和测试编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "crew_projection_offline_execution",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/crew-projection-tests/CrewProjectionTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；D20_CREW_PROJECTION_ASSERTIONS=14、D21_CREW_PROJECTION_ASSERTIONS=16、CREW_PROJECTION_FAILURES=0。"
+    },
+    {
+      "check": "d20_logic_smoke_compile",
+      "status": "PASS",
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore --nologo -warnaserror",
+      "evidence": "EXIT=0；D20 既有纯逻辑 smoke 依赖编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "forbidden_dependency_scan",
+      "status": "PASS",
+      "command": "python tools/d20_logic_boundary_audit.py",
+      "evidence": "EXIT=0；扫描 D20 生产/测试范围 35 个 C# 文件，0 个边界违规。"
+    },
+    {
+      "check": "existing_d20_regression_runner",
+      "status": "PASS",
+      "command": "python tools/d20_logic_test_runner.py --output game/tools/results/D20/D20-L37/D20_L37_RUNNER_REPORT.json",
+      "evidence": "既有统一 runner 证据保留为 PASS：7 个 suite、35/35 逻辑证据完整。新增 D20-L40 覆盖由上方专用纯 C# runner 执行。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按任务边界未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check",
+      "evidence": "EXIT=0；本次改动无 whitespace error。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "D10/Crew owner 的真实船员排班、招募/解雇和运行时事实写入",
+    "Unity Player/PlayMode、场景、Prefab、模型、Animator、Input、物理、UI、网络、LLM、真机、画面、性能和发行验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L40_LOGIC_HANDOFF.md"
+}

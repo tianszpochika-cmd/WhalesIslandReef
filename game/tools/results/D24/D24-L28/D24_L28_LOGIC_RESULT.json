@@ -1,0 +1,41 @@
+{
+  "task_id": "D24-L28",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:28:18+08:00",
+  "summary": "发布 D24 迁移兼容说明：冻结 D19/D20 Save migration 与 D21 projection 的支持边界、clone/fail-closed/unknown-field 策略、稳定错误码和真实 SaveSystem 尚未验证的数据风险。",
+  "changed_files": [
+    "docs/game/design/common/D24_LOGIC_MIGRATION_COMPATIBILITY.md",
+    "docs/README.md",
+    "game/tools/results/D24/D24-L28/D24_L28_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L28_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "save_migration_audit",
+      "command": "python tools/d24_save_migration_audit.py --root .",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D19PortSaveMigration.cs、D20CharacterSaveMigration.cs、D21ShipSaveProjection.cs 三组真实输入文件和关键迁移模式通过。"
+    },
+    {
+      "check": "schema_round_trip",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L19 --configuration Release",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D19 Save、D21 time DTO、D22 command/context DTO 往返及 unknown-field isolation 均通过，standalone failed=0。"
+    },
+    {
+      "check": "compatibility_document",
+      "command": "Path.exists(docs/game/design/common/D24_LOGIC_MIGRATION_COMPATIBILITY.md)",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "文档列出支持版本、拒绝/回退、数据丢失风险和 Runtime Deferred，不授予真实 Save/Release 通过。"
+    }
+  ],
+  "runtime_deferred": [
+    "真实磁盘/云端 Save、崩溃恢复、并发同步、旧生产存档批量迁移和设备差异未执行。",
+    "Unity Player/PlayMode、场景/Prefab/UI/Input、网络、LLM、性能、设备和发行验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L28_LOGIC_HANDOFF.md"
+}

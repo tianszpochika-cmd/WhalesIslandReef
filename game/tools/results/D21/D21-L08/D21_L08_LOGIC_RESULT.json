@@ -1,0 +1,48 @@
+{
+  "task_id": "D21-L08",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:06:23+08:00",
+  "summary": "完成路线/航点/危险区/发现记录契约以及基于发现状态、吃水深度和危险容忍度的确定性路线使用评估；不引入坐标、路径搜索或场景导航 owner。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21NavigationRouteContracts.cs",
+    "game/tools/results/D21/D21-L08/D21_L08_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L08_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "Framework64\\csc.exe /nologo /target:library /warnaserror+ /doc:%TEMP%\\d21-logic-l08\\D21-L08.xml /out:%TEMP%\\d21-logic-l08\\D21-L08.dll D21ShipIdentityContracts.cs D21NavigationRouteContracts.cs",
+      "result": "PASS — csc_exit=0"
+    },
+    {
+      "command": "PowerShell Add-Type D21-L08.dll; route validation, discovery boundary, discovered-route allow and draft-depth refusal smoke",
+      "result": "PASS — D21-L08 smoke: PASS (4 checks)"
+    },
+    {
+      "command": "PowerShell executable-line forbidden-reference scan for D21-L02—L08 sources",
+      "result": "PASS — forbidden_executable_reference_hits=0"
+    },
+    {
+      "command": "python JSON parse and fixed-key audit for D21-L02—L08 result files",
+      "result": "PASS — executed after all seven result files were written"
+    },
+    {
+      "command": "git diff --check plus artifact trailing-whitespace audit for D21-L02—L08 deliverables",
+      "result": "PASS — executed after all seven result files and handoffs were written"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "NOT_RUN_BY_SCOPE — coordinator owns shared status synchronization"
+    },
+    {
+      "command": "Unity Player/PlayMode, scene, visual, physics, input, performance and real-device validation",
+      "result": "NOT_APPLICABLE — pure logic task; Runtime Deferred"
+    }
+  ],
+  "runtime_deferred": [
+    "坐标/pathfinding/NavMesh、场景航点、Transform、相机、输入和真实驾驶",
+    "海图 UI、危险区视觉、天气/水面/VFX/音频和 Prefab",
+    "性能、平台、真机和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L08_LOGIC_HANDOFF.md"
+}

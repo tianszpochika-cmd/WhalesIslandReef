@@ -1,0 +1,41 @@
+{
+  "task_id": "D24-L31",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:28:18+08:00",
+  "summary": "发布 D24 逻辑候选版说明：列出 D24-L01/L25-L27 的真实证据、已完成纯逻辑范围、已知历史风险和禁止误读，明确候选版不是可玩候选版、Runtime candidate 或 Release candidate。",
+  "changed_files": [
+    "docs/game/design/common/D24_LOGIC_RELEASE_NOTES.md",
+    "docs/README.md",
+    "game/tools/results/D24/D24-L31/D24_L31_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L31_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "candidate_evidence_chain",
+      "command": "D24-L25 runner + D24-L26 baseline compare + D24-L27 included runner",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "L25 5/5 suites、L26 8/8 checks、L27 build/run 0 warning/0 error/7003 assertions/0 failures。"
+    },
+    {
+      "check": "release_notes_scope",
+      "command": "Path.exists(docs/game/design/common/D24_LOGIC_RELEASE_NOTES.md)",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "候选版说明同时列出逻辑交付、已知限制、历史基线风险和 Runtime/Release 禁止误读。"
+    },
+    {
+      "check": "no_release_claim",
+      "command": "D24-L31 document scope review",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "文档明确不表示 playable、实机、性能、Steam 或 ReleaseApproved；Runtime backlog 仍为延期入口。"
+    }
+  ],
+  "runtime_deferred": [
+    "D24 逻辑候选版不执行 Unity Player/PlayMode、视觉、输入、设备、性能、网络、LLM、真实 Save 或发行验证。",
+    "本说明不授予 RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L31_LOGIC_HANDOFF.md"
+}

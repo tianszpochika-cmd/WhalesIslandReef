@@ -12,6 +12,13 @@
 - [D18 免费资源库准入验收（S02 v2）](game/design/common/D18_FREE_ASSET_LIBRARY_ADMISSION_ACCEPTANCE.md)：资源证据准入、受控开发解锁与 D18-S03 运行时晋级门；
 - [Agent 开发任务总索引](game/AGENT_DEVELOPMENT_TASKS.md)：列出全部章节、编号和执行顺序；实际提示词位于 D8—D16、D18—D24 独立章节文件，以及 D16/D17 剩余门禁第 9B 章；
 - [D19 港口业务逻辑详细提示词](game/AGENT_DEVELOPMENT_CHAPTER_11_D19_PROMPTS.md)：48 个可直接复制的纯逻辑开发任务、精确前置和结果留痕位置；
+- [D21 船舶、海况、天气与航海逻辑验收](game/design/common/D21_LOGIC_ACCEPTANCE.md)：D21 逻辑汇合门禁、确定性航程接口和证据状态；
+- [D23 纯逻辑场景验收](game/design/common/D23_LOGIC_ACCEPTANCE.md) 与 [D23 全链路接口](game/design/common/D23_LOGIC_FULL_LOOP_INTERFACE.md)：固定种子跨系统循环、回放/长跑/中断证据和 Runtime Deferred 边界；
+- [D24 逻辑候选版基线](game/design/common/D24_LOGIC_CANDIDATE_BASELINE.md)、[迁移兼容](game/design/common/D24_LOGIC_MIGRATION_COMPATIBILITY.md)、[逻辑覆盖](game/design/common/D24_LOGIC_CONTENT_COVERAGE.md) 与 [候选版说明](game/design/common/D24_LOGIC_RELEASE_NOTES.md)：D18—D23 回归、Save migration、覆盖边界和逻辑候选版定义；
+- [D24 逻辑边界审计](game/design/common/D24_LOGIC_BOUNDARY_AUDIT.md)、[状态复核](game/design/common/D24_LOGIC_STATUS_REVIEW.md) 与 [候选验收](game/design/common/D24_LOGIC_CANDIDATE_ACCEPTANCE.md)：纯逻辑收口证据、任务矩阵和 Runtime handoff 前置条件；
+- [D24 Runtime 验证延期清单](game/design/common/D24_RUNTIME_VALIDATION_BACKLOG.md)：后续实机、画面、输入、设备、性能和发行检查入口，当前仅为 Runtime Deferred；
+- [D24 后续 Runtime 阶段交接](game/design/common/D24_NEXT_RUNTIME_PHASE_HANDOFF.md)：候选逻辑闭合后的有限 Runtime 首轮入口与停止规则，不构成 RuntimeApproved；
+- [D21 Runtime Deferred 登记](game/design/common/D21_RUNTIME_DEFERRED_REGISTER.md)：船体、驾驶、物理、海水表现、设备和发布阶段待测边界；
 - [D16/D17 剩余门禁任务卡](game/AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATES.md) 与 [详细提示词](game/AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATE_PROMPTS.md)：47 个可复制分派的 `D16-C` / `D17-C` 任务；协议见 [GATE_TASK_PROTOCOL.md](game/GATE_TASK_PROTOCOL.md)，状态见 [GATE_TASK_STATUS.md](game/GATE_TASK_STATUS.md)；
 - [技术架构](ARCHITECTURE.md)：三端、契约和目录规则；
 - [开发规范](DEVELOPMENT_STANDARDS.md)：工程边界和验收要求；

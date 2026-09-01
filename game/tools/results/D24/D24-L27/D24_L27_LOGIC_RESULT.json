@@ -1,0 +1,42 @@
+{
+  "task_id": "D24-L27",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:24:40+08:00",
+  "summary": "D24 跨章节纯 C# 回归通过：临时工程引用已编译的 D23/D22/Systems/AgentCore 逻辑 DLL，运行 D24FullLogicRegressionTests，10 次 full-loop 摘要回放、中断矩阵和 50 Tick 长跑共 7003 assertions、0 failures。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D24/D24FullLogicRegressionTests.cs",
+    "tools/d24_logic_regression_runner.py",
+    "game/tools/results/D24/D24-L27/D24_L27_RUNNER_REPORT.json",
+    "game/tools/results/D24/D24-L27/D24_L27_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L27_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "d24_full_logic_regression_build",
+      "command": "python tools/d24_logic_regression_runner.py --root . --configuration Release --include-d24-l27 --json-out game/tools/results/D24/D24-L27/D24_L27_RUNNER_REPORT.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "临时 D24FullLogicRegression 工程 build exit=0，0 warning/0 error；仅引用已编译纯逻辑 DLL，未触发无关 Agent Runtime 工程重建。"
+    },
+    {
+      "check": "d24_full_logic_regression_run",
+      "command": "temporary D24FullLogicRegression project run --no-build --no-restore",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D24_ASSERTIONS=7003；D24_FAILURES=0；10 次相同 tag full-loop fingerprint、interruption matrix、50 Tick long-run 全部通过。"
+    },
+    {
+      "check": "upstream_replay_consistency",
+      "command": "D24-L27 runner included D24-L25 suites",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "同次 runner 仍复核 D18—D23 247/247/247、D24 audits 15/15、D24 C# 6/6、AgentCore 2/2 和 D23 26/13925/0。"
+    }
+  ],
+  "runtime_deferred": [
+    "仅执行纯 C# 编译与确定性模拟；Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实输入、物理、视觉、设备、性能、网络、LLM 和真实存档介质未执行。",
+    "D24-L27 LOGIC_PASS 只表示逻辑回归通过，不表示 playable、RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L27_LOGIC_HANDOFF.md"
+}

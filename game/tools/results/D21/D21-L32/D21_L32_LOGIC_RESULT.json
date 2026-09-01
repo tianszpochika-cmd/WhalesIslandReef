@@ -1,0 +1,49 @@
+{
+  "task_id": "D21-L32",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:40:00+08:00",
+  "summary": "D21 章节逻辑验收通过：船只身份、船体/船况、货舱、船员投影、锚泊、天气海况、航行 Tick、事件、保存投影和错误恢复均有公开纯逻辑接口与真实离线证据。",
+  "changed_files": [
+    "docs/game/design/common/D21_LOGIC_ACCEPTANCE.md",
+    "game/tools/results/D21/D21-L32/D21_L32_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L32_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "chapter_acceptance_document",
+      "status": "PASS",
+      "command": "D21_LOGIC_ACCEPTANCE.md required interface/deferred/evidence reference audit",
+      "evidence": "验收文档包含 L01-L32 证据、D21VoyageCommandService、D21VoyageResolutionSystem.ResolveTick、公开 crew projection、保存/事件边界和 Runtime 延期声明。"
+    },
+    {
+      "check": "unified_runner_and_evidence",
+      "status": "PASS",
+      "command": "python tools/d21_logic_test_runner.py --check-all --output game/tools/results/D21/D21-L30/D21_L30_RUNNER_REPORT.json",
+      "evidence": "退出码 0；9/9 suites 通过；32/32 result JSON 与 handoff 完整，所有任务状态为 LOGIC_PASS。"
+    },
+    {
+      "check": "cross_system_offline_integration",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "退出码 0；11 个集成用例、16 个 crew projection 断言、0 failures，包含命令服务 Start 与 10,000 Tick 事件/补给/投影验证。"
+    },
+    {
+      "check": "boundary_and_build",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py；dotnet build .codex-temp/d21-compile/D21IntegrationCompile.csproj --no-restore --nologo -warnaserror",
+      "evidence": "D21 纯逻辑边界审计通过；编译为 0 warning / 0 error。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未执行 Unity Player/PlayMode、场景、Prefab、真实驾驶、输入、物理、网络、真机、性能或发行验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "真实船体/海水/天气/输入/物理/场景/Prefab/UI/动画/设备/性能/发行验证",
+    "真实 SaveSystem 介质、崩溃恢复、云同步及 D19/D20 运行时 owner 接线"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L32_LOGIC_HANDOFF.md"
+}

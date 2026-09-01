@@ -1,0 +1,68 @@
+{
+  "task_id": "D21-L12",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T09:48:31+08:00",
+  "summary": "完成 D21-L12：以已校验天气输入确定性计算海况等级、风险、事件概率、可航行性和稳定事件种子；风力阈值与降水/能见度/气压/季节压力共同参与规则，非法输入不部分计算，不使用系统时钟或随机源，也不写 D9、船况、路线、船员或事件日志。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21SeaStateSystem.cs",
+    "game/Assets/Scripts/Systems/D21/D21SeaStateSystem.cs.meta",
+    "game/tools/results/D21/D21-L12/D21_L12_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L12_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "systems_baseline_build",
+      "status": "PASS",
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore",
+      "evidence": "退出码 0，0 warnings，0 errors；生成的 Unity csproj 未纳入本批次新增 D21 文件，因此另行执行独立 Roslyn 编译。"
+    },
+    {
+      "check": "d21_six_file_roslyn_compile",
+      "status": "PASS",
+      "command": "PowerShell 调用 Roslyn csc.dll，以 NETStandard.Library.Ref/2.1.0 和 game/Temp/bin/Debug/Whalebone.Systems.dll 为引用，编译本批次六个 D21 .cs 文件",
+      "evidence": "编译器退出码 0，无错误、无警告。"
+    },
+    {
+      "check": "sea_state_determinism_smoke",
+      "status": "PASS",
+      "command": "PowerShell 纯 C# smoke：同一有效天气输入重复 EvaluateDeterministic，再修改 WindForce 重算",
+      "evidence": "同一输入的等级/风险/事件种子一致；修改风力后稳定种子变化；有效样例得到 VeryRough，结果可航行性和概率均为显式字段。"
+    },
+    {
+      "check": "immutable_result_scope_audit",
+      "status": "PASS",
+      "command": "rg -n \"Random|DateTime|GetHashCode|UnityEngine|HttpClient|LLM|Input|Clone\" game/Assets/Scripts/Systems/D21/D21SeaStateSystem.cs",
+      "evidence": "结果和输入通过 Clone 防御性返回；稳定种子使用固定 FNV-1a 字符串计算，未使用随机/时钟/网络/Unity。"
+    },
+    {
+      "check": "artifact_whitespace_audit",
+      "status": "PASS",
+      "command": "PowerShell 逐行检查本项 .cs/.meta/JSON/handoff 行尾空白",
+      "evidence": "本项交付文件无行尾空格或制表符。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求不运行 tools/sync_logic_task_status.py，不修改共享状态总览或当天记忆。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "不运行 Unity Player/PlayMode、场景、Prefab、UI、输入、物理、Shader、性能、真机或发行验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "D9 天气快照到本系统输入的实际运行接线，以及事件 owner 对 EventProbability 的消费",
+    "Unity Player/PlayMode、场景、Prefab、Canvas、输入、Transform、物理、NavMesh 和 Shader",
+    "UI、VFX、音频、性能、真机、平台和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L12_LOGIC_HANDOFF.md",
+    "next": "后续船况/风险/事件 owner 只消费 D21SeaStateResult；不可把海况结果反写为 D9 天气事实或直接施加船员/船体后果。",
+    "release_statement": "D21-L12 纯逻辑通过；不等同于 D21 完成、运行时可玩、性能通过或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L12 已实现天气到海况的纯确定性计算；同输入重复结果一致，FNV-1a 派生事件种子，不使用随机/系统时钟，结果通过副本隔离输入。"
+  }
+}

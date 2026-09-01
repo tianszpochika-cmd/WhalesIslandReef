@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L06",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "新增 D20 动作打断唯一写者：消费 L04 动作意图、L05 优先级结果和已裁决的 presence 结果，提供暂停/恢复、受击、失能、presence 变化、取消、完成及确定性安全回退；只写 D20 自有动作投影并保留可重放命令回执。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20ActionInterruptSystem.cs",
+    "game/tools/results/D20/D20-L06/D20_L06_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L06_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore -t:Rebuild",
+      "result": "PASS — D20 源文件精确 C# harness 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project game/Temp/D20LogicSmoke/D20LogicSmoke.csproj -- D20-L06",
+      "result": "PASS — 覆盖注册动作、暂停/恢复、同命令重复幂等、受击清理活动动作并进入 idle fallback。"
+    },
+    {
+      "command": "scoped forbidden-reference scan over the five D20-L06..L10 production files",
+      "result": "PASS — 无 Unity/引擎对象、网络、LLM、时间或随机引用。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0，无 whitespace error。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json parse of D20-L06..L10 LOGIC_RESULT.json",
+      "result": "PASS — 五份机器结果均为有效 JSON，字段集合符合约定。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode、场景、输入、动画或设备；真实 owner 路由、动作执行、持久化组合和表现消费留给后续 Runtime/集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L06_LOGIC_HANDOFF.md"
+}

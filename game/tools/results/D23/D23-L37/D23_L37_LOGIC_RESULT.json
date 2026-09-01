@@ -1,0 +1,48 @@
+{
+  "task_id": "D23-L37",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T02:58:50+08:00",
+  "summary": "D23-L37 已复核五项上游 gate、D23-L01—L34 结果/handoff、统一 runner、边界审计和 Runtime Deferred；纯逻辑状态闭合。",
+  "changed_files": [
+    "docs/game/design/common/D23_LOGIC_STATUS_REVIEW.md",
+    "tools/d23_scenario_runner.py",
+    "game/tools/results/D23/D23-L31/D23_L31_RUNNER_REPORT.json",
+    "game/tools/results/D23/D23-L37/D23_L37_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D23/D23-L37_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "upstream_status_snapshot",
+      "status": "PASS",
+      "command": "python tools/d23_scenario_runner.py --write-results",
+      "exit_code": 0,
+      "evidence": "D18-L50、D19-L48、D20-L40、D21-L32、D22-L36 全部为 LOGIC_PASS。"
+    },
+    {
+      "check": "d23_status_snapshot",
+      "status": "PASS",
+      "command": "python tools/d23_scenario_runner.py --write-results",
+      "exit_code": 0,
+      "evidence": "L01—L34 evidence status=PASS；26 cases、13925 assertions、0 failures；L35—L38 结果与 handoff 已更新。"
+    },
+    {
+      "check": "protocol_and_handoff_audit",
+      "status": "PASS",
+      "command": "PowerShell ConvertFrom-Json protocol audit for D23-L01..D23-L38",
+      "exit_code": 0,
+      "evidence": "38/38 result JSON 与 38/38 handoff 存在；九字段、task/status、双向结果指针均一致。"
+    },
+    {
+      "check": "boundary_and_scope",
+      "status": "PASS",
+      "command": "python tools/d23_cross_system_boundary_audit.py --json",
+      "exit_code": 0,
+      "evidence": "D23 C# source audit 28 files、0 issues；scope flags 全部 false。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、真实 UI/输入、设备/性能、网络、LLM、真实 SaveSystem 介质和发行验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D23/D23-L37_LOGIC_HANDOFF.md"
+}

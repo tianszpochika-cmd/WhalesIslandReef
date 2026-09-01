@@ -1,0 +1,175 @@
+{
+  "task_id": "D22-L36",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:13:53+08:00",
+  "summary": "D22 纯逻辑汇合验收通过，可向 D23 提供稳定 UI 命令/读模型边界；Runtime/Release 仍未放行。",
+  "changed_files": [
+    "docs/game/design/common/D22_LOGIC_ACCEPTANCE.md",
+    "game/tools/results/D22/D22-L36/D22_L36_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L36_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' -m py_compile tools/d22_logic_test_runner.py tools/d22_logic_boundary_audit.py",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_test_runner.py --audit-source-inventory",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D22_SOURCE_FILES": 24,
+          "D22_TEST_FILES": 6,
+          "D22_SOURCE_INVENTORY_PASS": 1
+        },
+        "observed_markers": {
+          "D22_SOURCE_FILES": 24,
+          "D22_TEST_FILES": 6,
+          "D22_SOURCE_INVENTORY_PASS": 1
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_boundary_audit.py --self-test",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_boundary_audit.py --json",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_test_runner.py --audit-upstream",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D21_UPSTREAM_RESULTS": 32,
+          "D21_UPSTREAM_HANDOFFS": 32,
+          "D21_UPSTREAM_ACCEPTANCE_PASS": 1,
+          "D21_UPSTREAM_REPORT_PASS": 1,
+          "D21_UPSTREAM_ISSUES": 0,
+          "D21_UPSTREAM_PASS": 1
+        },
+        "observed_markers": {
+          "D21_UPSTREAM_RESULTS": 32,
+          "D21_UPSTREAM_HANDOFFS": 32,
+          "D21_UPSTREAM_ACCEPTANCE_PASS": 1,
+          "D21_UPSTREAM_REPORT_PASS": 1,
+          "D21_UPSTREAM_ISSUES": 0,
+          "D21_UPSTREAM_PASS": 1
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d22_logic_test_runner.py --audit-d22-evidence",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D22_EVIDENCE_RESULTS": 32,
+          "D22_EVIDENCE_HANDOFFS": 32,
+          "D22_EVIDENCE_ISSUES": 0,
+          "D22_EVIDENCE_PASS": 1
+        },
+        "observed_markers": {
+          "D22_EVIDENCE_RESULTS": 32,
+          "D22_EVIDENCE_HANDOFFS": 32,
+          "D22_EVIDENCE_ISSUES": 0,
+          "D22_EVIDENCE_PASS": 1
+        },
+        "status": "PASS"
+      }
+    },
+    {
+      "command": "dotnet build .codex-temp/d22-logic/D22LogicTests.csproj --nologo -warnaserror",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "COMMAND_PASS",
+      "assertions": {
+        "expected_markers": {},
+        "observed_markers": {},
+        "status": "COMMAND_PASS"
+      }
+    },
+    {
+      "command": "dotnet run --project .codex-temp/d22-logic/D22LogicTests.csproj --no-build --no-restore",
+      "result": "PASS",
+      "exit_code": 0,
+      "status": "PASS",
+      "assertion_status": "PASS",
+      "assertions": {
+        "expected_markers": {
+          "D22_ADAPTER_TEST_CASES": 10,
+          "D22_ADAPTER_TEST_FAILURES": 0,
+          "D22_FOCUS_PANEL_ASSERTIONS": 13,
+          "D22_COMMAND_FEEDBACK_ASSERTIONS": 8,
+          "D22_DETERMINISTIC_ASSERTIONS": 44,
+          "D22_FUZZ_ASSERTIONS": 77817,
+          "D22_SAVELOAD_ASSERTIONS": 21,
+          "D22_TEST_FAILURES": 0
+        },
+        "observed_markers": {
+          "D22_ADAPTER_TEST_CASES": 10,
+          "D22_ADAPTER_TEST_FAILURES": 0,
+          "D22_FOCUS_PANEL_ASSERTIONS": 13,
+          "D22_COMMAND_FEEDBACK_ASSERTIONS": 8,
+          "D22_DETERMINISTIC_ASSERTIONS": 44,
+          "D22_FUZZ_ASSERTIONS": 77817,
+          "D22_SAVELOAD_ASSERTIONS": 21,
+          "D22_TEST_FAILURES": 0
+        },
+        "status": "PASS"
+      }
+    }
+  ],
+  "runtime_deferred": [
+    "Canvas/UGUI/EventSystem、真实键鼠手柄/触摸、pointer/cursor、按钮点击和设备焦点未执行。",
+    "场景/Prefab/Transform、Player/PlayMode、真实 owner runtime 接线和真实 SaveSystem 介质未执行。",
+    "布局/分辨率/文本/本地化渲染、动画、字幕/通知视觉、音频、性能、目标设备和发行验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L36_LOGIC_HANDOFF.md",
+  "runner_report": "game/tools/results/D22/D22-L33/D22_L33_RUNNER_REPORT.json",
+  "convergence_gate": {
+    "pass_eligible": true,
+    "commands_pass": true,
+    "d21_upstream_status": "PASS",
+    "d22_l01_l32_evidence_status": "PASS",
+    "source_inventory_status": "PASS"
+  },
+  "acceptance_document": "docs/game/design/common/D22_LOGIC_ACCEPTANCE.md"
+}

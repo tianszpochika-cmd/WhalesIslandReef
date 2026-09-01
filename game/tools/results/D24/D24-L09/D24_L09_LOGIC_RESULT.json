@@ -1,0 +1,25 @@
+{
+  "task_id": "D24-L09",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "库存、货舱、仓库、宠物/采集物、容量和归属 owner 审计通过，未发现绕过 owner 的纯逻辑写入。",
+  "changed_files": [
+    "tools/d24_inventory_invariant_audit.py",
+    "tools/d24_logic_audit_common.py",
+    "game/tools/results/D24/D24-L09/D24_L09_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L09_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "inventory_owner_sources",
+      "status": "PASS",
+      "command": "python tools/d24_inventory_invariant_audit.py --root .",
+      "evidence": "退出码 0；库存/容量/归属来源和边界模式均通过审计，无 unapproved owner write。"
+    }
+  ],
+  "runtime_deferred": [
+    "真实装卸 UI、场景交互、设备和长时间运行验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L09_LOGIC_HANDOFF.md"
+}

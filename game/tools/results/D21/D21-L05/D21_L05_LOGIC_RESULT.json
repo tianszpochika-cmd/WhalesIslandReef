@@ -1,0 +1,48 @@
+{
+  "task_id": "D21-L05",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:06:23+08:00",
+  "summary": "完成货物重量/体积容量评估、危险货物隔离校验、D3 只读 mutation request seam 和分级超载后果；D21 不写入 D3 货物数量。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21CargoCapacityRules.cs",
+    "game/tools/results/D21/D21-L05/D21_L05_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L05_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "Framework64\\csc.exe /nologo /target:library /warnaserror+ /doc:%TEMP%\\d21-logic-l05\\D21-L05.xml /out:%TEMP%\\d21-logic-l05\\D21-L05.dll D21ShipIdentityContracts.cs D21CargoCapacityRules.cs",
+      "result": "PASS — csc_exit=0"
+    },
+    {
+      "command": "PowerShell Add-Type D21-L05.dll; normal capacity, D3 owner request, dangerous-goods rejection, overload consequence and remove evaluation smoke",
+      "result": "PASS — D21-L05 smoke: PASS (5 checks)"
+    },
+    {
+      "command": "PowerShell executable-line forbidden-reference scan for D21-L02—L08 sources",
+      "result": "PASS — forbidden_executable_reference_hits=0"
+    },
+    {
+      "command": "python JSON parse and fixed-key audit for D21-L02—L08 result files",
+      "result": "PASS — executed after all seven result files were written"
+    },
+    {
+      "command": "git diff --check plus artifact trailing-whitespace audit for D21-L02—L08 deliverables",
+      "result": "PASS — executed after all seven result files and handoffs were written"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "NOT_RUN_BY_SCOPE — coordinator owns shared status synchronization"
+    },
+    {
+      "command": "Unity Player/PlayMode, scene, visual, physics, input, performance and real-device validation",
+      "result": "NOT_APPLICABLE — pure logic task; Runtime Deferred"
+    }
+  ],
+  "runtime_deferred": [
+    "D3 实际库存写入、市场 UI、货舱模型、场景和装载表现",
+    "吃水、航速、操纵、碰撞、浮力和真实航行效果",
+    "性能、平台、真机和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L05_LOGIC_HANDOFF.md"
+}

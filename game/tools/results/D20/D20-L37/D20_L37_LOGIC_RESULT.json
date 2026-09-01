@@ -1,0 +1,21 @@
+{
+  "task_id": "D20-L37",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T21:29:00+08:00",
+  "summary": "建立 D20 纯逻辑统一测试入口，真实执行边界自测/扫描、Systems 编译、D20 smoke、L28-L35 batch 编译/执行和 L01-L35 证据协议完整性检查。",
+  "changed_files": [
+    "tools/d20_logic_test_runner.py",
+    "game/tools/results/D20/D20-L37/D20_L37_RUNNER_REPORT.json",
+    "game/tools/results/D20/D20-L37/D20_L37_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L37_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {"command": "python -m py_compile tools/d20_logic_test_runner.py", "result": "PASS"},
+    {"command": "python tools/d20_logic_test_runner.py --output game/tools/results/D20/D20-L37/D20_L37_RUNNER_REPORT.json", "result": "PASS — 7 个 suite 全部 PASS；D20-L01—L35 结果/交接证据 35/35 完整；L28-L35 断言 5/4/3/6/82/16/6004/17。"},
+    {"command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo -warnaserror", "result": "PASS — 0 warnings, 0 errors。"},
+    {"command": "git diff --check", "result": "PASS"}
+  ],
+  "runtime_deferred": ["统一 runner 不启动 Unity Player/PlayMode，不证明画面、设备、运行时性能或发行包。"],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L37_LOGIC_HANDOFF.md"
+}

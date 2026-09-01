@@ -1,0 +1,48 @@
+{
+  "task_id": "D21-L07",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:06:23+08:00",
+  "summary": "完成船侧下锚、抓持/走锚风险、收锚和系泊状态机；D19 港口/泊位只通过 opaque ID 与 permission 输入，D21 不写港口状态。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21AnchorMooringSystem.cs",
+    "game/tools/results/D21/D21-L07/D21_L07_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L07_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "Framework64\\csc.exe /nologo /target:library /warnaserror+ /doc:%TEMP%\\d21-logic-l07\\D21-L07.xml /out:%TEMP%\\d21-logic-l07\\D21-L07.dll D21ShipIdentityContracts.cs D21AnchorMooringSystem.cs",
+      "result": "PASS — csc_exit=0"
+    },
+    {
+      "command": "PowerShell Add-Type D21-L07.dll; deploy, holding-risk reevaluation, dragging, recovery, D19-permission mooring and replay idempotency smoke",
+      "result": "PASS — D21-L07 smoke: PASS (5 checks)"
+    },
+    {
+      "command": "PowerShell executable-line forbidden-reference scan for D21-L02—L08 sources",
+      "result": "PASS — forbidden_executable_reference_hits=0"
+    },
+    {
+      "command": "python JSON parse and fixed-key audit for D21-L02—L08 result files",
+      "result": "PASS — executed after all seven result files were written"
+    },
+    {
+      "command": "git diff --check plus artifact trailing-whitespace audit for D21-L02—L08 deliverables",
+      "result": "PASS — executed after all seven result files and handoffs were written"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "NOT_RUN_BY_SCOPE — coordinator owns shared status synchronization"
+    },
+    {
+      "command": "Unity Player/PlayMode, scene, visual, physics, input, performance and real-device validation",
+      "result": "NOT_APPLICABLE — pure logic task; Runtime Deferred"
+    }
+  ],
+  "runtime_deferred": [
+    "真实锚链/缆绳、泊位空间、靠岸、碰撞、浮力、漂移和驾驶",
+    "D19 港口运行时适配、场景/Prefab、输入、UI、VFX 和音频",
+    "性能、平台、真机和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L07_LOGIC_HANDOFF.md"
+}

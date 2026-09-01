@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L11",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "实现 Escape/返回意图的确定性优先级与面板关闭计划：子模态、阻塞模态、普通面板、暂停恢复依次处理，并显式返回无可关闭面板结果。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22EscapeIntentSystem.cs",
+    "game/tools/results/D22/D22-L11/D22_L11_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L11_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L11 deterministic positive/negative smoke: child modal first, blocking modal priority, route-HUD no-closable result and paused resume intent",
+      "result": "PASS — all assertions passed; resolver only emitted a plan and did not mutate the panel snapshot."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22EscapeIntentSystem.cs for Unity/Canvas/EventSystem/Input/network/LLM/Time.timeScale",
+      "result": "PASS — no forbidden executable dependency, keyboard/device read or runtime object write detected."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L11/D22_L11_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "Runtime 输入适配器、真实键盘/手柄/触摸、UGUI 焦点、Canvas 关闭和暂停效果留给 Runtime。",
+    "PanelCloseOrder/TargetPanelId 是待执行逻辑计划，不是已执行对象关闭，也不改变任何领域事实。",
+    "Player/PlayMode、布局、动画、设备、性能、音频和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L11_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,49 @@
+{
+  "task_id": "D21-L31",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:34:44+08:00",
+  "summary": "完成 D21 Runtime Deferred 登记：登记船体/Prefab、海水 Shader、天气表现、驾驶输入、相机、物理碰撞、港口坐标、船员运行时、Save 介质、性能、真机和发行边界，并与纯逻辑接口明确分离。",
+  "changed_files": [
+    "docs/game/design/common/D21_RUNTIME_DEFERRED_REGISTER.md",
+    "docs/README.md",
+    "game/tools/results/D21/D21-L31/D21_L31_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L31_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "deferred_register_content",
+      "status": "PASS",
+      "command": "python -c \"from pathlib import Path; p=Path('docs/game/design/common/D21_RUNTIME_DEFERRED_REGISTER.md'); s=p.read_text(encoding='utf-8'); required=['RT-01','RT-03','RT-05','RT-06','RT-09','RT-11','D21ShipIdentityContracts','D21VoyageResolutionSystem','RuntimeApproved=0','ReleaseApproved=0']; assert all(x in s for x in required); print('PASS')\"",
+      "evidence": "延期登记覆盖 11 类 Runtime/设备/发布风险，且每项关联逻辑替代、未来验收方式和禁止越界声明。"
+    },
+    {
+      "check": "logic_runtime_separation",
+      "status": "PASS",
+      "command": "python tools/d21_logic_test_runner.py --output game/tools/results/D21/D21-L30/D21_L30_RUNNER_REPORT.json",
+      "evidence": "runner 明确未执行 Unity Player/PlayMode、场景、Prefab、输入、物理、性能和发行验证；离线证据与 Runtime Deferred 分离。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check",
+      "evidence": "D21-L31 文档与产物无 whitespace error。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "本任务只登记延期风险，不启动 Unity 或目标设备验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "RT-01..RT-11：船体/Prefab、海水表现、天气 VFX/UI/音频、驾驶输入/相机、物理碰撞、港口坐标、船员运行时、真实 Save、性能、真机与发行验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D21/D21-L31_LOGIC_HANDOFF.md"
+}

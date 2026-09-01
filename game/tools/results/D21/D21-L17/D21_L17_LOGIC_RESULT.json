@@ -1,0 +1,78 @@
+{
+  "task_id": "D21-L17",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T09:30:00+08:00",
+  "summary": "完成 D21-L17：消费 D9 天气、D11 生态和 D4 生存公开快照，压缩为带来源事实 ID 的风险输入，并按固定顺序计算暗礁、风暴、敌对和疾病资格、阈值、确定性种子与 roll；不写天气、生态、船员或船况事实。未宣称真实天气/生态运行时通过。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21VoyageRiskSystem.cs",
+    "game/Assets/Scripts/Systems/D21/D21VoyageRiskSystem.cs.meta",
+    "game/tools/results/D21/D21-L17/D21_L17_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L17_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "PowerShell: dotnet <SDK>/Roslyn/bincore/csc.dll /noconfig /nostdlib+ /target:library /langversion:9 /out:$env:TEMP\\d21_l15_l19_logic.dll <net9 reference assemblies> <Whalebone.Systems.dll> <Whalebone.Agent.Runtime.dll> D21VoyageTimeSystem.cs D21CourseCommandSystem.cs D21VoyageRiskSystem.cs D21VoyageEventContracts.cs D21ShipSaveProjection.cs",
+      "evidence": "CSC_EXIT=0；D9/D11/D4 公开 DTO 引用和五个 D21 生产文件编译通过。"
+    },
+    {
+      "check": "deterministic_risk_smoke",
+      "status": "PASS",
+      "command": "PowerShell reflection smoke over $env:TEMP\\d21_l15_l19_logic.dll",
+      "evidence": "L17_RISK_PASS：相同航次、地点、显式 TickContext、种子和输入，两次评估的资格、阈值、seed、roll 完全一致。"
+    },
+    {
+      "check": "input_boundary_smoke",
+      "status": "PASS",
+      "command": "PowerShell boundary smoke over compiled D21 assembly",
+      "evidence": "BOUNDARY=L17_INVALID_INPUT_REJECT_PASS；缺失地点等非法输入被拒绝，未生成风险裁决。"
+    },
+    {
+      "check": "forbidden_api_scan",
+      "status": "PASS",
+      "command": "rg -n -i 'UnityEngine|HttpClient|UnityWebRequest|DateTime\\.(Now|UtcNow)|Time\\.deltaTime|new[[:space:]]+Random|Random\\.|System\\.Random|Transform|Rigidbody|NavMesh|Shader|GameObject|MonoBehaviour|Socket|OpenAI|Ollama|DeepSeek' game/Assets/Scripts/Systems/D21/D21VoyageRiskSystem.cs",
+      "evidence": "FORBIDDEN_API_SCAN=PASS；风险种子使用固定混合函数，不调用 Random、系统时钟或网络/LLM。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改共享状态总览或共享记忆日志。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "不运行 Player/PlayMode、天气/生态运行时、输入、物理、场景、Prefab、Shader、截图、性能、真机或网络验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "D9 天气和 D11 生态真实运行时、世界位置/海况/可见度采样",
+    "D4 船况/船员/疾病真实状态接线和风险事件表现",
+    "风险 UI、音频/VFX、场景/Prefab、输入和物理反馈",
+    "性能、移动端/平台适配、真机和发行门禁"
+  ],
+  "blockers": [
+    {
+      "id": "D21-D20-L40",
+      "scope": "D21-L15-L19 后续跨模块接线",
+      "status": "OPEN_DEPENDENCY",
+      "severity": "P1",
+      "description": "D20-L40 公开投影验收不是本次风险纯逻辑编译的必要条件，但 D21 后续聚合不得将未验收的身份/航线投影当作风险事实。"
+    },
+    {
+      "id": "D21-L24-L29",
+      "scope": "风险资格到事件/补给/船况效果",
+      "status": "INTEGRATION_PENDING",
+      "severity": "P1",
+      "description": "本任务只输出风险资格和确定性种子；事件解决、补给消耗、船况变化和 UI 反馈必须由各自 owner/后续聚合裁决。"
+    }
+  ],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L17_LOGIC_HANDOFF.md",
+    "next": "后续事件聚合消费风险资格时，必须保留 InputFactIds、上游快照引用和 seed/roll；不得在表现层重新随机或重算风险。",
+    "release_statement": "D21-L17 仅表示风险资格和确定性种子逻辑通过；不表示天气、生态、船员、物理、运行时或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L17 已落地 D9/D11/D4 公开快照到风险输入的只读适配，按暗礁/风暴/敌对/疾病固定顺序输出资格与确定性 seed/roll；风险效果仍由后续 owner 聚合。"
+  }
+}

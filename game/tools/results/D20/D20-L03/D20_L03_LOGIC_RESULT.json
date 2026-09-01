@@ -1,0 +1,30 @@
+{
+  "task_id": "D20-L03",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T08:53:43+08:00",
+  "summary": "实现 D20 玩家 presence 纯逻辑系统：以 Port/Ship/Voyage/Unavailable 互斥状态表达语义存在，使用显式迁移原因、稳定失败码、恢复前态、版本化快照和命令回执；不依赖空间或表现对象。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20PlayerPresenceSystem.cs",
+    "game/tools/results/D20/D20-L03/D20_L03_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L03_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /nologo /target:library /warnaserror+ /doc:<temp> /out:<temp> game/Assets/Scripts/Systems/D20/D20CharacterIdentityContracts.cs game/Assets/Scripts/Systems/D20/D20PlayerPresenceSystem.cs",
+      "result": "PASS — exit 0；L02/L03 独立 C# library 编译并生成 XML 文档，无警告。"
+    },
+    {
+      "command": "PowerShell reflection smoke for D20PlayerPresenceSystem (Port → duplicate → Ship → Voyage → Unavailable → Recover → Port)",
+      "result": "PASS — 8/8 checks；重复命令命中回执，恢复回到 Voyage，最终状态 Port。"
+    },
+    {
+      "command": "PowerShell scoped static check for L02/L03 source files (forbidden engine/network/LLM/time/random references and trailing whitespace)",
+      "result": "PASS — 2 files；forbidden_hits=0；trailing_whitespace=0。"
+    }
+  ],
+  "runtime_deferred": [
+    "真实港口/船舶/航行 owner 接线、输入、空间位置、碰撞、场景恢复、表现和设备验证留给后续 Runtime/集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L03_LOGIC_HANDOFF.md"
+}

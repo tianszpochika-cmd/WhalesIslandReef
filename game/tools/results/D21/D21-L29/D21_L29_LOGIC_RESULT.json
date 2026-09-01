@@ -1,0 +1,74 @@
+{
+  "task_id": "D21-L29",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:13:49+08:00",
+  "summary": "完成 D21-L29 逻辑边界审计：扫描器现在以状态机剥离行注释、块注释、普通字符串、字符字面量和 C# verbatim 字符串内容，避免注释/字符串伪违规漏判或误报；新增单元测试、自测夹具和真实 D21 全量扫描均通过。",
+  "changed_files": [
+    "tools/d21_logic_boundary_audit.py",
+    "tools/tests/test_d21_logic_boundary_audit.py",
+    "game/tools/results/D21/D21-L29/D21_L29_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L29_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "python_syntax_compile",
+      "status": "PASS",
+      "command": "python -m py_compile tools/d21_logic_boundary_audit.py tools/tests/test_d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0。"
+    },
+    {
+      "check": "boundary_audit_self_test",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py --self-test",
+      "evidence": "EXIT=0；good fixture 的注释、普通字符串、verbatim 字符串和尾部注释均为 0 violations；bad fixture 检出 D21-AUDIT-001、002、003。"
+    },
+    {
+      "check": "boundary_audit_unit_test",
+      "status": "PASS",
+      "command": "python -m unittest tools/tests/test_d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；Ran 3 tests，OK，覆盖注释/字符串排除、执行代码违规检出和真实扫描。"
+    },
+    {
+      "check": "d21_boundary_audit",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；扫描 D21 Systems 与 EditMode tests 共 29 个 C# 文件，D21-AUDIT-001—005 violations=0，未发现二进制运行时资源。"
+    },
+    {
+      "check": "related_d21_logic_runner",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；当前统一入口输出 D21_INTEGRATION_BASE_CASES=8、D21_CREW_PROJECTION_ASSERTIONS=16、D21_INTEGRATION_CASES=11、D21_INTEGRATION_FAILURES=0。该运行证据归属于 D21-L27 的完整逻辑长跑，L29 不单独宣称 Unity/runtime 通过。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check",
+      "evidence": "EXIT=0；仅有既有工作区 LF/CRLF 转换提示，没有 whitespace error。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、Canvas、Input、Transform、Animator、物理、平台、真机、网络或发行验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Editor/Player/PlayMode、场景/Prefab/UI/Input/Transform/Animator/物理、平台、真机和发行验证",
+    "D20-L40 公开 crew projection 的真实 owner 接入；相关 D21 断言不关闭 D20 门禁",
+    "完整 SaveSystem 磁盘/云端/崩溃恢复迁移验证"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L29_LOGIC_HANDOFF.md",
+    "next": "协调者可把本审计作为 D21 纯逻辑边界证据使用；继续保留 Unity/runtime/release 和 D20 crew owner 的 deferred 边界，不修改共享状态台账。",
+    "release_statement": "D21-L29 LOGIC_PASS 仅表示静态边界扫描器、自测、单元测试和当前 D21 C# 目录扫描通过；不表示 Unity 运行时、D20 owner 闭环或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L29 审计扫描器已修复注释/字符串状态处理；自测、3 个单元测试和 29 个 D21 C# 文件的 D21-AUDIT-001—005 全量扫描通过，0 violations。共享当天记忆文件按范围未修改。"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "task_id": "D24-L32",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:35:00+08:00",
+  "summary": "审核 D24 总回归、失败分类、可重复性和证据路径：L25/L26/L27 真实报告均通过；D18—D23 247 项证据闭合；兼容形状和首次 L27 工程接线问题均已分类并保留审计记录。",
+  "changed_files": [
+    "game/tools/results/D24/D24-L32/D24_L32_REGRESSION_REVIEW.json",
+    "game/tools/results/D24/D24-L32/D24_L32_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L32_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "l25_report",
+      "command": "D24-L25 runner report review",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "L25 pass_eligible=true；5/5 suites；D18—D23 247/247/247；D23 26/13925/0。"
+    },
+    {
+      "check": "l26_compare",
+      "command": "D24-L26 fixed baseline compare review",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "L26 8/8 checks PASS；没有数量下降、failure 上升或关键 migration/error marker 删除。"
+    },
+    {
+      "check": "l27_report",
+      "command": "D24-L27 included runner report review",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "临时纯 .NET build/run 0 warning/0 error，D24_ASSERTIONS=7003、D24_FAILURES=0。"
+    },
+    {
+      "check": "failure_classification",
+      "command": "D24_L32_REGRESSION_REVIEW.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "逻辑 failures=[]；34 个旧证据兼容 finding 非阻断；首次 ProjectReference 工程接线问题有根因和最终隔离 DLL 通过证据。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity/Player/PlayMode、场景/Prefab/UI/Input、设备、性能、网络、LLM、真实 Save 和发行未执行。",
+    "D24-L32 只审查逻辑报告和证据路径，不授予 RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L32_LOGIC_HANDOFF.md"
+}

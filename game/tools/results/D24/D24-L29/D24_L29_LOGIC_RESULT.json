@@ -1,0 +1,41 @@
+{
+  "task_id": "D24-L29",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:28:18+08:00",
+  "summary": "发布 D24 逻辑内容覆盖矩阵：覆盖契约、稳定 ID、所有权、迁移、确定性、货币/库存/事件、错误/本地化/可访问性、AgentCore/Systems 边界和 D23/D24 跨章节场景，并明确未实现 Runtime/P1 风险。",
+  "changed_files": [
+    "docs/game/design/common/D24_LOGIC_CONTENT_COVERAGE.md",
+    "docs/README.md",
+    "game/tools/results/D24/D24-L29/D24_L29_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L29_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "content_catalog_coverage",
+      "command": "python tools/d24_content_catalog_coverage_audit.py --root .",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "内容目录 2812 entries/2812 files，invalid ID、JSON error、missing requirement、registry stale/unregistered 均为空。"
+    },
+    {
+      "check": "test_matrix",
+      "command": "python tools/d24_test_matrix_audit.py --root .",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D18—D23 章节计数 53/48/40/32/36/38，结果矩阵 247 项，无 missing chapter、duplicate task ID 或 malformed result。"
+    },
+    {
+      "check": "coverage_evidence",
+      "command": "D24-L25/L26/L27 reports and D24-L17—L24 results",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D23=26/13925/0；D24 audits=15/15；D24 C#=6/6；AgentCore=2/2；L27=7003/0；tool reproducibility=16/16。"
+    }
+  ],
+  "runtime_deferred": [
+    "模型/材质/动画/音频/VFX/Shader/碰撞/LOD/资源导入、Canvas/UI/输入/物理/相机和设备未计入逻辑完成。",
+    "真实 Save、网络、LLM/Agent runtime、性能、Steam/发行及历史 D9/D15/D16 内容基线仍需独立处理。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L29_LOGIC_HANDOFF.md"
+}

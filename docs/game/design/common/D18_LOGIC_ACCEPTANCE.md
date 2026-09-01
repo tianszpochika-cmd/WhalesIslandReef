@@ -3,6 +3,7 @@
 > 任务：`D18-L50`（波次 4，第 4 项）——D18 唯一章节验收
 > 首次验收：2026-08-16，结论 **LOGIC_PARTIAL**（分类/键数据一致性未定案）
 > **L53 收尾升级：2026-08-17，结论 LOGIC_PASS**（根因由 D18-L51 双层分类契约 + D18-L52 配置键修复消除，11 项 P0 现全部有 PASS 证据）
+> **D18-L53-C02 当前复审：2026-08-31，结论仍为 LOGIC_PASS**（修正 4 个运行时目录中的外部/绝对证据路径后，关键审计重新通过）
 > 依据：L47 证据矩阵（53 项）、L43/L44/L45 重跑机器结果、L48 延期审计、L49 状态复核（53 任务）
 
 ## 1. 唯一结论：**LOGIC_PASS**（2026-08-17 升级）
@@ -22,10 +23,10 @@
 | 5 | 验证器 | 全部存在；L47 矩阵 52/52（L53 进行中）；测试覆盖全 | ✅ |
 | 6 | 正负夹具 | L40 11/11、L41 11/11；L51 新增 taxonomy 夹具 | ✅ |
 | 7 | 聚合审计 | L39 PASS（37/37、161 记录）；L43 重写报告数字来自本次输出 | ✅ |
-| 8 | 运行时引用防线 | L44 重跑：**runtime_findings_count=0**（L52 修复后）；4 个 editor INFO 列 Runtime Deferred | ✅ |
+| 8 | 运行时引用防线 | L44 重跑：**runtime_findings_count=0**（L52 修复后）；C02 复审再次为 runtime=0/blocking=0；4 个 editor INFO 列 Runtime Deferred | ✅ |
 | 9 | 兼容性 | L45 重跑：**PASS、5/5 槽一致、category_split_real_data=0、cross_tool_acceptance_split=0**；注入错误分类/父类 BLOCKED 测试 11/11 | ✅ |
 | 10 | 状态留痕 | L49 按 53 个 D18 任务核对：结果 JSON 全合规、无 PLANNED 伪装 | ✅ |
-| 11 | 二进制延期 | L48：L51—L53 收尾零二进制/Scene/Prefab/Canvas/BuildSettings/Registry 越界；Runtime 清单完整 | ✅ |
+| 11 | 二进制延期 | L48/C01 历史收尾零二进制/Scene/Prefab/Canvas/BuildSettings/Registry 越界；C02 仅修正 4 个 Registry 元数据证据路径，未接入二进制或授予运行时批准 | ✅ |
 
 ## 3. 最小回退（已执行完毕，不新建 RERUN）
 
@@ -55,7 +56,7 @@
 
 ## 6. 结论
 
-- **状态：LOGIC_PASS**（2026-08-17 升级；首次 PARTIAL 历史保留，L51/L52 修复与 L53 重跑证据链完整可追溯）；
+- **状态：LOGIC_PASS**（2026-08-31 C02 复审确认；首次 PARTIAL 历史保留，L51/L52 修复与 L53 重跑证据链完整可追溯）；
 - 放行：D19 只读使用逻辑资源接口与静态审计输入（161 条合法记录 + 稳定键规则）；
 - 所有资源级消费、Runtime/Release 结论保持延期（`RuntimeApproved`/`ReleaseApproved` 均为 0）。
 
@@ -63,3 +64,11 @@
 
 - 本验收的当前 LOGIC_PASS 结论经 D18-L53-C01 独立审计复验：game/tools/results/D18/D18-L53/D18_L53_C01_{L39_AUDIT,L42_COMPILE,GAME_REFERENCE_AUDIT,SCHEMA_COMPATIBILITY}.json 全部满足条件（L39 records=161/P0=0、L42 161/161/0/0、L44 runtime=0、L45 5/5 槽 0 分裂）；全量工具测试单次运行 936 项 exit 0。
 - 首次（2026-08-16）LOGIC_PARTIAL 为历史说明，保留；当前结论 LOGIC_PASS 与 L50 结果/交接、状态面板一致。
+
+## D18-L53-C02 当前复审（2026-08-31）
+
+- 初始复扫发现 16 条 P0：4 个旧 `ContentRegistry` 条目把被 `.gitignore` 的 `artifacts/external_sources/d16_c08_slice/` 路径写入运行时目录，且 `asset_ph_crew_male` 另有 1 个本机绝对路径。
+- 已修正为仓库内相对证据：Quaternius 占位角色使用 `game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md` / `PH_QUATERNIUS_LICENSE.txt`；Kenney 船舶/港口条目使用 `docs/game/design/common/assets/packs/ships_port_props/D18_A05_SOURCE_EVIDENCE.md`；绝对路径改为仓库相对路径。
+- 当前机器结果：L39 `PASS`（161 条、P0=0、P1=4、37/37 冒烟）；L42 `161/161/0/0`；L44 `PASS`（runtime=0、blocking=0）；L45 `PASS`（5/5 槽一致、P0=0）。完整 JSON 见 `game/tools/results/D18/D18-L53/D18_L53_C02_*`。
+- 专项回归：D18 命名测试 `836/836` 通过；D19 命名测试 `13/13` 通过；D19 Unity EditMode 程序集 `117/117` 通过。全仓库基线为 `943/949`，另有 5 个失败与 1 个错误，均定位在 D15/D16/D9 的旧内容字段/历史 packet 计数，未纳入 D18/D19 逻辑门禁，也未由 C02 改动引入。
+- C02 未改变资源状态、分类规则、Schema、二进制、Prefab、Scene 或 Runtime/Release 审批；`RuntimeApproved` / `ReleaseApproved` 仍为 0。

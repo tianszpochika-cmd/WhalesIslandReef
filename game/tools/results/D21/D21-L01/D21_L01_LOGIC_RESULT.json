@@ -1,0 +1,80 @@
+{
+  "task_id": "D21-L01",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T08:53:32+08:00",
+  "summary": "完成 D21-L01：冻结 D2/D4/D9/D19/D20 到 D21 的公开入口、唯一写者、航线/天气/海况/锚泊/船况/补给/存档责任、任务波次和 Runtime Deferred。该状态仅表示基线文档通过，不表示 D21-L02—L32、可玩性、运行时、性能或发行通过。",
+  "changed_files": [
+    "docs/game/design/common/D21_LOGIC_BOUNDARY_BASELINE.md",
+    "game/tools/results/D21/D21-L01/D21_L01_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L01_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "result_json_protocol_keys",
+      "status": "PASS",
+      "command": "python -c \"import json; p='game/tools/results/D21/D21-L01/D21_L01_LOGIC_RESULT.json'; d=json.load(open(p, encoding='utf-8')); assert list(d)==['task_id','status','updated_at','summary','changed_files','verification','runtime_deferred','blockers','handoff']; assert d['task_id']=='D21-L01'; assert d['status']=='LOGIC_PASS'; print('PASS')\"",
+      "evidence": "命令执行成功；顶层键顺序和 task_id/status 约束通过"
+    },
+    {
+      "check": "baseline_reference_and_scope_audit",
+      "status": "PASS",
+      "command": "python -c \"from pathlib import Path; p=Path('docs/game/design/common/D21_LOGIC_BOUNDARY_BASELINE.md'); s=p.read_text(encoding='utf-8'); required=['D2','D4','D9','D19','D20','D19PortCommandRouter.Route','EnvironmentSystem','D3InventorySystem','D20-L40','Runtime Deferred']; assert all(x in s for x in required); print('PASS')\"",
+      "evidence": "命令执行成功；D2/D4/D9/D19/D20、公开入口、D20-L40 和 Runtime Deferred 引用均存在"
+    },
+    {
+      "check": "artifact_whitespace_audit",
+      "status": "PASS",
+      "command": "python -c \"from pathlib import Path; ps=['docs/game/design/common/D21_LOGIC_BOUNDARY_BASELINE.md','game/tools/results/D21/D21-L01/D21_L01_LOGIC_RESULT.json','docs/game/design/common/handoffs/D21/D21-L01_LOGIC_HANDOFF.md']; bad=[]; [bad.append((p,i)) for p in ps for i,line in enumerate(Path(p).read_text(encoding='utf-8').splitlines(),1) if line.endswith((' ','\\t'))]; assert not bad, bad; print('artifact_whitespace_audit: PASS')\"",
+      "evidence": "命令执行成功；三份新增产物无行尾空白"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check -- docs/game/design/common/D21_LOGIC_BOUNDARY_BASELINE.md game/tools/results/D21/D21-L01/D21_L01_LOGIC_RESULT.json docs/game/design/common/handoffs/D21/D21-L01_LOGIC_HANDOFF.md",
+      "evidence": "命令退出码 0，无空白错误"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按本次委派要求不运行 tools/sync_logic_task_status.py，不修改共享状态总览"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "D21-L01 仅冻结逻辑边界；不运行 Player/PlayMode、截图、物理、输入、Shader、场景、性能或真机验证"
+    }
+  ],
+  "runtime_deferred": [
+    "船体模型、20 种目标船型资产、船体模板到模型映射、Prefab 和资源审批",
+    "水面 Shader、波浪/反射/深度/风暴视觉表现",
+    "尾流、浪花、雨雾、闪电、火灾/烟、损伤 VFX、UI/HUD、音频",
+    "输入绑定、重映射、相机、键鼠/控制器/触屏驾驶反馈",
+    "Rigidbody、浮力、碰撞、靠岸/停泊、锚链约束、真实漂移/沉没",
+    "Transform 位姿、场景/Prefab/泊位空间、加载定位、导航网格",
+    "帧率、内存、流式加载、大世界压力、移动端/平台优化及真机发布门禁"
+  ],
+  "blockers": [
+    {
+      "id": "D21-D20-L40",
+      "scope": "D21-L02-L08 and D21-L11-L23",
+      "status": "OPEN_DEPENDENCY",
+      "severity": "P1",
+      "description": "D20-L01 已冻结边界，但 D20-L40 尚未由本任务宣称通过；依赖 D20 公开投影的后续 D21 实现必须等待其真实验收。该依赖不阻塞 D21-L01 基线文档本身。"
+    },
+    {
+      "id": "D21-LEGACY-ADAPTERS",
+      "scope": "D21-L02-L23",
+      "status": "IMPLEMENTATION_PREREQUISITE",
+      "severity": "P1",
+      "description": "当前 ShipState、D3 VoyageState、D2 帧式 SailingSystem 和 D9 旧整备入口均为兼容模型；需由后续任务以公开契约完成适配，不能把旧字段或成功调用直接当作 D21 权威状态。"
+    }
+  ],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L01_LOGIC_HANDOFF.md",
+    "next": "完成依赖门后，再按 D21-L02—L23 并行边界实现；D19-L09/L10 只使用 D19-L48 公共路由和结果；L24—L29 串行聚合，L30—L32 做收敛门审查。",
+    "release_statement": "D21-L01 是逻辑边界冻结，不是 D21 完成、可玩、运行时通过、性能通过或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L01 已冻结 D2/D4/D9/D19/D20 导航边界和唯一写者；D19-L48/D20-L01 仅作上游逻辑证据，D20-L40 仍是后续依赖；旧船/航程/天气入口必须适配，Runtime Deferred 不计为逻辑失败。"
+  }
+}

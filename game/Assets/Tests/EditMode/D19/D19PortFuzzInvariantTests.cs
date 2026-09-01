@@ -120,9 +120,9 @@ namespace Whalebone.Systems.D19.Tests
 
             var executedCommands = new List<D19RoutedPortCommand>();
             var allEmittedEvents = new List<WorldEvent>();
+            var eventLog = new EventLog();
             var seenCommandIds = new Dictionary<string, D19RoutedCommandResult>(StringComparer.Ordinal);
 
-            long seq = 1;
             int worldDay = 1;
             long saveRev = 100;
 
@@ -190,7 +190,7 @@ namespace Whalebone.Systems.D19.Tests
                     // 仅当首次执行产生新事件时入审计历史（重放不应重复追加事件日志）
                     if (result.EventDraft != null)
                     {
-                        allEmittedEvents.Add(new FactEvent(result.EventDraft, seq++));
+                        AppendFactIfNew(eventLog, allEmittedEvents, result.EventDraft);
                     }
                 }
 
@@ -211,7 +211,7 @@ namespace Whalebone.Systems.D19.Tests
             var cmdHistory = new List<D19RoutedPortCommand>();
             var results = new Dictionary<string, D19RoutedCommandResult>(StringComparer.Ordinal);
             var allEvents = new List<WorldEvent>();
-            long seq = 1;
+            var eventLog = new EventLog();
 
             for (int step = 1; step <= commandCount; step++)
             {
@@ -251,7 +251,7 @@ namespace Whalebone.Systems.D19.Tests
                     results[cmd.CommandId] = res;
                     if (res.EventDraft != null)
                     {
-                        allEvents.Add(new FactEvent(res.EventDraft, seq++));
+                        AppendFactIfNew(eventLog, allEvents, res.EventDraft);
                     }
                 }
 
@@ -269,7 +269,7 @@ namespace Whalebone.Systems.D19.Tests
             var router = new D19PortCommandRouter(catalog, visitSystem, berthSystem, idempotency);
 
             var allEvents = new List<WorldEvent>();
-            long seq = 1;
+            var eventLog = new EventLog();
 
             for (int step = 1; step <= commandCount; step++)
             {
@@ -295,10 +295,19 @@ namespace Whalebone.Systems.D19.Tests
 
                 if (res.EventDraft != null)
                 {
-                    allEvents.Add(new FactEvent(res.EventDraft, seq++));
+                    AppendFactIfNew(eventLog, allEvents, res.EventDraft);
                 }
 
                 VerifyGlobalInvariants(visitSystem, berthSystem, allEvents, step, seed);
+            }
+        }
+
+        private static void AppendFactIfNew(EventLog log, IList<WorldEvent> history, WorldEvent draft)
+        {
+            EventAppendResult appended = log.Append(draft);
+            if (!appended.IsDuplicate)
+            {
+                history.Add(appended.Fact);
             }
         }
 

@@ -1,0 +1,47 @@
+{
+  "task_id": "D23-L29",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T02:58:50+08:00",
+  "summary": "单一固定航程连续运行 50 个 D21 逻辑 Tick，距离、补给、事件和保存投影无漂移。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D23/D23LongRunScenarioTests.cs",
+    "game/tools/results/D23/D23-L31/D23_L31_RUNNER_REPORT.json"
+  ],
+  "verification": [
+    {
+      "check": "D23-CSHARP-BUILD",
+      "command": "dotnet build .codex-temp/d23-compile/D23IntegrationTests.csproj --no-restore --verbosity:minimal",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "dotnet build 0 warning/0 error；纯 C# 项目真实编译通过。"
+    },
+    {
+      "check": "D23-CSHARP-RUN",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "exit_code=0；D23_CASES=26；D23_ASSERTIONS=13925；D23_FAILURES=0；FullLoop/ReplayDeterminism/InterruptionMatrix/LongRun 均存在。"
+    },
+    {
+      "check": "D23-BOUNDARY-AUDIT",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d23_cross_system_boundary_audit.py --json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "files_scanned=28；issues=0；D23 source boundary audit status=PASS."
+    },
+    {
+      "check": "artifact_presence",
+      "command": "Path.exists(game/Assets/Tests/EditMode/D23/D23LongRunScenarioTests.cs)",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "LongRun case；50 Tick，D21 event count=1+4*50，snapshot/JSON 回读稳定。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实键鼠/手柄/触摸输入未执行。",
+    "真实设备、镜头/碰撞、布局/分辨率、画面/动画/音频、性能采样和发行验证未执行。",
+    "真实 SaveSystem 介质、网络服务和 LLM/Agent runtime 接线不属于本纯逻辑门禁。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D23/D23-L29_LOGIC_HANDOFF.md"
+}

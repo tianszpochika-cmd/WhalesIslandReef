@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L10",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "新增 D20 身份只读表现映射：消费 D10 身份公开快照，输出姓名、称谓、本地化文本、代词和安全历史投影，默认脱敏敏感历史且不复制或写入法律/关系/外观事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20IdentityPresentationRules.cs",
+    "game/tools/results/D20/D20-L10/D20_L10_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L10_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore -t:Rebuild",
+      "result": "PASS — D20 源文件精确 C# harness 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project game/Temp/D20LogicSmoke/D20LogicSmoke.csproj -- D20-L10",
+      "result": "PASS — zh-CN/en-US 映射、默认敏感历史脱敏、明确 reveal、非法语言和缺失角色 ID 拒绝均通过。"
+    },
+    {
+      "command": "scoped forbidden-reference scan over the five D20-L06..L10 production files",
+      "result": "PASS — 无 Unity/引擎对象、网络、LLM、时间或随机引用。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0，无 whitespace error。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json parse of D20-L06..L10 LOGIC_RESULT.json",
+      "result": "PASS — 五份机器结果均为有效 JSON，字段集合符合约定。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity/UI/设备或真实本地化运行时；具体界面展示、权限控制和历史查看入口留给后续表现/集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L10_LOGIC_HANDOFF.md"
+}

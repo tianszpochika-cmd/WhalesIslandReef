@@ -1,0 +1,78 @@
+{
+  "task_id": "D21-L16",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T09:30:00+08:00",
+  "summary": "完成 D21-L16：实现设定航向、改航、停船、避险命令的纯逻辑校验与裁决，包含固定角度量化、航次/船只/修订边界、锚泊限制、船况/船员前置、冷却和成功命令幂等。未宣称输入、物理、场景、运行时或发行通过。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21CourseCommandSystem.cs",
+    "game/Assets/Scripts/Systems/D21/D21CourseCommandSystem.cs.meta",
+    "game/tools/results/D21/D21-L16/D21_L16_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L16_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "PowerShell: dotnet <SDK>/Roslyn/bincore/csc.dll /noconfig /nostdlib+ /target:library /langversion:9 /out:$env:TEMP\\d21_l15_l19_logic.dll <net9 reference assemblies> <Whalebone.Systems.dll> <Whalebone.Agent.Runtime.dll> D21VoyageTimeSystem.cs D21CourseCommandSystem.cs D21VoyageRiskSystem.cs D21VoyageEventContracts.cs D21ShipSaveProjection.cs",
+      "evidence": "CSC_EXIT=0；五个 D21 生产文件以纯 C# library 方式编译通过。"
+    },
+    {
+      "check": "command_idempotency_smoke",
+      "status": "PASS",
+      "command": "PowerShell reflection smoke over $env:TEMP\\d21_l15_l19_logic.dll",
+      "evidence": "L16_COMMAND_PASS：SetCourse 首次成功，重复 command_id 返回 duplicate_command 且状态 Fingerprint 不变。"
+    },
+    {
+      "check": "boundary_and_cooldown_smoke",
+      "status": "PASS",
+      "command": "PowerShell boundary smoke over compiled D21 assembly",
+      "evidence": "BOUNDARY=L16_MOORED_REJECT_PASS；锚泊状态下非 Stop 航向命令被拒绝，未绕过 owner 前置。"
+    },
+    {
+      "check": "forbidden_api_scan",
+      "status": "PASS",
+      "command": "rg -n -i 'UnityEngine|HttpClient|UnityWebRequest|DateTime\\.(Now|UtcNow)|Time\\.deltaTime|new[[:space:]]+Random|Random\\.|System\\.Random|Transform|Rigidbody|NavMesh|Shader|GameObject|MonoBehaviour|Socket|OpenAI|Ollama|DeepSeek' game/Assets/Scripts/Systems/D21/D21CourseCommandSystem.cs",
+      "evidence": "FORBIDDEN_API_SCAN=PASS。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改共享状态总览或共享记忆日志。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "不运行 Player/PlayMode、输入、物理、Transform、NavMesh、场景、Prefab、Shader、截图、性能、真机或网络验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "驾驶输入、重映射、鼠标/键盘/控制器/触屏与相机反馈",
+    "Rigidbody、浮力、碰撞、Transform 位姿、NavMesh 与真实转向响应",
+    "航向 UI/HUD、音频/VFX、船舵动画和场景/Prefab 接线",
+    "性能、移动端/平台适配、真机和发行门禁"
+  ],
+  "blockers": [
+    {
+      "id": "D21-D20-L40",
+      "scope": "D21-L15-L19 后续跨模块接线",
+      "status": "OPEN_DEPENDENCY",
+      "severity": "P1",
+      "description": "D20-L40 公开投影验收不是本次命令 owner 纯逻辑编译的必要条件，但 D21 后续聚合和上游身份/航线接线仍必须等待其真实通过。"
+    },
+    {
+      "id": "D21-L24-L29",
+      "scope": "命令到航程/事件/Save 的聚合",
+      "status": "INTEGRATION_PENDING",
+      "severity": "P1",
+      "description": "本任务只裁决 D21 航向命令，不写输入、船况、港口、物理或 UI owner；跨 owner 事件和 Save 接线留给后续聚合任务。"
+    }
+  ],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L16_LOGIC_HANDOFF.md",
+    "next": "后续聚合必须把显式授权快照和 D21TickContext 传入命令 owner，并消费 accepted/duplicate/rejected 结果；不得在输入层或物理层重复裁决航向数值。",
+    "release_statement": "D21-L16 仅表示航向命令逻辑和幂等边界通过；不表示 D21 完成、可玩、运行时通过、性能通过或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L16 已落地设定航向/改航/停船/避险的 owner 裁决、量化、冷却和 command_id 幂等；锚泊、船况、船员和航次授权边界仍由后续聚合显式传入。"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "task_id": "D21-L26",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T11:44:00+08:00",
+  "summary": "新增 D21VoyageEventRouter，提供事件批次预检、固定同 Tick 顺序、跨航程隔离、event_id+save_revision 幂等、冲突拒绝、失败补偿草案和 Save projection 游标重建，并保持事件批次原子提交。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21VoyageEventRouter.cs",
+    "game/tools/results/D21/D21-L26/D21_L26_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L26_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d21-compile/D21IntegrationCompile.csproj --no-restore --verbosity:minimal",
+      "evidence": "EXIT=0；D21 生产 Systems 依赖编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "event_order_atomicity",
+      "status": "PASS",
+      "command": "D21VoyageInvariantTests.EventRouter_RejectsBatchWithDescendingOrderWithoutPartialAppend",
+      "evidence": "首批非 VoyageStarted 事件返回 d21.event.first_event_must_start，事件日志保持不存在；批次不会留下部分追加。"
+    },
+    {
+      "check": "idempotency_and_projection",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；8 个离线用例通过；10,000 Tick 长跑最终 materialized log 为 10,001 条事件、无重复事件，GetProjection 重建完整事件历史并通过 Validate。"
+    },
+    {
+      "check": "boundary_audit",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；D21 Systems/tests 共 27 个 C# 文件无 Unity/runtime、网络/LLM、真实时钟、随机或跨 owner 私写违规。"
+    },
+    {
+      "check": "hot_cursor_semantics",
+      "status": "PASS_WITH_DOCUMENTED_OPTIMIZATION",
+      "command": null,
+      "evidence": "事件超过 256 条后，活动 Save projection 只保留最后事件游标以避免每 Tick 复制完整历史；路由器 owner 仍持有完整追加日志，GetProjection/GetLogSnapshot 显式读取时 materialize 完整历史并校验。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "SaveSystem 真实介质写入/恢复、迁移、崩溃恢复和云同步",
+    "Unity Editor 测试发现、场景/Prefab、物理、输入、平台、真机和发行验证"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L26_LOGIC_HANDOFF.md",
+    "next": "后续 SaveSystem 接线应使用 GetProjection 的完整 materialized projection；活动 Tick 可继续使用 compact cursor，但不能把 cursor 快照误当作缺失历史。",
+    "release_statement": "D21-L26 证明事件顺序、原子批次、幂等、补偿和投影重建的离线纯逻辑语义；不表示真实 Save 介质或运行时发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L26 事件路由通过 10,000 Tick 事件历史与原子逆序批次测试；超过 256 条时采用活动 compact cursor，显式读取重建完整日志。"
+  }
+}

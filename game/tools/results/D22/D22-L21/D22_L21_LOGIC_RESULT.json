@@ -1,0 +1,32 @@
+{
+  "task_id": "D22-L21",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:45:00+08:00",
+  "summary": "完成 D20 NPC 只读 UI 适配：复制身份、岗位能力、可用性与对话资格，保留 interaction failure/retry/localization 结果并按 NPC ID 稳定排序。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22NpcReadModelAdapter.cs",
+    "game/Assets/Tests/EditMode/D22/D22ReadModelAdapterTests.cs",
+    "game/tools/results/D22/D22-L21/D22_L21_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L21_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet exec Roslyn csc.dll with all D20/D22 sources, selected D21 public contracts, Whalebone.Systems.dll, Agent.Runtime.dll and D22ReadModelAdapterTests.cs",
+      "result": "PASS — independent source compilation completed with 0 warnings and 0 errors."
+    },
+    {
+      "command": "Reflection execution of NUnit [Test] methods in D22ReadModelAdapterTests",
+      "result": "PASS — 10/10 tests passed; public role lookup, dialogue qualification, source localization and interaction feedback assertions included."
+    },
+    {
+      "command": "dotnet build game/Assembly-CSharp.csproj --no-restore",
+      "result": "PASS — generated Unity-side project build completed with 0 warnings and 0 errors."
+    }
+  ],
+  "runtime_deferred": [
+    "D20/D10 NPC and crew writes, dialogue presentation and actual character assets remain outside this adapter。",
+    "Canvas/UGUI、输入、语音/动画、Player/PlayMode、设备、性能和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L21_LOGIC_HANDOFF.md"
+}

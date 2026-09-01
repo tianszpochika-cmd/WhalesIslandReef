@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L08",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "实现结构化 owner 前置失败到稳定禁用/帮助原因的只读映射，保留原始 owner/code/correlation/target/修订信息，并支持 D19 风格与 PascalCase 失败码归一化。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22DisabledReasonResolver.cs",
+    "game/tools/results/D22/D22-L08/D22_L08_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L08_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — D19 d19.port.unknown_port mapping, Pascal CapacityExceeded normalization and empty-failure enabled path passed."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — resolver only projects structured failure DTOs and has no Unity/runtime/network/LLM executable dependency."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "禁用按钮、帮助提示、可见文案、本地化资源与实际 UI 渲染留给 Runtime 阶段。",
+    "resolver 不重新判断业务事实、不读取私有字段、不调用网络/LLM，也不写入 owner/domain 状态。",
+    "Player/PlayMode、设备、性能与发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L08_LOGIC_HANDOFF.md"
+}

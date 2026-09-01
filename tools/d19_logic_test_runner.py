@@ -4,9 +4,10 @@
 d19_logic_test_runner.py —— D19 统一离线逻辑测试运行器（D19-L41）
 
 归属：tools/d19_logic_test_runner.py
-功能：按固定顺序发现并执行 D19 全部静态审计、各测试集和结果验证，
-      收集真实 exit code、耗时、状态，输出机器可读的聚合 JSON 报告。
-      任何子项失败均会导致总状态失败（exit 1），完全确定性且可离线重跑。
+功能：按固定顺序执行 D19 逻辑边界审计、审计工具单测、48 个结果协议
+      完整性检查和状态同步，收集真实 exit code、耗时、状态，输出机器可读
+      的聚合 JSON 报告。Unity EditMode 测试由独立命令执行并在章节验收中
+      留证；本 Python 运行器不会把 Runtime/Player 证据混入逻辑结果。
 """
 
 import os
@@ -16,7 +17,7 @@ import json
 import subprocess
 from typing import Dict, List, Any, Optional
 
-# 固定执行顺序的测试与审计任务清单（L25—L39 + L40 静态审计 + 结果完整性）
+# 固定执行顺序的 Python 静态与证据任务清单（D19-L01—L48）
 D19_TEST_SUITES = [
     {
         "id": "D19-AUDIT-L40",
@@ -31,10 +32,16 @@ D19_TEST_SUITES = [
         "target_task": "D19-L40"
     },
     {
+        "id": "D19-RESULT-INTEGRITY",
+        "name": "D19 Logic Result Protocol Integrity",
+        "command": [sys.executable, "tools/d19_logic_result_integrity_audit.py"],
+        "target_task": "D19-L01..L48"
+    },
+    {
         "id": "D19-STATUS-CHECK",
         "name": "D19 Logic Task Status Sync and Integrity",
         "command": [sys.executable, "tools/sync_logic_task_status.py"],
-        "target_task": "D19-L01..L40"
+        "target_task": "D19-L01..L48"
     }
 ]
 

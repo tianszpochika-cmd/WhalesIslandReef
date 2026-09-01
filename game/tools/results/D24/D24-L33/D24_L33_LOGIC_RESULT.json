@@ -1,0 +1,48 @@
+{
+  "task_id": "D24-L33",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:35:00+08:00",
+  "summary": "完成 D24 逻辑边界审计：单一写者、game/server/web 契约、Systems 无网络/LLM、AgentCore 独立性、资源状态和 Runtime 隔离均有真实静态/离线证据；未发现新的 D24 P0 越界。",
+  "changed_files": [
+    "docs/game/design/common/D24_LOGIC_BOUNDARY_AUDIT.md",
+    "docs/README.md",
+    "game/tools/results/D24/D24-L33/D24_L33_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L33_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "systems_boundary",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L20 --configuration Release",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "实际 D18—D23 Systems 范围扫描 103 files、forbidden_hits=0、LLM token boundary self-test=pass。"
+    },
+    {
+      "check": "agentcore_boundary",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L21 --configuration Release; python tools/d24_agentcore_build_audit.py --root . --configuration Release",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "AgentCore net9.0、21 linked sources、0 package/project refs；build 和 offline d9-check 均通过。"
+    },
+    {
+      "check": "cross_end_and_ownership",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L22 --configuration Release; python tools/d24_data_ownership_audit.py --root .",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "contract id/game/server/web validator 通过；D20 合法 Save projection 写入按 owner 分类，未授权写入为 0。"
+    },
+    {
+      "check": "boundary_document",
+      "command": "Path.exists(docs/game/design/common/D24_LOGIC_BOUNDARY_AUDIT.md)",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "边界文档列出实际指标、兼容发现、首次工具接线问题和禁止越界，并明确 Runtime Deferred。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景/Prefab/Canvas/UI、真实输入/物理/设备/性能/网络/LLM/真实 Save/发行未执行。",
+    "资源 Candidate/Pending/Editor-only 不得升级为 RuntimeApproved/ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L33_LOGIC_HANDOFF.md"
+}

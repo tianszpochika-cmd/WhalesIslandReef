@@ -1,0 +1,47 @@
+{
+  "task_id": "D22-L27",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "实现 D22 ViewModel Composer：组合既有 D22 快照与注入的公开只读 source adapter，按固定模块顺序输出，缺失/失败/重复/版本不匹配均显式降级并保留 reason/localization/fingerprint。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22ViewModelComposer.cs",
+    "game/tools/results/D22/D22-L27/D22_L27_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L27_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type with explicit D22-L01--L16, D16AccessibilityContracts, D22UiCommandRouter and D22ViewModelComposer sources",
+      "result": "PASS — 17 D22 core files + D16 accessibility contract + 3 D22 tests (21 files) compiled in memory."
+    },
+    {
+      "command": "D22DeterministicUiScenarioTests.Run()",
+      "result": "PASS — 44 assertions; stable market/port/ship/inventory/crew/quest/save module order, defensive copies, missing module and version mismatch were exercised."
+    },
+    {
+      "command": "D22UiSaveLoadTests.Run()",
+      "result": "PASS — 21 assertions; cloned D22 panel/focus/pause/notification/load/accessibility snapshots compose to the same fingerprint."
+    },
+    {
+      "command": "PowerShell D21 L01-L32 result/acceptance gate parser",
+      "result": "PASS — 32/32 D21 result JSON objects are LOGIC_PASS and D21_LOGIC_ACCEPTANCE.md is present."
+    },
+    {
+      "command": "dotnet build .codex-temp/d22-compile/D22IntegrationCompile.csproj --no-restore --verbosity:minimal",
+      "result": "PASS — current D20+D21+D22 source integration compiled with 0 warnings and 0 errors; D21-L01—L32 acceptance is available."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test; python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — comment/string/raw-string masking self-test passed; normal scan found 0 violations in 28 D22 source/test files."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing LF/CRLF normalization warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "实际 view binding、Canvas/UGUI、EventSystem、输入、布局、字幕/通知视觉、Player/PlayMode、设备、性能与发布。",
+    "上游 typed adapter 的真实 owner snapshot 生产、公开 registration 和 D23/Runtime view binding；D21-L01—L32 acceptance 已通过。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L27_LOGIC_HANDOFF.md"
+}

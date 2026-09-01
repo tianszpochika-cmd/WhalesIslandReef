@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L08",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "新增 D20 动作只读读模型：从 L04 意图、L05 判定、L06 回执/快照和可选 L07 事件建立统一动作状态、回退、优先级与可用性投影，所有嵌套数据均防御性复制。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20ActionReadModel.cs",
+    "game/tools/results/D20/D20-L08/D20_L08_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L08_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore -t:Rebuild",
+      "result": "PASS — D20 源文件精确 C# harness 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project game/Temp/D20LogicSmoke/D20LogicSmoke.csproj -- D20-L08",
+      "result": "PASS — 意图、L06 结果和 L06 快照三种读模型入口均通过状态/副本校验。"
+    },
+    {
+      "command": "scoped forbidden-reference scan over the five D20-L06..L10 production files",
+      "result": "PASS — 无 Unity/引擎对象、网络、LLM、时间或随机引用。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0，无 whitespace error。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json parse of D20-L06..L10 LOGIC_RESULT.json",
+      "result": "PASS — 五份机器结果均为有效 JSON，字段集合符合约定。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode、场景或 UI；读模型到导航、按钮、动画、音频和具体视图的消费留给后续集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L08_LOGIC_HANDOFF.md"
+}

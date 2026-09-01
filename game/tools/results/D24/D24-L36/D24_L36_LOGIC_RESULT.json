@@ -1,0 +1,51 @@
+{
+  "task_id": "D24-L36",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:37:16+08:00",
+  "summary": "完成 D24 后续 Runtime 阶段的有限首轮交接：定义 L35 逻辑候选版进入条件、P0 启动/InitialHarbor/港口到出航/航行返港/真实 Save-Load-Continue 范围、停止规则和证据分栏；本任务只交接范围，未执行 Runtime。",
+  "changed_files": [
+    "docs/game/design/common/D24_NEXT_RUNTIME_PHASE_HANDOFF.md",
+    "game/tools/results/D24/D24-L36/D24_L36_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L36_LOGIC_HANDOFF.md",
+    "docs/README.md",
+    "docs/game/LOGIC_TASK_STATUS.md",
+    ".workbuddy/memory/2026-09-02.md"
+  ],
+  "verification": [
+    {
+      "check": "logic_candidate_gate",
+      "command": "read game/tools/results/D24/D24-L35/D24_L35_LOGIC_RESULT.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D24-L35 status is LOGIC_PASS and its candidate regression/baseline evidence is present."
+    },
+    {
+      "check": "runtime_handoff_document",
+      "command": "Test-Path docs/game/design/common/D24_NEXT_RUNTIME_PHASE_HANDOFF.md and review scope/stop rules",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "P0-1..P0-4 entry scope, explicit stop rules, evidence rules and non-approval boundary are documented."
+    },
+    {
+      "check": "runtime_execution_boundary",
+      "command": "scope review of D24-L36 changes",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "No Unity Player/PlayMode, device, network, LLM, performance or real SaveSystem command was executed; no RuntimeApproved/ReleaseApproved claim was added."
+    },
+    {
+      "check": "protocol_fields",
+      "command": "read D24_L36_LOGIC_RESULT.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "The result contains the required nine top-level protocol fields and points to the handoff."
+    }
+  ],
+  "runtime_deferred": [
+    "P0-1..P0-4 are future Runtime scope only; this task did not launch Unity or a Player.",
+    "真实输入、场景/Prefab/Canvas/UI、视觉/音频/物理/相机、设备/分辨率、性能、网络、LLM 和真实 SaveSystem 介质仍未验证。",
+    "本 handoff 不产生 RuntimeApproved、ReleaseApproved、playable 或发行结论。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L36_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,47 @@
+{
+  "task_id": "D20-L24",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:14:04+08:00",
+  "summary": "以 D4EcologySystem 的公开 Snapshot 只读适配动物、鱼群与栖息地人口读模型，输出 present/depleted/dead/collected/invalid 状态、观察/交互资格和风险等级；不写 EcologySystem，也不复制缺失的 D20-L20/L21/L22 类型。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20WildlifePopulationAdapter.cs",
+    "game/tools/results/D20/D20-L24/D20_L24_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L24_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo",
+      "result": "PASS — 基线 Systems 编译成功；0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet build .codex-temp/D20LogicCompile.csproj --no-restore --nologo",
+      "result": "PASS — D20-L23/L24/L25 目标源文件独立纯 C# 编译成功；0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project .codex-temp/D20LogicSmoke.csproj --no-restore --nologo",
+      "result": "PASS — D20-L23/L24/L25 LOGIC SMOKE PASS；覆盖鱼群可读/可交互、缺失动物不可用、读取前后 Ecology revision 与 biomass 不变。"
+    },
+    {
+      "command": "PowerShell scoped forbidden-reference scan for D20-L23/L24/L25",
+      "result": "PASS — Unity/network/LLM/time/random/visual/runtime forbidden references 0 hits。"
+    },
+    {
+      "command": "PowerShell scoped D20-L24/L25 owner-mutation scan",
+      "result": "PASS — Seed/Tick/Move/Advance/Resolve/写入等 owner mutation calls 0。"
+    },
+    {
+      "command": "PowerShell scoped trailing-whitespace scan for D20-L23/L24/L25",
+      "result": "PASS — 目标文件 trailing whitespace 0。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity EcologySystem 注入、世界/场景/Prefab、UI、输入、动画、物理、设备与 PlayMode 验证。",
+    "D20-L20/L21/L22 内容模型接线、真实世界群落展示、性能与发布验收留给后续 Runtime/集成任务；本结果不声明 RuntimeApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L24_LOGIC_HANDOFF.md"
+}

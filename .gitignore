@@ -63,6 +63,9 @@ pnpm-debug.log*
 /ops/logs/
 /ops/p1c_scratch/
 
+# Codex temporary compilation and regression workspaces
+/.codex-temp/
+
 # D18 external asset source cache: keep provenance manifests/evidence in docs,
 # but never add downloaded archives to ordinary Git history.
 /artifacts/external_sources/*.zip

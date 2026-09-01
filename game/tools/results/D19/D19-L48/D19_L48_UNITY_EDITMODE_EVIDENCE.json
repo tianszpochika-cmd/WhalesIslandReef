@@ -1,0 +1,18 @@
+{
+  "evidence_id": "D19-L48-UNITY-EDITMODE-R01",
+  "recorded_at": "2026-08-31T21:50:08+08:00",
+  "unity_version": "6000.0.80f1",
+  "test_platform": "EditMode",
+  "assembly": "WhalesIslandReef.D19A02.Tests",
+  "command": "Unity.exe -batchmode -nographics -projectPath game -runTests -testPlatform editmode -assemblyNames WhalesIslandReef.D19A02.Tests -testResults Temp/D19_assembly_editmode_after_router_fix.xml -logFile Temp/D19_assembly_editmode_after_router_fix.log",
+  "result_xml": "Temp/D19_assembly_editmode_after_router_fix.xml",
+  "result_xml_sha256": "784291F5CE69796D69A944DD26A155478EA988040B25C54A9D41D393B0801ABA",
+  "log_file": "Temp/D19_assembly_editmode_after_router_fix.log",
+  "test_cases": 117,
+  "passed": 117,
+  "failed": 0,
+  "skipped": 0,
+  "inconclusive": 0,
+  "result": "Passed",
+  "scope_note": "仅验证 EditMode 纯逻辑测试程序集；未启动 Player/PlayMode，未作场景、画面、输入、性能或 Release 结论。"
+}

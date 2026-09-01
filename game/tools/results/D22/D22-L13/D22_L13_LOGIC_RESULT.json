@@ -1,0 +1,44 @@
+{
+  "task_id": "D22-L13",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "实现通知队列的事件幂等、活动去重键、优先级排序、确认无变化、显式世界日过期、持久化过滤和原子恢复语义。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22NotificationQueue.cs",
+    "game/tools/results/D22/D22-L13/D22_L13_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L13_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L13 deterministic positive/negative smoke: priority order, duplicate event, duplicate conflict, active deduplication key, acknowledgement, repeat acknowledgement, expiry, save policy and restore",
+      "result": "PASS — all assertions passed; repeated acknowledgement exposes NoChange and invalid restore leaves the existing queue unchanged."
+    },
+    {
+      "command": "PowerShell boundary smoke: enqueue an event expiring on world day 12, then acknowledge it at world day 12 without calling Expire first",
+      "result": "PASS — acknowledgement is rejected with AlreadyExpired and the record is transitioned to Expired."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22NotificationQueue.cs for Unity/Canvas/EventSystem/Input/network/LLM/Time/DateTime/Random",
+      "result": "PASS — no forbidden runtime/device/time/random dependency or domain fact writer detected."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L13/D22_L13_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "通知 Toast/Modal/字幕显示、动画、音效、实际确认按钮和分辨率布局留给 Runtime。",
+    "过期只使用调用方提供的 worldDay；队列不读取系统时钟，不拥有领域事件、奖励或业务事实。",
+    "Player/PlayMode、设备、性能、音频和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L13_LOGIC_HANDOFF.md"
+}

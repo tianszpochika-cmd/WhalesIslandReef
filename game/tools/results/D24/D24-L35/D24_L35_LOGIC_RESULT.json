@@ -1,0 +1,50 @@
+{
+  "task_id": "D24-L35",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:35:56+08:00",
+  "summary": "D24 纯逻辑候选版验收通过：D18—D23 上游 247/247/247 协议证据、D24-L01—L34 34/34 结果与 handoff、统一回归 6/6 套件、15/15 审计、D23 26 cases/13925 assertions/0 failures、D24-L27 7003 assertions/0 failures 和 L26 8/8 基线比较均通过。该状态仅表示逻辑候选版，不表示 RuntimeApproved、ReleaseApproved、playable 或发行通过。",
+  "changed_files": [
+    "docs/game/design/common/D24_LOGIC_CANDIDATE_ACCEPTANCE.md",
+    "game/tools/results/D24/D24-L35/D24_L35_CANDIDATE_REPORT.json",
+    "game/tools/results/D24/D24-L35/D24_L35_BASELINE_COMPARE.json",
+    "game/tools/results/D24/D24-L35/D24_L35_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L35_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "candidate_logic_regression",
+      "command": "python tools/d24_logic_regression_runner.py --root . --configuration Release --include-d24-l27 --json-out game/tools/results/D24/D24-L35/D24_L35_CANDIDATE_REPORT.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "6/6 suites passed; 15/15 D24 audits passed; D24 C# 6/6 passed; AgentCore 2/2 passed; D23 26 cases, 13925 assertions, 0 failures; D24-L27 7003 assertions, 0 failures."
+    },
+    {
+      "check": "baseline_compare",
+      "command": "python tools/d24_regression_baseline_compare.py --root . --baseline game/tools/results/D24/D24-L26/D24_L26_BASELINE.json --current game/tools/results/D24/D24-L35/D24_L35_CANDIDATE_REPORT.json --json-out game/tools/results/D24/D24-L35/D24_L35_BASELINE_COMPARE.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "8/8 checks passed; no protocol, suite, audit, C# coverage, AgentCore, D23 marker or source-marker regression."
+    },
+    {
+      "check": "d24_result_handoff_matrix",
+      "command": "read-only matrix check for D24-L01..D24-L34 result JSON and handoff files",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "34/34 result files present, 34/34 handoffs present, all result statuses LOGIC_PASS, all nine protocol fields present."
+    },
+    {
+      "check": "upstream_protocol_snapshot",
+      "command": "D24 candidate runner protocol snapshot",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D18—D23 expected/results/handoffs/logic_pass = 247/247/247/247; compatibility findings retained as non-blocking observations."
+    }
+  ],
+  "runtime_deferred": [
+    "未执行 Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实输入、视觉、音频、相机、物理或设备验证。",
+    "未执行网络服务、LLM/Agent runtime、真实 SaveSystem 介质、性能采样或发行/Steam 验证。",
+    "LOGIC_PASS 只表示纯逻辑候选版通过，不等于 playable、RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L35_LOGIC_HANDOFF.md"
+}

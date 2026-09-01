@@ -1,0 +1,31 @@
+{
+  "task_id": "D22-L25",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:45:00+08:00",
+  "summary": "完成命令/反馈纯逻辑定向测试并合并到允许的 D22ReadModelAdapterTests.cs：明确断言合法命令形状、目标 ID、稳定 feedback code/localization key 与 owner rejection 映射。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D22/D22ReadModelAdapterTests.cs",
+    "game/tools/results/D22/D22-L25/D22_L25_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L25_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet exec Roslyn csc.dll with all D20/D22 sources, selected D21 public contracts, Whalebone.Systems.dll, Agent.Runtime.dll and D22ReadModelAdapterTests.cs",
+      "result": "PASS — independent source compilation completed with 0 warnings and 0 errors."
+    },
+    {
+      "command": "Reflection execution of NUnit [Test] methods in D22ReadModelAdapterTests",
+      "result": "PASS — 10/10 tests passed; valid OpenPanel command target and OwnerRejected feedback code/localization assertions included."
+    },
+    {
+      "command": "dotnet build game/Assembly-CSharp.csproj --no-restore",
+      "result": "PASS — generated Unity-side project build completed with 0 warnings and 0 errors."
+    }
+  ],
+  "runtime_deferred": [
+    "命令实际路由、owner 业务裁决和副作用仍由 D22 Router/领域 owner 负责。",
+    "真实按钮、输入设备、Canvas/UGUI、Player/PlayMode、性能和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L25_LOGIC_HANDOFF.md"
+}

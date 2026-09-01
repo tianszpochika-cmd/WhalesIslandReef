@@ -172,6 +172,22 @@ namespace Whalebone.Systems.D19
                     _visitSystem.State);
             }
 
+            // WorldEvent / EventLog 的契约要求 world_day 与 save_revision 非负。
+            // 在进入幂等与任何子系统之前拒绝非法时间输入，避免拒绝事件本身
+            // 携带非法时间而无法落入事实日志；AssignBerth 还要计算 +3 租期，
+            // 因此提前拦截上溢边界。此处不生成事件，因为非法时间不能形成合法事实。
+            if (cmd.WorldDay < 0 || cmd.SaveRevision < 0 ||
+                (cmd.Kind == D19PortCommandKind.AssignBerth && cmd.WorldDay > int.MaxValue - 3))
+            {
+                return D19RoutedCommandResult.Rejected(
+                    cmd.CommandId,
+                    cmd.Kind,
+                    "d19.lifecycle.invalid_transition",
+                    D19PortLocalizationKeys.FailureInvalidTransition,
+                    D19FailureRetryPolicy.RetryAfterCorrection,
+                    _visitSystem.State);
+            }
+
             // 1. 幂等指纹构造与检查
             string fingerprint = D19CommandIdempotency.BuildFingerprint(
                 cmd.Kind.ToString(),

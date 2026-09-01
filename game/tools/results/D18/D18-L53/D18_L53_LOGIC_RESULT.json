@@ -1,7 +1,7 @@
 {
   "task_id": "D18-L53",
   "status": "LOGIC_PASS",
-  "updated_at": "2026-08-17T00:46:00+08:00",
+  "updated_at": "2026-08-31T22:32:07+08:00",
   "summary": "D18 最终收尾门禁（L51/L52 硬前置均 PASS）：按严格顺序重跑全部受影响事实证据链，L50 由首次 LOGIC_PARTIAL 诚实升级为 LOGIC_PASS（历史保留、根因由 L51 双层分类契约 + L52 配置键修复消除）。步骤 1—10 全部通过：①L39 重跑 records=161、P0=0（4 条 HDRI hash_pending 保持 P1/Pending）；②L42 重跑 input=161/compiled=161/rejected=0/conflicts=0；③L43 审计报告重写（数字全部来自本次机器输出）；④L44 重跑 runtime_findings_count=0（4 个 editor INFO 列 Runtime Deferred）；⑤L45 更新并重跑 PASS、5/5 槽一致、category_split_real_data=0、cross_tool_acceptance_split=0，新增注入负向测试（未知细分类/错误父类/非法大类仍 BLOCKED）11/11；⑥L46 接口文档双层分类契约 §3.4 + 新错误码；⑦L47/L48/L49 重跑（矩阵 53 项、收尾零越界、53 任务核对）；⑧L50 升级 LOGIC_PASS（保留首次 PARTIAL 历史）；⑨全量工具测试 936 项 exit 0（修复 test_d18_s02_r01_intake_refresh 过时断言为当前 R02 真实事实 + 历史兼容不推断审批）；⑩sync 状态面板 D18=53/53 PASS、PARTIAL=0、BLOCKED=0、PLANNED=0（L53 提交后）+ git diff --check exit 0。D18 只放行给 D19 的是静态逻辑资源接口与稳定键规则（161 条合法记录）；模型导入、Prefab、画面、UI、性能、Player 路线、RuntimeApproved/ReleaseApproved 全部 Runtime Deferred。 [D18-L53-C01 证据一致性修正 2026-08-17]：D18-L50 结果 JSON/handoff 的 verification 已替换为本次 C01 独立审计证据（旧 10/11、100/61/4、L44 BLOCKED、L45 BLOCKED、L50=PARTIAL、总数 50 等首次失败证据全部移除）；C01 独立审计：L39 PASS 161/P0=0（4 HDRI P1）、L42 161/161/0/0、L44 PASS runtime=0、L45 PASS 5/5 槽 0 分裂；全量工具测试单次运行 936 项全部通过、真实 exit code=0；状态面板 D18=53、LOGIC_PASS=53。L50 当前结论与验收文档、状态面板一致为 LOGIC_PASS（首次 PARTIAL 保留为历史说明）。",
   "changed_files": [
     "game/tools/results/D18/D18-L53/D18_L53_L39_AUDIT.json",
@@ -33,7 +33,16 @@
     "docs/game/design/common/handoffs/D18/D18-L45_LOGIC_HANDOFF.md",
     "docs/game/design/common/handoffs/D18/D18-L46_LOGIC_HANDOFF.md",
     "docs/game/design/common/handoffs/D18/D18-L53_LOGIC_HANDOFF.md",
-    ".workbuddy/memory/2026-08-17.md"
+    ".workbuddy/memory/2026-08-17.md",
+    ".workbuddy/memory/2026-08-31.md",
+    "game/Assets/Resources/ContentRegistry/entries/asset/asset_ph_crew_male.json",
+    "game/Assets/Resources/ContentRegistry/entries/building/building_saint_marys_dock.json",
+    "game/Assets/Resources/ContentRegistry/entries/building/building_small_boat_pier.json",
+    "game/Assets/Resources/ContentRegistry/entries/island/island_saint_marys.json",
+    "game/tools/results/D18/D18-L53/D18_L53_C02_L39_AUDIT.json",
+    "game/tools/results/D18/D18-L53/D18_L53_C02_L42_COMPILE.json",
+    "game/tools/results/D18/D18-L53/D18_L53_C02_GAME_REFERENCE_SCAN.json",
+    "game/tools/results/D18/D18-L53/D18_L53_C02_SCHEMA_COMPATIBILITY_AUDIT.json"
   ],
   "verification": [
     {
@@ -79,6 +88,34 @@
     {
       "command": "D18-L53-C01 一致性修正复核（4 个独立审计输出 + 全量测试单次运行 + 状态面板核对）",
       "result": "PASS：L39 records=161/P0=0、L42 161/161/0/0、L44 runtime=0、L45 5/5 槽 0 分裂、936 项测试 exit 0、D18=53/53 PASS；L50 结果/交接/验收文档/状态面板当前结论一致为 LOGIC_PASS"
+    },
+    {
+      "command": "D18-L53-C02 当前复审：python tools/d18_logic_audit.py --output D18_L53_C02_L39_AUDIT.json",
+      "result": "PASS：161 条记录、P0=0、P1=4；37/37 冒烟通过。"
+    },
+    {
+      "command": "D18-L53-C02 当前复审：python tools/d18_logic_catalog_compiler.py --output D18_L53_C02_L42_COMPILE.json",
+      "result": "PASS：161 输入、161 编译、0 rejected、0 conflicts、4 条 Pending hash。"
+    },
+    {
+      "command": "D18-L53-C02 当前复审：python tools/d18_game_reference_audit.py --output D18_L53_C02_GAME_REFERENCE_SCAN.json",
+      "result": "PASS：修正 4 个 ContentRegistry 外部/绝对路径后 runtime_findings_count=0、blocking=0。"
+    },
+    {
+      "command": "D18-L53-C02 当前复审：python tools/d18_schema_compatibility_audit.py --output D18_L53_C02_SCHEMA_COMPATIBILITY_AUDIT.json",
+      "result": "PASS：5/5 语义槽一致、P0=0、无跨工具分裂。"
+    },
+    {
+      "command": "D18 专项回归：python -m unittest discover -s tools/tests -p 'test_d18*.py'",
+      "result": "PASS：836 项 D18 命名测试全部通过。"
+    },
+    {
+      "command": "D19 专项回归：python -m unittest discover -s tools/tests -p 'test_d19*.py'",
+      "result": "PASS：13 项 D19 Python 命名测试全部通过；Unity EditMode 117/117 另由 D19-L48 证据记录。"
+    },
+    {
+      "command": "全仓库基线观察：python -m unittest discover -s tools/tests -p 'test*.py'",
+      "result": "NOT_PASS（943/949 通过，5 失败、1 错误）：失败定位在 D15/D16/D9 旧内容字段与历史 packet 计数，不属于 D18/D19 逻辑门禁，也不是 C02 路径修复改动。"
     }
   ],
   "runtime_deferred": [

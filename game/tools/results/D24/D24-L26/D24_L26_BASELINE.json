@@ -1,0 +1,89 @@
+{
+  "schema_version": "d24.regression-baseline.v1",
+  "baseline_id": "D24-L25-2026-09-02-logic-candidate",
+  "required_protocol": {
+    "expected_tasks": 247,
+    "result_count": 247,
+    "handoff_count": 247,
+    "logic_pass_count": 247
+  },
+  "required_suites": [
+    "D24-PYTHON-SYNTAX",
+    "D24-AUDITS",
+    "D24-CSHARP-L17-L22",
+    "D24-AGENTCORE-L23",
+    "D23-SCENARIO-26-CASE"
+  ],
+  "minimums": {
+    "d24_audits": {
+      "count": 15,
+      "passed": 15
+    },
+    "d24_csharp": {
+      "task_count": 6
+    },
+    "agentcore": {
+      "check_count": 2
+    },
+    "d23": {
+      "case_count": 26,
+      "assertion_count": 13925,
+      "failure_count": 0
+    }
+  },
+  "required_source_markers": [
+    {
+      "path": "game/Assets/Scripts/Systems/D19/D19PortSaveMigration.cs",
+      "patterns": [
+        "class D19PortSaveMigration",
+        "SupportedSchemaVersion",
+        "Migrate(",
+        "d19.save.unsupported_version",
+        "d19.save.conflict"
+      ]
+    },
+    {
+      "path": "game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs",
+      "patterns": [
+        "class D20CharacterSaveMigration",
+        "SupportedSchemaVersion",
+        "Migrate(",
+        "d20_save.unsupported_version"
+      ]
+    },
+    {
+      "path": "game/Assets/Scripts/Systems/D21/D21ShipSaveProjection.cs",
+      "patterns": [
+        "class D21ShipSaveProjection",
+        "CurrentSchemaVersion",
+        "ComputeFingerprint",
+        "void Validate()"
+      ]
+    },
+    {
+      "path": "game/Assets/Scripts/Systems/D19/D19PortFailureCatalog.cs",
+      "patterns": [
+        "class D19PortFailureCatalog",
+        "d19.berth.occupied"
+      ]
+    },
+    {
+      "path": "game/Assets/Scripts/Systems/D22/D22FeedbackCatalog.cs",
+      "patterns": [
+        "class D22FeedbackCatalog",
+        "d22.failure.owner_unavailable"
+      ]
+    },
+    {
+      "path": "game/Assets/Tests/EditMode/D24/D24FullLogicRegressionTests.cs",
+      "patterns": [
+        "ReplayCount",
+        "RunInterruptionMatrix",
+        "RunLongRun"
+      ]
+    }
+  ],
+  "runtime_deferred": [
+    "固定基线只约束纯逻辑回归数量、关键迁移/错误码和离线证据；不授予 RuntimeApproved 或 ReleaseApproved。"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "task_id": "D22-L01",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T08:58:07+08:00",
+  "summary": "冻结 D22 UI 纯逻辑边界、现有面板来源、命令 owner、read-model 单向方向、modal/focus 职责与 Runtime Deferred 隔离。L01 为文档基线通过，不代表 D22 运行时、可玩性或发布通过。D22-L19 的 D21 ship adapter 依赖已明确登记为 LOGIC_BLOCKED。",
+  "changed_files": [
+    "docs/game/design/common/D22_LOGIC_BOUNDARY_BASELINE.md",
+    "game/tools/results/D22/D22-L01/D22_L01_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L01_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "baseline_scope_and_real_reference_audit",
+      "status": "PASS",
+      "details": "基线引用了当前 MainMenu、Pause、HUD、D16、Dialogue、D19 Router/ReadModel 真实路径，并明确区分纯逻辑与 Runtime Deferred。"
+    },
+    {
+      "check": "d21_public_interface_audit",
+      "status": "PASS",
+      "details": "当前 checkout 未发现 D21-L01、D21 result/handoff 或 D21 logic source；缺失项已登记为 D22-L19 的 LOGIC_BLOCKED，而非猜测接口。"
+    },
+    {
+      "check": "result_json_shape",
+      "status": "PASS",
+      "details": "顶层字段严格为 LOGIC_TASK_PROTOCOL 要求的 task_id/status/updated_at/summary/changed_files/verification/runtime_deferred/blockers/handoff。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "details": "D22-L01 留痕文件写入后执行 git diff --check；目标文本另行检查无尾随空白。"
+    }
+  ],
+  "runtime_deferred": [
+    {
+      "id": "D22-RT-01",
+      "status": "Runtime Deferred",
+      "details": "Canvas/UGUI 层级、重复 EventSystem、旧 HUD 隔离与面板叠层。"
+    },
+    {
+      "id": "D22-RT-02",
+      "status": "Runtime Deferred",
+      "details": "真实键盘/鼠标/手柄、pointer/cursor、EventSystem selection 与设备焦点。"
+    },
+    {
+      "id": "D22-RT-03",
+      "status": "Runtime Deferred",
+      "details": "真实点击、raycast、按钮可操作性、分辨率/布局/文本/视觉可访问性。"
+    },
+    {
+      "id": "D22-RT-04",
+      "status": "Runtime Deferred",
+      "details": "Player/PlayMode、场景/Prefab/Transform、音频、性能、平台/设备与发布验证。"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "D22-DEP-01",
+      "scope": "D22-L19",
+      "status": "LOGIC_BLOCKED",
+      "severity": "P1",
+      "details": "当前 checkout 未找到 D21-L01 或 D21 ship/voyage public accepted command/read-model interface；禁止创建假接口、reflection bypass 或 private-field adapter。",
+      "unblock": "先完成 D21-L01 及对应 LOGIC_ACCEPTANCE，再提供可供 D22-L19 消费的公开 typed owner endpoint/read model。"
+    },
+    {
+      "id": "D22-DEP-02",
+      "scope": "D22-L17/L20-L23",
+      "status": "DEPENDENCY_GATE",
+      "severity": "P1",
+      "details": "各业务 adapter 仍须在对应 owner 的 LOGIC_ACCEPTANCE 与公开契约确认后实现；现有 runtime panel 或 raw public method 不自动构成 D22 adapter acceptance。",
+      "unblock": "逐项完成 owner public contract、read-model adapter 与逻辑测试；缺口保持 LOGIC_BLOCKED。"
+    }
+  ],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D22/D22-L01_LOGIC_HANDOFF.md",
+    "next_tasks": [
+      "D22-L02--D22-L25 may proceed after this freeze; use logical IDs and pure DTOs only.",
+      "D22-L18 must consume D19PortCommandRouter.Route and D19PortReadModel, never legacy Canvas state.",
+      "D22-L19 remains LOGIC_BLOCKED until D21-L01 and an accepted public ship interface exist.",
+      "D22-L26--D22-L32 are serial and must preserve explicit blocked adapter results."
+    ],
+    "coordinator_memory_entry": "2026-09-01 D22-L01：已冻结 UI 纯逻辑边界与现有面板来源；D22 只拥有 focus/modal/exclusivity/command validation/feedback/notification/read-model projection，不拥有任何业务事实。D19-L48 与 D20-L01 作为上游纯逻辑方向；当前 checkout 未发现 D21-L01 或 D21 ship public interface，D22-L19 标记 LOGIC_BLOCKED。Canvas/EventSystem/Input/device/Player/PlayMode/视觉/性能/发布全部 Runtime Deferred。按委托范围未修改共享状态总览与 .workbuddy/memory/2026-09-01.md，未执行 status sync。"
+  }
+}

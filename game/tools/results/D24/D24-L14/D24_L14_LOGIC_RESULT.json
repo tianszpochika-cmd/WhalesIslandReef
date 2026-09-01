@@ -1,0 +1,25 @@
+{
+  "task_id": "D24-L14",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "资产 provenance 逻辑前置审计通过；D18 证据链存在且候选/运行时/发布状态未越级。",
+  "changed_files": [
+    "tools/d24_asset_provenance_audit.py",
+    "tools/d24_logic_audit_common.py",
+    "game/tools/results/D24/D24-L14/D24_L14_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L14_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "d18_logic_prerequisite",
+      "status": "PASS",
+      "command": "python tools/d24_asset_provenance_audit.py --root .",
+      "evidence": "退出码 0；D18-L50 与 D18-L53 真实 LOGIC_PASS 结果存在，provenance/state 审计无越级 blocker。"
+    }
+  ],
+  "runtime_deferred": [
+    "导入、模型/材质/动画/音频实际接线和 Runtime/Release 人工批准。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L14_LOGIC_HANDOFF.md"
+}

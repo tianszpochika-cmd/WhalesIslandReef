@@ -1,0 +1,72 @@
+{
+  "task_id": "D23-L35",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T02:58:50+08:00",
+  "summary": "D23-L35 场景、回放、长跑、中断和跨系统边界已由统一纯逻辑 runner 真实收口；26 个 case、13925 assertions、0 failures。",
+  "changed_files": [
+    "docs/game/design/common/D23_LOGIC_SCENARIO_BASELINE.md",
+    "docs/game/design/common/D23_LOGIC_SCENARIO_CATALOG.md",
+    "game/Assets/Tests/EditMode/D23/D23FullLoopScenarioSupport.cs",
+    "game/Assets/Tests/EditMode/D23/D23FullLoopScenarioTests.cs",
+    "game/Assets/Tests/EditMode/D23/D23ReplayDeterminismTests.cs",
+    "game/Assets/Tests/EditMode/D23/D23InterruptionMatrixTests.cs",
+    "game/Assets/Tests/EditMode/D23/D23LongRunScenarioTests.cs",
+    "game/Assets/Scripts/Systems/D21/D21VoyageEventRouter.cs",
+    "tools/d23_cross_system_boundary_audit.py",
+    "tools/d23_scenario_runner.py",
+    "game/tools/results/D23/D23-L31/D23_L31_RUNNER_REPORT.json",
+    "game/tools/results/D23/D23-L35/D23_L35_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D23/D23-L35_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "d23_unified_runner",
+      "status": "PASS",
+      "command": "python tools/d23_scenario_runner.py --write-results",
+      "exit_code": 0,
+      "evidence": "runner status PASS；五个 suite 均通过；upstream_gate PASS；D23_CASES=26、D23_ASSERTIONS=13925、D23_FAILURES=0。"
+    },
+    {
+      "check": "full_loop",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "evidence": "FullLoop=622 assertions；主剧本覆盖港口、市场/仓库、出航、40 Tick、Arrived、Return、D19/D21/D8 restore。"
+    },
+    {
+      "check": "replay_interruption_long_run",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "evidence": "ReplayDeterminism=12421；InterruptionMatrix=27；LongRun=767；case failure count 0。"
+    },
+    {
+      "check": "boundary_audit",
+      "status": "PASS",
+      "command": "python tools/d23_cross_system_boundary_audit.py --json",
+      "exit_code": 0,
+      "evidence": "扫描 28 个 D23 C# 文件，issues=[]；未发现 Unity/runtime、输入/UI、网络/LLM、非确定性或越权写事实。"
+    },
+    {
+      "check": "p0_blocker_review",
+      "status": "PASS",
+      "command": "python tools/d23_scenario_runner.py --write-results",
+      "exit_code": 0,
+      "evidence": "blockers=[]；无 P0 blocker。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "exit_code": 0,
+      "evidence": "Unity Player/PlayMode、设备、性能、网络、LLM 和发行验证保持 Runtime Deferred。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实键鼠/手柄/触摸输入未执行。",
+    "真实设备、镜头/碰撞、布局/分辨率、画面/动画/音频、性能采样和发行验证未执行。",
+    "真实 SaveSystem 介质、网络服务和 LLM/Agent runtime 接线不属于本纯逻辑门禁。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D23/D23-L35_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L12",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "实现 pointer/mouse 需求读模型：根据显式逻辑上下文输出 Default、Free、Locked、可见性和锁定意图，并在锁定不可用或上下文缺失时稳定降级。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22PointerModeReadModel.cs",
+    "game/tools/results/D22/D22-L12/D22_L12_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L12_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L12 deterministic positive/negative smoke: Default, Free, Locked, modal/free fallback, lock unavailable and read-model aliases",
+      "result": "PASS — all assertions passed; the projector returned only logical pointer demands."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22PointerModeReadModel.cs for Unity/Canvas/EventSystem/Input/network/LLM/Time.timeScale",
+      "result": "PASS — no device control, Unity/runtime or network/LLM dependency detected."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L12/D22_L12_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "Runtime 才能消费 Visibility/Mode 并应用真实 pointer/cursor、锁定、UGUI 和输入模块状态。",
+    "实际设备枚举、鼠标/手柄/触摸、焦点渲染、Canvas、布局、Player/PlayMode、性能与发布验证未执行。",
+    "读模型不保证设备执行成功，锁定不可用时只返回显式 Free 降级。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L12_LOGIC_HANDOFF.md"
+}

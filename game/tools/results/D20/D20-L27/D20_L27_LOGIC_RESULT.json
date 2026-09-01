@@ -1,0 +1,48 @@
+{
+  "task_id": "D20-L27",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:41:42+08:00",
+  "summary": "实现 D20 角色保存迁移：确定性处理根/嵌套 v0 到 v1、动作/NPC/动物/宠物/事件/owner 引用缺失字段安全默认；迁移不创建已发生事实，重复运行幂等，未来/负数/非法状态拒绝并保留原始投影副本。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs",
+    "game/tools/results/D20/D20-L27/D20_L27_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L27_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — 0 warnings, 0 errors。"
+    },
+    {
+      "command": "dotnet build .codex-temp/D20LogicCompile.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — D20 全目录（含 L26/L27）独立纯 C# 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project .codex-temp/D20LogicSmoke.csproj --nologo",
+      "result": "PASS — D20-L26/L27 LOGIC SMOKE PASS；覆盖 v0→v1 安全迁移、缺失动作/NPC/动物字段保持 absent/empty、重复迁移 AlreadyUpToDate、未来版本和非法投影负向拒绝并保留原始副本。"
+    },
+    {
+      "command": "rg -n -i 'UnityEngine|Transform|GameObject|Animator|NavMesh|Prefab|Canvas|HttpClient|System\\.Net|WebClient|Socket|LLM|OpenAI|DateTime|Random|System\\.Clock|Network' game/Assets/Scripts/Systems/D20/D20CharacterSaveProjection.cs game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs",
+      "result": "PASS — FORBIDDEN_REFERENCE_HITS=0。"
+    },
+    {
+      "command": "Select-String -Path game/Assets/Scripts/Systems/D20/D20CharacterSaveProjection.cs,game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs -Pattern '[ \\t]+$'",
+      "result": "PASS — TRAILING_WHITESPACE_HITS=0。"
+    },
+    {
+      "command": "Get-Content game/tools/results/D20/D20-L27/D20_L27_LOGIC_RESULT.json -Raw | ConvertFrom-Json",
+      "result": "PASS — 结果 JSON 可解析。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode；SaveSystem 根迁移调用、真实磁盘存档和场景恢复仍由后续整合/Runtime 任务验证。",
+    "场景、Prefab、Canvas、Input、Transform、Animator、模型、设备、性能和真实行为恢复均延期。",
+    "D10/D11/D19 owner 的真实迁移顺序与跨域冲突处理仍须在 SaveSystem 组合器中按各自公开 migration 契约验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L27_LOGIC_HANDOFF.md"
+}

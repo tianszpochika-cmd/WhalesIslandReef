@@ -1,23 +1,36 @@
 {
   "task_id": "D19-L31",
-  "date": "2026-08-18",
   "status": "LOGIC_PASS",
-  "summary": "实现返港与再靠泊纯确定性测试 game/Assets/Tests/EditMode/D19/D19ArrivalReturnTests.cs（D19-L31，纯 C#，零 Unity 依赖）：全面覆盖在航合法返港并分配泊位（推进至 Berthed、产生航程结束意图 D19VoyageEndIntent）、无目标泊位返港（推进至 Returned）、泊位规则拒绝（他人占用/船型尺寸不匹配拦截，在航状态不变，绝不产生半写）、非法前态拒绝（InService 等非在航状态拒绝，状态保持原态）、重复返港命令幂等控制（同参重放原结果且无二次事件副作用）、服务状态恢复（稳定排序）、中断与状态机拒绝自动补偿保护（自动释放已分配泊位，产出 cause_ids 补偿事件草案，消除孤儿泊位与双重航程状态）。7 项确定性测试全部 PASS。",
-  "verifications": [
-    {
-      "name": "dotnet_nunit_runner",
-      "status": "PASS",
-      "details": "7 个测试用例全部执行通过（7 passed, 0 failed）"
-    },
-    {
-      "name": "static_boundary_audit",
-      "status": "PASS",
-      "details": "零 GameObject/Player，零坐标/碰撞/NavMesh依赖，零生产/Save根模型修改"
-    }
-  ],
-  "files_written": [
+  "updated_at": "2026-08-31T21:57:30+08:00",
+  "summary": "协议一致性复核：返港与再靠泊确定性测试覆盖合法返港、泊位分配、无目标泊位、占用/尺寸拒绝、非法前态、幂等、稳定服务恢复与自动补偿；原始 7 项测试记录全部 PASS，未引入 Unity、坐标、碰撞或 NavMesh 依赖。",
+  "changed_files": [
     "game/Assets/Tests/EditMode/D19/D19ArrivalReturnTests.cs",
     "game/tools/results/D19/D19-L31/D19_L31_LOGIC_RESULT.json",
-    "docs/game/design/common/handoffs/D19/D19-L31_LOGIC_HANDOFF.md"
-  ]
+    "docs/game/design/common/handoffs/D19/D19-L31_LOGIC_HANDOFF.md",
+    ".workbuddy/memory/2026-08-18.md",
+    "docs/game/LOGIC_TASK_STATUS.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet_nunit_runner（历史交付记录）",
+      "result": "PASS：7 个测试用例全部执行通过（7 passed, 0 failed）。"
+    },
+    {
+      "command": "static_boundary_audit（历史交付记录）",
+      "result": "PASS：零 GameObject/Player、零坐标/碰撞/NavMesh 依赖、零生产/Save 根模型修改。"
+    },
+    {
+      "command": "python tools/sync_logic_task_status.py",
+      "result": "PASS：D19-L31 状态为 LOGIC_PASS。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS：无尾随空白错误。"
+    }
+  ],
+  "runtime_deferred": [
+    "未进行 Player/PlayMode、场景、Prefab、物理或输入验证；RuntimeApproved / ReleaseApproved 保持 0。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D19/D19-L31_LOGIC_HANDOFF.md"
 }

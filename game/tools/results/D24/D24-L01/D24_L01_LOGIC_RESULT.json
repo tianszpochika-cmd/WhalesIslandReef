@@ -1,0 +1,48 @@
+{
+  "task_id": "D24-L01",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T03:40:00+08:00",
+  "summary": "冻结 D24 纯逻辑候选版基线：D18—D23 终审入口、契约/投影版本、D23 固定种子与 ID、可重复回归命令、唯一写者/迁移边界和 Runtime/发行隔离均引用当前真实源。",
+  "changed_files": [
+    "docs/game/design/common/D24_LOGIC_CANDIDATE_BASELINE.md",
+    "docs/README.md",
+    "game/tools/results/D24/D24-L01/D24_L01_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L01_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "upstream_acceptance_snapshot",
+      "command": "D24-L25 protocol snapshot and D23-L38 result review",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "D18-L50/L53、D19-L48、D20-L40、D21-L32、D22-L36、D23-L38 均为当前 LOGIC_PASS；D18—D23 任务证据 247/247/247。"
+    },
+    {
+      "check": "contract_version_facts",
+      "command": "contracts/agent-reply.schema.json; contracts/world-event.schema.json; contracts/openapi/v1.yaml; contracts/p2a-action-registry.json",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "agent_reply.v1.1、WorldEvent schema_version=1、OpenAPI 0.1.0、P2A d8-a04/p2a.v1 与 D19/D21 Save v1 源码事实已记录。"
+    },
+    {
+      "check": "fixed_scenario_facts",
+      "command": "docs/game/design/common/D23_LOGIC_SCENARIO_BASELINE.md and D23 fixture source review",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "seed=2301、world_day=23、save_revision=230100、稳定 player/ship/port/berth/commodity/voyage IDs 与 D23 26/13925/0 指标已冻结。"
+    },
+    {
+      "check": "candidate_runtime_boundary",
+      "command": "D24-L25 scope flags and D24_RUNTIME_VALIDATION_BACKLOG.md",
+      "status": "PASS",
+      "exit_code": 0,
+      "evidence": "候选版仅允许代码/数据/契约/静态/纯 C#/确定性证据；Player/PlayMode、设备、性能、网络、LLM、真实 Save 和发行保持 Deferred。"
+    }
+  ],
+  "runtime_deferred": [
+    "D24-L01 不执行 Unity Player/PlayMode、场景/Prefab/Canvas/UI、真实输入、物理、视觉、设备、性能、网络、LLM、真实 SaveSystem 或发行验证。",
+    "逻辑候选版不等于 playable、RuntimeApproved 或 ReleaseApproved。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L01_LOGIC_HANDOFF.md"
+}

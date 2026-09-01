@@ -1,0 +1,19 @@
+{
+  "task_id": "D20-L38",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T21:29:00+08:00",
+  "summary": "发布 D20 对 D21-D23 可消费的角色、NPC、动物命令/读模型/事件/失败码/保存引用与唯一写者边界。",
+  "changed_files": [
+    "docs/game/design/common/D20_LOGIC_INTERFACE.md",
+    "game/tools/results/D20/D20-L38/D20_L38_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L38_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {"command": "文档路径/标题/接口类名/owner boundary 静态核对", "result": "PASS — D20CharacterCommandService、D20NpcBehaviorService、D20AnimalBehaviorService、D20ActionEventRouter 及下游消费方向均已记录。"},
+    {"command": "python -c JSON/path protocol check", "result": "PASS — 本结果 JSON 与 handoff 路径符合逻辑任务协议。"},
+    {"command": "git diff --check", "result": "PASS"}
+  ],
+  "runtime_deferred": ["接口文档不代表 Unity/Player/真实 UI、输入、模型或运行时已经接入。"],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L38_LOGIC_HANDOFF.md"
+}

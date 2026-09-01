@@ -1,0 +1,39 @@
+{
+  "task_id": "D20-L22",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:17:00+08:00",
+  "summary": "新增纯 C# 动物行为状态机，使用显式输入实现休息、觅食、警觉、逃离、跟随、受伤、恢复、死亡及取消/完成回退；提供稳定失败码、能力前置、事件 ID、命令幂等回执和快照恢复，不拥有生态、健康、宠物照料、位置或表现事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20AnimalBehaviorStateMachine.cs",
+    "game/tools/results/D20/D20-L22/D20_L22_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L22_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /nologo /target:library /warnaserror+ /doc:<temp> /out:<temp> game/Assets/Scripts/Systems/D20/D20AnimalIdentityContracts.cs game/Assets/Scripts/Systems/D20/D20AnimalSpeciesCatalog.cs game/Assets/Scripts/Systems/D20/D20AnimalBehaviorStateMachine.cs",
+      "result": "PASS — exit 0；L20/L21/L22 独立 C# library 编译并生成 XML 文档，无警告。"
+    },
+    {
+      "command": "PowerShell Add-Type smoke for D20AnimalBehaviorStateMachine (transition path, validation, idempotency, snapshot restore, deterministic event, species capability boundary)",
+      "result": "PASS — Rest→Forage→Alert→Flee→Rest、Follow 进入/换目标/同目标 no-op/目标丢失、Injury→confirmed Recovery、Death terminal、非法目标、Recovery 未确认、重复回放/命令冲突、快照恢复、等价输入事件一致、pet Follow 与 wild Follow unavailable 均通过。"
+    },
+    {
+      "command": "PowerShell scoped static check for D20AnimalIdentityContracts.cs, D20AnimalSpeciesCatalog.cs and D20AnimalBehaviorStateMachine.cs (forbidden engine/network/LLM/time/random references and trailing whitespace)",
+      "result": "PASS — 3 files；forbidden implementation references=0；trailing_whitespace=0。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json game/tools/results/D20/D20-L22/D20_L22_LOGIC_RESULT.json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — no whitespace errors in the current worktree diff."
+    }
+  ],
+  "runtime_deferred": [
+    "Unity 序列化接线、动物/宠物实例生成、模型/Avatar/Animator、Prefab、场景、Transform、物理、寻路、输入、设备和资源准入留给 Runtime 阶段。",
+    "D11 EcologySystem/AnimalCareSystem 继续拥有生态、种群、健康、宠物照料、位置、丢失和死亡事实；D20 状态机只保有行为投影和显式 owner 输入结果。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L22_LOGIC_HANDOFF.md"
+}

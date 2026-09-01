@@ -1,0 +1,68 @@
+{
+  "task_id": "D21-L10",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T09:48:31+08:00",
+  "summary": "完成 D21-L10：返港适配器先以公开 D19 Return 命令结束航程；声明目标泊位时再以派生的稳定 AssignBerth 命令请求靠泊。返港和靠泊结果分开保留，重复/拒绝/中途靠泊失败不被伪装成单一成功。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21PortReturnAdapter.cs",
+    "game/Assets/Scripts/Systems/D21/D21PortReturnAdapter.cs.meta",
+    "game/tools/results/D21/D21-L10/D21_L10_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L10_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "systems_baseline_build",
+      "status": "PASS",
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore",
+      "evidence": "退出码 0，0 warnings，0 errors；生成的 Unity csproj 未纳入本批次新增 D21 文件，因此另行执行独立 Roslyn 编译。"
+    },
+    {
+      "check": "d21_six_file_roslyn_compile",
+      "status": "PASS",
+      "command": "PowerShell 调用 Roslyn csc.dll，以 NETStandard.Library.Ref/2.1.0 和 game/Temp/bin/Debug/Whalebone.Systems.dll 为引用，编译本批次六个 D21 .cs 文件",
+      "evidence": "编译器退出码 0，无错误、无警告；D19 Return/AssignBerth 公开命令和结果类型解析通过。"
+    },
+    {
+      "check": "d19_return_berth_smoke",
+      "status": "PASS",
+      "command": "PowerShell 纯 C# smoke：D19 EnterPort -> Dock -> Board -> D21 Depart，再调用 D21PortReturnAdapter.Return(target berth)",
+      "evidence": "ReturnResult.Success=true，BerthResult.Success=true，最终 D19 状态为 Berthed；返回同一出航命令的重复调用由 D19 幂等结果识别。"
+    },
+    {
+      "check": "route_entry_scope_audit",
+      "status": "PASS",
+      "command": "rg -n \"_router\\.\" game/Assets/Scripts/Systems/D21/D21PortReturnAdapter.cs",
+      "evidence": "返港与可选靠泊均只调用 _router.Route；未访问 D19 VisitSystem、BerthSystem 或私有字段。"
+    },
+    {
+      "check": "artifact_whitespace_audit",
+      "status": "PASS",
+      "command": "PowerShell 逐行检查本项 .cs/.meta/JSON/handoff 行尾空白",
+      "evidence": "本项交付文件无行尾空格或制表符。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求不运行 tools/sync_logic_task_status.py，不修改共享状态总览或当天记忆。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "不运行 Unity Player/PlayMode、场景、Prefab、UI、输入、物理、Shader、性能、真机或发行验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas、输入、Transform、物理、NavMesh 和 Shader",
+    "返港后船体、船员、货物、补给及重新进入港口循环的跨系统运行编排",
+    "UI、VFX、音频、性能、真机、平台和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L10_LOGIC_HANDOFF.md",
+    "next": "由 D21 航程/到港编排 owner 处理 VoyageEnd；靠泊事实仅以 D19 BerthResult 为准，靠泊失败时不得回写或伪造返港成功之外的状态。",
+    "release_statement": "D21-L10 纯逻辑通过；不等同于 D21 完成、运行时可玩、性能通过或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L10 已完成返港适配器；Return 与可选 AssignBerth 分别通过 D19PortCommandRouter.Route，结果保留返港/靠泊边界，最终泊位事实只认 D19 结果。"
+  }
+}

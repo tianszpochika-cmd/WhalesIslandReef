@@ -1,0 +1,81 @@
+{
+  "runner_name": "D20 Unified Pure Logic Test Runner",
+  "timestamp": "2026-09-01T21:28:32+08:00",
+  "status": "PASS",
+  "suites": [
+    {
+      "command": "C:\\Program Files\\Python310\\python.exe tools/d20_logic_boundary_audit.py --self-test",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 77,
+      "stdout_tail": "{\n  \"self_test\": \"PASS\",\n  \"valid_fixture_violations\": [],\n  \"invalid_fixture_violations\": [\n    {\n      \"rule_id\": \"D20-AUDIT-001\",\n      \"rule_name\": \"Unity/editor/runtime API\",\n      \"severity\": \"P0\",\n      \"file\": \"invalid_fixture.cs\",\n      \"line\": 2,\n      \"matched\": \"using UnityEngine;\",\n      \"line_content\": \"using UnityEngine;\"\n    },\n    {\n      \"rule_id\": \"D20-AUDIT-001\",\n      \"rule_name\": \"Unity/editor/runtime API\",\n      \"severity\": \"P0\",\n      \"file\": \"invalid_fixture.cs\",\n      \"line\": 3,\n      \"matched\": \"Input.GetKey\",\n      \"line_content\": \"public sealed class InvalidInput { public void Tick() { Input.GetKey(\\\"x\\\"); } }\"\n    }\n  ]\n}",
+      "stderr_tail": "",
+      "id": "D20_BOUNDARY_SELF_TEST"
+    },
+    {
+      "command": "C:\\Program Files\\Python310\\python.exe tools/d20_logic_boundary_audit.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 125,
+      "stdout_tail": "{\n  \"audit_name\": \"D20 Logic Boundary Static Audit\",\n  \"status\": \"PASS\",\n  \"passed\": true,\n  \"scanned_files_count\": 34,\n  \"scanned_files\": [\n    \"game/Assets/Scripts/Systems/D20/D20ActionEventRouter.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20ActionIntentContracts.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20ActionInterruptSystem.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20ActionPriorityRules.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20ActionReadModel.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20AnimalBehaviorService.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20AnimalBehaviorStateMachine.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20AnimalIdentityContracts.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20AnimalSpeciesCatalog.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20AppearanceSelectionRules.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20AquaticBehaviorAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20CharacterCommandService.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20CharacterConditionAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20CharacterIdentityContracts.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20CharacterSaveMigration.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20CharacterSaveProjection.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20IdentityPresentationRules.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcBehaviorAuthorityGuard.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcBehaviorService.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcBehaviorStateMachine.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcIdentityContracts.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcInteractionAvailability.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcRoleCatalog.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20NpcScheduleInput.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20PetOwnershipSystem.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20PlayerPresenceSystem.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20PresentationEventContracts.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20RelationActionAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20TraitActionAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D20/D20WildlifePopulationAdapter.cs\",\n    \"game/Assets/Tests/EditMode/D20/D20BehaviorInvariantTests.cs\",\n    \"game/Assets/Tests/EditMode/D20/D20CharacterSaveLoadTests.cs\",\n    \"game/Assets/Tests/EditMode/D20/D20ContentIdIntegrationTests.cs\",\n    \"game/Assets/Tests/EditMode/D20/D20DeterministicBehaviorTests.cs\"\n  ],\n  \"violations_count\": 0,\n  \"violations\": [],\n  \"scope\": {\n    \"production\": \"game/Assets/Scripts/Systems/D20/**/*.cs\",\n    \"tests\": [\n      \"game/Assets/Tests/EditMode/D20/D20BehaviorInvariantTests.cs\",\n      \"game/Assets/Tests/EditMode/D20/D20CharacterSaveLoadTests.cs\",\n      \"game/Assets/Tests/EditMode/D20/D20ContentIdIntegrationTests.cs\",\n      \"game/Assets/Tests/EditMode/D20/D20DeterministicBehaviorTests.cs\"\n    ],\n    \"excluded\": \"D20-A* Unity visual/presentation tests\"\n  }\n}",
+      "stderr_tail": "",
+      "id": "D20_BOUNDARY_AUDIT"
+    },
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo -warnaserror",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 3172,
+      "stdout_tail": "Whalebone.Agent.Runtime -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Agent.Runtime.dll\n  Whalebone.Systems -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Systems.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:01.73",
+      "stderr_tail": "",
+      "id": "D20_SYSTEMS_BUILD"
+    },
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore --nologo -warnaserror",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 1342,
+      "stdout_tail": "D20LogicSmoke -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\D20LogicSmoke\\bin\\Debug\\net9.0\\D20LogicSmoke.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.89",
+      "stderr_tail": "",
+      "id": "D20_LOGIC_SMOKE_BUILD"
+    },
+    {
+      "command": "dotnet run --project game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-build --no-restore -- all",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 9157,
+      "stdout_tail": "D20-L06 PASS\nD20-L07 PASS\nD20-L08 PASS\nD20-L09 PASS\nD20-L10 PASS",
+      "stderr_tail": "",
+      "id": "D20_LOGIC_SMOKE_RUN"
+    },
+    {
+      "command": "dotnet build C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\d20-l28-l35-batch\\D20L28L35Batch.csproj --no-restore --nologo -warnaserror",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 1764,
+      "stdout_tail": "D20L28L35Batch -> C:\\Users\\Administrator\\AppData\\Local\\Temp\\d20-l28-l35-batch\\bin\\Debug\\net9.0\\D20L28L35Batch.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.84",
+      "stderr_tail": "",
+      "id": "D20_L28_L35_BATCH_BUILD"
+    },
+    {
+      "command": "dotnet run --project C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\d20-l28-l35-batch\\D20L28L35Batch.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "status": "PASS",
+      "duration_ms": 5968,
+      "stdout_tail": "PORT_DEBUG success=True reason=character_port_command_applied valid=True events=4 owner=\nD20-L28 PASS ASSERTIONS=5\nD20-L29 PASS ASSERTIONS=4\nD20-L30 PASS ASSERTIONS=3\nD20-L31 PASS ASSERTIONS=6\nD20-L32 PASS ASSERTIONS=82\nD20-L33 PASS ASSERTIONS=16\nD20-L34 PASS ASSERTIONS=6004\nD20-L35 PASS ASSERTIONS=17",
+      "stderr_tail": "",
+      "id": "D20_L28_L35_BATCH_RUN"
+    }
+  ],
+  "evidence": {
+    "status": "PASS",
+    "expected_results": 35,
+    "missing": [],
+    "bad_status": [],
+    "invalid_json": []
+  },
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、真实输入、动画、导航、画面、性能和设备测试未执行。"
+  ],
+  "duration_ms": 21953
+}

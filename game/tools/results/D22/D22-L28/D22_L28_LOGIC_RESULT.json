@@ -1,0 +1,43 @@
+{
+  "task_id": "D22-L28",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "新增无运行时对象依赖的确定性 UI 场景测试，重放港口、市场、船舶和保存面板命令，并验证 owner 回执、重复命令、拒绝与 ViewModel 缺失/版本降级。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D22/D22DeterministicUiScenarioTests.cs",
+    "game/tools/results/D22/D22-L28/D22_L28_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L28_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type with explicit D22 pure logic sources, D16AccessibilityContracts and D22-L28 test source",
+      "result": "PASS — source and test files compiled in memory."
+    },
+    {
+      "command": "D22DeterministicUiScenarioTests.Run()",
+      "result": "PASS — 44 assertions; port/market/ship/save owner calls each ran once, replays were Duplicate, missing owner was Blocked, owner rejection retained code/reason, and composer ordering/copy/degradation checks passed."
+    },
+    {
+      "command": "D22DeterministicUiScenarioTests.Run() with no runtime integration",
+      "result": "PASS — no scene, Canvas, input device, Player or PlayMode API was used; all business effects came from injected public test handlers."
+    },
+    {
+      "command": "PowerShell D21 L01-L32 result/acceptance gate parser",
+      "result": "PASS — 32/32 D21 result JSON objects are LOGIC_PASS and D21_LOGIC_ACCEPTANCE.md is present."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test; python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — 0 boundary violations in the 28-file D22 source/test scan."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing line-ending warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "真实按钮/Canvas/UGUI/EventSystem、输入设备、布局、视觉反馈、Player/PlayMode、设备和性能。",
+    "注入 handler 不是 D19/D21/经济/库存/Save 的真实实现证据；真实跨 owner 流程必须在 acceptance 通过后重跑。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L28_LOGIC_HANDOFF.md"
+}

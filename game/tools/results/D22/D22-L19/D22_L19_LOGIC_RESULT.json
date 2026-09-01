@@ -1,0 +1,32 @@
+{
+  "task_id": "D22-L19",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:45:00+08:00",
+  "summary": "完成 D21 船舶只读 UI 适配：消费已验收的身份、船况、航线、天气、航程时间和补给公开 DTO，复制结果/失败码并对缺失模块降级，不依赖聚合私有类型或自行裁决船舶事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22ShipReadModelAdapter.cs",
+    "game/Assets/Tests/EditMode/D22/D22ReadModelAdapterTests.cs",
+    "game/tools/results/D22/D22-L19/D22_L19_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L19_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet exec Roslyn csc.dll with all D20/D22 sources, selected D21 public contracts, Whalebone.Systems.dll, Agent.Runtime.dll and D22ReadModelAdapterTests.cs",
+      "result": "PASS — independent source compilation completed with 0 warnings and 0 errors; the adapter uses only public D21 DTOs."
+    },
+    {
+      "command": "Reflection execution of NUnit [Test] methods in D22ReadModelAdapterTests",
+      "result": "PASS — 10/10 tests passed; ship identity/route/time projection, clone boundary and missing-source fail-closed assertions included."
+    },
+    {
+      "command": "D21-L32 accepted logic result plus dotnet build game/Assembly-CSharp.csproj --no-restore",
+      "result": "PASS — D21 upstream logic acceptance is present; generated Unity-side project build completed with 0 warnings and 0 errors."
+    }
+  ],
+  "runtime_deferred": [
+    "船舶 owner 的真实航行写入、物理/天气表现、事件与 Save 介质接线仍由 D21/Runtime 负责。",
+    "Canvas/UGUI、输入、场景/Prefab、Player/PlayMode、设备、性能和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L19_LOGIC_HANDOFF.md"
+}

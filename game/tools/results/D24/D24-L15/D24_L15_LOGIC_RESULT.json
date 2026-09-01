@@ -1,0 +1,25 @@
+{
+  "task_id": "D24-L15",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "P0 领域需求到实际单元/契约/模拟测试的结果矩阵审计通过，未将缺失证据改写为通过。",
+  "changed_files": [
+    "tools/d24_test_matrix_audit.py",
+    "tools/d24_logic_audit_common.py",
+    "game/tools/results/D24/D24-L15/D24_L15_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L15_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "logic_result_matrix",
+      "status": "PASS",
+      "command": "python tools/d24_test_matrix_audit.py --root .",
+      "evidence": "退出码 0；D18-D23 每章均有可解析 result JSON，malformed/duplicate task ID 检查通过，矩阵输入 digest 稳定。"
+    }
+  ],
+  "runtime_deferred": [
+    "测试矩阵不替代 Unity Player/PlayMode、设备、性能、网络或发行门禁。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L15_LOGIC_HANDOFF.md"
+}

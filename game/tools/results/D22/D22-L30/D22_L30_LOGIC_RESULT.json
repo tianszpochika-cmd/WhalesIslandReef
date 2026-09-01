@@ -1,0 +1,39 @@
+{
+  "task_id": "D22-L30",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "新增通知队列、暂停意图、可恢复面板/焦点及 Router 幂等投影的 Save/Load 边界测试；快照恢复保持顺序、去重、暂停状态与缺失依赖原因。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D22/D22UiSaveLoadTests.cs",
+    "game/tools/results/D22/D22-L30/D22_L30_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L30_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type with explicit D22 pure logic sources, D16AccessibilityContracts and D22-L30 test source",
+      "result": "PASS — source and test files compiled in memory."
+    },
+    {
+      "command": "D22UiSaveLoadTests.Run()",
+      "result": "PASS — 21 assertions; transient notification filtering, persistent notification restore/dedup/acknowledge, paused/recoverable panel projection, saving-boundary rejection and router replay all passed."
+    },
+    {
+      "command": "PowerShell D21 L01-L32 result/acceptance gate parser",
+      "result": "PASS — 32/32 D21 result JSON objects are LOGIC_PASS and D21_LOGIC_ACCEPTANCE.md is present."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test; python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — 0 boundary violations in the 28-file D22 source/test scan."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing line-ending warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "真实 SaveSystem 根存档、迁移执行、槽位 UI、Canvas/UGUI、输入、Player/PlayMode、设备、性能与发布。",
+    "D22 snapshot 只恢复 D22 presentation/幂等投影，不恢复市场、库存、船舶、NPC、任务或其它领域事实。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L30_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,66 @@
+{
+  "task_id": "D21-L28",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T11:44:00+08:00",
+  "summary": "新增航程聚合不变量与负向测试，覆盖锚泊/航行互斥、严重损坏拒绝、缺少 crew projection 的依赖阻塞、重复命令/命令 ID 冲突和事件逆序批次原子拒绝。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D21/D21VoyageInvariantTests.cs",
+    "game/tools/results/D21/D21-L28/D21_L28_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L28_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d21-tests/D21IntegrationTests.csproj --no-restore --verbosity:minimal",
+      "evidence": "EXIT=0；测试与 D21 生产依赖编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "invariant_execution",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；D21_INTEGRATION_CASES=8、D21_INTEGRATION_FAILURES=0，其中 5 个 L28 不变量用例全部通过。"
+    },
+    {
+      "check": "dependency_truthfulness",
+      "status": "PASS",
+      "command": "D21VoyageInvariantTests.MissingCrewProjection_IsDependencyBlocked_AndCannotBePresentedAsPass",
+      "evidence": "缺少 D20 crew projection 时没有创建航程，返回 DependencyBlocked=true 和稳定依赖码；测试没有将缺口标为成功。"
+    },
+    {
+      "check": "atomic_event_rejection",
+      "status": "PASS",
+      "command": "D21VoyageInvariantTests.EventRouter_RejectsBatchWithDescendingOrderWithoutPartialAppend",
+      "evidence": "逆序/首事件不合法批次被拒绝，路由器没有创建事件日志或留下半提交。"
+    },
+    {
+      "check": "boundary_audit",
+      "status": "PASS",
+      "command": "python tools/d21_logic_boundary_audit.py",
+      "evidence": "EXIT=0；测试仅使用公开纯逻辑 API，无 Unity、网络/LLM、系统时钟、不可控随机或反射绕过。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "D20-L40 公开 crew projection 的真实 owner 接入",
+    "Unity Editor 测试发现、场景/Prefab、物理、输入、平台、真机和发行验证"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L28_LOGIC_HANDOFF.md",
+    "next": "协调者可在 Unity Editor 刷新 asmdef 后运行 EditMode 测试；若 crew projection 仍未开放，继续保留依赖阻塞断言。",
+    "release_statement": "D21-L28 证明指定负向不变量和拒绝路径离线通过；不表示 D20 crew projection、真实运行时或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L28 五个航程不变量/负向用例通过，明确锚泊、损坏、crew projection、命令冲突和事件批次原子拒绝语义。"
+  }
+}

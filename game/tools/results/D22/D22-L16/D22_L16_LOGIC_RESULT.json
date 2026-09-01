@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L16",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "建立加载、保存、迁移、失败、恢复和缺失模块的 UI 可读状态投影；显式校验槽位、进度、修订、模块状态，并输出稳定状态 localization key/feedback。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22LoadStateReadModel.cs",
+    "game/tools/results/D22/D22-L16/D22_L16_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L16_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L16 deterministic positive/negative smoke: loading busy, save success, migration missing module, corrupt load failure, invalid progress, invalid slot and missing snapshot",
+      "result": "PASS — all assertions passed; missing modules are explicit and recovery-capable without claiming domain success."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22LoadStateReadModel.cs for Unity/Canvas/EventSystem/Input/network/LLM/PlayerPrefs/DateTime",
+      "result": "PASS — read-model projection has no runtime/storage/device dependency or domain snapshot writer."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L16/D22_L16_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "SaveSystem/domain owner 的真实加载、保存、迁移、恢复和快照写入留给对应 owner/Runtime。",
+    "缺失模块、失败与恢复读模型不代表业务恢复成功；Runtime 必须按 owner 结果呈现并保持失败原因。",
+    "Canvas/UGUI、真实输入、Player/PlayMode、设备、性能、音频和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L16_LOGIC_HANDOFF.md"
+}

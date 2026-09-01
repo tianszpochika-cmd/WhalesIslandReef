@@ -1,0 +1,21 @@
+{
+  "task_id": "D20-L36",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T21:29:00+08:00",
+  "summary": "建立 D20 纯逻辑边界静态审计，扫描 34 个生产/逻辑测试文件，识别 Unity、网络/LLM、系统时钟、非确定随机和外部 owner 直写；自测覆盖违规夹具与合法 Input DTO。",
+  "changed_files": [
+    "tools/d20_logic_boundary_audit.py",
+    "game/tools/results/D20/D20-L36/D20_L36_BOUNDARY_AUDIT.json",
+    "game/tools/results/D20/D20-L36/D20_L36_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L36_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {"command": "python -m py_compile tools/d20_logic_boundary_audit.py", "result": "PASS"},
+    {"command": "python tools/d20_logic_boundary_audit.py --self-test", "result": "PASS — 合法 Input 字段无误报，UnityEngine/Input.GetKey 违规夹具被识别。"},
+    {"command": "python tools/d20_logic_boundary_audit.py --output game/tools/results/D20/D20-L36/D20_L36_BOUNDARY_AUDIT.json", "result": "PASS — 34 个文件，0 个 P0 违规。"},
+    {"command": "git diff --check", "result": "PASS"}
+  ],
+  "runtime_deferred": ["Unity Player/PlayMode、场景、Prefab、模型、Animator、Input、物理、网络、画面、性能和实机验证未执行。"],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L36_LOGIC_HANDOFF.md"
+}

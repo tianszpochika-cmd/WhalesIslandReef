@@ -1,0 +1,48 @@
+{
+  "task_id": "D22-L26",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "实现 D22 UI 命令路由：只读校验、注入公开 owner handler、关联反馈、fail-closed 缺 owner 结果、重复/冲突幂等与 UI 投影快照均已落地；未把缺失的上游 owner 接线伪装成成功。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22UiCommandRouter.cs",
+    "game/tools/results/D22/D22-L26/D22_L26_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L26_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type with explicit D22-L01--L16, D16AccessibilityContracts, D22UiCommandRouter and D22ViewModelComposer sources",
+      "result": "PASS — 17 D22 core files + D16 accessibility contract + 3 D22 tests (21 files) compiled in memory."
+    },
+    {
+      "command": "D22DeterministicUiScenarioTests.Run() and D22UiSaveLoadTests.Run()",
+      "result": "PASS — deterministic route/save-load coverage executed; 44 and 21 assertions respectively."
+    },
+    {
+      "command": "D22 owner-route fail-closed checks in D22DeterministicUiScenarioTests",
+      "result": "PASS — port/market/ship/save injected handlers were invoked once; replay was Duplicate; missing/null/rejected owner paths never reported business success."
+    },
+    {
+      "command": "PowerShell D21 L01-L32 result/acceptance gate parser",
+      "result": "PASS — 32/32 D21 result JSON objects are LOGIC_PASS and D21_LOGIC_ACCEPTANCE.md is present."
+    },
+    {
+      "command": "dotnet build .codex-temp/d22-compile/D22IntegrationCompile.csproj --no-restore --verbosity:minimal",
+      "result": "PASS — current D20+D21+D22 source integration compiled with 0 warnings and 0 errors; D21-L01—L32 acceptance is available."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test; python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — lexer masking self-test passed; normal scan found 0 violations in 28 D22 source/test files, including the current adapter test fixture."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing LF/CRLF normalization warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "真实按钮、Canvas/UGUI、EventSystem、键鼠手柄/触摸输入和视觉焦点。",
+    "D19/D20/D21/经济/库存/任务/Save owner 的真实 Runtime 接线、Player/PlayMode、设备、性能与发布验证。",
+    "Runtime 不得把 Blocked、Rejected、Pending 或本地面板状态当成业务成功。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L26_LOGIC_HANDOFF.md"
+}

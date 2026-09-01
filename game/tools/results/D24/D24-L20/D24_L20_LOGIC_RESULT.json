@@ -1,0 +1,39 @@
+{
+  "task_id": "D24-L20",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "完成 D18-D23 现有 System 源码的纯静态禁用依赖扫描，阻止 Unity、网络、时钟、随机和线程等待进入强逻辑目录。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D24/D24NoNetworkInSystemsTests.cs",
+    "tools/d24_logic_audit_common.py",
+    "tools/d24_logic_test_runner.py",
+    "game/tools/results/D24/D24-L20/D24_L20_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L20_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "systems_project_build",
+      "status": "PASS",
+      "command": "dotnet build game/Whalebone.Systems.csproj --configuration Debug --no-restore --nologo -warnaserror -p:BaseIntermediateOutputPath=Temp/obj/Whalebone.Systems/ -p:IntermediateOutputPath=Temp/obj/Whalebone.Systems/",
+      "evidence": "利用 Unity 生成项目已有的中间目录显式编译 Whalebone.Systems，退出码 0，0 warning/0 error。"
+    },
+    {
+      "check": "standalone_csharp_build_and_run",
+      "status": "PASS",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L20 --configuration Release",
+      "evidence": "临时独立 csproj 编译退出码 0，运行退出码 0；systems_files=103、forbidden_hits=0、llm_token_boundary_checks=pass。"
+    },
+    {
+      "check": "masked_source_scan",
+      "status": "PASS",
+      "command": "D24NoNetworkInSystemsTests.RunAll",
+      "evidence": "扫描实际存在的 D19-D22 System 源文件，并屏蔽注释/字符串后未发现 UnityEngine/网络类型/独立 LLM token/墙钟时间/随机或阻塞等待命中；另以 HullMax 负例校验 LLM token 边界。D18/D23 缺失目录未伪造为运行时证据。"
+    }
+  ],
+  "runtime_deferred": [
+    "当前仓库未提供 D18/D23 对应 System 源目录；其后续新增源码必须纳入同一扫描入口",
+    "Unity Player/PlayMode、设备、性能和发行验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L20_LOGIC_HANDOFF.md"
+}

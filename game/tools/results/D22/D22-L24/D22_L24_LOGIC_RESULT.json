@@ -1,0 +1,31 @@
+{
+  "task_id": "D22-L24",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:45:00+08:00",
+  "summary": "完成 focus/panel 纯逻辑定向测试并合并到允许的 D22ReadModelAdapterTests.cs：明确断言 focus 激活、panel 上下文、命令面板可用和纯逻辑状态结果。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D22/D22ReadModelAdapterTests.cs",
+    "game/tools/results/D22/D22-L24/D22_L24_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L24_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet exec Roslyn csc.dll with all D20/D22 sources, selected D21 public contracts, Whalebone.Systems.dll, Agent.Runtime.dll and D22ReadModelAdapterTests.cs",
+      "result": "PASS — independent source compilation completed with 0 warnings and 0 errors."
+    },
+    {
+      "command": "Reflection execution of NUnit [Test] methods in D22ReadModelAdapterTests",
+      "result": "PASS — 10/10 tests passed; FocusPanelAndCommandRules_ArePureAndDeterministic contains explicit focus/panel assertions and no Unity object dependency."
+    },
+    {
+      "command": "dotnet build game/Assembly-CSharp.csproj --no-restore",
+      "result": "PASS — generated Unity-side project build completed with 0 warnings and 0 errors."
+    }
+  ],
+  "runtime_deferred": [
+    "UGUI selectable focus、Canvas 层级、真实键鼠/手柄输入与视觉恢复留给 Runtime。",
+    "Player/PlayMode、设备、布局、动画、性能和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L24_LOGIC_HANDOFF.md"
+}

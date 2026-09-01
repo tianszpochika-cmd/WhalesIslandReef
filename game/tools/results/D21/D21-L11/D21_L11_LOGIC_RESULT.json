@@ -1,0 +1,68 @@
+{
+  "task_id": "D21-L11",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T09:48:31+08:00",
+  "summary": "完成 D21-L11：冻结天气输入契约，显式约束季节、风向/风力、降水毫米每小时、能见度、气压、世界日、存档修订和稳定引用；未知枚举、负数、NaN/Infinity、越界值和 Calm+非零风力均显式拒绝。输入包只标识 D9.EnvironmentSystem owner，不提供第二天气写入口。该状态仅表示本项纯逻辑通过，不表示 D21 总体、运行时或发行就绪。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D21/D21WeatherInputContracts.cs",
+    "game/Assets/Scripts/Systems/D21/D21WeatherInputContracts.cs.meta",
+    "game/tools/results/D21/D21-L11/D21_L11_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L11_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "systems_baseline_build",
+      "status": "PASS",
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore",
+      "evidence": "退出码 0，0 warnings，0 errors；生成的 Unity csproj 未纳入本批次新增 D21 文件，因此另行执行独立 Roslyn 编译。"
+    },
+    {
+      "check": "d21_six_file_roslyn_compile",
+      "status": "PASS",
+      "command": "PowerShell 调用 Roslyn csc.dll，以 NETStandard.Library.Ref/2.1.0 和 game/Temp/bin/Debug/Whalebone.Systems.dll 为引用，编译本批次六个 D21 .cs 文件",
+      "evidence": "编译器退出码 0，无错误、无警告。"
+    },
+    {
+      "check": "weather_contract_smoke",
+      "status": "PASS",
+      "command": "PowerShell 纯 C# smoke：有效 Wet/West 输入、重复指纹、Unknown season、Calm+positive wind、NaN visibility",
+      "evidence": "有效输入通过；非法枚举/组合/非有限数值均返回稳定失败码，Clone 后修改不改变原输入。"
+    },
+    {
+      "check": "owner_boundary_audit",
+      "status": "PASS",
+      "command": "rg -n \"EnvironmentSystem|D9|Route|Write|Set|Apply\" game/Assets/Scripts/Systems/D21/D21WeatherInputContracts.cs",
+      "evidence": "契约只声明 D9 owner 和只读输入/校验/指纹；未出现天气快照写入、网络、LLM 或 Unity 依赖。"
+    },
+    {
+      "check": "artifact_whitespace_audit",
+      "status": "PASS",
+      "command": "PowerShell 逐行检查本项 .cs/.meta/JSON/handoff 行尾空白",
+      "evidence": "本项交付文件无行尾空格或制表符。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求不运行 tools/sync_logic_task_status.py，不修改共享状态总览或当天记忆。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "不运行 Unity Player/PlayMode、场景、Prefab、UI、输入、物理、Shader、性能、真机或发行验证。"
+    }
+  ],
+  "runtime_deferred": [
+    "D9 EnvironmentSystem 到 D21 输入的实际运行编排、事件订阅和存档恢复接线",
+    "Unity Player/PlayMode、场景、Prefab、Canvas、输入、Transform、物理、NavMesh 和 Shader",
+    "UI、VFX、音频、性能、真机、平台和发行门禁"
+  ],
+  "blockers": [],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L11_LOGIC_HANDOFF.md",
+    "next": "D9.EnvironmentSystem 仍是天气唯一写者；后续编排只应把 D9 的公开天气结果映射为本契约，不得把 D21WeatherInputCommand 当作第二天气事实。",
+    "release_statement": "D21-L11 纯逻辑通过；不等同于 D21 完成、运行时可玩、性能通过或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L11 已冻结季节/风向/风力/降水/能见度/气压等确定性天气输入与稳定失败码；D9.EnvironmentSystem 保持唯一天气写者，D21 输入包不提供写入方法。"
+  }
+}

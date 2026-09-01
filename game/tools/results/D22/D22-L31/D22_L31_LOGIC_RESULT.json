@@ -1,0 +1,34 @@
+{
+  "task_id": "D22-L31",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "新增 D22 纯逻辑边界审计脚本：先词法剥离 C# 注释、普通/逐字/raw 字符串与字符字面量，再拦截 Canvas、EventSystem、设备输入、Unity UI、网络、LLM、墙钟、不可控随机和业务私写。",
+  "changed_files": [
+    "tools/d22_logic_boundary_audit.py",
+    "game/tools/results/D22/D22-L31/D22_L31_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L31_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test",
+      "result": "PASS — comment, block-comment, ordinary/verbatim/raw string and character literal examples were ignored; one executable Canvas fixture was detected."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — 28 D22 source/test files scanned, 0 violations; only the approved caller-owned inventory fixture and safeInventory clone writes are excluded narrowly, while direct owner writes remain detected."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --json",
+      "result": "PASS — machine report status PASS, files_scanned=28, issues=[]。"
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing line-ending warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "脚本只审计源码文本，不替代 Unity 编译、Player/PlayMode、运行时输入、视觉、设备、性能或发布验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L31_LOGIC_HANDOFF.md"
+}

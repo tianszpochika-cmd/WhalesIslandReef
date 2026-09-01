@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L21",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:03:12+08:00",
+  "summary": "建立 D20 纯逻辑动物物种目录，使用 D18/D11 已冻结的 9 个 animal_/fish_/pet_ content_id，覆盖陆生、鸟类、水生、RareSpecies 横切和宠物，并提供只读能力位/稳定标签；不导入或伪造任何资源、数量或视觉事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20AnimalSpeciesCatalog.cs",
+    "game/tools/results/D20/D20-L21/D20_L21_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L21_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /nologo /target:library /warnaserror+ /doc:<temp> /out:<temp> game/Assets/Scripts/Systems/D20/D20AnimalIdentityContracts.cs game/Assets/Scripts/Systems/D20/D20AnimalSpeciesCatalog.cs",
+      "result": "PASS — exit 0；L20/L21 独立 C# library 编译并生成 XML 文档，无警告。"
+    },
+    {
+      "command": "PowerShell Add-Type catalog smoke for D20AnimalSpeciesCatalog (ValidateCatalog, category filters, rare cross-cut, pet owner, clone protection, invalid prefix)",
+      "result": "PASS — 9 个定义校验无错误；terrestrial/bird/aquatic/rare/pet 过滤、animal_green_turtle 不造 rare_ 前缀、宠物 AnimalCareSystem owner、副本保护和非法前缀拒绝均通过。"
+    },
+    {
+      "command": "PowerShell scoped static check for D20AnimalIdentityContracts.cs and D20AnimalSpeciesCatalog.cs (forbidden engine/network/LLM/time/random references and trailing whitespace)",
+      "result": "PASS — 2 files；forbidden implementation references=0；trailing_whitespace=0。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json game/tools/results/D20/D20-L21/D20_L21_LOGIC_RESULT.json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — no whitespace errors in the current worktree diff."
+    }
+  ],
+  "runtime_deferred": [
+    "Registry/资源文件运行时读取、模型/Avatar/Animator、Prefab、场景、Transform、物理、寻路、输入、数量/生态计算和 RuntimeApproved/ReleaseApproved 留给后续阶段。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L21_LOGIC_HANDOFF.md"
+}

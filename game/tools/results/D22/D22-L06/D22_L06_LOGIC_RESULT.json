@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L06",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "实现纯读取式 UI 命令前置校验：schema/上下文、行为者权限、活动面板/模态焦点、禁用、世界日/存档修订、冷却及重复/冲突命令判断；不登记、不消费、不写状态。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22UiCommandValidator.cs",
+    "game/tools/results/D22/D22-L06/D22_L06_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L06_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — valid command, active-modal target, permission rejection, cooldown, duplicate and duplicate-conflict assertions passed."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — validator only reads supplied DTO/context and has no Unity/runtime/network/LLM executable dependency."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "真实权限 owner、业务校验与命令登记/执行由外部 owner 或 router 提供；本校验器不替代业务裁决。",
+    "真实输入、Canvas/UGUI/EventSystem、焦点渲染、Player/PlayMode、设备、性能与发布验证未执行。",
+    "本校验器不改变 cooldown、processed command 索引、存档或业务数据。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L06_LOGIC_HANDOFF.md"
+}

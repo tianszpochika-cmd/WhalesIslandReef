@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L07",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "建立稳定反馈目录与反馈读模型：成功/失败/警告/确认/重试分类、严重度、重试策略、确认要求、correlation/source/reason 保留及本地化 key 映射。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22FeedbackCatalog.cs",
+    "game/tools/results/D22/D22-L07/D22_L07_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L07_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — validation-to-feedback mapping, catalog hit and unknown-code fallback/localization-key assertions passed."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — feedback catalog contains only stable IDs/enums/localization keys; no runtime UI dependency."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "本地化资源加载、可见文案、Toast/Modal/音效/动画与 Canvas/UGUI 渲染留给 Runtime 阶段。",
+    "反馈目录不代表业务成功；owner result/read model 仍是业务事实唯一来源。",
+    "真实输入、Player/PlayMode、设备、性能与发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L07_LOGIC_HANDOFF.md"
+}

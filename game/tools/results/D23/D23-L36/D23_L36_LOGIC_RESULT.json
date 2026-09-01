@@ -1,0 +1,58 @@
+{
+  "task_id": "D23-L36",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-02T02:58:50+08:00",
+  "summary": "D23-L36 完成纯逻辑存档审计：D19/D21/D8 projection、event log 和 snapshot 在主剧本、长跑及中断矩阵中可恢复且稳定；真实 SaveSystem 介质继续延期。",
+  "changed_files": [
+    "docs/game/design/common/D23_LOGIC_SAVE_AUDIT.md",
+    "game/Assets/Tests/EditMode/D23/D23SavePointScenario.cs",
+    "game/Assets/Tests/EditMode/D23/D23FullLoopScenarioSupport.cs",
+    "game/Assets/Tests/EditMode/D23/D23InterruptionMatrixTests.cs",
+    "game/Assets/Tests/EditMode/D23/D23LongRunScenarioTests.cs",
+    "game/tools/results/D23/D23-L36/D23_L36_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D23/D23-L36_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "save_projection_and_snapshot",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "evidence": "FullLoop 在 Tick 0/20 及返港阶段完成 D21 JSON、D21 event log、D19 port projection、D8 EventLog snapshot 恢复；SavePoint=4。"
+    },
+    {
+      "check": "long_run_save_stability",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "evidence": "LongRun=767 assertions；50 Tick，每 10 Tick 进行 D21 JSON round-trip，距离/补给/事件 key 均稳定。"
+    },
+    {
+      "check": "interruption_restore",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "evidence": "InterruptionMatrix=27 assertions；非法 Tick 不改变 state/save，D21/D8 snapshot restore 保留历史。"
+    },
+    {
+      "check": "d23_unified_runner",
+      "status": "PASS",
+      "command": "python tools/d23_scenario_runner.py --write-results",
+      "exit_code": 0,
+      "evidence": "26 cases、13925 assertions、0 failures；上游五项 LOGIC_PASS。"
+    },
+    {
+      "check": "real_save_system_media",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "exit_code": 0,
+      "evidence": "真实文件/云介质、进程崩溃恢复和 Unity SaveSystem 接线不属于本纯逻辑门禁，已登记 Runtime Deferred。"
+    }
+  ],
+  "runtime_deferred": [
+    "真实 SaveSystem owner 接线、介质写入、加载、崩溃恢复和云同步。",
+    "Unity Player/PlayMode、设备、性能、网络、LLM 和发行验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D23/D23-L36_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,30 @@
+{
+  "task_id": "D20-L04",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T08:58:23+08:00",
+  "summary": "建立 D20 动作意图纯 C# 契约：冻结 walk/run/interact/talk/fish/board/helm/hit 八个稳定动作键，定义 owner/目标/逻辑位置元数据、可序列化请求字段、参数/因果引用和严格校验结果。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20ActionIntentContracts.cs",
+    "game/tools/results/D20/D20-L04/D20_L04_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L04_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /nologo /target:library /warnaserror+ /doc:<temp> /out:<temp> game/Assets/Scripts/Systems/D20/D20CharacterIdentityContracts.cs game/Assets/Scripts/Systems/D20/D20PlayerPresenceSystem.cs game/Assets/Scripts/Systems/D20/D20ActionIntentContracts.cs",
+      "result": "PASS — exit 0；L02-L04 独立 C# library 编译并生成 XML 文档，无警告。"
+    },
+    {
+      "command": "PowerShell reflection smoke for D20ActionIntentContracts (all eight intents, definition isolation, ActionId mismatch rejection)",
+      "result": "PASS — 8/8 intent validations；定义数=8；外部定义副本篡改不影响目录；ActionId mismatch 被拒绝。"
+    },
+    {
+      "command": "PowerShell scoped static check for L02-L04 source files (forbidden engine/network/LLM/time/random references and trailing whitespace)",
+      "result": "PASS — 3 files；forbidden_hits=0；trailing_whitespace=0。"
+    }
+  ],
+  "runtime_deferred": [
+    "动作意图与 D2/D10/D11/D19/Ship/Health owner 的真实路由、输入、动画、场景和业务结算留给后续集成与 Runtime 任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L04_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,38 @@
+{
+  "task_id": "D24-L22",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "已验证共享 AgentReply 契约 ID 以及 game/server/web 三端真实消费者；Web consumer 包含版本、顶层字段、引用、范围、禁止结果字段和 noop/relation 约束。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D24/D24CrossEndContractTests.cs",
+    "tools/d24_logic_test_runner.py",
+    "web/src/contracts/agent-reply.ts",
+    "game/tools/results/D24/D24-L22/D24_L22_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L22_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "standalone_csharp_build",
+      "status": "PASS",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L22 --configuration Release",
+      "evidence": "测试入口本身编译退出码 0。"
+    },
+    {
+      "check": "shared_contract_presence",
+      "status": "PASS",
+      "command": "D24CrossEndContractTests.RunAll",
+      "evidence": "contract_id=present；game_marker=True；server_marker=True；web_consumer_files=1；web_consumer_valid=True。"
+    },
+    {
+      "check": "web_consumer_shape",
+      "status": "PASS",
+      "command": "web/src/contracts/agent-reply.ts",
+      "evidence": "真实 TypeScript consumer 校验 agent_reply.v1.1 版本、顶层字段、引用格式、affinity 范围、禁止结果字段以及 none/noop 约束；不是仅 marker。"
+    }
+  ],
+  "runtime_deferred": [
+    "跨端运行时、网络、部署和浏览器验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L22_LOGIC_HANDOFF.md"
+}

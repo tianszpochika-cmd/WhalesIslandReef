@@ -1,0 +1,76 @@
+{
+  "task_id": "D21-L21",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:27:27+08:00",
+  "summary": "为 D21-L21 增加天气/海况/风险资格纯 C# EditMode 测试，覆盖同输入同 seed 的海况、影响投影和风险资格确定性，天气边界与 Calm 约束，以及海况指纹错配拒绝。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D21/D21WeatherSeaStateTests.cs",
+    "game/Assets/Tests/EditMode/D21/D21WeatherSeaStateTests.cs.meta",
+    "game/tools/results/D21/D21-L21/D21_L21_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D21/D21-L21_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "pure_csharp_compile",
+      "status": "PASS",
+      "command": "dotnet build .codex-temp/d21-logic-runner/D21LogicRunner.csproj --no-restore",
+      "evidence": "EXIT=0；D21 生产纯逻辑源码、四个 EditMode 测试文件和直接调用 runner 编译通过，0 warning / 0 error。"
+    },
+    {
+      "check": "offline_logic_execution",
+      "status": "PASS",
+      "command": "dotnet run --project .codex-temp/d21-logic-runner/D21LogicRunner.csproj --no-build --no-restore",
+      "evidence": "EXIT=0；D21_LOGIC_CASES=14、D21_LOGIC_FAILURES=0；L21.Determinism、Boundaries、Fingerprint 全部 PASS。"
+    },
+    {
+      "check": "forbidden_dependency_scan",
+      "status": "PASS",
+      "command": "PowerShell executable-line scan over game/Assets/Tests/EditMode/D21/*.cs for UnityEngine/network/LLM/clock/random/physics references",
+      "evidence": "FORBIDDEN_EXECUTABLE_REFERENCE_HITS=0；天气与风险测试只传入显式 world day、tick、seed 和公开 DTO。"
+    },
+    {
+      "check": "json_and_asset_metadata",
+      "status": "PASS",
+      "command": "PowerShell ConvertFrom-Json fixed-key audit for D21-L21 result",
+      "evidence": "结果 JSON 必需键齐全且可解析。"
+    },
+    {
+      "check": "git_diff_check",
+      "status": "PASS",
+      "command": "git diff --check plus untracked D21 artifact trailing-whitespace scan",
+      "evidence": "EXIT=0；本任务新增文件无尾随空白或空白错误。"
+    },
+    {
+      "check": "status_sync",
+      "status": "NOT_RUN_BY_SCOPE",
+      "command": null,
+      "evidence": "按委派要求未运行 tools/sync_logic_task_status.py，未修改 docs/game/LOGIC_TASK_STATUS.md 或 .workbuddy/memory/2026-09-01.md。"
+    },
+    {
+      "check": "runtime_or_player_validation",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、物理、输入、网络、真机或发行门禁；本结果只证明离线纯逻辑。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Editor 对新增 asmdef 的实际 EditMode discovery 与测试窗口执行",
+    "D9 EnvironmentSystem 的真实天气快照写入、D21-L06/D20 crew projection 接线和运行时航程编排",
+    "场景/Prefab、物理、输入、UI、音频/VFX、性能、平台、真机和发行验证"
+  ],
+  "blockers": [
+    {
+      "id": "D21-D20-L40",
+      "scope": "未来风险输入的 crew snapshot 集成",
+      "status": "OPEN_DEPENDENCY",
+      "severity": "P1",
+      "description": "本测试直接构造 D21VoyageRiskInput 的公开只读字段，未伪造 D20 owner projection；D21-L06 仍因 D20-L40 未通过而为 LOGIC_PARTIAL。该依赖不阻塞本次独立确定性规则测试。"
+    }
+  ],
+  "handoff": {
+    "document": "docs/game/design/common/handoffs/D21/D21-L21_LOGIC_HANDOFF.md",
+    "next": "协调者可在 Unity Editor 刷新 asmdef 后运行 D21 EditMode 测试；关闭 D20-L40 后再增加公开 crew snapshot 到风险输入的适配测试。",
+    "release_statement": "D21-L21 仅表示天气/海况/风险资格纯逻辑测试通过；不表示 D9/D20 运行时接线、场景或发行就绪。",
+    "coordinator_memory_entry": "2026-09-01：D21-L21 已验证同 seed/weather 的海况、影响和风险资格确定性，并覆盖天气边界与指纹错配；D20-L40/D21-L06 partial 仅作为未来 crew projection 接线依赖记录。"
+  }
+}

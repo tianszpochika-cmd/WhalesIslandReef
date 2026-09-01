@@ -1,0 +1,30 @@
+{
+  "task_id": "D20-L13",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T09:39:08+08:00",
+  "summary": "新增只读 RelationAction 适配器：消费 RelationSystem 的已知角色和关系边公开副本，为对话/合作生成资格、关系证据和稳定反馈码；不改变 affinity、trust、respect、fear 或 canonical relation graph。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20RelationActionAdapter.cs",
+    "game/tools/results/D20/D20-L13/D20_L13_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L13_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell: modern Roslyn csc.dll /nologo /target:library /warnaserror+ 编译 D20-L11—L15 与公开 RelationSystem/Event 依赖",
+      "result": "PASS — exit 0；合并纯 C# library 编译无错误、无警告。"
+    },
+    {
+      "command": "PowerShell: public-API smoke for D20RelationActionAdapter using EventLog and RelationSystem owner APIs",
+      "result": "PASS — 已知角色无边可对话、无证据合作拒绝、经关系 owner 公开事实入口形成 trust 后合作资格均通过。"
+    },
+    {
+      "command": "PowerShell: scoped static check for D20-L11—L15 source files (engine/network/LLM/time/random references, owner mutation tokens, trailing whitespace)",
+      "result": "PASS — 5 个目标源文件；forbidden_hits=0；trailing_whitespace=0。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player、PlayMode、场景、输入、动画或设备；真实对话/合作命令路由、事件呈现和关系 owner 运行时结算留给后续集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L13_LOGIC_HANDOFF.md"
+}

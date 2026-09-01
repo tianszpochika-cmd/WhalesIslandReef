@@ -1,0 +1,44 @@
+{
+  "task_id": "D20-L31",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T11:37:52+08:00",
+  "summary": "新增 D20 action event router，将角色/NPC/动物命令按 CommandReceived、Validation、OwnerResult、DomainFact、D20StateProjectionUpdated、PresentationReadOnly/Failure 顺序路由；domain fact 仅接受 owner 成功结果，事件可确定性重放。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20ActionEventRouter.cs",
+    "game/tools/results/D20/D20-L31/D20_L31_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L31_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Whalebone.Systems.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — 0 warnings, 0 errors。"
+    },
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore --nologo -warnaserror",
+      "result": "PASS — D20 通配纯 C# 编译 runner 纳入 L31，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project C:/Users/Administrator/AppData/Local/Temp/d20-l28-l35-batch/D20L28L35Batch.csproj --no-build --no-restore",
+      "result": "PASS — D20-L31 PASS ASSERTIONS=6；同批 L28-L30、L32-L35 亦全部 PASS。覆盖事件顺序/校验、D19 owner result/domain fact、D20 projection、presentation read-only、replay 和 Validate。"
+    },
+    {
+      "command": "rg -n -i 'UnityEngine|GameObject|Transform|Animator|NavMesh|Prefab|Canvas|HttpClient|System\\.Net|WebClient|Socket|LLM|OpenAI|DateTime|Network' game/Assets/Scripts/Systems/D20/D20CharacterCommandService.cs game/Assets/Scripts/Systems/D20/D20NpcBehaviorService.cs game/Assets/Scripts/Systems/D20/D20AnimalBehaviorService.cs game/Assets/Scripts/Systems/D20/D20ActionEventRouter.cs",
+      "result": "PASS — FORBIDDEN_REFERENCE_HITS=0。"
+    },
+    {
+      "command": "Get-Content game/tools/results/D20/D20-L31/D20_L31_LOGIC_RESULT.json -Raw | ConvertFrom-Json",
+      "result": "PASS — 结果 JSON 可解析。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit code 0。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode；presentation 事件仅为只读逻辑投影，不代表真实 UI/动画/场景呈现。",
+    "未验证真实 owner service、SaveSystem、网络、LLM、设备、性能或跨端事件传输。",
+    "D19 owner 的真实事务/回滚、D10/D11 组合与线上事件持久化仍由后续 Runtime/整合任务验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L31_LOGIC_HANDOFF.md"
+}

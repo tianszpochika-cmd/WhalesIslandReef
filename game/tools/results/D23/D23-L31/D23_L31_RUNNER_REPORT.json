@@ -1,0 +1,377 @@
+{
+  "runner_name": "D23 Unified Pure Logic Scenario Runner",
+  "timestamp": "2026-09-02T02:58:50+08:00",
+  "status": "PASS",
+  "scope": {
+    "unity_player_playmode_executed": false,
+    "scene_prefab_canvas_input_executed": false,
+    "network_llm_executed": false,
+    "performance_sampling_executed": false
+  },
+  "commands_pass": true,
+  "pass_eligible": true,
+  "blockers": [],
+  "upstream_gate": {
+    "status": "PASS",
+    "entries": {
+      "D18-L50": {
+        "path": "game/tools/results/D18/D18-L50/D18_L50_LOGIC_RESULT.json",
+        "status": "LOGIC_PASS",
+        "error": ""
+      },
+      "D19-L48": {
+        "path": "game/tools/results/D19/D19-L48/D19_L48_LOGIC_RESULT.json",
+        "status": "LOGIC_PASS",
+        "error": ""
+      },
+      "D20-L40": {
+        "path": "game/tools/results/D20/D20-L40/D20_L40_LOGIC_RESULT.json",
+        "status": "LOGIC_PASS",
+        "error": ""
+      },
+      "D21-L32": {
+        "path": "game/tools/results/D21/D21-L32/D21_L32_LOGIC_RESULT.json",
+        "status": "LOGIC_PASS",
+        "error": ""
+      },
+      "D22-L36": {
+        "path": "game/tools/results/D22/D22-L36/D22_L36_LOGIC_RESULT.json",
+        "status": "LOGIC_PASS",
+        "error": ""
+      }
+    },
+    "blockers": []
+  },
+  "boundary_audit": {
+    "files_scanned": 28,
+    "issues": [],
+    "rules": [
+      "UNITY_RUNTIME",
+      "INPUT_OR_UI",
+      "NETWORK_OR_LLM",
+      "WALL_CLOCK_OR_NONDETERMINISM",
+      "DIRECT_OWNER_FACT_WRITE"
+    ],
+    "scope": "D23 EditMode pure C# scenarios only; Unity/runtime is deferred",
+    "status": "PASS"
+  },
+  "suites": [
+    {
+      "id": "D23-PYTHON-SYNTAX",
+      "name": "D23 runner/audit Python syntax",
+      "command": "'C:\\Program Files\\Python310\\python.exe' -m py_compile tools/d23_cross_system_boundary_audit.py tools/d23_scenario_runner.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "duration_ms": 62
+    },
+    {
+      "id": "D23-BOUNDARY-SELF-TEST",
+      "name": "D23 boundary audit self-test",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d23_cross_system_boundary_audit.py --self-test",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_tail": "{\"cases\": 5, \"failures\": [], \"status\": \"PASS\"}",
+      "stderr_tail": "",
+      "duration_ms": 47
+    },
+    {
+      "id": "D23-BOUNDARY-AUDIT",
+      "name": "D23 boundary audit",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d23_cross_system_boundary_audit.py --json",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_tail": "{\"files_scanned\": 28, \"issues\": [], \"rules\": [\"UNITY_RUNTIME\", \"INPUT_OR_UI\", \"NETWORK_OR_LLM\", \"WALL_CLOCK_OR_NONDETERMINISM\", \"DIRECT_OWNER_FACT_WRITE\"], \"scope\": \"D23 EditMode pure C# scenarios only; Unity/runtime is deferred\", \"status\": \"PASS\"}",
+      "stderr_tail": "",
+      "duration_ms": 77
+    },
+    {
+      "id": "D23-CSHARP-BUILD",
+      "name": "D23 full pure C# offline build",
+      "command": "dotnet build .codex-temp/d23-compile/D23IntegrationTests.csproj --no-restore --verbosity:minimal",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_tail": "Whalebone.Agent.Runtime -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Agent.Runtime.dll\n  Whalebone.Systems -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Systems.dll\n  D22IntegrationCompile -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d22-compile\\bin\\Debug\\net8.0\\D22IntegrationCompile.dll\n  D23IntegrationTests -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d23-compile\\bin\\Debug\\net8.0\\D23IntegrationTests.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.70",
+      "stderr_tail": "",
+      "duration_ms": 859
+    },
+    {
+      "id": "D23-CSHARP-RUN",
+      "name": "D23 26-case deterministic full-loop run",
+      "command": "dotnet run --project .codex-temp/d23-compile/D23IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_tail": "D23_CASE=NewGame;ASSERTIONS=5\nD23_CASE=CharacterSetup;ASSERTIONS=5\nD23_CASE=PortEntry;ASSERTIONS=6\nD23_CASE=Market;ASSERTIONS=4\nD23_CASE=Warehouse;ASSERTIONS=4\nD23_CASE=Tavern;ASSERTIONS=2\nD23_CASE=Shipyard;ASSERTIONS=3\nD23_CASE=Preparation;ASSERTIONS=4\nD23_CASE=Boarding;ASSERTIONS=6\nD23_CASE=Departure;ASSERTIONS=7\nD23_CASE=Voyage;ASSERTIONS=4\nD23_CASE=Return;ASSERTIONS=7\nD23_CASE=EventLog;ASSERTIONS=4\nD23_CASE=SavePoint;ASSERTIONS=4\nD23_CASE=TimeAdvance;ASSERTIONS=3\nD23_CASE=FailureRecovery;ASSERTIONS=3\nD23_CASE=CurrencyInventory;ASSERTIONS=4\nD23_CASE=PetAnimal;ASSERTIONS=2\nD23_CASE=FishingCollection;ASSERTIONS=2\nD23_CASE=FactionConsequence;ASSERTIONS=2\nD23_CASE=UiCommand;ASSERTIONS=3\nD23_CASE=ContractCompatibility;ASSERTIONS=4\nD23_CASE=FullLoop;ASSERTIONS=622\nD23_CASE=ReplayDeterminism;ASSERTIONS=12421\nD23_CASE=InterruptionMatrix;ASSERTIONS=27\nD23_CASE=LongRun;ASSERTIONS=767\nD23_CASES=26\nD23_ASSERTIONS=13925\nD23_FAILURES=0",
+      "stderr_tail": "",
+      "duration_ms": 2827,
+      "observed_markers": {
+        "D23_CASES": 26,
+        "D23_ASSERTIONS": 13925,
+        "D23_FAILURES": 0
+      },
+      "observed_cases": [
+        {
+          "name": "NewGame",
+          "assertions": 5
+        },
+        {
+          "name": "CharacterSetup",
+          "assertions": 5
+        },
+        {
+          "name": "PortEntry",
+          "assertions": 6
+        },
+        {
+          "name": "Market",
+          "assertions": 4
+        },
+        {
+          "name": "Warehouse",
+          "assertions": 4
+        },
+        {
+          "name": "Tavern",
+          "assertions": 2
+        },
+        {
+          "name": "Shipyard",
+          "assertions": 3
+        },
+        {
+          "name": "Preparation",
+          "assertions": 4
+        },
+        {
+          "name": "Boarding",
+          "assertions": 6
+        },
+        {
+          "name": "Departure",
+          "assertions": 7
+        },
+        {
+          "name": "Voyage",
+          "assertions": 4
+        },
+        {
+          "name": "Return",
+          "assertions": 7
+        },
+        {
+          "name": "EventLog",
+          "assertions": 4
+        },
+        {
+          "name": "SavePoint",
+          "assertions": 4
+        },
+        {
+          "name": "TimeAdvance",
+          "assertions": 3
+        },
+        {
+          "name": "FailureRecovery",
+          "assertions": 3
+        },
+        {
+          "name": "CurrencyInventory",
+          "assertions": 4
+        },
+        {
+          "name": "PetAnimal",
+          "assertions": 2
+        },
+        {
+          "name": "FishingCollection",
+          "assertions": 2
+        },
+        {
+          "name": "FactionConsequence",
+          "assertions": 2
+        },
+        {
+          "name": "UiCommand",
+          "assertions": 3
+        },
+        {
+          "name": "ContractCompatibility",
+          "assertions": 4
+        },
+        {
+          "name": "FullLoop",
+          "assertions": 622
+        },
+        {
+          "name": "ReplayDeterminism",
+          "assertions": 12421
+        },
+        {
+          "name": "InterruptionMatrix",
+          "assertions": 27
+        },
+        {
+          "name": "LongRun",
+          "assertions": 767
+        }
+      ],
+      "marker_status": "PASS"
+    }
+  ],
+  "suite_count": 5,
+  "passed_suites": 5,
+  "failed_suites": 0,
+  "case_count": 26,
+  "assertion_count": 13925,
+  "failure_count": 0,
+  "cases": [
+    {
+      "name": "NewGame",
+      "assertions": 5
+    },
+    {
+      "name": "CharacterSetup",
+      "assertions": 5
+    },
+    {
+      "name": "PortEntry",
+      "assertions": 6
+    },
+    {
+      "name": "Market",
+      "assertions": 4
+    },
+    {
+      "name": "Warehouse",
+      "assertions": 4
+    },
+    {
+      "name": "Tavern",
+      "assertions": 2
+    },
+    {
+      "name": "Shipyard",
+      "assertions": 3
+    },
+    {
+      "name": "Preparation",
+      "assertions": 4
+    },
+    {
+      "name": "Boarding",
+      "assertions": 6
+    },
+    {
+      "name": "Departure",
+      "assertions": 7
+    },
+    {
+      "name": "Voyage",
+      "assertions": 4
+    },
+    {
+      "name": "Return",
+      "assertions": 7
+    },
+    {
+      "name": "EventLog",
+      "assertions": 4
+    },
+    {
+      "name": "SavePoint",
+      "assertions": 4
+    },
+    {
+      "name": "TimeAdvance",
+      "assertions": 3
+    },
+    {
+      "name": "FailureRecovery",
+      "assertions": 3
+    },
+    {
+      "name": "CurrencyInventory",
+      "assertions": 4
+    },
+    {
+      "name": "PetAnimal",
+      "assertions": 2
+    },
+    {
+      "name": "FishingCollection",
+      "assertions": 2
+    },
+    {
+      "name": "FactionConsequence",
+      "assertions": 2
+    },
+    {
+      "name": "UiCommand",
+      "assertions": 3
+    },
+    {
+      "name": "ContractCompatibility",
+      "assertions": 4
+    },
+    {
+      "name": "FullLoop",
+      "assertions": 622
+    },
+    {
+      "name": "ReplayDeterminism",
+      "assertions": 12421
+    },
+    {
+      "name": "InterruptionMatrix",
+      "assertions": 27
+    },
+    {
+      "name": "LongRun",
+      "assertions": 767
+    }
+  ],
+  "required_cases": [
+    "NewGame",
+    "CharacterSetup",
+    "PortEntry",
+    "Market",
+    "Warehouse",
+    "Tavern",
+    "Shipyard",
+    "Preparation",
+    "Boarding",
+    "Departure",
+    "Voyage",
+    "Return",
+    "EventLog",
+    "SavePoint",
+    "TimeAdvance",
+    "FailureRecovery",
+    "CurrencyInventory",
+    "PetAnimal",
+    "FishingCollection",
+    "FactionConsequence",
+    "UiCommand",
+    "ContractCompatibility",
+    "FullLoop",
+    "ReplayDeterminism",
+    "InterruptionMatrix",
+    "LongRun"
+  ],
+  "missing_cases": [],
+  "duplicate_cases": [],
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、Canvas/UI、真实键鼠/手柄/触摸输入未执行。",
+    "真实设备、镜头/碰撞、布局/分辨率、画面/动画/音频、性能采样和发行验证未执行。",
+    "真实 SaveSystem 介质、网络服务和 LLM/Agent runtime 接线不属于本纯逻辑门禁。"
+  ],
+  "report_path": "game/tools/results/D23/D23-L31/D23_L31_RUNNER_REPORT.json",
+  "d23_l01_l34_evidence": {
+    "status": "PASS",
+    "expected_results": 34,
+    "present_results": 34,
+    "present_handoffs": 34,
+    "issues": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "task_id": "D22-L32",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T22:52:21+08:00",
+  "summary": "发布 D23 可消费的 D22 UI 命令、owner 路由、反馈/本地化、ViewModel 模块降级、Save 投影和 Runtime Deferred 接线规则；明确 D21 ship 依赖不得伪造成功。",
+  "changed_files": [
+    "docs/game/design/common/D22_LOGIC_UI_INTERFACE.md",
+    "game/tools/results/D22/D22-L32/D22_L32_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L32_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Get-Content -Raw docs/game/design/common/D22_LOGIC_UI_INTERFACE.md; manual interface coverage review",
+      "result": "PASS — document covers envelope, owner mapping, fail-closed result, feedback/localization, fixed module order, Save projection and Runtime Deferred rules."
+    },
+    {
+      "command": "PowerShell D21 L01-L32 result/acceptance gate parser",
+      "result": "PASS — 32/32 D21 result JSON objects are LOGIC_PASS and D21_LOGIC_ACCEPTANCE.md is present."
+    },
+    {
+      "command": "python tools/d22_logic_boundary_audit.py --self-test; python tools/d22_logic_boundary_audit.py",
+      "result": "PASS — documented API's corresponding D22 source/test scan found 0 boundary violations in 28 files."
+    },
+    {
+      "command": "D22DeterministicUiScenarioTests.Run() and D22UiSaveLoadTests.Run()",
+      "result": "PASS — 44 + 21 assertions support the documented route, degradation and snapshot semantics."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; only pre-existing line-ending warnings were reported."
+    }
+  ],
+  "runtime_deferred": [
+    "D23/Runtime 仍需自行接入真实按钮、Canvas/UGUI、EventSystem、输入、布局、视觉本地化、Player/PlayMode、设备和性能。",
+    "D21-L01—L32 acceptance 已通过；Quest/Save adapter acceptance、D22 ship adapter 的可编译公开 endpoint 与真实 owner runtime 接线仍由后续任务验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L32_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,148 @@
+{
+  "runner_name": "D21 Unified Pure Logic Test Runner",
+  "timestamp": "2026-09-01T22:45:03+08:00",
+  "status": "PASS",
+  "scope": {
+    "expected_logic_tasks": "D21-L01..L32",
+    "unity_player_playmode_executed": false,
+    "status_sync_executed": false
+  },
+  "suite_count": 9,
+  "passed_suites": 9,
+  "failed_suites": 0,
+  "suites": [
+    {
+      "id": "D21-RUNNER-PYTHON-COMPILE",
+      "name": "D21 runner and audit Python syntax",
+      "command": "'C:\\Program Files\\Python310\\python.exe' -m py_compile tools/d21_logic_test_runner.py tools/d21_logic_boundary_audit.py tools/tests/test_d21_logic_boundary_audit.py",
+      "exit_code": 0,
+      "duration_ms": 62,
+      "status": "PASS",
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "id": "D21-AUDIT-SELF-TEST",
+      "name": "D21 logic boundary audit self-test",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d21_logic_boundary_audit.py --self-test",
+      "exit_code": 0,
+      "duration_ms": 62,
+      "status": "PASS",
+      "stdout_tail": "{\n  \"bad_fixture_rule_ids\": [\n    \"D21-AUDIT-001\",\n    \"D21-AUDIT-002\",\n    \"D21-AUDIT-003\"\n  ],\n  \"good_fixture_violations\": [],\n  \"passed\": true\n}",
+      "stderr_tail": ""
+    },
+    {
+      "id": "D21-AUDIT-UNIT-TESTS",
+      "name": "D21 logic boundary audit unit tests",
+      "command": "'C:\\Program Files\\Python310\\python.exe' -m unittest tools/tests/test_d21_logic_boundary_audit.py",
+      "exit_code": 0,
+      "duration_ms": 297,
+      "status": "PASS",
+      "stdout_tail": "",
+      "stderr_tail": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.211s\n\nOK"
+    },
+    {
+      "id": "D21-BOUNDARY-AUDIT",
+      "name": "D21 logic boundary static audit",
+      "command": "'C:\\Program Files\\Python310\\python.exe' tools/d21_logic_boundary_audit.py",
+      "exit_code": 0,
+      "duration_ms": 265,
+      "status": "PASS",
+      "stdout_tail": "{\n  \"audit_name\": \"D21 Logic Boundary Static Audit\",\n  \"base_dir\": \"C:/Users/Administrator/Desktop/game/first01\",\n  \"checks\": [\n    \"D21-AUDIT-001\",\n    \"D21-AUDIT-002\",\n    \"D21-AUDIT-003\",\n    \"D21-AUDIT-004\",\n    \"D21-AUDIT-005\"\n  ],\n  \"passed\": true,\n  \"scanned_files\": [\n    \"game/Assets/Scripts/Systems/D21/D21AnchorMooringSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21CargoCapacityRules.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21CourseCommandSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21CrewProjectionAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21CrewRequirementRules.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21HullComponentSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21NavigationRouteContracts.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21PortDepartureAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21PortReturnAdapter.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21ProvisionConsumptionSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21SeaStateSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21ShipConditionSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21ShipIdentityContracts.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21ShipSaveProjection.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21VoyageCommandService.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21VoyageEventContracts.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21VoyageEventRouter.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21VoyageResolutionSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21VoyageRiskSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21VoyageTimeSystem.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21WeatherImpactRules.cs\",\n    \"game/Assets/Scripts/Systems/D21/D21WeatherInputContracts.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21CrewProjectionIntegrationTests.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21LongVoyageSimulationTests.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21PortVoyageAdapterTests.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21ShipConditionTests.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21VoyageInvariantTests.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21VoyageSaveLoadTests.cs\",\n    \"game/Assets/Tests/EditMode/D21/D21WeatherSeaStateTests.cs\"\n  ],\n  \"scanned_files_count\": 29,\n  \"status\": \"LOGIC_PASS\",\n  \"violations\": [],\n  \"violations_count\": 0\n}",
+      "stderr_tail": ""
+    },
+    {
+      "id": "D21-INTEGRATION-COMPILE",
+      "name": "D21 pure C# integration compile",
+      "command": "dotnet build .codex-temp/d21-compile/D21IntegrationCompile.csproj --no-restore --nologo -warnaserror",
+      "exit_code": 0,
+      "duration_ms": 1014,
+      "status": "PASS",
+      "stdout_tail": "Whalebone.Agent.Runtime -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Agent.Runtime.dll\n  Whalebone.Systems -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Systems.dll\n  D21IntegrationCompile -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d21-compile\\bin\\Debug\\netstandard2.1\\D21IntegrationCompile.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.84",
+      "stderr_tail": ""
+    },
+    {
+      "id": "D21-INTEGRATION-TEST-BUILD",
+      "name": "D21 integration test compile",
+      "command": "dotnet build .codex-temp/d21-tests/D21IntegrationTests.csproj --no-restore --nologo -warnaserror",
+      "exit_code": 0,
+      "duration_ms": 1032,
+      "status": "PASS",
+      "stdout_tail": "Whalebone.Agent.Runtime -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Agent.Runtime.dll\n  Whalebone.Systems -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Systems.dll\n  D21IntegrationCompile -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d21-compile\\bin\\Debug\\netstandard2.1\\D21IntegrationCompile.dll\n  D21IntegrationTests -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\d21-tests\\bin\\Debug\\net8.0\\D21IntegrationTests.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.84",
+      "stderr_tail": ""
+    },
+    {
+      "id": "D21-INTEGRATION-TEST-RUN",
+      "name": "D21 integration 11-case pure logic run",
+      "command": "dotnet run --project .codex-temp/d21-tests/D21IntegrationTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "duration_ms": 32187,
+      "status": "PASS",
+      "stdout_tail": "D21_INTEGRATION_BASE_CASES=8\nD21_CREW_PROJECTION_ASSERTIONS=16\nD21_INTEGRATION_CASES=11\nD21_INTEGRATION_FAILURES=0",
+      "stderr_tail": "",
+      "expected_markers": {
+        "D21_INTEGRATION_BASE_CASES": 8,
+        "D21_CREW_PROJECTION_ASSERTIONS": 16,
+        "D21_INTEGRATION_CASES": 11,
+        "D21_INTEGRATION_FAILURES": 0
+      },
+      "observed_markers": {
+        "D21_INTEGRATION_BASE_CASES": 8,
+        "D21_CREW_PROJECTION_ASSERTIONS": 16,
+        "D21_INTEGRATION_CASES": 11,
+        "D21_INTEGRATION_FAILURES": 0
+      },
+      "marker_status": "PASS"
+    },
+    {
+      "id": "D21-CREW-PROJECTION-BUILD",
+      "name": "D20 to D21 crew projection pure C# compile",
+      "command": "dotnet build .codex-temp/crew-projection-tests/CrewProjectionTests.csproj --no-restore --nologo -warnaserror",
+      "exit_code": 0,
+      "duration_ms": 1015,
+      "status": "PASS",
+      "stdout_tail": "Whalebone.Agent.Runtime -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Agent.Runtime.dll\n  Whalebone.Systems -> C:\\Users\\Administrator\\Desktop\\game\\first01\\game\\Temp\\bin\\Debug\\Whalebone.Systems.dll\n  CrewProjectionTests -> C:\\Users\\Administrator\\Desktop\\game\\first01\\.codex-temp\\crew-projection-tests\\bin\\Debug\\net8.0\\CrewProjectionTests.dll\n\n已成功生成。\n    0 个警告\n    0 个错误\n\n已用时间 00:00:00.83",
+      "stderr_tail": ""
+    },
+    {
+      "id": "D21-CREW-PROJECTION-RUN",
+      "name": "D20/D21 crew projection 14+16 assertion run",
+      "command": "dotnet run --project .codex-temp/crew-projection-tests/CrewProjectionTests.csproj --no-build --no-restore",
+      "exit_code": 0,
+      "duration_ms": 468,
+      "status": "PASS",
+      "stdout_tail": "D20_CREW_PROJECTION_ASSERTIONS=14\nD21_CREW_PROJECTION_ASSERTIONS=16\nCREW_PROJECTION_FAILURES=0",
+      "stderr_tail": "",
+      "expected_markers": {
+        "D20_CREW_PROJECTION_ASSERTIONS": 14,
+        "D21_CREW_PROJECTION_ASSERTIONS": 16,
+        "CREW_PROJECTION_FAILURES": 0
+      },
+      "observed_markers": {
+        "D20_CREW_PROJECTION_ASSERTIONS": 14,
+        "D21_CREW_PROJECTION_ASSERTIONS": 16,
+        "CREW_PROJECTION_FAILURES": 0
+      },
+      "marker_status": "PASS"
+    }
+  ],
+  "evidence": {
+    "status": "PASS",
+    "expected_results": 32,
+    "present_results": 32,
+    "present_handoffs": 32,
+    "missing": [],
+    "bad_status": [],
+    "invalid_json": [],
+    "invalid_shape": []
+  },
+  "runtime_deferred": [
+    "Unity Player/PlayMode、场景、Prefab、真实驾驶、输入、物理、UI/动画、设备、性能和发行验证未执行。",
+    "D19 港口真实生命周期与 D20/Crew 运行时 owner 接线不由离线 runner 代替。",
+    "真实 SaveSystem 介质、崩溃恢复、迁移和云同步仍需 Runtime/发布阶段验证。"
+  ],
+  "not_run_by_scope": [
+    "python tools/sync_logic_task_status.py（按委派要求不修改共享状态台账）"
+  ],
+  "duration_ms": 36422
+}

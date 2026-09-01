@@ -1,0 +1,26 @@
+{
+  "task_id": "D20-L02",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T08:48:03+08:00",
+  "summary": "建立 D20 角色身份纯 C# 契约：稳定角色 ID、玩家/NPC 类别、生命阶段、可用性、不可变字段副本/指纹、版本化身份投影、克隆与校验；不复制 D10 姓名/证件/外观或其他领域事实。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20CharacterIdentityContracts.cs",
+    "game/tools/results/D20/D20-L02/D20_L02_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L02_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /nologo /target:library /warnaserror+ /doc:<temp> /out:<temp> game/Assets/Scripts/Systems/D20/D20CharacterIdentityContracts.cs",
+      "result": "PASS — exit 0；独立 C# library 编译并生成 XML 文档，无警告。"
+    },
+    {
+      "command": "PowerShell scoped static check for D20CharacterIdentityContracts.cs (forbidden engine/network/LLM/time/random references and trailing whitespace)",
+      "result": "PASS — forbidden_hits=0；trailing_whitespace=0。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity 序列化器、角色生成、模型/Avatar/Animator、场景、输入、物理、表现和设备验证留给后续 Runtime 任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L02_LOGIC_HANDOFF.md"
+}

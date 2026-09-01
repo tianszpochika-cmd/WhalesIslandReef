@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L04",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "实现面板共存与互斥规则：导航面板同屏替换、叠加层共存、模态 owner 必填、阻塞模态冲突及子模态父级约束，输出可解释关闭计划。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22PanelExclusivityRules.cs",
+    "game/tools/results/D22/D22-L04/D22_L04_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L04_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — L04 navigation replacement/force-close, overlay coexistence and blocking-modal conflict assertions passed."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — rules contain no Unity/runtime/network/LLM executable dependency and do not mutate domain state."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "面板真实开关、Canvas/UGUI 叠层、raycast、EventSystem 与点击可见效果留给 Runtime 阶段。",
+    "实际输入、动画、布局、视觉可访问性、Player/PlayMode、设备、性能与发布验证未执行。",
+    "规则只输出逻辑决策和待关闭 ID，不直接关闭 runtime 对象或写入业务事实。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L04_LOGIC_HANDOFF.md"
+}

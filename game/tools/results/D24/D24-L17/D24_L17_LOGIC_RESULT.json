@@ -1,0 +1,37 @@
+{
+  "task_id": "D24-L17",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "完成固定输入、固定种子与重复执行回放；覆盖 D19 港口命令链、状态转移与重复命令幂等性。",
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D24/D24SeedReplayTests.cs",
+    "tools/d24_logic_test_runner.py",
+    "game/tools/results/D24/D24-L17/D24_L17_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L17_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "standalone_csharp_build_and_run",
+      "status": "PASS",
+      "command": "python tools/d24_logic_test_runner.py --root . --task D24-L17 --configuration Release",
+      "evidence": "临时独立 csproj 编译退出码 0，运行退出码 0；固定回放、港口命令序列和重复命令幂等 3 项断言均输出 [OK]。"
+    },
+    {
+      "check": "fixed_input_replay_signature",
+      "status": "PASS",
+      "command": "D24SeedReplayTests.RunAll",
+      "evidence": "24 次相同输入回放生成相同 SHA-256 签名，并验证 Enter/Dock/Berth/Board/Depart 的预期状态链。"
+    },
+    {
+      "check": "scope_boundary",
+      "status": "NOT_APPLICABLE",
+      "command": null,
+      "evidence": "未启动 Unity Player/PlayMode、场景、Prefab、Canvas、Input、物理、视觉、性能、网络或 LLM。"
+    }
+  ],
+  "runtime_deferred": [
+    "Unity Player/PlayMode 中的真实输入绑定、场景对象接线、设备和发行验证"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L17_LOGIC_HANDOFF.md"
+}

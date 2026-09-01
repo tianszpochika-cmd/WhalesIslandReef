@@ -1,0 +1,32 @@
+{
+  "schema_version": "d24.regression-review.v1",
+  "task_id": "D24-L32",
+  "status": "PASS",
+  "d24_l25_report": "game/tools/results/D24/D24-L25/D24_L25_RUNNER_REPORT.json",
+  "d24_l26_compare": "game/tools/results/D24/D24-L26/D24_L26_COMPARE.json",
+  "d24_l27_report": "game/tools/results/D24/D24-L27/D24_L27_RUNNER_REPORT.json",
+  "successful_suites": {
+    "d18_d23_results": 247,
+    "d18_d23_handoffs": 247,
+    "d24_audits": 15,
+    "d24_csharp": 6,
+    "agentcore_checks": 2,
+    "d23_cases": 26,
+    "d23_assertions": 13925,
+    "d23_failures": 0,
+    "d24_l27_assertions": 7003,
+    "d24_l27_failures": 0
+  },
+  "failure_classification": {
+    "logic_failures": [],
+    "non_blocking_compatibility_findings": 34,
+    "resolved_tooling_issue": "D24-L27 ProjectReference first rebuilt an unrelated Agent Runtime project with existing NumericConfigurationTests/V3 missing symbols; final isolated DLL-reference build passed.",
+    "runtime_deferred": true
+  },
+  "reproducibility": {
+    "d24_l25_pass_eligible": true,
+    "d24_l26_passed": true,
+    "d24_l27_pass_eligible": true,
+    "temporary_outputs_only": true
+  }
+}

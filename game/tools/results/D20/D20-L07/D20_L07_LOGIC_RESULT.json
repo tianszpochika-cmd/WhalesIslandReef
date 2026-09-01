@@ -1,0 +1,38 @@
+{
+  "task_id": "D20-L07",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "新增只读 D20 表现事件契约：将 L06 动作结果和 L03 presence 结果映射为稳定、不可变、可校验的表现事件，重复动作回执不重复发出事件。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D20/D20PresentationEventContracts.cs",
+    "game/tools/results/D20/D20-L07/D20_L07_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D20/D20-L07_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "dotnet build game/Temp/D20LogicSmoke/D20LogicSmoke.csproj --no-restore -t:Rebuild",
+      "result": "PASS — D20 源文件精确 C# harness 编译，0 warnings，0 errors。"
+    },
+    {
+      "command": "dotnet run --project game/Temp/D20LogicSmoke/D20LogicSmoke.csproj -- D20-L07",
+      "result": "PASS — 动作结果事件生成、只读校验和重复结果抑制均通过。"
+    },
+    {
+      "command": "scoped forbidden-reference scan over the five D20-L06..L10 production files",
+      "result": "PASS — 无 Unity/引擎对象、网络、LLM、时间或随机引用。"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS — exit 0，无 whitespace error。"
+    },
+    {
+      "command": "PowerShell ConvertFrom-Json parse of D20-L06..L10 LOGIC_RESULT.json",
+      "result": "PASS — 五份机器结果均为有效 JSON，字段集合符合约定。"
+    }
+  ],
+  "runtime_deferred": [
+    "未启动 Unity Player/PlayMode 或任何 UI/音频/动画消费；表现事件到具体视图、提示和反馈通道的接线留给后续 Runtime/集成任务。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D20/D20-L07_LOGIC_HANDOFF.md"
+}

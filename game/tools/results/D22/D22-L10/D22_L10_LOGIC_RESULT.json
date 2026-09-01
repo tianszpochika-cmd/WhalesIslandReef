@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L10",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "实现暂停、恢复和切换意图的纯逻辑状态机；显式校验会话、上下文、修订及加载/保存/迁移等不可暂停阶段，不写游戏时钟或设备状态。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22PauseIntentSystem.cs",
+    "game/tools/results/D22/D22-L10/D22_L10_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L10_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L10 deterministic positive/negative smoke: Pause, repeated Pause, Resume, saving/unpausable context, context mismatch and invalid intent",
+      "result": "PASS — all assertions passed; unpausable read model exposes CanPause=false and the supplied reason context."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22PauseIntentSystem.cs for Unity/Canvas/EventSystem/Input/network/LLM/Time.timeScale",
+      "result": "PASS — no forbidden executable dependency, device read or time-scale write detected."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L10/D22_L10_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "Runtime 负责把 Pause/Resume 逻辑结果映射到游戏循环和可见 UI；本系统不操作 Time.timeScale。",
+    "实际键盘、手柄、触摸、EventSystem、Canvas、动画、布局、设备与性能验证未执行。",
+    "保存/加载/迁移 owner 的真实执行与业务事实仍由对应 owner 提供，本系统只读取显式上下文。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L10_LOGIC_HANDOFF.md"
+}

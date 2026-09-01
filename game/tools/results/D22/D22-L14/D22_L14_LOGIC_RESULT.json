@@ -1,0 +1,40 @@
+{
+  "task_id": "D22-L14",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T12:00:00+08:00",
+  "summary": "从 D16AccessibilitySettings 公开契约建立 D22 无障碍读模型，覆盖文本缩放、对比、色觉、减少动态效果、低刺激、字幕和敏感提示，并校验范围。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22AccessibilityReadModel.cs",
+    "game/tools/results/D22/D22-L14/D22_L14_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L14_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "$files = @(Get-ChildItem game/Assets/Scripts/Systems/D22/*.cs | Select-Object -ExpandProperty FullName); $files += (Get-Item game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs).FullName; Add-Type -Path $files -ErrorAction Stop",
+      "result": "PASS — D22-L02-L16 pure C# files and the consumed D16 pure accessibility contract compiled in memory."
+    },
+    {
+      "command": "PowerShell D22-L14 deterministic positive/negative smoke: valid defaults, TextScale 0.8 bound, out-of-range scale, unsupported locale, missing bindings, missing settings and no mutation",
+      "result": "PASS — all assertions passed; projection is defensive and does not mutate D16 settings."
+    },
+    {
+      "command": "PowerShell comment-stripped forbidden-reference scan of D22AccessibilityReadModel.cs for Unity/Canvas/EventSystem/Input/network/LLM/PlayerPrefs",
+      "result": "PASS — only the pure D16 settings contract is consumed; no storage/UI/device writer detected."
+    },
+    {
+      "command": "PowerShell Get-Content -Raw game/tools/results/D22/D22-L14/D22_L14_LOGIC_RESULT.json | ConvertFrom-Json",
+      "result": "PASS — result JSON parsed successfully."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; existing line-ending warnings are unrelated."
+    }
+  ],
+  "runtime_deferred": [
+    "D16 store 的实际持久化、字体/对比/动态效果应用、字幕渲染和输入绑定捕获留给 Runtime/store owner。",
+    "本读模型不写 PlayerPrefs、不修改 D16 owner、不把表现偏好当作领域存档。",
+    "Canvas/UGUI、真实输入、Player/PlayMode、设备、性能、音频和发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L14_LOGIC_HANDOFF.md"
+}

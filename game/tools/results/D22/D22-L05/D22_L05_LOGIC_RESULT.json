@@ -1,0 +1,36 @@
+{
+  "task_id": "D22-L05",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T10:00:00+08:00",
+  "summary": "建立 UI 命令信封与命令定义：稳定 action/owner、command/correlation ID、目标/修订/因果事件、参数约束、确定性指纹及不承诺业务成功的结果 DTO。",
+  "changed_files": [
+    "game/Assets/Scripts/Systems/D22/D22UiCommandContracts.cs",
+    "game/tools/results/D22/D22-L05/D22_L05_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D22/D22-L05_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "command": "PowerShell Add-Type on game/Assets/Scripts/Systems/D22/*.cs with ErrorAction Stop",
+      "result": "PASS — 7 D22 pure C# files compiled in memory."
+    },
+    {
+      "command": "PowerShell D22 L02-L08 deterministic smoke harness",
+      "result": "PASS — L05 valid port command shape, stable envelope and command result fields were exercised."
+    },
+    {
+      "command": "PowerShell D22 pure-source forbidden-reference audit with comments stripped",
+      "result": "PASS — command contracts contain no network/LLM/Unity executable dependency and expose no business writer."
+    },
+    {
+      "command": "git diff --check -- .",
+      "result": "PASS — no whitespace errors; Git reported only pre-existing line-ending normalization warnings."
+    }
+  ],
+  "runtime_deferred": [
+    "真实按钮/输入事件、Canvas/UGUI/EventSystem、视觉提示与 UI 渲染留给 Runtime 阶段。",
+    "各 owner 的业务裁决、持久化与真实 read model 仍由所属系统提供；本 DTO 不代表 owner 已接受或成功。",
+    "Player/PlayMode、场景/Prefab、设备、性能与发布验证未执行。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D22/D22-L05_LOGIC_HANDOFF.md"
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "D24-L11",
+  "status": "LOGIC_PASS",
+  "updated_at": "2026-09-01T23:04:50+08:00",
+  "summary": "错误码可定位、本地化 key 完整、无硬编码可见文案且无吞错的纯逻辑审计通过。",
+  "changed_files": [
+    "tools/d24_error_catalog_audit.py",
+    "tools/d24_logic_audit_common.py",
+    "game/tools/results/D24/D24-L11/D24_L11_LOGIC_RESULT.json",
+    "docs/game/design/common/handoffs/D24/D24-L11_LOGIC_HANDOFF.md"
+  ],
+  "verification": [
+    {
+      "check": "error_catalog_sources",
+      "status": "PASS",
+      "command": "python tools/d24_error_catalog_audit.py --root .",
+      "evidence": "退出码 0；错误码来源、可定位字段、本地化关联和失败传播模式均通过审计。"
+    }
+  ],
+  "runtime_deferred": [
+    "实际 UI 文案展示、设备字体和浏览器/Player 验证。"
+  ],
+  "blockers": [],
+  "handoff": "docs/game/design/common/handoffs/D24/D24-L11_LOGIC_HANDOFF.md"
+}
