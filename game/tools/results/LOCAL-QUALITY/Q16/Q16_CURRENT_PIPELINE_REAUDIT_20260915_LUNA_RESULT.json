@@ -1,0 +1,48 @@
+{
+  "task_id": "Q16",
+  "run_id": "Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "trade_bridge_success_reject_busy_duplicate_and_one_change_per_request",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q15"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D29TradeBridgePlayModeTests.cs": "754F2706EA54FAD8F16B46202C08515E75288DC6EAA0A96546B92897DA56C15A",
+    "game/Assets/Scripts/Gameplay/D3/D3RuntimeBootstrap.cs": "2955480563F79FEEACCB20E61B5F4B61BE1524ED2A70FB31DD244C323E932EA9",
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "D07CC06223BFEF5F24390FF1E140214863B72E1A4C426E1C22494E9EB43BBD20",
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D29Q16TradeBridgeCoversSuccessRejectBusyAndOneChangePerRequest",
+    "full_name": "Whalebone.Tests.D29.D29TradeBridgePlayModeTests.D29Q16TradeBridgeCoversSuccessRejectBusyAndOneChangePerRequest",
+    "status": "completed",
+    "pipeline_duration_s": 4.13,
+    "test_duration_s": 4.0367948,
+    "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+    "runtime_marker": "not_ready=true, shortcut_double_click_one_owner=true, buy_success_one_change=true, sell_success_one_change=true, insufficient_funds_unchanged=true, cargo_full_unchanged=true",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {"name": "not_ready_rejection", "result": "PASS_WITHIN_SCOPE", "evidence": "The trade bridge rejected the owner-not-ready path without mutating trade state."},
+    {"name": "duplicate_busy_guard", "result": "PASS_WITHIN_SCOPE", "evidence": "A shortcut double click was handled by one owner only."},
+    {"name": "success_one_change", "result": "PASS_WITHIN_SCOPE", "evidence": "Buy and sell success paths each produced exactly one expected state change."},
+    {"name": "rejection_state_unchanged", "result": "PASS_WITHIN_SCOPE", "evidence": "Insufficient-funds and cargo-full rejections left state unchanged."}
+  ],
+  "status_boundary": "Q16 is PASS_WITHIN_SCOPE for D29/D3 trade bridge success, rejection, busy/duplicate guard and one-change-per-request behavior. It does not prove foreground Player mouse/keyboard, rendered market UI quality, online or saved-data behavior, performance or VC-G01.",
+  "next_task": "Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

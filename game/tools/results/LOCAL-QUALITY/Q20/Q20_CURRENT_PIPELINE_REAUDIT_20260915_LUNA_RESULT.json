@@ -1,0 +1,91 @@
+{
+  "task_id": "Q20",
+  "run_id": "Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL/BLOCKED_ASSET",
+  "status_scope": "candidate vegetation bounds, owned-terrain contact and legacy Renderer quarantine",
+  "captured_at_local": "2026-09-15T01:34:00+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q19"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "D19R03 vegetation candidate/runtime containment",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Candidate bounds and runtime containment revalidated; formal palm admission remains blocked, so no production change was justified."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {"total": 6, "errors": 0, "warnings": 6},
+    "console_warning_classification": "Known D2 animation/rig and fallback-player, plus D27 presentation-readiness warnings; retained as evidence.",
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D19R03Q20VegetationTests.cs": "93F322F395E4A35D818D7BB05A46767BECBE8FC7C4BBC56E65CD170E0D69E567",
+    "game/Assets/Tests/PlayMode/D19R03Q20VegetationPlayModeTests.cs": "09A23C0996C03EAFDB6B5A1B6016CE46927C085B69FC603DD1B12459FD97FA97",
+    "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs": "AFC015A9FE800EC66008F0BAE5982F3A8CC30DD09ABB61A0C43D2596421F7043",
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "7CA2DF25DDD025E1160D6BFA8BFBAE0B40FC944F8DDB7EDF753F21349FE4B377",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab": "F28686F12236FA9F9FA5DD087E0B4EF4959CAD57C31A52FC241056D806FAE163",
+    "docs/game/design/common/assets/d18_local_development_ready_catalog.json": "F218651902B39A989AD0E557DC62B576577C7AED0CD633D9F5FEF4C43F2F71A3"
+  },
+  "checks": [
+    {
+      "name": "candidate_palm_bounds",
+      "command": "run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q20VegetationTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "test_duration_seconds": 0.0021969,
+        "pipeline_duration_seconds": 0.01,
+        "test_name": "Save.Tests.D19R03Q20VegetationTests.PalmCandidate_HasRenderableMaterials_AndRendererBoundsCanGroundWorkPrefab"
+      },
+      "evidence": "Candidate palm imports with renderable materials and measurable Renderer bounds suitable for candidate grounding work."
+    },
+    {
+      "name": "r03_grounding_and_legacy_quarantine",
+      "command": "run_tests --project-path game --mode playmode --filter Whalebone.Tests.D19R03Q26.D19R03Q26GameplayDefectPlayModeTests.Q26A03ActiveLegacyTreeRenderersAndR03VegetationHaveGroundEvidence --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "test_duration_seconds": 3.0194955,
+        "pipeline_duration_seconds": 3.12
+      },
+      "runtime_marker": "activeLegacyTreeRenderers=0, activeR03Vegetation=24, unsupportedR03Vegetation=0; vegetation_grounded=26, vegetation_hidden_without_terrain=0",
+      "evidence": "Current InitialHarbor PlayMode marker confirms the R03-owned vegetation contact and legacy Renderer quarantine."
+    },
+    {
+      "name": "formal_palm_resource_gate",
+      "result": "BLOCKED_ASSET",
+      "evidence": "d18_local_development_ready_catalog.json remains status=BLOCKED with local_development_ready_count=0 and eligible_entry_count=0; D19R03HarborPresentationBuilder keeps RenderAuthoredPalms=false and formal authored palm references remain 0. One candidate tree_palm reference remains candidate-only."
+    },
+    {
+      "name": "native_visual_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "Candidate bounds/containment is not formal palm restoration, full-camera Player grounding/occlusion/no-clipping, native Player/GPU screenshot acceptance or VC-G01."
+    }
+  ],
+  "resource_gate": {
+    "catalog_status": "BLOCKED",
+    "local_development_ready_count": 0,
+    "eligible_entry_count": 0,
+    "render_authored_palms": false,
+    "formal_authored_palm_reference_count": 0,
+    "candidate_tree_palm_reference_count": 1
+  },
+  "status_boundary": "Q20 PARTIAL/BLOCKED_ASSET covers candidate bounds plus current R03 vegetation contact and legacy Renderer quarantine only. It does not admit authored palms or complete the visual gate.",
+  "next_task": "Q21_CURRENT_PIPELINE_REAUDIT"
+}

@@ -44,6 +44,8 @@
 - [本地高质量 Q23 当前 Pipeline 复核](../game/tools/results/LOCAL-QUALITY/Q23/Q23_PIPELINE_RECHECK_20260911_RESULT.json)：当前源码下正式场景集成专项 `1/1 PASS`；不代表 Player 视觉/输入验收。
 - [本地高质量 Q24 保存恢复诊断交接](game/design/common/handoffs/LOCAL-QUALITY/Q24/Q24.md)：陆地/出海 Save round-trip、D2 安全出生锚点和中断保存保护边界。
 - [本地高质量 Q24 当前 Pipeline 复核](../game/tools/results/LOCAL-QUALITY/Q24/Q24_PIPELINE_RECHECK_20260911_RESULT.json)：当前源码保存恢复专项 `3/3 PASS`；不代表 Player 视觉/输入验收。
+- [本地高质量 2026-09-15 临时安全暂停交接](game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915.md)：Q24 存档恢复诊断完成后的安全暂停边界、未完成项与 Q25 恢复入口。
+- [本地高质量 Q24 当前 Pipeline 复核 Luna 2026-09-15](../game/tools/results/LOCAL-QUALITY/Q24/Q24_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)：当前源码 `3/3 PASS` 的存档 owner 证据；保持 `PARTIAL`，不代表原生 Player 或最终视觉通过。
 - [本地高质量 Q25 首航流程整合诊断交接](game/design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)：D30 阶段投影、D23 首航/返港/保存投影和 InitialHarbor 路线回归边界。
 - [本地高质量 Q25 当前 Pipeline 复核](../game/tools/results/LOCAL-QUALITY/Q25/Q25_PIPELINE_RECHECK_20260911_RESULT.json)：当前源码 D30/D23 首航投影 `2/2 PASS`、InitialHarbor 路线 `2/2 PASS`；不代表 Player 手动/视觉验收。
 - [本地高质量 Q26 真实 PlayMode 缺陷诊断交接](game/design/common/handoffs/LOCAL-QUALITY/Q26/Q26.md)：真实 W 游泳、登船可见舵锚点、R03 植被接地、动作/输入回归与性能/原生 Player 未完成边界。
@@ -339,3 +341,41 @@ Q31 当前 Pipeline 诊断已补充 `InitialHarbor` 运行态、仓库 modal 与
 ## 2026-09-13 Q26-A21 默认程序化泳姿连续性
 
 新增 Q26-A21 回归并用 Unity Pipeline hidden Player 复核开放水域：默认 Player=`Procedural/Swimming`，72 帧测得 `maxArmDelta=6.47°`、`maxFootDelta=1.94°`；Pipeline W 从 `(0.00,0.40,30.00)` 移到 `(0.45,0.40,29.87)`。定向 `1/1 PASS`，完整 Q26=`19/19 PASS`。这只证明 procedural fallback 的连续相位和水中移动，不证明自然 authored swim 或最终视觉门禁。结果：[Q26-A21](../game/tools/results/LOCAL-QUALITY/Q26-A21/RESULT.json)；交接：[Q26-A21](game/design/common/handoffs/LOCAL-QUALITY/Q26-A21/Q26-A21.md)。
+
+## 2026-09-15 Local Quality resumed on current source
+
+恢复执行后，Q00/Q01/Q09 已重新绑定到当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63`；旧 Q08 安全暂停证据保持历史不可变。Q00 current-source exact Player build、Q01 根因/owner 对账和 Q09 当前甲板锚点回归均已登记：
+
+- [Q00 current-source result](../game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q00.md)
+- [Q01 current root-cause result](../game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q03A23_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q01.md)
+- [Q09 current pipeline result](../game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q09/Q09.md)
+
+三张卡均保持有界状态，未把 Pipeline/hidden Player 证据升级为前台输入、最终视觉或 D31 整体 PASS；下一张为 Q10。
+
+Q10 已继续完成当前源航行中甲板关系回归：[Q10 result](../game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q10/Q10.md)。D17A12=`1/1 PASS`，十个船舶运动快照下玩家相对船根 transform 稳定，并恢复安全下船；下一张为 Q11，仍不等价于原生 Player 视觉或人工输入验收。
+
+Q11 已继续完成当前源安全下船回归：[Q11 result](../game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q11/Q11.md)。D17A13=`1/1 PASS`，十次合法下船、无落点拒绝和状态恢复通过；下一张为 Q12。
+
+Q12 已继续完成当前源相机回归：[Q12 result](../game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q12/Q12.md)。D17A14=`1/1 PASS`，十次模式切换、受控遮挡收缩与恢复通过；下一张为 Q13。
+
+Q13 已继续完成当前源输入/UI 回归：[Q13 result](../game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q13/Q13.md)。D17A15=`1/1`、D16InputRouter=`11/11`、D16PrimaryHudNavigation=`2/2`；下一张为 Q14，前台 Win32 输入仍未由 Pipeline 测试替代。
+
+Q14 已继续完成当前源岸水船整合回归：[Q14 result](../game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q14/Q14.md)。D17A16=`1/1 PASS`，有界 shore→water→shore 与登船/转向/拒绝/合法下船链通过；下一张为 Q15。
+
+Q15 已继续完成当前源面板焦点回归：[Q15 result](../game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q15/Q15.md)。D29Q15=`1/1 PASS`，I/M/T owner、三类面板十轮互斥、重复拒绝和 Gameplay 恢复通过；下一张为 Q16。
+
+Q16 已继续完成当前源交易桥回归：[Q16 result](../game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q16/Q16.md)。D29Q16=`1/1 PASS`，成功、拒绝、忙碌/重复和一次请求一次变化通过；下一张为 Q17。
+
+Q17 已继续完成当前源船坞/整备回归：[Q17 result](../game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q17/Q17.md)。D29Q17=`1/1 PASS`，成功、拒绝、重复、取消、异常恢复和主输入恢复通过；下一张为 Q18。
+
+Q18 已继续完成当前源 HUD/visual-logic 回归：[Q18 result](../game/tools/results/LOCAL-QUALITY/Q18/Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q18/Q18.md)。分辨率矩阵 `3/3`、D31 VisualLogic `36/36`、Python HUD `30/30`；Q18 仍为 `PARTIAL`，下一张为 Q19。
+
+Q19 已继续完成当前源船员/存档回归：[Q19 result](../game/tools/results/LOCAL-QUALITY/Q19/Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [log](../game/tools/results/LOCAL-QUALITY/Q19/Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q19/Q19.md)。船员交互审计 `1/1`、Save.Tests `377/377`、AgentCore `0/0`；Q19 仍为离线 owner/save 范围内 `VERIFIED`，下一张为 Q20。
+
+Q20 已继续完成当前源候选植被/旧 Renderer 隔离回归：[Q20 result](../game/tools/results/LOCAL-QUALITY/Q20/Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [log](../game/tools/results/LOCAL-QUALITY/Q20/Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q20/Q20.md)。候选 EditMode `1/1`、R03 接地/隔离 PlayMode `1/1`；D18 仍 `BLOCKED / 0 / 0`，Q20 保持 `PARTIAL/BLOCKED_ASSET`，下一张为 Q21。
+
+Q21 已继续完成当前源港口空间回归：[Q21 result](../game/tools/results/LOCAL-QUALITY/Q21/Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [log](../game/tools/results/LOCAL-QUALITY/Q21/Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q21/Q21.md)。静态服务空间 `1/1`，Q21 仍为 `PARTIAL`，下一张为 Q22。
+
+Q22 已继续完成当前源船海天气回归：[Q22 result](../game/tools/results/LOCAL-QUALITY/Q22/Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [log](../game/tools/results/LOCAL-QUALITY/Q22/Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q22/Q22.md)。静态 sea/ship/weather 合同 `1/1`，Q22 仍为 `PARTIAL`，下一张为 Q23。
+
+Q23 已继续完成当前源正式场景集成回归：[Q23 result](../game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json) / [log](../game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log) / [handoff](game/design/common/handoffs/LOCAL-QUALITY/Q23/Q23.md)。InitialHarbor 集成/重开 `1/1`，Q23 仍为 `PARTIAL`，下一张为 Q24。

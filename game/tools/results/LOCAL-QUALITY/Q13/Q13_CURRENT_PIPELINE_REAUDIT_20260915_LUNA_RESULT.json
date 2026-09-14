@@ -1,0 +1,82 @@
+{
+  "task_id": "Q13",
+  "run_id": "Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "input_ui_focus_modal_restore_and_rebinding_route_contracts",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q08", "Q11", "Q12"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0,
+    "warning_query_after_final_d17_run": 6
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Tests/PlayMode/D16InputRouterPlayModeTests.cs": "D8F3FB7976045EBDF5642B10C22279A7862FAF6AF8E32830F243526E4B5E77E2",
+    "game/Assets/Tests/PlayMode/D16PrimaryHudNavigationPlayModeTests.cs": "E8FD23B177ABF0EA665BD579F50B1266E2534D02592CFD0B7AE89FD93CC0715A",
+    "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs": "35BE73701C036F16F79BAAE743D01CE961E5C284A00143C393EC96FA4F1B9EDB",
+    "game/Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs": "12F39F34ADD3244D5B856314B501C3F36E22D590742593C9E4444409A5A7BD5B",
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5",
+    "game/Assets/Scripts/Gameplay/UI/HarborPauseController.cs": "EBD4A7353C00841B3FAD5E107F58F9A6E948FEA2A365106F69638D4B130E7A29"
+  },
+  "tests": [
+    {
+      "filter": "D17A15GameplayKeyboardDoesNotNavigateHudAndPauseRestoresModalOwnership",
+      "status": "completed",
+      "pipeline_duration_s": 6.38,
+      "test_duration_s": 6.2825988,
+      "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "runtime_marker": "gameplay_w_s_cycles=10, normal_navigation=false, pause_navigation=true, blocked_navigation=true, restored_navigation=false, enabled_ui_module=InputSystemUIInputModule"
+    },
+    {
+      "filter": "D16InputRouterPlayModeTests",
+      "status": "completed",
+      "pipeline_duration_s": 9.15,
+      "summary": {"total": 11, "passed": 11, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "coverage": "D16A03 gameplay W/S versus HUD navigation isolation; InitialHarbor keyboard/camera/boarding loop; synthetic Escape pause; keyboard/gamepad events; keyboard/gamepad rebinding persistence."
+    },
+    {
+      "filter": "D16PrimaryHudNavigationPlayModeTests",
+      "status": "completed",
+      "pipeline_duration_s": 5.38,
+      "summary": {"total": 2, "passed": 2, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "coverage": "Gameplay movement keys do not navigate primary HUD; suppression reasserts after UI Move action restoration."
+    }
+  ],
+  "checks": [
+    {
+      "name": "gameplay_keys_do_not_navigate_hud",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A15 and D16A03 both passed; runtime marker reports ten W/S cycles with normal_navigation=false and blocked_navigation=true."
+    },
+    {
+      "name": "pause_modal_ownership_restores",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A15 reports pause_navigation=true and restored_navigation=false after the modal closes."
+    },
+    {
+      "name": "input_device_and_rebind_routes",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D16InputRouterPlayModeTests completed 11/11, including synthetic keyboard/gamepad events and keyboard/gamepad rebinding persistence."
+    },
+    {
+      "name": "primary_hud_suppression_reasserts",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D16PrimaryHudNavigationPlayModeTests completed 2/2, including UI Move action restoration and gameplay suppression reassertion."
+    }
+  ],
+  "status_boundary": "Q13 is PASS_WITHIN_SCOPE for Unity Input System test-device/runtime routing, W/S versus UGUI navigation isolation, Esc modal ownership restoration and rebind routes. It does not prove foreground Win32 physical keyboard focus, rendered HUD visual quality, E/I/M/T business flow, native Player compositor evidence or VC-G01.",
+  "warning_boundary": "The final D17A15 run exposed six known D2/D27 fallback or presentation-readiness warnings; no zero-warning claim is made.",
+  "next_task": "Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

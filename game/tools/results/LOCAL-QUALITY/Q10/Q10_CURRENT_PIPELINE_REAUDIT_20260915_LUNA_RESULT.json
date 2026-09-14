@@ -1,0 +1,65 @@
+{
+  "task_id": "Q10",
+  "run_id": "Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "ship_motion_preserves_boarded_player_relative_deck_transform_and_restores_disembark",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q09"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Scripts/Gameplay/D2/D2ShipController.cs": "E683ADEF4B0085BCD83C8219B6A07413CFB283A31CE7ABF562A31280807AACD9",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D17A12ShipMotionKeepsBoardedPlayerRelativeDeckStable",
+    "status": "completed",
+    "pipeline_duration_s": 4.08,
+    "test_duration_s": 3.9863393,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "runtime_marker": "motion_samples=10, maxRelativePositionError=0.000000, maxRelativeRotationError=0.000000, maxShipTranslation=1.513, maxShipHeadingDelta=32.000",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {
+      "name": "boarded_player_follows_ship_translation",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Ten current-source snapshots changed ship translation while the boarded player's relative local position remained within 0.001m; measured maximum error was 0.000000m."
+    },
+    {
+      "name": "boarded_player_follows_ship_rotation",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Ten current-source snapshots changed ship heading up to 32 degrees while the boarded player's relative rotation remained within 0.001 degrees; measured maximum error was 0.000000 degrees."
+    },
+    {
+      "name": "ship_control_and_collision_lifecycle_restored",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Every sample retained Ship mode, ship-root parent and disabled CharacterController; after restoring the baseline snapshot, TryToggleShip returned Character mode with no parent and CharacterController enabled."
+    }
+  ],
+  "status_boundary": "Q10 is PASS_WITHIN_SCOPE for D2 snapshot-driven ship-root translation/rotation, boarded-player relative transform stability and safe restoration to disembark state. It does not prove open-sea navigation, native Player W/S/A/D input, ship collision, camera composition, natural helm contact, authored action quality, or VC-G01.",
+  "next_task": "Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

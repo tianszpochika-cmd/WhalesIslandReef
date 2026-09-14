@@ -1,0 +1,41 @@
+Q22 current-source Pipeline re-audit — 2026-09-15 (Luna)
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline_editor_pid=63572
+pipeline_endpoint=127.0.0.1:7800
+
+[command]
+unity command run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q22SeaWeatherAuditTests --filter_type testName --async_tests true --timeout 120 --format json
+[result]
+status=completed duration=0.18s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test=Save.Tests.D19R03Q22SeaWeatherAuditTests.R03SeaAndShipPresentation_HasSeaLevelDraftMaterialsAndWeatherOwnerContracts
+test_duration=0.1758288s
+
+[marker]
+water_size=(96.00,96.00)
+sea_level=-0.0397
+beach_min_y=-0.0048
+foam_renderers=28
+water_missing_materials=0
+ship_min_y=0.0600
+hull_bottom_y=-0.0400
+presentation_audio=0
+fish_activity=Calm:1.00/Rain:0.90/Storm:0.55
+weather_metrics=Calm:0,Rain:560,Storm:980
+weather_wave_multiplier=Calm:1.00,Rain:1.40,Storm:2.35
+weather_preview=Calm -> Rain -> Storm -> Calm reset
+
+[editor]
+status=ready
+play_mode=stopped
+compiling=false
+domain_reload_in_progress=false
+
+[console]
+error_query=0
+warning_query=0
+after_capture=clear_console succeeded
+
+[scope]
+Q22 remains PARTIAL. Static sea/ship/weather owner contracts are verified; native Player swimming, ship-at-sea camera readability, foam/fog/audio playback, physical input, performance and final visual quality remain NOT_PROVEN.

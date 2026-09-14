@@ -1,0 +1,46 @@
+{
+  "task_id": "Q09",
+  "run_id": "Q09_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "stable_scaled_ship_helm_anchor_ten_boarding_cycles_and_remote_rejection",
+  "captured_at_local": "2026-09-15T00:00:00+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q07"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {"errors": 0, "warnings": "not used as a zero-warning claim"},
+    "console_after_capture": "not cleared; no error entries were present"
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D17A11StableDeckAnchorSupportsTenBoardingCyclesAndRejectsRemoteBoarding",
+    "status": "completed",
+    "pipeline_duration_s": 5.14,
+    "test_duration_s": 5.0480279,
+    "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+    "runtime_log": "D17A11 completed ten boarding/disembarking cycles with maxDeckHeightDelta=0.0000 and maxDeckAnchorDistance=0.0000; ship scale=(2.57,2.57,2.57).",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {"name": "stable_scaled_helm_anchor", "result": "PASS_WITHIN_SCOPE", "evidence": "The current-source D17A11 run resolved HelmPoint under the live ship root scale=(2.57,2.57,2.57) and retained the scale-independent world offset contract."},
+    {"name": "ten_boarding_disembarking_cycles", "result": "PASS_WITHIN_SCOPE", "evidence": "The current-source PlayMode test completed ten real TryToggleShip boarding/disembarking cycles with zero measured deck height and anchor drift."},
+    {"name": "remote_boarding_rejection", "result": "PASS_WITHIN_SCOPE", "evidence": "The test moved the real player 30m from the ship, asserted rejection without changing control ownership, and restored the legal approach point."}
+  ],
+  "status_boundary": "Q09 is PASS_WITHIN_SCOPE for the current-source scaled anchor, repeated boarding lifecycle and remote rejection only. It does not prove natural helm contact, ship motion, safe-disembark edge cases, visual hull clearance, native Player input or VC-G01.",
+  "next_task": "Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

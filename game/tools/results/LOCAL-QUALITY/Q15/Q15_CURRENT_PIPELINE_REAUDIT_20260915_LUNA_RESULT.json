@@ -1,0 +1,69 @@
+{
+  "task_id": "Q15",
+  "run_id": "Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "warehouse_market_tavern_shortcut_owner_modal_exclusivity_duplicate_rejection_and_gameplay_recovery",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q13", "Q14"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D29PanelFocusPlayModeTests.cs": "F9CA95059258AC7900437D57172160812C60CB0D8D726E63698B2637DCBB5748",
+    "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs": "35BE73701C036F16F79BAAE743D01CE961E5C284A00143C393EC96FA4F1B9EDB",
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5",
+    "game/Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs": "12F39F34ADD3244D5B856314B501C3F36E22D590742593C9E4444409A5A7BD5B",
+    "game/Assets/Scripts/Gameplay/UI/HarborPauseController.cs": "EBD4A7353C00841B3FAD5E107F58F9A6E948FEA2A365106F69638D4B130E7A29"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes",
+    "full_name": "Whalebone.Tests.D29.D29PanelFocusPlayModeTests.D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes",
+    "status": "completed",
+    "pipeline_duration_s": 17.36,
+    "test_duration_s": 17.2679852,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "runtime_markers": [
+      "shortcut_input=true, keys=I,M,T, legacy_keydown_reached_owner=true",
+      "warehouse_cycles=10, market_cycles=10, tavern_cycles=10, exclusive=true, repeated_request_rejected=true, gameplay_recovery=true"
+    ],
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {
+      "name": "shortcut_owner",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The runtime marker confirms I/M/T shortcut input reached the intended owner path."
+    },
+    {
+      "name": "ten_cycles_and_exclusivity",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Warehouse, market and tavern each completed ten open/close/recovery cycles while exclusive=true."
+    },
+    {
+      "name": "duplicate_rejection_and_gameplay_recovery",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Repeated requests were rejected and Gameplay input ownership recovered after temporary pages closed."
+    }
+  ],
+  "status_boundary": "Q15 is PASS_WITHIN_SCOPE for Unity PlayMode D29/D16 shortcut ownership, temporary-page exclusivity, duplicate rejection and Gameplay recovery. It does not prove foreground Win32 keyboard/mouse, rendered panel quality, business-owner behavior in a native Player, performance, formal action quality or VC-G01.",
+  "next_task": "Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

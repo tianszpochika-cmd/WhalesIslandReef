@@ -1,0 +1,8 @@
+2026-09-15 Q01 current-source root-cause audit
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63; editor_pid=63572; endpoint=127.0.0.1:7800; scene=InitialHarbor
+initial: root=D2_PlayerAvatar; scale=(1,1,1); action=Idle; pose=Procedural; formal_ready=false; d20_consumer=Formal; humanoid_adapter=true; candidate_renderers=7; hidden_previous=17
+open_water: MoveToOpenWater succeeded; action=Swimming; swimming=true; grounded=false; water_y=-0.0199999996; player_y=0.3999999762; pitch=64; body_drop=-0.6094465852
+boarding: TryToggleShip succeeded; parent=ph_ship_fishing; control_mode=Ship; steering_pose=true; controller_enabled=false; hand_to_wheel=0.1939880401/0.1939880997; hand_to_helm=0.8902304769/0.8902305365
+input_boundary: ui_navigation=false; ui_move_action_bound=false; selected_ui=<none>
+root_cause_boundary=action distortion, swim naturality, helm contact, tree floating and native W/S focus are not all visually reproducible through headless Pipeline; owner mapping is recorded without fabricated visual PASS
+console_errors=0; editor_final=ready/stopped; product_code_changed=false

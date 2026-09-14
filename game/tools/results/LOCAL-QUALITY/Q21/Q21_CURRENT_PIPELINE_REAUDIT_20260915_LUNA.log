@@ -1,0 +1,35 @@
+Q21 current-source Pipeline re-audit — 2026-09-15 (Luna)
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline_editor_pid=63572
+pipeline_endpoint=127.0.0.1:7800
+
+[command]
+unity command run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q21HarborSpaceTests --filter_type testName --async_tests true --timeout 120 --format json
+[result]
+status=completed duration=0.20s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test=Save.Tests.D19R03Q21HarborSpaceTests.R03HarborPresentation_ServiceFootprints_AreSeparatedGroundedAndRouteAnchored
+test_duration=0.189254s
+
+[marker]
+[Q21] buildings=4, footprints=4, required_groups=6, colliders=23, terrain_colliders=1, external_collider_owners=D27_R03_CharacterWildlifePresentation
+service_renderers=Market/Warehouse/Tavern/Shipyard each 37
+service_missing_material_slots_total=0
+service_bounds_min_y=Market 0.225, Warehouse 0.225, Tavern 0.225, Shipyard 0.225
+service_pairwise_xz_overlaps=0
+stable_anchors=D2_PlayerSpawnAnchor,D2_DisembarkAnchor
+
+[editor]
+status=ready
+play_mode=stopped
+compiling=false
+domain_reload_in_progress=false
+
+[console]
+error_query=0
+warning_query=0
+after_capture=clear_console succeeded
+
+[scope]
+Q21 remains PARTIAL. Static R03 space, renderer/material, collider ownership and stable anchor contracts are verified; native Player camera framing, occlusion, mouse hit testing, physical keyboard route, target-device performance and final visual acceptance remain NOT_PROVEN.

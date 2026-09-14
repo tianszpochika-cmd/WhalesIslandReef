@@ -1,0 +1,65 @@
+{
+  "task_id": "Q14",
+  "run_id": "Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "integrated_shore_water_deck_turn_and_safe_disembark_state_chain",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q08", "Q11", "Q12", "Q13"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "0C6D8BE009E2AAA9AB5A34F560BF47ABB8E0C960BFCC32A03EACE75E9E39C991"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D17A16IntegratedShoreWaterDeckTurnAndSafeDisembarkSequence",
+    "status": "completed",
+    "pipeline_duration_s": 4.91,
+    "test_duration_s": 4.8121442,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "runtime_marker": "shore_water_shore=true, board_owner=Ship, ship_input_turn=true, no_ground_rejection=true, legal_disembark=true, imported_neutral=False",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {
+      "name": "shore_water_shore_transition",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The integrated test completed the shore to water to shore sequence and retained the expected owner/state transitions."
+    },
+    {
+      "name": "ship_board_and_turn",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The player entered Ship ownership and ship input produced the tested turn state before disembark checks."
+    },
+    {
+      "name": "no_ground_and_legal_disembark",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The no-ground request was rejected and a legal disembark path completed; runtime marker reports both true."
+    }
+  ],
+  "status_boundary": "Q14 is PASS_WITHIN_SCOPE for the bounded shore-water-shore, boarding, ship-turn, no-ground rejection and legal disembark state chain. imported_neutral=False is recorded; this does not prove authored action quality, native Player input, final camera/visual quality, all-world collision or VC-G01.",
+  "next_task": "Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

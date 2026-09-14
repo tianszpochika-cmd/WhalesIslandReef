@@ -1,0 +1,66 @@
+{
+  "task_id": "Q11",
+  "run_id": "Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "safe_disembark_legal_cycles_no_ground_rejection_and_state_restore",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q10"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Scripts/Gameplay/D2/D2ShipController.cs": "E683ADEF4B0085BCD83C8219B6A07413CFB283A31CE7ABF562A31280807AACD9",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D17A13SafeDisembarkSurvivesTenLegalCyclesAndRejectsNoGround",
+    "status": "completed",
+    "pipeline_duration_s": 5.28,
+    "test_duration_s": 5.1819168,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "runtime_marker": "legal_disembark_cycles=10, no_ground_rejection=true, final_grounded=True, final_mode=Character",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {
+      "name": "ten_legal_disembark_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The current-source PlayMode test completed ten legal boarding/disembarking cycles without losing the expected Character state, collision lifecycle or ground recovery."
+    },
+    {
+      "name": "no_ground_disembark_rejection",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "A disembark request without a walkable beach, dock or gangplank was rejected and retained ship control; the expected rejection warning was captured."
+    },
+    {
+      "name": "final_state_restoration",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The runtime marker reported final_grounded=True and final_mode=Character after the repeated lifecycle."
+    }
+  ],
+  "status_boundary": "Q11 is PASS_WITHIN_SCOPE for legal/no-ground disembark state contract, repeated recovery and collision restoration. It does not prove moving-ship visual collision, every shoreline/gangplank exit, native Player input, authored action quality, camera quality or VC-G01.",
+  "warning_boundary": "One expected warning records rejection when no walkable disembark point exists; it is behavior evidence, not a zero-warning claim.",
+  "next_task": "Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

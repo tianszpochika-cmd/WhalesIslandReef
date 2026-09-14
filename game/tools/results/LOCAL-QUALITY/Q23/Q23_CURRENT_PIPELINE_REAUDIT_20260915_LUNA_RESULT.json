@@ -1,0 +1,74 @@
+{
+  "task_id": "Q23",
+  "run_id": "Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL",
+  "status_scope": "formal InitialHarbor R03/D27/ship Prefab integration, source resolution and reopen stability",
+  "captured_at_local": "2026-09-15T01:43:32+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q22"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "InitialHarbor formal R03/D27/ship Prefab integration and reopen stability",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Current formal scene integration and reopen audit revalidated without modifying the scene, Prefabs or gameplay product code."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {"total": 10, "errors": 0, "warnings": 0},
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D19R03Q23FormalResourceIntegrationTests.cs": "9195523E4BB9B4CAB2B5FD15E918FDE1CEFC2566FAEEF02745AC8393C68F4A96",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab": "F28686F12236FA9F9FA5DD087E0B4EF4959CAD57C31A52FC241056D806FAE163",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_ShipVisual.prefab": "CCCCA72A4C359DA4A45CCC62F114740A92800C1D65A38B07549BA34F3591B1FC",
+    "game/Assets/Prefabs/Characters/D27/R03/D27_R03_CharacterWildlifePresentation.prefab": "4B2E084E7D85E3055E0662ADCE916798816D73DED55CAE4E3C763DE69F0F8653",
+    "game/Assets/Scenes/InitialHarbor.unity": "FF3FFF691E2A3E6C2B2616F7126855B29FC307F7647210CBF3AC0FB4A125DA04"
+  },
+  "checks": [
+    {
+      "name": "formal_scene_integration_and_reopen",
+      "command": "run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q23FormalResourceIntegrationTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "test_duration_seconds": 0.3685381,
+        "pipeline_duration_seconds": 0.38,
+        "test_name": "Save.Tests.D19R03Q23FormalResourceIntegrationTests.InitialHarbor_R03ResourcesHaveOneActivePrefabOwnedIntegrationAndReopenConsistently"
+      },
+      "runtime_marker": "active_roots=34, r03_instances=1, ship_instances=1, r03_renderers=362, r03_missing_materials=0, missing_scripts=0, terrain_colliders=1, ship_hull_bottom_y=-0.0400, harbor_guid=f4a3a5e363746a8409e62ebc3ec544ba, ship_guid=d25d9e3247439e3408977ba7e5abccb4, d27_guid=a7a031a3b2b350246b274712193e84b2, reopen_consistency=true"
+    },
+    {
+      "name": "native_player_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "Static InitialHarbor integration/reopen evidence does not prove native Player camera framing, WASD/E/I/M/T/Esc input, mouse hit testing, action/animation, swimming, ship-control feel, audio, performance, vegetation grounding or final visual quality."
+    }
+  ],
+  "observed_metrics": {
+    "active_roots": 34,
+    "r03_instances": 1,
+    "ship_instances": 1,
+    "r03_renderers": 362,
+    "r03_missing_materials": 0,
+    "missing_scripts": 0,
+    "terrain_colliders": 1,
+    "ship_hull_bottom_y": -0.04,
+    "harbor_guid": "f4a3a5e363746a8409e62ebc3ec544ba",
+    "ship_guid": "d25d9e3247439e3408977ba7e5abccb4",
+    "d27_guid": "a7a031a3b2b350246b274712193e84b2",
+    "reopen_consistency": true
+  },
+  "status_boundary": "Q23 PARTIAL means current formal InitialHarbor R03/D27/ship integration is unique, source-resolved, audited for missing materials/scripts and reopen-stable. It does not mean the game is visually or interactively accepted in a Windows Player.",
+  "next_task": "Q24_CURRENT_PIPELINE_REAUDIT"
+}

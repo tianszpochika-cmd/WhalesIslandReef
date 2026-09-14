@@ -1,0 +1,36 @@
+{
+  "task_id": "Q18",
+  "run_id": "Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL",
+  "status_scope": "d25_d29_code_level_16_9_layout_matrix_and_d31_visual_logic",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q15", "Q17"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {"version": "6000.0.80f1", "project_path": "C:/Users/Administrator/Desktop/game/first01/game", "pipeline_package": "com.unity.pipeline@0.6.0-exp.1", "editor_pid": 63572, "editor_endpoint": "127.0.0.1:7800", "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped", "console_error_query": 0},
+  "changed_files": [],
+  "product_code_changed": false,
+  "filter_correction": "An initial assembly name passed as filter_type=testName returned total=0 and was excluded. The same assembly was rerun with filter_type=assembly and produced the recorded 36/36 result.",
+  "source_hashes": {
+    "game/Assets/Tests/EditMode/D31/D31Q18HudResolutionTests.cs": "DF36659E353B7932268C5E8053BE2E46D69235490E7D89766759113F51413BA2",
+    "game/Assets/Tests/EditMode/D31/D31HudLayoutPolicyTests.cs": "2C2D29EFCCE99B9177B37D8CE0ED364BF7A47DFC20D65529F8ACEA3518272B72",
+    "game/Assets/Tests/EditMode/D31/D31VisualStagePolicyTests.cs": "AA89BAD89FC197E928E7243E099D1654A04BC44238FBBF0C5DA8E325EEEED0C6",
+    "game/Assets/Scripts/Gameplay/D29/Logic/D29InteractionLayoutPolicy.cs": "F278187B135DDE7919649CCC5CB8AD23A53B64E2313C090896E9D3CBA91116D1",
+    "tools/tests/test_d29_interaction_hud.py": "969D93D12759AD54BA04B96C2A9518382052160AAFF82C528F4B406BA9E09011"
+  },
+  "tests": {
+    "resolution_matrix": {"mode": "EditMode", "filter": "D31Q18HudResolutionTests", "summary": {"total": 3, "passed": 3, "failed": 0, "skipped": 0, "inconclusive": 0}, "test_duration_s": 0.01, "coverage": ["1280x720", "1920x1080", "2560x1440"]},
+    "d31_visual_logic": {"mode": "EditMode", "filter": "WhalesIslandReef.D31.VisualLogic.Tests", "filter_type": "assembly", "summary": {"total": 36, "passed": 36, "failed": 0, "skipped": 0, "inconclusive": 0}, "test_duration_s": 0.03},
+    "d29_python_static": {"command": "python -m unittest tools.tests.test_d29_interaction_hud", "summary": {"total": 30, "passed": 30, "failed": 0}, "duration_s": 0.003, "working_directory": "C:/Users/Administrator/Desktop/game/first01"}
+  },
+  "checks": [
+    {"name": "required_resolution_matrix", "result": "PASS_WITHIN_SCOPE", "evidence": "D31Q18HudResolutionTests completed 3/3 for 1280x720, 1920x1080 and 2560x1440."},
+    {"name": "d31_visual_logic_regression", "result": "PASS_WITHIN_SCOPE", "evidence": "The complete WhalesIslandReef.D31.VisualLogic.Tests assembly completed 36/36 with no failed, skipped or inconclusive tests."},
+    {"name": "d29_static_ui_regression", "result": "PASS_WITHIN_SCOPE", "evidence": "The repository-root Python HUD suite completed 30/30 OK."},
+    {"name": "editor_error_boundary", "result": "PASS_WITHIN_SCOPE", "evidence": "Connected Pipeline error query returned 0 after the recorded runs; Editor ended ready/stopped."}
+  ],
+  "remaining_scope": ["This is code-level layout and logic evidence, not native Player screenshots or compositor-visible GPU evidence.", "Font rasterization, English longest-text clipping, physical mouse hit testing, foreground Win32 keyboard input and final visual overlap remain open.", "Q03 remains BLOCKED_ASSET; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/D31-S05/D31-G06 remain PARTIAL."],
+  "status_boundary": "Q18 PARTIAL means the current 16:9 geometry contract and D31/D29 code regressions pass. It does not mean native visual/localization acceptance is complete.",
+  "next_task": "Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

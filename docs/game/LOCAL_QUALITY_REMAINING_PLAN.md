@@ -2014,3 +2014,107 @@ Q25 两段当前源码路线均通过：`D19Q25FirstVoyageLoopDiagnosticTests` E
 这里是一个安全收口点：代码级 action/movement/swim/grounding/input-modal 整合已有真实 Pipeline 证据，但最终 compositor-visible Player、前台 Win32 物理输入、人工视觉、全镜头穿模/植被接地、目标设备性能与音频仍未关闭。状态保持：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、Q20=`PARTIAL/BLOCKED_ASSET`、D31-P04/S05/G06=`PARTIAL`。本轮不继续 Q09，也不把 Q08 升级为 D31 或整机完成。
 
 恢复顺序：`Q09_CURRENT_DECK_ANCHOR_REAUDIT` → Q10 及后续依赖卡 → Q31/VC-G01 compositor/native Player 最终门。恢复入口和边界见 [Q08 handoff](design/common/handoffs/LOCAL-QUALITY/Q08/Q08.md)。
+
+## 2026-09-15 Q00/Q01 current-source rebind and Q09 resume
+
+用户恢复持续目标后，本轮从提交 `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 重新建立当前证据边界；旧 Q08 安全暂停记录保留为历史，不倒写。
+
+- Q00=`VERIFIED_WITH_SCOPE`：当前源 exact Player `build_c0aabd621f0d`，BuildReport=`Succeeded`，`0 errors / 8 warnings`；connected Pipeline runtime facts、open-water state 和 boarding state 已重新绑定到当前 HEAD。
+- Q01=`PASS_WITHIN_SCOPE`：动作/游泳/握舵/树木/WASD-HUD 五类报告完成当前 owner 与根因对账；视觉未验证项、自然姿态、接触和前台焦点仍未被误报为 PASS。
+- Q09=`PASS_WITHIN_SCOPE`：当前源 D17A11=`1/1 PASS`，船体缩放约 `2.57` 下十次登船—下船无锚点漂移，约 `30m` 远距请求拒绝；下一步 Q10。
+
+当前任务板：已完成有界 Q00/Q01/Q02/Q03/Q04/Q05/Q06/Q07/Q08/Q09；进行中为 Q10→Q30 依赖链和 Q31/VC-G01；阻塞/未关闭为 Q20=`PARTIAL/BLOCKED_ASSET`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。最终 compositor-visible Player、真实前台输入、人工视觉、自然动作/泳姿/握舵、植被接地、目标设备性能和 D31 整体收口仍未完成。
+
+权威证据：[Q00 current result](../../game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260915_LUNA_RESULT.json)、[Q01 current result](../../game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q03A23_20260915_LUNA_RESULT.json)、[Q09 current result](../../game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)。下一张执行卡：`Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q10 current-source ship-motion relation revalidation
+
+Q10 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 `D17A12ShipMotionKeepsBoardedPlayerRelativeDeckStable`：`1/1 PASS`。十个船舶平移/转向快照下，登船玩家相对船根位置/旋转误差均为 `0.000000`，最大船位移 `1.513m`、最大航向变化 `32°`，并在恢复 baseline 后安全下船。Q10 仍只关闭相对 transform/状态生命周期，不关闭 native 输入、镜头、握舵自然度或视觉门。
+
+当前下一张执行卡为 `Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`；Q31/VC-G01 和 D31 视觉/人工门仍按原边界保持未关闭。
+
+## 2026-09-15 Q11 current-source safe-disembark revalidation
+
+Q11 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 `D17A13SafeDisembarkSurvivesTenLegalCyclesAndRejectsNoGround`：`1/1 PASS`。十次合法下船、无地面拒绝和最终 `grounded=True / mode=Character` 均有 runtime marker；预期拒绝 Warning 原样保留。Q11 只关闭合法/无落点状态与恢复子契约，不关闭移动船视觉碰撞、全岸线出口、native 输入、动作质量或相机门。
+
+当前下一张执行卡为 `Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q12 current-source camera revalidation
+
+Q12 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 `D17A14CameraModesAndExternalObstructionRecoverWithoutInvalidPose`：`1/1 PASS`。十次相机模式/目标切换、真实受控 BoxCollider 遮挡收缩（`5.500m → 3.882m`）和障碍移除后的恢复（`5.500m`）通过，`collisionChecks=109`。Q12 只关闭有界 CameraFollow 行为，不关闭最终构图或人工视觉门。
+
+当前下一张执行卡为 `Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q13 current-source input/UI revalidation
+
+Q13 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成三组输入/UI 回归：D17A15=`1/1 PASS`（W/S 十轮不导航 HUD、暂停让权后恢复），D16InputRouter=`11/11 PASS`（键盘/手柄/重绑定/InitialHarbor 路径），D16PrimaryHudNavigation=`2/2 PASS`（UI Move action 恢复后 suppression 重新确立）。最终 Error=`0`；6 条已知 D2/D27 Warning 保留。Q13 只关闭 Input System 运行时路由合同，不关闭前台 Win32 焦点、渲染 HUD、业务面板或 VC-G01。
+
+当前下一张执行卡为 `Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q14 current-source shore/water/deck integration revalidation
+
+Q14 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 D17A16=`1/1 PASS`：shore→water→shore、Ship owner、船上转向、无地面拒绝与合法下船 marker 均为 true；`imported_neutral=False` 已明确保留为正式资源边界。Q14 只关闭有界逻辑整合链，不关闭动作资源、原生输入、最终视觉或 VC-G01。
+
+当前下一张执行卡为 `Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q15 current-source panel-focus revalidation
+
+Q15 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 D29Q15=`1/1 PASS`：I/M/T shortcut owner 到达、仓库/市场/酒馆各十轮、互斥、重复请求拒绝和 Gameplay 恢复均有 marker。Q15 只关闭业务面板焦点/快捷键逻辑，不关闭前台 Player 画面、业务真实渲染或 VC-G01。
+
+当前下一张执行卡为 `Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q16 current-source trade-bridge revalidation
+
+Q16 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 D29Q16=`1/1 PASS`：owner 未就绪拒绝、快捷键双击单 owner、买卖成功各一次变化、余额不足和满仓状态不变均有 marker。Q16 只关闭 D3/D29 交易桥逻辑，不关闭 Player 视觉、在线/存档数据或 VC-G01。
+
+当前下一张执行卡为 `Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q17 current-source shipyard/preparation revalidation
+
+Q17 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成 D29Q17=`1/1 PASS`：整备成功/拒绝/重复、船坞成功/拒绝、取消、受控异常恢复、domain 幂等和主输入恢复均有 marker。Q17 只关闭 D29/D9/D4 owner 恢复逻辑，不关闭 Player UI、业务真实渲染或 VC-G01。
+
+当前下一张执行卡为 `Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q18 current-source HUD/layout revalidation
+
+Q18 已完成当前源代码级验证：分辨率矩阵 `3/3 PASS`、正确程序集过滤的 D31 VisualLogic `36/36 PASS`、仓库根 Python HUD 回归 `30/30 OK`。错误的 `testName` 程序集过滤返回 `0 tests`，已排除。Q18 仍为 `PARTIAL`，因为原生 Player/字体栅格/英文长文案/物理鼠标与最终视觉门未关闭。
+
+当前下一张执行卡为 `Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`。
+
+## 2026-09-15 Q19 current-source crew/save revalidation
+
+Q19 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成当前源复核：`Q19CrewInteractionAuditTests=1/1 PASS`（测试 `0.3604646s`、Pipeline `0.37s`）、`Save.Tests=377/377 PASS`（Pipeline `32.14s`），`dotnet build AgentCore=0 warnings / 0 errors`。证据：[Q19 current result](../../game/tools/results/LOCAL-QUALITY/Q19/Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)；[Q19 log](../../game/tools/results/LOCAL-QUALITY/Q19/Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)；[Q19 handoff](design/common/handoffs/LOCAL-QUALITY/Q19/Q19.md)。
+
+Q19 仍为 `VERIFIED`，只覆盖离线船员提议→owner 裁决、关系事实和 AgentMemory/domain SQLite 保存恢复；在线 LLM、原生 Player 对话 UI/输入/视觉、动作、游泳、碰撞表现、性能和正式视觉门禁仍未证明。测试后 Error=`0`；合并测试的 `27` 条已知 Warning 已记录并清空。下一张执行卡为 `Q20_CURRENT_PIPELINE_REAUDIT`。
+
+## 2026-09-15 Q20 current-source vegetation revalidation
+
+Q20 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成当前源复核：候选资源 EditMode=`1/1 PASS`（测试 `0.0021969s`、Pipeline `0.01s`），R03 接地/legacy quarantine PlayMode=`1/1 PASS`（测试 `3.0194955s`、Pipeline `3.12s`）。marker 为 `activeLegacyTreeRenderers=0`、`activeR03Vegetation=24`、`vegetation_grounded=26`；Error=`0`，Warning=`6` 后清空。证据：[Q20 current result](../../game/tools/results/LOCAL-QUALITY/Q20/Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)；[Q20 log](../../game/tools/results/LOCAL-QUALITY/Q20/Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)；[Q20 handoff](design/common/handoffs/LOCAL-QUALITY/Q20/Q20.md)。
+
+资源门禁仍为 `BLOCKED / 0 / 0`，`RenderAuthoredPalms=false`，正式 authored palm 引用 `0`，候选引用 `1`；Q20 保持 `PARTIAL/BLOCKED_ASSET`，不把候选接地或旧 Renderer 隔离升级成正式资源/视觉通过。下一张执行卡为 `Q21_CURRENT_PIPELINE_REAUDIT`。
+
+## 2026-09-15 Q21 current-source harbor-space revalidation
+
+Q21 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成当前源空间审计：`R03HarborPresentation_ServiceFootprints_AreSeparatedGroundedAndRouteAnchored=1/1 PASS`（测试 `0.189254s`、Pipeline `0.20s`）。四个服务建筑各 `37 Renderer / 0 missing`，`23` 个碰撞体中 `1` 个 R03 terrain、`22` 个 D27 owner，pairwise XZ overlap=`0`，Spawn/Disembark 锚点保留；Error=`0`、Warning=`0`。证据：[Q21 current result](../../game/tools/results/LOCAL-QUALITY/Q21/Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)；[Q21 log](../../game/tools/results/LOCAL-QUALITY/Q21/Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)；[Q21 handoff](design/common/handoffs/LOCAL-QUALITY/Q21/Q21.md)。
+
+Q21 仍为 `PARTIAL`：静态空间/owner 合同不等于 native Player 镜头、遮挡、鼠标命中、物理键盘路线、性能或最终视觉通过。下一张执行卡为 `Q22_CURRENT_PIPELINE_REAUDIT`。
+
+## 2026-09-15 Q22 current-source sea/weather revalidation
+
+Q22 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成当前源审计：`R03SeaAndShipPresentation_HasSeaLevelDraftMaterialsAndWeatherOwnerContracts=1/1 PASS`（测试 `0.1758288s`、Pipeline `0.18s`）。marker 覆盖水面 `96×96`、sea level `-0.0397`、泡沫 `28`、船体/船壳吃水、D9 鱼类活动 `1.00/0.90/0.55`、D28 降水 `0/560/980` 与波动倍率 `1/1.40/2.35`；Error=`0`、Warning=`0`。证据：[Q22 current result](../../game/tools/results/LOCAL-QUALITY/Q22/Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)；[Q22 log](../../game/tools/results/LOCAL-QUALITY/Q22/Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)；[Q22 handoff](design/common/handoffs/LOCAL-QUALITY/Q22/Q22.md)。
+
+Q22 仍为 `PARTIAL`：静态海水/船体/天气 owner 合同不等于 native Player 游泳、船海镜头、泡沫/雾/音效播放、物理输入、性能或最终视觉通过。下一张执行卡为 `Q23_CURRENT_PIPELINE_REAUDIT`。
+
+## 2026-09-15 Q23 current-source formal scene integration revalidation
+
+Q23 已在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63` 上完成当前源审计：`InitialHarbor_R03ResourcesHaveOneActivePrefabOwnedIntegrationAndReopenConsistently=1/1 PASS`（测试 `0.3685381s`、Pipeline `0.38s`）。marker 为活动根 `34`、R03/船实例 `1/1`、R03 Renderer `362`、缺失材质/脚本 `0/0`、R03 terrain collider `1`、船壳底部 `-0.0400`、`reopen_consistency=true`；Error=`0`、Warning=`0`。证据：[Q23 current result](../../game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)；[Q23 log](../../game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)；[Q23 handoff](design/common/handoffs/LOCAL-QUALITY/Q23/Q23.md)。
+
+Q23 仍为 `PARTIAL`：正式场景集成/重开合同不等于 native Player 镜头、键鼠、动作、游泳、船控、音效、性能、逐物体接地或最终视觉通过。下一张执行卡为 `Q24_CURRENT_PIPELINE_REAUDIT`。
+
+## 2026-09-15 临时安全暂停点（Q24）
+
+本轮在当前 HEAD `cee7a9a0581cdaa4aa0a7eee7345694815770d63`、Unity `6000.0.80f1`、Pipeline Editor PID=`63572` 上完成 Q24 当前源存档恢复诊断：`D19Q24SaveRestoreDiagnosticTests`=`3/3 PASS`，Pipeline `1.19s`。失败保存保护、陆地 port/clock/money/cargo/crew round-trip、出海船位/航向/速度与 `D2_PlayerSpawnAnchor` 安全恢复均通过；Error/Warning 分级查询均为 `0`，Editor 最终 `ready/stopped`，取证后 Console 已清空。
+
+Q24 继续为 `PARTIAL`，因为 `PlayerState` 没有独立游泳状态/姿态字段，且上述证据不覆盖原生 Player 前台输入、动作、游泳、船控/镜头、树木接地、音效、性能、完整首航或最终视觉。现在把 Q24 标记为**临时安全暂停点**：没有活动测试进程，Q25 是明确且可独立恢复的下一张卡。暂停不等于产品完成，不提前升级 Q25—Q35、VC-G01、VC-G02、VC-G03 或 D31 状态。
+
+权威交接：[临时安全暂停交接](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915.md)、[Q24 current result](../game/tools/results/LOCAL-QUALITY/Q24/Q24_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q24 handoff](design/common/handoffs/LOCAL-QUALITY/Q24/Q24.md)。恢复时从 `Q25_CURRENT_PIPELINE_REAUDIT` 开始，不继承旧 Player/RERUN 的视觉或输入结论。

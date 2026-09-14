@@ -1,0 +1,77 @@
+{
+  "task_id": "Q22",
+  "run_id": "Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL",
+  "status_scope": "r03_sea_level_ship_draft_and_d28_weather_static_audit",
+  "captured_at_local": "2026-09-15T01:40:00+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q21"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "D19 R03 sea/shore presentation, D28 weather presentation and D9 read-only ecology projection",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Current-source static sea, ship-draft and weather owner contracts passed; no Q22 product change was justified."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {"total": 12, "errors": 0, "warnings": 0},
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D19R03Q22SeaWeatherAuditTests.cs": "FFF57234892706452076BBD733283C8215CF0F35190720589712207FDD229254",
+    "game/Assets/Scripts/Gameplay/D28/D28WaterWeatherPresentationRuntime.cs": "BC24CCCFCD6B026FED6934E13016266DDB560DC8A534A49BB7644853CD12D3E2",
+    "game/Assets/Scripts/Systems/D9/EnvironmentSystem.cs": "023B2128E19EA14F5B318E2E0EB072016F8510198B19E8F1499FC9F7CB86F7BF",
+    "game/Assets/Scripts/Systems/D9/D9WeatherImpactReaders.cs": "1A2508F1FBC711712654024BEB14D48978029A58302F153A01402CA56ADAEBC4",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab": "F28686F12236FA9F9FA5DD087E0B4EF4959CAD57C31A52FC241056D806FAE163",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_ShipVisual.prefab": "CCCCA72A4C359DA4A45CCC62F114740A92800C1D65A38B07549BA34F3591B1FC",
+    "game/Assets/Prefabs/Placeholder/ph_ship_fishing.prefab": "00106193C57B12D46DD1FA298339A2317A9712326C4844D0B715CD43F6AAEABC"
+  },
+  "checks": [
+    {
+      "name": "r03_sea_ship_weather_owner_contract",
+      "command": "run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q22SeaWeatherAuditTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "test_duration_seconds": 0.1758288,
+        "pipeline_duration_seconds": 0.18,
+        "test_name": "Save.Tests.D19R03Q22SeaWeatherAuditTests.R03SeaAndShipPresentation_HasSeaLevelDraftMaterialsAndWeatherOwnerContracts"
+      },
+      "runtime_marker": "water_size=(96.00,96.00), sea_level=-0.0397, beach_min_y=-0.0048, foam_renderers=28, water_missing_materials=0, ship_min_y=0.0600, hull_bottom_y=-0.0400, presentation_audio=0, fish_activity=1.00/0.90/0.55, weather_metrics=Calm:0,Rain:560,Storm:980",
+      "asserted_weather_contract": "D28 precipitation rate Calm/Rain/Storm=0/560/980; surface-wave multiplier=1.00/1.40/2.35; Rain/Storm precipitation uses non-null particle material and playback contract."
+    },
+    {
+      "name": "native_player_sea_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "This is an EditMode/static owner audit; it does not prove native Player swimming, ship-at-sea camera readability, foam/fog/audio through a real camera route, physical WASD/E input, performance or screenshot quality."
+    }
+  ],
+  "observed_metrics": {
+    "water_size": [96.0, 96.0],
+    "sea_level": -0.0397,
+    "beach_min_y": -0.0048,
+    "foam_renderer_count": 28,
+    "water_missing_materials": 0,
+    "ship_min_y": 0.06,
+    "hull_bottom_y": -0.04,
+    "r03_presentation_audio_source_count": 0,
+    "fish_activity": {"Calm": 1.0, "Rain": 0.9, "Storm": 0.55},
+    "weather_precipitation": {"Calm": 0, "Rain": 560, "Storm": 980},
+    "weather_wave_multiplier": {"Calm": 1.0, "Rain": 1.4, "Storm": 2.35},
+    "weather_preview_sequences": ["Calm", "Rain", "Storm", "Calm reset"]
+  },
+  "status_boundary": "Q22 remains PARTIAL. This evidence proves current static sea-level, beach, foam, ship draft and weather-owner contracts only. It does not prove native Player swimming, ship-at-sea camera readability, audio playback, physical keyboard/mouse input, target-device performance or final visual quality.",
+  "next_task": "Q23_CURRENT_PIPELINE_REAUDIT"
+}

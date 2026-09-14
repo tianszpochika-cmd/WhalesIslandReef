@@ -1,0 +1,20 @@
+Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor_pid=63572
+endpoint=127.0.0.1:7800
+scene=InitialHarbor
+command=unity command run_tests --project-path game --mode playmode --filter D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException --filter_type testName --async_tests true --timeout 300 --format json
+test_status=completed
+full_name=Whalebone.Tests.D29.D29ShipyardPreparationPlayModeTests.D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException
+summary=total=1 passed=1 failed=0 skipped=0 inconclusive=0
+pipeline_duration_s=4.8
+test_duration_s=4.6987571
+marker=[D29/Q17] preparation_success=true, repair_reject_material=true, repair_duplicate_unchanged=true, domain_duplicate_idempotent=true, cancel_recovery=true, shipyard_success=true, shipyard_reject=true, exception_recovery=true, primary_input_restored=true
+expected_exception_warning=controlled D29 UpgradeShip exception path reported through owner feedback and recovered
+console_error_query=0
+editor_final=ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped
+product_code_changed=false
+next_task=Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA

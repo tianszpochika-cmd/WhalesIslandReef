@@ -1,0 +1,42 @@
+Q20 current-source Pipeline re-audit — 2026-09-15 (Luna)
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline_editor_pid=63572
+pipeline_endpoint=127.0.0.1:7800
+
+[candidate EditMode]
+command=run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q20VegetationTests --filter_type testName --async_tests true --timeout 120 --format json
+status=completed duration=0.01s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test=Save.Tests.D19R03Q20VegetationTests.PalmCandidate_HasRenderableMaterials_AndRendererBoundsCanGroundWorkPrefab
+test_duration=0.0021969s
+
+[R03 PlayMode containment]
+command=run_tests --project-path game --mode playmode --filter Whalebone.Tests.D19R03Q26.D19R03Q26GameplayDefectPlayModeTests.Q26A03ActiveLegacyTreeRenderersAndR03VegetationHaveGroundEvidence --filter_type testName --async_tests true --timeout 120 --format json
+status=completed duration=3.12s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test_duration=3.0194955s
+marker=[Q26/A03] activeLegacyTreeRenderers=0, activeR03Vegetation=24, unsupportedR03Vegetation=0, legacyPaths=, unsupported=
+marker=[D26/Environment] R03 港口表现层已恢复：renderers=372, restored=22, vegetation_grounded=26, vegetation_hidden_without_terrain=0, legacy_tree_renderers_disabled=0, duplicate colliders untouched
+
+[resource gate]
+catalog_status=BLOCKED
+local_development_ready_count=0
+eligible_entry_count=0
+RenderAuthoredPalms=false
+formal_authored_palm_reference_count=0
+candidate_tree_palm_reference_count=1
+
+[editor]
+status=ready
+play_mode=stopped
+compiling=false
+domain_reload_in_progress=false
+
+[console]
+error_query=0
+warning_query=6
+warning_boundary=Known D2 animation/rig and fallback-player, plus D27 presentation-readiness warnings; retained, not treated as zero-warning evidence.
+after_capture=clear_console succeeded
+
+[scope]
+Q20 remains PARTIAL/BLOCKED_ASSET. Candidate Renderer bounds/contact and legacy Renderer quarantine are verified within scope; formal palm resource admission, authored palm restoration, full-camera contact/occlusion/clipping, native Player/GPU visual acceptance, performance and VC-G01 remain open.

@@ -1757,3 +1757,111 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - The same visible Player reached `InitialHarbor`, produced bounded W/E/W/S frames, returned runtime error console `0`, Player strict error-token count `0`, and exited cleanly. Runtime Pipeline and development build settings were restored to disabled/non-development values.
 - Q31 remains `PARTIAL`; VC-G01 remains `IN_PROGRESS`; VC-G02/VC-G03 remain `LOCKED`; D31-P04/S05/G06 remain `PARTIAL`. The harbor is still low-poly/procedural, this route did not visually prove open-water swimming, and formal action/avatar, natural swim/helm, vegetation/intersection, physical input and target-device performance remain open.
 - Development is temporarily paused at this safe point. Resume from `Q31 R5` with one single-owner visual defect. Result/log/handoff: `Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5_RESULT.json`, `Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260914_Q31_R5.md`.
+
+## 2026-09-15 current-source rebind after resumed execution
+
+- Q00=`VERIFIED_WITH_SCOPE`: source HEAD=`cee7a9a0581cdaa4aa0a7eee7345694815770d63`; exact current-source Player `build_c0aabd621f0d` succeeded with `0 errors / 8 warnings`; Pipeline runtime probe, open-water transition and boarding state are recorded without claiming compositor or foreground input.
+- Q01=`PASS_WITHIN_SCOPE`: current owner/root-cause reconciliation recorded for action distortion, swimming, boarding/contact, vegetation and WASD/HUD focus. Visual and native-input boundaries remain open.
+- Q09=`PASS_WITHIN_SCOPE`: D17A11 current-source PlayMode `1/1 PASS`; ten scaled boarding/disembarking cycles and remote rejection passed with zero measured deck/anchor drift; next Q10.
+- Q08 historical safe-point result remains immutable at its prior source HEAD; it is not silently re-labeled as a current-head test. Q31=`PARTIAL`, VC-G01=`IN_PROGRESS`, VC-G02/VC-G03=`LOCKED`, Q20=`PARTIAL/BLOCKED_ASSET`, D31-P04/S05/G06=`PARTIAL`.
+- Result/log/handoff: `Q00_CURRENT_SOURCE_REBIND_Q03A23_20260915_LUNA_RESULT.json`, `Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q03A23_20260915_LUNA_RESULT.json`, `Q09_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`; next `Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q10 current-source ship-motion relation revalidation
+
+- Q10=`PASS_WITHIN_SCOPE`: `D17A12ShipMotionKeepsBoardedPlayerRelativeDeckStable` completed `1/1 PASS` on current HEAD `cee7a9a0`; ten motion snapshots retained the boarded player's relative position/rotation with measured max errors `0.000000`, then restored safe disembark state.
+- The run measured max ship translation `1.513m` and heading change `32°`; Editor finished `ready/stopped`, Error query=`0`. Six known warnings were retained as a warning boundary.
+- Result/log/handoff: `Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q10/Q10.md`; next `Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q11 current-source safe-disembark revalidation
+
+- Q11=`PASS_WITHIN_SCOPE`: D17A13 current-source PlayMode `1/1 PASS`; ten legal disembark cycles, no-ground rejection and final `grounded=True / mode=Character` passed; Error query=`0`.
+- The expected no-walkable-point rejection Warning is retained as behavior evidence and not treated as a zero-warning claim.
+- Result/log/handoff: `Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q11/Q11.md`; next `Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q12 current-source camera revalidation
+
+- Q12=`PASS_WITHIN_SCOPE`: D17A14 current-source PlayMode `1/1 PASS`; ten camera mode/target cycles, obstruction contraction `5.500m→3.882m`, recovery to `5.500m`, and `109` collision checks passed; Error query=`0`.
+- This is a bounded CameraFollow regression, not final compositor-visible framing or manual visual acceptance.
+- Result/log/handoff: `Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q12/Q12.md`; next `Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q13 current-source input/UI revalidation
+
+- Q13=`PASS_WITHIN_SCOPE`: D17A15=`1/1 PASS`, D16InputRouter=`11/11 PASS`, D16PrimaryHudNavigation=`2/2 PASS`; W/S-HUD isolation, Esc modal restore, keyboard/gamepad and rebind routes passed; final Error query=`0`.
+- Six known D2/D27 fallback/readiness warnings remain explicitly recorded; no zero-warning claim and no foreground Win32 input claim.
+- Result/log/handoff: `Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q13/Q13.md`; next `Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q14 current-source shore/water/deck integration revalidation
+
+- Q14=`PASS_WITHIN_SCOPE`: D17A16 current-source PlayMode `1/1 PASS`; marker confirms shore→water→shore, Ship owner, ship turn, no-ground rejection and legal disembark; `imported_neutral=False`; Error query=`0`.
+- Expected rejection warning remains explicit; no authored action, native input or final visual claim.
+- Result/log/handoff: `Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q14/Q14.md`; next `Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q15 current-source panel-focus revalidation
+
+- Q15=`PASS_WITHIN_SCOPE`: D29Q15 current-source PlayMode `1/1 PASS`; I/M/T shortcut owner, warehouse/market/tavern ten-cycle exclusivity, duplicate rejection and Gameplay recovery passed; Error query=`0`.
+- This is owner/focus logic evidence only; no foreground Player business-visual or native input claim.
+- Result/log/handoff: `Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q15_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q15/Q15.md`; next `Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q16 current-source trade-bridge revalidation
+
+- Q16=`PASS_WITHIN_SCOPE`: D29Q16 current-source PlayMode `1/1 PASS`; not-ready rejection, duplicate owner guard, buy/sell one-change success and unchanged rejection states passed; Error query=`0`.
+- Result/log/handoff: `Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q16_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q16/Q16.md`; next `Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q17 current-source shipyard/preparation revalidation
+
+- Q17=`PASS_WITHIN_SCOPE`: D29Q17 current-source PlayMode `1/1 PASS`; success/rejection/duplicate/cancel/exception recovery and primary input restoration passed; Error query=`0`.
+- Controlled exception Warning is retained as behavior evidence; no zero-warning claim.
+- Result/log/handoff: `Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q17/Q17.md`; next `Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q18 current-source HUD/layout revalidation
+
+- Q18=`PARTIAL`: D31 HUD resolution matrix `3/3 PASS`, D31 VisualLogic assembly `36/36 PASS`, repository-root Python HUD suite `30/30 OK`; Error query=`0`.
+- The initial wrong filter returned `0 tests` and was excluded; the corrected assembly filter is the recorded 36/36 evidence.
+- Native Player screenshots, GPU font rasterization, longest English text, physical mouse/Win32 keyboard and final visual overlap remain open.
+- Result/log/handoff: `Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q18/Q18.md`; next `Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA`.
+
+## 2026-09-15 Q19 current-source crew/save revalidation
+
+- Q19=`VERIFIED`: `Q19CrewInteractionAuditTests`=`1/1 PASS`（测试 `0.3604646s`、Pipeline `0.37s`）；`Save.Tests`=`377/377 PASS`（failed/skipped/inconclusive 均为 `0`，Pipeline `32.14s`）；`dotnet build AgentCore`=`0 warnings / 0 errors`。
+- Current HEAD=`cee7a9a0`，Editor=`ready/stopped`，Error query=`0`。合并测试后 Warning=`27`，均为已知 D2/D27/D29 行为边界，已保留证据并清空 Console；不做零 Warning 声明。
+- Q19 只证明离线 crew proposal→owner decision→relation facts→AgentMemory/domain SQLite save/restore；online LLM、native Player 对话 UI/input/visual、动作、游泳、碰撞表现、性能和正式视觉门禁仍未证明。
+- Result/log/handoff: `Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q19/Q19.md`; next `Q20_CURRENT_PIPELINE_REAUDIT`.
+
+## 2026-09-15 Q20 current-source vegetation revalidation
+
+- Q20=`PARTIAL/BLOCKED_ASSET`: candidate EditMode `1/1 PASS` (`0.0021969s`); R03 grounding/legacy quarantine PlayMode `1/1 PASS` (`3.0194955s`; Pipeline `3.12s`). Marker=`activeLegacyTreeRenderers=0`, `activeR03Vegetation=24`, `vegetation_grounded=26`, `vegetation_hidden_without_terrain=0`.
+- Resource gate remains `BLOCKED / local_development_ready_count=0 / eligible_entry_count=0`; `RenderAuthoredPalms=false`; formal authored palm references=`0`; candidate tree_palm references=`1`. No formal asset promotion or palm restoration.
+- Editor=`ready/stopped`; Error query=`0`; Warning=`6` known D2/D27 warnings retained and Console cleared. Candidate/containment scope does not prove full-camera visual grounding, occlusion/no-clipping, native Player/GPU visual quality, performance or VC-G01.
+- Result/log/handoff: `Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q20_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q20/Q20.md`; next `Q21_CURRENT_PIPELINE_REAUDIT`.
+
+## 2026-09-15 Q21 current-source harbor-space revalidation
+
+- Q21=`PARTIAL`: `R03HarborPresentation_ServiceFootprints_AreSeparatedGroundedAndRouteAnchored`=`1/1 PASS`（测试 `0.189254s`、Pipeline `0.20s`）；四服务建筑 `37 Renderer / 0 missing`，`23` colliders=`1` R03 terrain + `22` D27 owner，pairwise XZ overlap=`0`，稳定锚点保留。
+- Editor=`ready/stopped`; Error=`0`; Warning=`0`; Console 已清空。当前只证明静态空间/renderer/material/collider owner 合同，不证明 native Player 镜头/遮挡/键鼠可达性、性能或最终视觉。
+- Result/log/handoff: `Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q21/Q21.md`; next `Q22_CURRENT_PIPELINE_REAUDIT`.
+
+## 2026-09-15 Q22 current-source sea/weather revalidation
+
+- Q22=`PARTIAL`: `R03SeaAndShipPresentation_HasSeaLevelDraftMaterialsAndWeatherOwnerContracts`=`1/1 PASS`（测试 `0.1758288s`、Pipeline `0.18s`）；water=`96x96`, sea_level=`-0.0397`, foam=`28`, ship_min_y=`0.0600`, hull_bottom=`-0.0400`, fish=`1.00/0.90/0.55`, precipitation=`0/560/980`, wave=`1.00/1.40/2.35`。
+- Editor=`ready/stopped`; Error=`0`; Warning=`0`; Console 已清空。静态海水/船体/天气合同不证明 native Player 游泳、船海镜头、泡沫/雾/音效、物理输入、性能或最终视觉。
+- Result/log/handoff: `Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q22_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q22/Q22.md`; next `Q23_CURRENT_PIPELINE_REAUDIT`.
+
+## 2026-09-15 Q23 current-source formal scene integration revalidation
+
+- Q23=`PARTIAL`: `InitialHarbor_R03ResourcesHaveOneActivePrefabOwnedIntegrationAndReopenConsistently`=`1/1 PASS`（测试 `0.3685381s`、Pipeline `0.38s`）；active roots=`34`、R03/ship=`1/1`、R03 renderers=`362`、missing materials/scripts=`0/0`、terrain colliders=`1`、hull bottom=`-0.0400`、reopen=`true`。
+- Editor=`ready/stopped`; Error=`0`; Warning=`0`; Console 已清空。当前只证明正式场景 Prefab 唯一性、GUID/资源来源、静态缺失项和重开稳定性，不证明 native Player 镜头/键鼠/动作/游泳/船控/音效/性能/逐物体接地/最终视觉。
+- Result/log/handoff: `Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json`, `Q23_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q23/Q23.md`; next `Q24_CURRENT_PIPELINE_REAUDIT`.
+
+## 2026-09-15 Q24 current-source save/restore revalidation and safe pause
+
+- Q24=`PARTIAL`：`D19Q24SaveRestoreDiagnosticTests`=`3/3 PASS`（Pipeline `1.19s`），覆盖失败保存保护、陆地 port/clock/money/cargo/crew round-trip、出海船位 `(41.5,-17.25)`/航向 `212`/速度 `2.25` 和 `D2_PlayerSpawnAnchor` 安全恢复。
+- 当前 Unity Editor PID=`63572`，最终 `ready/stopped`；Error=`0`、Warning=`0`；取证后 Console 已清空。Q24 测试类没有专用 `[Q24]` marker，结果与耗时来自完成态 Pipeline `test_status`，未伪造运行 marker。
+- Q24 只证明 SaveSystem/D2 的有界恢复和上一份好档保护，不证明 native Player、游泳/动作、船控视觉、植被、音效、性能或完整游戏。临时安全暂停点已建立，没有活动测试进程；恢复入口为 Q25 当前首航/循环集成诊断。
+- 结果/日志/交接：[Q24 result](Q24/Q24_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q24 log](Q24/Q24_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)、[Q24 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q24/Q24.md)、[pause handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915.md)。
+
+## 临时暂停任务板
+
+- 已完成：Q00/Q01/Q09—Q17 各自有界当前源回归；Q18、Q20—Q24 已形成明确结果边界；Q19 离线 owner/save 范围 `VERIFIED`。
+- 进行中：无活动执行进程；项目开发在 Q24 安全点临时暂停。
+- 阻塞/未完成：Q18/Q20—Q24 的完整 Player/视觉边界、Q25—Q35、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、D31-P04/S05/G06=`PARTIAL`。
+- 下一步：恢复后执行 `Q25_CURRENT_PIPELINE_REAUDIT`，继续首航/循环集成诊断；不得将 Q24 存档 PASS 扩大为完整游戏 PASS。

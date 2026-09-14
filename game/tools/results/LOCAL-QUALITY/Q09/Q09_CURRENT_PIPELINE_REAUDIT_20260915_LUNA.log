@@ -1,0 +1,7 @@
+2026-09-15 Q09 current-source deck anchor re-audit
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63; editor_pid=63572; endpoint=127.0.0.1:7800
+command=run_tests --mode playmode --filter D17A11StableDeckAnchorSupportsTenBoardingCyclesAndRejectsRemoteBoarding --filter_type testName --async_tests true --timeout 300
+test_status=completed; pipeline_duration_s=5.14; test_duration_s=5.0480279; total=1; passed=1; failed=0; skipped=0; inconclusive=0
+runtime=boarding_cycles=10; maxDeckHeightDelta=0.0000; maxDeckAnchorDistance=0.0000; shipScale=(2.57,2.57,2.57); remote_rejection=true
+editor_final=ready/stopped; console_errors=0; product_code_changed=false
+boundary=scaled anchor and boarding lifecycle only; no native input or visual PASS

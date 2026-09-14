@@ -1,0 +1,62 @@
+{
+  "task_id": "Q12",
+  "run_id": "Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "camera_mode_cycle_external_obstruction_contraction_and_recovery",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q11"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "0C6D8BE009E2AAA9AB5A34F560BF47ABB8E0C960BFCC32A03EACE75E9E39C991"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D17A14CameraModesAndExternalObstructionRecoverWithoutInvalidPose",
+    "status": "completed",
+    "pipeline_duration_s": 5.66,
+    "test_duration_s": 5.563372,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "runtime_marker": "mode_cycles=10, obstructed=true, distanceBefore=5.500, distanceBlocked=3.882, distanceRecovered=5.500, collisionChecks=109",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {
+      "name": "camera_mode_cycle",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Ten Character/Overview/ShipDeck target and mode transitions completed without invalid camera pose."
+    },
+    {
+      "name": "external_obstruction_shrink",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "A controlled external BoxCollider caused the camera distance to contract from 5.500m to 3.882m through the real obstruction query."
+    },
+    {
+      "name": "obstruction_recovery",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "After the obstruction was removed, the camera recovered to 5.500m with 109 collision checks and no error entries."
+    }
+  ],
+  "status_boundary": "Q12 is PASS_WITHIN_SCOPE for current CameraFollow mode/target transitions, controlled external obstruction contraction and recovery without invalid pose. It does not prove final compositor-visible framing, all-world occlusion, target-device camera performance, native Player input, authored action quality or VC-G01.",
+  "next_task": "Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

@@ -1,0 +1,86 @@
+{
+  "task_id": "Q24",
+  "run_id": "Q24_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL",
+  "status_scope": "current-source save/restore owner diagnostics and safe pause boundary",
+  "captured_at_local": "2026-09-15T01:50:20+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q23"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "SaveSystem/D2 save-restore diagnostics",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "The Q24 audit and pause closeout did not modify production code, Prefabs, scenes or save schema."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D19Q24SaveRestoreDiagnosticTests.cs": "27165D002CB9004ECD4018BC5F1715B613930F12F8A26FC6993BBFAA9CA92AD5",
+    "game/Assets/Scripts/Systems/Save/SaveSystem.cs": "EED7265B8A7CF78EC732EFD8367FA18DD719B7303276FCFBDED2130728A6CD2C",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Systems/D2/D2Contracts.cs": "3B070A55E168CF240C72E437F84AD0418370E5A5BC00F0949056CF4AC5C6B96C",
+    "game/Assets/Scripts/Gameplay/D7/D7SaveCoordinator.cs": "4B5C3B73608E6E98E73F0D37AAA63783DAFF31EE9D5062FF9C4CCD49D44E182B",
+    "game/Assets/Scenes/InitialHarbor.unity": "FF3FFF691E2A3E6C2B2616F7126855B29FC307F7647210CBF3AC0FB4A125DA04"
+  },
+  "checks": [
+    {
+      "name": "save_restore_diagnostics",
+      "command": "unity command run_tests --project-path game --mode editmode --filter Save.Tests.D19Q24SaveRestoreDiagnosticTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "pipeline_duration_seconds": 1.19,
+        "cases": {
+          "FailedSave_DoesNotOverwriteLastGoodPlayerShipOrCrewSnapshot": "0.4950193s PASS",
+          "LandSave_RoundTripPreservesPortClockMoneyCargoAndCrew": "0.3449817s PASS",
+          "OpenSeaSave_RoundTripPreservesShipLocationAndUsesHarborSpawnAnchorForPlayer": "0.3359035s PASS"
+        }
+      },
+      "evidence_boundary": "The current Q24 class emits no dedicated [Q24] Debug.Log marker; the verdict and case durations are recorded from the completed Pipeline test_status response."
+    },
+    {
+      "name": "native_player_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "Save/restore diagnostics do not prove native Player WASD/E/I/M/T/Esc input, movement, swimming, action quality, boarding control, camera framing, vegetation grounding, audio, performance or final visual quality."
+    }
+  ],
+  "observed_metrics": {
+    "land_port_type_after_load": "port",
+    "open_sea_type_after_load": "open_sea",
+    "open_sea_position": [41.5, -17.25],
+    "open_sea_heading": 212.0,
+    "open_sea_speed": 2.25,
+    "failed_save_previous_snapshot_preserved": true,
+    "previous_snapshot_money": 812,
+    "previous_snapshot_hull": 47,
+    "previous_snapshot_crew_morale": 86,
+    "player_state_swimming_schema": "not_present",
+    "native_player_runtime": "not_run"
+  },
+  "pause_boundary": {
+    "safe_pause": true,
+    "reason": "Q24 is the first complete current-source save/restore diagnostic boundary after Q23 formal scene integration. The next card Q25 is independently resumable and no test process is active.",
+    "resume_at": "Q25 current-source first-voyage/loop integration diagnostics",
+    "not_a_product_acceptance": true
+  },
+  "status_boundary": "Q24 remains PARTIAL. The audited save owner preserves land/open-sea state and protects the last good snapshot during an injected transaction failure. PlayerState has no independent swimming pose/volume/animation save field, and no native Player or final visual acceptance is claimed.",
+  "next_task": "Q25_CURRENT_PIPELINE_REAUDIT"
+}

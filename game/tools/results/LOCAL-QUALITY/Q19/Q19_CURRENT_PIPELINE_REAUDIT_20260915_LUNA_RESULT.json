@@ -1,0 +1,90 @@
+{
+  "task_id": "Q19",
+  "run_id": "Q19_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "VERIFIED",
+  "status_scope": "offline crew proposal/owner decision, relation facts and AgentMemory/domain save restore",
+  "captured_at_local": "2026-09-15T01:31:02+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q18"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "CrewAgent persistence / SaveSystem boundary",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Current-source offline crew and save restore revalidation passed; no production change was justified."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {"total": 27, "errors": 0, "warnings": 27},
+    "console_warning_classification": "Known D2 animation/rig admission, D2 fallback-player, D27 presentation readiness and controlled D29 exception warnings retained as evidence; no Error was returned.",
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/AgentCore/AgentMemory.cs": "5CAD2D3096D5464378FF0D4BAC282C3EF9C6D3FA5C09F624F4E2B756C6689F65",
+    "game/Assets/Scripts/Agent/AgentCore/AgentMemory.cs": "5CAD2D3096D5464378FF0D4BAC282C3EF9C6D3FA5C09F624F4E2B756C6689F65",
+    "game/Assets/Scripts/Systems/Save/CrewAgentCodec.cs": "B44265D27CC485795E232C5306BB6D140521FB3FF49C935F782585F183B5EF09",
+    "game/Assets/Scripts/Systems/D10/D10CrewBehaviorSystem.cs": "2F3EB2876204EC97B60383D9FEEA866BFCDDC0841213C6263ACF7D50DCAC8337",
+    "game/Assets/Scripts/Systems/D10/D10RelationSystem.cs": "B90573E251F8AAB1262449E5E8CAFF4B628396A426625262C463CB0762B82363",
+    "game/Assets/Tests/EditMode/Q19CrewInteractionAuditTests.cs": "FCD434267C9EDCA52671E5C6AB4CE051303DE10E8C8ECC4CA9E5D4D1A9C21082"
+  },
+  "checks": [
+    {
+      "name": "Q19CrewInteractionAuditTests",
+      "command": "run_tests --project-path game --mode editmode --filter Q19CrewInteractionAuditTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "test_duration_seconds": 0.3604646,
+        "pipeline_duration_seconds": 0.37,
+        "test_name": "Save.Tests.Q19CrewInteractionAuditTests.OfflineDiscussion_DutyRelationAndSaveRestore_RestoresAgentMemory"
+      },
+      "coverage": "Offline discussion proposal, owner decision, relation facts and AgentMemory restore through the CrewAgent persistence boundary."
+    },
+    {
+      "name": "Save.Tests",
+      "command": "run_tests --project-path game --mode editmode --filter Save.Tests --filter_type assembly --async_tests true --timeout 300 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {"total": 377, "passed": 377, "failed": 0, "skipped": 0, "inconclusive": 0, "pipeline_duration_seconds": 32.14}
+    },
+    {
+      "name": "AgentCore",
+      "command": "dotnet build game/AgentCore/AgentCore.csproj --nologo",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {"warnings": 0, "errors": 0, "duration_seconds": 2.61}
+    },
+    {
+      "name": "online_native_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "Online LLM availability/validation/network failure, native Player conversation UI/input/visual feedback, animation, swimming, collision presentation, performance and formal visual gates remain outside this card."
+    }
+  ],
+  "observed_metrics": {
+    "offline_available": false,
+    "discussion_success": true,
+    "invalid_duty_rejected": true,
+    "duty_approved": true,
+    "relation_success": true,
+    "relation_duplicate": true,
+    "event_log_restored": true,
+    "behavior_restored": true,
+    "memory_restored": true,
+    "memory_snapshot_schema": "agent_memory_v1"
+  },
+  "visual_review": {
+    "result": "NOT_RUN",
+    "reason": "Offline domain/save evidence is not native Player conversation or visual acceptance."
+  },
+  "status_boundary": "Q19 VERIFIED covers the offline crew proposal-to-owner chain and tested relation/AgentMemory/domain SQLite save restore only. It does not prove online LLM behavior, native Player UI/input/visuals, animation, swimming, collision presentation, performance or formal visual gates.",
+  "next_task": "Q20_CURRENT_PIPELINE_REAUDIT"
+}

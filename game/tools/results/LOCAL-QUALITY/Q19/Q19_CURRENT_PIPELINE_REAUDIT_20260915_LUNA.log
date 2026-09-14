@@ -1,0 +1,51 @@
+Q19 current-source Pipeline re-audit — 2026-09-15 (Luna)
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline_editor_pid=63572
+pipeline_endpoint=127.0.0.1:7800
+
+[command]
+unity command run_tests --project-path game --mode editmode --filter Q19CrewInteractionAuditTests --filter_type testName --async_tests true --timeout 120 --format json
+[result]
+status=completed duration=0.37s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test=Save.Tests.Q19CrewInteractionAuditTests.OfflineDiscussion_DutyRelationAndSaveRestore_RestoresAgentMemory
+test_duration=0.3604646s
+
+[command]
+unity command run_tests --project-path game --mode editmode --filter Save.Tests --filter_type assembly --async_tests true --timeout 300 --format json
+[result]
+status=completed duration=32.14s total=377 passed=377 failed=0 skipped=0 inconclusive=0
+
+[command]
+dotnet build game/AgentCore/AgentCore.csproj --nologo
+[result]
+AgentCore build succeeded; 0 warnings; 0 errors; elapsed 2.61s.
+
+[runtime-boundary]
+offline_available=false
+discussion_success=true
+invalid_duty_rejected=true
+duty_approved=true
+relation_success=true
+relation_duplicate=true
+event_log_restored=true
+behavior_restored=true
+memory_restored=true
+memory_snapshot_schema=agent_memory_v1
+
+[editor]
+status=ready
+play_mode=stopped
+compiling=false
+domain_reload_in_progress=false
+
+[console]
+error_query=0
+warning_query=27
+warning_boundary=Known D2 animation/rig admission, D2 fallback-player, D27 presentation readiness and controlled D29 exception warnings; retained, not treated as zero-warning evidence.
+after_capture=clear_console succeeded
+
+[scope]
+Q19 remains VERIFIED only for offline crew proposal -> owner decision -> relation facts -> AgentMemory/domain SQLite save/restore.
+Online LLM, native Player conversation UI/input/visuals, animation, swimming, collision presentation, performance and formal visual gates remain NOT_PROVEN.

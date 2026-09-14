@@ -1,0 +1,41 @@
+Q23 current-source Pipeline re-audit — 2026-09-15 (Luna)
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline_editor_pid=63572
+pipeline_endpoint=127.0.0.1:7800
+
+[command]
+unity command run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q23FormalResourceIntegrationTests --filter_type testName --async_tests true --timeout 120 --format json
+[result]
+status=completed duration=0.38s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test=Save.Tests.D19R03Q23FormalResourceIntegrationTests.InitialHarbor_R03ResourcesHaveOneActivePrefabOwnedIntegrationAndReopenConsistently
+test_duration=0.3685381s
+
+[marker]
+active_roots=34
+r03_instances=1
+ship_instances=1
+r03_renderers=362
+r03_missing_materials=0
+missing_scripts=0
+terrain_colliders=1
+ship_hull_bottom_y=-0.0400
+harbor_guid=f4a3a5e363746a8409e62ebc3ec544ba
+ship_guid=d25d9e3247439e3408977ba7e5abccb4
+d27_guid=a7a031a3b2b350246b274712193e84b2
+reopen_consistency=true
+
+[editor]
+status=ready
+play_mode=stopped
+compiling=false
+domain_reload_in_progress=false
+
+[console]
+error_query=0
+warning_query=0
+after_capture=clear_console succeeded
+
+[scope]
+Q23 remains PARTIAL. Current formal scene Prefab integration, source GUID resolution, active material/script checks and reopen consistency are verified; native Player camera/input, action/animation, swimming, ship-control feel, audio, performance, per-object grounding and final visual quality remain NOT_PROVEN.

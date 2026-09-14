@@ -1,0 +1,33 @@
+Q13_CURRENT_PIPELINE_REAUDIT_20260915_LUNA
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor_pid=63572
+endpoint=127.0.0.1:7800
+scene=InitialHarbor
+product_code_changed=false
+
+test_1=D17A15GameplayKeyboardDoesNotNavigateHudAndPauseRestoresModalOwnership
+test_1_status=completed
+test_1_summary=total=1 passed=1 failed=0 skipped=0 inconclusive=0
+test_1_pipeline_duration_s=6.38
+test_1_duration_s=6.2825988
+test_1_marker=[D17/A15] gameplay_w_s_cycles=10, normal_navigation=false, pause_navigation=true, blocked_navigation=true, restored_navigation=false, enabled_ui_module=InputSystemUIInputModule
+
+test_2=D16InputRouterPlayModeTests
+test_2_status=completed
+test_2_summary=total=11 passed=11 failed=0 skipped=0 inconclusive=0
+test_2_pipeline_duration_s=9.15
+test_2_coverage=D16A03 gameplay W/S and HUD isolation; InitialHarbor keyboard/camera/boarding; Escape pause; synthetic keyboard/gamepad; keyboard/gamepad rebind persistence
+
+test_3=D16PrimaryHudNavigationPlayModeTests
+test_3_status=completed
+test_3_summary=total=2 passed=2 failed=0 skipped=0 inconclusive=0
+test_3_pipeline_duration_s=5.38
+test_3_coverage=Primary HUD suppression and reassertion after UI Move action restoration
+
+console_error_query=0
+warning_query_after_final_d17_run=6 known D2/D27 fallback/readiness warnings
+editor_final=ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped
+next_task=Q14_CURRENT_PIPELINE_REAUDIT_20260915_LUNA

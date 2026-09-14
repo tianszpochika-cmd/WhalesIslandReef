@@ -1,0 +1,49 @@
+{
+  "task_id": "Q17",
+  "run_id": "Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "shipyard_preparation_success_reject_duplicate_cancel_exception_and_input_recovery",
+  "captured_at_local": "2026-09-15",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q16"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_query": 0
+  },
+  "changed_files": [],
+  "product_code_changed": false,
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D29ShipyardPreparationPlayModeTests.cs": "4B704F6128AFA8F45871B84212E1B3E3DDA575ED2D39692736DFCBE4DD935CFA",
+    "game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs": "189471F59CE6C065FEDC741CD9DC3329DBBB019EA5DCAFDABAE4B0DE48525A14",
+    "game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs": "A586B6AB978A90081341165B2A1C693833B3C9FA440D2720C10FFBE01FDEC020",
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5"
+  },
+  "test": {
+    "mode": "PlayMode",
+    "filter": "D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException",
+    "full_name": "Whalebone.Tests.D29.D29ShipyardPreparationPlayModeTests.D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException",
+    "status": "completed",
+    "pipeline_duration_s": 4.8,
+    "test_duration_s": 4.6987571,
+    "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+    "runtime_marker": "preparation_success=true, repair_reject_material=true, repair_duplicate_unchanged=true, domain_duplicate_idempotent=true, cancel_recovery=true, shipyard_success=true, shipyard_reject=true, exception_recovery=true, primary_input_restored=true",
+    "evidence_log": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log"
+  },
+  "checks": [
+    {"name": "preparation_and_repair_paths", "result": "PASS_WITHIN_SCOPE", "evidence": "Preparation success, material rejection and duplicate unchanged behavior were reported by the runtime marker."},
+    {"name": "shipyard_success_reject", "result": "PASS_WITHIN_SCOPE", "evidence": "Shipyard success and rejection paths both completed without test failure."},
+    {"name": "cancel_exception_recovery", "result": "PASS_WITHIN_SCOPE", "evidence": "Cancel recovery and a controlled exception path recovered the temporary page and restored primary input."},
+    {"name": "domain_idempotency", "result": "PASS_WITHIN_SCOPE", "evidence": "Domain duplicate operation remained idempotent according to the marker."}
+  ],
+  "status_boundary": "Q17 is PASS_WITHIN_SCOPE for D29/D9/D4 shipyard and preparation owner bridges, success/rejection/duplicate/cancel/exception recovery and primary input restoration. It does not prove native Player UI, rendered panel quality, online or saved-data behavior, performance, formal action quality or VC-G01.",
+  "warning_boundary": "The controlled exception path emits an expected warning and is retained as evidence; it is not treated as an unobserved error.",
+  "next_task": "Q18_CURRENT_PIPELINE_REAUDIT_20260915_LUNA"
+}

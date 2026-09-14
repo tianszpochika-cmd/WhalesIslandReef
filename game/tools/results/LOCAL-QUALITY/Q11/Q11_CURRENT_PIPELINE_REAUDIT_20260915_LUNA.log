@@ -1,0 +1,19 @@
+Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor_pid=63572
+endpoint=127.0.0.1:7800
+scene=InitialHarbor
+command=unity command run_tests --project-path game --mode playmode --filter D17A13SafeDisembarkSurvivesTenLegalCyclesAndRejectsNoGround --filter_type testName --async_tests true --timeout 300 --format json
+test_status=completed
+summary=total=1 passed=1 failed=0 skipped=0 inconclusive=0
+pipeline_duration_s=5.28
+test_duration_s=5.1819168
+marker=[D17/A13] legal_disembark_cycles=10, no_ground_rejection=true, final_grounded=True, final_mode=Character
+expected_rejection=[D2/Control] 下船被阻止：附近没有可行走的沙滩、码头或跳板
+console_error_query=0
+editor_final=ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped
+product_code_changed=false
+next_task=Q12_CURRENT_PIPELINE_REAUDIT_20260915_LUNA

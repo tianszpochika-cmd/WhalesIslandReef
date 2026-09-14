@@ -1,0 +1,75 @@
+{
+  "task_id": "Q21",
+  "run_id": "Q21_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL",
+  "status_scope": "static R03 harbor space/renderer/material/collider ownership and stable anchors",
+  "captured_at_local": "2026-09-15T01:37:26+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q20"],
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Current R03 static space audit revalidated without modifying the builder, Prefab or InitialHarbor scene."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_run": {"total": 10, "errors": 0, "warnings": 0},
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D19R03Q21HarborSpaceTests.cs": "736F0335D11B36EB9C6AD5F79413F1A84FD93CB6370343A9C222D2AAB0EEB314",
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "7CA2DF25DDD025E1160D6BFA8BFBAE0B40FC944F8DDB7EDF753F21349FE4B377",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab": "F28686F12236FA9F9FA5DD087E0B4EF4959CAD57C31A52FC241056D806FAE163",
+    "game/Assets/Scenes/InitialHarbor.unity": "FF3FFF691E2A3E6C2B2616F7126855B29FC307F7647210CBF3AC0FB4A125DA04"
+  },
+  "checks": [
+    {
+      "name": "static_service_space_contract",
+      "command": "run_tests --project-path game --mode editmode --filter Save.Tests.D19R03Q21HarborSpaceTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "test_duration_seconds": 0.189254,
+        "pipeline_duration_seconds": 0.2,
+        "test_name": "Save.Tests.D19R03Q21HarborSpaceTests.R03HarborPresentation_ServiceFootprints_AreSeparatedGroundedAndRouteAnchored"
+      },
+      "runtime_marker": "buildings=4, footprints=4, required_groups=6, colliders=23, terrain_colliders=1, external_collider_owners=D27_R03_CharacterWildlifePresentation",
+      "service_metrics": "Market/Warehouse/Tavern/Shipyard each renderers=37, missing_materials=0; pairwise XZ overlaps=0; stable spawn/disembark anchors present"
+    },
+    {
+      "name": "stable_route_anchors",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The current InitialHarbor scene preserves D2_PlayerSpawnAnchor and D2_DisembarkAnchor."
+    },
+    {
+      "name": "native_player_route_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "This is a static Prefab/editor audit; native Player camera framing, occlusion, mouse hit testing, physical keyboard route, target-device performance and human visual acceptance remain open."
+    }
+  ],
+  "observed_metrics": {
+    "service_building_count": 4,
+    "service_renderers_each": 37,
+    "service_missing_material_slots_total": 0,
+    "service_pairwise_xz_overlaps": 0,
+    "service_bounds_min_y": {"MarketVisual": 0.225, "WarehouseVisual": 0.225, "TavernVisual": 0.225, "ShipyardVisual": 0.225},
+    "required_spatial_group_count": 6,
+    "instantiated_collider_count": 23,
+    "r03_terrain_collider_count": 1,
+    "nested_d27_collider_count": 22
+  },
+  "status_boundary": "Q21 PARTIAL means the generated R03 presentation has a measured, non-overlapping static service layout and explicit collider ownership. It does not mean the game is visually or interactively accepted in a Windows Player.",
+  "next_task": "Q22_CURRENT_PIPELINE_REAUDIT"
+}

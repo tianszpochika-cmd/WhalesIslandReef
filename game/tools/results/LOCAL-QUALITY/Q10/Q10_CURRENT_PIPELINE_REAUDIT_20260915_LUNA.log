@@ -1,0 +1,19 @@
+Q10_CURRENT_PIPELINE_REAUDIT_20260915_LUNA
+source_head=cee7a9a0581cdaa4aa0a7eee7345694815770d63
+branch=agent/publish-project-changes-20260813
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor_pid=63572
+endpoint=127.0.0.1:7800
+scene=InitialHarbor
+command=unity command run_tests --project-path game --mode playmode --filter D17A12ShipMotionKeepsBoardedPlayerRelativeDeckStable --filter_type testName --async_tests true --timeout 300 --format json
+test_status=completed
+summary=total=1 passed=1 failed=0 skipped=0 inconclusive=0
+pipeline_duration_s=4.08
+test_duration_s=3.9863393
+marker=[D17/A12] motion_samples=10, maxRelativePositionError=0.000000, maxRelativeRotationError=0.000000, maxShipTranslation=1.513, maxShipHeadingDelta=32.000
+console_error_query=0
+editor_final=ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped
+warnings=6 known D2 procedural/neutral-action fallback or D27 presentation initialization warnings; not converted into a zero-warning claim
+product_code_changed=false
+next_task=Q11_CURRENT_PIPELINE_REAUDIT_20260915_LUNA

@@ -1,0 +1,126 @@
+{
+  "task": "Q01",
+  "title": "Current-source root-cause and owner audit after Q03-A23",
+  "captured_at_local": "2026-09-15",
+  "source_head": "cee7a9a0581cdaa4aa0a7eee7345694815770d63",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 63572,
+    "endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "final_editor_state": "ready/stopped",
+    "console_errors": 0
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "EF4683FC5050146FDA2382E0BAC7904E50F07809DECC7050C60E4C50A67581C2",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "17CA9CB1E9CACB1EF3A1917774A406EFA6D0432A098014E7B04703A84C90917D",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "not-captured-in-this-read-only-node",
+    "game/Assets/Scripts/Gameplay/D26/D26HarborEnvironmentRuntime.cs": "not-captured-in-this-read-only-node"
+  },
+  "runtime_facts": {
+    "physical_root": {
+      "name": "D2_PlayerAvatar",
+      "parent": null,
+      "lossy_scale": [1.0, 1.0, 1.0],
+      "character_controller": {"radius": 0.2424353212, "height": 1.7999997139, "center_y": 0.8468632698, "skin_width": 0.0193948261}
+    },
+    "default_presentation": {
+      "d2_action": "Idle",
+      "pose_driver": "Procedural",
+      "formal_animator_ready": false,
+      "procedural_pose_active": true,
+      "bound_bones": 8,
+      "d20_consumer_mode": "Formal",
+      "humanoid_pose_adapter": true,
+      "generic_path_adapter": false,
+      "candidate_skinned_renderers": 7,
+      "hidden_previous_fallback_renderers": 17
+    },
+    "water_transition": {
+      "entry_operation": "MoveToOpenWater",
+      "action": "Swimming",
+      "swimming": true,
+      "grounded": false,
+      "water_surface_y": -0.0199999996,
+      "player_y": 0.3999999762,
+      "visual_pitch_degrees": 64.0,
+      "visual_body_drop": -0.6094465852
+    },
+    "boarding_transition": {
+      "operation": "TryToggleShip",
+      "succeeded": true,
+      "parent": "ph_ship_fishing",
+      "control_mode": "Ship",
+      "steering_pose_active": true,
+      "character_controller_enabled": false,
+      "helm_world": [0.0000001853, 1.1000001431, -6.6799998283],
+      "wheel_world": [0.0000002142, 1.8900001049, -6.3499994278],
+      "hand_to_wheel_m": [0.1939880401, 0.1939880997],
+      "hand_to_helm_m": [0.8902304769, 0.8902305365]
+    },
+    "ui_input_boundary": {
+      "ui_navigation_enabled": false,
+      "ui_move_action_bound": false,
+      "selected_ui": ""
+    }
+  },
+  "root_cause_reconciliation": {
+    "reported_defects": [
+      {
+        "id": "task_action_distortion",
+        "current_evidence": "The live default route is Formal at the D20 bridge, but the D2 animation controller still reports Procedural pose driving and FormalAnimatorReady=false; no compositor frame was captured in this node.",
+        "owner_boundary": "D2 owns action state and physical root; D20 owns visible candidate presentation and Humanoid pose adapter.",
+        "diagnosis_status": "OWNER_IDENTIFIED_VISUAL_ROOT_CAUSE_UNVERIFIED",
+        "next_evidence": "Q31/VC-G01 visible Player action frames and a controlled action-transition matrix."
+      },
+      {
+        "id": "ocean_swimming",
+        "current_evidence": "The current runtime genuinely enters Swimming with water_surface_y=-0.02, player_y≈0.40, pitch=64° and body_drop≈-0.609m; this proves state/placement, not natural swimming or camera contact quality.",
+        "owner_boundary": "D2/OceanAdapter owns water state and physical placement; D20 owns visible swim pose; CameraFollow owns presentation framing.",
+        "diagnosis_status": "LOGIC_REPRODUCED_VISUAL_QUALITY_UNVERIFIED",
+        "next_evidence": "Q31/VC-G01 visible open-water swim entry, sustained W, exit and camera frames."
+      },
+      {
+        "id": "boarding_floating_control",
+        "current_evidence": "TryToggleShip succeeds and the Player becomes a child of ph_ship_fishing in Ship mode; steering pose is active, but both hands remain≈0.194m from the visible wheel and≈0.890m from the gameplay HelmPoint in the current procedural pose sample.",
+        "owner_boundary": "D2ControlRouter/D7ShipDeck own state and HelmPoint; D20/D2 presentation owns visible hand/arm pose; CameraFollow owns ShipDeck framing.",
+        "diagnosis_status": "STATE_REPRODUCED_CONTACT_RISK_CONFIRMED_VISUAL_FIX_NOT_CLAIMED",
+        "next_evidence": "Q10/Q11 state regressions plus a visible Player helm-contact frame; no coordinate blind tuning without that frame."
+      },
+      {
+        "id": "floating_trees",
+        "current_evidence": "R03 vegetation is constrained to its owned D19_TerrainRoot by current D19/D26 logic and prior Q20 tests; this Q01 node has no valid compositor-visible tree frame, so the reported floating appearance is not directly reproduced here.",
+        "owner_boundary": "D19-R03 builder and D26 environment grounding own vegetation placement; D19_TerrainRoot owns the grounding collider.",
+        "diagnosis_status": "VISUAL_UNVERIFIED_FORMAL_RESOURCE_BOUNDARY_OPEN",
+        "next_evidence": "Q20/Q31 camera-visible tree/palm samples with object path, terrain hit and all-camera occlusion/intersection review."
+      },
+      {
+        "id": "wasd_hud_conflict",
+        "current_evidence": "Current connected runtime starts with UI navigation disabled and move action unbound; this confirms the owner boundary, not foreground physical Win32 keyboard focus.",
+        "owner_boundary": "D16/D29 own gameplay-vs-UI input routing.",
+        "diagnosis_status": "LOGIC_BOUNDARY_CONFIRMED_NATIVE_FOCUS_UNVERIFIED",
+        "next_evidence": "Q29 hidden runtime route is already bounded; final acceptance still requires foreground Player/manual evidence."
+      }
+    ],
+    "scale_and_collision_facts": {
+      "player_root_scale": [1.0, 1.0, 1.0],
+      "ship_scale": [2.5739560127, 2.5739560127, 2.5739560127],
+      "harbor_collision": "initialized; R03 surface installed; colliders=9; walkable=3; buildings=4",
+      "formal_resource_boundary": "Q03 formal route is installed in the current D20 consumer, but runtime D2 pose source remains Procedural and visual authored quality remains unverified."
+    }
+  },
+  "checks": {
+    "d20_route_probe": "success; diagnostics=[]",
+    "pose_input_probe_initial": "success; diagnostics=[]",
+    "pose_input_probe_open_water": "success; diagnostics=[]",
+    "pose_input_probe_boarded": "success; diagnostics=[]",
+    "editor_error_query": 0
+  },
+  "status_boundary": "Q01 closes current code/runtime owner, scale, water and boarding facts within connected Unity Pipeline scope. It does not claim the reported visual defects are fixed or even visually reproduced, and it does not close native foreground input, screenshots, no-clipping, vegetation grounding, target-device performance or final VC-G01 acceptance.",
+  "next_task": "Q09_CURRENT_DECK_ANCHOR_REAUDIT_20260915_LUNA"
+}
