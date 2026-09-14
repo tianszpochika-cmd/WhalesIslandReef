@@ -386,3 +386,7 @@ Q24→Q26 已继续完成当前源码有界质量链：[Q24 safe pause](game/des
 ## 2026-09-15 Q27 current-source performance revalidation R4
 
 Q27 在 Q26 R5 后重新绑定到当前 HEAD，D16 预算 EditMode=`6/6 PASS`，60 秒 headless PlayMode=`1/1 PASS`；报告为 `Null Device`，`162` samples、平均 `30.9174 FPS`、最长帧 `1190.5581ms`、GPU timing unavailable，探针 owner/预算合同为真实 `true`。Console 取证为 `Error=0 / Warning=192`，已知 D27/D2 fallback 家族已登记，随后清空；Q27 继续 `PARTIAL`，不能替代目标设备性能或原生 Player/VC-G01 视觉输入门。结果：[Q27 R4](../game/tools/results/LOCAL-QUALITY/Q27/Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5_RESULT.json)；日志：[Q27 R4 log](../game/tools/results/LOCAL-QUALITY/Q27/Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5.log)；交接：[Q27](game/design/common/handoffs/LOCAL-QUALITY/Q27/Q27.md)。下一步 Q28 当前源码候选 Player 构建。
+
+## 2026-09-15 Q28 current-source candidate R13 build and D17 guard
+
+Q28 在 Q27 R4 后生成当前源码 R13：`build_73c3a973e2d8` 为 `StandaloneWindows64 / Succeeded / 0 errors / 1 warning`，唯一 warning 是 `enableInBuilds=false`，候选不带 Player Runtime Pipeline。D17A08=`1/1 PASS`，10 周期 rootAngle=`64°`、rootOffsetY=`0.012..0.034`、手头对齐=`0.992..1.000`；Q28 继续 `PARTIAL`，因为本轮未启动 Player、未发物理输入、未采集 compositor 截图或测量 GPU/目标设备性能。结果：[Q28 R13](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4_RESULT.json)；日志：[Q28 R13 log](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4.log)；交接：[Q28](game/design/common/handoffs/LOCAL-QUALITY/Q28/Q28.md)。下一步 Q29 当前 Player 路线复核。

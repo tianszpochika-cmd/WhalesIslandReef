@@ -2144,3 +2144,11 @@ Q27 已在当前 HEAD `00554ed52f137906beaeb88fdd39fbb87a70523a` 重新绑定：
 探针 owner/预算合同真实成立：`PerformanceProbeActive=true`、`PerformanceProbeOwnedByController=true`、host=`D16WorldPerformanceController`、`BudgetSatisfied=true`、`Passed=true`。取证后的 Console 为 `Error=0 / Warning=192 / dropped=false`，warning families=`D27 readiness 96`、`D2 procedural fallback 32`、`D2 unverified ph_crew_male 32`、`D2 absolute-Euler 32`；随后 `clear_console`，Editor=`ready/stopped`。
 
 Q27 仍为 `PARTIAL`：本轮没有修改 D16 生产代码或配置，也没有基于 Null Device 数字做无证据优化；该结果不能关闭 GPU/目标设备性能、长帧风险、原生 Player 视觉/输入或 VC-G01。下一步为 `Q28_CURRENT_PIPELINE_REAUDIT`，建立当前源码新的候选 Player build_id。结果：[Q27 R4](../game/tools/results/LOCAL-QUALITY/Q27/Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5_RESULT.json)；日志：[Q27 R4 capture](../game/tools/results/LOCAL-QUALITY/Q27/Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5.log)；交接：[Q27](design/common/handoffs/LOCAL-QUALITY/Q27/Q27.md)。
+
+## 2026-09-15 Q28 current-source candidate R13 build and D17 guard after Q27 R4
+
+Q28 已在当前 HEAD `762d351ab79bd165efff8d18227f62dfba2e133f` 通过 Unity Pipeline dry-run 和正式构建生成新的 `build_73c3a973e2d8`：`StandaloneWindows64 / Succeeded / 0 errors / 1 warning / 198187532 bytes / 13923ms`。唯一 warning 为 `RuntimePipelineConfig enableInBuilds=false`，R13 不带 Player Runtime Pipeline；EXE SHA256=`D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE`，`Assembly-CSharp.dll` SHA256=`45451540097E21BC0E57ED98DDABC0FF3EF1FEC7CC0743A1BAA8AA34F2C8B74E`。
+
+当前源 D17A08=`1/1 PASS`（Pipeline `14.02s`、测试 `13.9233925s`），10 周期 rootAngle=`64.00°`、rootOffsetY=`0.012..0.034`、手/头对齐=`0.992..1.000`；这是根安全守卫，不是正式动作/Avatar 或最终视觉通过。D17 后 Console=`Error 0 / Warning 187 / dropped=false`，包含 Pipeline disabled、D27 readiness 和 D2 procedural/unverified/absolute-Euler fallback；取证后清空，Editor=`ready/stopped`。
+
+Q28 继续 `PARTIAL`：R13 只关闭当前候选包的 BuildReport/身份边界和 D17 root guard，不关闭 Player 前台窗口、物理键盘、输入路线、截图、GPU/目标设备性能、正式动作资源或 VC-G01。下一步为 `Q29_CURRENT_PLAYER_ROUTE_REAUDIT`。结果：[Q28 R13](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4_RESULT.json)；日志：[Q28 R13 log](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4.log)；交接：[Q28](design/common/handoffs/LOCAL-QUALITY/Q28/Q28.md)。

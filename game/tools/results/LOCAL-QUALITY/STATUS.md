@@ -1890,3 +1890,12 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - Console after capture: Error=`0`、Warning=`192`、dropped=`false`; families=`D27 readiness 96 / D2 procedural fallback 32 / D2 unverified ph_crew_male 32 / D2 absolute-Euler 32`; Console cleared afterward, Editor=`ready/stopped`.
 - No D16 production code/configuration changed. Q27 remains `PARTIAL`: Null Device metrics are diagnostic risk only, not target-device/GPU/smoothness/native Player visual or input PASS. Next=`Q28_CURRENT_PIPELINE_REAUDIT`.
 - Result/log/handoff: `Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5_RESULT.json`, `Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q27/Q27.md`.
+
+## 2026-09-15 Q28 current-source candidate R13 build and D17 guard after Q27 R4
+
+- Q28=`PARTIAL`：dry-run=`valid=true / validationErrors=[]`；`build_73c3a973e2d8` 为 `StandaloneWindows64 / Succeeded / 0 errors / 1 warning / 198187532 bytes / 13923ms`。唯一 warning 为 `RuntimePipelineConfig enableInBuilds=false`，R13 不带 Player Runtime Pipeline。
+- R13 EXE SHA256=`D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE`；`Assembly-CSharp.dll` SHA256=`45451540097E21BC0E57ED98DDABC0FF3EF1FEC7CC0743A1BAA8AA34F2C8B74E`；构建设置=`developmentBuild=false / allowDebugging=false / connectWithProfiler=false / enableInBuilds=false / port=0`。
+- D17A08=`1/1 PASS`（Pipeline `14.02s`、test `13.9233925s`）；10 周期 rootAngle=`64.00°`、rootOffsetY=`0.012..0.034`、hand/head=`0.992..1.000`。这是根安全守卫，不是正式 authored animation/avatar 或最终画面通过。
+- D17 后 Console=`Error 0 / Warning 187 / dropped=false`，families=`Pipeline disabled 1 / D27 readiness 93 / D2 procedural fallback 31 / D2 unverified ph_crew_male 31 / D2 absolute-Euler 31`；Editor=`ready/stopped`，取证后清空。
+- R13 只证明当前候选包身份、BuildReport 和 D17 root guard；不证明 Player 前台、物理输入、截图、GPU/目标设备性能、正式动作或 VC-G01。下一步=`Q29_CURRENT_PLAYER_ROUTE_REAUDIT`。
+- Result/log/handoff: `Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4_RESULT.json`, `Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q28/Q28.md`.

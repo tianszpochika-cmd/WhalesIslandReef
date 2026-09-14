@@ -1,0 +1,97 @@
+{
+  "task_id": "Q28",
+  "run_id": "Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4",
+  "status": "PARTIAL",
+  "status_scope": "Current-source non-development Windows Player candidate R13 build identity and D17 swimming visual-root guard; no native Player visual/input or target-device performance claim.",
+  "captured_at_local": "2026-09-15T02:44:41+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q27"],
+  "source_head": "762d351ab79bd165efff8d18227f62dfba2e133f",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Generated a fresh non-development R13 Windows Player candidate after Q27 R4. No production code, Prefab, scene or runtime setting was changed."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "runtime_pipeline_settings_final": "enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10",
+    "build_settings_final": "activeBuildTarget=StandaloneWindows64; developmentBuild=false; allowDebugging=false; connectWithProfiler=false; il2CppCodeGeneration=OptimizeSpeed",
+    "build_scenes_requested": ["Assets/Scenes/MainMenu.unity", "Assets/Scenes/InitialHarbor.unity"],
+    "console_screened_after_d17": {
+      "console_latest_seq": 9040,
+      "entries_at_or_above_warning": 187,
+      "errors": 0,
+      "warnings": 187,
+      "dropped": false,
+      "warning_families": {
+        "pipeline_runtime_disabled_in_player_build": 1,
+        "D27_presentation_wait": 93,
+        "D2_procedural_player_fallback": 31,
+        "D2_unverified_ph_crew_male_skin": 31,
+        "D2_absolute_euler_animator_fallback": 31
+      }
+    },
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Editor/D19R03/D19R03PlayerBuilder.cs": "D3DCDF3C5432B388228CC7A962856482387A22DE14C7E3892C83133F2C25BBA7",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scenes/MainMenu.unity": "5E7C881049C8942C45B5E3A1D65F6A4118AC82B399FABFA0653765E88A3416B1",
+    "game/Assets/Scenes/InitialHarbor.unity": "FF3FFF691E2A3E6C2B2616F7126855B29FC307F7647210CBF3AC0FB4A125DA04",
+    "game/tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R13.exe": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "game/tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R13_Data/Managed/Assembly-CSharp.dll": "45451540097E21BC0E57ED98DDABC0FF3EF1FEC7CC0743A1BAA8AA34F2C8B74E"
+  },
+  "build": {
+    "dry_run": {
+      "valid": true,
+      "validation_errors": []
+    },
+    "build_id": "build_73c3a973e2d8",
+    "target": "StandaloneWindows64",
+    "scenes": ["Assets/Scenes/MainMenu.unity", "Assets/Scenes/InitialHarbor.unity"],
+    "output": "game/tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R13.exe",
+    "result": "Succeeded",
+    "total_size_bytes": 198187532,
+    "build_time_ms": 13923,
+    "total_errors": 0,
+    "total_warnings": 1,
+    "warning": "Pipeline: RuntimePipelineConfig found, but enableInBuilds = false. Pipeline will be disabled in Player builds.",
+    "exe_size_bytes": 671744,
+    "exe_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "assembly_csharp_size_bytes": 480256,
+    "assembly_csharp_sha256": "45451540097E21BC0E57ED98DDABC0FF3EF1FEC7CC0743A1BAA8AA34F2C8B74E",
+    "build_started_at_utc": "2026-09-14T10:42:37.2587563Z",
+    "build_ended_at_utc": "2026-09-14T10:42:51.1822578Z"
+  },
+  "d17_a08": {
+    "test": "D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "pipeline_duration_seconds": 14.02,
+    "test_duration_seconds": 13.9233925,
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "markers": {
+      "cycles": 10,
+      "root_angle_degrees": 64.0,
+      "root_offset_y_range": "0.012..0.034",
+      "max_arm_motion_range": "139.88..159.76",
+      "max_forearm_motion_range": "54.24..66.00",
+      "max_leg_motion_range": "0.96..7.00",
+      "swim_hand_head_alignment_range": "0.992..1.000"
+    }
+  },
+  "decision": "R13 is a fresh non-development candidate with a successful BuildReport and a passing D17 visual-root guard. The Runtime Pipeline is intentionally disabled in the candidate, and the guard only protects the procedural/fallback root; no visual or input acceptance is inferred.",
+  "runtime_boundary": "No Player process was launched. No foreground window, physical keyboard, compositor screenshot, GPU timing, target-device performance or final visual claim was made.",
+  "status_boundary": "Q28 remains PARTIAL. Candidate build identity and D17 root safety are evidenced, but authored animation/avatar, complete swimming presentation, harbor vegetation/intersection quality and VC-G01 native visual acceptance remain open.",
+  "next_task": "Q29_CURRENT_PLAYER_ROUTE_REAUDIT"
+}

@@ -1,0 +1,51 @@
+Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4
+captured_at_local=2026-09-15T02:44:41+08:00
+source_head=762d351ab79bd165efff8d18227f62dfba2e133f
+branch=agent/publish-project-changes-20260813
+unity_version=6000.0.80f1
+pipeline_endpoint=127.0.0.1:7800
+pipeline_editor_pid=63572
+
+[dry_run]
+command=unity command build --project-path game --target StandaloneWindows64 --outputPath tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R13.exe --scenes [Assets/Scenes/MainMenu.unity,Assets/Scenes/InitialHarbor.unity] --dry_run --format json
+valid=true
+validation_errors=[]
+
+[build]
+build_id=build_73c3a973e2d8
+target=StandaloneWindows64
+scenes=Assets/Scenes/MainMenu.unity;Assets/Scenes/InitialHarbor.unity
+output=game/tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R13.exe
+result=Succeeded
+total_size_bytes=198187532
+build_time_ms=13923
+total_errors=0
+total_warnings=1
+warning=Pipeline RuntimePipelineConfig enableInBuilds=false; Pipeline disabled in Player builds
+exe_sha256=D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE
+assembly_csharp_sha256=45451540097E21BC0E57ED98DDABC0FF3EF1FEC7CC0743A1BAA8AA34F2C8B74E
+settings=developmentBuild=false;allowDebugging=false;connectWithProfiler=false;enableInBuilds=false;port=0
+
+[d17_a08]
+command=unity command run_tests --project-path game --mode playmode --filter D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot --filter_type testName --async_tests true --timeout 180 --format json
+status=completed duration=14.02 total=1 passed=1 failed=0 skipped=0 inconclusive=0 test_duration=13.9233925
+cycles=10
+root_angle_degrees=64.00
+root_offset_y_range=0.012..0.034
+max_arm_motion_range=139.88..159.76
+max_forearm_motion_range=54.24..66.00
+max_leg_motion_range=0.96..7.00
+swim_hand_head_alignment_range=0.992..1.000
+
+[console]
+post_d17_cursor=9040
+errors=0
+warnings=187
+dropped=false
+warning_families=pipeline_runtime_disabled_in_player_build:1;D27_presentation_wait:93;D2_procedural_player_fallback:31;D2_unverified_ph_crew_male_skin:31;D2_absolute_euler_animator_fallback:31
+after_capture=clear_console issued; Editor ready/stopped
+
+[boundary]
+Q28=PARTIAL
+R13 is a build identity and root-guard artifact only. No Player process, foreground window, physical input, compositor screenshot, GPU or target-device performance claim was made.
+next=Q29_CURRENT_PLAYER_ROUTE_REAUDIT
