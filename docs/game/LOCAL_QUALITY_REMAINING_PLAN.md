@@ -2126,3 +2126,13 @@ Q25 已在当前 HEAD `0d64fbae6a46459bb11e92c8d7c357091dc948c4`、Unity `6000.0
 PlayMode 运行证据同时记录 Error=`0`、Warning=`12`（D27 readiness `6`、D2 未验证 `ph_crew_male` `2`、程序化低模回退 `2`、generated D6CrewAnimator 绝对 Euler `2`），D7 音频 `fallback=True`，D31 runtime performance approval=`pending`；Editor 最终 `ready/stopped`，取证后 Console 已清空。Q25 继续 `PARTIAL`，不把 owner 路线扩大为原生 Player、完整人工游玩、动作/游泳/上船视觉、植被、音效、性能或最终视觉通过。
 
 权威证据：[Q25 current result](../game/tools/results/LOCAL-QUALITY/Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q25 handoff](design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)。下一张执行卡为 `Q26_CURRENT_PIPELINE_REAUDIT`，先建立当前源码真实帧/性能测量与缺陷基线。
+
+## 2026-09-15 Q26 current-source PlayMode revalidation R5
+
+Q26 全量 `D19R03Q26GameplayDefectPlayModeTests` 在 connected Unity Pipeline Editor（PID=`63572`）使用新重编译程序集完成 `21/21 PASS`，Pipeline=`56.21s`，failed/skipped/inconclusive=`0`。本轮只修改 Q26A22 测试隔离：恢复 `Time.timeScale=1`，按 `Time.time` 等待 D2 再入水迟滞，并登记 timing marker；没有修改产品 D2、Prefab、场景或运行时配置。
+
+此前全量的 `20/21` 观察被保留为诊断证据：结果堆栈仍指向旧测试程序集断言行 `237`，与当前工作文件断言行 `252` 不一致。执行 Pipeline `recompile` 后确认 `completed / failed=false / errors=[]`，新的 `before_exit/after_wait` marker 出现，故本轮才作为权威结果。
+
+Q26A22 实际 marker=`immediate_reentry=False, reentered_after_cooldown=True, position=(0.00,0.40,30.10)`，并确认 `after_wait time=29.952 > deadline=29.833 / timeScale=1.000`。全量 Error=`0`；Warning=`98`（D27 readiness、D2 未验证导入蒙皮/程序化回退/absolute-Euler 动画）已登记，取证后 Console 清空；Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。
+
+Q26 继续 `PARTIAL`：当前有界 gameplay/owner/collision/Input System 注入和 procedural fallback 合同通过，但不证明前台 Win32 物理键盘、compositor-visible Player、正式 Avatar/action、自然泳姿/IK/握舵、全镜头植被/穿模、音频、目标设备性能或 VC-G01 最终视觉。任务板更新为：已完成 Q25/Q26 有界回归；进行中下一张 `Q27_CURRENT_PIPELINE_REAUDIT`；阻塞/未关闭 Q20 `PARTIAL/BLOCKED_ASSET`、Q31 `PARTIAL`、VC-G01 `IN_PROGRESS`、VC-G02/VC-G03 `LOCKED`、D31-P04/S05/G06 `PARTIAL`。结果：[Q26 R5](../game/tools/results/LOCAL-QUALITY/Q26/Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5_RESULT.json)；日志：[Q26 R5 log](../game/tools/results/LOCAL-QUALITY/Q26/Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5.log)；交接：[Q26 handoff](design/common/handoffs/LOCAL-QUALITY/Q26/Q26.md)。

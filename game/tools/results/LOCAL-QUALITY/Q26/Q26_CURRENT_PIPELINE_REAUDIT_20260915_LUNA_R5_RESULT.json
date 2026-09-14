@@ -1,0 +1,124 @@
+{
+  "task_id": "Q26",
+  "run_id": "Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5",
+  "status": "PARTIAL",
+  "status_scope": "current-source D19-R03 gameplay, owner, collision, injected-input and bounded procedural presentation contracts",
+  "captured_at_local": "2026-09-15T02:25:29+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q20", "Q21", "Q22", "Q23", "Q24", "Q25"],
+  "source_head": "24517e95960a23515792f775cb7d4f09b6015ebb",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "D2 gameplay controller and Q26 PlayMode diagnostic contract",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "test_harness_changed": true,
+    "changed_files": [
+      "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs"
+    ],
+    "note": "The prior full-suite 20/21 observation was traced to the Unity Editor running a stale test assembly: the result stack still pointed at the pre-edit assertion line. The Q26A22 test now restores Time.timeScale=1 for isolation, waits on Time.time (the same clock used by D2 re-entry hysteresis), and records timing diagnostics. D2 product code, Prefab, scene and runtime settings were not changed."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "recompile": "completed; failed=false; errors=[]",
+    "editor_final": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "runtime_pipeline_settings_final": "enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10",
+    "console_screened_after_run": {
+      "errors": 0,
+      "warnings": 98,
+      "warning_families": {
+        "D27_presentation_not_ready": 48,
+        "D2_procedural_low_model_fallback": 17,
+        "D2_unverified_ph_crew_male": 16,
+        "D2_generated_crew_animator_absolute_euler": 17
+      },
+      "info_query_returned": 1000,
+      "info_query_window": "Unity Pipeline console API capped at 1000 returned entries; Q26 markers were extracted from the returned window"
+    },
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs": "43D498C6D421A4463A65DC1095985B75F141076F09C06475544970EB33BAF280",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "7CA2DF25DDD025E1160D6BFA8BFBAE0B40FC944F8DDB7EDF753F21349FE4B377",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab": "F28686F12236FA9F9FA5DD087E0B4EF4959CAD57C31A52FC241056D806FAE163",
+    "game/Assets/Scenes/InitialHarbor.unity": "FF3FFF691E2A3E6C2B2616F7126855B29FC307F7647210CBF3AC0FB4A125DA04"
+  },
+  "diagnostic_history": {
+    "pre_recompile_full_suite": {
+      "result": "20/21 PASS; Q26A22 failed",
+      "failure": "短暂边界迟滞结束后，深水位置没有恢复正常游泳进入。",
+      "evidence": "The failure stack still referenced the old source assertion line 237 while the working file had already moved the assertion to line 252; focused old-assembly run passed."
+    },
+    "post_recompile_authoritative_run": {
+      "result": "21/21 PASS",
+      "recompile_status": "completed; failed=false; errors=[]",
+      "evidence": "New timing markers were present and the final stack/results used the edited test assembly."
+    }
+  },
+  "test": {
+    "name": "Whalebone.Tests.D19R03Q26.D19R03Q26GameplayDefectPlayModeTests",
+    "pipeline_command": "unity command run_tests --project-path game --mode playmode --filter D19R03Q26GameplayDefectPlayModeTests --filter_type testName --async_tests true --timeout 180 --format json",
+    "pipeline_duration_seconds": 56.21,
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "cases": {
+      "Q26A01RealKeyboardInputMovesPlayerWhileSwimming": "3.9415081s PASS",
+      "Q26A02BoardingPlayerStaysNearVisibleHelmAndOwnsShipControl": "2.1645338s PASS",
+      "Q26A03ActiveLegacyTreeRenderersAndR03VegetationHaveGroundEvidence": "2.0939445s PASS",
+      "Q26A04RealKeyboardERejectsRemoteBoardsAndCompletesBoardDisembark": "2.8186289s PASS",
+      "Q26A05ProceduralFallbackReachesVisibleHelmInShipMode": "2.3098469s PASS",
+      "Q26A06SwimmingRemainsContinuousWithWaterMotion": "3.7448705s PASS",
+      "Q26A07R03OwnsCoastalFoamAndLegacyD6FoamIsHidden": "2.0725789s PASS",
+      "Q26A08MarketEntryDoesNotOverlapInitialPlayerCamera": "2.1856340s PASS",
+      "Q26A09PirateTowerHasAuthoredTerrainSupport": "2.2208641s PASS",
+      "Q26A10CrewAnchorStaysInteractableWithoutOverlappingPlayerSpawn": "2.1981429s PASS",
+      "Q26A11ShipPresentationForwardMatchesGameplayControlAxis": "2.1805223s PASS",
+      "Q26A12R03PresentationPropsUseOwnedTerrainContact": "2.2406264s PASS",
+      "Q26A13OpenSeaSaveRestoresAuthoredHarborShipRoute": "2.1944394s PASS",
+      "Q26A14ShorelineRocksHaveOwnedTerrainContact": "2.1996322s PASS",
+      "Q26A16HarborCollisionUsesScopedR03TerrainOwner": "2.1859020s PASS",
+      "Q26A17GeneratedHelmWheelSharesFallbackHandHeight": "2.2597664s PASS",
+      "Q26A18GeneratedHelmWheelUsesWarmWoodContrast": "2.1437651s PASS",
+      "Q26A19GeneratedHelmSupportUsesShipWoodMaterial": "4.7214950s PASS",
+      "Q26A21ProceduralSwimPoseHasMeasuredContinuousStroke": "4.4189169s PASS",
+      "Q26A22SwimmingExitBlocksImmediateReentryUntilBoundarySettles": "2.6447406s PASS",
+      "Q26A23ProceduralSwimHandsStayBelowHeadSilhouette": "3.1748408s PASS"
+    }
+  },
+  "markers": {
+    "q26_a01": "keyboard=W, swimming=True, action=Swimming, planarDistance=0.2915, start=(0.00,0.40,30.00), end=(-0.24,0.40,29.83), surfaceY=-0.020",
+    "q26_a02": "mode=Ship, boarded=True, gameplayHelm=(0.00,1.10,-6.68), player=(0.00,1.10,-6.68), visibleHelm=D7_VisibleHelmAnchor, visibleDistance=0.0000",
+    "q26_a03": "activeLegacyTreeRenderers=0, activeR03Vegetation=24, unsupportedR03Vegetation=0",
+    "q26_a04": "remote_e_rejected=true, real_e_boarded=true, real_e_disembarked=true, final_mode=Character",
+    "q26_a05": "shipSteering=true, leftHandWheelDistance=0.1940, rightHandWheelDistance=0.1940, wheel=(0.00,1.89,-6.35)",
+    "q26_a06": "water_swim_continuous=True, displacement=0.5814, start=(0.00,0.40,30.00), end=(0.00,0.40,30.58)",
+    "q26_a07": "r03FoamRenderers=28, legacyD6FoamRenderers=0, legacyPaths=",
+    "q26_a08": "marketEntryCenter=(0.00,1.01,1.12), player=(0.00,0.60,-2.70), planarDistance=3.815",
+    "q26_a09": "towerCenter=(-12.80,2.95,11.91), towerMinY=0.233, groundHit=True, collider=D19_R03_HarborPresentation/D19_TerrainRoot",
+    "q26_a10": "crew_anchor_separation=2.5125, spawn_to_crew=2.5125, player=(0.00,0.59,-2.70), spawn=(0.00,1.10,-2.70), crew=(2.50,1.10,-2.95)",
+    "q26_a11": "ship_forward=(0.00,0.00,-1.00), visual_forward=(0.00,0.00,-1.00), forward_alignment=1.0000, ship_heading=180.00",
+    "q26_a12": "grounded_targets=42, unsupported_removed=True, failures=",
+    "q26_a13": "saved_open_sea_reset=true, ship=(0.00,0.00,-5.20), heading=180.00, player=(0.00,0.59,-2.70), hullMaxZ=-5.20",
+    "q26_a14": "shoreline_rocks=9, failures=",
+    "q26_a16": "scopedTerrain=D19_R03_HarborPresentation/D19_TerrainRoot, authoredMesh=D19_R03_IslandSurfaceMesh, visualMesh=Combined Mesh (root: scene) 4, controllerInstalled=True, globalEnabled=False",
+    "q26_a17": "generatedHelmWheelY=1.8900, handMidpointY=1.8944, verticalError=0.0044",
+    "q26_a18": "helmMaterial=R03_HelmWheel, color=RGBA(0.340,0.160,0.055,1.000)",
+    "q26_a19": "helmSupportMaterial=D7Polish_HelmStand_0, texture=brown_planks_03_albedo, readsAsWood=True",
+    "q26_a21": "mode=Procedural, pitch=64.0, bodyDrop=-0.607, maxArmDelta=6.45, maxFootDelta=2.58, formalAssetBoundary=unverified",
+    "q26_a22_timing": "before_exit time=29.383, realtime=56.343, timeScale=1.000; after_wait time=29.952, realtime=56.924, timeScale=1.000, deadline=29.833",
+    "q26_a22": "immediate_reentry=False, reentered_after_cooldown=True, position=(0.00,0.40,30.10)",
+    "q26_a23": "maxHandAboveHead=0.134, formalAssetBoundary=unverified"
+  },
+  "warning_boundary": "The 98 warnings are known D27 presentation readiness waits plus D2 unverified ph_crew_male/procedural Player fallback and absolute-Euler animation-family warnings. D31 runtime performance approval remains pending; D7 audio reports fallback=True.",
+  "native_player_boundary": "Q26 InputTestFixture keyboard and pointer paths are code-level injected Input System evidence, not foreground physical Win32 keyboard or compositor-visible screenshot evidence.",
+  "status_boundary": "Q26 remains PARTIAL. The current bounded gameplay, owner, collision, injected-input and procedural fallback contracts pass after the test assembly was explicitly recompiled. This does not prove foreground native Player controls, formal Avatar/action resources, natural swimming posture/IK/helm presentation, vegetation/intersection visual acceptance, audio playback, target-device performance or VC-G01 final visual acceptance.",
+  "next_task": "Q27_CURRENT_PIPELINE_REAUDIT"
+}

@@ -1,0 +1,50 @@
+Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5
+captured_at_local=2026-09-15T02:25:29+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline_endpoint=127.0.0.1:7800
+pipeline_editor_pid=63572
+source_head=24517e95960a23515792f775cb7d4f09b6015ebb
+recompile_command=unity command recompile --project-path game --focus false --format json
+recompile_result=status=completed; failed=false; errors=[]
+playmode_command=unity command run_tests --project-path game --mode playmode --filter D19R03Q26GameplayDefectPlayModeTests --filter_type testName --async_tests true --timeout 180 --format json
+playmode_result=total=21 passed=21 failed=0 skipped=0 inconclusive=0 duration=56.21
+case=Q26A01RealKeyboardInputMovesPlayerWhileSwimming duration_seconds=3.9415081 result=PASS
+case=Q26A02BoardingPlayerStaysNearVisibleHelmAndOwnsShipControl duration_seconds=2.1645338 result=PASS
+case=Q26A04RealKeyboardERejectsRemoteBoardsAndCompletesBoardDisembark duration_seconds=2.8186289 result=PASS
+case=Q26A21ProceduralSwimPoseHasMeasuredContinuousStroke duration_seconds=4.4189169 result=PASS
+case=Q26A22SwimmingExitBlocksImmediateReentryUntilBoundarySettles duration_seconds=2.6447406 result=PASS
+case=Q26A23ProceduralSwimHandsStayBelowHeadSilhouette duration_seconds=3.1748408 result=PASS
+marker=[Q26/A01] keyboard=W, swimming=True, action=Swimming, planarDistance=0.2915, start=(0.00,0.40,30.00), end=(-0.24,0.40,29.83), surfaceY=-0.020
+marker=[Q26/A02] mode=Ship, boarded=True, gameplayHelm=(0.00,1.10,-6.68), player=(0.00,1.10,-6.68), visibleHelm=D7_VisibleHelmAnchor, visibleDistance=0.0000
+marker=[Q26/A03] activeLegacyTreeRenderers=0, activeR03Vegetation=24, unsupportedR03Vegetation=0
+marker=[Q26/A04] remote_e_rejected=true, real_e_boarded=true, real_e_disembarked=true, final_mode=Character
+marker=[Q26/A05] shipSteering=true, leftHandWheelDistance=0.1940, rightHandWheelDistance=0.1940, wheel=(0.00,1.89,-6.35)
+marker=[Q26/A06] water_swim_continuous=True, displacement=0.5814, start=(0.00,0.40,30.00), end=(0.00,0.40,30.58)
+marker=[Q26/A07] r03FoamRenderers=28, legacyD6FoamRenderers=0
+marker=[Q26/A08] marketEntryCenter=(0.00,1.01,1.12), player=(0.00,0.60,-2.70), planarDistance=3.815
+marker=[Q26/A09] tower groundHit=True, towerMinY=0.233, collider=D19_R03_HarborPresentation/D19_TerrainRoot
+marker=[Q26/A10] crew_anchor_separation=2.5125, spawn_to_crew=2.5125
+marker=[Q26/A11] forward_alignment=1.0000, ship_heading=180.00
+marker=[Q26/A12] grounded_targets=42, unsupported_removed=True
+marker=[Q26/A13] saved_open_sea_reset=true, ship=(0.00,0.00,-5.20), hullMaxZ=-5.20
+marker=[Q26/A14] shoreline_rocks=9, failures=
+marker=[Q26/A16] scopedTerrain=D19_R03_HarborPresentation/D19_TerrainRoot, authoredMesh=D19_R03_IslandSurfaceMesh, controllerInstalled=True, globalEnabled=False
+marker=[Q26/A17] generatedHelmWheelY=1.8900, handMidpointY=1.8944, verticalError=0.0044
+marker=[Q26/A18] helmMaterial=R03_HelmWheel, color=RGBA(0.340,0.160,0.055,1.000)
+marker=[Q26/A19] helmSupportMaterial=D7Polish_HelmStand_0, texture=brown_planks_03_albedo, readsAsWood=True
+marker=[Q26/A21] mode=Procedural, pitch=64.0, bodyDrop=-0.607, maxArmDelta=6.45, maxFootDelta=2.58, formalAssetBoundary=unverified
+marker=[Q26/A22] before_exit time=29.383, realtime=56.343, timeScale=1.000
+marker=[Q26/A22] after_wait time=29.952, realtime=56.924, timeScale=1.000, deadline=29.833
+marker=[Q26/A22] immediate_reentry=False, reentered_after_cooldown=True, position=(0.00,0.40,30.10)
+marker=[Q26/A23] maxHandAboveHead=0.134, formalAssetBoundary=unverified
+console=error=0; warning=98; info_query_returned=1000; info_query_window=API cap; warning_families=D27_presentation_not_ready:48,D2_procedural_low_model_fallback:17,D2_unverified_ph_crew_male:16,D2_generated_crew_animator_absolute_euler:17
+console_after_capture=cleared
+runtime_pipeline_final=enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10
+editor_final=ready compiling=false domainReloadInProgress=false playMode=stopped
+diagnosis=pre-recompile full suite had stale test assembly evidence (old stack line 237); post-recompile run executed edited test (new timing markers) and passed 21/21
+product_code_changed=false
+test_harness_change=Q26A22 restores Time.timeScale=1 for isolation and waits on Time.time, matching D2's scaled re-entry hysteresis clock
+status=PARTIAL
+boundary=code-level gameplay/owner/collision/injected-input/procedural fallback evidence only; no foreground Win32 input, compositor-visible visual, formal Avatar/action, natural IK, audio or target-device performance acceptance
+next=Q27_CURRENT_PIPELINE_REAUDIT

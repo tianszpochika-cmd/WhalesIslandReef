@@ -1873,3 +1873,12 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - PlayMode Console=`Error 0 / Warning 12`，警告家族为 D27 readiness `6`、D2 未验证 `ph_crew_male` `2`、程序化低模回退 `2`、generated D6CrewAnimator 绝对 Euler `2`；D7 audio=`fallback=True`，D31 runtime performance approval=`pending`。Editor=`ready/stopped`，Console 已清空。
 - Q25 只证明 D30/D23 owner 路线和有限 InitialHarbor 路线，不证明 native Player、完整人工游玩、动作/游泳/上船视觉、植被、音效、性能或最终视觉。下一步 Q26 当前源码测量基线。
 - 结果/日志/交接：[Q25 result](Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q25 log](Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)、[Q25 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)。
+
+## 2026-09-15 Q26 current-source PlayMode revalidation R5
+
+- Q26=`PARTIAL`：重编译后的 `D19R03Q26GameplayDefectPlayModeTests`=`21/21 PASS`，Pipeline=`56.21s`，failed/skipped/inconclusive=`0`；`recompile_status=completed / failed=false / errors=[]`。
+- 本轮只修改 Q26A22 测试隔离：保存/恢复 `Time.timeScale`，测试内按 `Time.time` 等待 D2 的 `Time.time` 再入水迟滞。此前全量 `20/21` 的旧失败被定位为 stale test assembly（堆栈仍指向旧断言行 `237`），新程序集运行后出现 timing marker 并稳定通过；D2 产品代码未改。
+- Q26A22 marker=`before_exit time=29.383 / timeScale=1.000`、`after_wait time=29.952 > deadline=29.833`、`immediate_reentry=False`、`reentered_after_cooldown=True`、`position=(0.00,0.40,30.10)`；A01/A02/A04/A06/A12/A14/A17/A21/A23 等同轮 marker 均通过。
+- Console=`Error 0 / Warning 98`；warning families=`D27 readiness 48`、`D2 procedural fallback 17`、`D2 unverified ph_crew_male 16`、`D2 absolute-Euler animator 17`。Info 查询达到 `1000` 条 API 窗口并抽取 Q26 marker；取证后 Console 已清空。Editor=`ready/stopped`；Runtime Pipeline=`enableInBuilds=false / port=0`。
+- Q26 有界 gameplay/owner/collision/Input System 注入/procedural fallback 证据通过，但不等于 native Player 前台 Win32 输入、最终视觉、正式 Avatar/action、自然 IK/泳姿、全镜头植被/穿模、音频或性能通过；Q26 保持 `PARTIAL`。下一张执行卡为 `Q27_CURRENT_PIPELINE_REAUDIT`。
+- 结果/日志/交接：[Q26 R5 result](Q26/Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5_RESULT.json)、[Q26 R5 log](Q26/Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5.log)、[Q26 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q26/Q26.md)。

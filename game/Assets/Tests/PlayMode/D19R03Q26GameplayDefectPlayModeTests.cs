@@ -209,8 +209,14 @@ namespace Whalebone.Tests.D19R03Q26
             Assert.IsNotNull(isSwimming, "D2CharacterController 缺少 IsSwimming。");
             Assert.IsNotNull(moveDirection, "D2CharacterController 缺少移动方向字段。");
 
+            float previousTimeScale = Time.timeScale;
             try
             {
+                // The D2 re-entry hysteresis is intentionally measured with
+                // Time.time. Keep this diagnostic independent from a modal
+                // state left by a preceding PlayMode case, then wait on the
+                // same clock as the production state machine.
+                Time.timeScale = 1f;
                 setInputEnabled.Invoke(character, new object[] { true });
                 setWorldPosition.Invoke(character, new object[] { new Vector3(0f, 0.42f, 30f) });
                 Physics.SyncTransforms();
@@ -220,6 +226,9 @@ namespace Whalebone.Tests.D19R03Q26
                     yield return null;
                 Assert.IsTrue((bool)isSwimming.GetValue(character), "深水起点没有进入游泳态。");
 
+                Debug.Log("[Q26/A22] before_exit time=" + Time.time.ToString("F3") +
+                          ", realtime=" + Time.realtimeSinceStartup.ToString("F3") +
+                          ", timeScale=" + Time.timeScale.ToString("F3"));
                 endSwimming.Invoke(character, new object[] { "Q26/A22 boundary regression" });
                 moveDirection.SetValue(character, Vector3.forward);
                 applyPhysics.Invoke(character, null);
@@ -227,7 +236,13 @@ namespace Whalebone.Tests.D19R03Q26
                 Assert.IsFalse(immediateReentry,
                     "游泳退出后的同一边界判定立即重新进入游泳态，存在岸线状态抖动。");
 
-                yield return new WaitForSecondsRealtime(0.45f);
+                float cooldownObservationDeadline = Time.time + 0.45f;
+                while (Time.time < cooldownObservationDeadline)
+                    yield return null;
+                Debug.Log("[Q26/A22] after_wait time=" + Time.time.ToString("F3") +
+                          ", realtime=" + Time.realtimeSinceStartup.ToString("F3") +
+                          ", timeScale=" + Time.timeScale.ToString("F3") +
+                          ", deadline=" + cooldownObservationDeadline.ToString("F3"));
                 moveDirection.SetValue(character, Vector3.forward);
                 applyPhysics.Invoke(character, null);
                 bool reenteredAfterCooldown = (bool)isSwimming.GetValue(character);
@@ -241,6 +256,7 @@ namespace Whalebone.Tests.D19R03Q26
             {
                 moveDirection.SetValue(character, Vector3.zero);
                 setInputEnabled.Invoke(character, new object[] { false });
+                Time.timeScale = previousTimeScale;
             }
         }
 
