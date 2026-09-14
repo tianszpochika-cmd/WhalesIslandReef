@@ -1,0 +1,124 @@
+{
+  "task_id": "Q02",
+  "status": "VERIFIED",
+  "status_scope": "D2_animation_visual_root_single_writer_and_lifecycle_regression",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q02_ANIMATION_SINGLE_WRITER_20260908_230000",
+  "audit_time_local": "2026-09-08T23:00:00+08:00",
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs",
+    "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner": "D2CharacterAnimationController",
+    "changes": [
+      "D2 now submits the visual-root baseline, action motion and grounding offset in one deterministic pose pass.",
+      "OnAnimatorMove no longer creates a second visual-root write; root motion remains disabled.",
+      "Enable/disable resets transition, action and visual pose state to the imported baseline.",
+      "D7 grounding correction is received as an offset owned and written by D2; the D7 consumer change is recorded separately as Q02-A.",
+      "Imported skinned rigs without a verified bone-axis contract remain neutral on bones; only bounded whole-visual-root motion is retained."
+    ],
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "435ED78FCA1B8AAA6A6D3157DAD806159AA4FCEC96B242CE62BC9026141A7139",
+      "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "208C1DC0EAE042694D1EE2BD2358856D6E6C37B0FF40CBD7C5F120A3E2FCC1C8"
+    }
+  },
+  "checks": [
+    {
+      "name": "D2_animation_editmode_post_single_writer",
+      "result": "PASS",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q02/runs/Q02_POST_D7_SINGLE_WRITER_EDITMODE_R2.xml; total=8 passed=8 failed=0 inconclusive=0 skipped=0"
+    },
+    {
+      "name": "ten_disable_enable_and_transition_cycles",
+      "result": "PASS",
+      "evidence": "D2CharacterAnimationControllerTests.TenDisableEnableAndTransitionCyclesRestoreTheImportedBaseline; included in the 8/8 EditMode result"
+    },
+    {
+      "name": "boarding_action_regression",
+      "result": "PASS",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q02/runs/Q02_POST_D7_D17A02_PLAYMODE_R2.xml; total=1 passed=1 failed=0 inconclusive=0 skipped=0"
+    },
+    {
+      "name": "swimming_action_regression_after_animation_change",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q02/runs/Q02_POST_D7_D17A03_PLAYMODE_R2.xml; total=1 passed=1 failed=0 inconclusive=0 skipped=0",
+      "boundary": "This is a logic/PlayMode state assertion, not standalone Player visual or physical-input acceptance."
+    },
+    {
+      "name": "fallback_and_component_lifecycle_regression",
+      "result": "PASS",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q02/runs/Q02_POST_D7_FALLBACK_LIFECYCLE_PLAYMODE_R2.xml; total=3 passed=3 failed=0 inconclusive=0 skipped=0"
+    }
+  ],
+  "current_pipeline_reaudit_20260911": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_PIPELINE_REAUDIT_20260911_RESULT.json",
+    "pipeline": "Unity 6000.0.80f1 connected Editor PID 31416 at 127.0.0.1:7800",
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "773E6D13E147AA33E1CE20E7C17FB78CCAF8FE36B06CF1EBA1F0C4C08CEA0E61",
+      "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+      "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "665341FDC7BB0147082B2550EBFAF2BBBF6E2EE9141143AC27BE6F2FEACA6F29"
+    },
+    "checks": {
+      "d2_animation_editmode": "8/8 PASS",
+      "d17_action_quality_playmode": "15/15 PASS in 74.09s",
+      "error_console": "0"
+    },
+    "runtime_contract_sample": "D2_PlayerAvatar=(0,0.1946,-2.7), unit scale; D7 ready/human=true, GroundError=-8.940697E-08, DirectVisualRootWriteCount=0; D2 swimming=false/grounded=true; PoseDriverMode=Procedural; FormalAnimatorReady=false; AnimatorPoseLayerActive=false",
+    "boundary": "Current-source owner/lifecycle regression is verified. Formal action quality remains Q03 BLOCKED_ASSET and no visual/physical-input acceptance is inferred."
+  },
+  "status_boundary": "Q02 VERIFIED means the D2 animation owner and lifecycle behavior are code-tested. It does not claim that the imported neutral rig is a finished locomotion asset or that current Player screenshots are clean.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "checks": "D2 animation EditMode 8/8 PASS; D17 action PlayMode 16/16 PASS in 50.13s",
+    "source_hashes_current": true,
+    "boundary": "The formal D20 consumer remains explicit opt-in and the default Player remains Procedural/FormalAnimatorReady=false."
+  },
+  "current_revalidation_20260912_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_REVALIDATION_20260912_LUNA_R1_RESULT.json",
+    "status": "PASS_WITHIN_SCOPE",
+    "focused_animation_tests": "D2CharacterAnimationControllerTests=8/8 PASS, 0 failed/skipped/inconclusive.",
+    "full_d17_sequence": "first=15/16 with D17A16 camera failure; isolated D17A16=1/1; second full=16/16. The transient full-suite signal is retained as a watch item.",
+    "source_changed": false,
+    "boundary": "Focused Q02 owner/lifecycle contract passes; no claim for formal Avatar/action, natural swimming, helm contact, vegetation or final Player visual acceptance."
+  },
+  "current_reaudit_20260913": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "status": "PASS_WITHIN_SCOPE",
+    "focused_animation_tests": "D2CharacterAnimationController filter=8/8 PASS, 0 failed/skipped/inconclusive.",
+    "full_d17_sequence": "D17ActionQualityPlayModeTests async filter=16/16 PASS, 56.79s, 0 failed/skipped/inconclusive; includes D17A07 ten water cycles and D17A15 gameplay/UI input ownership.",
+    "current_source_hashes": "Rechecked against the current working tree; D2 animation=4B456637..., D2 runtime=346A2CD8..., D7 presentation=E807A9DF..., D17 test=DAFFDD72...",
+    "pipeline": "Replacement same-project Editor PID 53332, -nographics, final ready/stopped, cleared console=0.",
+    "boundary": "D2 owner/lifecycle logic is verified; formal action admission, native foreground input and final visual quality remain open.",
+    "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913"
+  },
+  "current_reaudit_20260914_luna_q02": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_SOURCE_OWNER_LIFECYCLE_20260914_LUNA_RESULT.json",
+    "status": "PASS_WITHIN_SCOPE",
+    "focused_animation_tests": "D2CharacterAnimationControllerTests=8/8 PASS, 0 failed/skipped/inconclusive, 0.56s",
+    "full_d17_sequence": "D17ActionQualityPlayModeTests=16/16 PASS, 0 failed/skipped/inconclusive, 81.03s; includes water cycles, swimming root separation, boarding/ship motion/safe disembark, camera and keyboard/HUD ownership.",
+    "current_source_hashes": "D2 animation=097D8210461C61C5BDFA365127D191865293040310539FEF92DC06AB90A66A42; D7 presentation=E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827; D17 test=DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20.",
+    "pipeline": "Connected Unity 6000.0.80f1 Editor PID 53332 at 127.0.0.1:7800; final ready/stopped; post-run error query since cursor 40526 returned zero and console was cleared.",
+    "boundary": "D2 owner/lifecycle regression is current-source verified. Formal authored action, natural swimming, native foreground input, helm contact/no-clipping, vegetation grounding, screenshots and target-device performance remain open.",
+    "next_task": "Q03_BLOCKED_ASSET_REVIEW_THEN_Q04_CURRENT_WATER_OWNER_REAUDIT"
+  },
+  "current_reaudit_20260914_q03a23_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_SOURCE_OWNER_LIFECYCLE_Q03A23_20260914_LUNA_RESULT.json",
+    "status": "PASS_WITHIN_SCOPE",
+    "initial_failure": "The first current-source D17 run was 13/16 with D17A02, D17A03 and D17A06 failing because they assumed an imported-neutral visible rig while Q03-A23 had installed the default Formal Humanoid consumer.",
+    "test_fix": "D17ActionQualityPlayModeTests now branches on the installed D20 consumer and retains hard assertions for single consumer ownership, hidden fallback renderers, D2 action consumption, Swimming/Fish support, successful Humanoid application and D2 lifecycle ownership.",
+    "checks": "D2 EditMode=8/8; D17 PlayMode=16/16; failed/skipped/inconclusive=0; recompile failed=false/errors=[]",
+    "source_hashes": "D2 animation=EF4683FC...A67581C2; D20 bridge=17CA9CB1...84C90917D; D17 test=85493325...0F3BA03",
+    "boundary": "Current code/runtime owner regression only; no authored-action visual quality, native foreground input, compositor screenshot, no-clipping, vegetation grounding or target-device performance PASS",
+    "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  },
+  "next_task": "Q03_CURRENT_FORMAL_HUMANOID_ROUTE_REAUDIT_THEN_Q04_CURRENT_WATER_OWNER_REAUDIT"
+}

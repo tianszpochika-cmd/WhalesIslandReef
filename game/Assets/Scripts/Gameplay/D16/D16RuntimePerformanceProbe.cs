@@ -43,6 +43,10 @@ namespace Whalebone.Gameplay.D16
             public float D16FirstRegistrationRefreshMs;
             public float D16FirstUpdateMs;
             public float D16FirstBudgetEvaluationMs;
+            public int D16BudgetEvaluationCount;
+            public float D16TotalBudgetEvaluationMs;
+            public float D16AverageBudgetEvaluationMs;
+            public float D16MaxBudgetEvaluationMs;
             public float D5AwakeMs;
             public float D5RuntimeBuildElapsedMs;
             public bool D5RuntimePhaseTimingsComplete;
@@ -298,6 +302,10 @@ namespace Whalebone.Gameplay.D16
                 _report.D16FirstRegistrationRefreshMs = _controller.FirstRegistrationRefreshMs;
                 _report.D16FirstUpdateMs = _controller.FirstUpdateMs;
                 _report.D16FirstBudgetEvaluationMs = _controller.FirstBudgetEvaluationMs;
+                _report.D16BudgetEvaluationCount = _controller.BudgetEvaluationCount;
+                _report.D16TotalBudgetEvaluationMs = _controller.TotalBudgetEvaluationMs;
+                _report.D16AverageBudgetEvaluationMs = _controller.AverageBudgetEvaluationMs;
+                _report.D16MaxBudgetEvaluationMs = _controller.MaxBudgetEvaluationMs;
             }
             if (_d5 == null) _d5 = FindD5Bootstrap();
             if (_d5 != null)
@@ -450,7 +458,12 @@ namespace Whalebone.Gameplay.D16
                 _gpuFrameTimeRecorder.Dispose();
                 _gpuFrameTimeRecorderStarted = false;
             }
-            if (_writeReportOnDestroy && _report != null) SaveReport();
+            // A legacy presentation probe can be disabled when R03 takes
+            // ownership of the visible harbor.  It must not overwrite the
+            // active controller's report with a zero-sample snapshot during
+            // scene teardown.
+            if (_writeReportOnDestroy && _report != null && isActiveAndEnabled && gameObject.activeInHierarchy)
+                SaveReport();
         }
     }
 }

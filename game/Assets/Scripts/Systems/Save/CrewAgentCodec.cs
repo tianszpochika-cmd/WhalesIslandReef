@@ -3,9 +3,9 @@
 //
 // 归属：2 船员系统（存档域负责序列化；数值裁决仍在船员系统内）
 // 对应表：crew_agents（DATA_MODELS §7）
-// M0 已知限制（记录在案，P2 解除）：
-//   - AgentMemory 内部状态（短期上下文/摘要/事件）为私有，M0 不做还原，
-//     Load 后以空记忆重建（memory_json 仅存骨架占位）；
+// AgentMemory 通过 AgentMemorySnapshot 映射到 memory_json；Save 域只负责编解码，
+// 不拥有记忆含义，也不让读档绕过 Crew/Relation/其他系统的裁决。
+// 向后兼容：旧存档的空 summary/events 骨架可安全还原为空记忆。
 //   - D10CrewBehaviorState 作为 stats_json.behavior 嵌套对象持久化，
 //     不新增表列，仍由 CrewSystem/D10 行为系统负责恢复后的裁决；
 //   - traits_json 存 TraitId[]；AgentCore 的 Persona.Traits 存对应中文名（展示/LLM 用），
@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Whalebone.Agent;
 
 namespace Whalebone.Systems.Save
@@ -74,11 +75,7 @@ namespace Whalebone.Systems.Save
                 ["traits_json"] = SaveJson.Stringify(traitIds ?? new List<string>()),
                 ["stats_json"] = SaveJson.Stringify(statsObj),
                 ["persona_json"] = SaveJson.Stringify(personaObj),
-                ["memory_json"] = SaveJson.Stringify(new Dictionary<string, object>
-                {
-                    ["summary"] = "",
-                    ["events"] = new List<object>(),
-                }),
+                ["memory_json"] = SaveJson.Stringify(MemoryToJson(agent.Memory)),
                 ["relations_json"] = SaveJson.Stringify(new Dictionary<string, object>()),
             };
         }
@@ -110,7 +107,78 @@ namespace Whalebone.Systems.Save
             var agent = new CrewAgent(id, persona, new InMemoryStore());
             RestoreStats(agent.Stats, statsJson);
             RestoreBehavior(agent.BehaviorState, statsJson);
+            agent.Memory.RestoreSnapshot(ReadMemorySnapshot(SaveJson.ParseDict(
+                SaveJson.GetStr(row, "memory_json", "{}"))));
             return agent;
+        }
+
+        private static Dictionary<string, object> MemoryToJson(AgentMemory memory)
+        {
+            var snapshot = memory == null ? new AgentMemorySnapshot() : memory.CaptureSnapshot();
+            var shortContext = new List<object>();
+            if (snapshot.ShortContext != null)
+                foreach (var item in snapshot.ShortContext) shortContext.Add(item ?? string.Empty);
+
+            var events = new List<object>();
+            if (snapshot.Events != null)
+            {
+                foreach (var item in snapshot.Events)
+                {
+                    if (item == null) continue;
+                    events.Add(new Dictionary<string, object>
+                    {
+                        ["time"] = item.Time == default(DateTime)
+                            ? DateTime.Now.ToString("O") : item.Time.ToString("O"),
+                        ["importance"] = item.Importance,
+                        ["kind"] = item.Kind ?? string.Empty,
+                        ["text"] = item.Text ?? string.Empty,
+                    });
+                }
+            }
+
+            return new Dictionary<string, object>
+            {
+                ["schema_version"] = "agent_memory_v1",
+                ["short_context"] = shortContext,
+                ["summary"] = snapshot.SessionSummary ?? string.Empty,
+                ["turn_count"] = snapshot.TurnCount,
+                ["events"] = events,
+            };
+        }
+
+        private static AgentMemorySnapshot ReadMemorySnapshot(Dictionary<string, object> json)
+        {
+            var snapshot = new AgentMemorySnapshot();
+            if (json == null) return snapshot;
+
+            snapshot.SessionSummary = SaveJson.GetStr(json, "summary", string.Empty);
+            snapshot.TurnCount = SaveJson.GetInt(json, "turn_count", 0);
+            if (json.TryGetValue("short_context", out object shortValue)
+                && shortValue is List<object> shortList)
+            {
+                foreach (var item in shortList)
+                    snapshot.ShortContext.Add(Convert.ToString(item));
+            }
+
+            if (json.TryGetValue("events", out object eventValue)
+                && eventValue is List<object> eventList)
+            {
+                foreach (var item in eventList)
+                {
+                    if (!(item is Dictionary<string, object> row)) continue;
+                    var memoryEvent = new MemoryEventSnapshot
+                    {
+                        Kind = SaveJson.GetStr(row, "kind", string.Empty),
+                        Text = SaveJson.GetStr(row, "text", string.Empty),
+                        Importance = SaveJson.GetFloat(row, "importance", 0f),
+                    };
+                    string time = SaveJson.GetStr(row, "time", string.Empty);
+                    if (!DateTime.TryParse(time, null, DateTimeStyles.RoundtripKind, out memoryEvent.Time))
+                        memoryEvent.Time = DateTime.Now;
+                    snapshot.Events.Add(memoryEvent);
+                }
+            }
+            return snapshot;
         }
 
         /// <summary>从表行还原"特质 id 引用"（独立于 Agent 对象，由调用方存入 GameState）。</summary>

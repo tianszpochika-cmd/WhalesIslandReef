@@ -7,9 +7,11 @@
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Whalebone.Gameplay.UI.D16;
 
 namespace Whalebone.Gameplay.UI
 {
@@ -17,6 +19,9 @@ namespace Whalebone.Gameplay.UI
     {
         private float _nextReconcile;
         private bool _legacyPromptHidden;
+        private bool _navigationPolicyInitialized;
+        private bool _lastNavigationEventsEnabled;
+        private InputActionReference _defaultNavigationAction;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void InstallSceneBootstrap()
@@ -42,6 +47,7 @@ namespace Whalebone.Gameplay.UI
 
         private void Update()
         {
+            ReconcileNavigationPolicy();
             if (Time.unscaledTime < _nextReconcile) return;
             _nextReconcile = Time.unscaledTime + 0.75f;
             Reconcile();
@@ -55,10 +61,69 @@ namespace Whalebone.Gameplay.UI
         private void Reconcile()
         {
             EnsureSingleEventSystem();
+            ReconcileNavigationPolicy();
             NormalizeCanvasesAndRaycasts();
         }
 
-        private static void EnsureSingleEventSystem()
+        /// <summary>
+        /// 正常港口移动时，W/S 只能进入 Gameplay 输入，不应被 UGUI
+        /// EventSystem 当作主 HUD 的上下导航。打开暂停、仓库、交易、酒馆
+        /// 或无障碍等模态页后，再恢复 UGUI 导航。
+        /// </summary>
+        private void ReconcileNavigationPolicy()
+        {
+            var keeper = EventSystem.current;
+            if (keeper == null) return;
+
+            bool hasApplicationFocus = Application.isFocused || Application.isBatchMode;
+            bool modalOwnsInput = D16InputRouter.GameplayInputBlocked ||
+                !RuntimeHudCoordinator.PrimaryInputAllowed;
+            bool enableNavigation = hasApplicationFocus && modalOwnsInput;
+
+            var input = keeper.GetComponent<InputSystemUIInputModule>();
+            if (input != null)
+            {
+                if (_defaultNavigationAction == null && input.move != null)
+                    _defaultNavigationAction = input.move;
+
+                // sendNavigationEvents=false is not sufficient protection: the
+                // Input System UI module can still retain and process its
+                // Navigate action around a focus/reconcile transition. Keep
+                // pointer/submit wiring intact for modal pages, but remove only
+                // the directional action while the primary gameplay HUD owns
+                // the keyboard. Modal pages restore the captured default action.
+                var expectedNavigationAction = enableNavigation
+                    ? _defaultNavigationAction
+                    : null;
+                if (input.move != expectedNavigationAction)
+                    input.move = expectedNavigationAction;
+            }
+
+            // Another UI owner can restore InputSystemUIInputModule.move while
+            // leaving EventSystem.sendNavigationEvents unchanged.  Treat the
+            // directional action as part of the policy's observable state, or
+            // the early return would leave W/S wired to HUD navigation after a
+            // focus/modal transition.
+            bool navigationActionMatches = input == null ||
+                input.move == (enableNavigation ? _defaultNavigationAction : null);
+            if (_navigationPolicyInitialized &&
+                _lastNavigationEventsEnabled == enableNavigation &&
+                keeper.sendNavigationEvents == enableNavigation &&
+                navigationActionMatches)
+                return;
+
+            keeper.sendNavigationEvents = enableNavigation;
+            _navigationPolicyInitialized = true;
+            _lastNavigationEventsEnabled = enableNavigation;
+
+            if (!enableNavigation && keeper.currentSelectedGameObject != null)
+                keeper.SetSelectedGameObject(null);
+
+            Debug.Log("[D6/Input] EventSystem navigation=" +
+                (enableNavigation ? "modal" : "gameplay_suppressed"));
+        }
+
+        private void EnsureSingleEventSystem()
         {
             var systems = FindObjectsByType<EventSystem>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             EventSystem keeper = EventSystem.current;
@@ -90,12 +155,12 @@ namespace Whalebone.Gameplay.UI
 
             keeper.gameObject.SetActive(true);
             keeper.enabled = true;
-            keeper.sendNavigationEvents = true;
             EventSystem.current = keeper;
             var input = keeper.GetComponent<InputSystemUIInputModule>();
             if (input == null) input = keeper.gameObject.AddComponent<InputSystemUIInputModule>();
             input.enabled = true;
-            input.AssignDefaultActions();
+            if (input.actionsAsset == null || (_defaultNavigationAction == null && input.move == null))
+                input.AssignDefaultActions();
             foreach (var module in keeper.GetComponents<BaseInputModule>())
                 if (module != input) module.enabled = false;
             keeper.UpdateModules();
@@ -123,7 +188,15 @@ namespace Whalebone.Gameplay.UI
                     image.raycastTarget = true;
                     if (button.targetGraphic == null) button.targetGraphic = image;
                 }
-                button.navigation = new Navigation { mode = Navigation.Mode.Automatic };
+                // The primary gameplay HUD is visible while the player is
+                // walking or steering. Even if a Player-side EventSystem
+                // briefly retains a selected button, Automatic navigation
+                // would let W/S move that selection instead of only moving
+                // the character/ship. Modal pages regain Automatic navigation
+                // through the same coordinator state below.
+                button.navigation = RuntimeHudCoordinator.PrimaryInputAllowed
+                    ? new Navigation { mode = Navigation.Mode.None }
+                    : new Navigation { mode = Navigation.Mode.Automatic };
             }
 
             foreach (var input in FindObjectsByType<InputField>(FindObjectsInactive.Include, FindObjectsSortMode.None))

@@ -1,0 +1,101 @@
+{
+  "task_id": "Q08",
+  "run_id": "Q08_CURRENT_SOURCE_INTEGRATION_Q03A23_20260915_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source action-state, movement, swimming, camera handoff, grounding and input-modal integration only",
+  "captured_at_local": "2026-09-15T00:00:00+08:00",
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 88228,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped"
+  },
+  "dependency_snapshot": {
+    "q03": "PASS_WITHIN_SCOPE current Q03-A23 Formal Humanoid action/avatar/default route code gate",
+    "q05": "PASS_WITHIN_SCOPE current D17A08 whole-visual-root swim tilt/restore and physical-root separation",
+    "q07": "PASS_WITHIN_SCOPE current service-building, terrain, dock and gangplank collision routes"
+  },
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs"
+  ],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "F385D0CD2E8904B38C6F5B13B59551728DB34EAA4AA625F6D07DD9ABF39054C2",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Tests/PlayMode/Q03D20FormalPresentationPlayModeTests.cs": "31F9C2E4C7DCF172C578EB0F8D1BD45A7705B52838B2BD4B61F615A0644F8FDA",
+    "game/Assets/Tests/PlayMode/Q03D20FormalHumanoidPosePlayModeTests.cs": "93CF85E1518C6E554B6DDC5434DA31879F9977F428CE98040E24B26D1C7ACE5A",
+    "game/Assets/Tests/EditMode/D20A02/Q03FormalActionAdmissionGateTests.cs": "7906A51C85D8E7605E906C11B0D5B2040DC5C4A88F5DB02993BFBCE2A20AF755",
+    "game/Assets/Tests/EditMode/D20A02/Q03FormalAvatarActionResourceContractTests.cs": "6EF285CFFF6E4B6871FA5621325786E938F018EF92EE07A2C2E04D39654F1585"
+  },
+  "checks": {
+    "recompile": {
+      "status": "completed",
+      "failed": false,
+      "errors": []
+    },
+    "Q03FormalEditMode": {
+      "mode": "EditMode",
+      "summary": {"total": 5, "passed": 5, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "coverage": [
+        "formal Humanoid action surface admission",
+        "authored action transitions",
+        "source action library",
+        "candidate Humanoid retargeting",
+        "formal appearance Avatar/action interface"
+      ]
+    },
+    "Q03D20FormalPlayMode": {
+      "mode": "PlayMode",
+      "summary": {"total": 2, "passed": 2, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "tests": [
+        "FormalHumanoidAdapterUsesAvatarMusclesAndPreservesPhysicalRoot",
+        "FormalR02ConsumerFollowsContinuousD2ActionsWithoutMovingPhysicalRoot"
+      ]
+    },
+    "D17FullCurrentSource": {
+      "mode": "PlayMode",
+      "duration_s": 86.34,
+      "summary": {"total": 16, "passed": 16, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "tests": [
+        "D17A02",
+        "D17A03",
+        "D17A04",
+        "D17A05",
+        "D17A06",
+        "D17A07",
+        "D17A08",
+        "D17A09",
+        "D17A10",
+        "D17A11",
+        "D17A12",
+        "D17A13",
+        "D17A14",
+        "D17A15",
+        "D17A16IntegratedShoreWaterDeckTurnAndSafeDisembarkSequence",
+        "D17A16SwimmingCameraTracksHeadingUntilManualLookHandoff"
+      ]
+    }
+  },
+  "interim_observation": {
+    "first_full_run": "14/16 PASS: D17A15 cycle 6 S delta=0.0000493574044m below 0.0001m; D17A16 camera heading alignment=0.974285424.",
+    "camera_fix_validation": "Targeted D17A16 and Integrated-to-SwimmingCamera sequence each passed 1/1 after CameraFollow first-frame/significant-heading snap behavior was added.",
+    "second_full_run": "15/16 PASS: only D17A15 cycle 8 S delta=0.0000968070308m below 0.0001m.",
+    "isolation": "A12->A15 and A13->A15 minimal sequences each passed 1/1.",
+    "authoritative_final": "The subsequent full D17 run completed 16/16 PASS. The near-threshold A15 observations remain recorded as an intermittent stability risk and were not erased."
+  },
+  "product_change": {
+    "owner": "CameraFollow",
+    "behavior": "When swimming presentation begins, or when automatic swimming heading changes materially, snap the camera to the safe desired position once; retain normal smoothing and manual camera handoff afterward.",
+    "boundary": "Presentation-only change; no D2 physical root, input owner, contract or AgentCore change."
+  },
+  "console_boundary": {
+    "error_entries_after_run": 0,
+    "console_cleared_after_evidence": true
+  },
+  "status_boundary": "Q08 is PASS_WITHIN_SCOPE for the current Editor/connected Pipeline code-level integration path. It does not prove compositor-visible final visuals, foreground Win32 keyboard focus, native Player manual acceptance, no clipping/vegetation grounding, target-device performance, audio quality, VC-G01 completion, Q31 completion or D31 overall completion.",
+  "historical_boundary": "Older Q08 BLOCKED records remain valid historical evidence for the pre-Q03-A23 generic-only route and are not retroactively rewritten.",
+  "next_task": "SAFE_PAUSE_AT_Q08_BEFORE_Q09_AND_Q31_NATIVE_VISUAL_GATE"
+}

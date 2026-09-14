@@ -131,7 +131,8 @@ namespace Whalebone.Gameplay.D5
 
             ApplyPendingCharacterVisuals();
             _performance.RecordFrame(Time.unscaledDeltaTime);
-            if (Time.timeScale > 0f && D7ControlCoordinator.GameplayInputAllowed)
+            if (Time.timeScale > 0f && D7ControlCoordinator.GameplayInputAllowed &&
+                RuntimeHudCoordinator.PrimaryInputAllowed)
             {
                 if (D16InputRouter.WasPressedThisFrame(D16InputAction.D5DiscoverIsland)) DiscoverNextIsland();
                 else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D5VisitIsland)) VisitCurrentIsland();
@@ -431,6 +432,7 @@ namespace Whalebone.Gameplay.D5
             {
                 var renderer = _pendingCharacterRenderers[_pendingCharacterRendererIndex++];
                 if (renderer == null) continue;
+                if (IsD20PresentationOwned(renderer)) continue;
                 var sources = renderer.sharedMaterials;
                 for (int i = 0; i < sources.Length; i++)
                 {
@@ -460,6 +462,14 @@ namespace Whalebone.Gameplay.D5
                 _characterVisualPending = false;
                 _pendingCharacterRenderers = null;
             }
+        }
+
+        private static bool IsD20PresentationOwned(Renderer renderer)
+        {
+            var bridge = renderer == null
+                ? null
+                : renderer.GetComponentInParent<Whalebone.Gameplay.D2.D20PlayerCandidatePresentationBridge>();
+            return bridge != null && bridge.IsInstalled;
         }
 
         private static Material CreateCharacterFallbackMaterial(string rendererName)
@@ -535,8 +545,8 @@ namespace Whalebone.Gameplay.D5
             detail.Append("  ").Append(performance.MeetsTarget ? "✓" : "…").Append("  ").Append(_steam.StatusText());
             _detailText.text = detail.ToString();
             _hintText.text = _message + (language == "en"
-                ? "    I discover  V visit  P preset  L language  F1 quality  F2 achievement  F5 save  |  WASD move  right/middle drag camera  F3 view  Shift run  Space jump  E board/leave  B/T/N/G/L trade/voyage  F/K/R/U/A/M/J content"
-                : "    I发现  V访问  P预设  L语言  F1画质  F2成就  F5保存  |  WASD移动  右键/中键拖动视角  F3切换视角  Shift奔跑  Space跳跃  E上船/下船  B/T/N/G/L贸易与航行  F/K/R/U/A/M/J内容");
+                ? "    I discover  V visit  P preset  L language  F1 quality  F2 achievement  F5 save  |  WASD move  right/middle drag camera  F3 view  Shift run  Space jump  E board/leave  B/Y/N/G/L trade/voyage  F/K/R/U/A/M/J content"
+                : "    I发现  V访问  P预设  L语言  F1画质  F2成就  F5保存  |  WASD移动  右键/中键拖动视角  F3切换视角  Shift奔跑  Space跳跃  E上船/下船  B/Y/N/G/L贸易与航行  F/K/R/U/A/M/J内容");
             _mapTitle.text = D5LocalizationSystem.Get("d5_world", language) + "  ·  " + world.DiscoveredIslands.Count + "/12";
             foreach (var island in D5IslandCatalog.All)
             {

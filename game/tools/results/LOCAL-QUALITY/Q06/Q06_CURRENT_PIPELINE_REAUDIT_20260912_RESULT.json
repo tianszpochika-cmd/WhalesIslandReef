@@ -1,0 +1,22 @@
+{
+  "task_id": "Q06",
+  "run_id": "Q06_CURRENT_PIPELINE_REAUDIT_20260912",
+  "audit_time_local": "2026-09-12T02:00:43+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": "Unity Pipeline connected Editor PID 31416 at 127.0.0.1:7800, Unity 6000.0.80f1",
+  "test_filter": "D17ActionQualityPlayModeTests",
+  "test": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite",
+  "summary": "D17ActionQualityPlayModeTests completed with total=16, passed=16, failed=0, skipped=0, inconclusive=0 in 50.13s; D17A09 was Passed with duration 9.7554984s.",
+  "checks": {
+    "ten_jump_cycles": "PASS_WITHIN_SCOPE; 10 TryJump calls returned true and recovered grounded",
+    "small_step_motion": "PASS_WITHIN_SCOPE; positive, diagonal, lateral and reverse real ApplyPhysicsMotion steps remained grounded/non-swimming/finite",
+    "collision_owner": "PASS_WITHIN_SCOPE; D2 CharacterController and active D19 terrain remained the physics path",
+    "editor_final": "ready, compiling=false, domainReloadInProgress=false, playMode=stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987"
+  },
+  "boundary": "This proves repeated jump/grounded and small-step movement stability only. Wall, slope, shore, gangplank, visual mesh contact and native Player keyboard input remain Q07/Q09/Q31 boundaries.",
+  "next_task": "Q07 current terrain/dock/gangplank route revalidation"
+}

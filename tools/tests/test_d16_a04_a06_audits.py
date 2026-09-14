@@ -332,10 +332,6 @@ class D16A04A06AuditTests(unittest.TestCase):
     def test_a05_known_runtime_placeholders_have_traceable_metadata(self):
         registry = ROOT / "game" / "Assets" / "Resources" / "ContentRegistry" / "entries" / "asset"
         expected = {
-            "asset_ph_crew_male": (
-                "game/Assets/Art/Placeholder/Models/Crew/ph_crew_male.fbx",
-                "game/Assets/Prefabs/Placeholder/ph_crew_male.prefab",
-            ),
             "asset_ph_palm_leaves": (
                 "game/Assets/Art/Placeholder/Textures/ph_palm_leaves.png",
                 "game/Assets/Prefabs/Placeholder/ph_palm_tree.prefab",
@@ -352,6 +348,22 @@ class D16A04A06AuditTests(unittest.TestCase):
                 self.assertTrue((ROOT / runtime_prefab_path).is_file())
                 self.assertTrue(entry["test_cases"])
                 self.assertTrue(entry["lod_profile"])
+
+    def test_d16_c08_slice_entries_are_not_counted_as_placeholders(self):
+        registry = ROOT / "game" / "Assets" / "Resources" / "ContentRegistry" / "entries"
+        expected = {
+            "asset_ph_crew_male": "game/Assets/Art/SliceFinal/D16C08/crew_male_final.fbx",
+            "building_saint_marys_dock": "game/Assets/Art/SliceFinal/D16C08/saint_marys_dock_final.fbx",
+            "building_small_boat_pier": "game/Assets/Art/SliceFinal/D16C08/small_boat_pier_final.fbx",
+            "island_saint_marys": "game/Assets/Art/SliceFinal/D16C08/saint_marys_sand_final.fbx",
+        }
+        for entry_id, model_ref in expected.items():
+            with self.subTest(entry_id=entry_id):
+                category = entry_id.split("_", 1)[0]
+                entry = json.loads((registry / category / f"{entry_id}.json").read_text(encoding="utf-8"))
+                self.assertEqual(entry["asset_state"], "integrated")
+                self.assertEqual(entry["production_stage"], "slice_final")
+                self.assertEqual(entry.get("model_ref") or entry.get("resource_path"), model_ref)
 
     def test_a05_reports_declared_resource_paths_and_blocks_broken_links(self):
         with tempfile.TemporaryDirectory() as directory:

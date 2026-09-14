@@ -1,0 +1,158 @@
+{
+  "task_id": "Q03-D20-R02-CANDIDATE-RUNTIME-RECHECK",
+  "parent_task": "LOCAL-QUALITY/Q03",
+  "date": "2026-09-11",
+  "generated_at": "2026-09-11T06:51:11+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "scope": "Opt-in D20 R02 candidate-only runtime bridge and native Windows Player smoke; formal InitialHarbor consumer remains unchanged",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 31416,
+    "endpoint": "127.0.0.1:7800",
+    "recompile": "completed; failed=false; errors=[]",
+    "console_errors_after_clear": 0,
+    "editor_state_after_run": "ready; compiling=false; playMode=stopped"
+  },
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs",
+    "game/Assets/Editor/D20A02R02/D20A02R02CandidateRuntimeBuilder.cs",
+    "game/Assets/Tests/PlayMode/Q03D20CandidateIntegrationPlayModeTests.cs",
+    "game/Assets/Resources/D20/Candidate/D20_R02_PlayerVisual_Male.prefab",
+    "game/Assets/Resources/D20/Candidate/D20_PlayerAnimation.controller",
+    "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_PLAYER_R01.exe",
+    "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_PLAYER_R01_BUILD.log"
+  ],
+  "source_snapshot": {
+    "bridge": {
+      "path": "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs",
+      "sha256": "B206CA47F040A182CE87498151EAE4E5A2BD6AD1D2DEBA76C97A1DDD8479EAA6"
+    },
+    "builder": {
+      "path": "game/Assets/Editor/D20A02R02/D20A02R02CandidateRuntimeBuilder.cs",
+      "sha256": "D9794939BFF478B0380E37D77A914A5B027DAA54427DC8E95CFD2322F461546D"
+    },
+    "playmode_test": {
+      "path": "game/Assets/Tests/PlayMode/Q03D20CandidateIntegrationPlayModeTests.cs",
+      "sha256": "CA3CE14C4D90FA36008CB1215000AD900D89E719C9C0B8F80EF024EA90A68BDD"
+    },
+    "candidate_prefab": {
+      "path": "game/Assets/Resources/D20/Candidate/D20_R02_PlayerVisual_Male.prefab",
+      "sha256": "A9579CBBFEC2BF53D84F0F3035ED8D531C5E1005A68550BFC3D8DF48843DC99E"
+    },
+    "candidate_controller": {
+      "path": "game/Assets/Resources/D20/Candidate/D20_PlayerAnimation.controller",
+      "sha256": "65E2351E3C7774B1D39C48E9AFDD361719D684B54DA2664D5D2CB242DDDB6A6E"
+    },
+    "candidate_player": {
+      "path": "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_PLAYER_R01.exe",
+      "sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE"
+    },
+    "build_log": {
+      "path": "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_PLAYER_R01_BUILD.log",
+      "sha256": "59CCB5B8DB45B1F614DB0C7ED57EC516116B27277AF0974B9280119431EB59AF"
+    }
+  },
+  "checks": [
+    {
+      "name": "candidate_resources",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The Unity Editor builder creates a candidate-only prefab with the Visual_player_visual_male_r02 wrapper unpacked, Armature directly under the Animator root, the candidate Animator avatar cleared because the generated clips are generic path clips, and the existing male-peasant outfit rebound onto the same candidate skeleton; formal source assets were not replaced."
+    },
+    {
+      "name": "candidate_outfit_rebind",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The candidate prefab contains 7 skinned renderers: 3 R02 body renderers plus 4 male-peasant outfit renderers path-mapped to the R02 Armature/root. Q03D20CandidateIntegrationPlayModeTests verifies the candidate outfit root and renderer count. This is candidate-only composition; the formal R02 source and InitialHarbor consumer remain unchanged."
+    },
+    {
+      "name": "candidate_editor_playmode",
+      "result": "PASS",
+      "evidence": "Q03D20CandidateIntegrationPlayModeTests.R02CandidateVisualConsumesD2MovementAndBoardingWithoutMovingPhysicalRoot: total=1, passed=1, failed=0."
+    },
+    {
+      "name": "candidate_root_ownership",
+      "result": "PASS",
+      "evidence": "The candidate is a child presentation instance under the D2 physical root; candidate Animator applyRootMotion=false and AlwaysAnimate; Animator.Update does not move the physical root; existing fallback renderers are hidden only inside the opt-in candidate bridge."
+    },
+    {
+      "name": "candidate_action_consumption",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The connected Editor test observed D2-driven Idle, Walk, Run and Board snapshots and verified a generic Walk thigh_l rotation delta; this is a candidate-only generic path adapter, not formal current-rig Humanoid action-quality acceptance."
+    },
+    {
+      "name": "candidate_swimming_presentation_fallback",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The candidate bridge exposes SwimmingVisualSupported=true because the candidate controller contains Fish, maps D2 Swimming to that Fish presentation state, and leaves UnsupportedActionCount at zero on the verified candidate path. This is not a formally authored swimming clip or native swimming proof."
+    },
+    {
+      "name": "native_player_smoke",
+      "result": "INPUT_ATTEMPTED",
+      "evidence": "The BuildOptions.None Windows Player accepted the bounded real Win32 route in a 1920x1080 client; 45 input steps and 17 screenshots were recorded, the InitialHarbor marker was seen, business interaction proof=true, pause recovery proof=true, fatal_error=null, and the Player closed cleanly."
+    },
+    {
+      "name": "native_candidate_install_markers",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Archived Player log contains '[D20/Candidate] R02 Player visual installed under the D2 physical root; root motion disabled; generic path adapter=True.' and 'command-line candidate installer completed.'"
+    },
+    {
+      "name": "native_route_probe_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "The existing D19 route probe did not recognize the new -d19-r03-route-rerun85 flag; probe_exists=false and movement/swimming/ship/far-reject proofs remain false. No route PASS is inferred from screenshots or input attempts."
+    }
+  ],
+  "regression": {
+    "pipeline_playmode_filter": "D17",
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "duration_seconds": 129.9,
+    "status": "PASS_WITHIN_SCOPE",
+    "evidence": "Unity Pipeline test_status after the generic candidate bridge recompile; Editor returned to ready/stopped and post-clear error console total=0."
+  },
+  "native_smoke": {
+    "summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q03D20R02CANDIDATEOUTFIT_20260906.json",
+    "player_log": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_PLAYER_RUNTIME_INPUT_Q03D20R02CANDIDATEOUTFIT_20260906.log",
+    "screenshot_directory": "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q03d20r02candidateoutfit_20260906",
+    "route_flag": "-d20Candidate -d19-r03-route-rerun85",
+    "status": "INPUT_ATTEMPTED",
+    "client_width": 1920,
+    "client_height": 1080,
+    "scene_marker_seen": true,
+    "input_steps": 45,
+    "screenshots": 17,
+    "business_interaction_proof": true,
+    "pause_recovery_proof": true,
+    "movement_observation_proof": false,
+    "swimming_observation_proof": false,
+    "ship_control_proof": false,
+    "far_ship_reject_proof": false,
+    "probe_exists": false,
+    "fatal_error": null,
+    "clean_close": true,
+      "unsupported_candidate_action": "The candidate bridge maps D2 Swimming to the existing Fish generic presentation fallback; the latest native route did not observe swimming because the RERUN85 probe was not recognized."
+  },
+  "visual_review": {
+    "result": "PARTIAL",
+    "evidence": "The candidate-only male-peasant outfit rebind improves color and silhouette readability and the generic path adapter consumes the generated clip curves, but the latest native screenshots still show a low-detail raised/T-like action pose, a pale duplicate/fallback figure in the boarding frame, and unresolved port geometry/layering. The screenshots are evidence of the candidate bridge and outfit composition running, not evidence of visual PASS.",
+    "inspected_frames": [
+      "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q03d20r02candidateoutfit_20260906/20260911_064641_route_initial_harbor.png",
+      "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q03d20r02candidateoutfit_20260906/20260911_064641_board_or_reject_e.png",
+      "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q03d20r02candidateoutfit_20260906/20260911_064641_reject_e_far_from_ship.png"
+    ]
+  },
+  "formal_boundary": {
+    "q03_formal_status": "BLOCKED_ASSET",
+    "q03_candidate_status": "PASS_WITHIN_SCOPE",
+    "formal_initial_harbor_consumer": 0,
+    "formal_release_eligible": false,
+    "vc_g01": "IN_PROGRESS",
+    "vc_g02": "LOCKED",
+    "vc_g03": "LOCKED",
+    "meaning": "The opt-in bridge demonstrates a candidate-only generic-path adapter, a bounded Swimming-to-Fish presentation fallback and a native installation marker. It intentionally does not use the R02 Humanoid Avatar at runtime because the generated clips are generic; that adapter is not formal current-rig evidence. It does not make the D20 work asset final, does not provide a formally authored Swimming clip, does not prove continuous native movement/ship observations for RERUN85, and does not resolve the previously reported visual defects."
+  },
+  "next_gate": "Keep the formal D2 path unchanged. Before any formal Q03 consumer is admitted, provide a current-rig-compatible authored action set or an auditable Avatar/bone-axis adapter, then repeat bounded native movement/boarding/swimming visual review on the exact final candidate build."
+}

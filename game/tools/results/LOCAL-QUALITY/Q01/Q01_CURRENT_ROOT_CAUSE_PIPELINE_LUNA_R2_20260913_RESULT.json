@@ -1,0 +1,75 @@
+{
+  "task_id": "Q01",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "read_only_current_root_visual_scale_writer_tolerance_and_defect_diagnosis",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q00"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_LUNA_R2_20260913",
+  "audit_time_local": "2026-09-13T13:06:14+08:00",
+  "changed_files": [
+    "game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_PIPELINE_LUNA_R2_20260913_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q01/RESULT.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q01.md",
+    "game/tools/results/LOCAL-QUALITY/STATUS.md",
+    "docs/game/LOCAL_QUALITY_REMAINING_PLAN.md",
+    ".workbuddy/memory/2026-09-13.md"
+  ],
+  "scope_rule": "Q01 is diagnostic only. No product code, prefab, scene, generated Player or Systems file was changed; all existing dirty worktree changes were preserved.",
+  "pipeline_runtime_sample": {
+    "editor": "Unity 6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "protocol": "open_scene -> editor_play -> targeted return-expression eval -> editor_stop",
+    "final_editor_state": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "console_error_query_after_stop": 0,
+    "probe_note": "One exploratory reflection property enumeration threw a target-invocation error and was excluded. The bounded direct evals used for the recorded facts all completed successfully; no product state was mutated.",
+    "evidence_boundary": "This is a connected headless Editor runtime sample, not a rendered visual acceptance frame or foreground physical-keyboard run."
+  },
+  "current_source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4"
+  },
+  "runtime_facts": {
+    "physical_root": "D2_PlayerAvatar position=(0.0000,0.1497,-2.7000), parent=none, lossyScale=(1,1,1)",
+    "visual_root": "HumanoidVisual localScale=(0.6642,0.6642,0.6642), worldPosition=(0.0000,0.1497,-2.7000), rendererCount=17",
+    "character_controller": "radius=0.2424m, height=1.8000m, center=(0.0000,0.8469,0.0000), skinWidth=0.0194m, enabled=true",
+    "d2_state": "grounded=true, swimming=false, moving=false, currentSpeed=0.0000, waterSurfaceY=-0.0200, overheadSwimmingBlock=false, movementInputSource=D16InputRouter, legacyFallback=false",
+    "animation_state": "FormalAnimatorReady=false, ProceduralPoseLayerReady=true, ProceduralPoseLayerActive=true, AnimatorPoseLayerActive=false, PoseDriverMode=Procedural, BoundBonesAreUnique=true, BoneBindingConflict=false, NeutralPoseSampled=true, NeutralPoseError=0.0000",
+    "presentation_state": "D7CharacterPresentationController IsReady=true, HasHumanVisual=true, GroundError=0.0000, UsesAnimationGroundingContract=true",
+    "ship_state": "ph_ship_fishing position=(0.0000,0.0000,-5.2000), lossyScale=(2.5740,2.5740,2.5740); D7ShipDeckController ready=true, helmReady=true, PlayerBoarded=false, DeckCollisionReady=true",
+    "helm_state": "D7_HelmPoint=(0.0000,1.1000,-6.6800); D7_VisibleHelmAnchor=(0.0000,1.1000,-6.6800)",
+    "terrain_state": "scoped R03 D19_TerrainRoot MeshCollider enabled=true, isTrigger=false, sharedMesh=D19_R03_IslandSurfaceMesh; duplicate legacy TerrainCollider enabled=false",
+    "water_state": "WaterWaveSurface=(0.0000,-0.0504,0.0000) in this sample; D2 logical waterSurfaceY=-0.0200"
+  },
+  "owner_boundary": {
+    "physical_root_and_swimming": "D2CharacterController",
+    "visual_root_and_pose": "D2CharacterAnimationController",
+    "grounding_measurement_and_offset_contract": "D7CharacterPresentationController measures and submits through D2; it does not directly own the visual-root transform",
+    "mode_and_parent_transition": "D2ControlRouter",
+    "gameplay_helm": "D7ShipDeckController",
+    "visible_R03_presentation": "D19R03HarborPresentationBuilder and D19 runtime presentation",
+    "walkable_collision": "HarborCollisionController"
+  },
+  "defect_boundary": {
+    "action_distortion": "The default route remains procedural because FormalAnimatorReady=false; formal action/avatar resources are not admitted. No visual PASS.",
+    "swimming": "The logical owner is separate and covered by Q04; this initial sample is not an entry/movement proof and does not pass swim pose or foreground W/S.",
+    "boarding_and_helm": "Current anchor ownership and equal measured points are confirmed; natural hand/wheel contact, deck intersection and physical E input remain unaccepted.",
+    "floating_trees": "Not reproduced by this transform sample; per-vegetation pivot/bounds/contact and full-camera evidence remain Q20/D31 work.",
+    "w_s_hud_conflict": "Not reproduced by the current automated sample; no foreground physical keyboard focus evidence exists, so it remains open."
+  },
+  "checks": [
+    {"name": "current_runtime_transform_inventory", "result": "PASS_WITHIN_SCOPE", "evidence": "Connected Unity Pipeline direct eval captured player root, visual root, capsule, D2 state, ship/helm, scoped terrain and water facts."},
+    {"name": "single_writer_and_owner_diagnosis", "result": "PASS_WITHIN_SCOPE", "evidence": "Current source hashes and runtime component properties preserve the D2/D7/D19/Harbor ownership boundary."},
+    {"name": "reported_defect_boundaries", "result": "PARTIAL", "evidence": "The sample separates current logic/owner facts from unaccepted rendered/manual behavior and does not promote any visual defect to PASS."}
+  ],
+  "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2",
+  "status_boundary": "Q01 is verified only for current read-only diagnosis. It does not claim any user-reported visual defect fixed, formal action assets admitted, physical keyboard accepted, or VC-G01/D31 completed."
+}

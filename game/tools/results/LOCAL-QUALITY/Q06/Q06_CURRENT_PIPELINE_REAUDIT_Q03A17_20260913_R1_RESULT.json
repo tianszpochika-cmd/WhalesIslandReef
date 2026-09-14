@@ -1,0 +1,35 @@
+{
+  "task_id": "Q06",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_initialharbor_jump_grounded_and_small_step_motion",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q05"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q06_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1",
+  "audit_time_local": "2026-09-13T15:53:07+08:00",
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD"
+  },
+  "protocol": {
+    "tool": "Unity Pipeline com.unity.pipeline@0.6.0-exp.1",
+    "editor": "Unity 6000.0.80f1",
+    "editor_pid": 53332,
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "operation": "run_tests --mode playmode --filter D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite --filter_type testName --async_tests true; poll test_status until completed",
+    "test_status": "completed",
+    "summary": "total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=12.928311s; total duration=13.07s",
+    "final_editor": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "error_console": 0
+  },
+  "checks": [
+    {"name": "ten_jump_cycles", "result": "PASS_WITHIN_SCOPE", "evidence": "D17A09 completed ten real TryJump-to-ground cycles and asserted grounded recovery."},
+    {"name": "small_positive_diagonal_reverse_motion", "result": "PASS_WITHIN_SCOPE", "evidence": "D17A09 exercised positive, diagonal, transverse and reverse small-step paths and asserted grounded/non-swimming/finite Transform state."},
+    {"name": "post_run_editor_health", "result": "PASS_WITHIN_SCOPE", "evidence": "Editor final status was ready/stopped and error console query returned zero entries."}
+  ],
+  "status_boundary": "Q06 is verified only for InitialHarbor jump/grounded and basic small-step stability. It does not prove wall, slope, shore, ramp/gangplank, ship-deck route, visual mesh contact, native Player keyboard or VC-G01 completion.",
+  "next_task": "Q07_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1"
+}

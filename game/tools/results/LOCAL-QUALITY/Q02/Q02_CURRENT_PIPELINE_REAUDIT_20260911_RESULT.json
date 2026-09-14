@@ -1,0 +1,139 @@
+{
+  "task_id": "Q02",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_d2_visual_root_single_writer_and_lifecycle_regression",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01"],
+  "audit_time_local": "2026-09-11T21:03:16+08:00",
+  "branch": "agent/publish-project-changes-20260813",
+  "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "pipeline": {
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "endpoint": "127.0.0.1:7800",
+    "editor_pid": 31416,
+    "unity_version": "6000.0.80f1",
+    "final_editor_state": "ready; compiling=false; playMode=stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "B056E1FBD58803029E4DF61A4311EF3800123D0B48B0BAECE61E1416C723B1C8",
+    "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+    "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "70A421CC8C93C03F7347D43BDF4833283D09070225AD8D7223FBACE572C17699"
+  },
+  "checks": [
+    {
+      "name": "D2CharacterAnimationController_current_editmode",
+      "result": "PASS",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 0.12,
+      "filter": "D2CharacterAnimationControllerTests",
+      "protocol": "Unity Pipeline run_tests --mode editor --async_tests true followed by test_status=completed"
+    },
+    {
+      "name": "D17ActionQuality_current_playmode",
+      "result": "PASS",
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 50.48,
+      "filter": "D17ActionQualityPlayModeTests",
+      "protocol": "Unity Pipeline run_tests --mode playmode --async_tests true followed by test_status=completed",
+      "covered_contracts": [
+        "boarding and movement action state",
+        "water entry/exit and ten-cycle water boundary",
+        "D7-to-D2 grounding owner contract",
+        "unverified imported-rig Animator quarantine",
+        "swimming visual-root tilt/restore without physics-root tilt",
+        "boarding, ship motion, safe disembark, camera and gameplay keyboard/HUD isolation"
+      ]
+    },
+    {
+      "name": "connected_editor_error_console",
+      "result": "PASS",
+      "errors": 0,
+      "evidence": "get_console_logs --severity error returned total=0 after the runs"
+    }
+  ],
+  "live_runtime_sample": {
+    "scene": "InitialHarbor",
+    "player_root": "D2_PlayerAvatar world=(0.0000,0.1946,-2.7000), lossyScale=(1.0000,1.0000,1.0000)",
+    "d2": {
+      "swimming": false,
+      "grounded": true,
+      "moving": false
+    },
+    "d7": {
+      "ready": true,
+      "has_human_visual": true,
+      "ground_error": -8.940697E-08,
+      "direct_visual_root_writes": 0
+    },
+    "animation": {
+      "action": "Idle",
+      "pose_driver_mode": "Procedural",
+      "formal_animator_ready": false,
+      "procedural_pose_layer_active": true,
+      "animator_pose_layer_active": false,
+      "swimming_visual_body_drop": 0,
+      "swimming_visual_roll_degrees": 0
+    }
+  },
+  "current_reaudit_20260911_q03a09": {
+    "audit_time_local": "2026-09-11T21:03:16+08:00",
+    "run_id": "Q02_CURRENT_REAUDIT_Q03_A09_PIPELINE_20260911_210316",
+    "scope": "current-source Q02 owner/lifecycle regression after Q03-A09 Player rebuild; no product source change made by this audit",
+    "pipeline": {
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "final_editor_state": "ready; compiling=false; playMode=stopped",
+      "error_console": 0,
+      "filter_correction": "The first invocation used unsupported filter_type=regex and executed no tests; the valid rerun used filter_type=testName."
+    },
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "B056E1FBD58803029E4DF61A4311EF3800123D0B48B0BAECE61E1416C723B1C8",
+      "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+      "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "70A421CC8C93C03F7347D43BDF4833283D09070225AD8D7223FBACE572C17699"
+    },
+    "checks": {
+      "D2CharacterAnimationController_current_editmode": "8/8 PASS; failed=0; skipped=0; inconclusive=0; duration=0.30s",
+      "D17ActionQuality_current_playmode": "16/16 PASS; failed=0; skipped=0; inconclusive=0; duration=50.48s",
+      "connected_editor_error_console": "PASS; get_console_logs returned errors=[]",
+      "runtime_boundary": "Tests observed swimming, boarding, safe disembark, grounding owner, camera handoff and HUD/pause input isolation; they do not assert final rendered action quality."
+    },
+    "runtime_facts": {
+      "formal_animator": "quarantined; current logs report absolute imported Euler curves and retain procedural/neutral layer",
+      "player_visual": "current Player uses procedural low-poly fallback because a legal current-rig action/Avatar asset is not admitted",
+      "single_writer": "D2 remains visualRoot submitter; D7 direct write count remains 0 on the tested path"
+    },
+    "status_boundary": "Q02 remains PASS_WITHIN_SCOPE for current-source owner, lifecycle and state-contract regression. It does not pass Q03 formal action assets, swimming/boarding visual quality, Player screenshots or VC-G01."
+  },
+  "current_reaudit_20260911_q03a10": {
+    "audit_time_local": "2026-09-11T21:31:04+08:00",
+    "run_id": "Q02_CURRENT_REAUDIT_Q03_A10_PIPELINE_20260911_213104",
+    "scope": "Q03-A10 D2 fallback swimming arm-axis change after connected Editor recompile and D17 regression",
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B",
+      "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC"
+    },
+    "checks": {
+      "connected_editor_recompile": "completed; failed=false; errors=[]",
+      "D2CharacterAnimationController_current_editmode": "8/8 PASS; failed=0; skipped=0; inconclusive=0",
+      "D17A08_targeted_playmode": "1/1 PASS",
+      "D17ActionQuality_current_playmode": "16/16 PASS; failed=0; skipped=0; inconclusive=0; duration=52.08s",
+      "connected_editor_error_console": "PASS; errors=[]",
+      "runtime_boundary": "The explicit fallback arm-axis contract is covered; this remains code/state evidence and does not pass imported action assets or final Player visual quality."
+    },
+    "status_boundary": "Q02 remains PASS_WITHIN_SCOPE; Q03 remains BLOCKED_ASSET and VC-G01 remains IN_PROGRESS."
+  },
+  "status_boundary": "This current-source re-audit verifies code ownership, lifecycle and tested state contracts only. The current formal Animator remains quarantined because Q03 lacks a legal current-rig action asset/adapter; no Player screenshot, physical keyboard acceptance or final action/swim visual PASS is claimed.",
+  "next_task": "Q03 remains BLOCKED_ASSET; preserve the boundary and continue only with an owner-scoped unblocked card or newly supplied compatible action asset."
+}

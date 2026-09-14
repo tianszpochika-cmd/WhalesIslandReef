@@ -1,0 +1,52 @@
+{
+  "task_id": "Q05",
+  "run_id": "Q05_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source whole-visual-root swim tilt/restore and physics-root separation",
+  "captured_at_local": "2026-09-14",
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 88228,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "EF4683FC5050146FDA2382E0BAC7904E50F07809DECC7050C60E4C50A67581C2",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03"
+  },
+  "test": {
+    "filter": "D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "mode": "PlayMode",
+    "status": "completed",
+    "duration_s": 10.33,
+    "test_duration_s": 10.3085701,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "coverage": [
+      "ten swim cycles",
+      "visualRoot tilt during swimming",
+      "physics root remains upright",
+      "neutral restore after leaving water"
+    ]
+  },
+  "console_boundary": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "console_cleared_after_evidence": true
+  },
+  "status_boundary": "Q05 is PASS_WITHIN_SCOPE only for the bounded whole-visual-root procedural tilt/restore contract and physical-root separation. It does not prove authored limb/head timing, natural swim silhouette, native Player W/S/focus, formal Avatar/action quality, compositor screenshots, target-device performance or VC-G01.",
+  "next_task": "Q06_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA"
+}

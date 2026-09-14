@@ -1,0 +1,83 @@
+{
+  "task": "Q03",
+  "title": "Current formal Humanoid asset and default route re-audit after Q03-A23",
+  "captured_at_local": "2026-09-14",
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current formal action/avatar/route code gate only; not visual acceptance or release readiness",
+  "history_reconciliation": {
+    "old_aggregate_boundary": "Older Q03 aggregate entries correctly recorded the pre-Q03-A19 generic-only action gate as BLOCKED_ASSET.",
+    "current_source_boundary": "Q03-A19 replaced the audited formal action surface with Humanoid clips and Q03-A23 promoted the validated Formal Humanoid presentation route to the default path.",
+    "decision": "The historical entries remain unchanged. This result is the current-source replacement node and does not retroactively turn old generic-only evidence into a pass."
+  },
+  "asset_route": {
+    "formal_controller": "game/Assets/Resources/D20/Formal/D20_PlayerAnimation.controller",
+    "formal_prefab": "game/Assets/Resources/D20/Formal/D20_R02_PlayerVisual_Male.prefab",
+    "controller_sha256": "92590FF7FBC8D9265B51B1DCF139DAF68FAC494133D9D4BE2A614C0B2A37C927",
+    "prefab_sha256": "3C8D698FE1A008B3B43294D6F479F7D4423B11527D470F91A334C5B95015CCE9",
+    "default_consumer": "Formal",
+    "humanoid_pose_adapter": true,
+    "generic_path_adapter": false,
+    "candidate_renderer_count": 7,
+    "hidden_previous_fallback_renderer_count": 17,
+    "swimming_visual_supported": true,
+    "installation_failure": ""
+  },
+  "checks": {
+    "Q03FormalEditMode": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "coverage": [
+        "formal Humanoid action surface admission",
+        "authored action transitions",
+        "source action library",
+        "candidate Humanoid retargeting",
+        "formal appearance Avatar/action interface"
+      ]
+    },
+    "Q03D20FormalPlayMode": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "tests": [
+        "FormalHumanoidAdapterUsesAvatarMusclesAndPreservesPhysicalRoot",
+        "FormalR02ConsumerFollowsContinuousD2ActionsWithoutMovingPhysicalRoot"
+      ]
+    },
+    "D17ActionQualityPlayModeTests": "16/16 PASS",
+    "D2CharacterAnimationControllerTests": "8/8 PASS",
+    "recompile": "failed=false; errors=[]"
+  },
+  "route_probe": {
+    "scene": "InitialHarbor",
+    "d2_action": "Idle",
+    "d2_pose_driver": "Procedural",
+    "d2_formal_animator_ready": false,
+    "d2_procedural_pose_active": true,
+    "bridge_found": true,
+    "bridge_installed": true,
+    "consumer_mode": "Formal",
+    "formal_consumer": true,
+    "generic_path_adapter": false,
+    "humanoid_pose_adapter": true,
+    "candidate_renderer_count": 7,
+    "hidden_existing_renderer_count": 17,
+    "last_d2_action": "Idle",
+    "last_candidate_state": "Idle",
+    "swimming_visual_supported": true
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "17CA9CB1E9CACB1EF3A1917774A406EFA6D0432A098014E7B04703A84C90917D",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs": "FE8E0156353319E8590767DC4A837AA7687BD4C8FFD3946698587FAB143859C7",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20PlayerAnimationPresentationAdapter.cs": "7BAD284EC9F096A5E232F5D6D90E7430C673A47FBD93C3903A229C92F4A90A7E",
+    "game/Assets/Tests/PlayMode/Q03D20FormalPresentationPlayModeTests.cs": "31F9C2E4C7DCF172C578EB0F8D1BD45A7705B52838B2BD4B61F615A0644F8FDA",
+    "game/Assets/Tests/PlayMode/Q03D20FormalHumanoidPosePlayModeTests.cs": "93CF85E1518C6E554B6DDC5434DA31879F9977F428CE98040E24B26D1C7ACE5A"
+  },
+  "status_boundary": "This closes the current formal action/avatar/route code gate within Editor and connected Pipeline scope. It does not prove compositor-visible pose quality, native foreground input, full camera geometry, no-clipping, vegetation grounding, target-device performance, D18 catalog LocalDevelopmentReady or final VC-G01 acceptance.",
+  "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+}

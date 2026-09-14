@@ -98,3 +98,16 @@ R03 Integration 新增受控 `D19_TerrainRoot` BoxCollider 以覆盖 D19 R03 视
 - 实测：1920×1080，254.29 秒；5 张探针截图；本轮移动和保存输入没有形成可复核证据，故不宣称路线通过。
 
 本报告结论仍为 **PARTIAL**。
+
+## R50 建筑标牌可读性修复（2026-09-03）
+
+复核 R29 Player 固定镜头时发现，四栋程序化建筑同时生成前后两块同名标牌；从码头斜视角观察时，后立面标牌会从建筑侧面露出，造成重复文字和场景噪声。R50 删除 `BackSignBoard`/`BackSign`，保留后立面门、窗、棚架和建筑几何，不改变交互锚点、碰撞、业务 owner、存档或天气逻辑。
+
+- 生成器：`game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs`
+- 重建日志：`game/tools/results/D31/D31-S05/D31_S05_UNITY_VISUAL_REBUILD_R50.log`
+- 审计日志：`game/tools/results/D31/D31-S05/D31_S05_UNITY_VISUAL_AUDIT_R50.log`
+- Editor 审计：`game/tools/results/D19/D19-R03-A02/D19_R03_A02_EDITOR_AUDIT.json`
+
+重建结果为 `307 Renderer / 22004 mesh vertices / 1 Collider`，Prefab 中后立面标牌标记为 0；D28—D31 相关回归 47/47 PASS（其中 D19 R03 builder 测试 5/5）。随后在真实独立 Windows x64 Player 中重新采集 14/14 固定镜头和 3/3 Calm/Rain/Storm 天气镜头，分辨率为 1920×1080，真实 backbuffer 截图已归档到 `game/tools/results/D31/D31-P04/visual_evidence_R50/`。截图确认重复标牌已清理，但低模/程序化建筑、平坦地表、杂乱竖向几何、粗糙环境道具和高密度 HUD 仍存在，因此本报告和 D31 视觉门禁仍为 `PARTIAL`。
+
+Player 复验结果：[D31_P04_R50_REVALIDATION_RESULT.json](../../../../game/tools/results/D31/D31-P04/D31_P04_R50_REVALIDATION_RESULT.json)。

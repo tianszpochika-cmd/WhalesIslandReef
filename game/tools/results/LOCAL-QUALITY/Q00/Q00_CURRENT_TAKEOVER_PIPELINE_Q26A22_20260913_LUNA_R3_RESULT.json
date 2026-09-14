@@ -1,0 +1,134 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "Current dirty-worktree pause-point, connected Unity Editor, source-to-Player correspondence and latest bounded test evidence",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "audit_time_local": "2026-09-13T22:50:14+08:00",
+  "implementation": {
+    "product_code_changed": false,
+    "scene_or_prefab_changed": false,
+    "scope": "Read-only takeover reconciliation. Existing dirty worktree changes were preserved; no reset, checkout, clean, broad deletion or second same-project Unity Editor was started.",
+    "current_worktree": {
+      "tracked_status_entries": 459,
+      "untracked_files": 10407,
+      "diff_shortstat": "459 files changed, 40338 insertions(+), 49178 deletions(-)",
+      "plan_line_count": 1413
+    }
+  },
+  "unity_connection": {
+    "editor_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "project": "C:/Users/Administrator/Desktop/game/first01/game",
+    "status_at_audit": "ready",
+    "final_status": "ready / compiling=false / domainReloadInProgress=false / playMode=stopped",
+    "same_project_editor_count": 1,
+    "runtime_pipeline_after_previous_qa": "enableInBuilds=false / port=0",
+    "active_player_at_audit": false,
+    "evidence": [
+      "unity status --format json",
+      "unity pipeline list --format json",
+      "Get-Process Unity: only PID 53332"
+    ]
+  },
+  "current_player_boundary": {
+    "authoritative_latest_default_route": {
+      "card": "Q26-A22",
+      "build_id": "build_236bb62b66a6",
+      "output": "game/tools/results/LOCAL-QUALITY/Q31/Q31_Q26A22_UI_BOOTSTRAP_DEV_R1.exe",
+      "build_time_utc": "2026-09-13T11:39:11.8031805Z",
+      "platform": "StandaloneWindows64",
+      "scenes": ["MainMenu", "InitialHarbor"],
+      "exe_size_bytes": 671744,
+      "total_size_bytes": 175202267,
+      "exe_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "assembly_path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_Q26A22_UI_BOOTSTRAP_DEV_R1_Data/Managed/Assembly-CSharp.dll",
+      "assembly_sha256": "50C6D5CC251BB8AB90DE99507F4BD3B6A708EAA34661BA7A65EC9CBDA7A90855",
+      "source_boundary": "Q26-A22 source hashes match current D29InteractionHud.cs, D16PrimaryHudNavigationPlayModeTests.cs and HarborInteractionStabilizer.cs; Q03-A17 and Q26-A21 current source files were written before this build and their hashes still match the current files.",
+      "runtime_boundary": "Hidden GUI Player with Pipeline-injected input only; no foreground physical keyboard, compositor-visible screenshot or human visual acceptance.",
+      "clean_close": true
+    },
+    "formal_candidate_not_default": {
+      "card": "Q03-A17",
+      "build_id": "build_21e1ee070799",
+      "output": "game/tools/results/LOCAL-QUALITY/Q03-A17/Q03_A17_FORMAL_HUMANOID_PIPELINE_R3.exe",
+      "exe_sha256": "98751D0FF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+      "assembly_sha256": "970F91C0ECF6910C3423762C5591F93F4CC8549CBCE852A48C47D636F0CA5ABB",
+      "scope": "Explicit opt-in -d20FormalHumanoid candidate only; default InitialHarbor consumer remains unchanged and Q03 remains BLOCKED_ASSET."
+    },
+    "post_build_asset_check": {
+      "cutoff_utc": "2026-09-13T11:39:12.8123265Z",
+      "assets_written_after_cutoff": [
+        {
+          "path": "game/Assets/Prefabs/Environment/D19/Water/Materials/D19_Water_High.mat",
+          "last_write_utc": "2026-09-13T14:20:01.9186942Z",
+          "working_tree_git_blob": "727e2c42e78d823ab8582f7778960da7e81806f9",
+          "head_git_blob": "727e2c42e78d823ab8582f7778960da7e81806f9",
+          "content_changed": false
+        }
+      ],
+      "interpretation": "No current Assets content change after the authoritative Q26-A22 Player build was found; the later material timestamp is an unchanged-content import/touch and is not treated as a source mismatch."
+    }
+  },
+  "latest_source_and_test_reconciliation": {
+    "source_hashes_verified_current": {
+      "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs": "FE8E0156353319E8590767DC4A837AA7687BD4C8FFD3946698587FAB143859C7",
+      "game/Assets/Tests/PlayMode/Q03D20FormalHumanoidPosePlayModeTests.cs": "93CF85E1518C6E554B6DDC5434DA31879F9977F428CE98040E24B26D1C7ACE5A",
+      "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "D07CC06223BFEF5F24390FF1E140214863B72E1A4C426E1C22494E9EB43BBD20",
+      "game/Assets/Tests/PlayMode/D16PrimaryHudNavigationPlayModeTests.cs": "E8FD23B177ABF0EA665BD579F50B1266E2534D02592CFD0B7AE89FD93CC0715A",
+      "game/Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs": "12F39F34ADD3244D5B856314B501C3F36E22D590742593C9E4444409A5A7BD5B",
+      "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs": "0BAA85F181887C01856CF49B12D3E8D8F64CD50073AF144EB34B602BB476E38D",
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+      "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+      "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "8205A73C7885E8FD2C95FFB8141E4728DD84E162600BFE79E6AB02ECF1945800",
+      "game/Assets/Tests/PlayMode/D16InputRouterPlayModeTests.cs": "D8F3FB7976045EBDF5642B10C22279A7862FAF6AF8E32830F243526E4B5E77E2"
+    },
+    "latest_relevant_checks": [
+      {
+        "card": "Q26-A22",
+        "result": "PASS_WITHIN_SCOPE",
+        "evidence": "Q26 PlayMode 19/19 PASS; D16 input class 11/11 PASS; recompile failed=false/errors=[]; authoritative hidden Player build_236bb62b66a6 cleanly closed."
+      },
+      {
+        "card": "Q26-A21",
+        "result": "PASS_WITHIN_SCOPE",
+        "evidence": "Default procedural swim continuity test 1/1 and Q26 19/19; hidden W movement and RenderTexture diagnostic are not formal or foreground visual acceptance."
+      },
+      {
+        "card": "Q03-A17",
+        "result": "PARTIAL",
+        "evidence": "Opt-in formal Humanoid candidate Q03D20 4/4 and D17 16/16, but generic clips and low-detail stylized swim frame keep Q03 BLOCKED_ASSET."
+      }
+    ]
+  },
+  "status_board": {
+    "completed_with_scope": ["Q00 current source/build/pause-point reconciliation", "Q01 current read-only root/scale/owner sample"],
+    "in_progress": ["Q03 formal action/avatar asset gate", "Q31 bounded Player visual gate", "VC-G01 real interaction/visual evidence", "D31-P04/D31-S05/D31-G06 environment quality"],
+    "blocked": ["Q08 depends on Q03 formal action admission", "VC-G02", "VC-G03", "Q03 BLOCKED_ASSET", "Q20 PARTIAL/BLOCKED_ASSET"],
+    "next": "Run Q04 current water-owner regression, then Q05/Q06/Q07/Q09 in dependency order; keep default formal admission closed and do not treat hidden Pipeline input or RenderTexture as final visual acceptance."
+  },
+  "gate_boundary": {
+    "result": "PARTIAL",
+    "vc_g01": "IN_PROGRESS",
+    "q31": "PARTIAL",
+    "q03": "BLOCKED_ASSET",
+    "q20": "PARTIAL/BLOCKED_ASSET",
+    "d31_p04": "PARTIAL",
+    "d31_s05": "PARTIAL",
+    "d31_g06": "PARTIAL",
+    "vc_g02": "LOCKED",
+    "vc_g03": "LOCKED",
+    "reason": "Q00 proves the current source/build/test relationship and preserves the dirty-worktree pause point. It does not prove foreground physical input, natural authored actions/swimming, no visual intersections, target-device performance or human final acceptance."
+  },
+  "evidence_files": [
+    "game/tools/results/LOCAL-QUALITY/Q26-A22/RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q03-A17/Q03_A17_FORMAL_HUMANOID_PIPELINE_R3_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q26-A21/RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_EDITOR_CAPABILITY_20260913_R1_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q26A22_20260913_LUNA_R3_RESULT.json"
+  ]
+}

@@ -62,6 +62,14 @@ namespace Whalebone.Gameplay.D10
         private Text _hintText;
         private GameObject _panel;
 
+        public bool IsReady => _ready;
+        /// <summary>D29 读取酒馆页是否真正获得了进入裁决；只读，不绕过 D10 owner。</summary>
+        public bool HasEnteredTavern => _entered;
+        /// <summary>D29 读取当前酒馆页的可见焦点状态；只读。</summary>
+        public bool HasInputFocus => _pageOpen;
+        /// <summary>D29 显示 D10 owner 的最后一条可见反馈；只读。</summary>
+        public string LastMessage => _lastMessage;
+
         private void Awake()
         {
             EnsureEventSystem();
@@ -76,13 +84,25 @@ namespace Whalebone.Gameplay.D10
                 return;
             }
 
-            if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10OpenTavern))
+            bool openPressed = D16InputRouter.WasPressedThisFrame(D16InputAction.D10OpenTavern) ||
+                WasDefaultKeyboardPressed(Key.V);
+            if (openPressed && (_pageOpen ||
+                (RuntimeHudCoordinator.PrimaryInputAllowed && D7ControlCoordinator.GameplayInputAllowed)))
                 TogglePage();
-            if (_panel != null) _panel.SetActive(_pageOpen);
-            if (_pageOpen && D7ControlCoordinator.GameplayInputAllowed)
+
+            // 酒馆页是一个独立模态页：关闭动作必须优先于玩法输入权限判断。
+            // D16 在敏感内容或其他模态页期间会切断玩法输入，但不能让已经打开的
+            // 酒馆页失去退出路径；默认 ESC 作为本地安全兜底，重绑定仍由 D16 优先。
+            if (_pageOpen && !D16SensitiveContentOverlay.IsOpen &&
+                (D16InputRouter.WasPressedThisFrame(D16InputAction.D10CloseTavern) ||
+                 WasDefaultKeyboardPressed(Key.Escape)))
             {
-                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10CloseTavern)) _pageOpen = false;
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Board)) OpenBoard();
+                D7ControlCoordinator.MarkEscapeHandledThisFrame();
+                CloseSocialPage();
+            }
+            else if (_pageOpen && D7ControlCoordinator.GameplayInputAllowed)
+            {
+                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Board)) OpenBoard();
                 else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10SecurityJob)) TakeSecurityJob();
                 else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Rest)) Rest();
                 else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D10Eat)) Eat();
@@ -115,8 +135,24 @@ namespace Whalebone.Gameplay.D10
 
         private void TogglePage()
         {
-            _pageOpen = !_pageOpen;
-            if (_pageOpen) EnsureEntered();
+            if (_pageOpen)
+            {
+                CloseSocialPage();
+                return;
+            }
+
+            _pageOpen = true;
+            EnsureEntered();
+            RuntimeHudCoordinator.ShowTemporaryCanvas("D10TavernSocialPage");
+        }
+
+        /// <summary>关闭酒馆页并恢复唯一玩家 HUD，鼠标和 ESC 共用该出口。</summary>
+        public void CloseSocialPage()
+        {
+            _pageOpen = false;
+            if (_panel != null) _panel.SetActive(false);
+            RuntimeHudCoordinator.RestorePrimaryHud();
+            Debug.Log("[D10/UI] 酒馆社会页已关闭，主 HUD 已恢复");
         }
 
         /// <summary>D9 港口页的兼容跳转入口；真正行为仍由本页请求/owner 链结算。</summary>
@@ -125,6 +161,7 @@ namespace Whalebone.Gameplay.D10
             _pageOpen = true;
             if (_ready) EnsureEntered();
             if (_panel != null) _panel.SetActive(true);
+            RuntimeHudCoordinator.ShowTemporaryCanvas("D10TavernSocialPage");
         }
 
         private void EnsureEntered()
@@ -141,14 +178,27 @@ namespace Whalebone.Gameplay.D10
             _lastMessage = resolution.Message;
         }
 
+        private bool EnsureReadyForAction()
+        {
+            if (_ready && _tavern != null && _scene != null)
+                return true;
+
+            _lastMessage = "酒馆 owner 尚未就绪，请稍后再试。";
+            if (_hintText != null) _hintText.text = _lastMessage;
+            Debug.LogWarning("[D10/UI] " + _lastMessage);
+            return false;
+        }
+
         private void Recruit()
         {
+            if (!EnsureReadyForAction()) return;
             Submit(() => _tavern.RequestRecruitment(ActorId(), CurrentPortId(),
                 D9CrewRecruitmentCatalog.IsaacReedId, CurrentWorldDay(), CurrentRevision()));
         }
 
         private void Rest()
         {
+            if (!EnsureReadyForAction()) return;
             var crewId = SelectedCrewId();
             if (crewId == null) { _lastMessage = "当前没有可休息的船员。"; return; }
             Submit(() => _tavern.RequestRest(ActorId(), CurrentPortId(), crewId,
@@ -158,6 +208,7 @@ namespace Whalebone.Gameplay.D10
 
         private void Eat()
         {
+            if (!EnsureReadyForAction()) return;
             var crewId = SelectedCrewId();
             if (crewId == null) { _lastMessage = "当前没有可用餐的船员。"; return; }
             Submit(() => _tavern.RequestMeal(ActorId(), CurrentPortId(), crewId,
@@ -166,6 +217,7 @@ namespace Whalebone.Gameplay.D10
 
         private void Drink()
         {
+            if (!EnsureReadyForAction()) return;
             var crewId = SelectedCrewId();
             if (crewId == null) { _lastMessage = "当前没有可饮酒的船员。"; return; }
             Submit(() => _tavern.RequestAlcohol(ActorId(), CurrentPortId(), crewId,
@@ -176,7 +228,12 @@ namespace Whalebone.Gameplay.D10
 
         private void HearRumor()
         {
-            if (_scene == null || _scene.Rumors.Count == 0) return;
+            if (!EnsureReadyForAction()) return;
+            if (_scene.Rumors.Count == 0)
+            {
+                _lastMessage = "当前没有可听取的传闻。";
+                return;
+            }
             var rumor = _scene.Rumors[0];
             Submit(() => _tavern.HearRumor(ActorId(), CurrentPortId(), rumor.RumorId,
                 CurrentWorldDay(), CurrentRevision()));
@@ -184,6 +241,7 @@ namespace Whalebone.Gameplay.D10
 
         private void Poker()
         {
+            if (!EnsureReadyForAction()) return;
             var tableId = _scene == null || _scene.PokerTables.Count == 0
                 ? "poker_table_low_stakes_01" : _scene.PokerTables[0].TableId;
             Submit(() => _tavern.RequestPokerEntry(ActorId(), CurrentPortId(), tableId,
@@ -193,6 +251,7 @@ namespace Whalebone.Gameplay.D10
 
         private void Dance()
         {
+            if (!EnsureReadyForAction()) return;
             var crewId = SelectedCrewId();
             if (crewId == null) { _lastMessage = "当前没有可邀请参加舞会的船员。"; return; }
             Submit(() => _tavern.RequestDance(ActorId(), CurrentPortId(), crewId,
@@ -202,6 +261,7 @@ namespace Whalebone.Gameplay.D10
 
         private void NightTalk()
         {
+            if (!EnsureReadyForAction()) return;
             var crewId = SelectedCrewId();
             if (crewId == null) { _lastMessage = "当前没有可进行夜话的船员。"; return; }
             Submit(() => _tavern.RequestNightTalk(ActorId(), CurrentPortId(), crewId,
@@ -211,12 +271,14 @@ namespace Whalebone.Gameplay.D10
 
         private void OpenBoard()
         {
+            if (!EnsureReadyForAction()) return;
             Submit(() => _tavern.OpenSideJobBoard(ActorId(), CurrentPortId(),
                 CurrentWorldDay(), CurrentRevision()));
         }
 
         private void TakeSecurityJob()
         {
+            if (!EnsureReadyForAction()) return;
             Submit(() => _tavern.RequestSideJobOffer(ActorId(), CurrentPortId(),
                 "sidejob_dock_fight_01", _sideJobAcknowledged,
                 CurrentWorldDay(), CurrentRevision()));
@@ -225,6 +287,7 @@ namespace Whalebone.Gameplay.D10
 
         private void SkipSensitive()
         {
+            if (!EnsureReadyForAction()) return;
             var skipped = _tavern.SkipSensitiveContent(D10TavernSensitivity.ExploitativeWork);
             _lastMessage = skipped.Message;
             _alcoholAcknowledged = false;
@@ -235,6 +298,7 @@ namespace Whalebone.Gameplay.D10
 
         private void Submit(Func<D10TavernRequestResult> requestFactory)
         {
+            if (!EnsureReadyForAction()) return;
             var request = requestFactory == null ? null : requestFactory();
             if (request == null)
             {
@@ -335,6 +399,9 @@ namespace Whalebone.Gameplay.D10
             var canvas = canvasGo.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 170;
+            // The catalog and hint are part of the temporary page, not the
+            // primary HUD. Start disabled to avoid an initialization flash.
+            canvas.enabled = false;
             var scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
@@ -358,17 +425,19 @@ namespace Whalebone.Gameplay.D10
             var image = _panel.GetComponent<Image>();
             image.sprite = UiSprites.White;
             image.color = new Color(0.03f, 0.06f, 0.10f, 0.92f);
-            CreateButton(_panel, "Recruit", "招募艾萨克 [Q]", new Vector2(0f, -35f), Recruit);
-            CreateButton(_panel, "Rest", "休息 4 小时 [R]", new Vector2(0f, -95f), Rest);
-            CreateButton(_panel, "Meal", "吃饭 [E]", new Vector2(0f, -155f), Eat);
-            CreateButton(_panel, "Drink", "饮酒：烈酒 [A]", new Vector2(0f, -215f), Drink);
-            CreateButton(_panel, "Rumor", "听传闻 [H]", new Vector2(0f, -275f), HearRumor);
+            var firstTavernButton = CreateButton(_panel, "Close", "关闭酒馆 [Esc]", new Vector2(0f, -35f), CloseSocialPage);
+            CreateButton(_panel, "Recruit", "招募艾萨克 [Q]", new Vector2(0f, -85f), Recruit);
+            CreateButton(_panel, "Rest", "休息 4 小时 [R]", new Vector2(0f, -135f), Rest);
+            CreateButton(_panel, "Meal", "吃饭 [E]", new Vector2(0f, -185f), Eat);
+            CreateButton(_panel, "Drink", "饮酒：烈酒 [A]", new Vector2(0f, -235f), Drink);
+            CreateButton(_panel, "Rumor", "听传闻 [H]", new Vector2(0f, -285f), HearRumor);
             CreateButton(_panel, "Poker", "进入低额牌局 [P]", new Vector2(0f, -335f), Poker);
-            CreateButton(_panel, "Dance", "舞会 [D]", new Vector2(0f, -395f), Dance);
-            CreateButton(_panel, "NightTalk", "夜话 [N]", new Vector2(0f, -455f), NightTalk);
-            CreateButton(_panel, "Board", "副业公告板 [J]", new Vector2(0f, -515f), OpenBoard);
-            CreateButton(_panel, "SecurityJob", "护卫副业 [K]", new Vector2(0f, -575f), TakeSecurityJob);
-            CreateButton(_panel, "Skip", "跳过敏感内容 [X]", new Vector2(0f, -635f), SkipSensitive);
+            CreateButton(_panel, "Dance", "舞会 [D]", new Vector2(0f, -385f), Dance);
+            CreateButton(_panel, "NightTalk", "夜话 [N]", new Vector2(0f, -435f), NightTalk);
+            CreateButton(_panel, "Board", "副业公告板 [J]", new Vector2(0f, -485f), OpenBoard);
+            CreateButton(_panel, "SecurityJob", "护卫副业 [K]", new Vector2(0f, -535f), TakeSecurityJob);
+            CreateButton(_panel, "Skip", "跳过敏感内容 [X]", new Vector2(0f, -585f), SkipSensitive);
+            D16ModalFocusScope.Attach(_panel, firstTavernButton == null ? null : firstTavernButton.gameObject);
             _panel.SetActive(false);
         }
 
@@ -378,8 +447,8 @@ namespace Whalebone.Gameplay.D10
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent.transform, false);
             var rect = (RectTransform)go.transform;
-            rect.anchorMin = new Vector2(0.5f, 0.5f); rect.anchorMax = new Vector2(0.5f, 0.5f);
-            rect.pivot = new Vector2(0.5f, 0.5f); rect.sizeDelta = new Vector2(370f, 48f);
+            rect.anchorMin = new Vector2(0.5f, 1f); rect.anchorMax = new Vector2(0.5f, 1f);
+            rect.pivot = new Vector2(0.5f, 1f); rect.sizeDelta = new Vector2(370f, 48f);
             rect.anchoredPosition = position;
             var image = go.GetComponent<Image>(); image.sprite = UiSprites.White;
             image.color = new Color(0.12f, 0.34f, 0.52f, 0.98f);
@@ -389,6 +458,22 @@ namespace Whalebone.Gameplay.D10
                 new Vector2(360f, 44f), TextAnchor.MiddleCenter);
             Stretch(text.rectTransform);
             return button;
+        }
+
+        private static bool WasDefaultKeyboardPressed(Key key)
+        {
+            var keyboard = Keyboard.current;
+            if (keyboard != null)
+            {
+                var control = keyboard[key];
+                if (control != null && control.wasPressedThisFrame) return true;
+            }
+
+            // 当前项目仍以 Both 输入模式运行；独立 Player 的 legacy 入口已被
+            // D29 验证可用，因此默认 V/ESC 需要保留等价兜底，避免酒馆页无法退出。
+            if (key == Key.V) return Input.GetKeyDown(KeyCode.V);
+            if (key == Key.Escape) return Input.GetKeyDown(KeyCode.Escape);
+            return false;
         }
 
         private static Text CreateText(GameObject parent, string name, string value, int size,

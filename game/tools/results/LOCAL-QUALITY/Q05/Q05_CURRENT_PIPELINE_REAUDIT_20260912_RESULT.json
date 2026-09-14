@@ -1,0 +1,24 @@
+{
+  "task_id": "Q05",
+  "run_id": "Q05_CURRENT_PIPELINE_REAUDIT_20260912",
+  "audit_time_local": "2026-09-12T02:00:43+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": "Unity Pipeline connected Editor PID 31416 at 127.0.0.1:7800, Unity 6000.0.80f1",
+  "test_filter": "D17ActionQualityPlayModeTests",
+  "test": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+  "summary": "D17ActionQualityPlayModeTests completed with total=16, passed=16, failed=0, skipped=0, inconclusive=0 in 50.13s; D17A08 was Passed with duration 8.1784901s.",
+  "checks": {
+    "swim_visual_root_tilt": "PASS_WITHIN_SCOPE; each swim cycle asserts visualRoot tilt >25 degrees from neutral",
+    "physics_root_upright": "PASS; each cycle asserts Vector3.Dot(player.transform.up, Vector3.up)>0.999",
+    "neutral_restore": "PASS_WITHIN_SCOPE; each cycle returns visualRoot within 1 degree after water exit",
+    "ten_cycle_boundary": "PASS_WITHIN_SCOPE; 10 shallow/deep entries and exits exercised by D17A08",
+    "editor_final": "ready, compiling=false, domainReloadInProgress=false, playMode=stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987"
+  },
+  "boundary": "This proves only the bounded whole-visual-root swim pose and restore contract. It does not prove authored limb/head motion, natural swim silhouette, native Player W/S input, water material quality or VC-G01 visual acceptance.",
+  "next_task": "Q06 current movement/collision revalidation or Q08 after Q03 formal visual gate"
+}

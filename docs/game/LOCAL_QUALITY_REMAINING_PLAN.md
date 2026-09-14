@@ -1943,7 +1943,6 @@ Q24 继续 `PARTIAL`：`PlayerState` 没有独立游泳姿态/体积/动画存�
 Q25 两段当前源码路线均通过：`D19Q25FirstVoyageLoopDiagnosticTests` EditMode=`2/2 PASS`（Pipeline `0.42s`），`D19R02A03RoutePlayModeTests` PlayMode=`2/2 PASS`（Pipeline `7.26s`）。marker 确认 D30 七阶段投影、D23 `40` tick 首航/抵达/返港/存档投影，以及有限 InitialHarbor 交易关闭/保存和出航/推进/返港。
 
 本轮 Console seq `59130→59278` 共 `148` 条，Error=`0`、Warning=`12`；Warning 为已知 D27 readiness、D2 未验证蒙皮/程序化 fallback、绝对 Euler 动画曲线，另有 D31 性能 pending 与 D7 音频 fallback。Q25 继续 `PARTIAL`：owner 路线通过不等于完整人工游玩、原生 Player 输入、动作/游泳/上船视觉、树木接地、音效、性能或最终视觉通过。结果：[Q25 R3](../game/tools/results/LOCAL-QUALITY/Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R3_RESULT.json)；日志：[Q25 R3 log](../game/tools/results/LOCAL-QUALITY/Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R3.log)；交接：[Q25](design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)。下一步为 Q26 当前源码复核。
-
 ## 2026-09-14 Q31 R5 safe pause point
 
 Q31 R5 已完成一个有限但真实可见的 native Player UI 修复闭环：`MainMenuController` 将 New Game 标题从 `y=150` 调整到 `y=210`，接受构建 `build_fc9d95893976` 为 `0 errors / 0 warnings`，可见 `1280x720` Player 截图确认标题与船长名占位文本不再重叠。随后同一 Player 进入 `InitialHarbor` 完成 W、E 登船/下船和 W/S 路径，runtime error console=`0`、Player 严格错误词=`0`、clean close，临时 Runtime Pipeline 与 Development Build 配置已恢复。
@@ -1987,3 +1986,31 @@ Q27 当前 D16 预算合同 `6/6 PASS`，60 秒 headless 性能窗口 `1/1 PASS`
 Q25 两段当前源码路线均通过：`D19Q25FirstVoyageLoopDiagnosticTests` EditMode=`2/2 PASS`（Pipeline `0.42s`），`D19R02A03RoutePlayModeTests` PlayMode=`2/2 PASS`（Pipeline `7.26s`）。marker 确认 D30 七阶段投影、D23 `40` tick 首航/抵达/返港/存档投影，以及有限 InitialHarbor 交易关闭/保存和出航/推进/返港。
 
 本轮 Console seq `59130→59278` 共 `148` 条，Error=`0`、Warning=`12`；Warning 为已知 D27 readiness、D2 未验证蒙皮/程序化 fallback、绝对 Euler 动画曲线，另有 D31 性能 pending 与 D7 音频 fallback。Q25 继续 `PARTIAL`：owner 路线通过不等于完整人工游玩、原生 Player 输入、动作/游泳/上船视觉、树木接地、音效、性能或最终视觉通过。结果：[Q25 R3](../game/tools/results/LOCAL-QUALITY/Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R3_RESULT.json)；日志：[Q25 R3 log](../game/tools/results/LOCAL-QUALITY/Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R3.log)；交接：[Q25](design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)。下一步为 Q26 当前源码复核。
+
+## 2026-09-14 current-source Q00-Q03 reconciliation after Q03-A23
+
+本轮接管审计保留全部 dirty worktree，不执行 reset、checkout、clean、stash 或大范围覆盖。Q00/Q01/Q02 完成当前源—运行态—测试关系重绑定；Q03 完成当前 Formal Humanoid 资源/路由代码门复核。旧的 Q03 `BLOCKED_ASSET` 节点保留为历史证据，不被删除；当前状态只在新证据范围内更新。
+
+当前任务板：
+
+- 已完成（有界）：Q00 `VERIFIED_WITH_SCOPE`；Q01 `PASS_WITHIN_SCOPE`；Q02 `PASS_WITHIN_SCOPE`；Q03 当前 Formal Humanoid action/avatar/default route `PASS_WITHIN_SCOPE`；Q04/Q05/Q06 已用 Q03-A23 当前源分别完成 `1/1 PASS` 定向回归；D2=`8/8`、D17=`16/16`、Q03Formal=`5/5`、Q03D20Formal=`2/2`，recompile errors=`0`。
+- 进行中：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`；需要最终 Player 画面、前台键盘焦点和人工视觉证据。
+- 阻塞/未关闭：VC-G02=`LOCKED`、VC-G03=`LOCKED`；Q20=`PARTIAL/BLOCKED_ASSET`；D31-P04/S05/G06=`PARTIAL`。没有把 Pipeline headless 或 hidden Player 结果当成这些门的 PASS。
+- 下一步：Q07 当前碰撞路线复核 → 继续 Q08/Q09 等依赖卡；最后回到 Q31/VC-G01 做 compositor-visible/native Player 终验。
+
+当前源 exact Player 为 `build_099a228c638b`，`0 errors / 8 warnings`，EXE SHA256=`D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE`。该构建证明 source binding，不证明画面质量、真实 Win32 输入、目标设备性能或完整流程完成。权威结果见 Q00/Q01/Q02/Q03 新增 current result/log 和对应 handoff。
+
+## 2026-09-15 Q08 current-source integration safe pause
+
+在上一节 Q00-Q03 reconciliation 基础上，Q07 与 Q08 已完成当前源码有界复核：
+
+- Q07 当前碰撞路线为 `PASS_WITHIN_SCOPE`：服务建筑 owner、R03 terrain、dock 与 gangplank 双向步行证据已登记在 [Q07 current result](../../game/tools/results/LOCAL-QUALITY/Q07/Q07_CURRENT_COLLISION_ROUTE_20260914_LUNA_RESULT.json) 与 [Q07 handoff](design/common/handoffs/LOCAL-QUALITY/Q07/Q07.md)。
+- Q08 当前 Q03-A23 Formal Humanoid 路由为 `PASS_WITHIN_SCOPE`：Q03 Formal EditMode=`5/5`、Q03D20 Formal PlayMode=`2/2`、D17 最终完整回归=`16/16`、recompile errors=`0`、Error Console=`0`。结果：[Q08 current result](../../game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q03A23_20260915_LUNA_RESULT.json)；日志：[Q08 log](../../game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q03A23_20260915_LUNA.log)；交接：[Q08](design/common/handoffs/LOCAL-QUALITY/Q08/Q08.md)。
+- Q08 本轮只对 `CameraFollow` 做了最小表现层修复：游泳进入首帧和明显自动航向变化时安全定位相机，之后保持平滑/手动接管。中间 A15 近阈值失败仍被保留为间歇稳定性风险，不能解释成零风险。
+- Q08 旧的 `BLOCKED` 记录继续有效，但仅针对 Q03-A23 以前的 generic-only 路由；新结果是当前源替代节点，不倒写历史。
+
+### 临时暂停点
+
+这里是一个安全收口点：代码级 action/movement/swim/grounding/input-modal 整合已有真实 Pipeline 证据，但最终 compositor-visible Player、前台 Win32 物理输入、人工视觉、全镜头穿模/植被接地、目标设备性能与音频仍未关闭。状态保持：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、Q20=`PARTIAL/BLOCKED_ASSET`、D31-P04/S05/G06=`PARTIAL`。本轮不继续 Q09，也不把 Q08 升级为 D31 或整机完成。
+
+恢复顺序：`Q09_CURRENT_DECK_ANCHOR_REAUDIT` → Q10 及后续依赖卡 → Q31/VC-G01 compositor/native Player 最终门。恢复入口和边界见 [Q08 handoff](design/common/handoffs/LOCAL-QUALITY/Q08/Q08.md)。

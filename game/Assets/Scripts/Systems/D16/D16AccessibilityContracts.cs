@@ -33,6 +33,9 @@ namespace Whalebone.Systems.D16
         Quality,
         Achievement,
         Save,
+        D29OpenMarket,
+        D29ToggleWarehouse,
+        D29OpenTavern,
         D3CloseTrade,
         D3StartVoyage,
         D3AdvanceVoyage,
@@ -309,8 +312,15 @@ namespace Whalebone.Systems.D16
                 Binding(D16InputAction.Achievement, "F2", "", ""),
                 Binding(D16InputAction.Save, "F5", "C", "RightStickPress"),
 
+                Binding(D16InputAction.D29OpenMarket, "M", "B", "North", "d29"),
+                Binding(D16InputAction.D29ToggleWarehouse, "I", "", "Select", "d29"),
+                Binding(D16InputAction.D29OpenTavern, "T", "", "South", "d29"),
+
                 Binding(D16InputAction.D3CloseTrade, "Escape", "", "Start", "d3"),
-                Binding(D16InputAction.D3StartVoyage, "T", "", "South", "d3"),
+                // T is owned by the D29 primary HUD for the tavern. Keep voyage
+                // start on a distinct keyboard key so one gameplay frame cannot
+                // open the tavern and start sailing at the same time.
+                Binding(D16InputAction.D3StartVoyage, "Y", "", "South", "d3"),
                 Binding(D16InputAction.D3AdvanceVoyage, "N", "", "North", "d3"),
                 Binding(D16InputAction.D3Gather, "G", "", "West", "d3"),
                 Binding(D16InputAction.D3LandAndSettle, "L", "", "East", "d3"),

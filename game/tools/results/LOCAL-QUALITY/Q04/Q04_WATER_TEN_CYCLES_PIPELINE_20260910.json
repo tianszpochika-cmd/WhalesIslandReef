@@ -1,0 +1,38 @@
+{
+  "task_id": "Q04",
+  "run_id": "Q04_PIPELINE_WATER_TEN_CYCLES_20260910_233046",
+  "tool": "Unity Pipeline connected Editor",
+  "project": "C:\\Users\\Administrator\\Desktop\\game\\first01\\game",
+  "unity_version": "6000.0.80f1",
+  "scene": "InitialHarbor",
+  "test_full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+  "invocation": {
+    "command": "run_tests",
+    "mode": "playmode",
+    "filter_type": "testName",
+    "async_tests": true,
+    "protocol": "run_tests returned running; test_status was polled until completed"
+  },
+  "status": "completed",
+  "duration_seconds": 9.06,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "result": {
+    "full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "status": "Passed",
+    "duration_seconds": 8.9703207,
+    "message": null,
+    "stack_trace": null
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "665341FDC7BB0147082B2550EBFAF2BBBF6E2EE9141143AC27BE6F2FEACA6F29",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4"
+  },
+  "boundary": "This is a current-source D2 water-state PlayMode result. It does not prove native Player W/S input, authored swim pose quality, water-material visual quality, or VC-G01 acceptance."
+}

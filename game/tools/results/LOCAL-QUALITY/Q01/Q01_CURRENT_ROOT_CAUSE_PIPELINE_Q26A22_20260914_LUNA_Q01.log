@@ -1,0 +1,37 @@
+Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A22_20260914_LUNA_Q01
+captured_at=2026-09-14T08:54:19+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800 Null Device
+
+Commands:
+1. unity status --format json
+2. unity command editor_play --project-path game
+3. unity command run_script --project-path game --file AgentScripts/LocalQuality/UnityPipelinePoseAndInputProbe.cs --entry Whalebone.LocalQuality.UnityPipelinePoseAndInputProbe.Main
+4. unity command run_script ... Board
+5. unity command run_script ... Main
+6. unity command run_script ... Board
+7. unity command run_script ... MoveToOpenWater
+8. unity command run_script ... Main
+9. unity status --format json
+10. unity command editor_stop --project-path game --timeout 30
+11. unity command editor_status --project-path game --format json
+
+Observed route:
+- InitialHarbor initial: D2_PlayerAvatar parent empty, root lossyScale=(1,1,1), grounded=true, swimming=false, Idle/Procedural, renderer=17, skinned=0, bound bones=8, UI navigation=false, move action unbound.
+- Board: parent=ph_ship_fishing, controlMode=Ship, ship steering pose active, logical player/helm approximately (0,1.10,-6.68), hand-to-wheel approximately 0.194m on both sides.
+- Disembark and open-water diagnostic: parent empty, controlMode=Character, action=Swimming, swimming=true, grounded=false, pitch=64 degrees, bodyDrop=-0.6008, player=(24,0.40,-24).
+- Flattened owner fields: CharacterController enabled radius=0.2424353212 height=1.7999997139 skinWidth=0.0193948261 center.y=0.8468632698; logical water=-0.0199999996 and halfExtent=600; deck ready/collision ready; HarborCollision initialized/R03 installed/colliders=9/walkable=3/building=4.
+
+Evidence boundaries:
+- This is an Editor Pipeline in-memory probe, not a foreground Windows Player screenshot or physical Win32 keyboard route.
+- No production file was changed; only the ephemeral helper outside Assets was extended to flatten JSON fields.
+- No visual PASS is claimed for action quality, swim silhouette, deck contact, vegetation grounding or W/S-HUD focus behavior.
+
+Final editor:
+editor_status=ready
+compiling=false
+domainReloadInProgress=false
+playMode=stopped
+console_new_errors=not_queried_in_this_card

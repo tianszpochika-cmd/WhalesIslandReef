@@ -1,0 +1,60 @@
+{
+  "task_id": "Q04",
+  "run_id": "Q04_CURRENT_WATER_OWNER_20260914_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_initialharbor_d2_water_state_owner",
+  "captured_at_local": "2026-09-14T09:10:37+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped"
+  },
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "test": {
+    "filter": "D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "mode": "PlayMode",
+    "status": "completed",
+    "duration_s": 10.81,
+    "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+    "coverage": [
+      "ten shallow shoreline entry/exit cycles",
+      "ten deep-water entry/move/exit cycles",
+      "OceanAdapter scene water surface query",
+      "non-zero swimming displacement",
+      "water-height stabilization",
+      "walkable-ground recovery"
+    ],
+    "runtime_log_facts": {
+      "logical_surface_y": -0.02,
+      "swimming_player_y": 0.42,
+      "recovery_surface_y": 0.09,
+      "entry_log": "玩家从岸缘进入游泳态: surfaceY=-0.02, entryDistance=3.45, entryZ=18.70",
+      "swim_log": "玩家进入游泳态: surfaceY=-0.02, playerY=0.42",
+      "exit_log": "玩家退出游泳态: reason=重新接触可行走地面",
+      "ground_recovery_log": "玩家已恢复可行走接地: surface=D19_TerrainRoot, surfaceY=0.09"
+    }
+  },
+  "console_boundary": {
+    "current_run_errors": "No error entry with the Q04 run timestamps was observed; retained buffer still contains older pre-Q04 FMOD/headless/test-runner errors.",
+    "known_current_warnings": [
+      "D27 player presentation waits for D2 instance",
+      "D2 unverified ph_crew_male and procedural fallback",
+      "generated D6CrewAnimator absolute Euler curves retained as procedural/neutral boundary",
+      "D31 performance approval pending",
+      "D7 audio fallback=true"
+    ],
+    "evidence_after_run": "Editor returned ready/stopped; console state was inspected before the next cleanup operation."
+  },
+  "status_boundary": "Q04 is PASS_WITHIN_SCOPE for the current InitialHarbor D2 water-state owner. It does not prove native Player W/S/focus, authored natural swim pose, water material visual quality, visible screenshots, target-device performance or VC-G01.",
+  "next_task": "Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
+}

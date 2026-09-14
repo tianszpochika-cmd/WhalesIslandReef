@@ -1,0 +1,118 @@
+{
+  "task_id": "Q06",
+  "status": "VERIFIED",
+  "status_scope": "initialharbor_jump_grounded_and_small_step_motion",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q05"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q06_JUMP_GROUNDED_MOTION_20260908_231600",
+  "audit_time_local": "2026-09-08T23:16:00+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner": "D2CharacterController",
+    "changes": [
+      "Added InitialHarbor PlayMode regression for ten real TryJump-to-ground cycles.",
+      "Added small positive, diagonal and reverse CharacterController movement steps around the actual spawn ground; each step checks grounded, non-swimming and finite Transform state.",
+      "No collision was disabled, no illegal position was injected during the jump/movement assertions, and no threshold was loosened."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "498B7B178D3297059E666F82ABDBCE3C818F7EC96AEEB7BE6ED749CC6794682B"
+    }
+  },
+  "checks": [
+    {
+      "name": "ten_jump_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q06/Q06_JUMP_GROUNDED_MOTION_PLAYMODE.xml; D17A09 total=1 passed=1; each of 10 TryJump calls returned true and recovered grounded"
+    },
+    {
+      "name": "small_positive_diagonal_reverse_motion",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A09 runs 4 directions x 8 real ApplyPhysicsMotion steps and asserts grounded/non-swimming/finite Transform state"
+    },
+    {
+      "name": "ground_collision_owner",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Current D2 CharacterController and InitialHarbor D19_TerrainRoot remained the active physics path; runtime log records R03 organic MeshCollider installation"
+    }
+  ],
+  "remaining_scope": [
+    "Dedicated wall/obstacle, slope and gangplank route coverage belongs to Q07 and later integrated route cards.",
+    "This does not prove visual mesh contact or native Player keyboard input."
+  ],
+  "status_boundary": "Q06 VERIFIED is limited to repeated jump/grounded and small-step movement stability in InitialHarbor. It does not close all wall, slope, shore or ship-deck collision acceptance.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A09 passed in 9.7554984s",
+    "source_hashes_current": true,
+    "boundary": "Current source jump/grounded/small-step evidence only; dedicated shore, slope and ship-deck boundaries remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=13.8529193s; total duration=13.95s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current source jump/grounded/small-step evidence only; dedicated shore, slope, gangplank and ship-deck boundaries remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=13.2231615s; total duration=13.34s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current-source jump/grounded/small-step evidence only; dedicated shore, slope, gangplank, ship-deck, visual contact and native Player boundaries remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.928311s; total duration=13.07s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current-source jump/grounded/small-step evidence only; dedicated shore, slope, gangplank, ship-deck, visual contact and native Player boundaries remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=14.3624642s; total duration=14.6s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "boundary": "Current-source jump/grounded/small-step evidence only; shore, slope, gangplank, ship-deck, visual contact and native Player boundaries remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=11.1847479s; pipeline duration=11.4s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current-source jump/grounded/small-step evidence only; dedicated wall, slope, shore, gangplank, ship-deck, visual contact and native Player boundaries remain open.",
+    "next_task": "Q07_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_movement_collision_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_MOVEMENT_COLLISION_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=14.033055s; pipeline duration=14.5s",
+    "source_hashes_current": true,
+    "runtime_facts": "Ten TryJump-to-ground cycles and positive/diagonal/lateral/reverse small movement steps remained grounded, non-swimming and finite; controller worldStepOffset=0.35m.",
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false",
+    "boundary": "Current-source jump/grounded/small-step evidence only; wall, slope, shore, ramp/gangplank, ship-deck visual contact and native Player boundaries remain open.",
+    "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  },
+  "current_source_reaudit_q03a23_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=9.8890487s; pipeline duration=9.91s",
+    "source_hashes_current": "D2Animation=EF4683FC...A67581C2; D2Runtime=3D854D17...9A32F2B4A; D17=85493325...0F3BA03",
+    "editor_final": "ready/stopped; error console=0; console cleared",
+    "boundary": "Current-source jump/grounded/small-step stability only; wall, slope, shore, ramp/gangplank, ship-deck visual contact, native Player and VC-G01 remain open.",
+    "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  }
+}

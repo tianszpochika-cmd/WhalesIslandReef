@@ -12,6 +12,7 @@ using Whalebone.Agent;
 using Whalebone.Gameplay.World;
 using Whalebone.Gameplay.Harbor;
 using Whalebone.Gameplay.D7;
+using Whalebone.Gameplay.UI;
 using Whalebone.Gameplay.UI.Dialogue;
 using Whalebone.Systems.D2;
 using Whalebone.Systems.D16;
@@ -48,6 +49,14 @@ namespace Whalebone.Gameplay.D2
         private float _phaseStartedAt;
         private bool _phaseTimerStarted;
         private RuntimeBuildPhase _timedPhase;
+
+        // The scene's ph_crew_male asset is a Generic/NoAvatar skinned mesh.
+        // It is valid as an NPC anchor, but it has no audited action-axis
+        // contract for the Player. Keep it out of the controllable Player
+        // visual path until D20 supplies a verified runtime consumer; the
+        // procedural fallback has an explicit bone contract and avoids the
+        // distorted imported-rig poses visible in the native Player.
+        private const bool UseProceduralFallbackForUnverifiedImportedPlayer = true;
 
         public bool IsReady => _runtimeReady;
         public float RuntimeBuildElapsedMs { get; private set; }
@@ -128,10 +137,19 @@ namespace Whalebone.Gameplay.D2
                         Whalebone.Systems.Save.GameState.CurrentPlayer.Location != null &&
                         Whalebone.Systems.Save.GameState.CurrentPlayer.Location.Type == "open_sea")
                     {
-                        // 即使存档来自 open_sea，回到当前港口时也要落在码头安全区，
-                        // 不把角色放到船体碰撞盒边缘再等待首帧纠正。
-                        _player.transform.position = _ship.transform.position - _ship.transform.forward * 6.5f +
-                            Vector3.up * 1.1f;
+                        // 即使存档来自 open_sea，回到当前港口时也要落在
+                        // D19 作者明确声明的岸上安全锚点。D3 只写船的位置，
+                        // 玩家出生位置由 D2 统一拥有，避免两个运行时入口竞争。
+                        Vector3 spawn = ResolvePlayerSpawnPosition(_ship);
+                        if (_character != null)
+                        {
+                            _character.SetWorldPosition(spawn);
+                            _character.SnapToGround();
+                        }
+                        else
+                        {
+                            _player.transform.position = spawn;
+                        }
                     }
 
                     CompletePhaseTiming();
@@ -294,6 +312,16 @@ namespace Whalebone.Gameplay.D2
             // 否则重启后仍会把“降级外观”误当成玩家，场景里的人就只剩 NPC。
             if (player != null)
             {
+                if (UseProceduralFallbackForUnverifiedImportedPlayer &&
+                    IsUnverifiedImportedSkinnedRig(player))
+                {
+                    player.SetActive(false);
+                    var proceduralFallback = CreateFallbackPlayer(ship);
+                    Object.Destroy(player);
+                    Debug.LogWarning("[D2] 检测到未验证的导入蒙皮 Player，已隔离并切换到有明确骨骼契约的程序化人物");
+                    return proceduralFallback;
+                }
+
                 if (D2CharacterVisualProbe.HasCharacterVisual(player))
                 {
                     Debug.Log("[D2] 已复用真人角色玩家：D2_PlayerAvatar");
@@ -302,6 +330,16 @@ namespace Whalebone.Gameplay.D2
 
                 if (crew != null && crew != player && D2CharacterVisualProbe.HasCharacterVisual(crew))
                 {
+                    if (UseProceduralFallbackForUnverifiedImportedPlayer &&
+                        IsUnverifiedImportedSkinnedRig(crew))
+                    {
+                        player.SetActive(false);
+                        var proceduralFallback = CreateFallbackPlayer(ship);
+                        Object.Destroy(player);
+                        Debug.LogWarning("[D2] 场景船员是未验证导入蒙皮，已隔离旧 Player 并使用程序化人物");
+                        return proceduralFallback;
+                    }
+
                     var replacement = InstantiateCharacterPlayer(crew, ship);
                     // 先停用旧对象，避免同一帧内 D7 协调器通过 GameObject.Find
                     // 重新绑定到即将销毁的 Capsule。
@@ -319,20 +357,39 @@ namespace Whalebone.Gameplay.D2
             }
 
             // D1 场景已经有一个可用的 Quaternius 船员模型。玩家应复用这份表现资产，
-            // 而不是再次创建 Capsule；Capsule 只保留给素材确实缺失的降级路径。
+            // 而不是再次创建 Capsule；但 Generic/NoAvatar 的未验证蒙皮不能作为
+            // 可控 Player，必须走有明确骨骼契约的程序化动作回退。
             if (crew != null && D2CharacterVisualProbe.HasCharacterVisual(crew))
+            {
+                if (UseProceduralFallbackForUnverifiedImportedPlayer &&
+                    IsUnverifiedImportedSkinnedRig(crew))
+                {
+                    Debug.LogWarning("[D2] ph_crew_male 是未验证导入蒙皮；NPC 保留原模型，Player 使用程序化动作回退");
+                    return CreateFallbackPlayer(ship);
+                }
+
                 return InstantiateCharacterPlayer(crew, ship);
+            }
 
             return CreateFallbackPlayer(ship);
+        }
+
+        private static bool IsUnverifiedImportedSkinnedRig(GameObject source)
+        {
+            if (source == null ||
+                source.GetComponentsInChildren<SkinnedMeshRenderer>(true).Length == 0)
+                return false;
+
+            var animator = source.GetComponentInChildren<Animator>(true);
+            return animator == null || animator.avatar == null ||
+                   !animator.avatar.isValid || !animator.avatar.isHuman;
         }
 
         private static GameObject CreateFallbackPlayer(GameObject ship)
         {
             var player = D2FallbackHumanoidBuilder.Create(
                 "D2_PlayerAvatar",
-                // 出生在 DockGround 的中央安全区，避免从船体/跳板接缝出生后
-                // 被 CharacterController 当成台阶抬起；距离船仍在上船交互范围内。
-                ship.transform.position + new Vector3(0f, 1.1f, -6.5f),
+                ResolvePlayerSpawnPosition(ship),
                 new Color(0.12f, 0.34f, 0.62f));
             Debug.LogWarning("[D2] 缺少可用船员模型，已创建可驱动的程序化低模人物；正式角色资源接入后将自动替换");
             return player;
@@ -343,12 +400,26 @@ namespace Whalebone.Gameplay.D2
             var player = Object.Instantiate(crew);
             player.name = "D2_PlayerAvatar";
             player.transform.SetParent(null, true);
-            // 出生在 DockGround 的中央安全区，避免与船体碰撞盒重叠；
-            // InitializePhysics 会继续把人物吸附到明确的可行走面。
-            player.transform.position = ship.transform.position + new Vector3(0f, 1.1f, -6.5f);
+            // 出生位置只读取稳定船根下的 D2 锚点；InitializePhysics 会继续
+            // 把人物吸附到明确的可行走面。
+            player.transform.position = ResolvePlayerSpawnPosition(ship);
             player.transform.rotation = Quaternion.identity;
             Debug.Log("[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar");
             return player;
+        }
+
+        /// <summary>
+        /// D2 唯一的玩家出生位置读取入口。R03 作者锚点使用世界米语义，
+        /// 但挂在可能带缩放的稳定船根下；缺少作者锚点时才使用同语义的
+        /// 保守回退，不再把局部坐标误当世界坐标。
+        /// </summary>
+        internal static Vector3 ResolvePlayerSpawnPosition(GameObject ship)
+        {
+            if (ship == null) return Vector3.up * 1.1f;
+            var authored = ship.transform.Find("D2_PlayerSpawnAnchor");
+            if (authored != null) return authored.position;
+
+            return ship.transform.position + ship.transform.forward * 2.5f + Vector3.up * 1.1f;
         }
 
         private static Camera EnsureCamera()
@@ -373,6 +444,108 @@ namespace Whalebone.Gameplay.D2
             if (material.HasProperty("_Color")) material.SetColor("_Color", color);
             foreach (var renderer in go.GetComponentsInChildren<Renderer>(true))
                 renderer.sharedMaterial = material;
+        }
+    }
+
+    public enum D2MovementInputSourceKind
+    {
+        D16InputRouter,
+        LegacyKeyboardFallback,
+    }
+
+    /// <summary>
+    /// D2 人物移动的唯一输入源选择器。正常情况下只消费 D16 路由；
+    /// legacy 只在路由被明确标记不可用或调用抛出异常后锁存接管，
+    /// 不会因为当前轴值为零而把两套输入结果合并。
+    /// </summary>
+    public sealed class D2MovementInputSourceSelector
+    {
+        private readonly System.Func<Vector2> _d16AxisReader;
+        private readonly System.Func<Vector2> _legacyAxisReader;
+        private D2MovementInputSourceKind _source = D2MovementInputSourceKind.D16InputRouter;
+        private string _lastD16Failure = string.Empty;
+
+        public D2MovementInputSourceSelector(System.Func<Vector2> d16AxisReader,
+            System.Func<Vector2> legacyAxisReader, bool d16RouteAvailable = true)
+        {
+            _d16AxisReader = d16AxisReader;
+            _legacyAxisReader = legacyAxisReader;
+            if (!d16RouteAvailable || _d16AxisReader == null)
+                ActivateLegacyFallback();
+        }
+
+        public D2MovementInputSourceKind Source => _source;
+        public bool IsD16RouteAvailable => _source == D2MovementInputSourceKind.D16InputRouter;
+        public bool IsLegacyFallbackActive => _source == D2MovementInputSourceKind.LegacyKeyboardFallback;
+        public int D16AxisReadCount { get; private set; }
+        public int LegacyAxisReadCount { get; private set; }
+        public int LegacyFallbackActivationCount { get; private set; }
+        public string LastD16Failure => _lastD16Failure;
+
+        /// <summary>
+        /// 每次调用只消费当前锁存的一个 provider。D16 失败的当帧返回零，
+        /// 将 legacy 留到下一帧，保证失败帧也不会同时读取两套移动轴。
+        /// </summary>
+        public Vector2 ReadAxis()
+        {
+            if (IsLegacyFallbackActive)
+            {
+                LegacyAxisReadCount++;
+                return _legacyAxisReader == null ? Vector2.zero : _legacyAxisReader();
+            }
+
+            D16AxisReadCount++;
+            if (_d16AxisReader == null)
+            {
+                ActivateLegacyFallback();
+                return Vector2.zero;
+            }
+
+            try
+            {
+                return _d16AxisReader();
+            }
+            catch (System.Exception ex)
+            {
+                _lastD16Failure = ex.GetType().Name;
+                ActivateLegacyFallback();
+                return Vector2.zero;
+            }
+        }
+
+        /// <summary>
+        /// 供 D2 宿主在有明确路由故障证据时调用；重复调用不会重新读取或重置 provider。
+        /// </summary>
+        public void MarkD16RouteUnavailable()
+        {
+            ActivateLegacyFallback();
+        }
+
+        private void ActivateLegacyFallback()
+        {
+            if (IsLegacyFallbackActive) return;
+            _source = D2MovementInputSourceKind.LegacyKeyboardFallback;
+            LegacyFallbackActivationCount++;
+        }
+    }
+
+    /// <summary>
+    /// 只表达 D2 移动输入的权限边界和轴归一化，不修改任何移动/碰撞数值。
+    /// </summary>
+    public static class D2MovementInputPolicy
+    {
+        public static bool IsMovementInputAllowed(bool inputEnabled,
+            bool gameplayInputAllowed, bool primaryInputAllowed)
+        {
+            return inputEnabled && gameplayInputAllowed && primaryInputAllowed;
+        }
+
+        public static Vector2 ResolveAxis(Vector2 axis, bool inputEnabled,
+            bool gameplayInputAllowed, bool primaryInputAllowed)
+        {
+            if (!IsMovementInputAllowed(inputEnabled, gameplayInputAllowed, primaryInputAllowed))
+                return Vector2.zero;
+            return Vector2.ClampMagnitude(axis, 1f);
         }
     }
 
@@ -409,8 +582,16 @@ namespace Whalebone.Gameplay.D2
         [SerializeField] private float jumpHeight = 1.35f;
         [SerializeField] private float gravity = -18f;
         [SerializeField] private float visualTargetHeight = 1.8f;
+        [SerializeField] private float swimSpeed = 2.1f;
+        [SerializeField] private float swimBodyOffset = 0.42f;
+        [SerializeField] private float swimEntryHeight = 0.85f;
+        [SerializeField] private float swimVerticalCorrection = 10f;
+        [SerializeField] private float swimEntryGraceSeconds = 0.35f;
+        [SerializeField] private float swimReentryBlockSeconds = 0.35f;
+        [SerializeField] private float swimShorelineClearance = 0.05f;
         private bool _inputEnabled;
         private bool _isGrounded = true;
+        private bool _isSwimming;
         private bool _isRunning;
         private float _verticalVelocity;
         private Vector3 _moveDirection;
@@ -423,8 +604,19 @@ namespace Whalebone.Gameplay.D2
         private bool _wasGroundedBeforeMove;
         private bool _bodyConfigured;
         private float _visualGroundOffset;
+        private D2MovementInputSourceSelector _movementInputSource;
+        private OceanAdapter _ocean;
+        private const float OutOfBoundsY = -8f;
+        private const float SwimOverheadProbeDistance = 2.25f;
+        private const float SwimOverheadClearance = 0.12f;
+        private Vector3 _lastSafePosition;
+        private bool _hasSafePosition;
+        private bool _swimmingBlockedByOverheadSurface;
 
         public bool IsGrounded => _isGrounded;
+        public bool IsSwimming => _isSwimming;
+        public float WaterSurfaceY => _waterSurfaceY;
+        public bool SwimmingBlockedByOverheadSurface => _swimmingBlockedByOverheadSurface;
         public bool IsRunning => _isRunning;
         public bool IsMoving => _planarVelocity.sqrMagnitude > 0.0001f;
         public float CurrentSpeed => new Vector3(_planarVelocity.x, 0f, _planarVelocity.z).magnitude;
@@ -436,9 +628,19 @@ namespace Whalebone.Gameplay.D2
         public float VisualWorldHeight { get; private set; }
         public float VisualWorldRadius { get; private set; }
         public float VisualScaleMultiplier { get; private set; } = 1f;
+        public D2MovementInputSourceKind MovementInputSource => _movementInputSource == null
+            ? D2MovementInputSourceKind.D16InputRouter : _movementInputSource.Source;
+        public bool LegacyMovementFallbackActive => _movementInputSource != null &&
+            _movementInputSource.IsLegacyFallbackActive;
+
+        private float _waterSurfaceY;
+        private float _swimEntryGraceUntil;
+        private float _swimReentryBlockedUntil;
 
         private void Awake()
         {
+            _movementInputSource = new D2MovementInputSourceSelector(
+                D16InputRouter.MoveAxis, ReadLegacyMoveAxis);
             _body = GetComponent<CharacterController>();
             if (_body == null)
             {
@@ -455,6 +657,7 @@ namespace Whalebone.Gameplay.D2
             NormalizeVisualScale();
             ConfigurePhysicsBody();
             _isGrounded = _body.isGrounded;
+            SeedSafePosition();
         }
 
         public void SetInputEnabled(bool enabled)
@@ -465,7 +668,10 @@ namespace Whalebone.Gameplay.D2
             _planarVelocity = Vector3.zero;
             _verticalVelocity = 0f;
             _jumpActive = false;
+            _isSwimming = false;
             _isGrounded = _body == null || !_body.enabled || _body.isGrounded;
+            _swimReentryBlockedUntil = 0f;
+            RememberSafePosition();
         }
 
         public void SetWorldPosition(Vector3 position)
@@ -473,14 +679,20 @@ namespace Whalebone.Gameplay.D2
             MoveTransformWithoutController(position);
             _verticalVelocity = 0f;
             _jumpActive = false;
+            _isSwimming = false;
+            _waterSurfaceY = 0f;
             _isGrounded = _body == null || !_body.enabled || _body.isGrounded;
+            _swimReentryBlockedUntil = 0f;
         }
 
         public void InitializePhysics()
         {
             ConfigurePhysicsBody();
             if (_collisionEnabled && _body != null && _body.enabled)
+            {
                 SnapToGround();
+                RememberSafePosition();
+            }
         }
 
         public void SetCollisionEnabled(bool enabled)
@@ -502,6 +714,7 @@ namespace Whalebone.Gameplay.D2
             _body.enabled = true;
             _isGrounded = _body.isGrounded;
             SnapToGround();
+            RememberSafePosition();
         }
 
         public bool SnapToGround(float maxDistance = 8f)
@@ -549,6 +762,7 @@ namespace Whalebone.Gameplay.D2
         {
             if (!_inputEnabled || !_isGrounded || !_collisionEnabled || _body == null || !_body.enabled)
                 return false;
+            if (_isSwimming) return false;
             _verticalVelocity = Mathf.Sqrt(Mathf.Max(0.01f, jumpHeight * -2f * gravity));
             _jumpActive = true;
             _isGrounded = false;
@@ -567,6 +781,7 @@ namespace Whalebone.Gameplay.D2
             {
                 _isRunning = false;
                 _moveDirection = Vector3.zero;
+                _planarVelocity = Vector3.zero;
                 return;
             }
 
@@ -579,24 +794,32 @@ namespace Whalebone.Gameplay.D2
                 return;
             }
 
-            Vector2 input = Vector2.zero;
-            if (_inputEnabled && D7ControlCoordinator.GameplayInputAllowed)
+            bool gameplayInputAllowed = D7ControlCoordinator.GameplayInputAllowed;
+            bool primaryInputAllowed = RuntimeHudCoordinator.PrimaryInputAllowed;
+            if (!D2MovementInputPolicy.IsMovementInputAllowed(_inputEnabled,
+                gameplayInputAllowed, primaryInputAllowed))
             {
-                input = D16InputRouter.MoveAxis();
-                // 与 D3 的 Player 兼容入口保持一致：某些 Windows Player 窗口
-                // 能收到 legacy KeyCode，但 Input System 的 KeyboardControl 没有
-                // 产生 isPressed。这里仅把同一组键转换为移动意图，不改变速度、
-                // 碰撞、地面或任何领域裁决。
-                var legacyInput = ReadLegacyMoveAxis();
-                if (legacyInput.sqrMagnitude > input.sqrMagnitude)
-                    input = legacyInput;
-                if (D16InputRouter.WasPressedThisFrame(D16InputAction.Jump)) TryJump();
+                // 模态/临时页/失焦时立即清空水平意图和残余速度；垂直重力与
+                // CharacterController 碰撞仍走原有物理路径，不改变领域事实。
+                _isRunning = false;
+                _moveDirection = Vector3.zero;
+                _planarVelocity = Vector3.zero;
+                ApplyPhysicsMotion();
+                return;
             }
 
-            input = Vector2.ClampMagnitude(input, 1f);
+            if (_movementInputSource == null)
+                _movementInputSource = new D2MovementInputSourceSelector(
+                    D16InputRouter.MoveAxis, ReadLegacyMoveAxis);
+            Vector2 input = D2MovementInputPolicy.ResolveAxis(
+                _movementInputSource.ReadAxis(),
+                _inputEnabled,
+                gameplayInputAllowed,
+                primaryInputAllowed);
+            if (WasJumpPressedThisFrame()) TryJump();
             _moveDirection = ResolveWorldDirection(input);
             _isRunning = _moveDirection.sqrMagnitude > 0.0001f &&
-                D16InputRouter.IsPressed(D16InputAction.Sprint);
+                IsSprintPressed();
 
             if (_moveDirection.sqrMagnitude > 0.0001f)
             {
@@ -609,11 +832,45 @@ namespace Whalebone.Gameplay.D2
 
         private static Vector2 ReadLegacyMoveAxis()
         {
+            // 只由 D2MovementInputSourceSelector 在 D16 路由明确不可用后调用；
+            // 不在 Update 中与 D16 轴并行采样，也不参与轴值竞争。
             float x = (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ? 1f : 0f) -
                       (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) ? 1f : 0f);
             float y = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ? 1f : 0f) -
                       (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ? 1f : 0f);
             return Vector2.ClampMagnitude(new Vector2(x, y), 1f);
+        }
+
+        private bool WasJumpPressedThisFrame()
+        {
+            if (_movementInputSource != null && _movementInputSource.IsLegacyFallbackActive)
+                return Input.GetKeyDown(KeyCode.Space);
+
+            try
+            {
+                return D16InputRouter.WasPressedThisFrame(D16InputAction.Jump);
+            }
+            catch
+            {
+                if (_movementInputSource != null) _movementInputSource.MarkD16RouteUnavailable();
+                return false;
+            }
+        }
+
+        private bool IsSprintPressed()
+        {
+            if (_movementInputSource != null && _movementInputSource.IsLegacyFallbackActive)
+                return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+            try
+            {
+                return D16InputRouter.IsPressed(D16InputAction.Sprint);
+            }
+            catch
+            {
+                if (_movementInputSource != null) _movementInputSource.MarkD16RouteUnavailable();
+                return false;
+            }
         }
 
         private Vector3 ResolveWorldDirection(Vector2 input)
@@ -631,21 +888,33 @@ namespace Whalebone.Gameplay.D2
 
         private void ApplyPhysicsMotion()
         {
+            // 海面不是可行走地面。角色进入水域后由本控制器保持头部露出
+            // 水面，并沿水平输入缓慢移动；离开水域时重新交回普通地面物理。
+            // Bound a single movement integration step so a long render/test
+            // frame cannot turn one input sample into a large teleport. Normal
+            // 60 FPS frames are below this cap and keep their original timing.
+            float movementDeltaTime = Mathf.Min(Time.deltaTime, 0.05f);
+            if (TryEnterOrMaintainSwimming() || TryEnterSwimmingAtMovementEdge())
+            {
+                ApplySwimmingMotion();
+                return;
+            }
+
             if (_body.isGrounded && _verticalVelocity < 0f)
                 _verticalVelocity = -2f;
             else
-                _verticalVelocity += gravity * Time.deltaTime;
+                _verticalVelocity += gravity * movementDeltaTime;
 
             float speed = moveSpeed * (_isRunning ? runMultiplier : 1f);
             Vector3 targetPlanarVelocity = _moveDirection * speed;
             float response = targetPlanarVelocity.sqrMagnitude > 0.0001f ? acceleration : deceleration;
             _planarVelocity = Vector3.MoveTowards(_planarVelocity, targetPlanarVelocity,
-                 Mathf.Max(0.1f, response) * Time.deltaTime);
+                 Mathf.Max(0.1f, response) * movementDeltaTime);
             Vector3 velocity = _planarVelocity + Vector3.up * _verticalVelocity;
             _positionBeforeMove = transform.position;
             _wasGroundedBeforeMove = _isGrounded || _body.isGrounded;
             _nonWalkableCollision = false;
-            CollisionFlags flags = _body.Move(velocity * Time.deltaTime);
+            CollisionFlags flags = _body.Move(velocity * movementDeltaTime);
             _isGrounded = _body.isGrounded || (flags & CollisionFlags.Below) != 0;
             if (_nonWalkableCollision && transform.position.y > _positionBeforeMove.y + 0.02f)
             {
@@ -667,6 +936,245 @@ namespace Whalebone.Gameplay.D2
                 _isGrounded = TryRecoverWalkableGround();
             if (_isGrounded && _verticalVelocity < 0f) _verticalVelocity = -2f;
             if (_isGrounded) _jumpActive = false;
+
+            // 普通移动跨过岛面边缘后，下一次 Move 可能已经开始下坠。
+            // 在进入旧的越界恢复阈值前切换到真实游泳态，避免把海水
+            // 错误地当作“掉出地图”。
+            if (TryEnterOrMaintainSwimming())
+            {
+                SnapToSwimmingSurface();
+                return;
+            }
+
+            RememberSafePosition();
+            RecoverFromOutOfBoundsIfNeeded();
+        }
+
+        private bool TryEnterOrMaintainSwimming()
+        {
+            if (_ocean == null)
+                _ocean = OceanAdapter.Active ?? FindFirstObjectByType<OceanAdapter>();
+            if (_ocean == null || !_ocean.TryGetWaterSurface(transform.position, out var surfaceY))
+            {
+                _swimmingBlockedByOverheadSurface = false;
+                if (_isSwimming) EndSwimming("离开水域边界");
+                return false;
+            }
+
+            // Leaving the water at a shallow shoreline can recover the
+            // CharacterController onto the same frame's walkable surface,
+            // while the movement edge probe still sees water in the same
+            // direction. Keep that single boundary decision stable for a
+            // short interval so the Player cannot flicker between swimming
+            // and grounded states while the player is holding a movement key.
+            if (!_isSwimming && Time.time < _swimReentryBlockedUntil)
+            {
+                _swimmingBlockedByOverheadSurface = false;
+                return false;
+            }
+
+            _waterSurfaceY = surfaceY;
+            _swimmingBlockedByOverheadSurface = HasWalkableGroundAboveAt(
+                transform.position, surfaceY);
+            if (_swimmingBlockedByOverheadSurface)
+            {
+                // A water plane can overlap the visual island skirt. If the
+                // player reaches that overlap from below, the old downward
+                // probe sees no nearby ground and keeps the body swimming
+                // underneath the island. Reject the water state and recover
+                // onto the actual walkable surface instead of leaving the
+                // player/camera inside terrain.
+                if (_isSwimming)
+                {
+                    EndSwimming("游泳空间上方存在可行走地面");
+                    TryRecoverWalkableGroundFromAbove(SwimOverheadProbeDistance);
+                }
+                return false;
+            }
+
+            float groundDrop = _isSwimming ? 0.48f : 0.72f;
+            bool hasWalkableGround = HasWalkableGroundBelow(groundDrop);
+            if (_isSwimming)
+            {
+                // A submerged terrain collider may still be within the body
+                // probe distance.  Treat it as water until its surface is
+                // actually above the waterline; otherwise the controller
+                // toggles swimming on/off at the shoreline and the Player
+                // appears unable to leave the coast.
+                if (HasWalkableGroundAboveWater(groundDrop, surfaceY) &&
+                    Time.time >= _swimEntryGraceUntil)
+                {
+                    EndSwimming("重新接触可行走地面");
+                    return false;
+                }
+                return true;
+            }
+
+            if (hasWalkableGround || transform.position.y > surfaceY + swimEntryHeight)
+                return false;
+
+            _isSwimming = true;
+            _isGrounded = false;
+            _jumpActive = false;
+            _verticalVelocity = 0f;
+            _swimEntryGraceUntil = Time.time + Mathf.Max(0.05f, swimEntryGraceSeconds);
+            Debug.Log("[D2/Physics] 玩家进入游泳态：surfaceY=" + surfaceY.ToString("F2") +
+                ", playerY=" + transform.position.y.ToString("F2"));
+            return true;
+        }
+
+        private bool TryEnterSwimmingAtMovementEdge()
+        {
+            if (_isSwimming || _moveDirection.sqrMagnitude < 0.001f || _body == null || !_body.enabled ||
+                Time.time < _swimReentryBlockedUntil)
+                return false;
+
+            if (_ocean == null)
+                _ocean = OceanAdapter.Active ?? FindFirstObjectByType<OceanAdapter>();
+            if (_ocean == null) return false;
+
+            Vector3 direction = _moveDirection.normalized;
+            // The authored R03 island has a shallow skirt collider. A normal
+            // CharacterController step can therefore collide with that skirt
+            // before its current position is far enough into the water for the
+            // ordinary ground ray to return false. Find the first water point
+            // without walkable ground, then cross that short edge explicitly.
+            for (float distance = 0.45f; distance <= 3.5f; distance += 0.25f)
+            {
+                Vector3 waterEntry = transform.position + direction * distance;
+                if (!_ocean.TryGetWaterSurface(waterEntry, out var surfaceY) ||
+                    waterEntry.y > surfaceY + swimEntryHeight ||
+                    HasWalkableGroundBelowAt(waterEntry, 0.9f) ||
+                    HasWalkableGroundAboveAt(waterEntry, surfaceY))
+                    continue;
+
+                MoveTransformWithoutController(waterEntry);
+                _waterSurfaceY = surfaceY;
+                _isSwimming = true;
+                _isGrounded = false;
+                _jumpActive = false;
+                _verticalVelocity = 0f;
+                _swimEntryGraceUntil = Time.time + Mathf.Max(0.05f, swimEntryGraceSeconds);
+                SnapToSwimmingSurface();
+                Debug.Log("[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=" + surfaceY.ToString("F2") +
+                    ", entryDistance=" + distance.ToString("F2") +
+                    ", entryZ=" + waterEntry.z.ToString("F2"));
+                return true;
+            }
+
+            return false;
+        }
+
+        private void ApplySwimmingMotion()
+        {
+            float movementDeltaTime = Mathf.Min(Time.deltaTime, 0.05f);
+            float speed = swimSpeed * (_isRunning ? 1.1f : 1f);
+            Vector3 targetPlanarVelocity = _moveDirection * speed;
+            float response = targetPlanarVelocity.sqrMagnitude > 0.0001f ? acceleration : deceleration;
+            _planarVelocity = Vector3.MoveTowards(_planarVelocity, targetPlanarVelocity,
+                Mathf.Max(0.1f, response) * movementDeltaTime);
+
+            float targetY = _waterSurfaceY + swimBodyOffset;
+            float verticalVelocity = Mathf.Clamp(
+                (targetY - transform.position.y) * swimVerticalCorrection, -4f, 4f);
+            _positionBeforeMove = transform.position;
+            _wasGroundedBeforeMove = false;
+            _nonWalkableCollision = false;
+            // CharacterController.Move collides against the authored shoreline
+            // mesh even after the player has entered water.  That collision is
+            // useful on land but becomes a false wall in the swim volume.  The
+            // water path therefore owns a bounded transform integration; the
+            // next state check still decides whether the player has reached
+            // walkable land and should leave swimming.
+            var nextPosition = transform.position +
+                (_planarVelocity + Vector3.up * verticalVelocity) * movementDeltaTime;
+            MoveTransformWithoutController(nextPosition);
+            _isGrounded = false;
+            _verticalVelocity = 0f;
+            _jumpActive = false;
+
+            if (!TryEnterOrMaintainSwimming())
+            {
+                if (!_isSwimming) TryRecoverWalkableGround(1.2f);
+                return;
+            }
+
+            SnapToSwimmingSurface();
+        }
+
+        private void SnapToSwimmingSurface()
+        {
+            var position = transform.position;
+            position.y = _waterSurfaceY + swimBodyOffset;
+            MoveTransformWithoutController(position);
+            _isGrounded = false;
+            _verticalVelocity = 0f;
+            _jumpActive = false;
+        }
+
+        private void EndSwimming(string reason)
+        {
+            if (!_isSwimming) return;
+            _isSwimming = false;
+            _verticalVelocity = -2f;
+            _swimReentryBlockedUntil = Time.time + Mathf.Max(0.05f, swimReentryBlockSeconds);
+            Debug.Log("[D2/Physics] 玩家退出游泳态：reason=" + reason);
+        }
+
+        private void RecoverFromOutOfBoundsIfNeeded()
+        {
+            var position = transform.position;
+            if (!_hasSafePosition ||
+                (IsFinitePosition(position) && position.y > OutOfBoundsY))
+                return;
+
+            var recovery = _lastSafePosition;
+            if (!IsFinitePosition(recovery))
+                return;
+
+            bool wasEnabled = _body != null && _body.enabled;
+            if (wasEnabled) _body.enabled = false;
+            transform.position = recovery;
+            if (wasEnabled)
+            {
+                _body.enabled = true;
+                Physics.SyncTransforms();
+            }
+
+            _moveDirection = Vector3.zero;
+            _planarVelocity = Vector3.zero;
+            _verticalVelocity = -2f;
+            _jumpActive = false;
+            _isGrounded = _body == null || !_body.enabled || _body.isGrounded;
+            if (!_isGrounded) SnapToGround();
+            Debug.LogWarning("[D2/Physics] 玩家越过水域外缘安全边界，已回到最近可行走位置。");
+        }
+
+        private void SeedSafePosition()
+        {
+            var position = transform.position;
+            if (!IsFinitePosition(position) || position.y <= OutOfBoundsY) return;
+            _lastSafePosition = position;
+            _hasSafePosition = true;
+        }
+
+        private void RememberSafePosition()
+        {
+            if (!_collisionEnabled || _body == null || !_body.enabled ||
+                !(_isGrounded || _body.isGrounded))
+                return;
+
+            var position = transform.position;
+            if (!IsFinitePosition(position) || position.y <= OutOfBoundsY) return;
+            _lastSafePosition = position;
+            _hasSafePosition = true;
+        }
+
+        private static bool IsFinitePosition(Vector3 position)
+        {
+            return !float.IsNaN(position.x) && !float.IsInfinity(position.x) &&
+                   !float.IsNaN(position.y) && !float.IsInfinity(position.y) &&
+                   !float.IsNaN(position.z) && !float.IsInfinity(position.z);
         }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -719,6 +1227,141 @@ namespace Whalebone.Gameplay.D2
             if (Mathf.Abs(target.y - beforeY) > 0.08f)
                 Debug.Log("[D2/Physics] 玩家已恢复可行走接地：surface=" + bestHit.collider.name +
                           ", surfaceY=" + bestHit.point.y.ToString("F2"));
+            return true;
+        }
+
+        private bool HasWalkableGroundBelow(float maxDrop)
+        {
+            return HasWalkableGroundBelowAt(transform.position, maxDrop);
+        }
+
+        private bool HasWalkableGroundAboveWater(float maxDrop, float waterSurfaceY)
+        {
+            if (_body == null || !_body.enabled) return false;
+
+            float scaleY = Mathf.Max(0.001f, Mathf.Abs(transform.lossyScale.y));
+            float worldBodyHeight = _body.height * scaleY;
+            float worldStepOffset = Mathf.Min(0.35f, worldBodyHeight * 0.25f);
+            float bottomOffset = (_body.center.y - _body.height * 0.5f) * scaleY;
+            float currentBottom = transform.position.y + bottomOffset;
+            Vector3 origin = transform.position + Vector3.up * (worldBodyHeight * 0.5f + 0.25f);
+            float maxDistance = worldBodyHeight * 0.5f + worldStepOffset +
+                Mathf.Max(0.45f, maxDrop) + 0.35f;
+            var hits = Physics.RaycastAll(origin, Vector3.down, maxDistance,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                var hit = hits[i];
+                if (!IsWalkableSurface(hit.collider) ||
+                    hit.point.y < waterSurfaceY + swimShorelineClearance)
+                    continue;
+
+                float surfaceDelta = hit.point.y - currentBottom;
+                if (surfaceDelta >= -Mathf.Max(0.05f, maxDrop) &&
+                    surfaceDelta <= worldStepOffset + 0.05f)
+                    return true;
+            }
+            return false;
+        }
+
+        private bool HasWalkableGroundAboveAt(Vector3 position, float waterSurfaceY)
+        {
+            if (_body == null || !_body.enabled) return false;
+
+            float scaleY = Mathf.Max(0.001f, Mathf.Abs(transform.lossyScale.y));
+            float worldBodyHeight = _body.height * scaleY;
+            float maxDistance = Mathf.Max(SwimOverheadProbeDistance,
+                worldBodyHeight + 0.5f);
+            // D19_TerrainRoot is a triangle MeshCollider. When the player is
+            // already below the island skirt, an upward ray starts underneath
+            // a one-sided mesh and can miss the authored top face entirely.
+            // Cast down from above the probe volume instead, then inspect the
+            // walkable top surface. This catches the same overlap from either
+            // side without adding colliders to presentation-only buildings.
+            Vector3 origin = position + Vector3.up * (maxDistance + SwimOverheadClearance);
+            var hits = Physics.RaycastAll(origin, Vector3.down,
+                maxDistance + SwimOverheadClearance,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                var hit = hits[i];
+                if (!IsWalkableSurface(hit.collider) ||
+                    hit.point.y <= waterSurfaceY + swimShorelineClearance ||
+                    hit.point.y <= position.y + SwimOverheadClearance)
+                    continue;
+                return true;
+            }
+            return false;
+        }
+
+        private bool HasWalkableGroundBelowAt(Vector3 position, float maxDrop)
+        {
+            if (_body == null || !_body.enabled) return false;
+
+            float scaleY = Mathf.Max(0.001f, Mathf.Abs(transform.lossyScale.y));
+            float worldBodyHeight = _body.height * scaleY;
+            float worldStepOffset = Mathf.Min(0.35f, worldBodyHeight * 0.25f);
+            float bottomOffset = (_body.center.y - _body.height * 0.5f) * scaleY;
+            float currentBottom = position.y + bottomOffset;
+            Vector3 origin = position + Vector3.up * (worldBodyHeight * 0.5f + 0.25f);
+            float maxDistance = worldBodyHeight * 0.5f + worldStepOffset +
+                Mathf.Max(0.45f, maxDrop) + 0.35f;
+            var hits = Physics.RaycastAll(origin, Vector3.down, maxDistance,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                var hit = hits[i];
+                if (!IsWalkableSurface(hit.collider)) continue;
+                float surfaceDelta = hit.point.y - currentBottom;
+                if (surfaceDelta >= -Mathf.Max(0.05f, maxDrop) &&
+                    surfaceDelta <= worldStepOffset + 0.05f)
+                    return true;
+            }
+            return false;
+        }
+
+        private bool TryRecoverWalkableGroundFromAbove(float maxRise)
+        {
+            if (_body == null || !_body.enabled) return false;
+
+            float scaleY = Mathf.Max(0.001f, Mathf.Abs(transform.lossyScale.y));
+            float worldBodyHeight = _body.height * scaleY;
+            float bottomOffset = (_body.center.y - _body.height * 0.5f) * scaleY;
+            float currentBottom = transform.position.y + bottomOffset;
+            float rayStartHeight = Mathf.Max(maxRise, worldBodyHeight) + 0.5f;
+            Vector3 origin = transform.position + Vector3.up * rayStartHeight;
+            float maxDistance = rayStartHeight + worldBodyHeight + 0.5f;
+            var hits = Physics.RaycastAll(origin, Vector3.down, maxDistance,
+                Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+            RaycastHit bestHit = default(RaycastHit);
+            float bestDistance = float.MaxValue;
+            bool found = false;
+            for (int i = 0; i < hits.Length; i++)
+            {
+                var hit = hits[i];
+                if (!IsWalkableSurface(hit.collider)) continue;
+                float surfaceDelta = hit.point.y - currentBottom;
+                if (surfaceDelta < -Mathf.Max(0.05f, 0.45f) ||
+                    surfaceDelta > Mathf.Max(0.45f, maxRise))
+                    continue;
+                if (hit.distance < bestDistance)
+                {
+                    bestDistance = hit.distance;
+                    bestHit = hit;
+                    found = true;
+                }
+            }
+
+            if (!found) return false;
+
+            Vector3 targetPosition = transform.position;
+            targetPosition.y = bestHit.point.y - bottomOffset + 0.01f;
+            MoveTransformWithoutController(targetPosition);
+            _isGrounded = true;
+            _verticalVelocity = -2f;
+            _jumpActive = false;
+            Debug.Log("[D2/Physics] 已从水下地形重定位到可行走面：surface=" +
+                bestHit.collider.name + ", surfaceY=" + bestHit.point.y.ToString("F2"));
             return true;
         }
 

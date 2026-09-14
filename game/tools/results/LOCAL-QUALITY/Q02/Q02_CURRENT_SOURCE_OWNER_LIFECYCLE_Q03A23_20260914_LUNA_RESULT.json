@@ -1,0 +1,57 @@
+{
+  "task": "Q02",
+  "title": "Current-source owner/lifecycle regression after D20 default-route promotion",
+  "captured_at_local": "2026-09-14",
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "status": "PASS_WITHIN_SCOPE",
+  "diagnosis": {
+    "initial_observation": "The first current-source D17 run was 13/16. D17A02, D17A03 and D17A06 still assumed an imported neutral visible rig, but the current D20 bridge intentionally installs the Formal Humanoid consumer by default.",
+    "root_cause": "The failures were stale test assumptions about the visible presentation route, not a Unity runtime crash or a missing D20 installation.",
+    "test_change": "D17ActionQualityPlayModeTests now branches on the installed D20 presentation consumer. The D20 branch asserts a registered adapter, candidate renderer ownership, hidden fallback renderers, action consumption, Swimming/Fish support and successful Humanoid pose application. The old quarantine assertions remain for a genuinely non-D20 route.",
+    "invariants_retained": [
+      "D2 FormalAnimatorReady remains false for the procedural D2 controller",
+      "D2 visualRoot/physical-root owner and lifecycle contracts remain asserted",
+      "Single visible consumer and hidden old fallback renderers remain asserted",
+      "Boarding, swimming and safe-disembark state consumption remain asserted",
+      "No test was changed to unconditional pass or skipped"
+    ]
+  },
+  "tests": {
+    "D2CharacterAnimationControllerTests": {
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 0.24
+    },
+    "D17ActionQualityPlayModeTests": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 53.22
+    },
+    "recompile": {
+      "failed": false,
+      "errors": []
+    }
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "EF4683FC5050146FDA2382E0BAC7904E50F07809DECC7050C60E4C50A67581C2",
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "17CA9CB1E9CACB1EF3A1917774A406EFA6D0432A098014E7B04703A84C90917D",
+    "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03"
+  },
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "final_editor_state": "ready/stopped",
+    "post_run_error_console": 0
+  },
+  "status_boundary": "Q02 is PASS_WITHIN_SCOPE for current D2 owner/lifecycle and route-aware D17 regression. It does not prove authored action quality, natural swimming, native foreground keyboard focus, hand/helm contact, no-clipping, vegetation grounding, screenshots or target-device performance.",
+  "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+}

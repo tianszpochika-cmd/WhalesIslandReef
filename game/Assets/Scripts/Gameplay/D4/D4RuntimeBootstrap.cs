@@ -56,6 +56,7 @@ namespace Whalebone.Gameplay.D4
         private Text _statusText;
         private Text _detailText;
         private Text _hintText;
+        private GameObject _canvasObject;
 
         private void Awake()
         {
@@ -72,35 +73,57 @@ namespace Whalebone.Gameplay.D4
                 return;
             }
 
-            if (Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed) return;
-            if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Faction)) FactionAction();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4StartCombat)) StartCombat();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Reload)) Reload();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4SelectRoundShot)) SelectWeapon(D4WeaponId.RoundShot);
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4SelectChainShot)) SelectWeapon(D4WeaponId.ChainShot);
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4SelectGrapeShot)) SelectWeapon(D4WeaponId.GrapeShot);
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Fire)) Fire();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Board)) Board();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4EscapeCombat)) EscapeCombat();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4Upgrade)) UpgradeHull();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4ObserveAnimal)) ObserveAnimal();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4TreatCrew)) TreatCrew();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D4AdvanceMainline)) AdvanceMainline();
-            else if (D16InputRouter.WasPressedThisFrame(D16InputAction.Save)) SaveProgress();
+            if (IsContentPageVisible() && Input.GetKeyDown(KeyCode.Escape))
+            {
+                D7ControlCoordinator.MarkEscapeHandledThisFrame();
+                CloseContentPage();
+                return;
+            }
+
+            // D4 is itself a temporary page. PrimaryInputAllowed is false while
+            // any temporary page is open, so using it here would block D4's own
+            // keyboard owner. Visibility is the page-local focus gate; D29/D2/
+            // D3/D5 remain responsible for yielding to this page.
+            if (!IsContentPageVisible() || Time.timeScale <= 0f ||
+                !D7ControlCoordinator.GameplayInputAllowed) return;
+            if (WasD4Input(D16InputAction.D4Faction, KeyCode.F)) FactionAction();
+            else if (WasD4Input(D16InputAction.D4StartCombat, KeyCode.K)) StartCombat();
+            else if (WasD4Input(D16InputAction.D4Reload, KeyCode.R)) Reload();
+            else if (WasD4Input(D16InputAction.D4SelectRoundShot, KeyCode.Alpha1)) SelectWeapon(D4WeaponId.RoundShot);
+            else if (WasD4Input(D16InputAction.D4SelectChainShot, KeyCode.Alpha2)) SelectWeapon(D4WeaponId.ChainShot);
+            else if (WasD4Input(D16InputAction.D4SelectGrapeShot, KeyCode.Alpha3)) SelectWeapon(D4WeaponId.GrapeShot);
+            else if (WasD4Input(D16InputAction.D4Fire, KeyCode.Space)) Fire();
+            else if (WasD4Input(D16InputAction.D4Board, KeyCode.B)) Board();
+            else if (WasD4Input(D16InputAction.D4EscapeCombat, KeyCode.E)) EscapeCombat();
+            else if (WasD4Input(D16InputAction.D4Upgrade, KeyCode.U)) UpgradeHull();
+            else if (WasD4Input(D16InputAction.D4ObserveAnimal, KeyCode.A)) ObserveAnimal();
+            else if (WasD4Input(D16InputAction.D4TreatCrew, KeyCode.M)) TreatCrew();
+            else if (WasD4Input(D16InputAction.D4AdvanceMainline, KeyCode.J)) AdvanceMainline();
+            else if (WasD4Input(D16InputAction.Save, KeyCode.C)) SaveProgress();
             RefreshHud();
+        }
+
+        private bool EnsureReadyForAction()
+        {
+            if (_ready) return true;
+            _message = "D4 内容 owner 尚未就绪，请稍后再试。";
+            if (_hintText != null) _hintText.text = _message;
+            Debug.LogWarning("[D4/UI] " + _message);
+            return false;
         }
 
         public void FactionAction()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             var result = _factions.ApplyReputation("england", 10, "完成护航教学，英格兰声望提高。");
             AddLog(D4LogKind.Faction, result.Message);
             _message = result.Message;
+            RefreshHud();
         }
 
         public void StartCombat()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             var ship = GameState.CurrentShip;
             var definition = D4ShipCatalog.Find(_shipyard.Snapshot.ShipTypeId) ?? D4ShipCatalog.Find("small_fishing");
             var modifiers = _shipyard.GetModifiers();
@@ -111,28 +134,32 @@ namespace Whalebone.Gameplay.D4
             _combat.BeginEncounter("ph_spanish_patrol", hull, hullMax, cannons, crew, 95, 95, 4, 8, 34f, 0.2f);
             AddLog(D4LogKind.Combat, "发现西班牙巡逻船，炮战开始。");
             _message = "炮战开始：R 装填，1/2/3 选弹，Space 开炮，B 接舷，E 脱离。";
+            RefreshHud();
         }
 
         public void Reload()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             int loaded = _combat.Reload(_combat.Snapshot.PlayerCannons);
             _message = loaded > 0 ? "炮组已装填 " + loaded + " 门。" : "当前没有可装填的炮。";
+            RefreshHud();
         }
 
         public void SelectWeapon(D4WeaponId weapon)
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             _message = _combat.SelectWeapon(weapon) ? "已选择弹种：" + WeaponName(weapon) : "开炮前请先完成当前装填。";
+            RefreshHud();
         }
 
         public void Fire()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             var result = _combat.Fire(3, true);
             if (!result.Accepted)
             {
                 _message = result.Message;
+                RefreshHud();
                 return;
             }
             if (GameState.CurrentShip != null && result.PlayerDamage > 0)
@@ -145,11 +172,12 @@ namespace Whalebone.Gameplay.D4
                 AddLog(D4LogKind.Combat, "炮战胜利，俘获巡逻船战利品。");
             }
             else AddLog(D4LogKind.Combat, _message);
+            RefreshHud();
         }
 
         public void Board()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             var result = _combat.Board();
             _message = result.Message;
             if (result.Status == D4CombatStatus.Victory)
@@ -157,51 +185,97 @@ namespace Whalebone.Gameplay.D4
                 _mainline.SetFlag("learn_combat");
                 AddLog(D4LogKind.Combat, "接舷战胜利，敌船已被控制。");
             }
+            RefreshHud();
         }
 
         public void EscapeCombat()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             var result = _combat.Escape();
             _message = result.Message;
             AddLog(D4LogKind.Combat, result.Message);
+            RefreshHud();
         }
 
         /// <summary>D9 船坞页面读取既有 D4 船坞裁决器，不复制改装公式。</summary>
         public bool IsReady => _ready;
+        /// <summary>D29 显示 D4 owner 的最后一条可见反馈；只读。</summary>
+        public string LastMessage => _message;
+        /// <summary>D29 确认临时船坞页是否真的可见；只读。</summary>
+        public bool HasVisibleContentPage => IsContentPageVisible();
         /// <summary>D9 表现层读取 D4 内容快照；不暴露可写引用。</summary>
         public D4RuntimeSnapshot Snapshot => _snapshot == null ? null : _snapshot.Clone();
         public D4ShipyardSystem ShipyardSystem => _shipyard;
         /// <summary>D9-A02 通过既有 EcologySystem 写鱼群位置、生物量和压力。</summary>
         public D4EcologySystem EcologySystem => _ecology;
 
-        public void UpgradeHull()
+        /// <summary>
+        /// 尝试执行一次船体改装，并把 owner 的接受/拒绝结果返回给外层交互层。
+        /// 所有金额、等级和资源变化仍由 D4ShipyardSystem 裁决。
+        /// </summary>
+        public bool TryUpgradeHull()
         {
-            if (!_ready || GameState.CurrentPlayer == null) return;
+            if (!EnsureReadyForAction()) return false;
+            if (GameState.CurrentPlayer == null)
+            {
+                _message = "当前没有可改装的船长状态。";
+                if (_hintText != null) _hintText.text = _message;
+                Debug.LogWarning("[D4/UI] " + _message);
+                return false;
+            }
             var result = _shipyard.TryUpgrade(D4UpgradeSlot.Hull, ref GameState.CurrentPlayer.Money,
                 _factions.GetReputation("england"));
             _message = result.Message;
             if (result.Accepted) AddLog(D4LogKind.Faction, "船坞完成船体改装，等级 " + result.NewLevel + "。");
+            RefreshHud();
+            return result.Accepted;
+        }
+
+        /// <summary>键盘和 D4 自有按钮的兼容入口；结果由 TryUpgradeHull 返回给需要它的调用方。</summary>
+        public void UpgradeHull()
+        {
+            TryUpgradeHull();
+        }
+
+        /// <summary>D4 内容页的唯一关闭入口，避免右侧页面永久遮挡玩家 HUD。</summary>
+        public void CloseContentPage()
+        {
+            RuntimeHudCoordinator.RestorePrimaryHud();
+            Debug.Log("[D4/UI] 内容页已关闭，主 HUD 已恢复");
         }
 
         public void ObserveAnimal()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             if (_snapshot.Ecology.Animals.Count == 0) _ecology.SeedHabitat("jungle", CurrentDay(), 17);
             AnimalState target = null;
             foreach (var animal in _ecology.Snapshot.Animals)
                 if (!animal.Observed) { target = animal; break; }
-            if (target == null) { _message = "本地动物都已记录。"; return; }
+            if (target == null)
+            {
+                _message = "本地动物都已记录。";
+                RefreshHud();
+                return;
+            }
             var observed = _ecology.Observe(target.AnimalId);
             var collected = _ecology.Collect(target.AnimalId);
             _mainline.SetFlag("learn_island");
             _message = observed.Message + " " + collected.Message;
             AddLog(D4LogKind.Animal, _message);
+            RefreshHud();
         }
 
         public void TreatCrew()
         {
-            if (!_ready || GameState.CrewAgents.Count == 0) return;
+            if (!EnsureReadyForAction()) return;
+            if (GameState.CrewAgents.Count == 0)
+            {
+                _message = "当前没有可治疗的船员。";
+                if (_hintText != null) _hintText.text = _message;
+                Debug.LogWarning("[D4/UI] " + _message);
+                RefreshHud();
+                return;
+            }
             string crewId = GameState.CrewAgents[0].Id;
             _medical.EnsureCrew(crewId);
             var member = FindHealth(crewId);
@@ -211,11 +285,12 @@ namespace Whalebone.Gameplay.D4
             _mainline.SetFlag("learn_dialogue");
             _message = result.Message;
             AddLog(D4LogKind.Medical, _message);
+            RefreshHud();
         }
 
         public void AdvanceMainline()
         {
-            if (!_ready) return;
+            if (!EnsureReadyForAction()) return;
             var mission = _mainline.CurrentMission;
             if (mission != null)
             {
@@ -231,11 +306,19 @@ namespace Whalebone.Gameplay.D4
             var result = _mainline.TryAdvance(_factions.Snapshot);
             _message = result.Message;
             if (result.Advanced) AddLog(D4LogKind.Mainline, result.Message);
+            RefreshHud();
         }
 
         public void SaveProgress()
         {
-            if (!_ready || _snapshot == null) return;
+            if (!EnsureReadyForAction()) return;
+            if (_snapshot == null)
+            {
+                _message = "D4 快照尚未生成，暂不能保存。";
+                if (_hintText != null) _hintText.text = _message;
+                Debug.LogWarning("[D4/Save] " + _message);
+                return;
+            }
             SyncSnapshot();
             try
             {
@@ -247,6 +330,7 @@ namespace Whalebone.Gameplay.D4
                 _message = "D4 保存失败：" + ex.Message;
                 Debug.LogWarning("[D4/Save] " + ex.Message);
             }
+            RefreshHud();
         }
 
         private void TryBuildRuntime()
@@ -357,23 +441,61 @@ namespace Whalebone.Gameplay.D4
             if (text != null) text.text = Localization.IsEnglish ? english : chinese;
         }
 
+        private static bool WasD4Input(D16InputAction action, KeyCode fallback)
+        {
+            // D16 is the configurable primary route. The legacy edge is kept as
+            // a Player compatibility fallback for builds where the serialized
+            // accessibility binding uses a keyboard name that the Input System
+            // cannot resolve after a fresh install. This still emits only the
+            // same D4 intent and is guarded by the page/input-focus checks above.
+            return D16InputRouter.WasPressedThisFrame(action) || Input.GetKeyDown(fallback);
+        }
+
         private void BuildUi()
         {
             var canvasGo = new GameObject("D4Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+            _canvasObject = canvasGo;
             canvasGo.transform.SetParent(transform, false);
             var canvas = canvasGo.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 140;
+            // Temporary content must never flash over the primary HUD during
+            // bootstrap. RuntimeHudCoordinator enables it only for D4Canvas.
+            canvas.enabled = false;
             var scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
 
-            _statusText = CreateText(canvasGo, "D4Status", "D4 正在等待场景对象…", 22, new Vector2(28f, -28f), new Vector2(900f, 90f), TextAnchor.UpperLeft);
-            SetTopLeft(_statusText.rectTransform, new Vector2(28f, -28f));
-            _detailText = CreateText(canvasGo, "D4Detail", "", 18, new Vector2(28f, -130f), new Vector2(900f, 260f), TextAnchor.UpperLeft);
-            SetTopLeft(_detailText.rectTransform, new Vector2(28f, -130f));
-            _hintText = CreateText(canvasGo, "D4Hint", "", 17, Vector2.zero, new Vector2(1800f, 52f), TextAnchor.MiddleLeft);
-            SetBottomLeft(_hintText.rectTransform, new Vector2(28f, 20f));
+            var summary = new GameObject("D4Summary", typeof(RectTransform), typeof(Image));
+            summary.transform.SetParent(canvasGo.transform, false);
+            var summaryRect = (RectTransform)summary.transform;
+            summaryRect.anchorMin = new Vector2(0f, 1f); summaryRect.anchorMax = new Vector2(0f, 1f);
+            summaryRect.pivot = new Vector2(0f, 1f); summaryRect.sizeDelta = new Vector2(860f, 290f);
+            // The scene's harbor title occupies the top-center safe zone.
+            // Keep the long D4 summary below it while the content page is open.
+            summaryRect.anchoredPosition = new Vector2(28f, -196f);
+            var summaryImage = summary.GetComponent<Image>();
+            summaryImage.sprite = UiSprites.White;
+            summaryImage.color = new Color(0.02f, 0.05f, 0.08f, 0.84f);
+            _statusText = CreateText(summary, "D4Status", "D4 正在等待场景对象…", 22,
+                Vector2.zero, new Vector2(820f, 58f), TextAnchor.UpperLeft);
+            SetTopLeft(_statusText.rectTransform, new Vector2(20f, -18f));
+            _detailText = CreateText(summary, "D4Detail", "", 18,
+                Vector2.zero, new Vector2(820f, 202f), TextAnchor.UpperLeft);
+            SetTopLeft(_detailText.rectTransform, new Vector2(20f, -78f));
+
+            var hintBand = new GameObject("D4HintBand", typeof(RectTransform), typeof(Image));
+            hintBand.transform.SetParent(canvasGo.transform, false);
+            var hintRect = (RectTransform)hintBand.transform;
+            hintRect.anchorMin = new Vector2(0f, 0f); hintRect.anchorMax = new Vector2(0f, 0f);
+            hintRect.pivot = new Vector2(0f, 0f); hintRect.sizeDelta = new Vector2(1800f, 52f);
+            hintRect.anchoredPosition = new Vector2(28f, 20f);
+            var hintImage = hintBand.GetComponent<Image>();
+            hintImage.sprite = UiSprites.White;
+            hintImage.color = new Color(0.02f, 0.05f, 0.08f, 0.82f);
+            _hintText = CreateText(hintBand, "D4Hint", "", 17,
+                Vector2.zero, new Vector2(1760f, 48f), TextAnchor.MiddleLeft);
+            Stretch(_hintText.rectTransform);
 
             var panel = new GameObject("D4Controls", typeof(RectTransform), typeof(Image));
             panel.transform.SetParent(canvasGo.transform, false);
@@ -381,7 +503,7 @@ namespace Whalebone.Gameplay.D4
             panelRect.anchorMin = new Vector2(1f, 1f); panelRect.anchorMax = new Vector2(1f, 1f); panelRect.pivot = new Vector2(1f, 1f);
             panelRect.sizeDelta = new Vector2(360f, 590f); panelRect.anchoredPosition = new Vector2(-28f, -120f);
             panel.GetComponent<Image>().sprite = UiSprites.White; panel.GetComponent<Image>().color = new Color(0.02f, 0.05f, 0.08f, 0.82f);
-            CreateButton(panel, "Faction", "势力任务 [F]", new Vector2(0f, -35f), FactionAction);
+            var firstContentButton = CreateButton(panel, "Faction", "势力任务 [F]", new Vector2(0f, -35f), FactionAction);
             CreateButton(panel, "Combat", "开始炮战 [K]", new Vector2(0f, -100f), StartCombat);
             CreateButton(panel, "Reload", "装填炮弹 [R]", new Vector2(0f, -165f), Reload);
             CreateButton(panel, "Fire", "开炮 [Space]", new Vector2(0f, -230f), Fire);
@@ -389,6 +511,14 @@ namespace Whalebone.Gameplay.D4
             CreateButton(panel, "Animal", "观察动物 [A]", new Vector2(0f, -360f), ObserveAnimal);
             CreateButton(panel, "Medical", "医疗 [M]", new Vector2(0f, -425f), TreatCrew);
             CreateButton(panel, "Mainline", "推进主线 [J]", new Vector2(0f, -490f), AdvanceMainline);
+            CreateButton(panel, "Close", "关闭内容页 [Esc]", new Vector2(0f, -555f), CloseContentPage);
+            D16ModalFocusScope.Attach(panel, firstContentButton == null ? null : firstContentButton.gameObject);
+        }
+
+        private bool IsContentPageVisible()
+        {
+            var canvas = _canvasObject == null ? null : _canvasObject.GetComponent<Canvas>();
+            return canvas != null && canvas.enabled;
         }
 
         private static Button CreateButton(GameObject parent, string name, string label, Vector2 position, UnityEngine.Events.UnityAction onClick)
@@ -396,7 +526,7 @@ namespace Whalebone.Gameplay.D4
             var buttonGo = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             buttonGo.transform.SetParent(parent.transform, false);
             var rect = (RectTransform)buttonGo.transform;
-            rect.anchorMin = new Vector2(0.5f, 0.5f); rect.anchorMax = new Vector2(0.5f, 0.5f); rect.pivot = new Vector2(0.5f, 0.5f);
+            rect.anchorMin = new Vector2(0.5f, 1f); rect.anchorMax = new Vector2(0.5f, 1f); rect.pivot = new Vector2(0.5f, 1f);
             rect.sizeDelta = new Vector2(310f, 50f); rect.anchoredPosition = position;
             var image = buttonGo.GetComponent<Image>(); image.sprite = UiSprites.White; image.color = new Color(0.12f, 0.34f, 0.52f, 0.98f);
             var button = buttonGo.GetComponent<Button>(); button.targetGraphic = image; button.onClick.AddListener(onClick);

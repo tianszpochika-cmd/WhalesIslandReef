@@ -17,6 +17,14 @@ namespace Whalebone.Gameplay.D7
         private Transform _player;
         private D2ControlRouter _router;
         private D2ControlMode _lastMode = D2ControlMode.Character;
+        // Keep a deterministic fallback for scenes without a presentation
+        // helm anchor. R03 publishes D7_VisibleHelmAnchor below the stable
+        // ship root; when it exists, the runtime must consume that authored
+        // presentation point instead of this historical placeholder offset.
+        // The old fixed value placed the Player at z=-1.47 while the visible
+        // R03 wheel was at z=1.15, which made boarding look like control of an
+        // unrelated prop even though D2/D7 state transitions passed.
+        private static readonly Vector3 DefaultWorldHelmOffset = new Vector3(0f, 0.96f, -1.47f);
 
         public Transform HelmPoint { get; private set; }
         public bool IsReady { get; private set; }
@@ -84,13 +92,42 @@ namespace Whalebone.Gameplay.D7
         private void EnsureHelmPoint()
         {
             HelmPoint = _ship.Find("D7_HelmPoint");
-            if (HelmPoint != null) return;
+            if (HelmPoint == null)
+            {
+                var go = new GameObject("D7_HelmPoint");
+                HelmPoint = go.transform;
+                HelmPoint.SetParent(_ship, false);
+            }
 
-            var go = new GameObject("D7_HelmPoint");
-            HelmPoint = go.transform;
-            HelmPoint.SetParent(_ship, false);
-            HelmPoint.localPosition = new Vector3(0f, 1.1f, 1.8f);
+            var authoredVisibleAnchor = FindAuthoredVisibleHelmAnchor();
+            if (authoredVisibleAnchor != null)
+            {
+                // D19 owns the presentation anchor; D7 only consumes its
+                // read-only world position and keeps the actual HelmPoint on
+                // the stable gameplay ship root. InverseTransformPoint keeps
+                // this correct under the scaled/rotated ship root.
+                HelmPoint.localPosition = _ship.InverseTransformPoint(authoredVisibleAnchor.position);
+            }
+            else
+            {
+                // Preserve the scale-independent fallback contract when a
+                // scene has no authored presentation anchor.
+                HelmPoint.localPosition = _ship.InverseTransformVector(DefaultWorldHelmOffset);
+            }
             HelmPoint.localRotation = Quaternion.identity;
+        }
+
+        private Transform FindAuthoredVisibleHelmAnchor()
+        {
+            var transforms = _ship.GetComponentsInChildren<Transform>(true);
+            for (var i = 0; i < transforms.Length; i++)
+            {
+                var candidate = transforms[i];
+                if (candidate != null && candidate != HelmPoint && candidate.name == "D7_VisibleHelmAnchor")
+                    return candidate;
+            }
+
+            return null;
         }
     }
 }

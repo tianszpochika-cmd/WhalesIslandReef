@@ -2,6 +2,7 @@ using System.Collections;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
@@ -667,11 +668,45 @@ namespace Whalebone.Tests.D16
                     "上船后玩家没有挂到船对象，无法随船航行。");
 
                 Vector3 shipStart = ship.transform.position;
+                // Mouse look changes the current mouse device, not the
+                // keyboard route.  Re-assert the keyboard as current before
+                // the second phase so this integration test records the
+                // intended physical-device ownership explicitly.
+                keyboard.MakeCurrent();
                 Press(keyboard.wKey, queueEventOnly: true);
                 InputSystem.Update();
+                var d7Type = System.Type.GetType("Whalebone.Gameplay.D7.D7ControlCoordinator, Assembly-CSharp");
+                var hudType = System.Type.GetType("Whalebone.Gameplay.UI.RuntimeHudCoordinator, Assembly-CSharp");
+                var shipControllerType = System.Type.GetType("Whalebone.Gameplay.D2.D2ShipController, Assembly-CSharp");
+                var shipController = ship.GetComponent(shipControllerType);
+                var shipSnapshot = shipControllerType == null || shipController == null
+                    ? null
+                    : shipControllerType.GetProperty("Snapshot").GetValue(shipController);
+                var shipSpeed = shipSnapshot == null
+                    ? -1f
+                    : (float)shipSnapshot.GetType().GetField("Speed").GetValue(shipSnapshot);
+                var gameplayAllowed = d7Type != null &&
+                    (bool)d7Type.GetProperty("GameplayInputAllowed").GetValue(null);
+                var primaryInputAllowed = hudType != null &&
+                    (bool)hudType.GetProperty("PrimaryInputAllowed").GetValue(null);
+                Debug.Log("[D16/A03] ship W input: keyboardCurrent=" +
+                    (Keyboard.current == keyboard) + ", moveAxis=" +
+                    ((Vector2)InvokeRouter<Vector2>("MoveAxis")).ToString("F2") +
+                    ", gameplayAllowed=" + gameplayAllowed +
+                    ", primaryInputAllowed=" + primaryInputAllowed +
+                    ", shipSpeedBeforeFrames=" + shipSpeed.ToString("F3"));
                 for (int i = 0; i < 8; i++) yield return null;
                 Release(keyboard.wKey, queueEventOnly: true);
                 InputSystem.Update();
+                shipSnapshot = shipControllerType == null || shipController == null
+                    ? null
+                    : shipControllerType.GetProperty("Snapshot").GetValue(shipController);
+                shipSpeed = shipSnapshot == null
+                    ? -1f
+                    : (float)shipSnapshot.GetType().GetField("Speed").GetValue(shipSnapshot);
+                Debug.Log("[D16/A03] ship W result: distance=" +
+                    Vector3.Distance(shipStart, ship.transform.position).ToString("F4") +
+                    ", shipSpeedAfterFrames=" + shipSpeed.ToString("F3"));
                 Assert.Greater(Vector3.Distance(shipStart, ship.transform.position), 0.001f,
                     "上船后键盘 W 没有驱动船只航行。");
 
@@ -697,6 +732,121 @@ namespace Whalebone.Tests.D16
                     Release(mouse.rightButton, queueEventOnly: true);
                     InputSystem.Update();
                     InputSystem.RemoveDevice(mouse);
+                }
+                SettingsStoreType.GetMethod("Reset", BindingFlags.Public | BindingFlags.Static)
+                    .Invoke(null, null);
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator D16A03GameplayWASDDoesNotNavigateHudAndModalWASDDoesNotLeak()
+        {
+            Assert.IsNotNull(RouterType, "D16InputRouter 未被 Unity 主程序集加载。");
+            Assert.IsNotNull(SettingsStoreType, "D16AccessibilitySettingsStore 未被 Unity 主程序集加载。");
+            InvokeRouter("SetGameplayInputBlocked", false);
+            SettingsStoreType.GetMethod("Reset", BindingFlags.Public | BindingFlags.Static)
+                .Invoke(null, null);
+
+            Keyboard keyboard = null;
+            try
+            {
+                var load = SceneManager.LoadSceneAsync("InitialHarbor", LoadSceneMode.Single);
+                Assert.IsNotNull(load, "InitialHarbor 不在 Build Settings 中。");
+                while (!load.isDone) yield return null;
+
+                var bootstrapType = System.Type.GetType("Whalebone.Gameplay.D2.D2RuntimeBootstrap, Assembly-CSharp");
+                Assert.IsNotNull(bootstrapType, "D2RuntimeBootstrap 未被 Unity 主程序集加载。");
+                Component bootstrap = null;
+                float deadline = Time.realtimeSinceStartup + 8f;
+                while ((bootstrap == null || !(bool)bootstrapType.GetProperty("IsReady").GetValue(bootstrap)) &&
+                       Time.realtimeSinceStartup < deadline)
+                {
+                    bootstrap = UnityEngine.Object.FindFirstObjectByType(bootstrapType,
+                        FindObjectsInactive.Include) as Component;
+                    yield return null;
+                }
+
+                Assert.IsNotNull(bootstrap, "InitialHarbor D2 运行时入口未创建。");
+                Assert.IsTrue((bool)bootstrapType.GetProperty("IsReady").GetValue(bootstrap),
+                    "InitialHarbor D2 运行时接线未完成。");
+
+                var player = GameObject.Find("D2_PlayerAvatar");
+                Assert.IsNotNull(player, "InitialHarbor 玩家对象未创建。");
+                var eventSystem = EventSystem.current;
+                Assert.IsNotNull(eventSystem, "InitialHarbor EventSystem 未创建。");
+
+                // Give HarborInteractionStabilizer one frame to apply the
+                // gameplay policy: the primary HUD may remain visible, but
+                // its directional navigation must not consume W/S.
+                yield return null;
+                yield return null;
+                Assert.IsFalse(eventSystem.sendNavigationEvents,
+                    "主 HUD 可见时 EventSystem 仍开启方向导航，W/S 可能切换右上角菜单。");
+                Assert.IsNull(eventSystem.currentSelectedGameObject,
+                    "主 HUD 可见时仍保留选中 Button，W/S 可能切换右上角菜单。");
+
+                keyboard = InputSystem.AddDevice<Keyboard>();
+                keyboard.MakeCurrent();
+                Vector3 gameplayStart = player.transform.position;
+                Press(keyboard.wKey, queueEventOnly: true);
+                InputSystem.Update();
+                for (int i = 0; i < 4; i++) yield return null;
+                Release(keyboard.wKey, queueEventOnly: true);
+                InputSystem.Update();
+                Assert.Greater(Vector3.Distance(gameplayStart, player.transform.position), 0.001f,
+                    "主 HUD 可见时 W 没有驱动玩家移动。");
+                Assert.IsNull(eventSystem.currentSelectedGameObject,
+                    "主 HUD 可见时 W 仍改变了 EventSystem 选中项。");
+
+                // The warehouse owns focus while open. W/S must be blocked from
+                // gameplay, but it must stay inside the warehouse scope rather
+                // than navigating the background primary HUD.
+                Press(keyboard.iKey, queueEventOnly: true);
+                InputSystem.Update();
+                yield return null;
+                Release(keyboard.iKey, queueEventOnly: true);
+                InputSystem.Update();
+                yield return null;
+
+                var warehouse = GameObject.Find("WarehousePanel");
+                Assert.IsNotNull(warehouse, "仓库面板对象未创建。");
+                Assert.IsTrue(warehouse.activeSelf, "I 没有打开仓库面板。");
+                var modalSelection = eventSystem.currentSelectedGameObject;
+                Assert.IsNotNull(modalSelection, "仓库打开后没有建立模态初始焦点。");
+                Assert.IsTrue(modalSelection.transform.IsChildOf(warehouse.transform),
+                    "仓库打开后 EventSystem 焦点穿透到背景 HUD。");
+                Vector3 modalStart = player.transform.position;
+
+                Press(keyboard.wKey, queueEventOnly: true);
+                InputSystem.Update();
+                for (int i = 0; i < 4; i++) yield return null;
+                Release(keyboard.wKey, queueEventOnly: true);
+                InputSystem.Update();
+                Assert.Less(Vector3.Distance(modalStart, player.transform.position), 0.001f,
+                    "仓库模态页打开时 W 穿透到玩家移动。");
+                Assert.AreSame(modalSelection, eventSystem.currentSelectedGameObject,
+                    "仓库模态页打开时 W 改变了当前模态焦点。");
+
+                Press(keyboard.iKey, queueEventOnly: true);
+                InputSystem.Update();
+                yield return null;
+                Release(keyboard.iKey, queueEventOnly: true);
+                InputSystem.Update();
+                yield return null;
+                Assert.IsFalse(warehouse.activeSelf, "I 没有关闭仓库面板。");
+                Debug.Log("[D16/A03] W/S HUD ownership: gameplay movement retained; " +
+                          "primary selection stayed null; warehouse W blocked and modal selection stayed scoped.");
+            }
+            finally
+            {
+                Time.timeScale = 1f;
+                InvokeRouter("SetGameplayInputBlocked", false);
+                if (keyboard != null && keyboard.added)
+                {
+                    Release(keyboard.wKey, queueEventOnly: true);
+                    Release(keyboard.iKey, queueEventOnly: true);
+                    InputSystem.Update();
+                    InputSystem.RemoveDevice(keyboard);
                 }
                 SettingsStoreType.GetMethod("Reset", BindingFlags.Public | BindingFlags.Static)
                     .Invoke(null, null);

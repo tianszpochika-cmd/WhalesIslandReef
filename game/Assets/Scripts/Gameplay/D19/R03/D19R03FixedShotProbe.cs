@@ -68,22 +68,29 @@ namespace Whalebone.Gameplay.D19.R03
         private readonly List<ShotRecord> _records = new List<ShotRecord>();
         private readonly List<Shot> _harborShots = new List<Shot>
         {
-            new Shot("d19_shot_spawn", new Vector3(-22f, 3.2f, 82f), new Vector3(-22f, 1f, 66f)),
-            new Shot("d19_shot_market", new Vector3(42f, 5f, 74f), new Vector3(26f, 3f, 62f)),
-            new Shot("d19_shot_dock_overview", new Vector3(14f, 7f, 4f), new Vector3(0f, 1f, -22f)),
-            new Shot("d19_shot_tavern_entry", new Vector3(-58f, 4f, 58f), new Vector3(-42f, 2f, 50f)),
-            new Shot("d19_shot_coastline", new Vector3(-86f, 3f, -2f), new Vector3(-58f, 1f, -8f)),
-            new Shot("d19_shot_boarding", new Vector3(6f, 3.2f, -15f), new Vector3(0f, 1f, -20f)),
-            new Shot("d19_shot_on_ship", new Vector3(0f, 5f, -28f), new Vector3(0f, 2f, -18f)),
-            new Shot("d19_shot_departure", new Vector3(0f, 8f, -42f), new Vector3(0f, 1f, -78f)),
-            new Shot("d19_shot_nearshore", new Vector3(18f, 4f, -66f), new Vector3(0f, -1f, -88f)),
-            new Shot("d19_shot_weather", new Vector3(-18f, 6f, 18f), new Vector3(0f, 3f, -20f)),
-            new Shot("d19_shot_return_harbor", new Vector3(8f, 5f, -52f), new Vector3(0f, 1f, -12f)),
-            new Shot("d19_shot_settings_accessibility", new Vector3(0f, 3f, 60f), new Vector3(0f, 3f, 60f)),
+            // These coordinates are local to the current R03 island.  The
+            // earlier probe still used the retired R01 world offsets and was
+            // therefore either outside the scene or looking through the
+            // harbor from an unintended angle.
+            new Shot("d19_shot_spawn", new Vector3(0f, 7.8f, -18.5f), new Vector3(0f, 1.2f, 0f)),
+            new Shot("d19_shot_market", new Vector3(16f, 7.5f, 4.5f), new Vector3(6.4f, 1.4f, 1.2f)),
+            new Shot("d19_shot_dock_overview", new Vector3(13f, 8f, -8f), new Vector3(0f, 1.0f, -5f)),
+            new Shot("d19_shot_tavern_entry", new Vector3(18.5f, 7.5f, 15.5f), new Vector3(10.2f, 1.5f, 8.5f)),
+            new Shot("d19_shot_coastline", new Vector3(-18f, 5f, -14f), new Vector3(-4f, 0.8f, -10f)),
+            new Shot("d19_shot_boarding", new Vector3(6f, 4f, -14f), new Vector3(0f, 1f, -7f)),
+            new Shot("d19_shot_on_ship", new Vector3(0f, 5.5f, -18.5f), new Vector3(0f, 2f, -5.2f)),
+            new Shot("d19_shot_departure", new Vector3(0f, 9f, -22f), new Vector3(0f, 1f, 0f)),
+            new Shot("d19_shot_nearshore", new Vector3(18f, 6f, -14f), new Vector3(4f, 0f, -10f)),
+            new Shot("d19_shot_weather", new Vector3(-16f, 8f, 12f), new Vector3(0f, 1f, 2f)),
+            new Shot("d19_shot_return_harbor", new Vector3(14f, 7f, -14f), new Vector3(0f, 1f, -6f)),
+            new Shot("d19_shot_settings_accessibility", new Vector3(0f, 3f, 18f), new Vector3(0f, 3f, 18f)),
             new Shot("d19_shot_debug_boundary", new Vector3(104f, 72f, 104f), new Vector3(0f, 0f, 0f)),
         };
 
         private Camera _camera;
+        private Whalebone.Gameplay.CameraFollow _cameraFollow;
+        private bool _cameraFollowWasEnabled;
+        private bool _cameraFollowStateCaptured;
         private Result _result;
         private bool _started;
         private bool _finished;
@@ -103,7 +110,7 @@ namespace Whalebone.Gameplay.D19.R03
             SceneManager.sceneLoaded += OnSceneLoaded;
             _result = new Result
             {
-                attempt = HasFlag("-d19-r03-fixed-shots-rerun17") ? "RERUN17" : HasFlag("-d19-r03-fixed-shots-rerun16") ? "RERUN16" : "RERUN15",
+                attempt = CurrentAttempt(),
                 unity_version = Application.unityVersion,
                 graphics_device = SystemInfo.graphicsDeviceName,
                 graphics_api = SystemInfo.graphicsDeviceType.ToString(),
@@ -159,6 +166,19 @@ namespace Whalebone.Gameplay.D19.R03
             yield return new WaitForSecondsRealtime(1.0f);
             _camera = Camera.main;
             if (_camera == null) _camera = FindFirstObjectByType<Camera>();
+            // The probe owns the camera only for this validation run.  The
+            // normal follow component would overwrite each requested shot in
+            // LateUpdate, producing screenshots of the spawn view while the
+            // JSON claimed they were fixed compositions.
+            _cameraFollow = _camera == null ? null : _camera.GetComponent<Whalebone.Gameplay.CameraFollow>();
+            if (_cameraFollow == null)
+                _cameraFollow = FindFirstObjectByType<Whalebone.Gameplay.CameraFollow>();
+            if (_cameraFollow != null)
+            {
+                _cameraFollowWasEnabled = _cameraFollow.enabled;
+                _cameraFollowStateCaptured = true;
+                _cameraFollow.enabled = false;
+            }
 
             for (int i = 0; i < _harborShots.Count; i++)
             {
@@ -189,7 +209,7 @@ namespace Whalebone.Gameplay.D19.R03
         private void Capture(string shotId, int index, string scene, string fileName, Shot? shot)
         {
             string baseDirectory = Directory.GetParent(Application.dataPath).FullName;
-            string runDirectory = HasFlag("-d19-r03-fixed-shots-rerun17") ? "fixed_cameras_rerun17" : HasFlag("-d19-r03-fixed-shots-rerun16") ? "fixed_cameras_rerun16" : "fixed_cameras_rerun15";
+            string runDirectory = CurrentRunDirectory();
             string directory = Path.Combine(baseDirectory, runDirectory);
             Directory.CreateDirectory(directory);
             string path = Path.Combine(directory, "fixed_" + index.ToString("00") + "_" + fileName + ".png");
@@ -224,18 +244,42 @@ namespace Whalebone.Gameplay.D19.R03
         {
             if (!_finished) return;
             string baseDirectory = Directory.GetParent(Application.dataPath).FullName;
-            string resultName = HasFlag("-d19-r03-fixed-shots-rerun17")
-                ? "D19_R03_A02_FIXED_SHOT_PLAYER_RERUN17.json"
-                : HasFlag("-d19-r03-fixed-shots-rerun16")
-                ? "D19_R03_A02_FIXED_SHOT_PLAYER_RERUN16.json"
-                : "D19_R03_A02_FIXED_SHOT_PLAYER_RERUN15.json";
+            string resultName = CurrentResultName();
             string path = Path.Combine(baseDirectory, resultName);
             File.WriteAllText(path, JsonUtility.ToJson(_result, true));
             Debug.Log("[D19-R03-A02] Fixed shot result written: " + path);
         }
 
+        private static string CurrentAttempt()
+        {
+            const string prefix = "-d19-r03-fixed-shots-rerun";
+            var args = Environment.GetCommandLineArgs();
+            for (var i = 0; i < args.Length; i++)
+            {
+                var arg = args[i];
+                if (arg == null || !arg.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) continue;
+                var suffix = arg.Substring(prefix.Length);
+                if (int.TryParse(suffix, out var attempt) && attempt > 0)
+                    return "RERUN" + attempt.ToString();
+            }
+            return "RERUN15";
+        }
+
+        private static string CurrentRunDirectory()
+        {
+            return "fixed_cameras_rerun" + CurrentAttempt().Replace("RERUN", string.Empty);
+        }
+
+        private static string CurrentResultName()
+        {
+            return "D19_R03_A02_FIXED_SHOT_PLAYER_" + CurrentAttempt() + ".json";
+        }
+
         private void OnDestroy()
         {
+            if (_cameraFollowStateCaptured && _cameraFollow != null)
+                _cameraFollow.enabled = _cameraFollowWasEnabled;
+            _cameraFollowStateCaptured = false;
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 

@@ -201,6 +201,15 @@ namespace Whalebone.Gameplay.UI.D16
             return scope;
         }
 
+        /// <summary>
+        /// 当模态页中的 Selectable 在运行时变为可用或不可用时，重新建立
+        /// 键盘/手柄导航列表。调用方只刷新焦点范围，不触碰玩法或领域状态。
+        /// </summary>
+        public void RefreshNavigation()
+        {
+            RebuildNavigation();
+        }
+
         private void Configure(GameObject modalRoot, GameObject initialSelection)
         {
             _modalRoot = modalRoot;
@@ -216,10 +225,31 @@ namespace Whalebone.Gameplay.UI.D16
 
         private void LateUpdate()
         {
-            if (_modalRoot == null || !_modalRoot.activeInHierarchy || EventSystem.current == null)
+            if (EventSystem.current == null)
                 return;
 
+            if (!IsModalVisible())
+            {
+                ClearOwnedSelection();
+                return;
+            }
+
             var selected = EventSystem.current.currentSelectedGameObject;
+            // A standalone Player can retain a pointer-derived selection from
+            // the previous window state before this scope's first LateUpdate.
+            // The declared initial control is the contract for a newly visible
+            // modal; otherwise the first Submit can open a different page
+            // (for example Settings instead of New Game).
+            if (_lastSelection == null)
+            {
+                var initial = ResolveInitialSelection();
+                if (initial != null && selected != initial)
+                {
+                    EventSystem.current.SetSelectedGameObject(initial);
+                    selected = initial;
+                }
+            }
+
             if (!IsUsableSelection(selected))
             {
                 selected = ResolveInitialSelection();
@@ -236,12 +266,43 @@ namespace Whalebone.Gameplay.UI.D16
 
         private bool IsUsableSelection(GameObject selected)
         {
-            if (selected == null || _modalRoot == null ||
+            if (!IsModalVisible() || selected == null || _modalRoot == null ||
                 !selected.transform.IsChildOf(_modalRoot.transform))
                 return false;
 
             var selectable = selected.GetComponent<Selectable>();
             return selectable != null && selectable.isActiveAndEnabled && selectable.interactable;
+        }
+
+        private bool IsModalVisible()
+        {
+            if (_modalRoot == null || !_modalRoot.activeInHierarchy)
+                return false;
+
+            var canvas = _modalRoot.GetComponentInParent<Canvas>(true);
+            if (canvas != null && !canvas.enabled)
+                return false;
+
+            var groups = _modalRoot.GetComponentsInParent<CanvasGroup>(true);
+            for (int i = 0; i < groups.Length; i++)
+            {
+                var group = groups[i];
+                if (group == null || !group.interactable || !group.blocksRaycasts || group.alpha <= 0.001f)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void ClearOwnedSelection()
+        {
+            if (EventSystem.current == null || _modalRoot == null)
+                return;
+
+            var selected = EventSystem.current.currentSelectedGameObject;
+            if (selected != null && selected.transform.IsChildOf(_modalRoot.transform))
+                EventSystem.current.SetSelectedGameObject(null);
+            _lastSelection = null;
         }
 
         private GameObject ResolveInitialSelection()

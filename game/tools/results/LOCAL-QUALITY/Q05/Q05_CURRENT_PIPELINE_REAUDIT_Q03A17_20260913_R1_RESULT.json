@@ -1,0 +1,36 @@
+{
+  "task_id": "Q05",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_safe_whole_visual_root_swim_pose_and_restore",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q02", "Q04"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q05_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1",
+  "audit_time_local": "2026-09-13T15:50:37+08:00",
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029"
+  },
+  "protocol": {
+    "tool": "Unity Pipeline com.unity.pipeline@0.6.0-exp.1",
+    "editor": "Unity 6000.0.80f1",
+    "editor_pid": 53332,
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "operation": "run_tests --mode playmode --filter D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot --filter_type testName --async_tests true; poll test_status until completed",
+    "test_status": "completed",
+    "summary": "total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=12.7597425s; total duration=12.9s",
+    "final_editor": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "error_console": 0
+  },
+  "checks": [
+    {"name": "ten_swim_pose_cycles", "result": "PASS_WITHIN_SCOPE", "evidence": "D17A08 completed ten swim/exit cycles through the current D2 path."},
+    {"name": "visual_root_tilt_and_neutral_restore", "result": "PASS_WITHIN_SCOPE", "evidence": "Each cycle asserts the whole visual root tilts during Swimming and returns to neutral after exit."},
+    {"name": "physics_root_remains_upright", "result": "PASS_WITHIN_SCOPE", "evidence": "The test asserts the physical player root remains upright and does not rotate CharacterController for presentation."},
+    {"name": "post_run_editor_health", "result": "PASS_WITHIN_SCOPE", "evidence": "Editor final status was ready/stopped and error console query returned zero entries."}
+  ],
+  "status_boundary": "Q05 is verified only for the safe whole-visual-root tilt/restore contract and physics-root separation. It does not prove authored limb/head motion, natural swimming, native Player W/S, foreground keyboard focus, screenshot visual acceptance or VC-G01 completion.",
+  "next_task": "Q06_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1"
+}

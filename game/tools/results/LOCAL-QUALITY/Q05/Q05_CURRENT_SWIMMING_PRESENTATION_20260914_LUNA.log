@@ -1,0 +1,21 @@
+Q05_CURRENT_SWIMMING_PRESENTATION_20260914_LUNA
+captured_at=2026-09-14T09:14:03+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800
+
+Command:
+unity command run_tests --project-path game --mode playmode --filter D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot --async_tests true --timeout 300
+status=completed duration=13.49s test_duration=13.0625438s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+
+Runtime marker samples:
+- cycle=1 rootAngle=64.00 rootOffsetY=0.033 maxArmMotion=159.32 maxForearmMotion=26.79 maxLegMotion=1.59
+- cycle=5 rootAngle=64.00 rootOffsetY=0.013 maxArmMotion=151.24 maxForearmMotion=31.01 maxLegMotion=3.39
+- cycle=10 rootAngle=64.00 rootOffsetY=0.031 maxArmMotion=158.70 maxForearmMotion=26.02 maxLegMotion=1.39
+- water entry surfaceY=-0.02 playerY=0.42; exit restores walkable ground at surfaceY=0.09
+
+Conclusion:
+The D17A08 contract passed for visualRoot tilt, physics-root uprightness and neutral restore. No CharacterController rotation and no production file changes. This remains a bounded procedural/root contract, not formal natural swimming or foreground Player visual acceptance.
+
+Final editor=ready compiling=false domainReloadInProgress=false playMode=stopped

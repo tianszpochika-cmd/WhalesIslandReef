@@ -1,0 +1,429 @@
+{
+  "task_id": "Q03",
+  "status": "BLOCKED",
+  "blocker_code": "BLOCKED_ASSET",
+  "status_scope": "ground_action_quality_resource_gate",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q02", "Q02-A"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q03_ACTION_ASSET_GATE_20260908_230500",
+  "audit_time_local": "2026-09-08T23:05:00+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs",
+    "game/Assets/Tests/EditMode/D20A02/Q03FormalAvatarActionResourceContractTests.cs",
+    "game/Assets/Editor/D20A02R02/D20A02R02CandidateRuntimeBuilder.cs",
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs",
+    "game/Assets/Tests/PlayMode/Q03D20FormalPresentationPlayModeTests.cs",
+    "game/Assets/Resources/D20/Formal/D20_R02_PlayerVisual_Male.prefab",
+    "game/Assets/Resources/D20/Formal/D20_PlayerAnimation.controller"
+  ],
+  "asset_audit": {
+    "d6_controller": {
+      "path": "game/Assets/Resources/D6/D6CrewAnimator.controller",
+      "sha256": "9B5C6EC6ACA6B273AAAACC06EC65D353A20B12E8BDD561FA39CD1D27DFF0B895",
+      "states": ["D6_Idle", "D6_Walk", "D6_Run", "D6_Jump", "D6_Boarding", "D6_Disembarking"],
+      "runtime_decision": "quarantined"
+    },
+    "d6_clips": {
+      "files": [
+        "D6Crew_Idle.anim",
+        "D6Crew_Walk.anim",
+        "D6Crew_Run.anim",
+        "D6Crew_Jump.anim",
+        "D6Crew_Boarding.anim",
+        "D6Crew_Disembarking.anim"
+      ],
+      "evidence": "Each clip has 15 localEulerAnglesRaw bindings across 5 Human Armature paths; no verified Avatar/axis adapter is registered.",
+      "walk_sha256": "47F295663C968D409CC5607A089C94492BC076419EAAF20570391F1703F10C11"
+    },
+    "d20_candidate": {
+      "controller": "game/Assets/Animations/D20/Player/D20_PlayerAnimation.controller",
+      "controller_sha256": "65E2351E3C7774B1D39C48E9AFDD361719D684B54DA2664D5D2CB242DDDB6A6E",
+      "walk_clip": "game/Assets/Animations/D20/Player/Clips/D20_Player_Walk.anim",
+      "walk_sha256": "3F007E4439AA4F8CD20BE3DED1285C5C6601F8E3F6B9E8832FE838994B6E71B1",
+      "path_contract": "Armature/root/pelvis/...",
+      "compatibility": "not_safe_to_substitute_for_current_Human Armature rig"
+    }
+  },
+  "checks": [
+    {
+      "name": "placeholder_animator_quarantine",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q03/Q03_IMPORTED_RIG_QUARANTINE_PLAYMODE.xml; D17A06 total=1 passed=1 failed=0 inconclusive=0 skipped=0; importedNeutral=true, FormalAnimatorReady=false, AnimatorPoseLayerActive=false"
+    },
+    {
+      "name": "action_resource_contract_audit",
+      "result": "BLOCKED_ASSET",
+      "evidence": "D6 clip inventory above and game/Assets/Resources/D6/D6Crew_Walk.anim; absolute imported Euler curves are not a verified action-axis contract"
+    },
+    {
+      "name": "ground_action_acceptance",
+      "result": "NOT_RUN",
+      "boundary": "No legal current-rig authored clips or adapter were available; neutral pose and whole-root motion cannot be promoted to idle/walk/run/turn quality acceptance."
+    }
+  ],
+  "remediation_runs": [
+    {
+      "task_id": "Q03-A01",
+      "status": "PARTIAL",
+      "result": "game/tools/results/LOCAL-QUALITY/Q03-A01/RESULT.json",
+      "summary": "仅收紧程序化 fallback 游泳 visualRoot 的水面 containment；静态 50/50、D17 A08 1/1、D17 全量 15/15、全量 Python 1134/1134 和 R25 原生输入路线均通过各自范围，但正式动作资源仍未解阻。"
+    }
+  ],
+  "required_to_unblock": [
+    "Provide a licensed/authored player animation set compatible with the current imported rig, or an explicit tested Avatar/axis adapter.",
+    "Bind idle, walk, run, jump and boarding/disembarking states without reintroducing a second visualRoot writer.",
+    "Run continuous speed/state transition validation after the asset is integrated."
+  ],
+  "d20_a02_r02_isolated_recheck_20260911": {
+    "status": "PASS_ISOLATED_ONLY",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_A02_R02_PIPELINE_RECHECK_20260911_RESULT.json",
+    "scope": "D20 R02 male appearance prefab + D20 presentation adapter; physical-root wrapper contract only",
+    "pipeline_editmode": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "recompile": "completed; failed=false; errors=[]"
+    },
+    "d17_regression": {
+      "filter": "D17",
+      "total": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 125.79,
+      "result": "PASS_WITHIN_SCOPE"
+    },
+    "verified": [
+      "valid human Avatar and exactly one R02 prefab Animator",
+      "Idle/Walk/Run/Jump/Board/Helm resolve without adapter fallback",
+      "nine required interaction sockets resolve",
+      "Animator applyRootMotion=false",
+      "independent physical root remains unchanged across Animator.Update"
+    ],
+    "first_attempt_boundary": "Directly treating the visual prefab root as the physical root changed its Y from 0.00 to 0.08; the test was corrected to the required physical-root wrapper and the failed attempt was retained in the result evidence.",
+    "formal_boundary": "R02 is still isolated-only; formal InitialHarbor consumer count remains 0. Q03 remains BLOCKED_ASSET because this does not provide a current-rig formal runtime consumer or native visual acceptance."
+  },
+  "current_reaudit_20260911_q02_followup": {
+    "status": "BLOCKED_ASSET",
+    "scope": "current-source formal action asset gate after Q01/Q02 runtime and regression recheck",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_PIPELINE_REAUDIT_20260911_RESULT.json",
+    "pipeline": {
+      "editor_pid": 31416,
+      "endpoint": "127.0.0.1:7800",
+      "unity_version": "6000.0.80f1",
+      "d17_current_playmode": "15/15 PASS",
+      "d17a06_placeholder_animator_quarantine": "1/1 PASS within the 15-test run",
+      "error_console": 0,
+      "final_editor_state": "ready; compiling=false; playMode=stopped"
+    },
+    "runtime_asset_facts": {
+      "pose_driver_mode": "Procedural",
+      "formal_animator_ready": false,
+      "procedural_pose_layer_active": true,
+      "animator_pose_layer_active": false,
+      "d6_crew_animator": "quarantined/disabled on current InitialHarbor player path",
+      "formal_current_rig_action_consumer": 0
+    },
+    "decision": "The code-level quarantine and owner guards are current and passing, but no legal current-rig authored idle/walk/run/jump/boarding/disembarking action set or auditable Avatar/axis adapter is available. Do not promote neutral/procedural fallback to formal action-quality PASS.",
+    "required_to_unblock": [
+      "Provide or admit a current-rig-compatible authored action set, or an auditable Avatar/bone-axis adapter.",
+      "Bind the formal action states without adding a second visualRoot writer.",
+      "Repeat continuous transition and native Player visual checks on the exact candidate build."
+    ]
+  },
+  "status_boundary": "Q03 BLOCKED means formal action-quality acceptance is still blocked because the normal InitialHarbor Player has no admitted D20 consumer. Q03-A12 proves a verified resource contract and Q03-A13 proves an explicit opt-in consumer, but neither candidate-only nor opt-in evidence promotes the normal Player or proves native visual quality.",
+  "next_task": "Q03-A14",
+  "candidate_runtime_recheck_20260911": {
+    "status": "PASS_WITHIN_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_RUNTIME_RECHECK_20260911_RESULT.json",
+    "scope": "Opt-in D20 R02 candidate-only bridge, connected Editor PlayMode test and bounded native Windows Player smoke",
+    "pipeline": {
+      "recompile": "completed; failed=false; errors=[]",
+      "candidate_playmode": "1/1 PASS",
+      "console_errors_after_clear": 0,
+      "candidate_uses_generic_path_adapter": true,
+      "generic_walk_pose_delta": "PlayMode assertion verified thigh_l rotation changed between Idle and Walk generic clips",
+      "candidate_swimming_visual_supported": true,
+      "candidate_swimming_mapping": "D2 Swimming -> existing Fish generic presentation state; not formally authored swimming evidence",
+      "candidate_outfit_rebind": "7 skinned renderers total; 4 male-peasant outfit renderers rebound to the R02 Armature/root in candidate-only resources",
+      "d17_regression_after_candidate_bridge": "21/21 PASS; 0 failed/skipped/inconclusive; 129.9s",
+      "editor_state_after_run": "ready; compiling=false; playMode=stopped"
+    },
+    "native_smoke": {
+      "status": "INPUT_ATTEMPTED",
+      "client": "1920x1080",
+      "input_steps": 45,
+      "screenshots": 17,
+      "business_interaction_proof": true,
+      "pause_recovery_proof": true,
+      "candidate_install_markers": true,
+      "generic_path_adapter": true,
+      "clean_close": true,
+      "probe_exists": false,
+      "movement_swimming_ship_proof": false,
+      "fatal_error": null,
+      "evidence": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q03D20R02CANDIDATEOUTFIT_20260906.json"
+    },
+    "visual_boundary": "The candidate-only outfit rebind improves color/readability and the generic path adapter consumes the generated clip curves; however, inspected native frames still show a low-detail raised/T-like pose, a pale duplicate/fallback figure in the boarding frame, unresolved port geometry/layering, and an unrecognized native RERUN85 route probe. No visual or formal action-quality PASS is claimed.",
+    "asset_root_cause": "The generated D20 clips are generic path clips and the source R02 prefab wrapped Armature under Visual_player_visual_male_r02; the candidate builder now flattens that wrapper and clears the candidate Animator Avatar explicitly. This adapter remains candidate-only and does not alter the audited source R02 prefab.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; formal InitialHarbor consumer=0; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED."
+  },
+  "q03_a02_order_isolation_recheck_20260911": {
+    "status": "VERIFIED_WITH_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A02/RESULT.json",
+    "scope": "D20 candidate movement-state mapping and full PlayMode determinism",
+    "root_cause": "D2 first acceleration frame produced snapshotSpeed01=0.041 while the D20 Idle threshold was 0.05; input and D2 Action=Walk were already correct.",
+    "fix": "D20 presentation Idle threshold is now 0.01; EditMode boundary coverage includes 0.01 Idle and 0.04 Walk.",
+    "verification": {
+      "d20_editmode": "6/6 PASS",
+      "q03_targeted_playmode": "1/1 PASS",
+      "full_playmode": "99 passed / 0 failed / 1 skipped of 100",
+      "recompile": "failed=false; errors=[]",
+      "error_console": 0,
+      "editor_state": "ready"
+    },
+    "formal_boundary": "Q03 remains BLOCKED_ASSET because no formal current-rig authored action set or formal InitialHarbor consumer was admitted; VC-G01 remains IN_PROGRESS and VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Q03-A03: candidate visual ownership regression for D27 renderer restore conflict."
+  },
+  "q03_a03_candidate_renderer_ownership_recheck_20260911": {
+    "status": "VERIFIED_WITH_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A03/RESULT.json",
+    "scope": "D27 fallback renderer restore versus opt-in D20 candidate ownership",
+    "root_cause": "D27 RestoreRenderers(player) re-enabled the 17 legacy player renderers after candidate installation.",
+    "fix": "D27 skips player Renderer restoration while D20 candidate bridge is installed; Q03 candidate PlayMode asserts hidden legacy renderers remain disabled after a frame.",
+    "verification": {
+      "candidate_targeted_playmode": "1/1 PASS; candidateOwned=true; restored=0",
+      "full_playmode": "99 passed / 0 failed / 1 skipped of 100",
+      "recompile": "failed=false; errors=[]",
+      "error_console": 0,
+      "editor_state": "ready"
+    },
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; formal InitialHarbor consumer remains 0; VC-G01 remains IN_PROGRESS and VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Q03-A04: rebuild the latest candidate Player and inspect native duplicate-character/boarding/swimming frames with a new evidence namespace."
+  },
+  "q03_a04_latest_player_rerun95_20260911": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A04/RESULT.json",
+    "scope": "Latest opt-in candidate Player native Win32 route and visual inspection",
+    "build": "Pipeline detached job bf7fdea8a46644c9999a2af4e91f7b86; MainMenu + InitialHarbor; BuildOptions.None; Player SHA256 D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "native_route": "RERUN95; 48 input steps; 19 screenshots; 166 observations; 70 moving; 123 swimming; 22 ship-control; displacement 6.058244m; heading delta 18.174286deg",
+    "verified_with_scope": [
+      "WASD movement and turning observations",
+      "E boarding/disembarking path observations",
+      "I/M/T duplicate interaction and Esc close/recover matrix",
+      "water swimming and ship-control observations",
+      "candidate route probe output and archived Player log"
+    ],
+    "visual_boundary": "Inspected native frames still show low-detail/T-like player motion, raised/awkward Fish swimming pose, weak hand-to-wheel contact and rough/floating/clipped port geometry. No formal visual or action-quality PASS.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; formal InitialHarbor consumer remains 0; VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Q03-A05: candidate Fish clip arm-excursion correction and RERUN96 native recheck."
+  },
+  "q03_a05_fish_arm_envelope_rerun96_20260911": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A05/RESULT.json",
+    "scope": "Candidate generic Fish upper-arm envelope correction and native RERUN96 recheck",
+    "asset_change": "D20A02AnimationBuilder Fish upper-arm magnitude 30deg -> 8deg; generated source and Resources candidate controller curves verified as 28.166->20.166 and 28.166->36.166.",
+    "verification": "D20 EditMode 7/7; Q03 candidate PlayMode 1/1; full Unity EditMode 620/620; Python 6/6; recompile failed=false/errors=[]; error console 0.",
+    "native_route": "RERUN96; 48 input steps; 19 screenshots; 167 observations; 69 moving; 120 swimming; 21 ship-control; displacement 6.058783m; heading delta 18.267059deg",
+    "visual_boundary": "Arm curve correction is real, but native swimming remains curled/airborne with raised legs; boarding/helm contact and port geometry remain visually unacceptable. No formal visual or action-quality PASS.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; formal InitialHarbor consumer remains 0; VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Q03-A06: candidate Fish whole-body visual orientation/pose owner and RERUN97 native recheck."
+  },
+  "q03_a06_fish_orientation_rerun97_20260911": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A06/RESULT.json",
+    "scope": "Candidate-only Fish visual-child root pitch and native RERUN97 recheck",
+    "asset_change": "D20A02AnimationBuilder adds a constant 32-degree Fish visual-root pitch curve; D2 physical root remains untouched. Verified source/controller curve is 32.000 -> 32.000 -> 32.000.",
+    "verification": "D20 EditMode 8/8; Q03 candidate PlayMode 1/1; Python 6/6; recompile failed=false/errors=[]; error console 0.",
+    "build": "Unity Pipeline job ac3663fd60524752998d91601300c7ca; MainMenu + InitialHarbor; BuildOptions.None; Player SHA256 D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "native_route": "RERUN97; 48 input steps; 19 screenshots; 166 observations; 69 moving; 123 swimming; 21 ship-control; displacement 6.051456m; heading delta 18.186615deg",
+    "visual_boundary": "The root curve is present, but native swimming remains forward-tipped with raised legs/airborne silhouette; boarding/helm contact and port geometry remain visually unacceptable. No formal visual or action-quality PASS.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; formal InitialHarbor consumer remains 0; VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Q03-A07: read-only runtime Fish pose/application-chain probe before another bounded candidate correction."
+  },
+  "q03_a07_fish_generic_axis_and_pitch_rerun100_20260911": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A07/RESULT.json",
+    "scope": "Candidate generic Fish animation axis-contract correction, 90-degree visual-child pitch, and native RERUN99/RERUN100 recheck",
+    "root_cause": "R02 thigh rest axes are Y/Z=180/180, but the old generic clips wrote only X; Animator defaults reset the omitted axes, lifting feet from approximately y=0.08 to approximately y=1.68. The fix disables write defaults and explicitly writes root and limb Y/Z rest axes.",
+    "asset_change": "Candidate-only D20 generic clips now own explicit localEulerAnglesRaw x/y/z curves; Fish visual-child root pitch is 90 degrees. D2 physical root remains untouched.",
+    "verification": "Pipeline recompile failed=false/errors=[]; D20 EditMode 9/9; Q03 candidate PlayMode 1/1; Unity full EditMode 622/622; Python route contract 6/6; controller audit PASS with 15 states and 16 curves per state; editor error console 0. Post-A07 full PlayMode and full Python were not rerun.",
+    "native_route": "RERUN99: 48 input steps, 19 screenshots, 167 observations, 69 moving, 120 swimming, 21 ship-control, displacement 6.002009m, heading delta 18.224670deg. RERUN100: 48 input steps, 19 screenshots, 166 observations, 67 moving, 109 swimming, 22 ship-control, displacement 5.819563m, heading delta 16.697662deg; movement/swimming/ship/business/interaction/pause proofs true; far-ship and owner-not-ready reject not covered.",
+    "visual_boundary": "RERUN99 removed the folded/raised-leg failure but remained diagonal. RERUN100 makes the candidate body read horizontally, while shoreline clipping/hovering, low-detail action pose, weak helm contact, and rough/floating harbor geometry remain. No visual PASS.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; formal InitialHarbor consumer remains 0; VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Choose one D31 environment/grounding owner for a bounded diagnostic and fix; do not continue blind Fish pitch tuning."
+  },
+  "q03_a10_fallback_swim_arm_axis_20260911": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A10/RESULT.json",
+    "scope": "D2 fallback 游泳手臂局部轴组合的单一根因修复、当前源码 Player 和真实 Win32 WaterProbe；不等同正式动作资源门禁。",
+    "root_cause": "visualRoot 的 64 度 X 轴倾斜与 fallback 上臂局部 -Y 中性轴叠加，旧上臂/前臂角度仍把手指向下方；运行态采样记录了这一组合。",
+    "fix": "fallback-only 上臂 150 度加受限 stroke、前臂 30 度加受限补偿；导入蒙皮继续 neutral，不猜测未验证轴向。",
+    "verification": "D2 EditMode 8/8、D17A08 targeted 1/1、D17 full 16/16、recompile failed=false/errors=[]；Player build_b4b4570bffeb 0 errors/8 warnings。",
+    "native_route": "Q03-A10 RERUN100 archive：49/49 输入、19 截图、164 observations、69 moving、120 swimming、21 ship-control，移动/游泳/船控/业务/交互矩阵/暂停恢复成立；远船 reject 与 owner-not-ready 未覆盖。",
+    "visual_boundary": "真实游泳帧显示手臂从下垂改善为向头/躯干方向前伸，但低模比例、腿脚、自然泳姿、舵轮接触和港口几何仍不合格；不升级正式视觉 PASS。",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "停止继续盲调游泳角度，选择正式 Avatar/动作资源、舵轮接触或港口接地/几何中的一个单一 owner。"
+  },
+  "q03_a11_ship_forward_align_r3_20260911": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A11/RESULT.json",
+    "scope": "D19-R03 visible ship forward-axis alignment and current-source Player runtime proof",
+    "root_cause": "可见船体 child 原先额外旋转 180 度，而 D2 heading=0 的移动轴沿 +Z，造成视觉船头与实际航行轴相反。",
+    "fix": "稳定船根初始 heading=180 度、可见候选 child identity、舵轮 anchor 世界位置补偿、登船玩家面向舵轮，并加入 Q26A11 forward dot contract。",
+    "verification": "Q26=11/11、D17=16/16、VC-G01 world logic=13/13、Q22=1/1、Q23=1/1、recompile 无错误、error console=0；Player build=build_3e69fa3e4248，0 errors/8 warnings；Editor Assembly-CSharp 与 Player Data/Managed Assembly-CSharp 哈希分开登记。",
+    "native_route": "Q03-A11 R3：真实 Win32 48/48 输入、19/19 截图、167 observations、69 moving、4 swimming、21 ship-control，船体位移 6.005729m、航向变化 18.372559 度；W/A 后船向水域移动。",
+    "visual_boundary": "船向与登船舵位关系在本范围内改善，但程序化低模/泳姿、舵轮接触和港口几何仍未通过视觉门禁；远船 reject 与 owner-not-ready 未覆盖。",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; Q31 and D31-P04/D31-S05/D31-G06 remain PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "选择一个 D31 环境/接地 owner，或等待合法正式 Avatar/动作资源后再关闭 Q03 asset gate。"
+  },
+  "q03_a12_formal_avatar_action_resource_audit_20260912": {
+    "status": "PASS_WITHIN_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A12/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A12/Q03-A12.md",
+    "scope": "Unity Pipeline read-only Avatar/action resource admission audit plus two EditMode contract tests; no InitialHarbor promotion",
+    "verification": {
+      "recompile": "failed=false; errors=[]",
+      "resource_contract_editmode": "2/2 PASS",
+      "d20_a02_editmode": "9/9 PASS",
+      "candidate_playmode": "2/2 PASS",
+      "editor": "ready; compiling=false; playMode=stopped",
+      "error_console": 0
+    },
+    "facts": [
+      "D18 R03 male Avatar isValid=true/isHuman=true with 20 human bones and 70 skeleton entries.",
+      "D20 R02 formal appearance exposes one valid Humanoid Animator and the 15-state/6-parameter D20 action interface.",
+      "Flattened Resources candidate keeps Avatar=null and resolves every D20 generic curve path on one direct Armature hierarchy.",
+      "Quaternius male-peasant source remains Generic/NoAvatar outfit geometry; D6CrewAnimator remains quarantined."
+    ],
+    "formal_boundary": "formal InitialHarbor consumer remains 0; normal Player remains FormalAnimatorReady=false/Procedural; candidate bridge remains opt-in and non-formal",
+    "next_task": "Q03-A14: exact-build native Player -d20Formal route and visual acceptance; do not promote the explicit consumer to the default path before native evidence"
+  },
+  "q03_a13_formal_d2_consumer_20260912": {
+    "status": "PASS_WITHIN_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A13/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A13/Q03-A13.md",
+    "scope": "Explicit -d20Formal D2 presentation consumer, continuous action transitions, and physical-root ownership regression; no default InitialHarbor promotion",
+    "implementation": [
+      "Formal runtime resources are generated under Assets/Resources/D20/Formal from the audited R02 source prefab and controller.",
+      "The presentation bridge exposes InstallForFormal and keeps the existing candidate API compatible; -d20Formal is explicit and opt-in.",
+      "The generated D20 clips are generic transform-path clips, so the runtime formal route uses the explicit generic-path adapter and keeps Animator.avatar=null; this is not claimed as authored Humanoid motion."
+    ],
+    "verification": {
+      "recompile": "failed=false; errors=[]",
+      "formal_playmode": "1/1 PASS",
+      "formal_scope": "source Avatar contract, formal installation, W/Shift Idle->Walk->Run, Animator.Update physical-root stability, Board->Disembark, unsupported action count=0",
+      "resource_contract_editmode": "2/2 PASS",
+      "d20_a02_editmode": "9/9 PASS",
+      "candidate_playmode": "2/2 PASS",
+      "d17_a06_playmode": "1/1 PASS",
+      "editor": "ready; compiling=false; playMode=stopped",
+      "error_console": 0
+    },
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; default InitialHarbor formal consumer remains 0; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL.",
+    "native_boundary": "No exact-build Windows Player screenshots were run in this card; headless/no-GPU Editor visual capture is not evidence. Existing low-detail pose, swimming, helm contact, grounding and geometry risks remain open.",
+    "next_task": "Q03-A14: build a separate -d20Formal Windows Player and run real-input/log/screenshot acceptance before considering default consumer admission."
+  },
+  "q03_a14_formal_player_build_20260912": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A14/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A14/Q03-A14.md",
+    "scope": "Unity Pipeline StandaloneWindows64 build of MainMenu + InitialHarbor for the explicit -d20Formal route",
+    "build": "build_b70c492ca267; Succeeded; 175167322 bytes; 0 errors; 8 warnings; EXE SHA256 D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "runtime_boundary": "Player was not started and no native keyboard/screenshot route was run; the connected Editor is headless/no-GPU and the Win32 probe would take the user's foreground desktop.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL.",
+    "next_task": "Q03-A14-RUNTIME: obtain an isolated native Player control surface or explicit foreground-probe authorization, then run -d20Formal real-input/log/screenshot acceptance."
+  },
+  "q03_a15_formal_action_admission_gate_20260912": {
+    "status": "PASS_WITHIN_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A15/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A15/Q03-A15.md",
+    "scope": "Formal D20 action admission regression guard for the current generic-only controller; no resource promotion",
+    "verification": {
+      "admission_gate": "1/1 PASS",
+      "d20_a02_editmode": "13/13 PASS",
+      "recompile": "status=up_to_date",
+      "editor": "ready; compiling=false; playMode=stopped",
+      "error_console": 0
+    },
+    "facts": [
+      "The current controller exposes 15 audited action clips.",
+      "All 15 clips report humanMotion=false and hasGenericRootTransform=true.",
+      "The generic-path formal diagnostic remains explicitly separate from authored Humanoid action admission."
+    ],
+    "formal_boundary": "Q03 remains BLOCKED_ASSET; Q26/Q31 remain PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED.",
+    "next_task": "Choose a different owner-scoped geometry/grounding or fallback-presentation defect while waiting for legal authored Avatar/action resources."
+  },
+  "q03_a16_formal_humanoid_pose_runtime_20260913": {
+    "status": "PASS_WITHIN_SCOPE",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2_RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A16/Q03-A16.md",
+    "scope": "Opt-in R02 Humanoid Avatar pose adapter, measured HelmWheel alignment and hidden Windows Player runtime evidence; no default consumer promotion",
+    "verification": {
+      "formal_humanoid_playmode": "1/1 PASS",
+      "q03d20_playmode": "4/4 PASS",
+      "q03_formal_editmode": "3/3 PASS",
+      "build": "build_d87c4e4b5265; StandaloneWindows64; 0 errors / 2 warnings",
+      "runtime": "Hidden Player entered InitialHarbor; avatarValid=true/avatarHuman=true; W/S reached Swimming/Fish/pitch=70; E reached Ship/Helm; hand-to-wheel distances=0.219m/0.222m",
+      "safety_restore": "Player exited; descriptor removed; Editor ready/stopped; enableInBuilds=false/port=0"
+    },
+    "formal_boundary": "The current 15 generic clips remain humanMotion=0/genericRoot=15, so Q03 stays BLOCKED_ASSET and the Humanoid route remains opt-in."
+  },
+  "q03_a17_formal_swim_pose_envelope_20260913": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03-A17/Q03_A17_FORMAL_HUMANOID_PIPELINE_R3_RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A17/Q03-A17.md",
+    "scope": "Opt-in D20 Formal Humanoid swim-envelope presentation adjustment and hidden Unity Pipeline RenderTexture diagnostic; no default consumer promotion",
+    "verification": {
+      "recompile": "failed=false; errors=[]",
+      "q03d20_playmode": "4/4 PASS",
+      "d17_action_quality": "16/16 PASS",
+      "windows_player_build": "build_21e1ee070799; StandaloneWindows64; 0 errors / 1 warning",
+      "hidden_formal_route": "InitialHarbor loaded; Formal installed=true; humanoid=true",
+      "hidden_swim_probe": "grounded=false; swim=true; action=Swimming; state=Fish; pitch=70",
+      "rendertexture_comparison": "PARTIAL: knee folding reduced; arms remain raised/stylized",
+      "shutdown_restore": "error console=0; clean close; Runtime Pipeline and Development Player settings restored disabled"
+    },
+    "visual_boundary": "The swim frame used read-only D2 diagnostic placement rather than a complete physical-input W/S route; it is offscreen candidate evidence, not human visual acceptance.",
+    "formal_boundary": "Q03 remains BLOCKED_ASSET because the current formal clips remain humanMotion=0/genericRoot=15; default Player remains unchanged.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL.",
+    "next_task": "Keep the candidate isolated until a legal authored action/Avatar resource or separately evidenced presentation owner is available."
+  },
+  "q03_current_formal_action_gate_20260914_luna": {
+    "status": "BLOCKED_ASSET",
+    "result": "game/tools/results/LOCAL-QUALITY/Q03/Q03_CURRENT_FORMAL_ACTION_GATE_20260914_LUNA_RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03/Q03.md",
+    "scope": "Current connected Editor formal action admission and Avatar/action resource gate; no default consumer promotion",
+    "verification": {
+      "formal_action_admission_gate": "1/1 PASS_AS_BLOCKED_GATE",
+      "formal_avatar_action_contract": "2/2 PASS_WITHIN_SCOPE",
+      "controller_clips": "15",
+      "human_motion_clips": "0",
+      "generic_root_clips": "15",
+      "editor": "ready; playMode=stopped"
+    },
+    "formal_boundary": "The guard is working and the formal appearance contract is present, but all audited action clips remain generic-only. Default InitialHarbor consumer remains 0 and Procedural/FormalAnimatorReady=false; Q03 remains BLOCKED_ASSET.",
+    "next_task": "Q04_CURRENT_WATER_OWNER_REAUDIT"
+  },
+  "current_default_humanoid_route_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q03/Q03_CURRENT_DEFAULT_HUMANOID_ROUTE_20260914_LUNA_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q03/Q03_CURRENT_DEFAULT_HUMANOID_ROUTE_20260914_LUNA.log",
+    "status": "PASS_WITHIN_SCOPE",
+    "scope": "Current formal Humanoid action/avatar/route code gate; historical pre-Q03-A19 generic-only BLOCKED_ASSET entries remain preserved",
+    "verification": {
+      "Q03FormalEditMode": "5/5 PASS",
+      "Q03D20FormalPlayMode": "2/2 PASS",
+      "D2CharacterAnimationControllerTests": "8/8 PASS",
+      "D17ActionQualityPlayModeTests": "16/16 PASS",
+      "default_route": "Formal / HumanoidPoseAdapter=true / GenericPathAdapter=false / 7 candidate skinned renderers / 17 hidden fallback renderers / SwimmingVisualSupported=true",
+      "recompile": "failed=false/errors=[]"
+    },
+    "formal_boundary": "Current code and connected Pipeline route are verified within scope. Compositor-visible pose quality, foreground physical input, full camera geometry, no-clipping, vegetation grounding, target-device performance, D18 catalog admission and final VC-G01 remain open.",
+    "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  }
+}

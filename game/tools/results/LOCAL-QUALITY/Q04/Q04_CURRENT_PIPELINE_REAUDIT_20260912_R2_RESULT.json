@@ -1,0 +1,30 @@
+{
+  "task_id": "Q04",
+  "run_id": "Q04_CURRENT_PIPELINE_REAUDIT_20260912_R2",
+  "audit_time_local": "2026-09-12T09:18:00+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": "Unity Pipeline connected Editor PID 31416 at 127.0.0.1:7800, Unity 6000.0.80f1",
+  "test_filter": "D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+  "test": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+  "summary": "Current-source connected Editor PlayMode run completed with total=1, passed=1, failed=0, skipped=0, inconclusive=0; duration=9.45s and test duration=8.9538927s.",
+  "water_contract": {
+    "surface_source": "OceanAdapter",
+    "surface_y": -0.020,
+    "shallow_cycles": 10,
+    "deep_cycles": 10,
+    "non_zero_swimming_displacement": true,
+    "grounded_recovery": true
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "verification": {
+    "editor_final": "ready / compiling=false / domainReloadInProgress=false / playMode=stopped",
+    "error_console": 0,
+    "source_hash_note": "The test source hash is the current working-tree hash after the Q26-A14 work; older 3DA02A... and 665341... hashes remain historical evidence only."
+  },
+  "boundary": "This revalidates the D2 water-state owner in the current InitialHarbor source. It does not prove native Player W/S input, physical keyboard focus, authored swim-pose quality, water material correctness, screenshots, or VC-G01 visual acceptance.",
+  "next_task": "Q31 hidden Player runtime evidence is recorded separately; Q05 remains limited by the formal action/avatar asset gate."
+}

@@ -1,0 +1,54 @@
+{
+  "task_id": "Q07",
+  "run_id": "Q07_CURRENT_COLLISION_ROUTE_20260914_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "active_r03_terrain_service_building_dock_gangplank_collision_and_bidirectional_steps",
+  "captured_at_local": "2026-09-14T09:21:57+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped"
+  },
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Tests/PlayMode/D19R03Q07BuildingCollisionPlayModeTests.cs": "A83611841A3F8CC84C6589F5BD85828A00E684D3375E5EB950F58A04BFD3D6E9",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "checks": [
+    {
+      "name": "R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries",
+      "mode": "PlayMode",
+      "status": "completed",
+      "duration_s": 3.29,
+      "test_duration_s": 2.9602606,
+      "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "scope": "Four visible service buildings receive Harbor-owned enabled non-trigger solid body boundaries and external raycasts hit them."
+    },
+    {
+      "name": "D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps",
+      "mode": "PlayMode",
+      "status": "completed",
+      "duration_s": 5.82,
+      "test_duration_s": 5.3727658,
+      "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "scope": "Active D19_TerrainRoot, DockGround and GangplankGround are checked enabled/non-trigger and exercised with bidirectional grounded non-swimming steps."
+    }
+  ],
+  "runtime_log_facts": {
+    "harbor_collision_owner": "D6_HarborCollision",
+    "service_building_colliders_installed": 4,
+    "d17_route_recovery": [
+      "DockGround surfaceY=0.50",
+      "GangplankGround surfaceY=0.88"
+    ],
+    "non_walkable_guard": "The runtime logged prevention of climbing non-walkable collision, preserving the pre-collision height."
+  },
+  "status_boundary": "Q07 is PASS_WITHIN_SCOPE for the tested R03 terrain/service-building/dock/gangplank collision owner and bidirectional steps. It does not prove every shore/slope/wall, ten complete traversals, visual mesh contact, ship-deck/boarding route, native Player WASD, tree grounding, no-clipping or VC-G01.",
+  "next_task": "Q08_BLOCKED_THEN_Q09_CURRENT_DECK_ANCHOR_REAUDIT"
+}

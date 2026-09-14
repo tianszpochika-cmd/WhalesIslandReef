@@ -1,0 +1,112 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "parent_task": "LOCAL_QUALITY_REMAINING_PLAN",
+  "depends_on": [],
+  "run_id": "Q00_CURRENT_TAKEOVER_PIPELINE_Q26A22_20260914",
+  "audit_time_local": "2026-09-14T08:45:00+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "worktree_snapshot": {
+    "status_entries": 5390,
+    "tracked_changed": 459,
+    "untracked": 4931,
+    "diff_shortstat": "459 files changed, 40339 insertions(+), 49178 deletions(-)",
+    "cleanup_performed": false,
+    "reset_checkout_clean_or_stash_performed": false
+  },
+  "pipeline": {
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "unity_version": "6000.0.80f1",
+    "project": "C:/Users/Administrator/Desktop/game/first01/game",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "final_status": "ready",
+    "final_play_mode": "stopped"
+  },
+  "last_person_swim_source": {
+    "production_source": "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs",
+    "production_source_sha256": "097D8210461C61C5BDFA365127D191865293040310539FEF92DC06AB90A66A42",
+    "production_source_last_write": "2026-09-14T00:11:59+08:00",
+    "related_runtime_source": "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs",
+    "related_runtime_source_sha256": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "action_quality_test": "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs",
+    "action_quality_test_sha256": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "latest_swim_continuity_test": "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs",
+    "latest_swim_continuity_test_sha256": "0BAA85F181887C01856CF49B12D3E8D8F64CD50073AF144EB34B602BB476E38D",
+    "interpretation": "The latest Q26-A21 swim work added a measured continuity test only; the current production D2 animation source remains the bounded procedural fallback and formal authored action admission is still closed."
+  },
+  "player_binding": {
+    "player_path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CURRENT_CANDIDATE_R4.exe",
+    "build_id": "build_824c76e4cc26",
+    "build_guid": "555740f9800f4130aa486b9e28d69f45",
+    "player_sha256": "98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly_csharp_path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CURRENT_CANDIDATE_R4_Data/Managed/Assembly-CSharp.dll",
+    "assembly_csharp_sha256": "6EBD285D9A70A88996E4E1D6CACD11EA04C4A880BF6A46A999DA6A2761DB822C",
+    "build_target": "StandaloneWindows64",
+    "build_errors": 0,
+    "build_warnings": 7,
+    "build_created": "2026-09-14T01:14:17+08:00",
+    "source_relation": "All relevant production source last-write timestamps are earlier than the R4 artifact; no production source, scene, prefab or package change occurred after R4. The only later source addition is the diagnostic helper outside Assets, compiled ephemerally by Editor Pipeline and not included in the Player.",
+    "relation_strength": "CURRENT_SOURCE_RECONCILED_BY_HASH_AND_TIMELINE; no new production build was required for this read-only takeover audit"
+  },
+  "runtime_reconciliation": {
+    "initial_probe_early": {
+      "wait_seconds": 4,
+      "result": "NOT_READY",
+      "player_found": false,
+      "interpretation": "Runtime bootstrap had not created D2_PlayerAvatar yet; this observation was not counted as a product failure."
+    },
+    "initial_probe_valid": {
+      "additional_wait_seconds": 8,
+      "scene": "InitialHarbor",
+      "player_found": true,
+      "player_parent": "",
+      "control_mode": "Character",
+      "action": "Idle",
+      "pose_driver_mode": "Procedural",
+      "procedural_ready": true,
+      "bound_bone_count": 8,
+      "controller_grounded": true,
+      "controller_swimming": false,
+      "player_position": [-0.0000000000000142, 0.1497475654, -2.6999998093],
+      "renderer_count": 17,
+      "skinned_renderer_count": 0,
+      "ui_navigation_enabled": false,
+      "ui_move_action_bound": false,
+      "selected_ui_object": ""
+    },
+    "source_player_route": "Q31 R4 hidden current-source Player separately completed MainMenu->InitialHarbor, W/S movement and swimming, E board/disembark, far-ship rejection, I modal W isolation, M repeat/close, T close and Esc pause/resume; Q31 R4 remains PARTIAL because evidence is injected/offscreen and not final visual acceptance."
+  },
+  "checks": {
+    "q26_a21_swim_continuity": "1/1 PASS; full Q26=19/19 PASS; bounded procedural stroke evidence only",
+    "q02_action_owner_regression": "D2 EditMode=8/8 PASS; D17 Action Quality=16/16 PASS in current-source Q02/Q26-A22 R3 evidence",
+    "q31_exact_player_route": "Q31 R4 build succeeded with 0 errors/7 warnings; runtime error query=0; clean close",
+    "pipeline_editor_probe": "run_script compiled and executed with diagnostics=[] after the bootstrap wait",
+    "editor_cleanup": "editor_stop succeeded; final editor_status=ready/stopped",
+    "visual_capture": "NOT_COUNTED for Editor GameView; connected Editor uses Null Device/GraphicsDeviceType=Null",
+    "physical_foreground_input": "NOT_COUNTED; no compositor-visible foreground keyboard claim",
+    "target_device_performance": "NOT_COUNTED"
+  },
+  "coverage_matrix": {
+    "last_person_swim_modification_to_player_relation": "RECONCILED_WITHIN_SCOPE",
+    "current_default_player": "PROCEDURAL_FALLBACK",
+    "formal_action_avatar": "BLOCKED_ASSET",
+    "vegetation": "PARTIAL/BLOCKED_ASSET",
+    "vc_g01": "IN_PROGRESS",
+    "vc_g02": "LOCKED",
+    "vc_g03": "LOCKED",
+    "d31": "PARTIAL"
+  },
+  "visual_review": {
+    "status": "PARTIAL",
+    "remaining_defects": [
+      "Default Player is not a verified authored Humanoid/Skinned action consumer.",
+      "Natural authored swimming, continuous contact/IK and full-camera visual quality remain unverified.",
+      "Formal vegetation admission and all-camera grounding remain open.",
+      "Foreground physical keyboard and human final visual acceptance remain open."
+    ]
+  },
+  "next_task": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A22_20260914",
+  "status_boundary": "Q00 is VERIFIED_WITH_SCOPE for current dirty-worktree, source/build/test relationship and runtime bootstrap reconciliation. It does not upgrade Q03, Q31, VC-G01, D31 or any visual defect to PASS."
+}

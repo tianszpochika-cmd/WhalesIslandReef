@@ -1,0 +1,49 @@
+{
+  "task_id": "Q05",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_InitialHarbor_safe_visual_root_swim_pose_contract",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q02", "Q04"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q05_CURRENT_PIPELINE_REAUDIT_20260913",
+  "audit_date_local": "2026-09-13",
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987"
+  },
+  "protocol": {
+    "tool": "Unity Pipeline com.unity.pipeline@0.6.0-exp.1",
+    "editor": "Unity 6000.0.80f1",
+    "editor_pid": 53332,
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "operation": "run_tests mode=playmode filter=D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot filter_type=testName async_tests=true; poll test_status until completed",
+    "test_status_file": "game/Temp/pipeline_test_status.json"
+  },
+  "checks": [
+    {
+      "name": "targeted_swim_pose_regression",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Completed Pipeline status: total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=12.9665234s; total duration=13.06s."
+    },
+    {
+      "name": "visual_root_tilt_and_restore",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A08 executes ten swim cycles and asserts the presentation visualRoot tilts beyond the bounded threshold while swimming and returns to neutral after exit."
+    },
+    {
+      "name": "physics_root_upright",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Each cycle asserts the player physics root remains upright; the test does not rotate the CharacterController root to manufacture the presentation pose."
+    },
+    {
+      "name": "post_run_editor_health",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Editor final status was ready, compiling=false, domainReloadInProgress=false, playMode=stopped; Console was explicitly cleared after the run."
+    }
+  ],
+  "status_boundary": "Q05 remains VERIFIED only for the bounded whole-visual-root swim tilt/neutral-restore and physics-root separation contract. This evidence does not prove authored limb/head motion, natural swimming, native Player W/S delivery, foreground keyboard focus, rendered visual acceptance or VC-G01 completion.",
+  "next_task": "Q06_CURRENT_PIPELINE_REAUDIT_20260913"
+}

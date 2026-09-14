@@ -1,0 +1,47 @@
+{
+  "task_id": "Q04",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_playmode_water_state_entry_exit_and_surface_height",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01"],
+  "audit_time_local": "2026-09-13T23:01:13+08:00",
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "project": "C:/Users/Administrator/Desktop/game/first01/game",
+    "editor_final": "ready/stopped",
+    "compiling": false,
+    "domain_reload_in_progress": false
+  },
+  "test": {
+    "filter": "D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "mode": "PlayMode",
+    "status": "completed",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "duration_seconds": 9.094856,
+    "pipeline_duration_seconds": 9.3,
+    "protocol": "unity command run_tests --mode playmode --filter D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles --filter_type testName --async_tests true --timeout 300; poll test_status until completed"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4"
+  },
+  "checks": {
+    "shallow_and_deep_cycles": "PASS_WITHIN_SCOPE",
+    "water_state_owner": "PASS_WITHIN_SCOPE",
+    "surface_height_source": "PASS_WITHIN_SCOPE",
+    "error_console_since_seq_33835": 0,
+    "warning_console_since_seq_33835": 6,
+    "warnings_boundary": "Known D27 presentation readiness, D2 unverified imported skin/procedural fallback and absolute-Euler animation fallback; no new error was emitted by this run."
+  },
+  "boundary": "This result proves the current InitialHarbor D2 water-state owner repeatedly enters, moves and exits through the ten shallow/deep cycle regression. It does not prove native Player W/S input, foreground keyboard focus, authored natural swim pose, water material visual correctness, compositor screenshot quality, target-device performance or VC-G01 acceptance.",
+  "next_task": "Q05_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+}

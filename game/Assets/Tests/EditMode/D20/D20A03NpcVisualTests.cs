@@ -64,6 +64,25 @@ namespace WhalesIslandReef.Tests.D20
         }
 
         [Test]
+        public void NpcMaterialsUseUrpLitShader()
+        {
+            const string materialRoot = "Assets/Art/Models/Characters/D20/NPC/Materials";
+            var materialGuids = AssetDatabase.FindAssets("t:Material", new[] { materialRoot });
+            Assert.That(materialGuids.Length, Is.GreaterThan(0), "NPC material owner folder is empty.");
+
+            foreach (var guid in materialGuids)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                var material = AssetDatabase.LoadAssetAtPath<Material>(path);
+                Assert.That(material, Is.Not.Null, path);
+                Assert.That(material.shader, Is.Not.Null, path + " shader");
+                Assert.That(material.shader.name, Is.EqualTo("Universal Render Pipeline/Lit"),
+                    path + " must not use the built-in Standard shader in the URP Player.");
+                Assert.That(material.HasProperty("_BaseColor"), Is.True, path + " _BaseColor");
+            }
+        }
+
+        [Test]
         public void InterfaceResultAndSourceModelBoundaryArePresent()
         {
             var gameRoot = Directory.GetParent(Application.dataPath).FullName;

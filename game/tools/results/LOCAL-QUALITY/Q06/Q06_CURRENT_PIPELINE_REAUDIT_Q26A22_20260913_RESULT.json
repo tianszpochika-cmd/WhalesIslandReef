@@ -1,0 +1,61 @@
+{
+  "task_id": "Q06",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source jump, grounded recovery and small-step motion stability",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q05"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q06_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1",
+  "audit_time_local": "2026-09-13T20:27:29+08:00",
+  "implementation": {
+    "owner": "D2CharacterController",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "note": "Current-source verification after Q05/Q26-A22; no production change was justified because the bounded contract still passes.",
+    "changed_files": []
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537"
+  },
+  "checks": [
+    {
+      "name": "d17a09_current_source_playmode",
+      "result": "PASS_WITHIN_SCOPE",
+      "command": "unity command run_tests --mode playmode --filter Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite --filter_type testName --async_tests true",
+      "evidence": "Temp/pipeline_test_status.json completed with total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=14.3624642s; total duration=14.6s."
+    },
+    {
+      "name": "ten_jump_to_ground_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The test exercised ten real TryJump calls and verified grounded recovery for every cycle."
+    },
+    {
+      "name": "small_step_motion_stability",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Positive, diagonal, lateral and reverse ApplyPhysicsMotion steps around the InitialHarbor spawn remained grounded, non-swimming and finite."
+    },
+    {
+      "name": "post_run_editor_and_error_boundary",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Editor returned ready/stopped. Error query since seq=30360 returned entries=[]; no new error was observed for this run."
+    }
+  ],
+  "status_boundary": "Q06 remains PASS_WITHIN_SCOPE only for repeated jump/grounded and spawn-area small-step stability. It does not prove wall, slope, shore, gangplank, ship-deck, visual-mesh contact, foreground Win32 input, or VC-G01 visual acceptance.",
+  "visual_review": {
+    "result": "NOT_RUN",
+    "reason": "This card is an automated physics contract; no Player frame was used to claim visual contact."
+  },
+  "next_task": "Q07_CURRENT_PIPELINE_REAUDIT_Q26A22"
+}

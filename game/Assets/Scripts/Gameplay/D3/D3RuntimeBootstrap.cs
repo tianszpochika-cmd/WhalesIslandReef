@@ -45,6 +45,8 @@ namespace Whalebone.Gameplay.D3
 
         private Transform _player;
         private Transform _ship;
+        private Vector3 _authoredHarborShipPosition;
+        private bool _authoredHarborShipPositionCaptured;
         private D3RuntimeSnapshot _snapshot;
         private D3TradeState _trade;
         private VoyageState _voyage;
@@ -120,14 +122,19 @@ namespace Whalebone.Gameplay.D3
                 // 与其余 D3 默认键保持同一条兼容路径：Player 窗口在某些焦点组合
                 // 下可能错过 Input System 的 Escape 边沿，但 legacy 边沿仍然可读。
                 // 这里只生成关闭交易面板的输入意图，交易事实仍由本 owner 裁决。
-                if (WasD3Input(D16InputAction.D3CloseTrade, KeyCode.Escape)) CloseTrade();
+                if (WasD3Input(D16InputAction.D3CloseTrade, KeyCode.Escape))
+                {
+                    D7ControlCoordinator.MarkEscapeHandledThisFrame();
+                    CloseTrade();
+                }
                 return;
             }
             if (!D7ControlCoordinator.GameplayInputAllowed) return;
+            if (!RuntimeHudCoordinator.PrimaryInputAllowed) return;
             if (Time.timeScale <= 0f) return;
 
             if (WasD3Input(D16InputAction.Trade, KeyCode.B)) OpenTrade();
-            else if (WasD3Input(D16InputAction.D3StartVoyage, KeyCode.T)) StartVoyage();
+            else if (WasD3Input(D16InputAction.D3StartVoyage, KeyCode.Y)) StartVoyage();
             else if (WasD3Input(D16InputAction.D3AdvanceVoyage, KeyCode.N)) AdvanceVoyage();
             else if (WasD3Input(D16InputAction.D3Gather, KeyCode.G)) GatherOne();
             else if (WasD3Input(D16InputAction.D3LandAndSettle, KeyCode.L)) LandAndSettle();
@@ -220,6 +227,15 @@ namespace Whalebone.Gameplay.D3
 
             _player = player.transform;
             _ship = ship.transform;
+            // R03 owns a scene-local harbor berth for the stable gameplay
+            // ship. Capture it before D3 applies its abstract world-catalog
+            // coordinates so the visible ship remains beside the authored
+            // dock in InitialHarbor.
+            if (!_authoredHarborShipPositionCaptured)
+            {
+                _authoredHarborShipPosition = _ship.position;
+                _authoredHarborShipPositionCaptured = true;
+            }
             BuildState();
             _ready = true;
             ApplyLocationVisual();
@@ -474,12 +490,14 @@ namespace Whalebone.Gameplay.D3
         private void NextCommodity()
         {
             _commodityIndex = (_commodityIndex + 1) % CommodityCatalog.All.Count;
+            SetTradeResult("已切换商品：" + CommodityCatalog.All[_commodityIndex].DisplayName + "。");
             RefreshTradePanel();
         }
 
         private void PreviousCommodity()
         {
             _commodityIndex = (_commodityIndex - 1 + CommodityCatalog.All.Count) % CommodityCatalog.All.Count;
+            SetTradeResult("已切换商品：" + CommodityCatalog.All[_commodityIndex].DisplayName + "。");
             RefreshTradePanel();
         }
 
@@ -548,22 +566,18 @@ namespace Whalebone.Gameplay.D3
         private void ApplyLocationVisual()
         {
             var port = PortCatalog.Find(_snapshot.CurrentLocationId);
-            if (port == null || _ship == null || _player == null) return;
-            _ship.position = new Vector3(port.WorldX, _ship.position.y, port.WorldZ);
+            if (port == null || _ship == null) return;
+            bool useAuthoredR03Berth = _snapshot.VoyageStatus == D3VoyageStatus.InPort &&
+                port.Id == PortCatalog.StartingPortId &&
+                GameObject.Find("D19_R03_HarborPresentation") != null &&
+                _authoredHarborShipPositionCaptured;
+            _ship.position = useAuthoredR03Berth
+                ? _authoredHarborShipPosition
+                : new Vector3(port.WorldX, _ship.position.y, port.WorldZ);
+            if (useAuthoredR03Berth)
+                Debug.Log("[D3/Visual] R03 圣玛格丽特港使用场景作者泊位，保持船体与码头对齐");
             // D3 只决定船在港口的世界位置；玩家位置由 D2 角色物理层接管。
-            // 旧的 -5f + Vector3.up 会把人物放回船体/跳板接缝，首帧被
-            // CharacterController 抬高后丢失接地，动作层就会误判为 Jump。
-            Vector3 playerSpawn = _ship.position - _ship.forward * 6.5f + Vector3.up * 1.1f;
-            var character = _player.GetComponent<Whalebone.Gameplay.D2.D2CharacterController>();
-            if (character != null)
-            {
-                character.SetWorldPosition(playerSpawn);
-                character.SnapToGround();
-            }
-            else
-            {
-                _player.position = playerSpawn;
-            }
+            // 不在这里触碰玩家 Transform，避免 D2 的出生/接地裁决被覆盖。
         }
 
         private void RefreshHud()
@@ -580,14 +594,14 @@ namespace Whalebone.Gameplay.D3
                 " | 货舱：" + DisplayNumber(D3InventorySystem.UsedCargo(_trade.Inventory)) + "/" + DisplayNumber(_trade.Inventory.CargoCapacity) +
                 "\n补给 水 " + DisplayNumber(_snapshot.Water) + " / 食物 " + DisplayNumber(_snapshot.Food) + " | 船体 " + DisplayNumber(_snapshot.Hull) + "/" + DisplayNumber(_snapshot.HullMax) +
                 "\n状态：" + voyage + "\n提示：" + _lastMessage;
-            _hintText.text = "WASD 移动 | 右键/中键调整视角 | B 贸易 | T 出航 | N 推进一天 | G 采集 | L 靠港结算 | C 保存 | ESC 暂停";
+            _hintText.text = "WASD 移动 | 右键/中键调整视角 | B 贸易 | Y 出航 | N 推进一天 | G 采集 | L 靠港结算 | C 保存 | ESC 暂停";
         }
 
         private void RefreshButtonLabels()
         {
             SetButtonLabel(_controlPanel, "Trade", "贸易 [B]", "Trade [B]");
             SetButtonLabel(_controlPanel, "Destination", "切换目的地", "Change destination");
-            SetButtonLabel(_controlPanel, "Voyage", "出航 [T]", "Set sail [T]");
+            SetButtonLabel(_controlPanel, "Voyage", "出航 [Y]", "Set sail [Y]");
             SetButtonLabel(_controlPanel, "Advance", "推进航程 [N]", "Advance voyage [N]");
             SetButtonLabel(_controlPanel, "Gather", "登岛采集 [G]", "Gather [G]");
             SetButtonLabel(_controlPanel, "Land", "靠港结算 [L]", "Land and settle [L]");
@@ -719,6 +733,15 @@ namespace Whalebone.Gameplay.D3
 
         private void CreatePortMarkers()
         {
+            // R03 owns the InitialHarbor presentation and already provides
+            // readable buildings, shoreline and route landmarks.  The old
+            // D3 map markers are world-space cylinders for the 12-port demo
+            // layout; spawning them here puts a bright green village marker
+            // through the harbor and makes it look like an unplaced asset.
+            // Keep the markers available for legacy scenes that do not have
+            // the formal R03 presentation root.
+            if (GameObject.Find("D19_R03_HarborPresentation") != null) return;
+
             foreach (var port in PortCatalog.All)
             {
                 string name = "D3_Port_" + port.Id;
@@ -764,7 +787,7 @@ namespace Whalebone.Gameplay.D3
             controlRect.anchoredPosition = new Vector2(-28f, 70f);
             CreateButton(_controlPanel, "Trade", "贸易 [B]", new Vector2(0f, 230f), OpenTrade);
             CreateButton(_controlPanel, "Destination", "切换目的地", new Vector2(0f, 155f), CycleDestination);
-            CreateButton(_controlPanel, "Voyage", "出航 [T]", new Vector2(0f, 80f), StartVoyage);
+            CreateButton(_controlPanel, "Voyage", "出航 [Y]", new Vector2(0f, 80f), StartVoyage);
             CreateButton(_controlPanel, "Advance", "推进航程 [N]", new Vector2(0f, 5f), AdvanceVoyage);
             CreateButton(_controlPanel, "Gather", "登岛采集 [G]", new Vector2(0f, -70f), GatherOne);
             CreateButton(_controlPanel, "Land", "靠港结算 [L]", new Vector2(0f, -145f), LandAndSettle);

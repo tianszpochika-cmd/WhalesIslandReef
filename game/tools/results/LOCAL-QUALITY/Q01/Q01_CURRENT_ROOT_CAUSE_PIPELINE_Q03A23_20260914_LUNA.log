@@ -1,0 +1,8 @@
+Q01 current-source root-cause audit, 2026-09-14
+runtime=InitialHarbor; physical root=D2_PlayerAvatar; parent=<null>; scale=(1,1,1)
+d2=Idle/Procedural/FormalAnimatorReady=false/grounded=true/swimming=false/boundBones=8
+d20=Formal/HumanoidPoseAdapter=true/GenericPathAdapter=false/candidateRenderers=7/hiddenFallbackRenderers=17
+ship=ph_ship_fishing position=(0,0,-5.2) scale=2.573956 helm=(0,1.1,-6.68)
+collision=initialized=true R03=true colliders=9 walkable=3 buildings=4 water=-0.02
+root_cause=current default presentation is D20 Formal Humanoid; D2 still owns physical root and action state
+boundary=foreground/native input, compositor screenshot, no-clipping, vegetation grounding and performance remain open

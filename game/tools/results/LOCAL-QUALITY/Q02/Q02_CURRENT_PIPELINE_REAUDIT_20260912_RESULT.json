@@ -1,0 +1,29 @@
+{
+  "task_id": "Q02",
+  "run_id": "Q02_CURRENT_PIPELINE_REAUDIT_20260912",
+  "audit_time_local": "2026-09-12T02:00:43+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": "Unity Pipeline connected Editor PID 31416 at 127.0.0.1:7800, Unity 6000.0.80f1",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B"
+  },
+  "checks": {
+    "d2_animation_editmode": "8/8 PASS, duration=0.44s",
+    "d17_action_quality_playmode": "16/16 PASS, duration=50.13s",
+    "included_owner_tests": [
+      "D17A05GroundingUsesAnimationOwnerWithoutDirectVisualRootWrites",
+      "D17A06UnverifiedImportedRigKeepsPlaceholderAnimatorQuarantined",
+      "D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+      "D17A15GameplayKeyboardDoesNotNavigateHudAndPauseRestoresModalOwnership",
+      "D17A16IntegratedShoreWaterDeckTurnAndSafeDisembarkSequence"
+    ],
+    "editor_final": "ready, compiling=false, domainReloadInProgress=false, playMode=stopped",
+    "console_after_clear": "cleared; no new error was counted after the completed run"
+  },
+  "boundary": "This verifies current-source D2 animation ownership, lifecycle, water/ship integration and UI-focus logic tests. It does not prove the default Player's rendered action quality, native physical keyboard input, or formal D20 visual acceptance.",
+  "next_task": "Q03 remains BLOCKED_ASSET; Q04 current water evidence is refreshed by the same run"
+}

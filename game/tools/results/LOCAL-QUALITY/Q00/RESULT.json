@@ -1,0 +1,1041 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "latest_next_task_note": "Q00 source rebind is recorded; continue the current Q31/VC-G01 bounded evidence, then select the next single-owner Q03/Q05/Q20 card without reusing stale Player hashes.",
+  "run_id": "Q00_CURRENT_REAUDIT_Q03A14_20260912_020119",
+  "build_id": "build_b70c492ca267",
+  "audit_time_local": "2026-09-12T02:01:19+08:00",
+  "dirty_source_manifest": {
+    "status_lines": 5242,
+    "tracked_changed": 408,
+    "untracked": 4834,
+    "cleanup_performed": false,
+    "relevant_files": [
+      {
+        "path": "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs",
+        "last_write_local": "2026-09-09T20:13:54+08:00",
+        "sha256": "773E6D13E147AA33E1CE20E7C17FB78CCAF8FE36B06CF1EBA1F0C4C08CEA0E61"
+      },
+      {
+        "path": "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs",
+        "last_write_local": "2026-09-09T19:15:29+08:00",
+        "sha256": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987"
+      },
+      {
+        "path": "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs",
+        "last_write_local": "2026-09-09T20:25:37+08:00",
+        "sha256": "9660288E20928F60DADF644E019BA3BB4559236EFEA6C9AE4AB6B84721B937A5"
+      },
+      {
+        "path": "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs",
+        "last_write_local": "2026-09-09T14:05:05+08:00",
+        "sha256": "0B01AE251B11E3E6D70B1770695857755A9968FDB3390AFAAF750C5BB3FEB753"
+      },
+      {
+        "path": "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab",
+        "last_write_local": "2026-09-09T14:11:05+08:00",
+        "sha256": "7CB6774C661626214831733EEF494E0785B8F72702A5D2F89B242A9ED09E077D"
+      },
+      {
+        "path": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31_Data/Managed/Assembly-CSharp.dll",
+        "last_write_local": "2026-09-09T20:39:31+08:00",
+        "sha256": "FEBB28ECB7A89B624255214420768B0FA2E9E4DB9A5A7D2D34498E7260EB14FE"
+      },
+      {
+        "path": "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs",
+        "last_write_local": "2026-09-09T20:25:37+08:00",
+        "sha256": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827"
+      },
+      {
+        "path": "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs",
+        "last_write_local": "2026-09-09T19:43:39+08:00",
+        "sha256": "24F70E6CDBBC12E6F432BC832A25D568E5FE7BB476703030107DA04C8E5801AC"
+      },
+      {
+        "path": "game/Assets/Editor/D19R03/D19R03PlayerBuilder.cs",
+        "last_write_local": "2026-09-09T20:38:58+08:00",
+        "sha256": "E1E1FB82171708D323E6227C22DC8E143E5457D0D9CA4418A3199BD5742714AD"
+      },
+      {
+        "path": "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs",
+        "last_write_local": "2026-09-09T20:13:54+08:00",
+        "sha256": "8ABEFA0A1E6CBC62CAEAADBD1B0E09418B16E3870E345D7E77FCAD2292B8BA4D"
+      }
+    ]
+  },
+  "changed_files": [],
+  "checks": [
+    {
+      "name": "worktree_and_branch_audit",
+      "result": "PASS",
+      "command": "git status --short; git diff --stat; git branch --show-current; git rev-parse HEAD",
+      "evidence": "dirty_source_manifest above; HEAD 01024cae2823c26b2595a660e6dde5879870dfc8; current status_entries=5242, tracked_entries=408, untracked_entries=4834; no cleanup performed"
+    },
+    {
+      "name": "active_unity_process_audit",
+      "result": "PASS",
+      "command": "Get-CimInstance Win32_Process | filter Unity/UnityHub/UnityCrashHandler/UnityLicensingClient",
+      "evidence": "2026-09-09T21:07:06+08:00: no Unity-related processes found; no second same-project Unity run was started"
+    },
+    {
+      "name": "last_action_and_swimming_source_order",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D2RuntimeBootstrap source hash 346A2CD8 and D2CharacterAnimationController source hash 773E6D13 correspond to the R31 Data/Managed Assembly-CSharp hash FEBB28EC; D7 grounding source hash E807A9DF, helm source hash 24F70E6C and D17/Q26 test hashes are recorded in dirty_source_manifest; R31 is the current candidate build"
+    },
+    {
+      "name": "latest_swimming_playmode",
+      "result": "PASS_WITHIN_SCOPE",
+      "command": "Unity batchmode PlayMode D17A03CharacterEntersWaterAndReportsSwimmingAction without -quit",
+      "evidence": "game/tools/results/VISUAL-CLEAN/VC-G01-PLAYMODE/VC_G01_D17_SWIMMING_RERUN62_SAFE_VISUAL_NOQUIT.xml; total=1 passed=1 failed=0 inconclusive=0 skipped=0; log records swim enter surfaceY=-0.02 and exit on walkable ground",
+      "boundary": "synthetic/test-scene input only; no standalone Player visual or physical-input proof"
+    },
+    {
+      "name": "latest_player_build",
+      "result": "PASS_WITHIN_SCOPE",
+      "command": "Unity D19R03PlayerBuilder.BuildMainMenuRoutePlayerQ05A03CandidateR31",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31_BUILD.log and game/tools/results/LOCAL-QUALITY/Q05_A03_CANDIDATE_PLAYER_R31_UNITY.log; Build Finished Result: Success; BuildOptions.None; output path Q05-A03/R31; executable SHA256=D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE; Assembly-CSharp.dll SHA256=FEBB28ECB7A89B624255214420768B0FA2E9E4DB9A5A7D2D34498E7260EB14FE",
+      "boundary": "R31 is a candidate build and its native route proves runtime logic within scope; screenshots remain visually PARTIAL and do not certify final action/vegetation quality"
+    },
+    {
+      "name": "latest_native_player_route",
+      "result": "PASS_WITHIN_SCOPE",
+      "command": "tools/vc_g01_runtime_input_probe.ps1 against Q05_A03_CANDIDATE_PLAYER_R31.exe -d19-r03-route-rerun83 -WaterProbe",
+      "evidence": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q05_A03_R31_20260906.json; player_started=true, window_bound=true, scene_marker_seen=true, input_steps=48, screenshots=19, observations=164, moving=72, swimming=122, ship_control=21, ship_displacement=5.9478812218m, heading_delta=17.841796875deg, route/business/pause/interaction matrix=true, fatal_error=null",
+      "boundary": "R31 screenshots were produced and reviewed but remain PARTIAL: low-poly fallback, upright/fragmented swim silhouette, non-natural helm contact and harbor/vegetation visual debt; this is not final visual acceptance"
+    }
+  ],
+  "coverage_matrix": {
+    "latest_source_compiled": true,
+    "latest_swimming_logic_tested": true,
+    "latest_player_started": true,
+    "latest_player_entered_initial_harbor": true,
+    "latest_player_physical_input": true,
+    "latest_player_visual_review": true,
+    "latest_player_route_proof": true
+  },
+  "visual_review": {
+    "status": "PARTIAL",
+    "evidence": "R31 current-build screenshots were produced by the bounded native Win32 route and reviewed; they show the route is real but the visual defects remain",
+    "user_reported_defects": ["动作扭曲", "海洋不能游泳", "上船后人物/船控异常", "树木悬空"]
+  },
+  "remaining_defects": [
+    "Q01 must establish the actual root/visualRoot/bone/CharacterController/deck/island transform and tolerance table",
+    "swimming state and movement are observed in the current R31 standalone Player, but authored swim-pose quality remains partial",
+    "R31 native route is available, but final visual quality and formal resource acceptance remain open",
+    "RenderAuthoredPalms=false is containment, not the final vegetation repair",
+    "formal VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31 remains PARTIAL"
+  ],
+  "next_task": "Q01_REAUDIT_THEN_Q04",
+  "previous_reaudit_20260909": {
+    "run_id": "Q00_CURRENT_REAUDIT_Q05_A03_R31_20260909_210706",
+    "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+    "branch": "agent/publish-project-changes-20260813",
+    "worktree_preserved": true,
+    "unity_related_processes": 0,
+    "current_player": {
+      "path": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31.exe",
+      "build_options": "BuildOptions.None",
+      "exe_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "assembly_csharp_sha256": "FEBB28ECB7A89B624255214420768B0FA2E9E4DB9A5A7D2D34498E7260EB14FE",
+      "route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN83.json",
+      "scene": "InitialHarbor",
+      "real_os_input": true,
+      "player_started_and_entered_scene": true,
+      "movement_turning_swimming_ship_control": true,
+      "ship_displacement_m": 5.94788122177124,
+      "ship_heading_delta_degrees": 17.841796875,
+      "screenshots": 19,
+      "observations": 164,
+      "fatal_error": null
+    },
+    "test_and_visual_boundary": {
+      "python_full_regression": "1141/1141 PASS",
+      "d17_action_regression": "15/15 PASS",
+      "q26_a05_helm_pose": "1/1 PASS",
+      "current_visual_status": "PARTIAL",
+      "known_visual_defects": [
+        "imported rig remains neutral/formal action asset is unavailable",
+        "swimming silhouette and surface pose remain visibly low quality despite the bounded forearm/grounding fixes",
+        "ship steering contact is improved but not natural hand-to-wheel contact",
+        "floating/incorrect vegetation remains a resource and grounding concern"
+      ],
+      "vc_g01": "IN_PROGRESS",
+      "vc_g02": "LOCKED",
+      "vc_g03": "LOCKED",
+      "d31": "PARTIAL"
+    },
+    "reconciliation": [
+      "The R31 route supersedes the older R27 candidate for the current source/build relationship; it proves real OS input and read-only runtime state for the latest candidate.",
+      "R31 screenshots were produced and reviewed, but they do not pass the visual quality gate.",
+      "The user's four reported defects remain open or partial; no defect is upgraded to PASS from route presence alone."
+    ]
+  },
+  "current_reaudit": {
+    "run_id": "Q00_CURRENT_REAUDIT_PIPELINE_Q01_Q04_20260910_233046",
+    "worktree_snapshot": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 5246,
+      "tracked_changed": 411,
+      "untracked": 4835,
+      "cleanup_performed": false,
+      "target_unity_process_after_audit": 0
+    },
+    "current_source_build_relation": {
+      "player_build": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31.exe",
+      "player_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "player_data_assembly_sha256": "A67243C1922372973DA9BF6F41AC7A526E538F8705980852C7C6ECA591166E1B",
+      "exact_current_source_match": false,
+      "reason": "R31 executable/Data were produced before the 2026-09-10 D3 explicit smoke-gate change and VC-G01 HelmPoint test-contract update; current source must not inherit R31 as a current-build acceptance result.",
+      "source_changes_after_player_data": [
+        {
+          "path": "game/Assets/Scripts/Gameplay/D3/D3RuntimeSmokeProbe.cs",
+          "sha256": "36D3BD198035D61FAB78FF7A400F6454B928B90453F102DEB07EA78BE810DFEC",
+          "last_write_local": "2026-09-10T22:53:11.8283239+08:00",
+          "change": "ordinary InitialHarbor batchmode no longer installs the D3 smoke probe unless -d3Smoke is explicit"
+        },
+        {
+          "path": "game/Assets/Tests/EditMode/D19Interaction/VC_G01WorldLogicTests.cs",
+          "sha256": "2C9E8DAA58855A1820FD5DA395CE0EC38C14106EA4CFA5C468620F11AEE33019",
+          "last_write_local": "2026-09-10T23:05:53.6478469+08:00",
+          "change": "HelmPoint expectation aligned to the current scale-independent deck offset contract"
+        }
+      ]
+    },
+    "pipeline_editor_runtime_audit": {
+      "editor_version": "6000.0.80f1",
+      "project": "C:\\Users\\Administrator\\Desktop\\game\\first01\\game",
+      "pipeline_endpoint": "127.0.0.1:7800",
+      "ordinary_initial_harbor_playmode": "playing_after_18_seconds",
+      "d3_probe": "NO_D3_PROBE",
+      "scene_changed": false,
+      "visual_screenshot_acceptance": false
+    },
+    "runtime_snapshot": {
+      "ship_root": {
+        "name": "ph_ship_fishing",
+        "world_position": "(0.00, 0.00, -5.20)",
+        "lossy_scale": "(2.57, 2.57, 2.57)"
+      },
+      "ship_anchors": {
+        "spawn_local": "(0.00, 0.43, 0.97)",
+        "spawn_world": "(0.00, 1.10, -2.70)",
+        "disembark_local": "(0.00, 0.00, 1.75)",
+        "disembark_world": "(0.00, 0.00, -0.70)",
+        "visible_helm_world": "(0.00, 1.10, -7.02)",
+        "helm_wheel_world": "(0.00, 1.72, -6.35)",
+        "hull_collider_world_bounds": "(-2.25,-0.04,-12.40)..(2.25,0.80,-5.20)"
+      },
+      "player": {
+        "root": "D2_PlayerAvatar",
+        "world_position": "(0.00, 0.19, -2.70)",
+        "lossy_scale": "(1.00, 1.00, 1.00)",
+        "character_controller": {
+          "radius": 0.2424353,
+          "height": 1.8,
+          "skin_width": 0.01939483,
+          "center": "(0.00, 0.85, 0.00)",
+          "enabled_and_collision": true
+        },
+        "d2_state": {
+          "grounded": true,
+          "swimming": false,
+          "moving": false,
+          "water_surface_y": -0.02,
+          "movement_input_source": "D16InputRouter",
+          "legacy_fallback": false
+        },
+        "presentation": {
+          "ready": true,
+          "has_human_visual": true,
+          "ground_error": 0.0,
+          "direct_visual_root_writes": 0
+        },
+        "animation": {
+          "action": "Idle",
+          "pose_driver_mode": "Procedural",
+          "formal_animator_ready": false,
+          "procedural_pose_layer_ready_and_active": true,
+          "imported_skinned_rig_neutral_only": false,
+          "bone_binding_conflict": false,
+          "bound_bones_unique": true,
+          "imported_visual_action_motion": false,
+          "animator_component": "disabled; controller=D6CrewAnimator; parameter_count=0"
+        }
+      },
+      "vegetation_inventory": {
+        "renderer_name_matches": 65,
+        "approved_palm_runtime_gate": "RenderAuthoredPalms=false",
+        "sampled_scene_palm_parents": ["D19_R01_B_Nature_Approved"],
+        "floating_tree_reproduction": "NOT_CONFIRMED_BY_STATIC_PIPELINE_DATA",
+        "boundary": "renderer bounds and names alone do not prove a visible floating tree; Q20 remains PARTIAL/BLOCKED_ASSET"
+      }
+    },
+    "regression_evidence": {
+      "vc_g01_world_logic_editmode": "12/12 PASS",
+      "d17_action_quality_playmode": "15/15 PASS",
+      "q04_water_pipeline_playmode": "1/1 PASS",
+      "ordinary_playmode_compile_errors": "none observed in the connected audit",
+      "source_change_scope": "D3 probe gate and test-contract evidence only; no new production visual fix claimed"
+    },
+    "status_boundary": "Q00 remains VERIFIED only for pause-point/source-build/runtime-fact reconciliation. R31 is historical after source drift; visual quality remains PARTIAL; VC-G01=IN_PROGRESS, VC-G02/VC-G03=LOCKED and D31=PARTIAL."
+  },
+  "current_reaudit_20260911": {
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "final_editor_state": "ready; playMode=stopped"
+    },
+    "r7_player_evidence": {
+      "result": "game/tools/results/VISUAL-CLEAN/UNITY-CLI/UNITY_CLI_RUNTIME_QA_20260911_RESULT.json",
+      "build_id": "build_6cd0c3272cb4",
+      "build_guid": "6fbdbc5defdf4b5ea9ddcc71b2d733b4",
+      "player_sha256": "98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+      "dll_sha256": "81822A0D587DBA30E88F817115464A52497368B0937E34CEB9C5959444DBBAC3",
+      "build_errors": 0,
+      "build_warnings": 8,
+      "d29_q15": "1/1 PASS",
+      "d17_filtered": "21/21 PASS",
+      "player_error_console": 0,
+      "input_boundary": "Pipeline simulate_key/simulate_pointer injection; not physical keyboard/mouse acceptance"
+    },
+    "current_source_hashes": {
+      "HarborPauseController": "EBD4A7353C00841B3FAD5E107F58F9A6E948FEA2A365106F69638D4B130E7A29",
+      "D29InteractionHud": "07200B5506436E61F362B521BF661EA0C596C341F2B7FCD16A00254592F4F5F6",
+      "D7ControlCoordinator": "18EEA6B041042564932BEC23173FCBFAEAAEB8B1C61882596F00F5A671BDA723",
+      "D3RuntimeBootstrap": "6D7B0E14E4D96A15B6617DBF1FE17F388641A0303562F57D5A671F9E669AE02E",
+      "D10TavernSocialBootstrap": "68C8D905F732EFCF44F0CBB907E6FBF704BFFA3627F5199B8C7372C648581220",
+      "D9PortShipPreparationBootstrap": "A586B6AB978A90081341165B2A1C693833B3C9FA440D2720C10FFBE01FDEC020",
+      "D4RuntimeBootstrap": "189471F59CE6C065FEDC741CD9DC3329DBBB019EA5DCAFDABAE4B0DE48525A14"
+    },
+    "visual_capture_boundary": {
+      "capture_game_view": "NOT_AVAILABLE_NO_GPU: connected Editor runs -batchmode -nographics",
+      "editor_screenshot": "uniform_gray_not_usable; not visual evidence",
+      "formal_visual_status": "not upgraded"
+    },
+    "status_boundary": "Q00 remains VERIFIED only for pause-point/source-build/runtime-fact reconciliation; current R7 is a bounded control-plane result, not a full visual, physical-input or D31 acceptance."
+  },
+  "current_reaudit_20260911_q20_a02": {
+    "audit_time_local": "2026-09-11T02:16:00+08:00",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 8469,
+      "untracked_entries": 8057,
+      "cleanup_performed": false
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "final_editor_state": "ready; compiling=false; playMode=stopped"
+    },
+    "current_change_binding": {
+      "task": "Q20-A02",
+      "runtime_source": "game/Assets/Scripts/Gameplay/D26/D26HarborEnvironmentRuntime.cs",
+      "test_source": "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs",
+      "runtime_source_sha256": "EBAFA485E09E1AD41B4B7A41A1F04C712D28641582D75C73AEB3FEDFCF270C30",
+      "test_source_sha256": "0D50E8A751003624DB6E77F2A8465C4509002ABB7828C3DAFF847C3E3879671D",
+      "result": "game/tools/results/LOCAL-QUALITY/Q20-A02/RESULT.json"
+    },
+    "verification": {
+      "q26_full_playmode": "6/6 PASS",
+      "q21_static_editmode": "1/1 PASS",
+      "q22_static_editmode": "1/1 PASS",
+      "pipeline_recompile": "completed; failed=false; errors=[]",
+      "unity_error_console": 0
+    },
+    "status_boundary": "Q00 remains VERIFIED for current pause-point/source/build/evidence reconciliation. Q20-A02 is containment-only; Q20 remains PARTIAL/BLOCKED_ASSET, Q03 remains BLOCKED_ASSET, Q31 remains PARTIAL, VC-G01 remains IN_PROGRESS, and no visual screenshot or physical-keyboard acceptance was obtained."
+  },
+  "current_reaudit_20260911_r3_q01_q02": {
+    "audit_time_local": "2026-09-11T05:14:40+08:00",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 5256,
+      "tracked_diff_files": 413,
+      "untracked_entries": 4843,
+      "cleanup_performed": false
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "playmode_audit": "entered InitialHarbor PlayMode twice for read-only runtime samples; stopped after each sample",
+      "final_editor_state": "ready; compiling=false; playMode=stopped",
+      "error_console": 0
+    },
+    "current_source_and_test_evidence": {
+      "q01_live_runtime_sample": "game/tools/results/LOCAL-QUALITY/Q01/RESULT.json:current_live_playmode_audit_20260911_r3",
+      "q02_current_pipeline_reaudit": "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_PIPELINE_REAUDIT_20260911_RESULT.json",
+      "d2_editmode": "8/8 PASS",
+      "d17_action_quality_playmode": "15/15 PASS",
+      "q26_r3_playmode": "9/9 PASS",
+      "latest_python_full_regression": "1148/1148 PASS from Q26 R3 evidence"
+    },
+    "current_player_binding": {
+      "player": "game/tools/results/LOCAL-QUALITY/Q26/Q26_PIRATE_PORT_GROUNDING_CANDIDATE_R3.exe",
+      "player_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "build_log_sha256": "45EDC46DC563F44990216575C9FAC20CC49792CD2A16C9299F2E72D24383AF15",
+      "route_probe": "-d19-r03-route-rerun84",
+      "runtime_summary": "48 input steps, 19 screenshots, 167 observations, 70 moving, 123 swimming, 22 ship-control; clean close; fatal=null",
+      "visual_boundary": "bounded current Player route remains PARTIAL; screenshots show low-detail fallback character, upright swim pose and harbor geometry risks"
+    },
+    "task_board": {
+      "verified_with_scope": ["Q00", "Q01", "Q02", "Q02-A", "Q04", "Q05"],
+      "blocked": ["Q03", "Q08", "VC-G02", "VC-G03"],
+      "partial_or_in_progress": ["Q05-A", "Q20", "Q26", "Q31", "VC-G01", "D31"],
+      "next": "Keep Q03 BLOCKED_ASSET and Q08 BLOCKED_PREREQUISITE; select the next single-owner unblocked visual/quality card without repeating coordinate-only tuning."
+    },
+    "status_boundary": "Q00 VERIFIED remains limited to pause-point, source/build/runtime-fact and evidence reconciliation. It does not upgrade the local candidate, VC-G01, D31 or any visual defect to PASS."
+  },
+  "current_reaudit_20260911_q03_candidate_outfit": {
+    "audit_time_local": "2026-09-11T07:00:49+08:00",
+    "run_id": "Q00_CURRENT_REAUDIT_Q03_D20_CANDIDATEOUTFIT_20260911_070049",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 8709,
+      "tracked_status_entries": 414,
+      "untracked_entries": 8295,
+      "cleanup_performed": false,
+      "diff_shortstat": "414 files changed, 26887 insertions(+), 48068 deletions(-)"
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "recompile": "completed; failed=false; errors=[]",
+      "final_editor_state": "ready; playMode=stopped",
+      "error_console_after_stop": 0,
+      "eval_note": "First multi-statement eval was rejected by the command's return-expression grammar; no project state changed. The corrected return-expression samples completed successfully."
+    },
+    "source_build_relation": {
+      "formal_r31_player": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31.exe",
+      "formal_r31_relation": "stale_for_current_source; R31 predates the D20 candidate bridge/resource and latest candidate-only evidence",
+      "candidate_player": "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_PLAYER_R01.exe",
+      "candidate_relation": "built after the current D20 bridge/builder/test/resource changes; candidate-only runtime flag -d20Candidate",
+      "candidate_data_assembly_sha256": "A639388DF66BE23D53BF51599044D3E5EB415F6C6D01E7B237956527A8F372EF"
+    },
+    "current_source_hashes": {
+      "D2CharacterAnimationController": "773E6D13E147AA33E1CE20E7C17FB78CCAF8FE36B06CF1EBA1F0C4C08CEA0E61",
+      "D2RuntimeBootstrap": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+      "D7CharacterPresentationController": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+      "D20PlayerCandidatePresentationBridge": "B206CA47F040A182CE87498151EAE4E5A2BD6AD1D2DEBA76C97A1DDD8479EAA6",
+      "D20A02R02CandidateRuntimeBuilder": "D9794939BFF478B0380E37D77A914A5B027DAA54427DC8E95CFD2322F461546D",
+      "Q03D20CandidateIntegrationPlayModeTests": "CA3CE14C4D90FA36008CB1215000AD900D89E719C9C0B8F80EF024EA90A68BDD",
+      "candidate_prefab": "A9579CBBFEC2BF53D84F0F3035ED8D531C5E1005A68550BFC3D8DF48843DC99E",
+      "candidate_controller": "65E2351E3C7774B1D39C48E9AFDD361719D684B54DA2664D5D2CB242DDDB6A6E",
+      "candidate_player_exe": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "candidate_build_log": "59CCB5B8DB45B1F614DB0C7ED57EC516116B27277AF0974B9280119431EB59AF"
+    },
+    "connected_editor_runtime_sample": {
+      "scene": "InitialHarbor",
+      "player_root": "D2_PlayerAvatar found via FindFirstObjectByType; stable runtime sample",
+      "d2": "IsGrounded=true; IsSwimming=false; IsMoving=false; CurrentSpeed=0",
+      "animation": "PoseDriverMode=Procedural; FormalAnimatorReady=false; ProceduralPoseLayerActive=true",
+      "d7": "IsReady=true; HasHumanVisual=true; DirectVisualRootWriteCount=0",
+      "scope": "read-only connected Editor PlayMode sample; no scene/prefab/formal consumer mutation"
+    },
+    "tests_and_build": {
+      "candidate_playmode": "1/1 PASS",
+      "d20_a02_editmode": "6/6 PASS",
+      "player_build": "BuildOptions.None success; game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_R02_CANDIDATE_PLAYER_R01_BUILD.log",
+      "candidate_prefab_contract": "7 skinned renderers; 4 male-peasant outfit renderers rebound to the R02 Armature/root; formal source unchanged"
+    },
+    "native_player_smoke": {
+      "summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q03D20R02CANDIDATEOUTFIT_20260906.json",
+      "player_log": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_PLAYER_RUNTIME_INPUT_Q03D20R02CANDIDATEOUTFIT_20260906.log",
+      "client": "1920x1080",
+      "input_steps": 45,
+      "screenshots": 17,
+      "scene_marker": true,
+      "business_interaction_proof": true,
+      "pause_recovery_proof": true,
+      "probe_exists": false,
+      "movement_swimming_ship_far_reject_proof": false,
+      "fatal_error": null,
+      "clean_close": true,
+      "boundary": "RERUN85 probe was not recognized; no movement/swimming/ship/far-reject PASS inferred from input attempts or screenshots"
+    },
+    "visual_review": {
+      "status": "PARTIAL",
+      "evidence": "Latest candidate outfit frames improve color/readability but still show a low-detail raised/T-like pose, a pale duplicate/fallback figure in the boarding frame, and unresolved harbor geometry/layering",
+      "formal_visual_status": "not upgraded"
+    },
+    "task_board": {
+      "q00": "VERIFIED_WITH_SCOPE",
+      "q01": "VERIFIED_READ_ONLY",
+      "q02": "VERIFIED_WITH_SCOPE",
+      "q03": "BLOCKED_ASSET; candidate-only bridge PASS_WITHIN_SCOPE",
+      "q04": "VERIFIED_WITH_SCOPE",
+      "q05": "PARTIAL/logic evidence only; visual quality open",
+      "q20": "PARTIAL/BLOCKED_ASSET",
+      "q31": "PARTIAL; manual visual gate not passed",
+      "vc_g01": "IN_PROGRESS",
+      "vc_g02": "LOCKED",
+      "vc_g03": "LOCKED",
+      "next": "Q01 current read-only audit is refreshed; continue with the next single-owner executable card, starting Q03 formal action/Avatar asset contract or an evidence-backed Q05/Q20 owner card, without promoting the candidate bridge."
+    },
+    "status_boundary": "Q00 current audit confirms the latest source/build/evidence relationships and current runtime ownership. It does not inherit the stale R31 Player as current-source acceptance and does not upgrade Q03 formal, VC-G01, D31 or visual defects."
+  },
+  "current_reaudit_20260911_q26_a10_scene": {
+    "audit_time_local": "2026-09-11T07:59:53+08:00",
+    "run_id": "Q00_CURRENT_REAUDIT_Q26_A10_SCENE_20260911_075953",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 8716,
+      "tracked_status_entries": 417,
+      "untracked_entries": 8299,
+      "cleanup_performed": false,
+      "diff_shortstat": "417 files changed, 27169 insertions(+), 48080 deletions(-)"
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "initial_status": "ready",
+      "playmode_sample": "InitialHarbor entered; read-only object/state sample completed; editor_stop completed",
+      "final_status": "ready; compiling=false; playMode=stopped",
+      "error_console_after_stop": 0,
+      "expression_note": "Two read-only eval expressions referencing nonexistent members were rejected by the Pipeline expression compiler; no project state changed. The corrected object-position and state expressions completed successfully."
+    },
+    "runtime_snapshot": {
+      "scene": "InitialHarbor",
+      "player": "D2_PlayerAvatar position=(0.00,0.19,-2.70)",
+      "crew": "ph_crew_male position=(2.50,1.10,-2.95)",
+      "spawn_anchor": "D2_PlayerSpawnAnchor position=(0.00,1.10,-2.70)",
+      "d2": "grounded=true; swimming=false; speed=0; movement source remains D16InputRouter",
+      "d7": "ready=true; human visual=true; direct visual-root writes=0",
+      "animation": "PoseDriverMode=Procedural; FormalAnimatorReady=false",
+      "horizontal_spawn_to_crew_m": 2.5125,
+      "interaction_range_m": 3.5
+    },
+    "current_change_binding": {
+      "scene_source": "game/Assets/Scenes/InitialHarbor.unity",
+      "scene_sha256": "7CDFFBB6F7EDD41C0D79F6A6DCC09067C9364AF0175844517846E102B2A40650",
+      "test_source": "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs",
+      "test_sha256": "134EDBA929FB033E48A8AEF996A54043456871558F238674947B044543F90C68",
+      "result": "game/tools/results/LOCAL-QUALITY/Q26/Q26_CREW_ANCHOR_SEPARATION_REGRESSION_PIPELINE_20260911.json",
+      "q26_a10": "1/1 PASS; full Q26 10/10 PASS",
+      "player_relation": "Existing Q26/Q03 Player binaries predate the Q26/A10 scene transform; a fresh candidate build is required before using native screenshots as current-source evidence."
+    },
+    "task_board": {
+      "verified_with_scope": ["Q00", "Q01", "Q02", "Q02-A", "Q04", "Q05", "Q19"],
+      "blocked": ["Q03", "Q08", "Q20 resource admission", "VC-G02", "VC-G03"],
+      "partial_or_in_progress": ["Q05-A", "Q18", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q29", "Q30", "Q31", "VC-G01", "D31"],
+      "next": "Keep Q03 formal action/Avatar and Q20 ready-resource gates blocked; use the connected Pipeline for a fresh candidate build and then close one bounded Q18/Q21/Q26 evidence gap without promoting old Player binaries."
+    },
+    "status_boundary": "Q00 current audit is VERIFIED_WITH_SCOPE for current worktree, source/build relationship and runtime ownership only. It confirms the Q26/A10 scene change is live in the Editor, but it does not make the pre-change Player binaries current, does not prove native visual quality, and does not upgrade VC-G01, D31, Q03 or Q20."
+  },
+  "current_reaudit_20260911_a20_takeover": {
+    "audit_time_local": "2026-09-11T13:22:24+08:00",
+    "run_id": "Q00_CURRENT_TAKEOVER_A20_Q01_PIPELINE_20260911_132224",
+    "scope": "read-only takeover reconciliation after Q26/A20; no product source, scene, prefab or Player output changed by Q00",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 5287,
+      "tracked_status_entries": 419,
+      "untracked_entries": 4868,
+      "cleanup_performed": false,
+      "diff_shortstat": "419 files changed, 27439 insertions(+), 48101 deletions(-)",
+      "recent_commits": [
+        "01024cae Complete D18-D24 pure logic implementation",
+        "04630a7c feat(D19): complete full D19 port logic suite (D19-L01..L48 LOGIC_PASS) and documentation",
+        "068a48e1 D18-D20: 建立本地可玩资源与港口验证基线"
+      ]
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "initial_status": "ready",
+      "read_only_playmode_sample": "editor_play -> return-expression runtime samples -> editor_stop",
+      "final_status": "ready; compiling=false; playMode=stopped",
+      "error_console_after_stop": 0,
+      "eval_protocol_note": "Two initial expressions without the required return statement were rejected by the Pipeline evaluator; no project state changed. Return-expression samples then completed successfully."
+    },
+    "last_character_swimming_change": {
+      "source": "game/Assets/Scripts/Gameplay/CameraFollow.cs",
+      "scope": "swimming heading-follow presentation, manual mouse/right-stick handoff and finite camera pose guards",
+      "source_sha256": "6912B5608B031B1FAE0F084B25E7B4C37A7A3FBE6CE06EFBAF1707DC34DE8525",
+      "test": "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs::D17A16SwimmingCameraTracksHeadingUntilManualLookHandoff",
+      "test_sha256": "70A421CC8C93C03F7347D43BDF4833283D09070225AD8D7223FBACE572C17699",
+      "candidate_build": "game/tools/results/LOCAL-QUALITY/Q26/Q26_A20_SWIMMING_CAMERA_FINITE_GUARD_CANDIDATE_R1.exe",
+      "candidate_build_result": "game/tools/results/LOCAL-QUALITY/Q26/Q26_A20_SWIMMING_CAMERA_FINITE_GUARD_CANDIDATE_R1_BUILD_RESULT.json",
+      "build_id": "build_3bba5aaa08b8",
+      "player_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "assembly_csharp_sha256": "8EFA908F35650FF634EC87A5AFA22E5FD7DE899EB58501DECFF87537FF4A7E86",
+      "source_build_relation": "A20 build matches the recorded A20 source scope; the later Q26/A10 scene transform remains newer than earlier R2/R3 Players, so those older screenshots are not inherited as current-source evidence."
+    },
+    "latest_native_player_route": {
+      "result": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q26A20W1_20260906.json",
+      "route_flag": "-d19-r03-route-rerun92",
+      "evidence_mode": "real native Win32 keyboard/mouse events plus read-only route probe and screenshots",
+      "input_steps": 49,
+      "screenshots": 19,
+      "observations": 167,
+      "moving_observations": 68,
+      "swimming_observations": 119,
+      "ship_control_observations": 21,
+      "ship_max_displacement_m": 6.00153923034668,
+      "ship_max_heading_delta_degrees": 17.986114501953125,
+      "movement_swimming_ship_control_business_pause_interaction_matrix_clean_close": true,
+      "far_ship_reject_proof": false,
+      "fatal_error": null,
+      "visual_status": "IMPROVED_WITHIN_SCOPE_NOT_VISUAL_PASS",
+      "visual_boundary": "Screenshots still show low-detail/procedural character presentation, unresolved swim/helm contact quality and harbor geometry/shoreline risks; this route is runtime evidence, not VC-G01 completion."
+    },
+    "current_editor_runtime_snapshot": {
+      "scene": "InitialHarbor",
+      "player_root": "D2_PlayerAvatar world=(0.00,0.19,-2.70), lossyScale=(1.00,1.00,1.00)",
+      "visual_root": "HumanoidVisual localPosition=(0,0,0), localScale=(0.66,0.66,0.66), childCount=1, rendererCount=17",
+      "character_controller": "radius=0.2424353, height=1.8, center=(0,0.85,0), enabled=true",
+      "d2": "grounded=true, swimming=false, moving=false, CurrentSpeed=0, WaterSurfaceY=-0.02",
+      "d7": "IsReady=true, HasHumanVisual=true, GroundError=2.980232E-08, DirectVisualRootWriteCount=0",
+      "animation": "Action=Idle, PoseDriverMode=Procedural, FormalAnimatorReady=false, ProceduralPoseLayerActive=true, BoundBoneCount=8",
+      "ship": "ph_ship_fishing world=(0.00,0.00,-5.20), lossyScale=(2.57,2.57,2.57), HelmPoint=(0.00,0.96,-6.67)",
+      "anchors": "D2_PlayerSpawnAnchor=(0.00,1.10,-2.70), D2_DisembarkAnchor=(0.00,0.00,-0.70)",
+      "world": "D19_TerrainRoot=(0,0,0), D19_R03_IslandSurface=(0,0,0), WaterWaveSurface=(0,-0.02,0), DockGround=(-1.00,0.38,-9.30), GangplankGround=(-1.00,0.63,-6.30), ShoreBoundary.South=(0,1.05,-47.50)"
+    },
+    "task_board": {
+      "completed_with_scope": ["Q00 takeover reconciliation", "Q01 read-only root/scale/owner audit", "Q02/Q02-A source and writer contract", "A20 current-source build and route evidence"],
+      "in_progress": ["Q03 formal action/Avatar asset gate", "Q20 vegetation resource/ground-contact gate", "Q31/VC-G01 visual acceptance"],
+      "blocked": ["Q03=BLOCKED_ASSET", "Q08=BLOCKED_PREREQUISITE", "VC-G02=LOCKED", "VC-G03=LOCKED"],
+      "partial": ["Q05-A", "Q18", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q29", "Q30", "Q31", "VC-G01", "D31"],
+      "next": "Choose one executable single-owner card after Q01: preserve the Q03 formal asset block, or make a bounded Q20/Q21/Q26 source change only when it has a concrete root-cause and fresh Player build. Do not repeat coordinate-only tuning or promote old Player binaries."
+    },
+    "status_boundary": "Q00 is VERIFIED_WITH_SCOPE for current worktree, source/build/runtime reconciliation only. A20 route proves real Player interaction and finite camera safeguards within scope; it does not pass authored action, swimming pose, helm contact, vegetation grounding, VC-G01, VC-G02, VC-G03 or D31."
+  },
+  "current_reaudit_20260911_q03a08_d31p04": {
+    "audit_time_local": "2026-09-11T19:54:28+08:00",
+    "run_id": "Q00_CURRENT_REAUDIT_Q03_A08_D31_P04_PIPELINE_20260911_195428",
+    "scope": "read-only takeover/result reconciliation after Q03-A08; all existing dirty worktree changes preserved; no cleanup or reset",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 5330,
+      "tracked_status_entries": 438,
+      "untracked_entries": 4892,
+      "cleanup_performed": false,
+      "diff_shortstat": "438 files changed, 38615 insertions(+), 49156 deletions(-)"
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "recompile": "failed=false; errors=[]",
+      "builder": "Whalebone/D19 R03/Build Harbor Presentation",
+      "final_status": "ready; compiling=false; playMode=stopped",
+      "error_console_after_clear": 0,
+      "tests": {
+        "Q03-A08-D31-P04": "1/1 PASS",
+        "Q20": "1/1 PASS",
+        "Q21": "1/1 PASS",
+        "Q22": "1/1 PASS",
+        "Q23": "1/1 PASS",
+        "Q24": "3/3 PASS",
+        "Q25": "2/2 PASS",
+        "Q26": "10/10 PASS",
+        "full_editmode_post_a08": "623/623 PASS; failed=0; skipped=0; inconclusive=0; duration=73.46s"
+      },
+      "capture_boundary": "capture_game_view --source screen returned No GPU available (batchmode/headless); no post-fix screenshot PASS claimed"
+    },
+    "source_build_relation": {
+      "builder_sha256": "BD82D6E6AB1D089CA3CF087C5983E6172D94C32795E65FA054981D16577EB6E1",
+      "profile_test_sha256": "1A747EC56BE4E026F9770D60897FE640E0705EC0C95CAC34C4547F0909925390",
+      "prefab_sha256": "1F5C852D94087DF6AAE67CB50AF74C8C23C8B1BBC235147369B952DCCE22A52A",
+      "island_mesh_sha256": "37A04227E3C374498838E4498A38BA059A86F326784D68641E8C008908465320",
+      "profile_contract": "64 coastal segments; 6 vertices per segment; 2884 generated vertices; 1.35m outward shelf; shelf y=-0.24; bottom y=-0.42; R03_Sand edge material; D19_TerrainRoot remains the sole terrain owner"
+    },
+    "status_boundary": "Q00 remains VERIFIED_WITH_SCOPE for current worktree, source/build relationship and evidence reconciliation only. Q03-A08 is PASS_WITHIN_SCOPE for the geometry/test contract, but D31-P04 remains PARTIAL and VC-G01 remains IN_PROGRESS because the connected Editor has no GPU screenshot and other native visual defects remain."
+  },
+  "current_reaudit_20260911_q03a09": {
+    "audit_time_local": "2026-09-11T21:03:16+08:00",
+    "run_id": "Q00_CURRENT_REAUDIT_Q03_A09_PLAYER_PIPELINE_20260911_210316",
+    "scope": "current-source pause-point reconciliation after Q03-A09 native Player route; all dirty worktree changes preserved and no cleanup/reset/checkout performed",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 5330,
+      "tracked_status_entries": 438,
+      "untracked_entries": 4892,
+      "cleanup_performed": false,
+      "diff_shortstat": "438 files changed, 38616 insertions(+), 49156 deletions(-)"
+    },
+    "pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor_endpoint": "127.0.0.1:7800",
+      "editor_pid": 31416,
+      "unity_version": "6000.0.80f1",
+      "initial_status": "ready",
+      "final_status": "ready; compiling=false; playMode=stopped",
+      "error_console": 0,
+      "capture_boundary": "capture_game_view --source screen remains unavailable because the connected Editor reports No GPU available (batchmode/headless); no screenshot PASS is inferred from this limitation"
+    },
+    "current_source_hashes": {
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "B056E1FBD58803029E4DF61A4311EF3800123D0B48B0BAECE61E1416C723B1C8",
+      "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+      "game/Assets/Scripts/Gameplay/CameraFollow.cs": "6912B5608B031B1FAE0F084B25E7B4C37A7A3FBE6CE06EFBAF1707DC34DE8525",
+      "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+      "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "24F70E6CDBBC12E6F432BC832A25D568E5FE7BB476703030107DA04C8E5801AC",
+      "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "BD82D6E6AB1D089CA3CF087C5983E6172D94C32795E65FA054981D16577EB6E1",
+      "game/Assets/Editor/D19R03/D19R03PlayerBuilder.cs": "D3DCDF3C5432B388228CC7A962856482387A22DE14C7E3892C83133F2C25BBA7",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "70A421CC8C93C03F7347D43BDF4833283D09070225AD8D7223FBACE572C17699",
+      "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs": "A9A94D4BA4476D6C239BB73B14A200EF0A78008FAC7B5E9E0A6FE23A86EB92BA",
+      "game/Assets/Tests/EditMode/D19R03Q03A08ShorelineProfileTests.cs": "1A747EC56BE4E026F9770D60897FE640E0705EC0C95CAC34C4547F0909925390",
+      "tools/vc_g01_runtime_input_probe.ps1": "89586F2287DAC996C9EAD23D4EEBF7AB40CE2929EE89B6778FE32D607E855454"
+    },
+    "current_player_build": {
+      "build_id": "build_cd0734bfe4bb",
+      "player": "game/tools/results/LOCAL-QUALITY/Q03-A09/Q03_A09_CURRENT_PLAYER.exe",
+      "player_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "assembly_csharp_sha256": "A9072617F5B3432953027E93F43C8043787D04DDC74D62EE8CD8D693AC9E5064",
+      "build_result": "Succeeded; StandaloneWindows64; MainMenu, Bootstrap, InitialHarbor; 0 errors; 1 known Pipeline RuntimePipelineConfig warning",
+      "source_build_relation": "Assembly-CSharp and Player hashes are from the current-source Q03-A09 build; no Unity product source changed after that build in this audit"
+    },
+    "native_player_route": {
+      "summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q03A09_CURRENT_A08_ARCHIVEFIX_20260906.json",
+      "independent_probe_archive": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_ROUTE_PROBE_Q03A09_CURRENT_A08_ARCHIVEFIX_20260906.json",
+      "player_log": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_PLAYER_RUNTIME_INPUT_Q03A09_CURRENT_A08_ARCHIVEFIX_20260906.log",
+      "screenshots": "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q03a09_current_a08_archivefix_20260906/",
+      "route_start": "2026-09-11T20:37:42.139938+08:00",
+      "route_end": "2026-09-11T20:38:32.1930842+08:00",
+      "input_steps": 49,
+      "screenshots_count": 19,
+      "probe_observations": 166,
+      "moving_observations": 69,
+      "swimming_observations": 122,
+      "ship_control_observations": 21,
+      "ship_max_displacement_m": 5.9974632263,
+      "ship_max_heading_delta_degrees": 18.2392272949,
+      "business_pause_interaction_matrix_clean_close": true,
+      "far_ship_reject_proof": false,
+      "owner_not_ready_imt_window_covered": false,
+      "fatal_error": null,
+      "player_log_markers": "scene=true; boarded=true; disembarked=true; market=true; tavern=true; warehouse=true; pause_open=true; pause_resumed=true; graceful_close=true",
+      "visual_observation": "Fresh swimming frame shows the current low-poly/procedural human in a visibly weak horizontal/hovering pose with nearly straight legs and limited arm articulation; visual status remains not PASS"
+    },
+    "current_editor_runtime_audit": {
+      "scene": "InitialHarbor",
+      "player_root": "D2_PlayerAvatar world=(0.0000,0.1946,-2.7000), lossyScale=(1.0000,1.0000,1.0000)",
+      "visual_root": "HumanoidVisual world=(0.0000,0.1946,-2.7000), localPosition=(0,0,0), localScale=(0.6642,0.6642,0.6642), rendererCount=17",
+      "character_controller": "radius=0.242435m, height=1.800000m, center=(0.0000,0.8469,0.0000), enabled=true",
+      "d2": "grounded=true, swimming=false, moving=false, CurrentSpeed=0, WaterSurfaceY=-0.02",
+      "animation": "Action=Idle by current runtime route/log context; PoseDriverMode=Procedural; FormalAnimatorReady=false; ProceduralPoseLayerActive=true; BoundBoneCount=8",
+      "ship": "ph_ship_fishing world=(0.0000,0.0000,-5.2000), lossyScale=(2.5740,2.5740,2.5740); D7_HelmPoint=(0.0000,0.9600,-6.6700)",
+      "world": "D19_TerrainRoot=(0,0,0), active WaterWaveSurface=(0,-0.0196,0), DockGround=(-1.00,0.38,-9.30), GangplankGround=(-1.00,0.63,-6.30), ShoreBoundary.South=(0,1.05,-47.50)",
+      "legacy_palm_audit": "5 ph_palm_tree legacy objects; 25 legacy Renderer components; enabled legacy renderers=0 in the stopped InitialHarbor scene"
+    },
+    "non_visual_checks": {
+      "q02_current_source": "D2 animation EditMode 8/8 PASS; D17 Action Quality PlayMode 16/16 PASS; errors=[]",
+      "python_runtime_probe_tests": "6/6 PASS",
+      "python_d26_vegetation_tests": "4/4 PASS",
+      "powershell_probe_parse": "PASS",
+      "pipeline_tree_audit": "PASS within inventory scope"
+    },
+    "status_board": {
+      "completed_with_scope": ["Q00 current reconciliation", "Q01 read-only root/scale/owner/tolerance audit", "Q02/Q02-A current source and writer/lifecycle regression", "Q03-A09 current Player build and native route evidence"],
+      "in_progress": ["Q03 formal action/Avatar asset gate", "Q20 vegetation resource/ground-contact gate", "Q31/VC-G01 visual acceptance"],
+      "blocked": ["Q03=BLOCKED_ASSET", "Q08=BLOCKED_PREREQUISITE", "VC-G02=LOCKED", "VC-G03=LOCKED"],
+      "partial": ["Q05-A", "Q18", "Q20", "Q21", "Q22", "Q23", "Q24", "Q25", "Q26", "Q27", "Q28", "Q29", "Q30", "Q31", "VC-G01", "D31"],
+      "next": "Preserve Q03 BLOCKED_ASSET, do not perform coordinate-only tuning; next executable work must be a concrete single-owner source/resource fix with a fresh Player rebuild and route"
+    },
+    "status_boundary": "Q00 is VERIFIED_WITH_SCOPE for current worktree, source/build/runtime reconciliation only. The native route proves real input and business-path execution within scope; the fresh screenshot and logs do not pass formal action, swimming pose, helm contact, vegetation grounding, VC-G01, VC-G02, VC-G03 or D31."
+  },
+  "current_reaudit_20260911_q03a10": {
+    "audit_time_local": "2026-09-11T21:31:04+08:00",
+    "scope": "Q03-A10 current-source build and native Player evidence appended after the Q00/Q01/Q02 reconciliation",
+    "worktree_boundary": "Existing dirty worktree remains preserved; no reset, checkout, clean or broad cleanup was performed.",
+    "unity_pipeline": "Unity 6000.0.80f1, PID 31416, endpoint 127.0.0.1:7800, final ready/stopped",
+    "build": "build_b4b4570bffeb; 0 errors/8 warnings; Assembly-CSharp SHA=ECBE9AB97B10351EE5FBF6A48C773BCDB2F87FC97FFE74666882E1A9DD050409",
+    "runtime": "Q03-A10 RERUN100 archive; 49/49 native inputs, 19 screenshots, 164 observations, 69 moving, 120 swimming, 21 ship-control; movement/swimming/ship/business/interaction/pause/clean-close proofs true",
+    "visual_boundary": "Arm-forward fallback improvement is visible, but final action/swim/helm/grounding quality remains not passed; Q03/Q31/VC-G01 states are unchanged.",
+    "status_boundary": "Q00 remains VERIFIED_WITH_SCOPE for reconciliation only; this record does not promote VC-G01 or D31."
+  },
+  "status_boundary": "Q00 VERIFIED means the pause-point facts and evidence relationships are recorded; it does not upgrade VC-G01, D31, or the local candidate to complete.",
+  "current_reaudit_20260911_q03a11": {
+    "audit_time_local": "2026-09-11T23:09:05+08:00",
+    "run_id": "Q00_CURRENT_REAUDIT_Q03A11_20260911_230905",
+    "worktree": {
+      "branch": "agent/publish-project-changes-20260813",
+      "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+      "status_entries": 5331,
+      "tracked_status_entries": 439,
+      "untracked_entries": 4892,
+      "diff_shortstat": "439 files changed, 38641 insertions(+), 49119 deletions(-)",
+      "cleanup_performed": false
+    },
+    "unity_pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "editor": "6000.0.80f1",
+      "pid": 31416,
+      "endpoint": "127.0.0.1:7800",
+      "status": "ready",
+      "console_error_count_after_clear": 0,
+      "eval_timeout_boundary": "A broad active-scene eval timed out at the Pipeline 5s main-thread gate; a simple eval succeeded afterward. The timeout was captured, console was cleared with clear_console, and no project/source failure was inferred from it."
+    },
+    "current_source_manifest": {
+      "D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+      "D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+      "D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+      "D19R03HarborPresentationBuilder.cs": "B3EBA43045C7C19A3B4D0FD99C1C733E0F32FE8BC2192E5320FA3B23E08F3404",
+      "D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B",
+      "D19R03Q26GameplayDefectPlayModeTests.cs": "27A8ED88B3DED363FB84CDAEAD440E387E71BB03B29DE04E2B570688A5FA63D7",
+      "InitialHarbor.unity": "6B96E71AEAF611762C3DAF1756557A595BB3796A0934C6AE24C32517B55E9380",
+      "D19_R03_HarborPresentation.prefab": "7203DFD0D26145A04170B20FFCE34C91337442D06097515F4D08CC141A2F8F08",
+      "CameraFollow.cs": "6912B5608B031B1FAE0F084B25E7B4C37A7A3FBE6CE06EFBAF1707DC34DE8525"
+    },
+    "current_player_binding": {
+      "build_id": "build_3e69fa3e4248",
+      "player": "game/tools/results/LOCAL-QUALITY/Q03-A11/Q03_A11_CURRENT_PLAYER.exe",
+      "player_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "player_assembly_sha256": "9D26110965EBCDC068C29C76EA3AA08165F6D6E46907B4C400F2ADE21085BE3D",
+      "recorded_build_assembly_sha256": "5C55AF38CE3FCD08795503FE7D6DDBFDE1808C71BDA7470D3552E696D682D9AD",
+      "assembly_hash_boundary": "The executable's packaged Managed/Assembly-CSharp.dll and the current Library/ScriptAssemblies/Assembly-CSharp.dll are different files; the build result records the latter, while the packaged Player Data hash is recorded here. Do not collapse them into one hash.",
+      "scenes": ["MainMenu", "InitialHarbor"],
+      "build_errors": 0,
+      "build_warnings": 8
+    },
+    "latest_native_route_binding": {
+      "summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q03A11_SHIP_FORWARD_ALIGN_R3_20260906.json",
+      "probe_archive": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_ROUTE_PROBE_Q03A11_SHIP_FORWARD_ALIGN_R3_20260906.json",
+      "status": "INPUT_ATTEMPTED",
+      "evidence_mode": "real native Win32 keyboard/mouse events sent to the standalone Player; read-only probe and log observation",
+      "inputs": "48/48",
+      "screenshots": "19/19",
+      "observations": 167,
+      "moving": 69,
+      "swimming": 4,
+      "ship_control": 21,
+      "ship_displacement_m": 6.00572919845581,
+      "ship_heading_delta_deg": 18.37255859375,
+      "proofs": {
+        "movement": true,
+        "turning": true,
+        "swimming": true,
+        "ship_control": true,
+        "business_interaction": true,
+        "pause_recovery": true,
+        "interaction_matrix": true,
+        "far_ship_reject": false,
+        "owner_not_ready_reject": false,
+        "clean_close": true,
+        "fatal_error": null
+      }
+    },
+    "evidence_expiry": {
+      "stale": [
+        "Q05-A03/R31 and Q03-A10/A20 binaries are not the current build and cannot prove Q03-A11 source state."
+      ],
+      "current": [
+        "Q03-A11 build_3e69fa3e4248 and its R3 Win32 route are source/build-bound for the ship-axis fix."
+      ]
+    },
+    "status_board": {
+      "completed_with_scope": ["Q00 current reconciliation", "Q01/Q02 prior current-source audits", "Q03-A11 ship-axis source/build/runtime binding"],
+      "in_progress": ["VC-G01 visual/runtime acceptance", "D31-P04/S05/G06 environment quality", "Q31 final candidate gate"],
+      "blocked": ["Q03=BLOCKED_ASSET", "Q08=BLOCKED_PREREQUISITE", "VC-G02=LOCKED", "VC-G03=LOCKED"],
+      "next": "Select one concrete D31 environment/grounding owner or perform a formal Avatar/Animator asset audit; generate a fresh Player before interpreting new visual evidence."
+    },
+    "result_boundary": "Q00 is VERIFIED for current reconciliation only. It confirms which source/build/route is current and which older evidence is stale; it does not upgrade the local candidate, Q03, Q31, VC-G01, D31, VC-G02 or VC-G03."
+  },
+  "current_reaudit_20260912_q03a14": {
+    "audit_time_local": "2026-09-12T02:01:19+08:00",
+    "scope": "Current-source Q00 takeover audit after Q03-A14 formal Player build; read-only Unity Pipeline runtime sample plus current Q02/Q04 regression evidence",
+    "branch": "agent/publish-project-changes-20260813",
+    "head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+    "dirty_source_manifest": {
+      "status_lines": 9878,
+      "tracked_changed": 439,
+      "untracked": 9439,
+      "diff_shortstat": "439 files changed, 38539 insertions(+), 49120 deletions(-)",
+      "cleanup_performed": false,
+      "build_artifact_preserved": "game/tools/results/LOCAL-QUALITY/Q03-A14/"
+    },
+    "unity_pipeline": {
+      "package": "com.unity.pipeline@0.6.0-exp.1",
+      "unity_version": "6000.0.80f1",
+      "editor_pid": 31416,
+      "endpoint": "127.0.0.1:7800",
+      "final_status": "ready",
+      "compiling": false,
+      "domain_reload_in_progress": false,
+      "play_mode": "stopped",
+      "gpu_capture": "unavailable_in_headless_editor"
+    },
+    "live_editor_sample": {
+      "scene": "InitialHarbor",
+      "player_root": {
+        "position": "(0.00, 0.19, -2.70)",
+        "lossy_scale": "(1.00, 1.00, 1.00)",
+        "parent": "none",
+        "character_controller": "radius=0.2424, height=1.8000, center=(0.00,0.85,0.00)",
+        "grounded": true,
+        "swimming": false,
+        "moving": false,
+        "water_surface_y": -0.020
+      },
+      "animation": {
+        "action": "Idle",
+        "formal_animator_ready": false,
+        "pose_driver_mode": "Procedural",
+        "bound_bone_count": 8,
+        "bone_binding_conflict": false,
+        "bound_bones_unique": true,
+        "procedural_pose_layer_active": true,
+        "animator_pose_layer_active": false,
+        "imported_visual_action_motion_active": false
+      },
+      "ship_and_helm": {
+        "ship": "ph_ship_fishing position=(0.00,0.00,-5.20), lossyScale=(2.57,2.57,2.57)",
+        "helm": "D7_HelmPoint position=(0.00,0.96,-6.67), lossyScale=(2.57,2.57,2.57)",
+        "deck": "IsReady=true, HelmReady=true, PlayerBoarded=false, DeckCollisionReady=true, TransitionCount=0"
+      },
+      "bootstrap": "IsReady=true, RuntimePhaseTimingsComplete=true, CompletedRuntimePhaseCount=6"
+    },
+    "latest_code_and_build": {
+      "formal_consumer_result": "game/tools/results/LOCAL-QUALITY/Q03-A13/RESULT.json",
+      "formal_player_result": "game/tools/results/LOCAL-QUALITY/Q03-A14/RESULT.json",
+      "formal_player_build_id": "build_b70c492ca267",
+      "formal_player_path": "game/tools/results/LOCAL-QUALITY/Q03-A14/Q03_A14_FORMAL_PLAYER_R01.exe",
+      "formal_player_sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+      "source_hashes": {
+        "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+        "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+        "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "8D2FD05333C9CA79ED536C43076416987B27881DA0B9EBFD81F83294CBE967B5",
+        "game/Assets/Tests/PlayMode/Q03D20FormalPresentationPlayModeTests.cs": "93A18B243A8DC6B1C6FC6F617F181276A51820FE223DEFDB6B84E5A8A53A12D"
+      },
+      "default_consumer_boundary": "The default InitialHarbor path remains procedural; the formal D20 consumer is opt-in through -d20Formal and is not admitted by this audit."
+    },
+    "current_regression_evidence": {
+      "q02_animation_editmode": "8/8 PASS",
+      "d17_action_quality_playmode": "16/16 PASS in 50.13s",
+      "q04_water_cycle_included": "D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles PASS",
+      "formal_consumer_playmode": "1/1 PASS",
+      "formal_resource_contract_editmode": "2/2 PASS",
+      "d20_a02_editmode": "9/9 PASS",
+      "candidate_integration_playmode": "2/2 PASS",
+      "final_editor": "ready/stopped",
+      "cleared_console": true
+    },
+    "native_player_boundary": {
+      "started": false,
+      "physical_keyboard_input": false,
+      "screenshots": 0,
+      "reason": "Q03-A14 produced the exact-build artifact, but the connected Editor is headless/no-GPU and no isolated native Player control surface is available."
+    },
+    "status": "VERIFIED_WITH_SCOPE",
+    "next_task": "Q01_CURRENT_REAUDIT_20260912",
+    "status_boundary": "This takeover audit binds current source, current formal build, current Editor runtime facts and current logic regressions. It does not prove native Player input, rendered visual quality or completion of Q03/Q31/VC-G01/D31."
+  },
+  "current_reaudit_20260912_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_20260912_LUNA_R1_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "source_build_boundary": "Current working tree contains dirty runtime changes in D2/D7/Harbor/CameraFollow/D20 paths; the latest registered Player has no current per-file source manifest, so old Player evidence is not inherited as current-source visual acceptance.",
+    "worktree": "5361 status lines; 459 tracked/staged status lines; 4902 untracked status lines; git diff shortstat=459 files changed, 39556 insertions(+), 48895 deletions(-); no cleanup.",
+    "pipeline": "Unity 6000.0.80f1, com.unity.pipeline@0.6.0-exp.1, PID 31416, 127.0.0.1:7800; final ready/stopped; error console after clear=0; RuntimePipelineConfig enableInBuilds=false/port=0.",
+    "current_runtime": "D2_PlayerAvatar=(0.000,0.150,-2.700), unit root; HumanoidVisual localScale=0.6642; D2 grounded=true/swimming=false; Procedural/FormalAnimatorReady=false; ph_ship_fishing scale=2.574; HelmPoint and visible anchor=(0,1.100,-6.680).",
+    "regression_boundary": "D2 animation focused=8/8; D17 full run 1=15/16 with one D17A16 camera failure; isolated D17A16=1/1; D17 full run 2=16/16. The intermittent signal is recorded, not promoted to a stable failure or hidden.",
+    "watch_items": ["Q07/Q26 actual owner ambiguity resolved by Q26-A16; scoped R03 MeshCollider guard is now in place", "Q12/Q26-A20 D17A16 full-suite order/timing signal needs isolation", "Q03/Q20/Q31/VC-G01 visual gates remain open"]
+  },
+  "q26_a16_followup_20260912": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q26/Q26_A16_TERRAIN_OWNER_RUNTIME_REVALIDATION_20260912_RESULT.json",
+    "status": "PASS_WITHIN_SCOPE",
+    "finding": "The Q01 direct D19_TerrainRoot observation was a duplicate-name lookup ambiguity, not proof that the R03 authored MeshCollider was absent. Q26-A16 confirmed the scoped owner at D19_R03_HarborPresentation/D19_TerrainRoot and added a regression guard.",
+    "next_task": "Move from collision-owner revalidation to the next single owner-scoped action/avatar or swim/helm presentation defect; keep VC-G01 native visual status open."
+  },
+  "current_reaudit_20260913_pipeline_q03a16": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q03A16_20260913_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "worktree": "10263 status entries; 459 tracked; 9804 untracked; 459 files changed, 39874 insertions(+), 49192 deletions(-); no cleanup/reset/checkout",
+    "pipeline": "Unity 6000.0.80f1 / com.unity.pipeline@0.6.0-exp.1 / replacement PID 53332 / 127.0.0.1:7800 / ready-stopped / console=0 / runtime enableInBuilds=false port=0",
+    "source_build": "Q03-A16 R2 Player and Assembly hashes match its recorded result, and all three current Q03-A16 source hashes were rechecked",
+    "environment_boundary": "Previous PID 31416 ended after a D3D11 GPU timeout; same-project -nographics replacement was used. Q03/Q20/Q31/VC-G01/D31 visual and manual statuses remain open.",
+    "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913"
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_LUNA_R2_20260913_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "worktree": "10562 status entries; 459 tracked; 10103 untracked; git diff --shortstat=459 files changed, 40082 insertions(+), 49167 deletions(-); no cleanup/reset/checkout",
+    "pipeline": "Unity 6000.0.80f1 / com.unity.pipeline@0.6.0-exp.1 / PID 53332 / 127.0.0.1:7800 / final ready-stopped / error console query=0 / RuntimePipeline enableInBuilds=false port=0",
+    "current_runtime": "InitialHarbor direct eval: D2_PlayerAvatar=(0.0000,0.1497,-2.7000), unit root; HumanoidVisual localScale=0.6642 with 17 renderers; D2 grounded=true/swimming=false and MovementInputSource=D16InputRouter; default Procedural/FormalAnimatorReady=false; ph_ship_fishing scale=2.574; D7_HelmPoint and D7_VisibleHelmAnchor=(0,1.100,-6.680); scoped R03 MeshCollider enabled/non-trigger/shared=D19_R03_IslandSurfaceMesh",
+    "source_binding": "Current D2/D7/Harbor/OceanAdapter hashes are recorded in the Luna R2 child result. No old Player was promoted to current visual acceptance.",
+    "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2"
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q03A17_20260913_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "worktree": "5388 git status entries; 10138 git ls-files untracked files; 459 files changed, 40082 insertions(+), 49167 deletions(-); no cleanup/reset/checkout",
+    "pipeline": "Unity 6000.0.80f1 / com.unity.pipeline@0.6.0-exp.1 / PID 53332 / 127.0.0.1:7800 / one reachable same-project Editor / final ready-stopped / error console=0 / RuntimePipeline enableInBuilds=false port=0",
+    "source_build": "Q03-A17 D20 adapter/test hashes and exact Player build_21e1ee070799 EXE/Assembly hashes are bound in the child result; D2 default sources were rechecked and were not changed by Q03-A17",
+    "runtime": "InitialHarbor direct eval confirmed D2 root=(0.00,0.15,-2.70), unit scale, default Procedural/FormalAnimatorReady=false, D16InputRouter, ship scale=2.574 and scoped R03 MeshCollider owner",
+    "boundary": "Q03-A17 remains PARTIAL; Q03=BLOCKED_ASSET, Q20/Q31/VC-G01 remain open, VC-G02/VC-G03 remain locked; no native foreground input or final visual PASS inferred",
+    "next_task": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q03A17_20260913_R1"
+  },
+  "current_reaudit_20260913_q26a21_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q26A21_20260913_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "worktree": "5388 status entries; 459 tracked; 10138 untracked; 459 files changed, 40082 insertions(+), 49167 deletions(-); no cleanup/reset/checkout",
+    "pipeline": "Unity 6000.0.80f1 / com.unity.pipeline@0.6.0-exp.1 / PID 53332 / 127.0.0.1:7800 / final ready-stopped / error console=0 / RuntimePipeline enableInBuilds=false port=0",
+    "source_build": "Current D19 builder/prefab, D2 runtime and Q26-A21 test hashes were rechecked. Q31_Q26A19_HELM_WOOD_DEV_R1 exact Player is bound to Q26-A19 production source/prefab; Q26-A21 is a test-only change after that Player build and is not claimed as compiled into the binary.",
+    "runtime": "InitialHarbor current facts remain D2 root=(0.00,0.15,-2.70), unit physical root, default Procedural/FormalAnimatorReady=false, ship scale=2.574, helm anchors=(0,1.10,-6.68), scoped R03 MeshCollider owner; Q26-A21 hidden Player W route moved in Swimming state.",
+    "boundary": "Q26-A19/A21 are bounded PASS_WITHIN_SCOPE evidence only; Q03/Q20/Q31/VC-G01/D31 visual/manual gates remain open, VC-G02/VC-G03 remain locked, and no foreground physical input or human visual PASS is inferred.",
+    "next_task": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A21_20260913_LUNA_R1"
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "worktree": "459 tracked status entries; 10407 untracked files; 459 files changed, 40338 insertions(+), 49178 deletions(-); no reset/checkout/clean or broad cleanup",
+    "pipeline": "Unity 6000.0.80f1 / com.unity.pipeline@0.6.0-exp.1 / PID 53332 / 127.0.0.1:7800 / one reachable same-project Editor / final ready-stopped / RuntimePipeline enableInBuilds=false port=0",
+    "source_build": "Default current Player is Q26-A22 build_236bb62b66a6; EXE SHA256=D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE; Assembly-CSharp SHA256=50C6D5CC251BB8AB90DE99507F4BD3B6A708EAA34661BA7A65EC9CBDA7A90855. Q03-A17 formal route remains opt-in only with build_21e1ee070799 and is not the default visual route.",
+    "runtime": "Current InitialHarbor source sampled through connected Pipeline: D2 root=(0.00,0.15,-2.70), unit physical root, default Procedural/FormalAnimatorReady=false; ship scale=2.57; gameplay/visible helm=(0.00,1.10,-6.68); R03 MeshCollider owner is D19_R03_IslandSurfaceMesh; logical water=-0.02 and sampled visual wave=-0.06.",
+    "boundary": "Q00/Q01 current evidence is bounded source/build/runtime evidence only. Q03=BLOCKED_ASSET, Q20/Q26/Q31=PARTIAL, VC-G01=IN_PROGRESS, VC-G02/VC-G03=LOCKED; no foreground physical keyboard, compositor-visible screenshot, human visual acceptance, formal avatar/action admission or target-device performance PASS inferred.",
+    "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_q26a22_luna_q00": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q26A22_20260914_RESULT.json",
+    "status": "VERIFIED_WITH_SCOPE",
+    "worktree": "5390 status entries; 459 tracked changed; 4931 untracked; 459 files changed, 40339 insertions(+), 49178 deletions(-); no cleanup/reset/checkout/stash",
+    "pipeline": "Unity 6000.0.80f1 / com.unity.pipeline@0.6.0-exp.1 / PID 53332 / 127.0.0.1:7800 / final ready-stopped",
+    "source_build": "Current D2 animation SHA256=097D8210461C61C5BDFA365127D191865293040310539FEF92DC06AB90A66A42; current D2 runtime SHA256=0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029; default Q31 R4 Player build_824c76e4cc26 EXE SHA256=98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81 and Assembly-CSharp SHA256=6EBD285D9A70A88996E4E1D6CACD11EA04C4A880BF6A46A999DA6A2761DB822C",
+    "runtime": "After the bootstrap wait, InitialHarbor returned Character/Idle/Procedural, grounded=true, swimming=false, boundBones=8, renderers=17, skinned=0, UI navigation=false and move action=null. The early player-not-found sample was explicitly excluded.",
+    "boundary": "Q00 source/build/runtime reconciliation only. Q03=BLOCKED_ASSET, Q31=PARTIAL, VC-G01=IN_PROGRESS, VC-G02/VC-G03=LOCKED and D31 remains PARTIAL; no visual or foreground physical-input PASS inferred.",
+    "next_task": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A22_20260914"
+  },
+  "current_source_rebind_q29r9_q26a22_20260914_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q29R9_Q26A22_20260914_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q29R9_Q26A22_20260914_R1.log",
+    "status": "VERIFIED_WITH_SCOPE",
+    "source_build": "Current D2 runtime SHA256=3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A; Q26-A22 test SHA256=B604A367A1DE24D3C02251B8E3FB4D3E707CB5C099842A0274F1870BDE9F7F72; R1 build_abd8d26ad740 EXE/Assembly-CSharp hashes match the Q29 R9 current-source artifact.",
+    "runtime": "R1 hidden Player reached InitialHarbor through MainMenu pointer input; W/S changed position while navigation=false, move=<null>, selected=<none>; runtime error entries=0; clean close; final Editor ready/stopped and Runtime Pipeline enableInBuilds=false/port=0.",
+    "supersedes": "The prior Q00 current_reaudit entry recorded pre-Q26-A22 D2 runtime SHA256=0A0A17... and build_824c76e4cc26; those fields are stale for this source lineage and are not reused.",
+    "boundary": "Source/build/runtime reconciliation and input-owner diagnostic only; no foreground physical input, compositor screenshot or final visual acceptance.",
+    "next_task": "Continue Q31/VC-G01 bounded Player evidence, then return to formal action/avatar, swim/helm presentation, vegetation and performance gates."
+  },
+  "current_source_rebind_q03a23_20260914_r2": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260914_R2_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260914_R2.log",
+    "status": "VERIFIED_WITH_SCOPE",
+    "source_build": "build_099a228c638b; StandaloneWindows64; 0 errors / 8 warnings; EXE SHA256=D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE; Assembly-CSharp SHA256=1AE05D184A5B672C80305769E045F64BDCE86E708E43B42DCF3100BD8549A77E",
+    "current_source": "D2 animation=EF4683FC...A67581C2; D2 runtime=3D854D17...9A32F2B4A; D20 bridge=17CA9CB1...84C90917D; formal controller=92590FF7...2A37C927; formal prefab=3C8D698F...5015CCE9",
+    "runtime": "InitialHarbor connected Pipeline probe found D20 Formal Humanoid consumer, 7 candidate skinned renderers, 17 hidden fallback renderers, SwimmingVisualSupported=true, D2 physical root unparented/unit scale, UI navigation=false/move=null",
+    "regression": "D2 EditMode=8/8; D17 PlayMode=16/16; Q03D20 Formal PlayMode=2/2; Q03Formal EditMode=5/5; recompile failed=false/errors=[]",
+    "boundary": "Exact source/build/runtime binding only; no foreground physical keyboard, compositor screenshot, target-device performance or final visual acceptance",
+    "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  }
+}

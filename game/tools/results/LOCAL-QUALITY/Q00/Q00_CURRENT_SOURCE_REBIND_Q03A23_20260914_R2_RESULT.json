@@ -1,0 +1,103 @@
+{
+  "task": "Q00",
+  "title": "Current-source and exact Player rebind after Q03-A23",
+  "captured_at_local": "2026-09-14",
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "branch": "agent/publish-project-changes-20260813",
+  "worktree_boundary": {
+    "dirty_worktree_preserved": true,
+    "cleanup_commands": [],
+    "audit_snapshot": "11104 status entries before this evidence write; tracked=467; untracked=10637",
+    "note": "The count is an audit snapshot only. Existing tracked and untracked work was not staged, reset, checked out, cleaned or overwritten."
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "EF4683FC5050146FDA2382E0BAC7904E50F07809DECC7050C60E4C50A67581C2",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "17CA9CB1E9CACB1EF3A1917774A406EFA6D0432A098014E7B04703A84C90917D",
+    "game/Assets/Resources/D20/Formal/D20_PlayerAnimation.controller": "92590FF7FBC8D9265B51B1DCF139DAF68FAC494133D9D4BE2A614C0B2A37C927",
+    "game/Assets/Resources/D20/Formal/D20_R02_PlayerVisual_Male.prefab": "3C8D698FE1A008B3B43294D6F479F7D4423B11527D470F91A334C5B95015CCE9",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "85493325B12A4F6401129137E6BC970EE66EC19716ED8540ECE0BA98C0F3BA03",
+    "game/Assets/Tests/PlayMode/Q03D20FormalPresentationPlayModeTests.cs": "31F9C2E4C7DCF172C578EB0F8D1BD45A7705B52838B2BD4B61F615A0644F8FDA"
+  },
+  "exact_player_build": {
+    "build_id": "build_099a228c638b",
+    "platform": "StandaloneWindows64",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 8,
+    "output": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260914_R2.exe",
+    "total_size_bytes": 198190497,
+    "build_time_ms": 30343,
+    "artifacts": {
+      "exe": {
+        "bytes": 671744,
+        "sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE"
+      },
+      "Assembly-CSharp.dll": {
+        "bytes": 480256,
+        "sha256": "1AE05D184A5B672C80305769E045F64BDCE86E708E43B42DCF3100BD8549A77E"
+      },
+      "globalgamemanagers": {
+        "bytes": 493076,
+        "sha256": "9FAC276F190EC1EE1E766C71EAA984DFDEF42402F30313473122AFBF7AE59BCC"
+      },
+      "resources.assets": {
+        "bytes": 34587336,
+        "sha256": "DDB173985FF1F07221F442C5B11071B96811E6F843530AE5193DDCBCA2A7B4D6"
+      }
+    },
+    "binding_note": "This Player was built after the current production D2 animation/runtime and D20 default route were present. The D17 and Q03 test-only edits are not claimed to be in the Player binary; the production source binding is verified by the build artifact hashes."
+  },
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "editor_observation": "InitialHarbor opened and played through connected Pipeline; final state was ready/stopped with no new product error after the probe",
+    "runtime_pipeline_in_player": "disabled; enableInBuilds=false/port=0"
+  },
+  "current_runtime_probe": {
+    "scene": "InitialHarbor",
+    "player_found": true,
+    "d2_root": "D2_PlayerAvatar",
+    "d2_root_parent": null,
+    "d2_root_position": [0.0, 0.1497476, -2.7],
+    "d2_root_lossy_scale": [1.0, 1.0, 1.0],
+    "d2_action": "Idle",
+    "d2_pose_driver": "Procedural",
+    "d2_formal_animator_ready": false,
+    "d2_procedural_pose_active": true,
+    "d2_grounded": true,
+    "d2_swimming": false,
+    "d2_bound_bones": 8,
+    "d20_bridge_installed": true,
+    "d20_consumer_mode": "Formal",
+    "d20_humanoid_pose_adapter": true,
+    "d20_generic_path_adapter": false,
+    "d20_candidate_skinned_renderers": 7,
+    "hidden_previous_fallback_renderers": 17,
+    "d20_swimming_visual_supported": true,
+    "d20_installation_failure": "",
+    "ui_navigation_enabled": false,
+    "ui_move_action_bound": false,
+    "selected_ui": null,
+    "ship_position": [0.0, 0.0, -5.2],
+    "ship_uniform_scale": 2.573956,
+    "water_level": -0.02,
+    "harbor_collision_initialized": true,
+    "r03_surface_installed": true,
+    "harbor_collision_colliders": 9,
+    "harbor_collision_walkable": 3,
+    "harbor_collision_building": 4
+  },
+  "tests": {
+    "D2CharacterAnimationControllerTests": "8/8 PASS",
+    "D17ActionQualityPlayModeTests": "16/16 PASS; 0 failed/skipped/inconclusive; 53.22s",
+    "Q03D20FormalPlayMode": "2/2 PASS after current Humanoid-route assertion update",
+    "Q03FormalEditMode": "5/5 PASS",
+    "recompile": "failed=false; errors=[]"
+  },
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_boundary": "Q00 proves current source-to-Player binding and connected Pipeline runtime facts. It does not prove foreground Win32 input, compositor-visible screenshots, target-device performance, natural action quality, no-clipping, vegetation grounding or final VC-G01 visual acceptance.",
+  "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+}

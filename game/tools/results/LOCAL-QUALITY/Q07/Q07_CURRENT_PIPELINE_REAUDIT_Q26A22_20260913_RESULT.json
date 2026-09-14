@@ -1,0 +1,56 @@
+{
+  "task_id": "Q07",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source Harbor collision owners plus terrain/dock/gangplank bidirectional route",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q06"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q07_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1",
+  "audit_time_local": "2026-09-13T20:31:21+08:00",
+  "implementation": {
+    "owner": "HarborCollisionController",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "note": "Current-source verification after Q06/Q26-A22; the existing scoped collision owner and route contract still passes.",
+    "changed_files": []
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D19R03Q07BuildingCollisionPlayModeTests.cs": "A83611841A3F8CC84C6589F5BD85828A00E684D3375E5EB950F58A04BFD3D6E9",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD"
+  },
+  "checks": [
+    {
+      "name": "service_building_collision_owner",
+      "result": "PASS_WITHIN_SCOPE",
+      "command": "unity command run_tests --mode playmode --filter Whalebone.Tests.D19R03Q07.D19R03Q07BuildingCollisionPlayModeTests.R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries --filter_type testName --async_tests true",
+      "evidence": "Completed total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=2.7650275s; pipeline duration=2.96s."
+    },
+    {
+      "name": "terrain_dock_gangplank_route",
+      "result": "PASS_WITHIN_SCOPE",
+      "command": "unity command run_tests --mode playmode --filter Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps --filter_type testName --async_tests true",
+      "evidence": "Completed total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=5.0460624s; pipeline duration=5.29s."
+    },
+    {
+      "name": "post_run_editor_and_error_boundary",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Editor returned ready/stopped. Error query since seq=30424 returned entries=[]; no new error was observed for either Q07 test."
+    }
+  ],
+  "status_boundary": "Q07 remains PASS_WITHIN_SCOPE for the four service-building collision owners and the tested D19 terrain/dock/gangplank automated route. It does not prove every wall/slope/shore exit, visual-mesh contact, ship-deck route, foreground Win32 input, or VC-G01 visual acceptance.",
+  "visual_review": {
+    "result": "NOT_RUN",
+    "reason": "This card verifies collision ownership and bounded routes; no frame was used to claim visual contact or no穿模."
+  },
+  "next_task": "Q08_BLOCKED_THEN_Q09"
+}

@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Whalebone.Systems.D2;
 using Whalebone.Systems.D16;
 using Whalebone.Systems.Save;
 using Whalebone.Gameplay.D7;
+using Whalebone.Gameplay.UI;
 using Whalebone.Gameplay.UI.D16;
 
 namespace Whalebone.Gameplay.D2
@@ -23,7 +25,15 @@ namespace Whalebone.Gameplay.D2
             float turnRate = (type == null ? 6f : type.Turn) * 10f;
             _sailing = new SailingSystem(shipId, maxSpeed, turnRate);
             var location = GameState.CurrentPlayer == null ? null : GameState.CurrentPlayer.Location;
-            bool hasSavedOpenSea = location != null && location.Type == "open_sea";
+            // An open-sea snapshot is not a valid transform for the harbor
+            // presentation. InitialHarbor owns the authored berth position
+            // and heading; applying stale sea coordinates here placed the
+            // ship at the origin and left its visual hull across the player's
+            // only obvious route to the water. Keep the snapshot behavior for
+            // any non-harbor scene, while letting the harbor contract win when
+            // a saved voyage is reopened in this scene.
+            bool hasSavedOpenSea = SceneManager.GetActiveScene().name != "InitialHarbor" &&
+                location != null && location.Type == "open_sea";
             _sailing.ApplySnapshot(new SailingSnapshot
             {
                 PositionX = hasSavedOpenSea ? location.X : position.x,
@@ -51,7 +61,7 @@ namespace Whalebone.Gameplay.D2
         private void Update()
         {
             if (_sailing == null || _mode != D2ControlMode.Ship || Time.timeScale <= 0f ||
-                !D7ControlCoordinator.GameplayInputAllowed) return;
+                !D7ControlCoordinator.GameplayInputAllowed || !RuntimeHudCoordinator.PrimaryInputAllowed) return;
             float throttle = 0f;
             float rudder = 0f;
             if (D16InputRouter.IsPressed(D16InputAction.MoveForward)) throttle += 1f;

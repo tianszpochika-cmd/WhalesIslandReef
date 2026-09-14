@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Whalebone.Agent;
 using Whalebone.Gameplay.Harbor;
+using Whalebone.Gameplay.UI;
 using Whalebone.Gameplay.UI.Dialogue;
 using Whalebone.Gameplay.D7;
 using Whalebone.Systems.D2;
@@ -84,7 +85,8 @@ namespace Whalebone.Gameplay.D2
 
         private void Update()
         {
-            if (_player == null || Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed) return;
+            if (_player == null || Time.timeScale <= 0f || !D7ControlCoordinator.GameplayInputAllowed ||
+                !RuntimeHudCoordinator.PrimaryInputAllowed) return;
             if (_dialogue != null && _dialogue.IsOpen) return;
             if (D16InputRouter.WasPressedThisFrame(D16InputAction.CameraCycle) && _cameraFollow != null)
             {
@@ -244,7 +246,11 @@ namespace Whalebone.Gameplay.D2
                   _ship.transform.forward * 0.25f;
             if (_character != null) _character.SetWorldPosition(deckPosition);
             else _player.transform.position = deckPosition;
-            _player.transform.rotation = _ship.transform.rotation;
+            // R03's visible helm is authored on the berth-side of the stable
+            // gameplay point. Keep the player facing the wheel rather than
+            // staring along the travel axis; the ship root still owns the
+            // authoritative course and the player remains a child of it.
+            _player.transform.rotation = _ship.transform.rotation * Quaternion.Euler(0f, 180f, 0f);
             SetMode(D2ControlMode.Ship);
             if (_character != null) _character.PlayTransition(D2CharacterAction.Boarding);
             Hint = "已上船：W/S 前进或减速，A/D 转向；当前视角：" + CurrentViewLabel() + "；F3 切换视角；按 E 下船";
@@ -292,6 +298,16 @@ namespace Whalebone.Gameplay.D2
             position = Vector3.zero;
             if (_ship == null) return false;
 
+            // R03 在稳定船根下声明岸上出口。优先使用作者锚点，避免把
+            // “最近的合法射线命中”误当作可见船体外的安全位置。
+            var authoredAnchor = _ship.transform.Find("D2_DisembarkAnchor");
+            if (authoredAnchor != null &&
+                TryResolveSafeDisembarkCandidate(authoredAnchor.position, _ship.transform.position, out position))
+            {
+                Debug.Log("[D2/Control] 使用作者下船锚点：" + position);
+                return true;
+            }
+
             Vector3 forward = _ship.transform.forward;
             forward.y = 0f;
             forward = forward.sqrMagnitude < 0.001f ? Vector3.forward : forward.normalized;
@@ -310,31 +326,87 @@ namespace Whalebone.Gameplay.D2
 
             float nearest = float.PositiveInfinity;
             bool found = false;
-            for (int i = 0; i < candidates.Length; i++)
+            // The ship-root origin is a last-resort fallback only. In the R03
+            // berth it is also the market-sign corridor, so selecting it as
+            // the nearest walkable hit places the player inside presentation
+            // props even though the raycast technically found valid ground.
+            // Prefer an explicit offset from the ship and retain the origin
+            // only when no offset surface can be resolved.
+            for (int pass = 0; pass < 2 && !found; pass++)
             {
-                RaycastHit[] hits = Physics.RaycastAll(
-                    candidates[i] + Vector3.up * 8f,
-                    Vector3.down,
-                    16f,
-                    Physics.DefaultRaycastLayers,
-                    QueryTriggerInteraction.Ignore);
-
-                for (int j = 0; j < hits.Length; j++)
+                int candidateCount = pass == 0 ? candidates.Length - 1 : candidates.Length;
+                for (int i = 0; i < candidateCount; i++)
                 {
-                    var hit = hits[j];
-                    if (!IsSafeDisembarkSurface(hit.collider))
+                    Vector3 resolved;
+                    if (!TryResolveSafeDisembarkCandidate(candidates[i], origin, out resolved))
                         continue;
 
-                    float distance = Vector3.SqrMagnitude(hit.point - origin);
+                    float distance = Vector3.SqrMagnitude(resolved - origin);
                     if (distance >= nearest) continue;
 
                     nearest = distance;
-                    position = hit.point + Vector3.up * 1.1f;
+                    position = resolved;
                     found = true;
                 }
             }
 
             return found;
+        }
+
+        private bool TryResolveSafeDisembarkCandidate(Vector3 candidate, Vector3 origin, out Vector3 position)
+        {
+            position = Vector3.zero;
+            RaycastHit[] hits = Physics.RaycastAll(
+                candidate + Vector3.up * 8f,
+                Vector3.down,
+                16f,
+                Physics.DefaultRaycastLayers,
+                QueryTriggerInteraction.Ignore);
+
+            float nearest = float.PositiveInfinity;
+            bool found = false;
+            for (int i = 0; i < hits.Length; i++)
+            {
+                var hit = hits[i];
+                if (!IsSafeDisembarkSurface(hit.collider) || IsInsideShipPresentation(hit.point))
+                    continue;
+
+                float distance = Vector3.SqrMagnitude(hit.point - origin);
+                if (distance >= nearest) continue;
+                nearest = distance;
+                position = hit.point + Vector3.up * 1.1f;
+                found = true;
+            }
+
+            return found;
+        }
+
+        private bool IsInsideShipPresentation(Vector3 surfacePoint)
+        {
+            if (_ship == null) return false;
+
+            // The visible R03 ship is intentionally larger than the D6 hull
+            // safety collider. A ground ray can therefore be valid while the
+            // camera/character still lands inside a sail or hull mesh. Treat
+            // active ship render bounds as presentation clearance only; the
+            // D6 collider remains the gameplay collision owner.
+            var renderers = _ship.GetComponentsInChildren<Renderer>(true);
+            const float horizontalPadding = 0.65f;
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                var renderer = renderers[i];
+                if (renderer == null || !renderer.enabled || !renderer.gameObject.activeInHierarchy)
+                    continue;
+
+                var bounds = renderer.bounds;
+                if (surfacePoint.x >= bounds.min.x - horizontalPadding &&
+                    surfacePoint.x <= bounds.max.x + horizontalPadding &&
+                    surfacePoint.z >= bounds.min.z - horizontalPadding &&
+                    surfacePoint.z <= bounds.max.z + horizontalPadding)
+                    return true;
+            }
+
+            return false;
         }
 
         private bool IsSafeDisembarkSurface(Collider collider)
@@ -372,6 +444,11 @@ namespace Whalebone.Gameplay.D2
                 if (shipDeck != null) shipDeck.RecordControlTransition(mode);
             }
             if (_character != null) _character.SetInputEnabled(mode == D2ControlMode.Character);
+            if (_player != null)
+            {
+                var animation = _player.GetComponent<D2CharacterAnimationController>();
+                if (animation != null) animation.SetShipControlActive(mode == D2ControlMode.Ship);
+            }
             if (_shipController != null) _shipController.SetControlMode(mode);
             if (_cameraFollow != null)
             {

@@ -1,0 +1,104 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "current_takeover_source_build_pipeline_and_evidence_reconciliation",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q00_CURRENT_TAKEOVER_PIPELINE_Q03A16_20260913",
+  "audit_time_local": "2026-09-13T01:16:43+08:00",
+  "changed_files": [
+    "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_Q03A16_20260913_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_PIPELINE_20260913_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q02/Q02_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q00.md",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q01.md",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q02/Q02.md",
+    ".workbuddy/memory/2026-09-13.md"
+  ],
+  "worktree": {
+    "status_entries": 10263,
+    "tracked_status_entries": 459,
+    "untracked_entries": 9804,
+    "diff_shortstat": "459 files changed, 39874 insertions(+), 49192 deletions(-)",
+    "cleanup_performed": false,
+    "reset_or_checkout_performed": false,
+    "existing_changes_preserved": true
+  },
+  "pipeline": {
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "unity_version": "6000.0.80f1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "final_status": "ready",
+    "final_play_mode": "stopped",
+    "compiling": false,
+    "domain_reload_in_progress": false,
+    "runtime_pipeline_enable_in_builds": false,
+    "runtime_pipeline_port": 0,
+    "editor_console_after_clear": 0,
+    "launch_mode": "batchmode+nographics",
+    "gpu_fault_recovery": "The previous Editor PID 31416 terminated after a D3D11 device reset/GPU timeout. A same-project replacement PID 53332 was started with -nographics and reached ready before Q02 testing."
+  },
+  "source_build_binding": {
+    "q03_a16_result": "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2_RESULT.json",
+    "player_build_id": "build_d87c4e4b5265",
+    "player": "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2.exe",
+    "player_sha256": "98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly": "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2_Data/Managed/Assembly-CSharp.dll",
+    "assembly_sha256": "69345D2453AF034D9A92374F6848E92752C0D02CE37FAA737EF0A5AA09DA3921",
+    "source_hashes_verified_against_registered_result": {
+      "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "ACD844107459437E7412C9E35F101A7686317EFA069CD2BE2218DA8CC2DC3B83",
+      "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs": "2E6F87217850AAA36B642CD7B457F7770526863A5266BE6E51910D07297EFA53",
+      "game/Assets/Tests/PlayMode/Q03D20FormalHumanoidPosePlayModeTests.cs": "DC2643C5895847C5FFD5729164A8DFAD0DF10BDAD97845DD5D4A20B4941C9114"
+    },
+    "correspondence": "PASS_WITHIN_SCOPE: the current three Q03-A16 source hashes equal the hashes recorded by the R2 result, and the R2 executable/Data hashes equal the same result. This binds the artifact; it does not make the opt-in route the default consumer."
+  },
+  "checks": [
+    {
+      "name": "dirty_worktree_and_branch_audit",
+      "result": "PASS",
+      "evidence": "git status --short --untracked-files=all counted 10263 entries (459 tracked, 9804 untracked); git diff --shortstat reported 459 files changed, 39874 insertions and 49192 deletions; branch and HEAD match the recorded values; no cleanup/reset/checkout was performed."
+    },
+    {
+      "name": "single_unity_editor_and_runtime_safety",
+      "result": "PASS_WITH_SCOPE",
+      "evidence": "Only same-project Unity Editor PID 53332 is running; no Q03-A16 Player or runtime descriptor is active after its clean shutdown. Pipeline settings are restored to enableInBuilds=false and port=0."
+    },
+    {
+      "name": "current_pipeline_health",
+      "result": "PASS_WITH_SCOPE",
+      "evidence": "editor_status returned ready/compiling=false/domainReloadInProgress=false/playMode=stopped and get_console_logs after clear returned total=0."
+    },
+    {
+      "name": "last_character_and_swim_change_correspondence",
+      "result": "PASS_WITH_SCOPE",
+      "evidence": "Q03-A16 R2 result, source hashes, Windows Player SHA256 and Assembly-CSharp SHA256 were re-read and matched. The R2 hidden Player evidence records formal Humanoid swim state and helm measurements; it remains opt-in diagnostic evidence."
+    },
+    {
+      "name": "historical_evidence_boundary",
+      "result": "PASS",
+      "evidence": "Older R31/A20/Q03-A14 artifacts were not promoted. Only the exact Q03-A16 R2 artifact is treated as current for the formal opt-in route; default InitialHarbor, visual quality, physical foreground keyboard and manual acceptance remain open."
+    }
+  ],
+  "task_board": {
+    "completed": [
+      "Q00 current takeover audit and source/build relation check",
+      "Q01 current connected-Editor transform/owner/tolerance sample",
+      "Q02 current D2 animation owner/lifecycle regression rerun"
+    ],
+    "in_progress": [
+      "Q03 formal action/avatar admission and default-consumer decision",
+      "Q20 vegetation resource/pivot/ground-contact gate",
+      "Q31 and VC-G01 visual/manual gate"
+    ],
+    "blocked": [
+      "Q03 remains BLOCKED_ASSET because the 15 formal clips are still genericRoot-only",
+      "VC-G02 and VC-G03 remain LOCKED by dependency",
+      "Final foreground physical keyboard and user-perspective visual acceptance are not replaced by Pipeline injection"
+    ],
+    "next": "Q04 current water-owner revalidation, then Q05/Q06/Q08 dependency checks; choose one concrete owner for any product change and rebuild an exact Player before reusing native evidence."
+  },
+  "status_boundary": "Q00 is VERIFIED_WITH_SCOPE for current workspace, source/build correspondence, Pipeline health and takeover facts only. It does not claim the game is finished, Q03/Q20/Q31/VC-G01/D31 is complete, or that prior low-quality visuals are fixed."
+}

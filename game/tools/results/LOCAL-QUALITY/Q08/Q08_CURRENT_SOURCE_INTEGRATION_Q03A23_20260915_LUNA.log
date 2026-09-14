@@ -1,0 +1,36 @@
+Q08_CURRENT_SOURCE_INTEGRATION_Q03A23_20260915_LUNA
+date=2026-09-15 timezone=Asia/Shanghai
+branch=agent/publish-project-changes-20260813
+source_head=dc1f8713e6a2f4a939a277502a1d868e031e4847
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor_pid=88228 endpoint=127.0.0.1:7800 final=ready/stopped
+
+COMMAND recompile
+RESULT failed=false errors=[]
+
+COMMAND unity command run_tests --project-path game --mode editmode --filter Q03Formal --filter_type testName --async_tests true --timeout 300
+RESULT total=5 passed=5 failed=0 skipped=0 inconclusive=0
+
+COMMAND unity command run_tests --project-path game --mode playmode --filter Q03D20Formal --filter_type testName --async_tests true --timeout 300
+RESULT total=2 passed=2 failed=0 skipped=0 inconclusive=0
+
+COMMAND unity command run_tests --project-path game --mode playmode --filter D17ActionQualityPlayModeTests --filter_type testName --async_tests true --timeout 300
+INTERIM first_run total=16 passed=14 failed=2
+INTERIM failures=D17A15 cycle6 S delta=0.0000493574044m; D17A16 swimming-camera alignment=0.974285424
+ACTION CameraFollow first-swim-frame and significant-automatic-heading snap behavior retained; no D2/input/contract/AgentCore changes
+INTERIM targeted=D17A16=1/1; integrated-to-swimming-camera sequence=1/1
+INTERIM second_full_run total=16 passed=15 failed=1; D17A15 cycle8 S delta=0.0000968070308m
+INTERIM isolation=A12->A15=1/1; A13->A15=1/1
+FINAL total=16 passed=16 failed=0 skipped=0 inconclusive=0 duration=86.34s
+
+COMMAND unity command console --project-path game --level error --tail 100
+RESULT entries=[] dropped=false
+COMMAND unity command clear_console --project-path game
+RESULT cleared=true
+COMMAND unity status --project-path game --format json
+RESULT ready=true compiling=false domainReloadInProgress=false playMode=stopped pid=88228
+
+STATUS PASS_WITHIN_SCOPE
+BOUNDARY Current code-level integration evidence only. No compositor-visible final visual, foreground Win32 physical-input, target-device performance, no-clipping, vegetation-grounding, VC-G01 or Q31 final acceptance claim.
+NEXT SAFE PAUSE BEFORE Q09 AND Q31_NATIVE_VISUAL_GATE

@@ -1,0 +1,49 @@
+{
+  "task_id": "Q06",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_InitialHarbor_jump_grounded_and_small_step_motion",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q02", "Q04"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q06_CURRENT_PIPELINE_REAUDIT_20260913",
+  "audit_date_local": "2026-09-13",
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "0611046BFACA003A2748370A13E46F6655F45FB34DCB1474354D12287386D38F"
+  },
+  "protocol": {
+    "tool": "Unity Pipeline com.unity.pipeline@0.6.0-exp.1",
+    "editor": "Unity 6000.0.80f1",
+    "editor_pid": 53332,
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "operation": "run_tests mode=playmode filter=D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite filter_type=testName async_tests=true; poll test_status until completed",
+    "test_status_file": "game/Temp/pipeline_test_status.json"
+  },
+  "checks": [
+    {
+      "name": "ten_jump_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Completed Pipeline status: total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=13.8529193s; total duration=13.95s."
+    },
+    {
+      "name": "grounded_diagonal_and_reverse_small_steps",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A09 exercises positive, diagonal, lateral and reverse small-step ApplyPhysicsMotion paths and asserts grounded, non-swimming and finite Transform state."
+    },
+    {
+      "name": "terrain_collision_boundary",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The current scene collision owner and D2 movement path remain active; no collider was disabled and no threshold was widened for this run."
+    },
+    {
+      "name": "post_run_editor_health",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Editor final status was ready, compiling=false, domainReloadInProgress=false, playMode=stopped; Console was explicitly cleared after the run."
+    }
+  ],
+  "status_boundary": "Q06 remains VERIFIED only for repeated jump/grounded and small-step movement stability in InitialHarbor. This evidence does not prove dedicated wall, slope, shoreline, gangplank or ship-deck collision routes, native Player keyboard input or visual mesh contact.",
+  "next_task": "Q07_CURRENT_PIPELINE_REAUDIT_20260913"
+}

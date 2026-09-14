@@ -68,7 +68,15 @@ namespace Whalebone.Gameplay.UI
         private void Update()
         {
             if (D7ControlCoordinator.EscapeHandledThisFrame) return;
-            if (D16InputRouter.WasPressedThisFrame(D16InputAction.Pause))
+            // Temporary runtime panels (warehouse/market/tavern and other D16
+            // modal surfaces) own Escape while they are open.  This guard is
+            // intentionally placed at the actual pause consumer so input
+            // ordering cannot leak one Escape press into a global pause.
+            if (!_paused && !RuntimeHudCoordinator.PrimaryInputAllowed) return;
+            // D16 是可重绑定主入口；legacy Esc 是独立 Windows Player 的
+            // 兼容兜底，与 D7/D29/D10/D3 的默认键盘路径保持一致。
+            if (D16InputRouter.WasPressedThisFrame(D16InputAction.Pause) ||
+                Input.GetKeyDown(KeyCode.Escape))
                 TogglePause();
         }
 

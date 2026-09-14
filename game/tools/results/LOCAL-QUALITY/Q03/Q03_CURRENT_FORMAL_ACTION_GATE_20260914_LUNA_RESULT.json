@@ -1,0 +1,54 @@
+{
+  "task_id": "Q03",
+  "run_id": "Q03_CURRENT_FORMAL_ACTION_GATE_20260914_LUNA",
+  "status": "BLOCKED_ASSET",
+  "status_scope": "formal_current_rig_action_admission_gate",
+  "captured_at_local": "2026-09-14T09:06:18+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready",
+    "play_mode": "stopped"
+  },
+  "changed_files": [],
+  "asset_hashes": {
+    "game/Assets/Animations/D20/Player/D20_PlayerAnimation.controller": "922052C445FDF62722BCD5972FBEC3EB4C9CDCA0D8EF684373D1065623B1037B",
+    "game/Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerVisual_Male.prefab": "4362CA912216D2379DCC4D18443A9EBB0748FAF5042F463F88849BDDBAFC451D",
+    "game/Assets/Art/Candidates/CharactersAnimals/GapFill/PlayerAppearance/ProjectOwned/R03/Avatars/D18_R03_A01_PlayerHumanoidMale.asset": "8D7D90C5EEC7BF9808E9A76ED383B160D3D88AE8EFEC8DC9AEF0B8F236C8CD54",
+    "game/Assets/Resources/D20/Formal/D20_PlayerAnimation.controller": "922052C445FDF62722BCD5972FBEC3EB4C9CDCA0D8EF684373D1065623B1037B",
+    "game/Assets/Resources/D20/Formal/D20_R02_PlayerVisual_Male.prefab": "CCAFB4EDE191955F25B1D41865598E0F5232A11F4D66562BF23B7FB1E5BB29C5",
+    "game/Assets/Resources/D20/Candidate/D20_PlayerAnimation.controller": "922052C445FDF62722BCD5972FBEC3EB4C9CDCA0D8EF684373D1065623B1037B",
+    "game/Assets/Resources/D20/Candidate/D20_R02_PlayerVisual_Male.prefab": "C533F6C768B76F34FF34586FD57E8D0494D518A8144A957AEE8930527E67FDBE"
+  },
+  "checks": [
+    {
+      "name": "Q03FormalActionAdmissionGateTests",
+      "result": "PASS_AS_BLOCKED_GATE",
+      "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "runtime_marker": "formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15",
+      "generic_clip_names": [
+        "D20_Player_Idle", "D20_Player_Walk", "D20_Player_Run", "D20_Player_Jump", "D20_Player_Fall", "D20_Player_Land", "D20_Player_Interact", "D20_Player_Talk", "D20_Player_Carry", "D20_Player_Fish", "D20_Player_Board", "D20_Player_Disembark", "D20_Player_Helm", "D20_Player_Hit", "D20_Player_Recover"
+      ]
+    },
+    {
+      "name": "Q03FormalAvatarActionResourceContractTests",
+      "result": "PASS_WITHIN_SCOPE",
+      "summary": {"total": 2, "passed": 2, "failed": 0, "skipped": 0, "inconclusive": 0},
+      "finding": "The audited formal appearance exposes a valid Humanoid Avatar/action interface and the candidate generic path resolves its curves, but the action clips themselves remain generic-only for admission."
+    }
+  ],
+  "formal_consumer_boundary": {
+    "default_initial_harbor_consumer": 0,
+    "default_pose_driver": "Procedural",
+    "default_formal_animator_ready": false,
+    "candidate_or_formal_opt_in": "explicit only; not registered as default",
+    "swimming_clip": "not admitted as authored formal action"
+  },
+  "status_boundary": "The formal action gate is intentionally BLOCKED_ASSET because all 15 audited clips report humanMotion=0 and genericRoot=15. Passing the gate test means the guard is working; it does not mean the formal action asset is acceptable. No formal consumer admission, visual PASS, foreground input PASS, or VC-G01 upgrade is allowed.",
+  "next_task": "Q04_CURRENT_WATER_OWNER_REAUDIT"
+}

@@ -18,14 +18,15 @@ namespace Whalebone.Gameplay.D3
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
-            if (Application.isBatchMode && !HasArgument("-d4Smoke") && !HasArgument("-d5Smoke"))
-            {
-                // 正式 Player 的首场景是 MainMenu。D3 冒烟探针只属于 InitialHarbor，
-                // 不应在普通 batchmode 启动时等待港口对象并把正常退出判成失败。
-                if (string.Equals(SceneManager.GetActiveScene().name, "InitialHarbor",
-                    System.StringComparison.Ordinal))
-                    new GameObject("D3RuntimeSmokeProbe").AddComponent<D3RuntimeSmokeProbe>();
-            }
+            if (!Application.isBatchMode || !HasArgument("-d3Smoke") ||
+                HasArgument("-d4Smoke") || HasArgument("-d5Smoke")) return;
+
+            // 正式 Player 的首场景是 MainMenu。D3 冒烟探针只属于 InitialHarbor，
+            // 且必须由 D3 smoke runner 显式启用；普通 batchmode/Editor Play Mode
+            // 不应等待港口对象并把正常会话主动退出判成失败。
+            if (string.Equals(SceneManager.GetActiveScene().name, "InitialHarbor",
+                System.StringComparison.Ordinal))
+                new GameObject("D3RuntimeSmokeProbe").AddComponent<D3RuntimeSmokeProbe>();
         }
 
         private static bool HasArgument(string argument)

@@ -1,0 +1,49 @@
+{
+  "task_id": "Q07",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_collision_owner_and_automated_terrain_dock_gangplank_route",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q06"],
+  "audit_time_local": "2026-09-13T23:08:15+08:00",
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "compiling": false,
+    "domain_reload_in_progress": false
+  },
+  "tests": [
+    {
+      "filter": "R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries",
+      "full_name": "Whalebone.Tests.D19R03Q07.D19R03Q07BuildingCollisionPlayModeTests.R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 1.9401197
+    },
+    {
+      "filter": "D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps",
+      "full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 2.997678
+    }
+  ],
+  "protocol": "Each filter was run serially with unity command run_tests --mode playmode --async_tests true --timeout 300 and polled through completed test_status.",
+  "source_hashes_current": {
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Tests/PlayMode/D19R03Q07BuildingCollisionPlayModeTests.cs": "A83611841A3F8CC84C6589F5BD85828A00E684D3375E5EB950F58A04BFD3D6E9",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "checks": {
+    "service_building_harbor_owned_boundaries": "PASS_WITHIN_SCOPE",
+    "terrain_dock_gangplank_bidirectional_steps": "PASS_WITHIN_SCOPE",
+    "error_console_since_seq_33835": 0,
+    "production_code_changed": false
+  },
+  "boundary": "This result proves the active HarborCollision owner for the four service-building boundaries and the smaller automated bidirectional terrain/dock/gangplank route. It does not prove every shore/slope, visual mesh contact, ship-deck/boarding route, native Player WASD, compositor screenshot quality, target-device performance or VC-G01 acceptance.",
+  "next_task": "Q08_BLOCKED_THEN_Q09"
+}

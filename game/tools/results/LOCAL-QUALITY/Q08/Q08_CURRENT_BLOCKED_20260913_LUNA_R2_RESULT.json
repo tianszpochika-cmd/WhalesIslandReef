@@ -1,0 +1,34 @@
+{
+  "task_id": "Q08",
+  "status": "BLOCKED",
+  "status_scope": "action_integration_checkpoint",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q03", "Q05", "Q07"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q08_CURRENT_BLOCKED_20260913_LUNA_R2",
+  "audit_time_local": "2026-09-13T13:20:00+08:00",
+  "changed_files": [
+    "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_BLOCKED_20260913_LUNA_R2_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q08/RESULT.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q08/Q08.md",
+    "game/tools/results/LOCAL-QUALITY/STATUS.md",
+    "docs/game/LOCAL_QUALITY_REMAINING_PLAN.md",
+    ".workbuddy/memory/2026-09-13.md"
+  ],
+  "blocker_code": "BLOCKED_PREREQUISITE",
+  "blocker": "Q03 remains BLOCKED_ASSET: current formal clips report humanMotion=0 and genericRoot=15, and the default InitialHarbor formal consumer remains disabled/0. A complete input-to-state-to-motion-to-pose integration claim would overstate the neutral-only path.",
+  "dependency_snapshot": {
+    "q03": "BLOCKED_ASSET; no legal current-rig ground/action resource or auditable bone-axis adapter admitted",
+    "q05": "PASS_WITHIN_SCOPE; current D17A08 whole-visual-root tilt/restore and physics-root separation",
+    "q07": "PASS_WITHIN_SCOPE; current building collision owner and terrain/dock/gangplank route tests"
+  },
+  "decision": "No Q08 integration test was run. Running it against neutral-only or generic diagnostic motion would not be valid acceptance evidence.",
+  "unblock_conditions": [
+    "Provide a current-rig-compatible ground/action clip set, or an auditable Avatar/bone-axis adapter with source and import evidence.",
+    "Re-run Q08 action-state, movement, swim and grounding integration tests against the same source/build evidence.",
+    "Keep native Player visual/input evidence separate; Q31 remains the visual/manual gate."
+  ],
+  "status_boundary": "Q08 is blocked, not failed and not passed. The block does not prevent independent Q09 work.",
+  "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2"
+}

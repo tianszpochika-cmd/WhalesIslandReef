@@ -1,0 +1,76 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "current_takeover_source_build_pipeline_and_evidence_reconciliation",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q00_CURRENT_TAKEOVER_PIPELINE_LUNA_R2_20260913",
+  "audit_time_local": "2026-09-13T13:06:14+08:00",
+  "changed_files": [
+    "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_PIPELINE_LUNA_R2_20260913_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_PIPELINE_LUNA_R2_20260913_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q00/RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q01/RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q04/RESULT.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q00.md",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q01.md",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q04/Q04.md",
+    "game/tools/results/LOCAL-QUALITY/STATUS.md",
+    "docs/game/LOCAL_QUALITY_REMAINING_PLAN.md",
+    ".workbuddy/memory/2026-09-13.md"
+  ],
+  "worktree": {
+    "status_entries": 10562,
+    "tracked_entries": 459,
+    "untracked_entries": 10103,
+    "diff_shortstat": "459 files changed, 40082 insertions(+), 49167 deletions(-)",
+    "cleanup_performed": false,
+    "reset_or_checkout_performed": false,
+    "existing_changes_preserved": true
+  },
+  "pipeline": {
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "unity_version": "6000.0.80f1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "launch_mode": "batchmode+nographics",
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "protocol": "open_scene -> editor_play -> targeted eval -> editor_stop",
+    "final_status": "ready",
+    "final_play_mode": "stopped",
+    "compiling": false,
+    "domain_reload_in_progress": false,
+    "editor_error_console": 0,
+    "runtime_pipeline_enable_in_builds": false,
+    "runtime_pipeline_port": 0,
+    "gpu_boundary": "The connected Editor is a headless/no-graphics diagnostic surface; it is not foreground Player visual acceptance."
+  },
+  "current_source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4"
+  },
+  "live_editor_sample": {
+    "scene": "InitialHarbor",
+    "player": "D2_PlayerAvatar position=(0.0000,0.1497,-2.7000), parent=none, lossyScale=(1,1,1)",
+    "visual": "HumanoidVisual localScale=(0.6642,0.6642,0.6642), rendererCount=17",
+    "d2": "grounded=true, swimming=false, moving=false, currentSpeed=0.0000, waterSurfaceY=-0.0200, movementInputSource=D16InputRouter",
+    "animation": "PoseDriverMode=Procedural, FormalAnimatorReady=false, ProceduralPoseLayerActive=true, BoundBonesAreUnique=true, BoneBindingConflict=false",
+    "ship": "ph_ship_fishing position=(0,0,-5.2), lossyScale=(2.574,2.574,2.574); D7_HelmPoint and D7_VisibleHelmAnchor=(0,1.1,-6.68)",
+    "terrain": "scoped R03 D19_TerrainRoot MeshCollider enabled=true, isTrigger=false, sharedMesh=D19_R03_IslandSurfaceMesh; duplicate legacy TerrainCollider disabled",
+    "water": "WaterWaveSurface active at y=-0.0504 in this sample; D2 logical waterSurfaceY=-0.0200; visible and logical water remain separate owners"
+  },
+  "reconciliation": {
+    "q00": "Current source/worktree and connected Editor state were rechecked; no stale Player was promoted to current visual acceptance.",
+    "q01": "The same live sample confirms the physical/visual owner boundary and the remaining formal animation asset gap.",
+    "q04": "A fresh current-source water-owner run was required because the prior Q04 child result referenced an older D2RuntimeBootstrap hash."
+  },
+  "status_boundary": "Q00 is verified only for current takeover reconciliation. It does not upgrade Q03, Q20, Q31, VC-G01, D31, VC-G02 or VC-G03, and it does not prove foreground physical input or final visual quality.",
+  "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2"
+}

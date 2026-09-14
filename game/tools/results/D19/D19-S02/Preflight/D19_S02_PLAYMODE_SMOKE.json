@@ -1,10 +1,11 @@
 {
     "scene_loaded": true,
     "integration_root": true,
+    "r03_presentation_loaded": true,
     "dev_overlay_default_off": true,
     "water_surface_y": 0.0,
     "stable_anchor_count": 6,
-    "grounded_anchor_count": 6,
+    "grounded_anchor_count": 1,
     "navmesh_anchor_count": 6,
     "route_anchor_ids": [
         "D2_PlayerAvatar",
@@ -13,5 +14,17 @@
         "building_tavern_santa_margarita",
         "building_shipyard_santa_margarita",
         "building_saint_marys_dock"
-    ]
+    ],
+    "runtime_route_anchor_count": 6,
+    "runtime_grounded_anchor_count": 6,
+    "runtime_navmesh_anchor_count": 6,
+    "runtime_route_anchor_ids": [
+        "D2_PlayerAvatar",
+        "building:market_santa_margarita",
+        "building:warehouse_santa_margarita",
+        "building:tavern_santa_margarita",
+        "building:shipyard_santa_margarita",
+        "anchor.dock.primary"
+    ],
+    "legacy_coordinate_grounded_anchor_count": 1
 }

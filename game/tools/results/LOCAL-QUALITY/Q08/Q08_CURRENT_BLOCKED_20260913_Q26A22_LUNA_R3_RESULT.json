@@ -1,0 +1,65 @@
+{
+  "task_id": "Q08",
+  "status": "BLOCKED",
+  "status_scope": "formal_action_integration_checkpoint",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q03", "Q05", "Q07"],
+  "audit_time_local": "2026-09-13T23:10:31+08:00",
+  "implementation": {
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "decision": "Do not run the Q08 integration suite while the Q03 formal action admission gate is closed."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_info_marker_seq": 34292,
+    "console_error_since_seq_34289": 0
+  },
+  "source_hashes": {
+    "game/Assets/Tests/EditMode/D20A02/Q03FormalActionAdmissionGateTests.cs": "FFC52558B25DBFC0C562F371E9DA754499F5B4E6331337A4747138F324A48530",
+    "game/Assets/Animations/D20/Player/D20_PlayerAnimation.controller": "922052C445FDF62722BCD5972FBEC3EB4C9CDCA0D8EF684373D1065623B1037B",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs": "FE8E0156353319E8590767DC4A837AA7687BD4C8FFD3946698587FAB143859C7",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "checks": [
+    {
+      "name": "formal_action_admission_gate",
+      "result": "PASS_WITHIN_SCOPE",
+      "test_filter": "FormalActionAdmissionRemainsClosedForGenericOnlyController",
+      "full_name": "D20.Tests.A02.Q03FormalActionAdmissionGateTests.FormalActionAdmissionRemainsClosedForGenericOnlyController",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 0.1063687,
+      "marker": "formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15; genericOnlyClipNames=15 generic D20 clips"
+    },
+    {
+      "name": "q05_dependency",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Current Q05 D17A08=1/1 PASS for whole-visual-root tilt/restore and physics-root separation only."
+    },
+    {
+      "name": "q07_dependency",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Current Q07 building collision owner and D17A10 route each=1/1 PASS within their bounded scopes."
+    },
+    {
+      "name": "q08_integration",
+      "result": "BLOCKED_PREREQUISITE",
+      "evidence": "Not run. Neutral-only/generic diagnostic motion cannot be promoted to input-to-state-to-motion-to-pose integration while Q03 admission is closed."
+    }
+  ],
+  "blocker_code": "BLOCKED_PREREQUISITE",
+  "blocker": "Q03 formal action admission remains closed: all 15 current formal clips report humanMotion=0 and genericRoot=15; no current-rig authored ground-action set or auditable bone-axis adapter has been admitted to the default InitialHarbor consumer.",
+  "unblock_conditions": [
+    "Provide a current-rig-compatible authored ground-action clip set, or an auditable Avatar/bone-axis adapter with import/source evidence.",
+    "Re-run the current Q08 action-state, movement, swim and grounding integration suite against the same source/build boundary.",
+    "Keep Q31 native Player physical input and visual acceptance separate from this logic gate."
+  ],
+  "status_boundary": "Q08 is blocked, not failed and not passed. Q05/Q07 bounded sub-contracts do not combine into formal action integration evidence.",
+  "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+}

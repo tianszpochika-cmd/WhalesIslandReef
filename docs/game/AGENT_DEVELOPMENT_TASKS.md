@@ -4,9 +4,13 @@
 >
 > 本文件是 D18—D24 **逻辑任务**编号、依赖和并行顺序入口。实际工作范围在各章节的任务卡中；逻辑状态由 [逻辑任务状态总览](LOGIC_TASK_STATUS.md) 自动汇总。
 >
+> D25—D31 视觉与交互 Runtime 路线已独立建立，入口为 [视觉与交互开发工作文档](VISUAL_DEVELOPMENT_WORK_PLAN_D25_D31.md)，状态见 [视觉任务状态看板](VISUAL_TASK_STATUS_D25_D31.md)。D25—D31 不重开旧 D19-Rxx/D20-Axx 任务，也不改变本文件中 D18—D24 逻辑任务状态。
+>
 > D16/D17 剩余发布门禁是另一条轨，编号为 `D16-Cxx` / `D17-Cxx`，入口在 [第 9B 章任务卡](AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATES.md) 与 [详细提示词](AGENT_DEVELOPMENT_CHAPTER_09B_D16_D17_GATE_PROMPTS.md)；状态由 [门禁任务状态总览](GATE_TASK_STATUS.md) 汇总。不要把 `GATE_*` 写进本文件的逻辑看板。
 
 ## 使用规则
+
+> 2026-09-08 当前 Runtime 执行补充：[本地高质量剩余计划](LOCAL_QUALITY_REMAINING_PLAN.md)。用户已暂停旧执行并授权按 Q00—Q35 细分剩余质量工作；先核对最后未验证补丁。该计划不重开 D18—D24 逻辑任务，不提前升级 D25—D31 / VC / 发布门禁。
 
 - `P`：同波并行。仅当每项任务的写入范围不同才可同时交给不同 Agent。
 - `S`：串行唯一写者。必须在所有前置任务 `LOGIC_PASS` 后开始。

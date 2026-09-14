@@ -1,0 +1,25 @@
+{
+  "task_id": "Q04",
+  "run_id": "Q04_CURRENT_PIPELINE_REAUDIT_20260912",
+  "audit_time_local": "2026-09-12T02:00:43+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": "Unity Pipeline connected Editor PID 31416 at 127.0.0.1:7800, Unity 6000.0.80f1",
+  "test_filter": "D17ActionQualityPlayModeTests",
+  "test": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+  "summary": "D17ActionQualityPlayModeTests completed with total=16, passed=16, failed=0, skipped=0, inconclusive=0 in 50.13s; D17A07 was Passed with duration 8.4459547s.",
+  "water_contract": {
+    "surface_source": "OceanAdapter",
+    "surface_y": -0.020,
+    "shallow_cycles": 10,
+    "deep_cycles": 10,
+    "non_zero_swimming_displacement": true,
+    "grounded_recovery": true
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B"
+  },
+  "boundary": "This revalidates the D2 water-state owner in the current InitialHarbor source. It does not prove native Player W/S input, authored swim pose quality, water material correctness, or VC-G01 visual acceptance.",
+  "next_task": "Q05 swim-pose contract only after Q03 formal asset boundary is resolved"
+}

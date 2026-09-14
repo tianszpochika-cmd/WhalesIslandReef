@@ -1,8 +1,9 @@
 // ============================================================
 // D7CharacterPresentationController —— 角色视觉落地与朝向稳定层
 //
-// CharacterController 负责真实碰撞，Animator 负责动作；本类只把视觉
-// 网格底部校准到碰撞体底部，避免模型脚底悬空或动作曲线把角色抬离地面。
+// CharacterController 负责真实碰撞，D2 动作控制器负责视觉根提交；本类只
+// 测量视觉网格与碰撞体的落地误差，并把校准偏移交给 D2，避免第二个组件
+// 在 LateUpdate 直接改写同一个 visualRoot。
 // ============================================================
 
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace Whalebone.Gameplay.D7
     {
         private Transform _visualRoot;
         private CharacterController _body;
+        private D2CharacterController _character;
+        private D2CharacterAnimationController _animation;
         private bool _calibrated;
         private float _nextCalibration;
         private bool _loggedReady;
@@ -23,6 +26,8 @@ namespace Whalebone.Gameplay.D7
         public bool HasHumanVisual { get; private set; }
         public float GroundError { get; private set; }
         public int CalibrationCount { get; private set; }
+        public bool UsesAnimationGroundingContract => _animation != null;
+        public int DirectVisualRootWriteCount { get; private set; }
 
         private void Awake()
         {
@@ -35,8 +40,19 @@ namespace Whalebone.Gameplay.D7
             // 为玩家添加 CharacterController 的同一帧先创建本组件。不要把 Awake
             // 时的瞬时缺失永久缓存成“未就绪”，否则表现层不会校准脚底和动作。
             if (!IsReady) TryBindRuntimeParts();
+            if (_animation == null) _animation = GetComponent<D2CharacterAnimationController>();
+            if (_character == null) _character = GetComponent<D2CharacterController>();
+            // A CharacterController can still report a stale physical contact
+            // for one frame after D2 has entered water. Ground calibration in
+            // that frame adds a land offset to the swimming presentation and
+            // makes the Player appear to float or split at the shoreline.
             if (!IsReady || _body == null || !_body.enabled || !_body.isGrounded ||
-                Time.unscaledTime < _nextCalibration) return;
+                (_character != null && _character.IsSwimming))
+            {
+                _animation?.ClearVisualGroundingOffset();
+                return;
+            }
+            if (Time.unscaledTime < _nextCalibration) return;
             _nextCalibration = Time.unscaledTime + 0.18f;
             CalibrateVisualGrounding();
         }
@@ -44,6 +60,8 @@ namespace Whalebone.Gameplay.D7
         private void TryBindRuntimeParts()
         {
             if (_body == null) _body = GetComponent<CharacterController>();
+            if (_character == null) _character = GetComponent<D2CharacterController>();
+            if (_animation == null) _animation = GetComponent<D2CharacterAnimationController>();
             if (_visualRoot == null)
                 _visualRoot = transform.childCount == 0 ? transform : transform.GetChild(0);
 
@@ -69,15 +87,25 @@ namespace Whalebone.Gameplay.D7
             GroundError = bounds.min.y - bodyBottom.y;
 
             // 只有明显悬空/穿地才修正，保留 Animator 的轻微呼吸和步态 bob。
-            if (!_calibrated || Mathf.Abs(GroundError) > 0.08f)
-            {
-                Vector3 correction = Vector3.down * GroundError;
-                _visualRoot.localPosition += transform.InverseTransformVector(correction);
-                CalibrationCount++;
-                _calibrated = true;
-                Debug.Log("[D7/Character] 视觉落地已校准：error=" + GroundError.ToString("F3") +
-                          "，calibrations=" + CalibrationCount);
-            }
+            // D7 只负责测量；D2 未就绪时等待下一帧绑定，绝不直接写 visualRoot。
+            if (_animation == null || (_calibrated && Mathf.Abs(GroundError) <= 0.08f))
+                return;
+
+            Vector3 correction = Vector3.down * GroundError;
+            // D7 owns the measurement, while D2 owns the visual-root
+            // Transform write. This keeps grounding and action pose in
+            // one deterministic submission instead of accumulating a
+            // second localPosition writer in LateUpdate.
+            _animation.SetVisualGroundingOffsetWorld(correction);
+            CalibrationCount++;
+            _calibrated = true;
+            Debug.Log("[D7/Character] 视觉落地已校准：error=" + GroundError.ToString("F3") +
+                      "，calibrations=" + CalibrationCount);
+        }
+
+        private void OnDisable()
+        {
+            _animation?.ClearVisualGroundingOffset();
         }
     }
 }

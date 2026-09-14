@@ -1,0 +1,114 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "只读接管审计：当前工作区、源码/Player 关系、Pipeline 编辑器状态、最近动作/游泳测试与任务板；没有修改产品源码、场景、Prefab 或 Player。",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q00_CURRENT_TAKEOVER_20260912_LUNA_R1",
+  "audit_time_local": "2026-09-12T15:09:56+08:00",
+  "worktree": {
+    "status_lines": 5361,
+    "tracked_or_staged_status_lines": 459,
+    "untracked_status_lines": 4902,
+    "git_diff_stat_lines": 460,
+    "git_diff_shortstat": "459 files changed, 39556 insertions(+), 48895 deletions(-)",
+    "recent_commits": [
+      "01024cae Complete D18-D24 pure logic implementation",
+      "04630a7c feat(D19): complete full D19 port logic suite (D19-L01..L48 LOGIC_PASS) and documentation",
+      "068a48e1 D18-D20: 建立本地可玩资源与港口验证基线",
+      "69e9a8bb feat: publish project implementation and acceptance artifacts",
+      "b2c6c8ee update"
+    ],
+    "cleanup_performed": false,
+    "preservation_rule": "没有执行 git reset --hard、git checkout --、git clean -fd、stash 或大范围清理。"
+  },
+  "unity_pipeline": {
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project": "C:/Users/Administrator/Desktop/game/first01/game",
+    "unity_version": "6000.0.80f1",
+    "editor_pid": 31416,
+    "endpoint": "127.0.0.1:7800",
+    "initial_status": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "read_only_protocol": "editor_play -> return-expression eval samples -> editor_stop",
+    "final_status": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_clear": 0,
+    "runtime_config": {
+      "enableInBuilds": false,
+      "port": 0,
+      "autoStart": true
+    },
+    "tooling_observation": "一次使用错误 timeout_ms 参数的 eval 请求被 400 拒绝；另一次过宽运行态清单请求触发 Pipeline 5 秒主线程超时。两者没有改变项目状态；随后清空控制台并复核为 0 error。"
+  },
+  "current_source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D2ShipController.cs": "E683ADEF4B0085BCD83C8219B6A07413CFB283A31CE7ABF562A31280807AACD9",
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "6912B5608B031B1FAE0F084B25E7B4C37A7A3FBE6CE06BAF1707DC34DE8525",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "0611046BFACA003A2748370A13E46F6655F45FB34DCB1474354D12287386D38F",
+    "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs": "35BE73701C036F16F79BAAE743D01CE961E5C284A00143C393EC96FA4F1B9EDB",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20PlayerAnimationPresentationAdapter.cs": "7BAD284EC9F096A5E232F5D6D90E7430C673A47FBD93C3903A229C92F4A90A7E",
+    "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs": "3EBC35A23B4A634102C9B4A35850EF600F8382B1C9553A8ECEF7FC7BAE4DEE07"
+  },
+  "latest_registered_player": {
+    "build_id": "build_b5d99f79b224",
+    "artifact": "game/Builds/Q31_PIPELINE_CURRENT_CANDIDATE_R1.exe",
+    "exe_sha256": "98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly_csharp_sha256": "B1AB1C5806E8762BD15254C6D80DB5D6D89B083256348DE560F5A53DDAE6F83",
+    "exact_current_source_match": false,
+    "reason": "当前工作区仍有 D2ShipController、D2 动画、D7 舵位、Harbor 碰撞、CameraFollow、D20 表现和未跟踪 bridge 等运行时改动；已有 Player 构建没有当前工作区逐文件 source manifest，因此不能继承为当前源的完整视觉/运行证据。"
+  },
+  "latest_test_and_evidence_relation": {
+    "q26_a15_editmode": "629/629 PASS; 0 failed, 0 skipped, 0 inconclusive; 仅同步碰撞 owner 测试夹具与稳定值断言，没有修改 HarborCollisionController。",
+    "q02_animation_focused": "D2CharacterAnimationControllerTests 8/8 PASS, 0 failed, duration 0.86s。",
+    "d17_full_run_1": "15/16 PASS; 唯一失败 D17A16SwimmingCameraTracksHeadingUntilManualLookHandoff，camera-player horizontal sqrMagnitude=0.0221495014，期望 >1.0。",
+    "d17_a16_isolated": "同一测试单独 playmode 运行 1/1 PASS，duration 1.8246469s。",
+    "d17_full_run_2": "16/16 PASS; duration 50.54s; 0 failed, 0 skipped, 0 inconclusive。",
+    "interpretation": "D17A16 的一次全量失败没有被单测或第二次全量复现；当前证据指向测试顺序/运行时序的间歇性风险，不足以直接修改 CameraFollow 或升级为稳定 PASS。"
+  },
+  "live_editor_sample": {
+    "scene": "InitialHarbor",
+    "player": "D2_PlayerAvatar position=(0.000,0.150,-2.700), parent=<none>, lossyScale=(1,1,1)",
+    "character_controller": "radius=0.242435m, height=1.800m, center=(0,0.847,0), enabled=true",
+    "d2": "grounded=true, swimming=false, moving=false, speed=0.000, WaterSurfaceY=-0.020",
+    "visual": "HumanoidVisual localPosition=(0,0,0), localScale=(0.6642,0.6642,0.6642), rendererCount=17",
+    "animation": "Action=Idle, PoseDriverMode=Procedural, FormalAnimatorReady=false, ProceduralPoseLayerActive=true, BoundBoneCount=8, BoundBonesAreUnique=true, BoneBindingConflict=false",
+    "ship": "ph_ship_fishing position=(0,0,-5.200), lossyScale=(2.574,2.574,2.574)",
+    "helm": "D7_HelmPoint=(0,1.100,-6.680), D7_VisibleHelmAnchor=(0,1.100,-6.680)",
+    "anchors": "D2_PlayerSpawnAnchor=(0,1.100,-2.700), D2_DisembarkAnchor=(0,0,-0.700)",
+    "parents": "terrain D19_TerrainRoot parent=D19_EnvironmentRoot; island D19_R03_IslandSurface parent=D19_R03_HarborPresentation; water WaterWaveSurface parent=D19_R03_ShorelineAndWater; ship parent=<none>; visible helm parent=D19_R03_ShipVisualInstance",
+    "world_visual_relation": "D19_TerrainRoot position=(-128,-8,-128), scale=(1,1,1); D19_R03_IslandSurface position=(0,0,0), scale=(1,1,1), MeshFilter.sharedMesh=Combined Mesh (root: scene) 4; WaterWaveSurface sampled y=-0.041 while D2 logical WaterSurfaceY=-0.020",
+    "collision_probe_boundary": "在本次只读对象查询中，GameObject.Find(\"D19_TerrainRoot\").GetComponentsInChildren<MeshCollider>(true) 返回 0；这与 Q26/A15 的 authored MeshCollider 契约需要 Q07/Q26 重新核对，不能在 Q00 直接判定为已修复或已回归。"
+  },
+  "task_board": {
+    "completed_with_scope": [
+      "Q00 当前工作区/source-build/runtime 接管审计",
+      "Q01 当前根因/尺度/owner/tolerance 诊断（本轮随后完成）",
+      "Q02 D2 动画唯一写者聚焦回归 8/8",
+      "Q26-A15 EditMode 契约同步 629/629"
+    ],
+    "in_progress": [
+      "Q03/Q03-A14 formal action/avatar/visual asset gate",
+      "Q20 vegetation resource/ground-contact gate",
+      "Q31/VC-G01 visual and current Player acceptance",
+      "D31-P04/S05/G06 environment quality"
+    ],
+    "blocked": [
+      "Q03=BLOCKED_ASSET",
+      "Q08=BLOCKED_PREREQUISITE",
+      "VC-G02=LOCKED",
+      "VC-G03=LOCKED",
+      "最终 native foreground keyboard/manual visual gate=WAITING_VISUAL"
+    ],
+    "watchlist": [
+      "Q07/Q26：当前只读层级与 authored MeshCollider owner 关系不一致，需专卡复核",
+      "Q12/Q26-A20：D17A16 全量一次失败、单独与第二次全量通过，需保持间歇性测试风险公开"
+    ],
+    "next": "完成 Q01 结果登记后，按依赖进入 Q02 当前回归交接；随后优先选择 Q12/Q26-A20 相机间歇性证据或 Q07/Q26 碰撞 owner 复核，不重做坐标盲调。"
+  },
+  "status_boundary": "Q00 只证明当前工作区、证据关系和运行态事实已经重新核对；不证明完整 Player、动作视觉、自然泳姿、握舵接触、植被接地、VC-G01、D31 或发布完成。"
+}

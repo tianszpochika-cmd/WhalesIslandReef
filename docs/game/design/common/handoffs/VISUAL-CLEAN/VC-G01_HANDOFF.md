@@ -1225,3 +1225,11 @@ Q29 使用当前源码重新构建 `Q29_RUNTIME_PIPELINE_QA_R7.exe`，临时启�
 同一 Player 从 MainMenu NewGame/Confirm 进入 `InitialHarbor`，完成 W、E 登船、E 下船以及 W/S 路径截图；runtime error console=`0`，Player 严格错误词=`0`，Player clean close，Runtime Pipeline 和 Development Build 设置已恢复关闭。初始港口和登船帧是真实可见 Player 画面，但仍显示低模/程序化场景；这轮 W/S 路径没有视觉证明进入开放水域，因此自然游泳、正式动作/Avatar、自然握舵 IK、植被全镜头接地/穿模、物理 Win32 键盘和目标设备性能均保持开放。
 
 暂停收口：`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`Q31=PARTIAL`、`D31-P04/S05/G06=PARTIAL`。后续恢复时从 Q31 R5 选择一个可复现的单一 visual owner，先写回归再修改，不因 Main Menu 的有限修复提前解锁后续门禁。结果：[Q31 R5](../../../../../../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5_RESULT.json)；日志：[R5 log](../../../../../../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5.log)；暂停交接：[PAUSE_20260914_Q31_R5](../../../../../../game/tools/results/LOCAL-QUALITY/PAUSE_20260914_Q31_R5.md)。
+
+## 2026-09-14 current Formal Humanoid route rebind
+
+Q03-A23 之后的当前源码复核已确认：默认 `InitialHarbor` 可见呈现不再是旧的纯程序化 fallback，而是 D20 Formal Humanoid consumer；Pipeline route probe 观察到 `HumanoidPoseAdapter=true`、`GenericPathAdapter=false`、7 个 candidate skinned renderer、17 个旧 fallback renderer 隐藏、`SwimmingVisualSupported=true`。这只是 VC-G01 的前置源/路由事实更新，不是 VC-G01 通过。
+
+相关回归：D2=`8/8 PASS`、D17=`16/16 PASS`、Q03Formal=`5/5 PASS`、Q03D20Formal=`2/2 PASS`、recompile errors=`0`。当前 exact Player 为 `build_099a228c638b`，EXE SHA=`D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE`。证据：[Q00 exact rebind](../../../../../../game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260914_R2_RESULT.json)、[Q03 current route](../../../../../../game/tools/results/LOCAL-QUALITY/Q03/Q03_CURRENT_DEFAULT_HUMANOID_ROUTE_20260914_LUNA_RESULT.json)。
+
+VC-G01 仍为 `IN_PROGRESS`：没有把 headless/hidden Pipeline 结果当作 compositor-visible 画面、前台物理键盘、自然泳姿/握舵、穿模/植被接地、目标设备性能或人工视觉 PASS。下一步是 Q04/Q05 的表现 owner 复核，之后回到 Q31 的最终 native Player gate。

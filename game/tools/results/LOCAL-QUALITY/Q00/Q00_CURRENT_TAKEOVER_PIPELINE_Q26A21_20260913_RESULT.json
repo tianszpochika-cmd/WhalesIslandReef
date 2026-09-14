@@ -1,0 +1,91 @@
+{
+  "task_id": "Q00",
+  "status": "VERIFIED_WITH_SCOPE",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q00_CURRENT_TAKEOVER_PIPELINE_Q26A21_20260913_LUNA_R1",
+  "audit_time_local": "2026-09-13T19:24:15+08:00",
+  "scope_rule": "Read-only current-source/player/evidence rebinding after Q26-A19 and Q26-A21. No product code, prefab, scene, Systems file, generated Player or existing dirty change was overwritten.",
+  "worktree_snapshot": {
+    "status_entries": 5388,
+    "tracked_status_entries": 459,
+    "untracked_files": 10138,
+    "git_diff_shortstat": "459 files changed, 40082 insertions(+), 49167 deletions(-)",
+    "cleanup_performed": false,
+    "reset_checkout_clean_performed": false
+  },
+  "pipeline": {
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "unity_version": "6000.0.80f1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "reachable_instances": 1,
+    "same_project_editor_count": 1,
+    "editor_status_after": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "protocol": "open_scene InitialHarbor -> editor_play/editor_stop bounded probes",
+    "exploratory_tool_boundary": "One early direct eval timed out/reset and one short eval raced PlayMode; the failed expressions were excluded from all product conclusions and no mutation was inferred from them.",
+    "runtime_settings_after": "enableInBuilds=false/port=0/requestTimeoutMs=30000",
+    "error_console_after": 0,
+    "second_editor_started": false
+  },
+  "current_source_hashes": {
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "8205A73C7885E8FD2C95FFB8141E4728DD84E162600BFE79E6AB02ECF1945800",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_ShipVisual.prefab": "CCCCA72A4C359DA4A45CCC62F114740A92800C1D65A38B07549BA34F3591B1FC",
+    "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs": "0BAA85F181887C01856CF49B12D3E8D8F64CD50073AF144EB34B602BB476E38D",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029"
+  },
+  "source_to_player_boundary": {
+    "development_player": {
+      "build_id": "build_ff0b089d926c",
+      "build_guid": "04bae0774d2a4580b82047fd7964db9",
+      "exe": "game/tools/results/LOCAL-QUALITY/Q31/Q31_Q26A19_HELM_WOOD_DEV_R1.exe",
+      "exe_sha256": "98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+      "build_errors": 0,
+      "build_warnings": 1,
+      "source_relation": "The exact development Player is bound to Q26-A19 production source and rebuilt R03 ShipVisual prefab. Q26-A21 changed only the PlayMode test source after this Player build, so its test source hash is not claimed as compiled into this binary."
+    },
+    "q26_a19": {
+      "result": "game/tools/results/LOCAL-QUALITY/Q26-A19/RESULT.json",
+      "status": "PASS_WITHIN_SCOPE",
+      "targeted": "1/1 PASS",
+      "full_q26_at_run": "18/18 PASS"
+    },
+    "q26_a21": {
+      "result": "game/tools/results/LOCAL-QUALITY/Q26-A21/RESULT.json",
+      "status": "PASS_WITHIN_SCOPE",
+      "targeted": "1/1 PASS",
+      "full_q26_at_run": "19/19 PASS",
+      "source_relation": "Editor test evidence is bound to current test hash 0BAA85...476E38D; this is a test-only source change and does not retroactively change the Q31_Q26A19_HELM_WOOD_DEV_R1 Player binary."
+    }
+  },
+  "current_runtime_boundary": {
+    "scene": "InitialHarbor",
+    "editor_sample": "D2 root=(0.000,0.150,-2.700), unit physical root; HumanoidVisual localScale=0.6642; default consumer Procedural/FormalAnimatorReady=false; D16InputRouter; ship scale=2.574; gameplay and visible helm anchors=(0,1.100,-6.680); scoped R03 MeshCollider enabled/non-trigger/shared=D19_R03_IslandSurfaceMesh",
+    "q26_a21_hidden_player": "The exact Q26-A21 hidden development Player route accepted Pipeline W in open water and moved (0.00,0.40,30.00) to (0.45,0.40,29.87), remaining Swimming/grounded=false/speed=2.1. This is a bounded Pipeline injection route, not foreground physical keyboard evidence.",
+    "final_editor": "ready/stopped; error console query=0; RuntimePipeline disabled in builds"
+  },
+  "task_board": {
+    "completed_with_scope": ["Q00 current rebinding", "Q01 current root/scale/owner diagnosis", "Q26-A19 helm-support material owner", "Q26-A21 procedural swim continuity"],
+    "in_progress": ["Q03 formal action/avatar admission", "Q20 formal vegetation resources", "Q26 gameplay-defect closure", "Q31/VC-G01 visual and Player evidence"],
+    "blocked": ["Q08 depends on Q03 formal asset admission", "VC-G02 locked by VC-G01", "VC-G03 locked by VC-G02"],
+    "next_executable": "Q05 current Pipeline swim-presentation regression, then Q06/Q07/Q09 dependency cards; formal action/avatar admission remains the only valid route for final action/swim visual quality."
+  },
+  "gaps": [
+    "No foreground physical Win32 keyboard/focus evidence or human visual acceptance was produced by this audit.",
+    "Q03 remains BLOCKED_ASSET; the default InitialHarbor consumer is procedural and Q26-A21 does not admit a formal authored swim asset.",
+    "Natural swimming, hand-to-helm contact, complete no-clipping review, vegetation grounding across cameras and target-device performance remain open.",
+    "The exploratory eval resets/timeouts are tool timing boundaries only; they were not converted into PASS or FAIL claims."
+  ],
+  "checks": [
+    {"name": "current_source_hash_rebinding", "result": "PASS_WITHIN_SCOPE", "evidence": "Current Q26-A19 production source/prefab, Q26-A21 test source and D2 source hashes were recorded together with the exact Player binary boundary."},
+    {"name": "pipeline_health", "result": "PASS_WITHIN_SCOPE", "evidence": "One reachable same-project Editor ended ready/stopped, RuntimePipeline was disabled in builds and error console query returned zero."},
+    {"name": "evidence_scope_boundary", "result": "PASS_WITHIN_SCOPE", "evidence": "Hidden Player, RenderTexture and injected-input evidence remain explicitly separated from foreground physical input and human visual acceptance."},
+    {"name": "completion_gate", "result": "PARTIAL", "evidence": "Q26-A19/A21 bounded checks pass, but Q03/Q20/Q31/VC-G01 and D31 visual/manual gates remain open."
+    }
+  ],
+  "next_task": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A21_20260913_LUNA_R1",
+  "status_boundary": "Q00 is current evidence binding only. It does not claim the game is complete, visual defects fixed, native Player input accepted, or VC-G01/D31 closed."
+}

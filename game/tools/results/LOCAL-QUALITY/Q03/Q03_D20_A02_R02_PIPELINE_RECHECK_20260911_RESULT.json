@@ -1,0 +1,114 @@
+{
+  "task_id": "Q03-D20-A02-R02",
+  "parent_task": "LOCAL-QUALITY/Q03",
+  "date": "2026-09-11",
+  "generated_at": "2026-09-11T01:41:52.1331013+08:00",
+  "status": "PASS_ISOLATED_ONLY",
+  "scope": "D20 R02 player appearance prefab and D20 presentation animation adapter compatibility; no formal scene integration",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 31416,
+    "endpoint": "127.0.0.1:7800",
+    "editor_state_after_run": "ready; playMode=stopped"
+  },
+  "changed_files": [
+    "game/Assets/Tests/EditMode/D20A02/D20A02PlayerAnimationTests.cs",
+    "game/tools/results/LOCAL-QUALITY/Q03/Q03_D20_A02_R02_PIPELINE_RECHECK_20260911_RESULT.json"
+  ],
+  "source_snapshot": {
+    "test": {
+      "path": "game/Assets/Tests/EditMode/D20A02/D20A02PlayerAnimationTests.cs",
+      "sha256": "9D6E81D11455A1F4E858FB21FDC773F3068FA7CD71B02674D5804C1281AB6845"
+    },
+    "adapter": {
+      "path": "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20PlayerAnimationPresentationAdapter.cs",
+      "sha256": "2A25AA0B290F1E984FDE347B146E155807F8557F865A2038807D45DC20338459"
+    },
+    "controller": {
+      "path": "game/Assets/Animations/D20/Player/D20_PlayerAnimation.controller",
+      "sha256": "65E2351E3C7774B1D39C48E9AFDD361719D684B54DA2664D5D2CB242DDDB6A6E"
+    },
+    "r02_male_prefab": {
+      "path": "game/Assets/Prefabs/Characters/D20/R02/PlayerAppearance/D20_R02_PlayerVisual_Male.prefab",
+      "sha256": "4362CA912216D2379DCC4D18443A9EBB0748FAF5042F463F88849BDDBAFC451D"
+    }
+  },
+  "checks": [
+    {
+      "name": "recompile",
+      "result": "PASS",
+      "evidence": "Unity Pipeline recompile_status: completed, failed=false, errors=[]"
+    },
+    {
+      "name": "r02_prefab_animator_avatar",
+      "result": "PASS",
+      "evidence": "R02 male prefab owns one Animator with valid human Avatar"
+    },
+    {
+      "name": "r02_interaction_sockets",
+      "result": "PASS",
+      "evidence": "Head, both hands, helm, boarding, carry, fish and both foot sockets resolved"
+    },
+    {
+      "name": "r02_animation_states",
+      "result": "PASS",
+      "evidence": "Idle, Walk, Run, Jump, Board and Helm snapshots resolved without adapter fallback"
+    },
+    {
+      "name": "physical_root_ownership",
+      "result": "PASS",
+      "evidence": "Animator applyRootMotion=false and the independent physical root remained unchanged across animator updates"
+    },
+    {
+      "name": "editor_console_errors",
+      "result": "PASS",
+      "evidence": "Unity Pipeline get_console_logs severity=error returned total=0 after the recompile and both test runs"
+    }
+  ],
+  "test_runs": {
+    "first_attempt_preserved": {
+      "total": 6,
+      "passed": 5,
+      "failed": 1,
+      "failure": "Directly treating the R02 visual prefab root as the physical root changed its Y from 0.00 to 0.08 during Animator.Update.",
+      "decision": "Rejected as an invalid integration shape; the failure was not hidden."
+    },
+    "final_pipeline_editmode": {
+      "command": "unity command run_tests --project-path game --mode editor --filter D20A02 --async_tests true; poll unity command test_status",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 0.09,
+      "status": "PASS"
+    }
+  },
+  "regression": {
+    "pipeline_playmode_filter": "D17",
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "duration_seconds": 125.79,
+    "evidence": "game/Temp/pipeline_test_status.json",
+    "status": "PASS_WITHIN_SCOPE"
+  },
+  "formal_boundary": {
+    "initial_harbor_modified": false,
+    "formal_runtime_consumers": 0,
+    "local_development_ready": 0,
+    "release_approved": 0,
+    "q03_formal_status": "BLOCKED_ASSET",
+    "q08_status": "BLOCKED",
+    "vc_g01": "IN_PROGRESS",
+    "vc_g02": "LOCKED",
+    "vc_g03": "LOCKED",
+    "meaning": "This result proves only an isolated R02 presentation/adapter contract. It does not prove formal D2 integration, native Player visual quality, swimming, helm hand contact, vegetation grounding or absence of clipping."
+  },
+  "next_gate": "D20-S02-R01/D18-S03 formal integration gates remain closed until D19 and D20 hard gates are satisfied; retain the physical-root wrapper contract when that gate opens."
+}

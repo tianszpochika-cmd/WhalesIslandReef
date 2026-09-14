@@ -151,6 +151,21 @@ namespace Whalebone.Gameplay.Harbor
         private void BuildFoamBands()
         {
             var root = GameObject.Find("D6_HarborFoam");
+            var r03Presentation = GameObject.Find("D19_R03_HarborPresentation");
+            if (r03Presentation != null)
+            {
+                // D19 R03 owns the current shoreline presentation. D6's
+                // runtime fallback must not create a second set of broad
+                // quads near the player, otherwise the Player shows large
+                // foreground slabs and the two visual owners drift apart.
+                if (root != null)
+                {
+                    foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
+                        if (renderer != null) renderer.enabled = false;
+                }
+                Debug.Log("[D6/Harbor] R03 shoreline owner active; legacy foam bands suppressed");
+                return;
+            }
             if (root != null)
             {
                 foreach (Transform child in root.transform)

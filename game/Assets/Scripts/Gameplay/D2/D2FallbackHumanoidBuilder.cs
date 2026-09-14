@@ -32,8 +32,12 @@ namespace Whalebone.Gameplay.D2
 
             var hips = CreateBone("Hips", visualRoot.transform, new Vector3(0f, 1.16f, 0f));
             var spine = CreateBone("Spine", hips.transform, new Vector3(0f, 0.40f, 0f));
+            // Keep the shoulders broad enough for the arm roots to meet the
+            // torso in the third-person Player.  The previous 0.39m arm
+            // roots sat outside a 0.36m torso and made the fallback read as
+            // detached blue pieces as soon as a pose rotated the visual root.
             CreateMesh(PrimitiveType.Capsule, "TorsoMesh", spine.transform,
-                new Vector3(0f, 0.17f, 0f), new Vector3(0.36f, 0.46f, 0.25f), clothing);
+                new Vector3(0f, 0.17f, 0f), new Vector3(0.42f, 0.46f, 0.28f), clothing);
             CreateMesh(PrimitiveType.Cube, "BeltMesh", hips.transform,
                 new Vector3(0f, 0.06f, 0f), new Vector3(0.48f, 0.10f, 0.30f), accent);
 
@@ -48,8 +52,8 @@ namespace Whalebone.Gameplay.D2
 
             BuildLeg(hips.transform, "Left", -0.17f, trousers, boots);
             BuildLeg(hips.transform, "Right", 0.17f, trousers, boots);
-            BuildArm(spine.transform, "Left", -0.39f, clothing, skin);
-            BuildArm(spine.transform, "Right", 0.39f, clothing, skin);
+            BuildArm(spine.transform, "Left", -0.29f, clothing, skin);
+            BuildArm(spine.transform, "Right", 0.29f, clothing, skin);
 
             // The root CharacterController is the only collider that should remain active.
             foreach (var collider in root.GetComponentsInChildren<Collider>(true))
@@ -77,15 +81,15 @@ namespace Whalebone.Gameplay.D2
         private static void BuildArm(Transform parent, string side, float x,
             Material clothing, Material skin)
         {
-            var upper = CreateBone(side + "UpperArm", parent, new Vector3(x, 0.28f, 0f));
+            var upper = CreateBone(side + "UpperArm", parent, new Vector3(x, 0.27f, 0f));
             CreateMesh(PrimitiveType.Capsule, side + "UpperArmMesh", upper.transform,
-                new Vector3(0f, -0.22f, 0f), new Vector3(0.13f, 0.25f, 0.13f), clothing);
+                new Vector3(0f, -0.20f, 0f), new Vector3(0.15f, 0.23f, 0.15f), clothing);
 
-            var lower = CreateBone(side + "LowerArm", upper.transform, new Vector3(0f, -0.46f, 0f));
+            var lower = CreateBone(side + "LowerArm", upper.transform, new Vector3(0f, -0.42f, 0f));
             CreateMesh(PrimitiveType.Capsule, side + "LowerArmMesh", lower.transform,
-                new Vector3(0f, -0.22f, 0f), new Vector3(0.105f, 0.24f, 0.105f), skin);
+                new Vector3(0f, -0.20f, 0f), new Vector3(0.115f, 0.22f, 0.115f), skin);
             CreateMesh(PrimitiveType.Sphere, side + "HandMesh", lower.transform,
-                new Vector3(0f, -0.45f, 0f), new Vector3(0.15f, 0.15f, 0.15f), skin);
+                new Vector3(0f, -0.41f, 0f), new Vector3(0.15f, 0.15f, 0.15f), skin);
         }
 
         private static GameObject CreateBone(string name, Transform parent, Vector3 localPosition)

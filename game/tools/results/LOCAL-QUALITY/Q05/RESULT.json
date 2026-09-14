@@ -1,0 +1,142 @@
+{
+  "task_id": "Q05",
+  "status": "VERIFIED",
+  "status_scope": "safe_imported_rig_swim_root_pose_and_restore",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q02", "Q04"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q05_PIPELINE_SWIM_POSE_20260910_233046",
+  "audit_time_local": "2026-09-10T23:30:46+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner": "D2CharacterAnimationController",
+    "changes": [
+      "Added a ten-cycle PlayMode guard for imported-rig swim visual-root tilt, physics-root uprightness and neutral restoration after leaving water.",
+      "The guard does not rotate CharacterController/player physics root and does not claim missing limb/head authored motion is complete."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "665341FDC7BB0147082B2550EBFAF2BBBF6E2EE9141143AC27BE6F2FEACA6F29"
+    }
+  },
+  "checks": [
+    {
+      "name": "ten_swim_pose_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q05/Q05_SWIM_POSE_RESTORE_PLAYMODE.xml; D17A08 total=1 passed=1; log contains 10 swim entries and 10 exits"
+    },
+    {
+      "name": "imported_visual_root_swim_tilt",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Each cycle asserts visualRoot rotation >25 degrees from the neutral baseline while Action=Swimming"
+    },
+    {
+      "name": "physics_root_and_collision_orientation",
+      "result": "PASS",
+      "evidence": "Each cycle asserts Vector3.Dot(player.transform.up, Vector3.up)>0.999; no CharacterController rotation is used for presentation"
+    },
+    {
+      "name": "neutral_restore_after_exit",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Each cycle asserts visualRoot rotation returns within 1 degree after the D2 state exits swimming"
+    }
+  ],
+  "current_revalidation": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q05/Q05_SWIM_POSE_PIPELINE_20260910.json",
+    "test_filter": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "protocol": "Unity Pipeline run_tests --mode playmode --async_tests true followed by test_status until completed; Total=1 was counted only after completed status",
+    "summary": "Current-source connected Editor run completed in 11.94s with total=1, passed=1, failed=0, skipped=0, inconclusive=0.",
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "665341FDC7BB0147082B2550EBFAF2BBBF6E2EE9141143AC27BE6F2FEACA6F29",
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "773E6D13E147AA33E1CE20E7C17FB78CCAF8FE36B06CF1EBA1F0C4C08CEA0E61",
+      "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987"
+    },
+    "boundary": "The test proves only the bounded visual-root tilt/restore contract and physics-root uprightness. Q03 formal authored actions, native Player input and visual acceptance remain open."
+  },
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A08 passed in 8.1784901s",
+    "source_hashes_current": true,
+    "boundary": "Whole-visual-root tilt/restore and physics-root separation only; formal authored swim quality and native Player visual remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.9665234s; total duration=13.06s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Whole-visual-root tilt/restore and physics-root separation only; authored swim quality and native Player visual remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.338054s; total duration=12.45s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current-source whole-visual-root tilt/restore and physics-root separation only; authored swim quality, native Player input and visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.7597425s; total duration=12.9s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Whole-visual-root tilt/restore and physics-root separation only; authored swim quality, native Player input and visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=11.7257264s; total duration=11.96s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "boundary": "Current-source whole-visual-root tilt/restore and physics-root separation only; authored swim quality, foreground Win32 input and visual acceptance remain open."
+  },
+  "status_boundary": "Q05 VERIFIED is limited to the safe whole-visual-root swim pose and restoration path. Q03 remains BLOCKED_ASSET for authored ground/action/limb quality, and current Player visual/input evidence is still absent.",
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=10.4941761s; pipeline duration=10.7s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current-source whole-visual-root tilt/restore and physics-root separation only; authored natural swim quality, foreground Win32 input and visual acceptance remain open.",
+    "next_task": "Q06_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_swimming_presentation_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=13.0625438s; pipeline duration=13.49s",
+    "source_hashes_current": true,
+    "runtime_facts": "Ten cycles logged rootAngle=64.00 degrees, rootOffsetY=0.013..0.034m in observed samples, physics root upright and neutral restore asserted; sample arm/forearm/leg motion is recorded in the result artifact.",
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false",
+    "boundary": "Bounded procedural whole-visual-root contract only; authored limb/head timing, natural swim silhouette, foreground Win32 input and final visual acceptance remain open.",
+    "next_task": "Q06_CURRENT_MOVEMENT_COLLISION_REAUDIT"
+  },
+  "current_reaudit_20260914_q26a23_forearm_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q26/Q26_A23_SWIM_FOREARM_PIPELINE_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "implementation_delta": "D2CharacterAnimationController changed only the procedural swim forearm composition from 30f to 60f; upper-arm reach remained 150f after 175f/170f candidates violated the existing D17A08 <175f arm envelope.",
+    "test_run": "Q26A23=1/1 PASS; D17A08=1/1 PASS; Q26A21=1/1 PASS; D19R03Q26GameplayDefectPlayModeTests=21/21 PASS",
+    "player_run": "build_b0549b8e9093 / Q26_A23_SWIM_FOREARM_PIPELINE_R2.exe; InitialHarbor QA setup; 24 runtime hand-head samples max=0.135m against 0.220m guard; runtime error entries=0; clean close",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false",
+    "boundary": "Bounded procedural fallback hand-silhouette and Player state/input evidence only; formal authored swim/action/avatar, natural IK, foreground Win32 input, compositor-visible screenshots, target-device performance and VC-G01 remain open.",
+    "next_task": "Q06_CURRENT_MOVEMENT_COLLISION_REAUDIT"
+  },
+  "current_source_reaudit_q03a23_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A08 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=10.3085701s; pipeline duration=10.33s",
+    "source_hashes_current": "D2Animation=EF4683FC...A67581C2; D2Runtime=3D854D17...9A32F2B4A; D17=85493325...0F3BA03",
+    "editor_final": "ready/stopped; error console=0; console cleared",
+    "boundary": "Current-source whole-visual-root procedural tilt/restore and physics-root separation only; authored natural swim quality, native Player input, screenshot and final visual acceptance remain open.",
+    "next_task": "Q06_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA"
+  }
+}

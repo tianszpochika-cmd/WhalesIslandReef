@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-08 14:49:24Z" end-time="2026-09-08 14:49:25Z" duration="0.1560352">
+  <test-suite type="TestSuite" id="1000" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="604" result="Failed" site="Child" start-time="2026-09-08 14:49:24Z" end-time="2026-09-08 14:49:25Z" duration="0.156035" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1495" name="Save.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/Save.Tests.dll" runstate="Runnable" testcasecount="365" result="Failed" site="Child" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.117586" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="27880" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1521" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="31" result="Failed" site="Child" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.103644" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1522" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="31" result="Failed" site="Child" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.103123" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1524" name="D2" fullname="Whalebone.Tests.D2" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.102279" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1354" name="D2CharacterAnimationControllerTests" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.101217" total="8" passed="7" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1356" name="AmbiguousBoneAliasesRefuseBindingAndUseNeutralFallback" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.AmbiguousBoneAliasesRefuseBindingAndUseNeutralFallback" methodname="AmbiguousBoneAliasesRefuseBindingAndUseNeutralFallback" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="1503786593" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.051948" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=7，唯一绑定=True，冲突=True，程序化能力=False，导入蒙皮仅中立=False
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+]]></output>
+              </test-case>
+              <test-case id="1360" name="AnimatorConfigurationDisablesRootMotionWhenAnimatorIsAvailable" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.AnimatorConfigurationDisablesRootMotionWhenAnimatorIsAvailable" methodname="AnimatorConfigurationDisablesRootMotionWhenAnimatorIsAvailable" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="565668688" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.003165" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=True，导入蒙皮仅中立=False
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+]]></output>
+              </test-case>
+              <test-case id="1361" name="GeneratedPlaceholderAnimatorDoesNotDriveRawEulerPose" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.GeneratedPlaceholderAnimatorDoesNotDriveRawEulerPose" methodname="GeneratedPlaceholderAnimatorDoesNotDriveRawEulerPose" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="892655730" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.002519" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=True，导入蒙皮仅中立=False
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+]]></output>
+              </test-case>
+              <test-case id="1357" name="ImportedArmAliasesPreferArmAndNeverShoulderOrForearm" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.ImportedArmAliasesPreferArmAndNeverShoulderOrForearm" methodname="ImportedArmAliasesPreferArmAndNeverShoulderOrForearm" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="2105999342" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.002313" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=True，导入蒙皮仅中立=False
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+]]></output>
+              </test-case>
+              <test-case id="1359" name="ImportedSkinnedRigStaysNeutralUntilAnimationContractIsVerified" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.ImportedSkinnedRigStaysNeutralUntilAnimationContractIsVerified" methodname="ImportedSkinnedRigStaysNeutralUntilAnimationContractIsVerified" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="1251145969" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.002605" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=False，导入蒙皮仅中立=True
+[D2/Animation] 当前导入蒙皮 rig 尚未通过动作轴/Avatar 契约，保持 neutral，禁止猜测骨骼轴驱动。
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+]]></output>
+              </test-case>
+              <test-case id="1355" name="LateUpdateKeepsPhysicalRootStableAndLocksVisualRootBaseline" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.LateUpdateKeepsPhysicalRootStableAndLocksVisualRootBaseline" methodname="LateUpdateKeepsPhysicalRootStableAndLocksVisualRootBaseline" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="1441954523" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.007859" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=True，导入蒙皮仅中立=False
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+]]></output>
+              </test-case>
+              <test-case id="1358" name="RendererNodesWithBoneLikeNamesDoNotCreateBindingConflicts" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.RendererNodesWithBoneLikeNamesDoNotCreateBindingConflicts" methodname="RendererNodesWithBoneLikeNamesDoNotCreateBindingConflicts" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="172211294" result="Passed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.005127" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=True，导入蒙皮仅中立=False
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+]]></output>
+              </test-case>
+              <test-case id="1362" name="TenDisableEnableAndTransitionCyclesRestoreTheImportedBaseline" fullname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests.TenDisableEnableAndTransitionCyclesRestoreTheImportedBaseline" methodname="TenDisableEnableAndTransitionCyclesRestoreTheImportedBaseline" classname="Whalebone.Tests.D2.D2CharacterAnimationControllerTests" runstate="Runnable" seed="249968166" result="Failed" start-time="2026-09-08 14:49:25Z" end-time="2026-09-08 14:49:25Z" duration="0.009398" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  Expected: greater than 0.100000001f
+  But was:  0.0f
+]]></message>
+                  <stack-trace><![CDATA[at Whalebone.Tests.D2.D2CharacterAnimationControllerTests.TenDisableEnableAndTransitionCyclesRestoreTheImportedBaseline () [0x0009d] in C:\Users\Administrator\Desktop\game\first01\game\Assets\Tests\EditMode\D2\D2CharacterAnimationControllerTests.cs:205
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=False，导入蒙皮仅中立=True
+[D2/Animation] 当前导入蒙皮 rig 尚未通过动作轴/Avatar 契约，保持 neutral，禁止猜测骨骼轴驱动。
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

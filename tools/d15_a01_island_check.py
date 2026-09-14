@@ -140,6 +140,31 @@ def _check_source_and_license(entry: Dict[str, Any]) -> None:
     _require(license_data["commercial_use"], f"{entry['id']}: commercial authorization is required")
 
 
+def _is_reviewed_slice_override(entry: Dict[str, Any]) -> bool:
+    """Recognize only the explicitly reviewed D16-C08 island slice override.
+
+    The D15 catalog requires an asset reference (``asset_*``) and the standard
+    terrain LOD. D16-C08 intentionally promoted one sand patch to a local
+    vertical-slice mesh, so that single reviewed record uses a Unity path and a
+    slice-specific LOD. Keep the exception evidence-bound instead of accepting
+    arbitrary integrated island records.
+    """
+    evidence_refs = entry.get("review_evidence_refs")
+    return (
+        entry.get("id") == "island_saint_marys"
+        and entry.get("asset_state") == "integrated"
+        and entry.get("production_stage") == "slice_final"
+        and isinstance(entry.get("model_ref"), str)
+        and entry["model_ref"].startswith("game/Assets/Art/SliceFinal/D16C08/")
+        and isinstance(entry.get("runtime_prefab_path"), str)
+        and entry["runtime_prefab_path"].startswith("game/Assets/Prefabs/SliceFinal/D16C08/")
+        and entry.get("lod_profile") == "island_slice_sand_lod3"
+        and entry.get("historical_review") in {"Approved", "ApprovedWithWarning"}
+        and isinstance(evidence_refs, list)
+        and any("D16_C08_SLICE_REVIEW.md" in ref for ref in evidence_refs if isinstance(ref, str))
+    )
+
+
 def _check_archive(entry: Dict[str, Any]) -> None:
     island_id = entry["id"]
     archive = entry["natural_archive"]
@@ -204,15 +229,26 @@ def _check_entry_shape(entry: Dict[str, Any], all_ids: set[str]) -> None:
     _require(entry["phase"] == "D15", f"{island_id}: phase must be D15")
     _require(entry["status"] in {"production", "verified"}, f"{island_id}: invalid production status")
     _require(entry["production_batch"] == "D15-A01*", f"{island_id}: incorrect production batch")
-    _require(entry["production_stage"] in {"cataloged", "integrated", "verified"}, f"{island_id}: invalid production stage")
+    # D16-C08 may promote the explicitly reviewed Saint Mary's vertical-slice
+    # asset without changing the D15 batch identity. Keep that post-production
+    # stage distinct from the ordinary D15 catalog/integrated/verified values.
+    _require(entry["production_stage"] in {"cataloged", "integrated", "verified", "slice_final"},
+             f"{island_id}: invalid production stage")
     _require(entry["quality_level"] in {"Q2", "Q3"}, f"{island_id}: island batch must be Q2 or Q3")
     _require(entry["asset_state"] in {"placeholder", "source_ready", "integrated", "verified"}, f"{island_id}: invalid asset state")
     _require(entry["asset_state"] == "placeholder" or entry["model_ref"], f"{island_id}: missing model reference")
-    _require(entry["lod_profile"] == "island_terrain_lod3", f"{island_id}: wrong LOD profile")
+    slice_override = _is_reviewed_slice_override(entry)
+    _require(
+        entry["lod_profile"] == "island_terrain_lod3" or slice_override,
+        f"{island_id}: wrong LOD profile",
+    )
     _require(TEST_ID_PATTERN.fullmatch(entry["test_id"]) is not None, f"{island_id}: invalid test_id")
     _require(len(entry["test_cases"]) >= 3, f"{island_id}: needs load/save/restore test cases")
     _require(entry["historical_review"] in {"Approved", "ApprovedWithWarning"}, f"{island_id}: review not approved")
-    _require(entry["model_ref"].startswith("asset_"), f"{island_id}: model_ref must be an asset reference")
+    _require(
+        entry["model_ref"].startswith("asset_") or slice_override,
+        f"{island_id}: model_ref must be an asset reference",
+    )
     _check_source_and_license(entry)
     for target in entry["references"] + entry["asset_refs"]:
         _require(target in all_ids, f"{island_id}: missing reference {target}")

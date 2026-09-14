@@ -27,6 +27,23 @@ namespace Save.Tests
         }
 
         [Test]
+        public void D29TavernAndD3VoyageHaveDistinctPrimaryKeyboardBindings()
+        {
+            var settings = D16AccessibilityDefaults.Create();
+            var tavern = settings.InputBindings
+                .Single(binding => binding.Action == D16InputAction.D29OpenTavern);
+            var voyage = settings.InputBindings
+                .Single(binding => binding.Action == D16InputAction.D3StartVoyage);
+
+            Assert.AreEqual("T", tavern.PrimaryKeyboard,
+                "D29 主 HUD 的酒馆快捷键必须保持 T。");
+            Assert.AreEqual("Y", voyage.PrimaryKeyboard,
+                "D3 出航快捷键必须避开 D29 的 T 酒馆快捷键。");
+            Assert.AreNotEqual(tavern.PrimaryKeyboard, voyage.PrimaryKeyboard,
+                "D29 与 D3 不得用同一个主键在同一 Gameplay 帧消费。");
+        }
+
+        [Test]
         public void InvalidScaleAndLocaleAreRejected()
         {
             var settings = D16AccessibilityDefaults.Create();

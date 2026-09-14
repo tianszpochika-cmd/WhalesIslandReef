@@ -1,0 +1,49 @@
+{
+  "task_id": "Q07",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_InitialHarbor_active_terrain_dock_gangplank_colliders_and_bidirectional_steps",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q04", "Q06"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q07_CURRENT_PIPELINE_REAUDIT_20260913",
+  "audit_date_local": "2026-09-13",
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "0611046BFACA003A2748370A13E46F6655F45FB34DCB1474354D12287386D38F",
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "1A30420362443D93E66517A2AB16C95AA64D579B1AA39F0721CF2FE4822992E6"
+  },
+  "protocol": {
+    "tool": "Unity Pipeline com.unity.pipeline@0.6.0-exp.1",
+    "editor": "Unity 6000.0.80f1",
+    "editor_pid": 53332,
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "operation": "run_tests mode=playmode filter=D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps filter_type=testName async_tests=true; poll test_status until completed",
+    "test_status_file": "game/Temp/pipeline_test_status.json"
+  },
+  "checks": [
+    {
+      "name": "active_route_colliders",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Completed Pipeline status: total=1, passed=1, failed=0, skipped=0, inconclusive=0; test duration=4.6148297s; total duration=4.71s. D17A10 asserts D19_TerrainRoot, DockGround and GangplankGround are enabled and non-trigger."
+    },
+    {
+      "name": "terrain_dock_gangplank_bidirectional_steps",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A10 raycasts each active route, settles through CharacterController contact and moves in both directions for eight ApplyPhysicsMotion steps while remaining grounded and non-swimming."
+    },
+    {
+      "name": "runtime_owner_and_recovery",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The current source uses the D2 CharacterController path and the scoped HarborCollisionController/D19 route owners; no collider was disabled and no threshold was widened for this run."
+    },
+    {
+      "name": "post_run_editor_health",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Editor final status was ready, compiling=false, domainReloadInProgress=false, playMode=stopped; Console was explicitly cleared after the run."
+    }
+  ],
+  "status_boundary": "Q07 remains VERIFIED only for the active automated terrain/dock/gangplank collider contract and the tested bidirectional steps. This evidence does not prove three representative shore points, ten complete traversals, slopes/walls beyond the route, visual mesh contact, native Player input, ship boarding or VC-G01 visual acceptance.",
+  "next_task": "Q08_BLOCKED_THEN_Q09_CURRENT_PIPELINE_REAUDIT_20260913"
+}

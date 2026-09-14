@@ -38,6 +38,10 @@ namespace Whalebone.Gameplay.D16
         private bool _firstUpdateMeasured;
         private bool _firstRegistrationRefreshMeasured;
         private bool _firstBudgetEvaluationMeasured;
+        private int _budgetEvaluationCount;
+        private float _totalBudgetEvaluationMs;
+        private float _lastBudgetEvaluationMs;
+        private float _maxBudgetEvaluationMs;
 
         public D16PerformanceBudgetSnapshot LastSnapshot => _lastSnapshot;
         public int RegistrationCount => _registrations.Count;
@@ -60,6 +64,13 @@ namespace Whalebone.Gameplay.D16
         public float FirstRegistrationRefreshMs { get; private set; }
         public float FirstUpdateMs { get; private set; }
         public float FirstBudgetEvaluationMs { get; private set; }
+        public int BudgetEvaluationCount => _budgetEvaluationCount;
+        public float TotalBudgetEvaluationMs => _totalBudgetEvaluationMs;
+        public float LastBudgetEvaluationMs => _lastBudgetEvaluationMs;
+        public float MaxBudgetEvaluationMs => _maxBudgetEvaluationMs;
+        public float AverageBudgetEvaluationMs => _budgetEvaluationCount == 0
+            ? 0f
+            : _totalBudgetEvaluationMs / _budgetEvaluationCount;
 
         /// <summary>
         /// 为运行时场景引导或验收夹具指定观察焦点。
@@ -90,17 +101,44 @@ namespace Whalebone.Gameplay.D16
         private void Awake()
         {
             float startedAt = Time.realtimeSinceStartup;
-            _budget = new D16PerformanceBudgetSystem(_budgetConfiguration);
+            EnsureBudget();
             EnsureIslandDataStream();
             EnsureDefaultWorldCells();
             RefreshRegistrations();
-            if (FindFirstObjectByType<D16RuntimePerformanceProbe>(FindObjectsInactive.Include) == null)
-                gameObject.AddComponent<D16RuntimePerformanceProbe>();
+            EnsureRuntimeProbe();
             StartupAwakeMs = (Time.realtimeSinceStartup - startedAt) * 1000f;
+        }
+
+        private void EnsureRuntimeProbe()
+        {
+            // D19-R03 disables the legacy R02 presentation root after scene
+            // bootstrap.  That root used to carry the D16 probe, so a global
+            // FindFirstObjectByType(..., Include) could find an inactive
+            // probe and incorrectly conclude that the active controller did
+            // not need one.  D16 owns its runtime telemetry; keep the probe
+            // on this always-active controller instead of borrowing a
+            // presentation object's lifetime.
+            var probe = GetComponent<D16RuntimePerformanceProbe>();
+            if (probe == null)
+            {
+                probe = gameObject.AddComponent<D16RuntimePerformanceProbe>();
+                Debug.Log("[D16] runtime performance probe attached to active performance controller");
+            }
+            else if (!probe.enabled)
+            {
+                probe.enabled = true;
+            }
         }
 
         private void Update()
         {
+            // Unity 可以在序列化配置异常或脚本热重载后保留组件，但跳过/中断 Awake。
+            // 不允许表现预算为空时继续执行并刷屏；重新建立默认配置后再参与评估。
+            EnsureBudget();
+            if (_budget == null)
+            {
+                return;
+            }
             bool measureFirstUpdate = !_firstUpdateMeasured;
             float startedAt = measureFirstUpdate ? Time.realtimeSinceStartup : 0f;
             if (Time.unscaledTime < _nextEvaluation)
@@ -122,6 +160,23 @@ namespace Whalebone.Gameplay.D16
             ApplyStreamCells();
             EvaluatePresentationBudget();
             RecordFirstUpdate(startedAt, measureFirstUpdate);
+        }
+
+        private void EnsureBudget()
+        {
+            if (_budget != null) return;
+            try
+            {
+                _budget = new D16PerformanceBudgetSystem(_budgetConfiguration);
+            }
+            catch (System.ArgumentException exception)
+            {
+                // Serialized private objects can be null/zeroed after a domain reload.  The
+                // default budget is deterministic and remains presentation-only, so recover
+                // without disabling the controller or mutating any domain fact.
+                Debug.LogWarning("[D16/Performance] 配置无效，回退到默认表现预算: " + exception.Message);
+                _budget = new D16PerformanceBudgetSystem();
+            }
         }
 
         public void RefreshRegistrations()
@@ -200,7 +255,7 @@ namespace Whalebone.Gameplay.D16
         private void EvaluatePresentationBudget()
         {
             bool measureFirstEvaluation = !_firstBudgetEvaluationMeasured;
-            float startedAt = measureFirstEvaluation ? Time.realtimeSinceStartup : 0f;
+            float startedAt = Time.realtimeSinceStartup;
             _candidates.Clear();
             foreach (var registration in _registrations)
                 if (registration != null) _candidates.Add(registration.BuildCandidate(_focus));
@@ -241,6 +296,10 @@ namespace Whalebone.Gameplay.D16
                 if (_decisionsById.TryGetValue(proxy.StableId, out decision))
                     proxy.Apply(decision);
             }
+            _lastBudgetEvaluationMs = (Time.realtimeSinceStartup - startedAt) * 1000f;
+            _totalBudgetEvaluationMs += _lastBudgetEvaluationMs;
+            _maxBudgetEvaluationMs = Mathf.Max(_maxBudgetEvaluationMs, _lastBudgetEvaluationMs);
+            _budgetEvaluationCount++;
             if (measureFirstEvaluation)
             {
                 FirstBudgetEvaluationMs = (Time.realtimeSinceStartup - startedAt) * 1000f;

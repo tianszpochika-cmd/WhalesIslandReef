@@ -1,0 +1,46 @@
+{
+  "task_id": "Q06",
+  "run_id": "Q06_CURRENT_MOVEMENT_COLLISION_20260914_LUNA",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "initialharbor_jump_grounded_and_small_step_motion",
+  "captured_at_local": "2026-09-14T09:17:54+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped"
+  },
+  "changed_files": [],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "test": {
+    "filter": "D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite",
+    "mode": "PlayMode",
+    "status": "completed",
+    "duration_s": 14.5,
+    "test_duration_s": 14.033055,
+    "summary": {"total": 1, "passed": 1, "failed": 0, "skipped": 0, "inconclusive": 0},
+    "coverage": [
+      "ten real TryJump-to-ground cycles",
+      "positive small movement near spawn",
+      "diagonal movement near spawn",
+      "lateral movement near spawn",
+      "reverse movement near spawn",
+      "grounded/non-swimming/finite Transform assertions"
+    ]
+  },
+  "runtime_facts": {
+    "character_controller": "worldHeight=1.80m, worldRadius=0.24m, worldStepOffset=0.35m, visualGroundOffset=-0.05m",
+    "collision_owner": "HarborCollisionController / D19_R03_IslandSurfaceMesh scoped MeshCollider",
+    "route_constraints": "No collision disabling, air-wall addition, threshold relaxation or illegal position injection was used by D17A09."
+  },
+  "status_boundary": "Q06 is PASS_WITHIN_SCOPE for InitialHarbor jump/grounded and small-step movement stability. Dedicated wall, slope, shoreline, ramp/gangplank, ship-deck visual contact and native Player keyboard boundaries remain open; no VC-G01 upgrade.",
+  "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+}

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.4426006">
+  <test-suite type="TestSuite" id="1115" name="WhalesIslandReef" fullname="WhalesIslandReef" runstate="Runnable" testcasecount="76" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.442601" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1092" name="D16.PlayMode.Tests.dll" fullname="C:/Users/Administrator/Desktop/game/first01/game/Library/ScriptAssemblies/D16.PlayMode.Tests.dll" runstate="Runnable" testcasecount="75" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.432241" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="28628" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1100" name="Whalebone" fullname="Whalebone" runstate="Runnable" testcasecount="67" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.430038" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1101" name="Tests" fullname="Whalebone.Tests" runstate="Runnable" testcasecount="67" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.428659" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1103" name="D17" fullname="Whalebone.Tests.D17" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.426851" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1016" name="D17ActionQualityPlayModeTests" fullname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests" classname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.424417" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1020" name="D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles" fullname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles" methodname="D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles" classname="Whalebone.Tests.D17.D17ActionQualityPlayModeTests" runstate="Runnable" seed="1477512738" result="Passed" start-time="2026-09-08 15:08:39Z" end-time="2026-09-08 15:08:47Z" duration="8.411694" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[[D19-A01] NavMesh data registered: valid=True, agentType=HumanoidDefault
+[D10] 外观与裁缝运行时入口已创建
+[D10-A06] 酒馆社会场景入口已创建
+[D25/Visual] player presentation layer installed
+[D25/UI] D25PlayerHud text diagnostics: total=4, enabled=4, fonts=4, nonEmpty=3
+[D25/UI] D29InteractionHud text diagnostics: total=14, enabled=11, fonts=14, nonEmpty=14
+[D29/Interaction] availability=000000; clickable_unready=true; owner_feedback=true
+[D2] InitialHarbor 运行时入口已创建
+[D25/UI] D30VisualLoop text diagnostics: total=2, enabled=1, fonts=2, nonEmpty=1
+[D3] InitialHarbor 贸易与航程运行时入口已创建
+[D4] 内容扩充运行时入口已创建
+[D5] 打磨上架运行时入口已创建
+[D7/Input] 首航体验控制协调器已创建
+[D9-A01] 港口与船舶整备入口已创建
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D6/Input] 港口交互稳定器已创建
+[HarborPause] 已就绪：ESC 暂停/恢复，菜单可返回主菜单
+[HarborPause] 场景加载完成，暂停控制器已创建
+[D16] runtime performance probe attached to active performance controller
+[D26/Environment] R03 港口表现层已恢复：renderers=379, restored=22, duplicate colliders untouched
+[D27/Presentation] 玩家表现对象尚未就绪，等待 D2 完成实例化
+[D28/Water] 水面/泡沫表现已接线：renderers=379, animatedSurfaces=29
+[D28/WeatherPresentation] 表现预览=Calm; domain weather remains owner-controlled
+[D31/Quality] 表现质量预览=Medium; runtime performance approval remains pending
+[D7/Audio] 音频通道已就绪：港口环境、脚步、上下船、船舶移动，fallback=True
+[D29/Interaction] availability=000010; clickable_unready=true; owner_feedback=true
+[D27/Presentation] 玩家表现对象尚未就绪，等待 D2 完成实例化
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D27/Presentation] 玩家表现对象尚未就绪，等待 D2 完成实例化
+[D16/A03] UI settings applied: locale=zh-CN, textScale=1, colorVision=None, reducedMotion=False, subtitles=True, lowStimulus=False
+[D2] 玩家已绑定场景船员模型：ph_crew_male -> D2_PlayerAvatar
+[D3/Visual] R03 圣玛格丽特港使用场景作者泊位，保持船体与码头对齐
+[D3] 可玩环已接线：港口、贸易、采集、航程和结算
+[D4] 内容层已接线：势力、船坞、炮战、动物、医疗、主线和航线日志
+[D6/Physics] R03 organic island MeshCollider installed; legacy terrain box disabled
+[D6/Physics] 港口碰撞层已建立：地面=3，碰撞体=5，海岸安全边界=启用
+[D2/Physics] 角色视觉尺寸已归一化：beforeWorldHeight=0.84, targetWorldHeight=1.80, multiplier=2.146
+[D2/Physics] 玩家碰撞体已配置：worldHeight=1.80, worldRadius=0.64, localHeight=1.80, radius=0.64, worldStepOffset=0.35, visualGroundOffset=-0.14
+[D2/Physics] 玩家已落地：surface=D19_TerrainRoot, surfaceY=0.56, playerY=0.71
+[D2/Animation] 角色动作控制器已接线：骨骼=8，唯一绑定=True，冲突=False，程序化能力=False，导入蒙皮仅中立=True
+[D2/Animation] 当前导入蒙皮 rig 尚未通过动作轴/Avatar 契约，保持 neutral，禁止猜测骨骼轴驱动。
+[D2/Animation] generated D6CrewAnimator uses absolute imported Euler curves; procedural/neutral pose layer retained.
+[D2/Animation] 中立姿态基线已采样：下肢最大偏差=0.0°
+[D7/Character] 角色表现组件已完成运行时绑定：CharacterController=True, humanVisual=True
+[D7/Character] 视觉落地已校准：error=0.000，calibrations=1
+[D2/Ocean] 水域查询已就绪：surfaceY=-0.02, halfExtent=600.0, surfaceCollider=disabled
+[D6/Harbor] 港口品质层已接线：灯光、雾、海面、岸线泡沫、灯笼和港口标识
+[D2] 运行时闭环已接线：人物物理、船、相机、海面、昼夜、对话
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D5] 运行时已接线：12 岛海图、50 特质、基础预设、本地化、性能和 Steam Bridge
+[D29/Interaction] availability=101110; clickable_unready=true; owner_feedback=true
+[D27/Presentation] 角色表现已恢复：playerRenderers=1, restored=0, crewRenderers=0, D20 facts remain read-only
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D7/Tutorial] 进入步骤：对话
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D7/Character] 视觉落地已校准：error=-0.753，calibrations=2
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D7/Character] 视觉落地已校准：error=-0.778，calibrations=3
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D7/Character] 视觉落地已校准：error=-0.750，calibrations=4
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D19-R03] ShoreBoundary did not appear within 180 frames; route window remains unchanged
+[D19-R03] compact player route HUD applied
+[D19-R03] route collision window skipped: D6-owned ShoreBoundary was not available within bootstrap window
+[D19-R03] legacy physical colliders disabled=123; non-blocking triggers preserved=22; D6/R03 owners retained
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家从岸缘进入游泳态：surfaceY=-0.02, entryDistance=2.95, entryZ=17.45
+[D6/Input] EventSystem navigation=gameplay_suppressed
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+[D2/Physics] 玩家进入游泳态：surfaceY=-0.02, playerY=0.42
+[D2/Physics] 玩家退出游泳态：reason=重新接触可行走地面
+[D2/Physics] 玩家已恢复可行走接地：surface=D19_TerrainRoot, surfaceY=0.13
+Saving results to: C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

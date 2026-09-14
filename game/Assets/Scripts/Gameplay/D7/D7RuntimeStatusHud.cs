@@ -87,6 +87,7 @@ namespace Whalebone.Gameplay.D7
                 case D2CharacterAction.Jump: return "跳跃";
                 case D2CharacterAction.Boarding: return "上船";
                 case D2CharacterAction.Disembarking: return "下船";
+                case D2CharacterAction.Swimming: return "游泳";
                 default: return "待机";
             }
         }

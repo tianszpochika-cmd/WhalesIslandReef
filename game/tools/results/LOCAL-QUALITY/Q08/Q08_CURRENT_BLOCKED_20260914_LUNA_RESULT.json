@@ -1,0 +1,52 @@
+{
+  "task_id": "Q08",
+  "run_id": "Q08_CURRENT_BLOCKED_20260914_LUNA",
+  "status": "BLOCKED",
+  "status_scope": "formal_action_integration_checkpoint",
+  "captured_at_local": "2026-09-14T09:34:00+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_after_q07": "cleared"
+  },
+  "changed_files": [],
+  "dependency_snapshot": {
+    "q03": {
+      "status": "BLOCKED_ASSET",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q03/Q03_CURRENT_FORMAL_ACTION_GATE_20260914_LUNA_RESULT.json",
+      "gate": "Q03FormalActionAdmissionGateTests=1/1 PASS_AS_BLOCKED_GATE",
+      "runtime_marker": "formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15",
+      "default_initial_harbor_formal_consumer": 0,
+      "formal_animator_ready": false
+    },
+    "q05": {
+      "status": "PASS_WITHIN_SCOPE",
+      "evidence": "Current D17A08=1/1 PASS for whole-visual-root tilt/restore and physics-root separation only"
+    },
+    "q07": {
+      "status": "PASS_WITHIN_SCOPE",
+      "evidence": "Current service-building owner=1/1 PASS and D17A10 route=1/1 PASS within bounded collision scopes"
+    }
+  },
+  "q08_integration": {
+    "status": "NOT_RUN",
+    "reason": "Q03 formal action admission remains closed. Running neutral-only or generic diagnostic motion would overstate input-to-state-to-motion-to-pose integration.",
+    "product_code_changed": false,
+    "configuration_changed": false
+  },
+  "blocker_code": "BLOCKED_PREREQUISITE",
+  "blocker": "The current formal action set has no admitted current-rig authored ground-action resource or auditable bone-axis adapter: all 15 clips report humanMotion=0 and genericRoot=15.",
+  "unblock_conditions": [
+    "Provide a current-rig-compatible authored ground-action clip set, or an auditable Avatar/bone-axis adapter with import/source evidence.",
+    "Re-run the Q08 action-state, movement, swim and grounding integration suite against the same source/build boundary.",
+    "Keep Q31 native Player physical input and visual acceptance separate from this logic gate."
+  ],
+  "status_boundary": "Q08 is blocked, not failed and not passed. Q05 and Q07 bounded sub-contracts do not combine into formal action integration evidence.",
+  "next_task": "Q09_CURRENT_DECK_ANCHOR_REAUDIT"
+}

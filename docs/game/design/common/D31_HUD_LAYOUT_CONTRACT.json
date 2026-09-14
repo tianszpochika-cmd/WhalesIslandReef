@@ -1,0 +1,34 @@
+{
+  "schema_version": "d31-hud-layout-contract-v1",
+  "task": "D31-S05",
+  "acceptance_level": "STATIC_LOGIC_ONLY",
+  "runtime_proof": false,
+  "reference_resolution": {
+    "width": 1920,
+    "height": 1080,
+    "coordinate_origin": "top_left"
+  },
+  "surfaces": {
+    "D25PlayerTitle": { "left": 24, "top": 24, "width": 390, "height": 78, "mode": "primary" },
+    "D25PlayerFeedback": { "left": 24, "top": 908, "width": 650, "height": 54, "mode": "primary" },
+    "D25PlayerHint": { "left": 550, "top": 984, "width": 820, "height": 66, "mode": "primary" },
+    "D29QuickActions": { "left": 1560, "top": 116, "width": 332, "height": 590, "mode": "primary" },
+    "D29Warehouse": { "left": 650, "top": 280, "width": 620, "height": 520, "mode": "modal" }
+  },
+  "quick_actions": {
+    "button_count": 8,
+    "button_width": 286,
+    "button_height": 42,
+    "first_button_top_in_panel": 94,
+    "vertical_step": 50,
+    "right_inset": 28,
+    "top_inset": 116
+  },
+  "mutual_exclusion": {
+    "primary_hud_and_warehouse": true,
+    "primary_hud_and_temporary_pages": true,
+    "temporary_pages": ["D3Canvas", "D4Canvas", "D9PortServicePage", "D10TavernSocialPage"]
+  },
+  "source_of_truth": "game/Assets/Scripts/Gameplay/D29/Logic/D29InteractionLayoutPolicy.cs",
+  "runtime_boundary": "This contract proves only deterministic source/editor layout; physical OS input and final Player visual approval remain separate gates."
+}

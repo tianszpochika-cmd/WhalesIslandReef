@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Profiling;
 using Unity.Profiling;
@@ -10,8 +12,8 @@ namespace Whalebone.Gameplay.D19.R03
     /// <summary>
     /// Read-only performance evidence for D19-R03-A03.
     /// The probe samples the actual standalone Player after a 30 second warm-up
-    /// and writes a 60 second frame-time window. It never changes gameplay,
-    /// save data, or the D16 performance controller.
+    /// and writes a configurable frame-time window (60 seconds by default).
+    /// It never changes gameplay, save data, or the D16 performance controller.
     /// </summary>
     public sealed class D19R03PerformanceProbe : MonoBehaviour
     {
@@ -38,8 +40,8 @@ namespace Whalebone.Gameplay.D19.R03
             public string fullscreen_mode;
             public int vsync_count;
             public int target_frame_rate;
-            public float warmup_seconds_requested = 30f;
-            public float sample_seconds_requested = 60f;
+            public float warmup_seconds_requested;
+            public float sample_seconds_requested;
             public float warmup_seconds_actual;
             public float sample_seconds_actual;
             public int sample_count;
@@ -60,15 +62,21 @@ namespace Whalebone.Gameplay.D19.R03
             public float gpu_frame_ms = -1f;
             public bool gpu_sample_available;
             public string gpu_counter_name;
+            public int d16_budget_evaluation_count;
+            public float d16_total_budget_evaluation_ms = -1f;
+            public float d16_average_budget_evaluation_ms = -1f;
+            public float d16_max_budget_evaluation_ms = -1f;
             public string completion;
         }
 
-        private const float WarmupSeconds = 30f;
-        private const float SampleSeconds = 60f;
+        private const float DefaultWarmupSeconds = 30f;
+        private const float DefaultSampleSeconds = 60f;
         private readonly List<float> _frameMilliseconds = new List<float>(4096);
         private Result _result;
         private float _startedAt;
         private float _sampleStartedAt;
+        private float _warmupSeconds;
+        private float _sampleSeconds;
         private bool _sampling;
         private bool _wrote;
         private double _fpsTotal;
@@ -83,6 +91,7 @@ namespace Whalebone.Gameplay.D19.R03
         private readonly FrameTiming[] _frameTimings = new FrameTiming[1];
         private ProfilerRecorder _gpuRecorder;
         private bool _gpuRecorderStarted;
+        private Component _d16Controller;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
@@ -128,6 +137,8 @@ namespace Whalebone.Gameplay.D19.R03
             if (string.IsNullOrEmpty(_requestedQuality))
                 TryReadQualityFlag(out _requestedQuality);
             _runLabel = ReadRunLabel();
+            _warmupSeconds = ReadSecondsFlag("-d19-r03-perf-warmup-seconds=", DefaultWarmupSeconds);
+            _sampleSeconds = ReadSecondsFlag("-d19-r03-perf-sample-seconds=", DefaultSampleSeconds);
             int requestedIndex = FindQualityIndex(_requestedQuality);
             if (requestedIndex >= 0 && requestedIndex < QualitySettings.names.Length)
                 QualitySettings.SetQualityLevel(requestedIndex, true);
@@ -151,15 +162,33 @@ namespace Whalebone.Gameplay.D19.R03
                 fullscreen_mode = Screen.fullScreenMode.ToString(),
                 vsync_count = QualitySettings.vSyncCount,
                 target_frame_rate = Application.targetFrameRate,
+                warmup_seconds_requested = _warmupSeconds,
+                sample_seconds_requested = _sampleSeconds,
                 gpu_counter_name = string.Empty,
                 completion = "warming_up"
             };
             _startedAt = Time.realtimeSinceStartup;
-            _sampleStartedAt = _startedAt + WarmupSeconds;
+            _sampleStartedAt = _startedAt + _warmupSeconds;
             _gcGen0Start = GC.CollectionCount(0);
             _gcGen1Start = GC.CollectionCount(1);
             _gcGen2Start = GC.CollectionCount(2);
+            _d16Controller = FindD16Controller();
             FrameTimingManager.CaptureFrameTimings();
+        }
+
+        private static Component FindD16Controller()
+        {
+            var behaviours = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            for (var i = 0; i < behaviours.Length; i++)
+            {
+                var behaviour = behaviours[i];
+                if (behaviour != null &&
+                    string.Equals(behaviour.GetType().FullName,
+                        "Whalebone.Gameplay.D16.D16WorldPerformanceController",
+                        StringComparison.Ordinal))
+                    return behaviour;
+            }
+            return null;
         }
 
         private static int FindQualityIndex(string requestedQuality)
@@ -178,6 +207,23 @@ namespace Whalebone.Gameplay.D19.R03
             // canonical Low/Medium/High profiles. The emitted quality_name remains
             // the runtime truth and cannot be mistaken for a requested label.
             return QualitySettings.GetQualityLevel();
+        }
+
+        private static float ReadSecondsFlag(string prefix, float fallback)
+        {
+            var args = Environment.GetCommandLineArgs();
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (!args[i].StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) continue;
+                string raw = args[i].Substring(prefix.Length).Trim();
+                float seconds;
+                if (float.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out seconds) &&
+                    seconds >= 1f && seconds <= 3600f)
+                    return seconds;
+                Debug.LogWarning("[D19-R03-A03] Ignoring invalid seconds flag: " + args[i]);
+                break;
+            }
+            return fallback;
         }
 
         private static string ReadRunLabel()
@@ -235,7 +281,7 @@ namespace Whalebone.Gameplay.D19.R03
                 CaptureFrameTiming();
             }
 
-            if (now - _sampleStartedAt >= SampleSeconds)
+            if (now - _sampleStartedAt >= _sampleSeconds)
             {
                 FinalizeResult(now - _sampleStartedAt);
                 WriteResult();
@@ -327,6 +373,7 @@ namespace Whalebone.Gameplay.D19.R03
             if (_wrote || _result == null) return;
             _wrote = true;
             if (_result.completion == "sampling") FinalizeResult(Time.realtimeSinceStartup - _sampleStartedAt);
+            CaptureD16BudgetMetrics();
             string quality = string.IsNullOrEmpty(_requestedQuality) ? "unknown" : _requestedQuality;
             string runSuffix = string.IsNullOrEmpty(_runLabel) ? string.Empty : "_" + _runLabel;
             // The R03 Player is built beside its evidence files. Keeping the
@@ -343,6 +390,47 @@ namespace Whalebone.Gameplay.D19.R03
             catch (Exception ex)
             {
                 Debug.LogError("[D19-R03-A03] Performance result write failed: " + ex);
+            }
+        }
+
+        private void CaptureD16BudgetMetrics()
+        {
+            if (_d16Controller == null) _d16Controller = FindD16Controller();
+            if (_d16Controller == null) return;
+
+            _result.d16_budget_evaluation_count = ReadIntProperty(_d16Controller, "BudgetEvaluationCount", 0);
+            _result.d16_total_budget_evaluation_ms = ReadFloatProperty(_d16Controller, "TotalBudgetEvaluationMs", -1f);
+            _result.d16_average_budget_evaluation_ms = ReadFloatProperty(_d16Controller, "AverageBudgetEvaluationMs", -1f);
+            _result.d16_max_budget_evaluation_ms = ReadFloatProperty(_d16Controller, "MaxBudgetEvaluationMs", -1f);
+        }
+
+        private static int ReadIntProperty(Component source, string propertyName, int fallback)
+        {
+            try
+            {
+                var property = source.GetType().GetProperty(
+                    propertyName, BindingFlags.Instance | BindingFlags.Public);
+                var value = property == null ? null : property.GetValue(source, null);
+                return value is int result ? result : fallback;
+            }
+            catch (Exception)
+            {
+                return fallback;
+            }
+        }
+
+        private static float ReadFloatProperty(Component source, string propertyName, float fallback)
+        {
+            try
+            {
+                var property = source.GetType().GetProperty(
+                    propertyName, BindingFlags.Instance | BindingFlags.Public);
+                var value = property == null ? null : property.GetValue(source, null);
+                return value is float result ? result : fallback;
+            }
+            catch (Exception)
+            {
+                return fallback;
             }
         }
     }

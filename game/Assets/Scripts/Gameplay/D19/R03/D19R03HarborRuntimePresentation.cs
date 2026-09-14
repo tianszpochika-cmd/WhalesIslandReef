@@ -11,6 +11,31 @@ namespace Whalebone.Gameplay.D19.R03
     /// </summary>
     public sealed class D19R03HarborRuntimePresentation : MonoBehaviour
     {
+        private const string CollisionRootName = "D6_HarborCollision";
+        private const string ShoreBoundaryName = "ShoreBoundary";
+        private const string R03SouthShoreBoundaryName = ShoreBoundaryName + ".South";
+        private const string R03WestShoreBoundaryName = ShoreBoundaryName + ".West";
+        private const string R03EastShoreBoundaryName = ShoreBoundaryName + ".East";
+        private const string LegacyPresentationRootName = "D19_SaintMargaret_Root";
+
+        private void Awake()
+        {
+            // The formal R03 prefab is authored in the same world frame as
+            // D6's route anchors.  Keep a stale scene override from lifting
+            // the entire presentation above the physics surfaces after a
+            // prefab refresh.
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "InitialHarbor")
+                return;
+
+            var position = transform.position;
+            if (Mathf.Abs(position.y) > 0.001f)
+            {
+                transform.position = new Vector3(position.x, 0f, position.z);
+                Debug.Log("[D19-R03] normalized presentation root Y to 0.0 to match D6 route surfaces");
+            }
+
+        }
+
         private IEnumerator Start()
         {
             // D6 creates its collision root during bootstrap. One frame was
@@ -22,18 +47,17 @@ namespace Whalebone.Gameplay.D19.R03
             for (var frame = 0; frame < 180; frame++)
             {
                 yield return null;
-                if (FindChildByName("ShoreBoundary") != null)
+                if (FindOwnedShoreBoundary() != null || HasOwnedR03OuterBoundarySet())
                 {
                     boundaryReady = true;
                     break;
                 }
             }
             if (!boundaryReady)
-                Debug.LogWarning("[D19-R03] ShoreBoundary did not appear within 180 frames; route window remains unchanged");
+                Debug.LogWarning("[D19-R03] D6-owned ShoreBoundary set did not appear within 180 frames; route window remains unchanged");
             ApplyCompactRouteHud();
             ApplyR03RouteCollisionWindow();
-            DisableConflictingLegacyDockColliders();
-            DisableConflictingLegacyTerrainCollider();
+            DisableConflictingLegacyPhysicalColliders();
         }
 
         private static void ApplyR03RouteCollisionWindow()
@@ -42,28 +66,62 @@ namespace Whalebone.Gameplay.D19.R03
             // harbor safety boundary to the frozen far-shore edge so the
             // approved local route can reach the market, warehouse and tavern.
             // No new gameplay authority or second collision system is created.
-            var boundary = FindChildByName("ShoreBoundary");
+            var boundary = FindOwnedShoreBoundary();
             if (boundary == null)
             {
-                Debug.LogWarning("[D19-R03] route collision window skipped: D6 ShoreBoundary was not available within bootstrap window");
+                if (HasOwnedR03OuterBoundarySet())
+                {
+                    // R03 deliberately replaces the old inland wall with
+                    // three D6-owned perimeter walls outside the water. Do
+                    // not move .South to z=17: that would turn the current
+                    // swim route into an invisible hard edge.
+                    Debug.Log("[D19-R03] route collision window retained: D6-owned R03 perimeter boundaries remain outside water");
+                    return;
+                }
+
+                Debug.LogWarning("[D19-R03] route collision window skipped: D6-owned ShoreBoundary set was not available within bootstrap window");
                 return;
             }
 
             var position = boundary.transform.position;
             boundary.transform.position = new Vector3(position.x, position.y, 17.0f);
+            Physics.SyncTransforms();
             Debug.Log("[D19-R03] route collision window applied: ShoreBoundary z=17.0; D6 collider owner retained");
         }
 
-        private static GameObject FindChildByName(string name)
+        private static bool HasOwnedR03OuterBoundarySet()
         {
-            var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
-            for (var i = 0; i < roots.Length; i++)
+            var collisionRoot = GameObject.Find(CollisionRootName);
+            if (collisionRoot == null) return false;
+
+            return IsEnabledSolidBoundary(collisionRoot.transform.Find(R03SouthShoreBoundaryName)) &&
+                IsEnabledSolidBoundary(collisionRoot.transform.Find(R03WestShoreBoundaryName)) &&
+                IsEnabledSolidBoundary(collisionRoot.transform.Find(R03EastShoreBoundaryName));
+        }
+
+        private static GameObject FindOwnedShoreBoundary()
+        {
+            // A global name search can select a hidden legacy boundary or a
+            // duplicate prefab instance.  D6 is the sole collision owner, so
+            // only its direct, enabled non-trigger boundary is eligible.
+            var collisionRoot = GameObject.Find(CollisionRootName);
+            if (collisionRoot == null) return null;
+
+            var boundary = collisionRoot.transform.Find(ShoreBoundaryName);
+            return IsEnabledSolidBoundary(boundary) ? boundary.gameObject : null;
+        }
+
+        private static bool IsEnabledSolidBoundary(Transform boundary)
+        {
+            if (boundary == null || !boundary.gameObject.activeInHierarchy) return false;
+            var colliders = boundary.GetComponents<Collider>();
+            for (var i = 0; i < colliders.Length; i++)
             {
-                var transforms = roots[i].GetComponentsInChildren<Transform>(true);
-                for (var j = 0; j < transforms.Length; j++)
-                    if (transforms[j].name == name) return transforms[j].gameObject;
+                var collider = colliders[i];
+                if (collider != null && collider.enabled && !collider.isTrigger)
+                    return true;
             }
-            return null;
+            return false;
         }
 
         private static void ApplyCompactRouteHud()
@@ -89,63 +147,38 @@ namespace Whalebone.Gameplay.D19.R03
             Debug.Log("[D19-R03] compact player route HUD applied");
         }
 
-        private static void DisableConflictingLegacyDockColliders()
+        private static void DisableConflictingLegacyPhysicalColliders()
         {
-            // The R03 integration owns the presentation route surface. The
-            // historical D19 dock deck boxes span the same volume and sit
-            // below the R03 surface, so CharacterController sees them as a
-            // non-walkable obstacle and cannot leave the berth. Keep the
-            // stable Dock/Gangplank nodes and D6's runtime DockGround and
-            // GangplankGround owners; disable only the duplicate legacy
-            // colliders under the historical D19 scene root.
+            // The R03 integration owns the visible local route surface. The
+            // historical D19 root may remain active for stable scene IDs and
+            // render-layer bookkeeping, but its physical colliders are now
+            // invisible duplicates. Leaving any of them enabled lets the
+            // CharacterController hit a wall or floor where R03 shows empty
+            // space. Preserve triggers because they are non-blocking zone and
+            // ambience hooks rather than movement surfaces.
             var disabled = 0;
+            var preservedTriggers = 0;
             var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
             for (var i = 0; i < roots.Length; i++)
             {
                 var root = roots[i];
-                if (root == null || root.name != "D19_SaintMargaret_Root") continue;
+                if (root == null || root.name != LegacyPresentationRootName) continue;
                 var colliders = root.GetComponentsInChildren<Collider>(true);
                 for (var j = 0; j < colliders.Length; j++)
                 {
                     var collider = colliders[j];
                     if (collider == null) continue;
-                    if (collider.name != "DockDeck_Collision" && collider.name != "Gangplank_Collision") continue;
+                    if (collider.isTrigger)
+                    {
+                        preservedTriggers++;
+                        continue;
+                    }
                     if (!collider.enabled) continue;
                     collider.enabled = false;
                     disabled++;
                 }
             }
-            Debug.Log("[D19-R03] legacy dock duplicate colliders disabled=" + disabled + "; stable IDs and D6 ground owners retained");
-        }
-
-        private static void DisableConflictingLegacyTerrainCollider()
-        {
-            // D19-A01's legacy terrain collider covers the full sample island
-            // and overlaps the R03 controlled route surface. Keep the legacy
-            // renderers and stable hierarchy, but let the R03 integration
-            // surface be the sole walkable collider in the local harbor
-            // window. This is a presentation/integration bridge only; it does
-            // not alter D19-A01 source assets or movement rules.
-            var disabled = 0;
-            var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
-            for (var i = 0; i < roots.Length; i++)
-            {
-                var root = roots[i];
-                if (root == null || root.name != "D19_SaintMargaret_Root") continue;
-                var legacyEnvironment = root.transform.Find("D19_EnvironmentRoot");
-                if (legacyEnvironment == null) continue;
-                var legacyTerrain = legacyEnvironment.Find("D19_TerrainRoot");
-                if (legacyTerrain == null) continue;
-                var colliders = legacyTerrain.GetComponentsInChildren<Collider>(true);
-                for (var j = 0; j < colliders.Length; j++)
-                {
-                    var collider = colliders[j];
-                    if (collider == null || !collider.enabled) continue;
-                    collider.enabled = false;
-                    disabled++;
-                }
-            }
-            Debug.Log("[D19-R03] legacy terrain colliders disabled=" + disabled + "; R03 route surface remains integration owner");
+            Debug.Log("[D19-R03] legacy physical colliders disabled=" + disabled + "; non-blocking triggers preserved=" + preservedTriggers + "; D6/R03 owners retained");
         }
 
         private static void SetText(Transform parent, string name, Vector2 position, int size, Vector2 area, TextAnchor alignment)

@@ -1,0 +1,59 @@
+{
+  "task_id": "Q01",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "read_only_current_root_visual_scale_writer_tolerance_and_defect_diagnosis_after_q26_a19_a21",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q00"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A21_20260913_LUNA_R1",
+  "audit_time_local": "2026-09-13T19:24:15+08:00",
+  "changed_files": [],
+  "scope_rule": "Diagnostic only. No product code, prefab, scene, Systems file, generated Player or dirty worktree content was changed.",
+  "current_source_relationship": "Q26-A19 changes D19 presentation builder/prefab only and Q26-A21 changes a PlayMode test only; the current D2 root, animation, water and input owner hashes remain the same as the latest Q01 direct sample.",
+  "pipeline_runtime_sample": {
+    "editor": "Unity 6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "final_editor_state": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "console_error_query_after_stop": 0,
+    "tool_boundary": "A short exploratory eval timed out/reset during connection timing and another raced PlayMode; both were discarded. No failed exploratory expression is used as a runtime fact."
+  },
+  "current_runtime_facts": {
+    "physical_root": "D2_PlayerAvatar position=(0.00,0.15,-2.70), parent=none, lossyScale=(1,1,1)",
+    "visual_root": "HumanoidVisual localScale=(0.66,0.66,0.66), worldPosition=(0.00,0.15,-2.70), rendererCount=17",
+    "character_controller": "radius=0.2424353m, height=1.8m, center=(0.00,0.85,0.00), skinWidth=0.01939483m, enabled=true",
+    "d2_state": "grounded=true, swimming=false, moving=false, currentSpeed=0, waterSurfaceY=-0.02, movementInputSource=D16InputRouter",
+    "animation_state": "FormalAnimatorReady=false, ProceduralPoseLayerReady=true, ProceduralPoseLayerActive=true, AnimatorPoseLayerActive=false, BoundBonesAreUnique=true, BoneBindingConflict=false",
+    "presentation_state": "D7 IsReady=true, HasHumanVisual=true, GroundError=-1.49e-08",
+    "ship_state": "ph_ship_fishing position=(0.00,0.00,-5.20), lossyScale=(2.57,2.57,2.57); deck ready=true, helmReady=true, PlayerBoarded=false, DeckCollisionReady=true",
+    "helm_state": "D7_HelmPoint=(0.00,1.10,-6.68); D7_VisibleHelmAnchor=(0.00,1.10,-6.68)",
+    "terrain_state": "scoped R03 MeshCollider enabled=true, isTrigger=false, sharedMesh=D19_R03_IslandSurfaceMesh; duplicate legacy TerrainCollider disabled",
+    "water_state": "WaterWaveSurface=(0.00,-0.02,0.00) in this sample; D2 logical waterSurfaceY=-0.02"
+  },
+  "owner_boundary": {
+    "physical_root_and_swimming": "D2CharacterController",
+    "visual_root_and_pose": "D2CharacterAnimationController",
+    "grounding_measurement_and_offset_contract": "D7CharacterPresentationController measures and submits through D2; it does not directly own visual-root transform",
+    "mode_and_parent_transition": "D2ControlRouter",
+    "gameplay_helm": "D7ShipDeckController",
+    "visible_R03_presentation": "D19R03HarborPresentationBuilder and D19 runtime presentation",
+    "walkable_collision": "HarborCollisionController"
+  },
+  "defect_diagnosis": [
+    {"defect": "任务动作扭曲", "reproduction": "PARTIAL_REPRODUCED_CURRENT_SOURCE", "root_cause": "Default InitialHarbor still consumes Procedural with FormalAnimatorReady=false; Q26-A21 measures continuity of the fallback only and does not admit authored action/avatar assets.", "status_boundary": "No authored locomotion or visual-quality PASS; Q03 remains BLOCKED_ASSET."},
+    {"defect": "海洋不能游泳", "reproduction": "LOGIC_AND_PROCEDURAL_CONTINUITY_CONFIRMED_VISUAL_NOT_ACCEPTED", "root_cause": "D2 water state and hidden Pipeline W route reach Swimming; Q26-A21 measures a moving procedural stroke, but foreground keyboard delivery and natural authored swim remain unproven.", "status_boundary": "Q04/Q05/Q26-A21 cannot be promoted to natural swim or native-input PASS."},
+    {"defect": "上船后人物/船控异常", "reproduction": "ANCHOR_OWNER_CONFIRMED_VISUAL_NOT_ACCEPTED", "root_cause": "Q26-A19 fixes the helm-support material owner and the gameplay/visible helm anchors match in the current sample; hand-to-wheel contact, deck intersection and physical E remain visual/manual gates.", "status_boundary": "Material/anchor evidence does not close no-clipping or native-input acceptance."},
+    {"defect": "树在空中飘", "reproduction": "NOT_REPRODUCED_BY_CURRENT_TRANSFORM_SAMPLE", "root_cause": "Scoped R03 collision is present, but full vegetation pivot/bounds/contact across cameras is still Q20/D31 scope.", "status_boundary": "No tree visual PASS claimed."},
+    {"defect": "W/S 与右上角菜单联动", "reproduction": "NOT_REPRODUCED_IN_CURRENT_AUTOMATED_RUN", "root_cause": "Code-level Input System regression guards exist, but this Q01 sample has no foreground physical Win32 keyboard/focus route.", "status_boundary": "Do not call the user-reported behavior fixed without foreground input evidence or a reproducible automated failure."}
+  ],
+  "checks": [
+    {"name": "current_runtime_transform_inventory", "result": "PASS_WITHIN_SCOPE", "evidence": "Current Q01 fact set remains bound to the same current D2/D7/D19/Harbor source hashes after Q26-A19/A21."},
+    {"name": "single_writer_and_owner_diagnosis", "result": "PASS_WITHIN_SCOPE", "evidence": "The Q26-A19 material change stays within D19 presentation and Q26-A21 stays within tests; no ownership boundary was widened."},
+    {"name": "reported_defect_boundaries", "result": "PARTIAL", "evidence": "The diagnostic separates logic/owner facts from unaccepted rendered/manual behavior and does not promote any visual defect to PASS."}
+  ],
+  "next_task": "Q05_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R1",
+  "status_boundary": "Q01 is verified only for current read-only diagnosis. It does not claim any user-reported visual defect fixed, formal action assets admitted, physical keyboard accepted, or VC-G01/D31 completed."
+}

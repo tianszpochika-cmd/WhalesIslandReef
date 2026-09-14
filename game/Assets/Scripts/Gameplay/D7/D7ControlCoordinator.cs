@@ -6,6 +6,7 @@
 // ============================================================
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Whalebone.Gameplay;
 using Whalebone.Gameplay.D2;
@@ -31,6 +32,15 @@ namespace Whalebone.Gameplay.D7
         public static D7ControlCoordinator Instance { get; private set; }
         public static bool EscapeHandledThisFrame { get; private set; }
 
+        /// <summary>
+        /// 由高优先级模态 owner 在自身 Update 中消费 Esc 后调用，
+        /// 防止 HarborPauseController 在同一帧把已消费的关闭输入再次解释为暂停。
+        /// </summary>
+        public static void MarkEscapeHandledThisFrame()
+        {
+            EscapeHandledThisFrame = true;
+        }
+
         /// <summary>没有协调器时保持旧逻辑可运行；协调器存在后统一阻止模态穿透。</summary>
         public static bool GameplayInputAllowed =>
             !D16InputRouter.GameplayInputBlocked &&
@@ -51,6 +61,7 @@ namespace Whalebone.Gameplay.D7
         private D7AudioController _audio;
         private D7MaterialPolishController _materials;
         private bool _bound;
+        private bool _escapeKeyboardHeld;
         private D7ControlSnapshot _lastSnapshot;
         private float _nextReconcile;
 
@@ -159,7 +170,15 @@ namespace Whalebone.Gameplay.D7
 
         private void HandleModalEscape()
         {
-            if (!D16InputRouter.WasPressedThisFrame(D16InputAction.Pause)) return;
+            // Standalone Windows Player 的 legacy 键盘边沿仍是 D29/D10/D3
+            // 的兼容输入入口；暂停也必须消费同一条默认 Esc 意图，否则
+            // Player 中关闭临时页后 Esc 会静默失效。D16 重绑定仍优先。
+            bool pausePressed = D16InputRouter.WasPressedThisFrame(D16InputAction.Pause) ||
+                WasDefaultEscapePressed() || Input.GetKeyDown(KeyCode.Escape);
+            if (!pausePressed) return;
+
+            // 暂停菜单自己负责第二次 Esc 恢复，不能被模态协调器拦截。
+            if (_pause != null && _pause.IsPaused) return;
 
             // 模态窗口优先被关闭；本帧不再让暂停菜单重复响应同一个 ESC。
             if (_dialogue != null && _dialogue.IsOpen)
@@ -175,7 +194,24 @@ namespace Whalebone.Gameplay.D7
                 _d3.CloseTradeFromCoordinator();
                 EscapeHandledThisFrame = true;
                 Debug.Log("[D7/Input] ESC 优先关闭贸易，不穿透到暂停菜单");
+                return;
             }
+
+            // D29 仓库、D10 酒馆、D4/D9 临时页各自拥有关闭动作；高优先级
+            // 协调器只标记本帧已被模态消费，防止 HarborPause 同帧打开。
+            if (!RuntimeHudCoordinator.PrimaryInputAllowed)
+            {
+                EscapeHandledThisFrame = true;
+                Debug.Log("[D7/Input] ESC 已交给当前临时页面关闭，不穿透到暂停菜单");
+            }
+        }
+
+        private bool WasDefaultEscapePressed()
+        {
+            bool isPressed = Keyboard.current != null && Keyboard.current.escapeKey.isPressed;
+            bool pressed = isPressed && !_escapeKeyboardHeld;
+            _escapeKeyboardHeld = isPressed;
+            return pressed;
         }
 
         private void ReconcileState()

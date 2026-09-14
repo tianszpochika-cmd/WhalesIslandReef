@@ -18,8 +18,9 @@ namespace Whalebone.Tests.D19Hud
 
             var primary = GameObject.Find("D19RouteHud");
             Assert.That(primary, Is.Not.Null, "D19RouteHud must be created in the player scene.");
-            var primaryGroup = primary.GetComponent<CanvasGroup>();
-            Assert.That(primaryGroup == null || primaryGroup.alpha > 0.5f, Is.True);
+            var primaryD25 = GameObject.Find("D25PlayerHudCanvas");
+            Assert.That(IsVisible(primary) ^ IsVisible(primaryD25), Is.True,
+                "InitialHarbor must expose exactly one route HUD: D25PlayerHudCanvas or the legacy D19RouteHud fallback.");
 
             AssertLegacyCanvasHidden("D9PortServicePage");
             AssertLegacyCanvasHidden("D10TavernSocialPage");
@@ -35,9 +36,15 @@ namespace Whalebone.Tests.D19Hud
         {
             var go = GameObject.Find(name);
             if (go == null) return;
-            var group = go.GetComponent<CanvasGroup>();
-            Assert.That(group == null || group.alpha < 0.01f, Is.True,
+            Assert.That(IsVisible(go), Is.False,
                 name + " must not cover the player HUD by default.");
+        }
+
+        private static bool IsVisible(GameObject go)
+        {
+            if (go == null || !go.activeInHierarchy) return false;
+            var group = go.GetComponent<CanvasGroup>();
+            return group == null || group.alpha > 0.5f;
         }
     }
 }

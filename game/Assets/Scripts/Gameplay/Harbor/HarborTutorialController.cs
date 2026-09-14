@@ -302,7 +302,7 @@ namespace Whalebone.Gameplay.Harbor
                 case TutorialStep.Board: return "点击右侧“上船/下船 [E]”，或靠近船后按 E。";
                 case TutorialStep.Sail: return "上船后按住 W 航行一小段，再按 E 下船。";
                 case TutorialStep.Disembark: return "按 E 下船，回到人物控制。";
-                case TutorialStep.StartVoyage: return "按 T 规划一条航线，开始 D3 航程。";
+                case TutorialStep.StartVoyage: return "按 Y 规划一条航线，开始 D3 航程。";
                 case TutorialStep.AdvanceVoyage: return "按 N 推进航程，直到状态显示已抵达。";
                 case TutorialStep.Land: return "按 L 靠港并完成航程结算。";
                 case TutorialStep.Gather: return "按 G 采集一次当地资源。";

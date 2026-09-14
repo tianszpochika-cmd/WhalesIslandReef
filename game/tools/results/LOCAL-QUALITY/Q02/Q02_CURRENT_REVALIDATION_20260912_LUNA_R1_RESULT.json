@@ -1,0 +1,59 @@
+{
+  "task_id": "Q02",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "当前源码 D2 动画唯一写者/生命周期聚焦回归；未修改产品源码、场景、Prefab 或 Player。",
+  "parent_task": "Q01",
+  "depends_on": ["Q01_CURRENT_ROOT_CAUSE_20260912_LUNA_R1"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q02_CURRENT_REVALIDATION_20260912_LUNA_R1",
+  "audit_time_local": "2026-09-12T15:09:56+08:00",
+  "source_hashes": {
+    "D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "D2CharacterAnimationControllerTests.cs": "2F9497E0B6AEBB4501219CC8826C606DDAB584CBE7D90BC46BEDDCB401BA43FC",
+    "D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5B7D721971F2E4BDC20"
+  },
+  "verification": {
+    "focused_editmode": {
+      "filter": "D2CharacterAnimationControllerTests",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 0.86
+    },
+    "d17_full_first": {
+      "total": 16,
+      "passed": 15,
+      "failed": 1,
+      "failure": "D17A16SwimmingCameraTracksHeadingUntilManualLookHandoff: camera-player horizontal sqrMagnitude=0.0221495014, expected >1.0",
+      "duration_seconds": 52.02
+    },
+    "d17a16_isolated": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_seconds": 1.8246469
+    },
+    "d17_full_second": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0,
+      "duration_seconds": 50.54
+    },
+    "editor_final": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console": 0
+  },
+  "ownership_result": {
+    "physical_root": "D2CharacterController",
+    "visual_root": "D2CharacterAnimationController",
+    "d7_write_count": 0,
+    "formal_animator": "not ready; default runtime remains Procedural",
+    "ten_cycle_contract": "covered by focused lifecycle test TenDisableEnableAndTransitionCyclesRestoreTheImportedBaseline"
+  },
+  "status_boundary": "Q02 的聚焦 owner/lifecycle 回归在当前源码通过；全量 D17 曾出现一次相机测试间歇性失败但随后单独与第二次全量通过，因此不能把该信号隐藏为无条件稳定 PASS。自然动作、泳姿、握舵接触和最终视觉仍由 Q03/Q05/Q31/VC-G01 负责。",
+  "next_task": "Q12/Q26-A20 camera signal isolation or Q07/Q26 terrain MeshCollider owner revalidation; choose one owner only."
+}

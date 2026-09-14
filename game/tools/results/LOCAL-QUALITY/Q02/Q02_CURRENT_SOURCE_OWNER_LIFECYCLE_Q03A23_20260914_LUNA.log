@@ -1,0 +1,7 @@
+Q02 current-source owner/lifecycle regression, 2026-09-14
+initial_d17=13/16; failures=D17A02,D17A03,D17A06; cause=stale imported-neutral assumptions after Q03-A23 default Formal route
+route_aware_test_update=applied; no unconditional pass; D2 owner/lifecycle invariants retained
+final_d2_editmode=8/8 PASS
+final_d17_playmode=16/16 PASS; failed=0; skipped=0; inconclusive=0; duration=53.22s
+recompile=failed=false errors=[]
+boundary=code/runtime regression only; no foreground input, compositor screenshot, natural action, no-clipping, vegetation or performance PASS

@@ -2,7 +2,7 @@
 
 > 自动生成：`python tools/sync_logic_task_status.py`。每个任务的唯一事实源是其 `*_LOGIC_RESULT.json`；不要手动编辑本文件。
 
-> 最后同步（UTC）：2026-09-01T19:40:30+00:00
+> 最后同步（UTC）：2026-09-11T16:39:56+00:00
 
 | 章节 | 计划任务 | LOGIC_PASS | PARTIAL | BLOCKED | Runtime 延期 | 进行中 | 未开始 |
 |---|---:|---:|---:|---:|---:|---:|---:|

@@ -1,0 +1,47 @@
+{
+  "task_id": "Q05",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_playmode_swim_visual_root_tilt_restore_and_physics_root_uprightness",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q04"],
+  "audit_time_local": "2026-09-13T23:03:40+08:00",
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "compiling": false,
+    "domain_reload_in_progress": false
+  },
+  "test": {
+    "filter": "D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "mode": "PlayMode",
+    "status": "completed",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "duration_seconds": 10.4941761,
+    "pipeline_duration_seconds": 10.7,
+    "protocol": "unity command run_tests --mode playmode --filter D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot --filter_type testName --async_tests true --timeout 300; poll test_status until completed"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029"
+  },
+  "checks": {
+    "ten_swim_pose_cycles": "PASS_WITHIN_SCOPE",
+    "visual_root_tilt_while_swimming": "PASS_WITHIN_SCOPE",
+    "physics_root_uprightness": "PASS",
+    "neutral_restore_after_exit": "PASS_WITHIN_SCOPE",
+    "error_console_since_seq_33835": 0,
+    "warning_console_since_seq_33835": 12,
+    "warnings_boundary": "Known D27 presentation readiness, D2 unverified imported skin/procedural fallback and absolute-Euler animation fallback accumulated across the Q04/Q05 runs; no new error was emitted."
+  },
+  "boundary": "This result proves only the bounded visualRoot swim tilt/restore contract and upright physics-root separation in the current source. It does not prove formal authored action/swim asset quality, natural human swimming, native Player W/S input, foreground keyboard focus, compositor screenshot quality, target-device performance or VC-G01 acceptance.",
+  "next_task": "Q06_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+}

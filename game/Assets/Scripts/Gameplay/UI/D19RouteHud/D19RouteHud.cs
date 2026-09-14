@@ -36,8 +36,10 @@ namespace Whalebone.Gameplay.UI.D19RouteHud
                 var go = new GameObject("EventSystem");
                 eventSystem = go.AddComponent<EventSystem>();
             }
-            if (eventSystem.GetComponent<StandaloneInputModule>() == null)
-                eventSystem.gameObject.AddComponent<StandaloneInputModule>();
+            // This legacy HUD is display-only.  HarborInteractionStabilizer and
+            // D29 own the single InputSystemUIInputModule; adding a
+            // StandaloneInputModule here lets W/S navigate the visible
+            // shortcut buttons while the same key is moving the player.
         }
 
         private void BuildCanvas()

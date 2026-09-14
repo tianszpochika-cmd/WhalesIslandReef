@@ -1,0 +1,24 @@
+Q03_CURRENT_FORMAL_ACTION_GATE_20260914_LUNA
+captured_at=2026-09-14T09:06:18+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800
+
+Command 1:
+unity command run_tests --project-path game --mode editor --filter Q03FormalActionAdmissionGateTests --async_tests true --timeout 300
+status=completed duration=0.12s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+marker=[Q03/A15] formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15
+
+Command 2:
+unity command run_tests --project-path game --mode editor --filter Q03FormalAvatarActionResourceContractTests --async_tests true --timeout 300
+status=completed duration=0.17s total=2 passed=2 failed=0 skipped=0 inconclusive=0
+
+Asset facts:
+- D20 Player controller exposes 15 clips.
+- All 15 report humanMotion=0 and genericRoot=15.
+- Formal appearance Avatar/action interface contract passes, but it is not sufficient for action admission.
+- Default InitialHarbor consumer remains procedural/formal-ready=false; candidate/formal path is explicit opt-in only.
+
+Conclusion:
+Q03=BLOCKED_ASSET. The guard correctly prevents generic transform-path clips from being promoted to formal authored action quality. No production files changed, no Player was built or launched, and no visual PASS was claimed.

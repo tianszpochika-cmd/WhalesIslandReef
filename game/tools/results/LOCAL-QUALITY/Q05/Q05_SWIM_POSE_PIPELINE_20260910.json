@@ -1,0 +1,43 @@
+{
+  "task_id": "Q05",
+  "run_id": "Q05_PIPELINE_SWIM_POSE_20260910_233046",
+  "tool": "Unity Pipeline connected Editor",
+  "project": "C:\\Users\\Administrator\\Desktop\\game\\first01\\game",
+  "unity_version": "6000.0.80f1",
+  "scene": "InitialHarbor",
+  "test_full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+  "invocation": {
+    "command": "run_tests",
+    "mode": "playmode",
+    "filter_type": "testName",
+    "async_tests": true,
+    "protocol": "run_tests returned running; test_status was polled until completed"
+  },
+  "status": "completed",
+  "duration_seconds": 11.94,
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "result": {
+    "full_name": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "status": "Passed",
+    "duration_seconds": 11.8444064,
+    "message": null,
+    "stack_trace": null
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "665341FDC7BB0147082B2550EBFAF2BBBF6E2EE9141143AC27BE6F2FEACA6F29",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "773E6D13E147AA33E1CE20E7C17FB78CCAF8FE36B06CF1EBA1F0C4C08CEA0E61",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987"
+  },
+  "observed_contract": {
+    "swim_visual_root_tilt": "asserted by D17A08 across 10 shallow/deep cycles",
+    "physics_root_upright": "asserted by D17A08; CharacterController/player root is not rotated for presentation",
+    "neutral_restore": "asserted within 1 degree after each exit"
+  },
+  "boundary": "This is a current-source presentation-contract result. It does not prove authored limb/head animation, natural swim silhouette, native Player input, water-material visual quality, or VC-G01 acceptance."
+}

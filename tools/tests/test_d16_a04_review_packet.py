@@ -95,10 +95,13 @@ class D16A04ReviewPacketTests(unittest.TestCase):
 
     def test_current_project_packet_covers_all_pending_records(self):
         packet = build_packet(ROOT / "game", captured_at="2026-08-13")
-        self.assertEqual(packet["pending_count"], 267)
-        self.assertEqual(packet["batch_count"], 12)
+        # D16-C07 is the authoritative current gate: all 267 historical
+        # decisions were written back, so the live queue is intentionally empty.
+        self.assertEqual(packet["status"], "EMPTY")
+        self.assertEqual(packet["pending_count"], 0)
+        self.assertEqual(packet["batch_count"], 0)
         self.assertEqual(packet["reference_gap_count"], 0)
-        self.assertTrue(all(record["decision_template"]["decision"] == "Pending" for record in packet["records"]))
+        self.assertEqual(packet["records"], [])
 
 
 if __name__ == "__main__":

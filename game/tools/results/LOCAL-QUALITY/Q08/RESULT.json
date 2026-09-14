@@ -1,0 +1,108 @@
+{
+  "task_id": "Q08",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source action-state, movement, swimming, camera handoff, grounding and input-modal integration only",
+  "historical_status": "BLOCKED",
+  "history_boundary": "The original BLOCKED gate and all pre-Q03-A23 BLOCKED re-audits remain historical evidence for the former generic-only route; the current status is supplied by the Q03-A23 replacement node below.",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q03", "Q05", "Q07"],
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q08_CURRENT_SOURCE_INTEGRATION_Q03A23_20260915_LUNA",
+  "audit_time_local": "2026-09-15T00:00:00+08:00",
+  "changed_files": ["game/Assets/Scripts/Gameplay/CameraFollow.cs"],
+  "historical_blocker_code": "BLOCKED_PREREQUISITE",
+  "historical_blocker": "Q03 was BLOCKED_ASSET before Q03-A23: the imported rig had no verified legal ground-action resource or auditable bone-axis adapter.",
+  "evidence_reviewed": [
+    "game/tools/results/LOCAL-QUALITY/Q03/RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q05/Q05_SWIM_POSE_RESTORE_PLAYMODE.xml",
+    "game/tools/results/LOCAL-QUALITY/Q07/Q07_ROUTE_COLLISION_PLAYMODE_R4.xml"
+  ],
+  "status_boundary": "Q08 is PASS_WITHIN_SCOPE for the current Editor/connected Pipeline code-level integration path. It does not prove compositor-visible final visuals, foreground Win32 keyboard focus, native Player manual acceptance, no clipping/vegetation grounding, target-device performance, audio quality, VC-G01 completion, Q31 completion or D31 overall completion.",
+  "historical_unblock_conditions": [
+    "Provide a current-rig-compatible ground-action clip set, or an auditable Avatar/bone-axis adapter with source and import evidence.",
+    "Re-run Q08 action-state, movement, swim and grounding integration tests and record the resulting XML/log.",
+    "Keep native Player visual/input evidence separate; Q31 remains the manual gate."
+  ],
+  "current_reaudit_20260913": {
+    "result": "BLOCKED",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q08/RESULT.json",
+    "dependency_snapshot": {
+      "q03": "BLOCKED_ASSET; current 15 formal clips report humanMotion=0 and genericRoot=15; default InitialHarbor formal consumer remains 0",
+      "q05": "VERIFIED within whole-visual-root swim tilt/restore and physics-root separation; current Pipeline D17A08=1/1 PASS",
+      "q07": "VERIFIED within active terrain/dock/gangplank automated route; current Pipeline D17A10=1/1 PASS"
+    },
+    "decision": "No Q08 integration test was run because its formal action prerequisite remains closed. Running it against neutral-only or generic diagnostic motion would overstate input-to-state-to-motion-to-pose completion.",
+    "source_head_current": true,
+    "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_20260913"
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "BLOCKED",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_BLOCKED_20260913_LUNA_R2_RESULT.json",
+    "dependency_snapshot": "Q03=BLOCKED_ASSET; Q05 current D17A08=1/1 PASS within root tilt/restore; Q07 current building owner=1/1 and D17A10=1/1",
+    "decision": "No integration test was run because formal action/avatar resources are not admitted; neutral-only or generic motion would overstate completion.",
+    "source_head_current": true,
+    "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2"
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result": "BLOCKED",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_BLOCKED_20260913_Q03A17_R1_RESULT.json",
+    "dependency_snapshot": "Q03=BLOCKED_ASSET; Q05 current D17A08=1/1 within whole-visual-root tilt/restore; Q07 current building owner=1/1 and D17A10=1/1",
+    "decision": "No integration test was run because formal action/avatar resources are not admitted; neutral-only or generic motion would overstate completion.",
+    "source_head_current": true,
+    "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_Q03A17_R1"
+  },
+  "current_reaudit_20260913_q26a22": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_BLOCKED_20260913_Q26A22_RESULT.json",
+    "result": "BLOCKED",
+    "gate_test": "D20.Tests.A02.Q03FormalActionAdmissionGateTests.FormalActionAdmissionRemainsClosedForGenericOnlyController=1/1 PASS",
+    "gate_marker": "formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15",
+    "q05_dependency": "current D17A08=1/1 PASS within whole-visual-root tilt/restore",
+    "q07_dependency": "current building owner=1/1 and D17A10=1/1 PASS",
+    "q08_integration": "NOT_RUN because formal action/avatar prerequisite remains closed",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_Q26A22"
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_BLOCKED_20260913_Q26A22_LUNA_R3_RESULT.json",
+    "result": "BLOCKED",
+    "gate_test": "D20.Tests.A02.Q03FormalActionAdmissionGateTests.FormalActionAdmissionRemainsClosedForGenericOnlyController=1/1 PASS",
+    "gate_marker": "seq=34292 formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15",
+    "q05_dependency": "current D17A08=1/1 PASS within whole-visual-root tilt/restore",
+    "q07_dependency": "current building owner=1/1 and D17A10=1/1 PASS",
+    "q08_integration": "NOT_RUN because formal action/avatar prerequisite remains closed",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 34289=0",
+    "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_BLOCKED_20260914_LUNA_RESULT.json",
+    "result": "BLOCKED",
+    "q03_gate": "Q03FormalActionAdmissionGateTests=1/1 PASS_AS_BLOCKED_GATE; formalActionAdmission=BLOCKED; clips=15; humanMotion=0; genericRoot=15",
+    "q05_dependency": "Current D17A08=1/1 PASS within whole-visual-root tilt/restore and physics-root separation",
+    "q07_dependency": "Current service-building owner and D17A10 route each=1/1 PASS within bounded collision scopes",
+    "q08_integration": "NOT_RUN because formal action admission remains closed",
+    "source_head_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "next_task": "Q09_CURRENT_DECK_ANCHOR_REAUDIT"
+  },
+  "current_reaudit_20260915_q03a23_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q03A23_20260915_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "q03_dependency": "Current Q03-A23 Formal Humanoid action/avatar/default route code gate: Q03Formal EditMode=5/5, Q03D20Formal PlayMode=2/2, recompile errors=0",
+    "q05_dependency": "Current D17A08=1/1 PASS within whole-visual-root swim tilt/restore and physical-root separation",
+    "q07_dependency": "Current service-building owner=1/1 and D17A10 collision route=1/1 PASS within bounded scopes",
+    "q08_integration": "D17 full current-source suite=16/16 PASS after CameraFollow swim-entry/significant-heading snap fix",
+    "interim_risk": "One initial 14/16 run exposed D17A15 near-threshold S movement and D17A16 camera lag; a later 15/16 run exposed the same A15 threshold boundary. A12/A13 isolation passed and the authoritative full rerun reached 16/16. The intermittent risk remains documented.",
+    "source_head_current": true,
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_error_entries": 0,
+    "product_code_changed": true,
+    "status_boundary": "Code-level integration only; no final compositor/native-input/visual/performance acceptance.",
+    "next_task": "SAFE_PAUSE_AT_Q08_BEFORE_Q09_AND_Q31_NATIVE_VISUAL_GATE"
+  },
+  "next_task": "SAFE_PAUSE_AT_Q08_BEFORE_Q09_AND_Q31_NATIVE_VISUAL_GATE"
+}

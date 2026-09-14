@@ -1,0 +1,32 @@
+{
+  "task_id": "Q08",
+  "status": "BLOCKED",
+  "status_scope": "action_integration_checkpoint",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q03", "Q05", "Q07"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q08_CURRENT_BLOCKED_20260913_Q03A17_R1",
+  "audit_time_local": "2026-09-13T15:55:53+08:00",
+  "changed_files": [],
+  "blocker_code": "BLOCKED_PREREQUISITE",
+  "blocker": "Q03 remains BLOCKED_ASSET: the current formal clip set has no verified authored ground-action motion and no admitted auditable current-rig Avatar/bone-axis adapter. Q03-A17 only adjusted an opt-in swim candidate and does not satisfy the ground-action admission gate.",
+  "dependency_snapshot": {
+    "q03": "BLOCKED_ASSET; formal action admission remains closed",
+    "q05": "PASS_WITHIN_SCOPE; current D17A08 whole-visual-root tilt/restore and physical-root separation only",
+    "q07": "PASS_WITHIN_SCOPE; current building collision owner and terrain/dock/gangplank route contracts only"
+  },
+  "decision": "No Q08 integration test was run. Running it against neutral-only, generic diagnostic or opt-in swim motion would overstate input-to-state-to-motion-to-pose completion.",
+  "checks": [
+    {"name": "formal_action_prerequisite", "result": "BLOCKED", "evidence": "Q03 current status remains BLOCKED_ASSET; Q03-A17 did not admit authored ground action/avatar resources."},
+    {"name": "dependency_scope_reconciliation", "result": "PASS_WITHIN_SCOPE", "evidence": "Q05 and Q07 current R1 child results are recorded as bounded sub-contracts and are not substituted for Q03."},
+    {"name": "anti_fake_pass_boundary", "result": "PASS_WITHIN_SCOPE", "evidence": "No Q08 integration test, fixed token, generic motion or neutral-only result was promoted to PASS."}
+  ],
+  "unblock_conditions": [
+    "Provide a current-rig-compatible ground-action clip set, or an auditable Avatar/bone-axis adapter with source and import evidence.",
+    "Re-run Q08 action-state, movement, swim and grounding integration tests against the same source/build evidence.",
+    "Keep native Player visual/input evidence separate; Q31 remains the visual/manual gate."
+  ],
+  "status_boundary": "Q08 is not a failed gameplay assertion and is not a PASS. It is blocked by the formal authored-action prerequisite and can be reopened only after that prerequisite is evidenced.",
+  "next_task": "Q09_CURRENT_PIPELINE_REAUDIT_Q03A17_R1"
+}

@@ -1,0 +1,29 @@
+Q00_CURRENT_TAKEOVER_PIPELINE_Q26A22_20260914
+date=2026-09-14 Asia/Shanghai
+branch=agent/publish-project-changes-20260813
+head=01024cae2823c26b2595a660e6dde5879870dfc8
+worktree=status_entries=5390 tracked_changed=459 untracked=4931 cleanup=false
+
+1. git status --short / git diff --shortstat
+   result=dirty worktree preserved; 459 files changed, 40339 insertions(+), 49178 deletions(-)
+2. unity status --format json
+   result=one connected same-project Editor, Unity=6000.0.80f1, pid=53332, endpoint=127.0.0.1:7800, state=ready
+3. unity command editor_play --project-path game
+   result=accepted
+4. run_script AgentScripts/LocalQuality/UnityPipelinePoseAndInputProbe.cs --entry Main (after 4s)
+   result=not_ready; player_found=false; not counted as failure
+5. run_script ... --entry Main (after additional 8s)
+   result=compiled_and_executed; diagnostics=[]
+   scene=InitialHarbor player_found=true parent=<none> mode=Character action=Idle pose=Procedural procedural_ready=true bound_bones=8 grounded=true swimming=false position=(-0.000000000000014,0.1497475654,-2.6999998093) renderers=17 skinned=0 ui_navigation=false ui_move_action=<null> selected=<none>
+6. source/build reconciliation
+   D2CharacterAnimationController=097D8210461C61C5BDFA365127D191865293040310539FEF92DC06AB90A66A42
+   D2RuntimeBootstrap=0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029
+   D17ActionQualityPlayModeTests=DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20
+   R4_Player_SHA256=98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81
+   R4_Assembly_CSharp_SHA256=6EBD285D9A70A88996E4E1D6CACD11EA04C4A880BF6A46A999DA6A2761DB822C
+   result=all relevant production source timestamps precede R4 build; later helper is outside Assets and ephemeral
+7. unity command editor_stop --project-path game
+   result=accepted; final playMode=stopped
+
+status=Q00 VERIFIED_WITH_SCOPE; Q03 BLOCKED_ASSET; Q31 PARTIAL; VC-G01 IN_PROGRESS; VC-G02/VC-G03 LOCKED; D31 PARTIAL
+boundary=Q00 source/build/runtime reconciliation only; no visual or physical foreground input acceptance

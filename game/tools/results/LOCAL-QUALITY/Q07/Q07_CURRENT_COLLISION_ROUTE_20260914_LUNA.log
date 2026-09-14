@@ -1,0 +1,27 @@
+Q07_CURRENT_COLLISION_ROUTE_20260914_LUNA
+captured_at=2026-09-14T09:21:57+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800
+
+Check 1:
+filter=R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries mode=PlayMode
+status=completed pipeline=3.29s test=2.9602606s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+scope=four service buildings have Harbor-owned solid non-trigger collision boundaries and external raycasts hit them
+
+Check 2:
+filter=D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps mode=PlayMode
+status=completed pipeline=5.82s test=5.3727658s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+scope=enabled non-trigger D19_TerrainRoot/DockGround/GangplankGround with bidirectional grounded non-swimming steps
+
+Runtime markers:
+- owner=D6_HarborCollision; service_building_colliders_installed=4
+- DockGround surfaceY=0.50; GangplankGround surfaceY=0.88
+- non-walkable collision climbing was blocked and previous height restored
+
+Boundary:
+- no production source/config/Prefab/scene changes
+- this does not prove every shore/slope/wall, visual mesh contact, ship-deck/boarding route, native WASD, tree grounding or final visual acceptance
+
+Final editor=ready compiling=false domainReloadInProgress=false playMode=stopped

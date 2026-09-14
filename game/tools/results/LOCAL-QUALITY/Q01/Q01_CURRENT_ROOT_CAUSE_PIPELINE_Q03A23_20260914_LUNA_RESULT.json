@@ -1,0 +1,92 @@
+{
+  "task": "Q01",
+  "title": "Current-source root-cause and owner audit after Q03-A23",
+  "captured_at_local": "2026-09-14",
+  "source_head": "dc1f8713e6a2f4a939a277502a1d868e031e4847",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "final_editor_state": "ready/stopped"
+  },
+  "runtime_facts": {
+    "physical_root": {
+      "name": "D2_PlayerAvatar",
+      "parent": null,
+      "position": [0.0, 0.1497476, -2.7],
+      "lossy_scale": [1.0, 1.0, 1.0],
+      "character_controller": {
+        "radius": 0.2424353,
+        "height": 1.8,
+        "center_y": 0.8468633,
+        "skin_width": 0.01939483
+      }
+    },
+    "d2_logic": {
+      "action": "Idle",
+      "pose_driver": "Procedural",
+      "formal_animator_ready": false,
+      "procedural_pose_active": true,
+      "grounded": true,
+      "swimming": false,
+      "movement_source": "D16InputRouter",
+      "bound_bones": 8
+    },
+    "visible_presentation": {
+      "owner": "D20PlayerCandidatePresentationBridge",
+      "consumer_mode": "Formal",
+      "installed": true,
+      "humanoid_pose_adapter": true,
+      "generic_path_adapter": false,
+      "candidate_renderer_count": 7,
+      "hidden_previous_fallback_renderer_count": 17,
+      "swimming_visual_supported": true,
+      "last_d2_action": "Idle",
+      "last_candidate_state": "Idle",
+      "installation_failure": ""
+    },
+    "ship_and_water": {
+      "ship": "ph_ship_fishing",
+      "ship_position": [0.0, 0.0, -5.2],
+      "ship_uniform_scale": 2.573956,
+      "water_level": -0.02,
+      "helm_point": [0.0, 1.1, -6.68],
+      "visible_helm_anchor": [0.0, 1.1, -6.68]
+    },
+    "collision": {
+      "harbor_collision_initialized": true,
+      "r03_surface_installed": true,
+      "collider_count": 9,
+      "walkable_surface_count": 3,
+      "building_count": 4
+    },
+    "ui_input_boundary": {
+      "ui_navigation_enabled": false,
+      "ui_move_action_bound": false,
+      "selected_ui": null
+    }
+  },
+  "root_cause_reconciliation": {
+    "historical_finding": "Older Q01/Q02 evidence described the default route as Procedural-only with 17 visible fallback renderers.",
+    "current_finding": "After Q03-A23, the current default route installs the D20 Formal Humanoid consumer and hides the previous fallback renderers. D2 remains the physical-root and gameplay-action owner; D20 owns visible presentation consumption.",
+    "implication": "The older procedural action-distortion diagnosis is not a valid description of the current default visible route. It remains useful as the explicit -d2ProceduralPlayer fallback boundary, not as current default evidence.",
+    "remaining_visual_questions": [
+      "Whether the Humanoid retargeted actions look natural in a compositor-visible Player",
+      "Whether swim/boarding/helm poses avoid clipping and preserve hand contact",
+      "Whether vegetation and harbor geometry are grounded from the gameplay camera",
+      "Whether W/S focus behavior is correct in a foreground native window"
+    ]
+  },
+  "checks": {
+    "D2CharacterAnimationControllerTests": "8/8 PASS",
+    "D17ActionQualityPlayModeTests": "16/16 PASS; 0 failed/skipped/inconclusive",
+    "Q03D20FormalPlayMode": "2/2 PASS",
+    "Q03FormalEditMode": "5/5 PASS",
+    "recompile": "failed=false; errors=[]"
+  },
+  "status_boundary": "Q01 closes the current code/runtime owner and root-scale facts within connected Unity Pipeline scope. It does not close native foreground input, screenshots, subjective visual quality, no-clipping, vegetation grounding, or target-device performance.",
+  "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+}

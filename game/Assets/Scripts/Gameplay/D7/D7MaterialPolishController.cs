@@ -48,6 +48,7 @@ namespace Whalebone.Gameplay.D7
             foreach (var renderer in FindObjectsByType<Renderer>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             {
                 if (renderer == null || renderer.GetComponentInParent<Canvas>() != null) continue;
+                if (IsD20PresentationOwned(renderer)) continue;
                 if (!NeedsPolish(renderer)) continue;
                 if (_queuedRendererIds.Add(renderer.GetInstanceID())) _pendingRenderers.Add(renderer);
             }
@@ -110,6 +111,14 @@ namespace Whalebone.Gameplay.D7
                     return true;
             }
             return false;
+        }
+
+        private static bool IsD20PresentationOwned(Renderer renderer)
+        {
+            var bridge = renderer == null
+                ? null
+                : renderer.GetComponentInParent<Whalebone.Gameplay.D2.D20PlayerCandidatePresentationBridge>();
+            return bridge != null && bridge.IsInstalled;
         }
 
         private static Material CreateFallbackMaterial(string name)

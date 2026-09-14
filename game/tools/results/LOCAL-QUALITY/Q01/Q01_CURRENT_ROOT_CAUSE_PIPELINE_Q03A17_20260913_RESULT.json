@@ -1,0 +1,80 @@
+{
+  "task_id": "Q01",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "read_only_current_root_visual_scale_writer_tolerance_and_defect_diagnosis",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q00"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q03A17_20260913_R1",
+  "audit_time_local": "2026-09-13T15:41:32+08:00",
+  "changed_files": [],
+  "scope_rule": "Diagnostic only. No product code, prefab, scene, Systems file, generated Player or dirty worktree content was changed.",
+  "pipeline_runtime_sample": {
+    "editor": "Unity 6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "protocol": "editor_play -> pipeline list/reachability check -> bounded direct return-expression evals -> editor_stop",
+    "direct_eval_results": [
+      "scene=InitialHarbor;root=(0.00,0.15,-2.70);parent=none;lossy=(1.00,1.00,1.00);visualLocalScale=(0.66,0.66,0.66);visualWorld=(0.00,0.15,-2.70);renderers=17;cc(radius=0.2424353,height=1.8,center=(0.00,0.85,0.00),skin=0.01939483,enabled=True);d2(grounded=True,swimming=False,moving=False,speed=0,water=-0.02,input=D16InputRouter);anim(formal=False,procReady=True,procActive=True,animActive=False,unique=True,conflict=False);d7(ready=True,human=True,groundError=-1.490116E-08)",
+      "ship=(0.00,0.00,-5.20)@(2.57,2.57,2.57);helm=(0.00,1.10,-6.68);visible=(0.00,1.10,-6.68);deck(ready=True,helmReady=True,boarded=False,collision=True);terrain=[R03 parent=D19_R03_HarborPresentation;meshEnabled=True;trigger=False;mesh=D19_R03_IslandSurfaceMesh][legacy parent=D19_EnvironmentRoot;meshEnabled=False;trigger=False;mesh=none;terrainEnabled=False];water=(0.00,-0.02,0.00);oceanSurface=-0.02"
+    ],
+    "final_editor_state": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "console_error_query_after_stop": 0,
+    "probe_note": "Two exploratory expressions referenced an unavailable/non-public property and were discarded; they did not mutate runtime state. The final bounded direct evals above completed successfully."
+  },
+  "current_source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "4B456637A51B4AA39B4DFAE901A3FCFD3DB268B3BD4BFE7BED5A0241C5171CB1",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D7/D7CharacterPresentationController.cs": "E807A9DF2ACB20C09EC58766C0D820CAB839E9E1F04CCD2DD35CDE17374F9827",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4"
+  },
+  "runtime_facts": {
+    "physical_root": "D2_PlayerAvatar position=(0.00,0.15,-2.70), parent=none, lossyScale=(1,1,1)",
+    "visual_root": "HumanoidVisual localScale=(0.66,0.66,0.66), worldPosition=(0.00,0.15,-2.70), rendererCount=17",
+    "character_controller": "radius=0.2424353m, height=1.8m, center=(0.00,0.85,0.00), skinWidth=0.01939483m, enabled=true",
+    "d2_state": "grounded=true, swimming=false, moving=false, currentSpeed=0, waterSurfaceY=-0.02, movementInputSource=D16InputRouter",
+    "animation_state": "FormalAnimatorReady=false, ProceduralPoseLayerReady=true, ProceduralPoseLayerActive=true, AnimatorPoseLayerActive=false, BoundBonesAreUnique=true, BoneBindingConflict=false",
+    "presentation_state": "D7 IsReady=true, HasHumanVisual=true, GroundError=-1.49e-08",
+    "ship_state": "ph_ship_fishing position=(0.00,0.00,-5.20), lossyScale=(2.57,2.57,2.57); deck ready=true, helmReady=true, PlayerBoarded=false, DeckCollisionReady=true",
+    "helm_state": "D7_HelmPoint=(0.00,1.10,-6.68); D7_VisibleHelmAnchor=(0.00,1.10,-6.68)",
+    "terrain_state": "scoped R03 MeshCollider enabled=true, isTrigger=false, sharedMesh=D19_R03_IslandSurfaceMesh; duplicate legacy TerrainCollider disabled",
+    "water_state": "WaterWaveSurface=(0.00,-0.02,0.00) in this sample; D2 logical waterSurfaceY=-0.02"
+  },
+  "owner_boundary": {
+    "physical_root_and_swimming": "D2CharacterController",
+    "visual_root_and_pose": "D2CharacterAnimationController",
+    "grounding_measurement_and_offset_contract": "D7CharacterPresentationController measures and submits through D2; it does not directly own visual-root transform",
+    "mode_and_parent_transition": "D2ControlRouter",
+    "gameplay_helm": "D7ShipDeckController",
+    "visible_R03_presentation": "D19R03HarborPresentationBuilder and D19 runtime presentation",
+    "walkable_collision": "HarborCollisionController"
+  },
+  "tolerance_table": [
+    {"quantity": "visual root scale", "value": 0.6642, "unit": "multiplier", "source": "live InitialHarbor eval", "note": "presentation scale only; physical root remains unit scale"},
+    {"quantity": "CharacterController capsule", "value": "radius 0.2424353 / height 1.8 / skinWidth 0.01939483", "unit": "m", "source": "live InitialHarbor eval", "note": "contact reference, not a no-clipping proof"},
+    {"quantity": "logical water surface", "value": -0.02, "unit": "m", "source": "D2/OceanAdapter live eval", "note": "swimming owner input"},
+    {"quantity": "ship root scale", "value": 2.573956, "unit": "uniform multiplier", "source": "live InitialHarbor eval", "note": "inverse-transform authored world anchors"},
+    {"quantity": "ship interaction range", "value": 8.0, "unit": "m", "source": "D2ControlRouter", "note": "far E must reject without mode/parent mutation"}
+  ],
+  "defect_diagnosis": [
+    {"defect": "任务动作扭曲", "reproduction": "PARTIAL_REPRODUCED_CURRENT_SOURCE", "root_cause": "The default InitialHarbor consumer is still Procedural with FormalAnimatorReady=false; Q03-A17 only changes the explicit opt-in D20 Formal candidate.", "status_boundary": "No authored locomotion or visual-quality PASS; Q03 remains BLOCKED_ASSET."},
+    {"defect": "海洋不能游泳", "reproduction": "LOGIC_OWNER_CONFIRMED_VISUAL_NOT_ACCEPTED", "root_cause": "D2 owns the logical water state and the current automated route can reach Swimming, but the default visual pose and foreground W/S delivery are not proven by Q01.", "status_boundary": "Q04/Q05 and Q03 evidence cannot be promoted to natural swim or native-input PASS."},
+    {"defect": "上船后人物/船控异常", "reproduction": "ANCHOR_OWNER_CONFIRMED_VISUAL_NOT_ACCEPTED", "root_cause": "The scaled ship root and gameplay/visible helm anchors match in the current sample; hand-to-wheel contact, deck intersection and physical E remain visual/manual gates.", "status_boundary": "Anchor measurements do not close no-clipping or native-input acceptance."},
+    {"defect": "树在空中飘", "reproduction": "NOT_REPRODUCED_BY_CURRENT_TRANSFORM_SAMPLE", "root_cause": "The scoped R03 MeshCollider is present and the legacy TerrainCollider is disabled; full vegetation pivot/bounds/contact across cameras remains Q20/D31.", "status_boundary": "No tree visual PASS claimed."},
+    {"defect": "W/S 与右上角菜单联动", "reproduction": "NOT_REPRODUCED_IN_CURRENT_AUTOMATED_RUN", "root_cause": "The code-level input/UI regression guards exist, but this Q01 sample has no foreground physical keyboard focus route.", "status_boundary": "Do not call the user-reported behavior fixed without foreground input evidence or a reproducible automated failure."
+    }
+  ],
+  "checks": [
+    {"name": "current_runtime_transform_inventory", "result": "PASS_WITHIN_SCOPE", "evidence": "Connected Pipeline direct eval captured player root, visual root, capsule, D2 state, ship/helm, scoped terrain and water."},
+    {"name": "single_writer_and_owner_diagnosis", "result": "PASS_WITHIN_SCOPE", "evidence": "Current source hashes and runtime components preserve the D2/D7/D19/Harbor ownership boundary."},
+    {"name": "reported_defect_boundaries", "result": "PARTIAL", "evidence": "The sample separates logic/owner facts from unaccepted rendered/manual behavior and does not promote any visual defect to PASS."},
+    {"name": "next_card_whitelist", "result": "PASS", "evidence": "Q02/Q03/Q05 remain D2/D20 presentation scope; Q04/Q06 remain D2 water/movement scope; later cards retain their single-owner boundaries."}
+  ],
+  "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1",
+  "status_boundary": "Q01 is verified only for current read-only diagnosis. It does not claim any user-reported visual defect fixed, formal action assets admitted, physical keyboard accepted, or VC-G01/D31 completed."
+}

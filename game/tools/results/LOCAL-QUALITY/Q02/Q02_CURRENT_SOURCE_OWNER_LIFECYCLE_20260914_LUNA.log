@@ -1,0 +1,29 @@
+Q02_CURRENT_SOURCE_OWNER_LIFECYCLE_20260914_LUNA
+captured_at=2026-09-14T09:02:06+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800
+
+EditMode:
+command=unity command run_tests --project-path game --mode editor --filter D2CharacterAnimationControllerTests --async_tests true --timeout 300
+status=completed
+duration_seconds=0.56
+total=8 passed=8 failed=0 skipped=0 inconclusive=0
+
+PlayMode:
+command=unity command run_tests --project-path game --mode playmode --filter D17ActionQualityPlayModeTests --async_tests true --timeout 300
+status=completed
+duration_seconds=81.03
+total=16 passed=16 failed=0 skipped=0 inconclusive=0
+coverage=D17A02,D17A03,D17A04,D17A05,D17A06,D17A07,D17A08,D17A09,D17A10,D17A11,D17A12,D17A13,D17A14,D17A15,D17A16-integrated,D17A16-camera
+
+Post-run boundary:
+- editor_status=ready compiling=false domainReloadInProgress=false playMode=stopped
+- console error query since cursor 40526 returned entries=0 dropped=false
+- older console errors were present in the retained buffer and were not assigned to this run
+- clear_console completed after evidence capture
+- no production files changed
+
+Conclusion:
+Q02=PASS_WITHIN_SCOPE for D2 visualRoot single-writer/lifecycle regression. It is not formal animation, foreground Player input, visual no-clipping, vegetation grounding, screenshot or target-device performance acceptance.

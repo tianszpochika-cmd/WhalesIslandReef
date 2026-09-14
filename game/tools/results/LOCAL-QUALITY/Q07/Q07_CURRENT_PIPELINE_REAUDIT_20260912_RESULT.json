@@ -1,0 +1,23 @@
+{
+  "task_id": "Q07",
+  "run_id": "Q07_CURRENT_PIPELINE_REAUDIT_20260912",
+  "audit_time_local": "2026-09-12T02:00:43+08:00",
+  "status": "PASS_WITHIN_SCOPE",
+  "pipeline": "Unity Pipeline connected Editor PID 31416 at 127.0.0.1:7800, Unity 6000.0.80f1",
+  "test_filter": "D17ActionQualityPlayModeTests",
+  "test": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps",
+  "summary": "D17ActionQualityPlayModeTests completed with total=16, passed=16, failed=0, skipped=0, inconclusive=0 in 50.13s; D17A10 was Passed with duration 2.3071401s.",
+  "checks": {
+    "active_route_colliders": "PASS_WITHIN_SCOPE; D19_TerrainRoot, DockGround and GangplankGround were found enabled and non-trigger",
+    "bidirectional_steps": "PASS_WITHIN_SCOPE; each route was raycast, settled through CharacterController contact, then walked in both directions while grounded and non-swimming",
+    "runtime_owner_and_recovery": "PASS_WITHIN_SCOPE; active D19 mesh and D2 walkable-ground recovery remained the route",
+    "editor_final": "ready, compiling=false, domainReloadInProgress=false, playMode=stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3DA02A4A59758F5BF6C654D368DCBA712206EAE2CD73D616B04263B664C7261B",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "AF0A6DD4E6E4F0F9D3C14CD396C5E2217F8BCDE0D3A51C857AB53571B61E5D72"
+  },
+  "boundary": "This proves the automated active terrain/dock/gangplank collider contract and bidirectional small-step stability. It does not prove three-point/ten-traversal visual quality, native Player WASD, ship boarding, or every shore/slope mesh contact.",
+  "next_task": "Q08 remains blocked by Q03 formal action gate; Q09 is the next independent deck-anchor card"
+}

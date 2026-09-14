@@ -14,6 +14,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Whalebone.Gameplay.D3;
+using Whalebone.Gameplay.D7;
 using Whalebone.Gameplay.UI;
 using Whalebone.Gameplay.UI.D16;
 using Whalebone.Systems.D3;
@@ -46,16 +47,21 @@ namespace Whalebone.Gameplay.D9
         private Whalebone.Gameplay.D4.D4RuntimeBootstrap _d4;
         private ShipState _ship;
         private bool _ready;
-        private bool _pageOpen = true;
+        // The service page is closed while the player is in the primary HUD.
+        // The canvas can still be created and refreshed in the background, but
+        // it must not claim keyboard input until OpenPreparationPage is called.
+        private bool _pageOpen;
         private string _lastMessage = "港口整备页等待 D7/D3/D4 状态。";
         private Text _statusText;
         private Text _detailText;
         private Text _hintText;
         private GameObject _panel;
         private D9PortShipPreparationSnapshot _snapshot;
+        private int _pageOpenedFrame = -1;
 
         /// <summary>D9 UI/音频只读入口；快照仍由整备系统生成。</summary>
         public bool IsReady => _ready;
+        public bool HasInputFocus => _pageOpen;
         public D9PortShipPreparationSnapshot Snapshot => _snapshot == null ? null : _snapshot.Clone();
         public string LastMessage => _lastMessage;
 
@@ -73,24 +79,70 @@ namespace Whalebone.Gameplay.D9
                 return;
             }
 
-            if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9OpenPortPreparation))
-                _pageOpen = !_pageOpen;
+            bool defaultOpenPressed = Input.GetKeyDown(KeyCode.P);
+            bool openPressed = D16InputRouter.WasPressedThisFrame(D16InputAction.D9OpenPortPreparation) ||
+                defaultOpenPressed;
+            if (openPressed && (_pageOpen ||
+                (RuntimeHudCoordinator.PrimaryInputAllowed && D7InputAllowed())))
+            {
+                // D29 can call OpenPreparationPage from its own Update on the
+                // same frame as P. Do not let D9 interpret that same key as a
+                // close request immediately afterward.
+                if (_pageOpen && Time.frameCount != _pageOpenedFrame) ClosePreparationPage();
+                else OpenPreparationPage();
+            }
             if (_panel != null) _panel.SetActive(_pageOpen);
             if (_pageOpen && D7InputAllowed())
             {
-                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9ClosePortPreparation)) _pageOpen = false;
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9EnterBerth)) EnterAndBerth();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9BuySalt)) BuySalt();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9BuyTimber)) BuyTimber();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9VisitTavern)) VisitTavern();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9BuyWater)) BuyWater();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9RepairHull)) RepairHull();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9RecruitCrew)) RecruitIsaac();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9SettleWages)) SettleWages();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9Upgrade)) UpgradeHull();
-                else if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9Depart)) Depart();
+                if (D16InputRouter.WasPressedThisFrame(D16InputAction.D9ClosePortPreparation) ||
+                    Input.GetKeyDown(KeyCode.Escape))
+                {
+                    D7ControlCoordinator.MarkEscapeHandledThisFrame();
+                    ClosePreparationPage();
+                }
+                else if (WasD9Input(D16InputAction.D9EnterBerth, KeyCode.B)) EnterAndBerth();
+                else if (WasD9Input(D16InputAction.D9BuySalt, KeyCode.M)) BuySalt();
+                else if (WasD9Input(D16InputAction.D9BuyTimber, KeyCode.X)) BuyTimber();
+                else if (WasD9Input(D16InputAction.D9VisitTavern, KeyCode.T)) VisitTavern();
+                else if (WasD9Input(D16InputAction.D9BuyWater, KeyCode.S)) BuyWater();
+                else if (WasD9Input(D16InputAction.D9RepairHull, KeyCode.R)) RepairHull();
+                else if (WasD9Input(D16InputAction.D9RecruitCrew, KeyCode.Q)) RecruitIsaac();
+                else if (WasD9Input(D16InputAction.D9SettleWages, KeyCode.W)) SettleWages();
+                else if (WasD9Input(D16InputAction.D9Upgrade, KeyCode.U)) UpgradeHull();
+                else if (WasD9Input(D16InputAction.D9Depart, KeyCode.D)) Depart();
             }
             Refresh();
+        }
+
+        /// <summary>由 D29 或路线测试打开整备页，并同步 HUD 互斥状态。</summary>
+        public void OpenPreparationPage()
+        {
+            _pageOpen = true;
+            _pageOpenedFrame = Time.frameCount;
+            if (_panel != null) _panel.SetActive(true);
+            RuntimeHudCoordinator.ShowTemporaryCanvas("D9PortServicePage");
+            Debug.Log("[D9/UI] 港口整备页已打开");
+        }
+
+        /// <summary>整备页的唯一关闭入口，关闭后恢复玩家主 HUD。</summary>
+        public void ClosePreparationPage()
+        {
+            _pageOpen = false;
+            if (_panel != null) _panel.SetActive(false);
+            RuntimeHudCoordinator.RestorePrimaryHud();
+            Debug.Log("[D9/UI] 港口整备页已关闭，主 HUD 已恢复");
+        }
+
+        private bool EnsureReadyForAction()
+        {
+            if (_ready && _preparation != null && _d3 != null && _d3.Snapshot != null &&
+                _d3.TradeState != null && _ship != null)
+                return true;
+
+            _lastMessage = "港口整备 owner 尚未就绪，请稍后再试。";
+            if (_hintText != null) _hintText.text = _lastMessage;
+            Debug.LogWarning("[D9/UI] " + _lastMessage);
+            return false;
         }
 
         private void TryBindRuntime()
@@ -121,7 +173,7 @@ namespace Whalebone.Gameplay.D9
 
         private void EnterAndBerth()
         {
-            if (_d3.Snapshot == null) return;
+            if (!EnsureReadyForAction()) return;
             var entry = _preparation.EnterPort(_d3.Snapshot, _ship, CurrentPortId());
             if (entry.Accepted)
             {
@@ -133,11 +185,17 @@ namespace Whalebone.Gameplay.D9
                 SetResult(berth.Accepted ? berth : entry);
             }
             else SetResult(entry);
+            // 泊位通常会在进入整备页时自动分配，因此再次点击可能不会
+            // 改变领域快照。仍要给玩家一条可区分的动作反馈，说明这是
+            // 一次幂等的泊位检查/确认，而不是静默无响应。
+            _lastMessage = "泊位操作已处理：" + _lastMessage;
+            Refresh();
             CommitPreparation();
         }
 
         private void BuySalt()
         {
+            if (!EnsureReadyForAction()) return;
             var result = _preparation.Buy(_d3.TradeState, _ship, CurrentPortId(), "salt", 1);
             SetResult(result);
             CommitPreparation();
@@ -145,6 +203,7 @@ namespace Whalebone.Gameplay.D9
 
         private void BuyTimber()
         {
+            if (!EnsureReadyForAction()) return;
             var result = _preparation.Buy(_d3.TradeState, _ship, CurrentPortId(), D9PortShipPreparationSystem.RepairMaterialId, 1);
             SetResult(result);
             CommitPreparation();
@@ -152,6 +211,7 @@ namespace Whalebone.Gameplay.D9
 
         private void BuyWater()
         {
+            if (!EnsureReadyForAction()) return;
             var result = _preparation.BuySupply(_d3.TradeState, _ship, CurrentPortId(), "water", 5);
             SetResult(result);
             CommitPreparation();
@@ -159,6 +219,7 @@ namespace Whalebone.Gameplay.D9
 
         private void RepairHull()
         {
+            if (!EnsureReadyForAction()) return;
             var result = _preparation.Repair(_d3.TradeState, _ship, CurrentPortId(), 10);
             SetResult(result);
             CommitPreparation();
@@ -166,10 +227,15 @@ namespace Whalebone.Gameplay.D9
 
         private void VisitTavern()
         {
+            if (!EnsureReadyForAction()) return;
             var social = FindFirstObjectByType<Whalebone.Gameplay.D10.D10TavernSocialBootstrap>(
                 FindObjectsInactive.Include);
             if (social != null)
             {
+                // D10 is a separate modal owner. Close D9 before handing the
+                // focus over so the hidden preparation page cannot continue
+                // consuming its own shortcuts behind the tavern page.
+                ClosePreparationPage();
                 social.OpenSocialPage();
                 _lastMessage = "已切换到 D10 酒馆社会页；酒馆行为由所属系统裁决。";
             }
@@ -177,10 +243,12 @@ namespace Whalebone.Gameplay.D9
             {
                 _lastMessage = "D10 酒馆社会页尚未就绪，请按 V 打开。";
             }
+            Refresh();
         }
 
         private void RecruitIsaac()
         {
+            if (!EnsureReadyForAction()) return;
             var result = _preparation.Recruit(_d3.TradeState, _ship, CurrentPortId(),
                 GameState.CrewAgents, D9CrewRecruitmentCatalog.CreateIsaacReed());
             SetResult(result);
@@ -189,6 +257,7 @@ namespace Whalebone.Gameplay.D9
 
         private void SettleWages()
         {
+            if (!EnsureReadyForAction()) return;
             var result = _preparation.SettleWages(_d3.TradeState, _ship, CurrentPortId(), GameState.CrewAgents);
             SetResult(result);
             CommitPreparation();
@@ -196,6 +265,7 @@ namespace Whalebone.Gameplay.D9
 
         private void UpgradeHull()
         {
+            if (!EnsureReadyForAction()) return;
             if (_d4 == null || !_d4.IsReady || _d4.ShipyardSystem == null)
             {
                 SetResult(D9PreparationResult.Fail("shipyard", "not_ready", "船坞系统尚未就绪。", _d3.TradeState.Money));
@@ -211,6 +281,7 @@ namespace Whalebone.Gameplay.D9
 
         private void Depart()
         {
+            if (!EnsureReadyForAction()) return;
             var ready = _preparation.PrepareDeparture(_ship, CurrentPortId(), _d3.TradeState.Money);
             if (!ready.Accepted)
             {
@@ -241,6 +312,7 @@ namespace Whalebone.Gameplay.D9
         private void SetResult(D9PreparationResult result)
         {
             _lastMessage = result == null ? "整备没有返回结果。" : result.Message;
+            Refresh();
             Debug.Log("[D9-A01] " + _lastMessage);
         }
 
@@ -289,6 +361,14 @@ namespace Whalebone.Gameplay.D9
             return Whalebone.Gameplay.D7.D7ControlCoordinator.GameplayInputAllowed;
         }
 
+        private static bool WasD9Input(D16InputAction action, KeyCode fallback)
+        {
+            // Input System is the configurable primary path. The legacy edge is
+            // only a Windows Player compatibility fallback for the same intent;
+            // it does not create a second domain command or change ownership.
+            return D16InputRouter.WasPressedThisFrame(action) || Input.GetKeyDown(fallback);
+        }
+
         private void BuildUi()
         {
             var canvasGo = new GameObject("D9PortServicePage", typeof(RectTransform), typeof(Canvas),
@@ -297,27 +377,53 @@ namespace Whalebone.Gameplay.D9
             var canvas = canvasGo.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 150;
+            // Keep the temporary page hidden until OpenPreparationPage asks
+            // RuntimeHudCoordinator to make this surface active.
+            canvas.enabled = false;
             var scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
 
-            _statusText = CreateText(canvasGo, "Status", "D9 正在等待运行时…", 22, new Vector2(28f, -28f),
-                new Vector2(900f, 70f), TextAnchor.UpperLeft);
-            SetTopLeft(_statusText.rectTransform, new Vector2(28f, -28f));
-            _detailText = CreateText(canvasGo, "ShipSnapshot", "", 18, new Vector2(28f, -120f),
-                new Vector2(1000f, 260f), TextAnchor.UpperLeft);
-            SetTopLeft(_detailText.rectTransform, new Vector2(28f, -120f));
-            _hintText = CreateText(canvasGo, "Hint", "", 17, Vector2.zero, new Vector2(1800f, 48f), TextAnchor.MiddleLeft);
-            SetBottomLeft(_hintText.rectTransform, new Vector2(28f, 20f));
+            var summary = new GameObject("D9Summary", typeof(RectTransform), typeof(Image));
+            summary.transform.SetParent(canvasGo.transform, false);
+            var summaryRect = (RectTransform)summary.transform;
+            summaryRect.anchorMin = new Vector2(0f, 1f); summaryRect.anchorMax = new Vector2(0f, 1f);
+            summaryRect.pivot = new Vector2(0f, 1f); summaryRect.sizeDelta = new Vector2(900f, 290f);
+            // The scene's harbor title occupies the top-center safe zone.
+            // Keep the long D9 summary below it so a temporary page never
+            // paints its diagnostics over the location title.
+            summaryRect.anchoredPosition = new Vector2(28f, -196f);
+            var summaryImage = summary.GetComponent<Image>();
+            summaryImage.sprite = UiSprites.White;
+            summaryImage.color = new Color(0.02f, 0.05f, 0.08f, 0.84f);
+            _statusText = CreateText(summary, "Status", "D9 正在等待运行时…", 22,
+                Vector2.zero, new Vector2(860f, 58f), TextAnchor.UpperLeft);
+            SetTopLeft(_statusText.rectTransform, new Vector2(20f, -18f));
+            _detailText = CreateText(summary, "ShipSnapshot", "", 18,
+                Vector2.zero, new Vector2(860f, 202f), TextAnchor.UpperLeft);
+            SetTopLeft(_detailText.rectTransform, new Vector2(20f, -78f));
+
+            var hintBand = new GameObject("D9HintBand", typeof(RectTransform), typeof(Image));
+            hintBand.transform.SetParent(canvasGo.transform, false);
+            var hintRect = (RectTransform)hintBand.transform;
+            hintRect.anchorMin = new Vector2(0f, 0f); hintRect.anchorMax = new Vector2(0f, 0f);
+            hintRect.pivot = new Vector2(0f, 0f); hintRect.sizeDelta = new Vector2(1800f, 52f);
+            hintRect.anchoredPosition = new Vector2(28f, 20f);
+            var hintImage = hintBand.GetComponent<Image>();
+            hintImage.sprite = UiSprites.White;
+            hintImage.color = new Color(0.02f, 0.05f, 0.08f, 0.82f);
+            _hintText = CreateText(hintBand, "Hint", "", 17,
+                Vector2.zero, new Vector2(1760f, 48f), TextAnchor.MiddleLeft);
+            Stretch(_hintText.rectTransform);
 
             _panel = new GameObject("D9PortServiceControls", typeof(RectTransform), typeof(Image));
             _panel.transform.SetParent(canvasGo.transform, false);
             var panelRect = (RectTransform)_panel.transform;
             panelRect.anchorMin = new Vector2(1f, 1f); panelRect.anchorMax = new Vector2(1f, 1f);
-            panelRect.pivot = new Vector2(1f, 1f); panelRect.sizeDelta = new Vector2(380f, 670f);
+            panelRect.pivot = new Vector2(1f, 1f); panelRect.sizeDelta = new Vector2(380f, 740f);
             panelRect.anchoredPosition = new Vector2(-28f, -110f);
             var image = _panel.GetComponent<Image>(); image.sprite = UiSprites.White; image.color = new Color(0.02f, 0.05f, 0.08f, 0.84f);
-            CreateButton(_panel, "Berth", "进入/泊位 [B]", new Vector2(0f, -35f), EnterAndBerth);
+            var firstServiceButton = CreateButton(_panel, "Berth", "进入/泊位 [B]", new Vector2(0f, -35f), EnterAndBerth);
             CreateButton(_panel, "Market", "市场：买盐 [M]", new Vector2(0f, -100f), BuySalt);
             CreateButton(_panel, "Timber", "市场：买木材 [X]", new Vector2(0f, -165f), BuyTimber);
             CreateButton(_panel, "Tavern", "酒馆 [T]", new Vector2(0f, -230f), VisitTavern);
@@ -327,14 +433,16 @@ namespace Whalebone.Gameplay.D9
             CreateButton(_panel, "Wages", "发工资 [W]", new Vector2(0f, -490f), SettleWages);
             CreateButton(_panel, "Shipyard", "船坞船体改装 [U]", new Vector2(0f, -555f), UpgradeHull);
             CreateButton(_panel, "Depart", "离港 [D]", new Vector2(0f, -620f), Depart);
+            CreateButton(_panel, "Close", "关闭整备页 [P / Esc]", new Vector2(0f, -685f), ClosePreparationPage);
+            D16ModalFocusScope.Attach(_panel, firstServiceButton == null ? null : firstServiceButton.gameObject);
         }
 
         private static Button CreateButton(GameObject parent, string name, string label, Vector2 position, UnityEngine.Events.UnityAction action)
         {
             var go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent.transform, false);
-            var rect = (RectTransform)go.transform; rect.anchorMin = new Vector2(0.5f, 0.5f); rect.anchorMax = new Vector2(0.5f, 0.5f);
-            rect.pivot = new Vector2(0.5f, 0.5f); rect.sizeDelta = new Vector2(330f, 48f); rect.anchoredPosition = position;
+            var rect = (RectTransform)go.transform; rect.anchorMin = new Vector2(0.5f, 1f); rect.anchorMax = new Vector2(0.5f, 1f);
+            rect.pivot = new Vector2(0.5f, 1f); rect.sizeDelta = new Vector2(330f, 48f); rect.anchoredPosition = position;
             var image = go.GetComponent<Image>(); image.sprite = UiSprites.White; image.color = new Color(0.12f, 0.34f, 0.52f, 0.98f);
             var button = go.GetComponent<Button>(); button.targetGraphic = image; button.onClick.AddListener(action);
             var text = CreateText(go, "Label", label, 20, Vector2.zero, new Vector2(320f, 44f), TextAnchor.MiddleCenter);

@@ -421,6 +421,9 @@ namespace Whalebone.Tests.D16
             public bool ShipPresent;
             public bool PerformanceControllerPresent;
             public bool PerformanceProbePresent;
+            public bool PerformanceProbeActive;
+            public bool PerformanceProbeOwnedByController;
+            public string PerformanceProbeHost;
             public bool RegistrationBudgetObserved;
             public bool MetricsSampled;
             public bool Passed;
@@ -444,7 +447,7 @@ namespace Whalebone.Tests.D16
             {
                 frames++;
                 controller = UnityEngine.Object.FindFirstObjectByType<D16WorldPerformanceController>(FindObjectsInactive.Include);
-                probe = UnityEngine.Object.FindFirstObjectByType<D16RuntimePerformanceProbe>(FindObjectsInactive.Include);
+                probe = FindActiveRuntimePerformanceProbe();
                 bool ready = SceneManager.GetActiveScene().name == SceneName &&
                     Camera.main != null &&
                     GameObject.Find("D2_PlayerAvatar") != null &&
@@ -472,6 +475,10 @@ namespace Whalebone.Tests.D16
                 ShipPresent = GameObject.Find("ph_ship_fishing") != null,
                 PerformanceControllerPresent = controller != null,
                 PerformanceProbePresent = probe != null,
+                PerformanceProbeActive = probe != null && probe.isActiveAndEnabled && probe.gameObject.activeInHierarchy,
+                PerformanceProbeOwnedByController = controller != null && probe != null &&
+                    probe.transform == controller.transform,
+                PerformanceProbeHost = probe == null ? string.Empty : probe.gameObject.name,
                 RegistrationBudgetObserved = controller != null && controller.RegistrationCount >= 3,
                 MetricsSampled = metrics != null && metrics.SampleCount >= 3,
                 Metrics = metrics,
@@ -484,6 +491,8 @@ namespace Whalebone.Tests.D16
             else if (!report.PlayerPresent || !report.ShipPresent) report.FailureReason = "D2 玩家或船运行时对象未创建。";
             else if (!report.PerformanceControllerPresent || !report.PerformanceProbePresent)
                 report.FailureReason = "D16 性能控制器或采样器未创建。";
+            else if (!report.PerformanceProbeOwnedByController)
+                report.FailureReason = "D16 活动性能探针未挂在性能控制器上。";
             else if (!report.RegistrationBudgetObserved)
                 report.FailureReason = "D16 默认表现登记数量不足。";
             else if (!report.MetricsSampled)
@@ -582,6 +591,9 @@ namespace Whalebone.Tests.D16
             public float SceneLoadSeconds;
             public float RuntimeBootstrapReadySeconds;
             public float D5RuntimeReadySeconds;
+            public bool PerformanceProbeActive;
+            public bool PerformanceProbeOwnedByController;
+            public string PerformanceProbeHost;
             public int ManagedGcGen0Collections;
             public int ManagedGcGen1Collections;
             public int ManagedGcGen2Collections;
@@ -664,7 +676,7 @@ namespace Whalebone.Tests.D16
             while ((controller == null || probe == null || d5 == null) && Time.realtimeSinceStartup < readyDeadline)
             {
                 controller = UnityEngine.Object.FindFirstObjectByType<D16WorldPerformanceController>(FindObjectsInactive.Include);
-                probe = UnityEngine.Object.FindFirstObjectByType<D16RuntimePerformanceProbe>(FindObjectsInactive.Include);
+                probe = FindActiveRuntimePerformanceProbe();
                 d5 = FindComponent(d5Type);
                 if (controller == null || probe == null) yield return null;
             }
@@ -718,6 +730,10 @@ namespace Whalebone.Tests.D16
                 SceneLoadSeconds = sceneLoadSeconds,
                 RuntimeBootstrapReadySeconds = runtimeBootstrapReadySeconds,
                 D5RuntimeReadySeconds = d5RuntimeReadySeconds,
+                PerformanceProbeActive = probe != null && probe.isActiveAndEnabled && probe.gameObject.activeInHierarchy,
+                PerformanceProbeOwnedByController = controller != null && probe != null &&
+                    probe.transform == controller.transform,
+                PerformanceProbeHost = probe == null ? string.Empty : probe.gameObject.name,
                 ManagedGcGen0Collections = metrics == null ? -1 : metrics.ManagedGcGen0Collections,
                 ManagedGcGen1Collections = metrics == null ? -1 : metrics.ManagedGcGen1Collections,
                 ManagedGcGen2Collections = metrics == null ? -1 : metrics.ManagedGcGen2Collections,
@@ -782,6 +798,8 @@ namespace Whalebone.Tests.D16
                 report.FailureReason = "持续采样期间活动场景发生变化。";
             else if (controller == null || probe == null)
                 report.FailureReason = "持续采样期间 D16 控制器或探针未创建。";
+            else if (!report.PerformanceProbeActive || !report.PerformanceProbeOwnedByController)
+                report.FailureReason = "持续采样期间活动性能探针没有保持在 D16 控制器上。";
             else if (report.D5RuntimeReadySeconds < 0f)
                 report.FailureReason = "持续采样期间 D5 运行时未完成接线。";
             else if (report.SampleCount < requiredSamples)
@@ -1330,6 +1348,9 @@ namespace Whalebone.Tests.D16
             yield return null;
             AssertScopeTargetsStayInside(mainMenu, "主菜单");
             AssertSelectedInside(mainMenu, "主菜单首次焦点");
+            Assert.AreSame(mainMenu.Find("BtnNewGame")?.gameObject,
+                EventSystem.current.currentSelectedGameObject,
+                "主菜单首次提交必须稳定落到新游戏，不能因残留鼠标选择打开设置等其他页面。");
 
             mainMenu.Find("BtnSettings").GetComponent<Button>().onClick.Invoke();
             yield return null;
@@ -1500,7 +1521,10 @@ namespace Whalebone.Tests.D16
                 Assert.IsTrue((bool)routerType.GetProperty("GameplayInputBlocked").GetValue(null),
                     "隐私诊断模态打开后没有阻断玩法输入。");
 
-                var diagnosticsClose = GameObject.Find("Close")?.GetComponent<Button>();
+                // InitialHarbor 可能同时拥有 D4 对话页、D16 金融页和 D16
+                // 诊断页的同名 Close 按钮。必须在当前模态根内取按钮，
+                // 否则测试会误点别的页面并把测试定位错误当成产品失败。
+                var diagnosticsClose = FindChild(diagnosticsModal.transform, "Close")?.GetComponent<Button>();
                 Assert.IsNotNull(diagnosticsClose, "暂停菜单隐私面板关闭按钮未创建。");
                 diagnosticsClose.onClick.Invoke();
                 yield return null;
@@ -1824,6 +1848,19 @@ namespace Whalebone.Tests.D16
             {
                 var found = FindChild(root.GetChild(i), name);
                 if (found != null) return found;
+            }
+            return null;
+        }
+
+        private static D16RuntimePerformanceProbe FindActiveRuntimePerformanceProbe()
+        {
+            var probes = UnityEngine.Object.FindObjectsByType<D16RuntimePerformanceProbe>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None);
+            for (var i = 0; i < probes.Length; i++)
+            {
+                var probe = probes[i];
+                if (probe != null && probe.isActiveAndEnabled && probe.gameObject.activeInHierarchy)
+                    return probe;
             }
             return null;
         }

@@ -1,0 +1,168 @@
+{
+  "task_id": "Q01",
+  "run_id": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_Q26A22_20260914_LUNA_Q01",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "read_only_root_scale_owner_tolerance_runtime_reproduction",
+  "captured_at_local": "2026-09-14T08:54:19+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "graphics_device": "Null",
+    "foreground_player_capture": false,
+    "physical_win32_input": false
+  },
+  "changed_files": [
+    {
+      "path": "game/AgentScripts/LocalQuality/UnityPipelinePoseAndInputProbe.cs",
+      "sha256": "3B38B60F9E476A37BC4C966CA38F45A6DF28A7B75421435911D9900BF264B4A6",
+      "classification": "ephemeral_diagnostic_source_outside_Assets",
+      "change": "flattened CharacterController and HarborCollision fields so JsonUtility output records runtime owner values"
+    }
+  ],
+  "production_source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "097D8210461C61C5BDFA365127D191865293040310539FEF92DC06AB90A66A42",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A"
+  },
+  "runtime_route": [
+    {
+      "step": "InitialHarbor initial",
+      "result": "OBSERVED",
+      "facts": {
+        "player_parent": "",
+        "player_position": [-0.0000000000000142, 0.1497475654, -2.6999998],
+        "player_lossy_scale": [1.0, 1.0, 1.0],
+        "action": "Idle",
+        "pose_driver_mode": "Procedural",
+        "procedural_active": true,
+        "bound_bone_count": 8,
+        "renderer_count": 17,
+        "skinned_renderer_count": 0,
+        "controller_grounded": true,
+        "controller_swimming": false,
+        "ui_navigation_enabled": false,
+        "ui_move_action_bound": false,
+        "selected_ui_object": ""
+      }
+    },
+    {
+      "step": "D2ControlRouter.TryToggleShip board",
+      "result": "OBSERVED",
+      "facts": {
+        "player_parent": "ph_ship_fishing",
+        "control_mode": "Ship",
+        "action": "Idle",
+        "ship_steering_pose_active": true,
+        "player_and_helm_position": "approximately (0, 1.10, -6.68)",
+        "helm_wheel_position": "approximately (0, 1.89, -6.35)",
+        "left_hand_to_wheel_m": 0.1939880401,
+        "right_hand_to_wheel_m": 0.1939880997,
+        "ui_navigation_enabled": false,
+        "ui_move_action_bound": false,
+        "selected_ui_object": ""
+      },
+      "boundary": "This is a Pipeline-injected route and measures parent/anchor ownership; it is not physical E input or foreground visual acceptance."
+    },
+    {
+      "step": "D2CharacterController.SetWorldPosition open-water diagnostic",
+      "result": "OBSERVED",
+      "facts": {
+        "player_parent": "",
+        "control_mode": "Character",
+        "player_position": [24.0, 0.3999999762, -24.0],
+        "action": "Swimming",
+        "pose_driver_mode": "Procedural",
+        "swimming_pitch_degrees": 64.0,
+        "swimming_roll_degrees": 0.0,
+        "swimming_body_drop": -0.6008362174,
+        "controller_grounded": false,
+        "controller_swimming": true,
+        "visual_root_local_scale": [0.6642063856, 0.6642063856, 0.6642063856],
+        "left_upper_arm_euler": [22.3344822, 180.0, 180.0],
+        "right_upper_arm_euler": [37.6655121, 180.0, 180.0],
+        "ui_navigation_enabled": false,
+        "ui_move_action_bound": false,
+        "selected_ui_object": ""
+      },
+      "boundary": "This proves a reachable current runtime swim state and procedural pose values, not authored natural swimming, physical W/S, water material quality, or visual no-clipping."
+    }
+  ],
+  "owner_and_tolerance_facts": {
+    "d2_player_root": {
+      "owner": "D2CharacterController/D2RuntimeBootstrap",
+      "parent": "null while on land; ph_ship_fishing while boarded",
+      "lossy_scale": [1.0, 1.0, 1.0],
+      "character_controller": {
+        "enabled": true,
+        "radius_m": 0.2424353212,
+        "height_m": 1.7999997139,
+        "skin_width_m": 0.0193948261,
+        "center": [0.0, 0.8468632698, 0.0]
+      }
+    },
+    "d2_visual_root": {
+      "owner": "D2CharacterAnimationController",
+      "local_scale": [0.6642063856, 0.6642063856, 0.6642063856],
+      "renderer_count": 17,
+      "skinned_renderer_count": 0,
+      "bound_bone_count": 8,
+      "default_pose_driver": "Procedural",
+      "formal_animator_ready": false
+    },
+    "d2_control_router": {
+      "owner": "D2ControlRouter",
+      "responsibility": "Character/Ship mode and boarding parent transition"
+    },
+    "ship_deck": {
+      "owner": "D7ShipDeckController",
+      "ship_root_lossy_scale": [2.5739560127, 2.5739560127, 2.5739560127],
+      "helm_position": [0.0000001853, 1.1000001431, -6.6799998283],
+      "helm_wheel_position": [0.0000002142, 1.8900001049, -6.3499994278],
+      "deck_ready": true,
+      "deck_collision_ready": true
+    },
+    "ocean": {
+      "owner": "OceanAdapter/D2CharacterController",
+      "logical_water_surface_y": -0.0199999996,
+      "water_half_extent_m": 600.0,
+      "fallback_active": false
+    },
+    "harbor_collision": {
+      "owner": "HarborCollisionController",
+      "initialized": true,
+      "r03_surface_installed": true,
+      "collider_count": 9,
+      "walkable_surface_count": 3,
+      "r03_building_collision_count": 4,
+      "scoped_mesh_owner": "D19_R03_IslandSurfaceMesh",
+      "scoped_mesh_collider": "enabled/non-trigger"
+    }
+  },
+  "defect_boundaries": {
+    "action_distortion": "Current Player uses procedural fallback with no SkinnedMeshRenderer; the formal authored action/avatar gate remains open. This route records the pose state but does not call the silhouette acceptable.",
+    "swimming": "Current logic enters Swimming and moves the player to the water band. Natural authored swimming and foreground physical W/S remain unverified.",
+    "boarding": "Current logic parents the player to ph_ship_fishing, enables Ship mode and aligns the logical helm anchor. Natural hand/wheel contact and continuous deck no-clipping remain unverified.",
+    "floating_trees": "No floating-tree claim is made. Q01 did not inspect every authored vegetation pivot/bounds in a foreground route; Q20/D31 remain the owner.",
+    "keyboard_hud_conflict": "The current injected sample reports UI navigation disabled and no move action binding, but it does not prove foreground physical W/S focus behavior."
+  },
+  "validation": {
+    "pipeline_compile_and_run": "PASS_WITHIN_SCOPE",
+    "pipeline_diagnostics": [],
+    "editor_stop": "PASS",
+    "editor_final": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "production_files_modified": false,
+    "visual_foreground_acceptance": "NOT_COUNTED",
+    "physical_input_acceptance": "NOT_COUNTED"
+  },
+  "status_boundary": "Q01 remains VERIFIED_WITH_SCOPE. The current root/scale/owner/tolerance facts are directly observed in the connected Pipeline Editor, while the reported visual defects and foreground physical-input behavior remain open. This result does not upgrade Q03, Q20, Q26, Q31, VC-G01, VC-G02, VC-G03 or D31.",
+  "next_task": "Q02_CURRENT_SOURCE_OWNER_LIFECYCLE_REAUDIT"
+}

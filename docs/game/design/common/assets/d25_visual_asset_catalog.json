@@ -1,0 +1,35 @@
+{
+  "catalog_kind": "d25_visual_asset_catalog",
+  "schema_version": 1,
+  "purpose": "D25-P05 只读视觉资源与 Prefab 准入抽样，不授予运行时或发布批准",
+  "entries": [
+    {
+      "asset_id": "d25_port_prop_set",
+      "prefab_path": "game/Assets/Prefabs/Props/D19/D19_Port_PropSet.prefab",
+      "source_state": "Candidate",
+      "license_evidence_path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+      "required_components": ["mesh", "material"]
+    },
+    {
+      "asset_id": "d25_dock_anchor",
+      "prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/saint_marys_dock_final.prefab",
+      "source_state": "Candidate",
+      "license_evidence_path": "game/Assets/Art/SliceFinal/D16C08/SOURCE.md",
+      "required_components": ["collider", "anchor"]
+    },
+    {
+      "asset_id": "d25_crew_anchor",
+      "prefab_path": "game/Assets/Prefabs/SliceFinal/D16C08/crew_male_final.prefab",
+      "source_state": "Candidate",
+      "license_evidence_path": "game/Assets/Art/SliceFinal/D16C08/SOURCE.md",
+      "required_components": ["collider", "anchor"]
+    },
+    {
+      "asset_id": "d25_shipyard_prop_set",
+      "prefab_path": "game/Assets/Prefabs/Props/D19/D19_Shipyard_RepairSet.prefab",
+      "source_state": "Candidate",
+      "license_evidence_path": "game/Assets/Art/Placeholder/PH_ASSET_SOURCES.md",
+      "required_components": ["mesh", "material"]
+    }
+  ]
+}

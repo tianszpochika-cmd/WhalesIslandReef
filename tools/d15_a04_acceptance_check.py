@@ -29,6 +29,27 @@ REQUIRED_D15_FIELDS = {
 }
 
 
+def _is_reviewed_slice_override(entry: dict[str, Any]) -> bool:
+    """Allow the explicitly reviewed D16-C08 slice to supersede a placeholder.
+
+    D15 owns the original 80-row batch, while D16-C08 owns the small, reviewed
+    vertical-slice replacement.  The exception is deliberately narrow so a
+    random ``integrated`` flag cannot make a missing building asset pass.
+    """
+
+    return (
+        entry.get("asset_state") == "integrated"
+        and entry.get("production_stage") == "slice_final"
+        and isinstance(entry.get("model_ref"), str)
+        and bool(entry["model_ref"].strip())
+        and isinstance(entry.get("runtime_prefab_path"), str)
+        and bool(entry["runtime_prefab_path"].strip())
+        and entry.get("historical_review") in {"Approved", "ApprovedWithWarning"}
+        and isinstance(entry.get("review_evidence_refs"), list)
+        and bool(entry["review_evidence_refs"])
+    )
+
+
 def check(registry_root: Path) -> dict[str, int]:
     building_dir = registry_root / "entries" / "building"
     asset_dir = registry_root / "entries" / "asset"
@@ -53,9 +74,13 @@ def check(registry_root: Path) -> dict[str, int]:
             raise AssertionError(f"{entry.get('id')} missing D15 fields: {', '.join(missing)}")
         if entry.get("owner_system") != "BuildingSystem":
             raise AssertionError(f"{entry.get('id')} has wrong owner_system")
-        if entry.get("asset_state") != "placeholder":
-            raise AssertionError(f"{entry.get('id')} must mark missing assets as placeholder")
-        if not entry.get("anchor_refs") or len(entry["anchor_refs"]) < 3:
+        slice_override = _is_reviewed_slice_override(entry)
+        if entry.get("asset_state") != "placeholder" and not slice_override:
+            raise AssertionError(
+                f"{entry.get('id')} must mark missing assets as placeholder or satisfy the reviewed slice override"
+            )
+        required_anchor_count = 1 if slice_override else 3
+        if not entry.get("anchor_refs") or len(entry["anchor_refs"]) < required_anchor_count:
             raise AssertionError(f"{entry.get('id')} has incomplete anchors")
         if not entry.get("test_cases") or len(entry["test_cases"]) < 4:
             raise AssertionError(f"{entry.get('id')} has incomplete test cases")
@@ -88,4 +113,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

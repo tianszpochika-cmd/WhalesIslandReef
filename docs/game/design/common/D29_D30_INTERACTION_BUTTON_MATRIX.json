@@ -1,0 +1,59 @@
+{
+  "schema_version": "d29-d30-interaction-matrix-v1",
+  "scope": "D29 main HUD plus D4 content page and D9 preparation page",
+  "principle": "UI submits an existing owner command or reads a public snapshot; UI never judges domain facts.",
+  "focus_policy": {
+    "implementation": "D16ModalFocusScope",
+    "surfaces": ["D29-Warehouse", "D4", "D9", "D10"],
+    "non_modal_surfaces": ["D29"],
+    "non_modal_rule": "主 HUD 只显示状态和快捷入口，不拥有 D16 模态导航焦点；W/A/S/D 必须继续交给 gameplay input。",
+    "hidden_selection": "A Canvas/CanvasGroup/root that is hidden or not interactive must clear its owned EventSystem selection.",
+    "runtime_evidence_required": true
+  },
+  "availability_policy": {
+    "visual_state_when_unready": "对应 owner component 缺失或尚未就绪时使用低对比度等待色",
+    "clickable_when_unready": true,
+    "unready_feedback": "D29 状态栏列出未就绪入口；点击和键盘兼容入口都进入 owner 等待/拒绝反馈，不能静默无响应",
+    "domain_permission_owner": "对应业务 owner；Button.interactable 不承担业务权限裁决",
+    "repeat_policy": "市场、酒馆、船坞、登船、整备、保存等一次性请求由 D29 以 0.35 秒窗口防重；天气和画质预览切换保持可重复",
+    "runtime_evidence_required": true
+  },
+  "buttons": [
+    {"id":"D29-MARKET","surface":"D29","label":"市场 [B]","input":"B/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"OpenMarket","owner":"D3RuntimeBootstrap.RequestTrade","feedback_markers":["Show(","market_opened"]},
+    {"id":"D29-WAREHOUSE","surface":"D29","label":"仓库 [I]","input":"I/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"ToggleInfo","owner":"D3RuntimeBootstrap.Snapshot read-only","feedback_markers":["RefreshWarehouse","仓库面板已打开"]},
+    {"id":"D29-TAVERN","surface":"D29","label":"酒馆","input":"click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"OpenTavern","owner":"D10TavernSocialBootstrap.OpenSocialPage","feedback_markers":["Show(","tavern_opened"]},
+    {"id":"D29-SHIPYARD","surface":"D29","label":"船坞：改良船体","input":"click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"UpgradeShip","owner":"D4RuntimeBootstrap.TryUpgradeHull","feedback_markers":["Show(","TryUpgradeHull","shipyard_opened"]},
+    {"id":"D29-BOARD","surface":"D29","label":"登船 / 下船 [E]","input":"E/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"ToggleShip","owner":"D2ControlRouter.TryToggleShip","feedback_markers":["Show(","boarded"]},
+    {"id":"D29-WEATHER","surface":"D29","label":"天气表现：切换 [R]","input":"R/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"CycleWeather","owner":"D28WaterWeatherPresentationRuntime.TryCycleWeather","feedback_markers":["Show(","TryCycleWeather","CurrentWeather"]},
+    {"id":"D29-SAVE","surface":"D29","label":"保存当前进度 [C]","input":"C/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"Save","owner":"D3RuntimeBootstrap.RequestSave or SaveSystem.Save","feedback_markers":["Show(","保存"]},
+    {"id":"D29-PREPARATION","surface":"D29","label":"港口整备 [P]","input":"P/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"OpenPreparation","owner":"D9PortShipPreparationBootstrap.OpenPreparationPage","feedback_markers":["Show(","preparation_opened"]},
+    {"id":"D29-WAREHOUSE-CLOSE","surface":"D29-Warehouse","label":"关闭仓库 [I / Esc]","input":"I/Escape/click","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","callback":"CloseWarehouse","owner":"D29 local panel state","feedback_markers":["success: 仓库面板已关闭"]},
+    {"id":"D4-FACTION","surface":"D4","label":"势力任务 [F]","input":"F/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"FactionAction","owner":"D4 faction resolver","feedback_markers":["AddLog","_message"]},
+    {"id":"D4-COMBAT","surface":"D4","label":"开始炮战 [K]","input":"K/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"StartCombat","owner":"D4 combat resolver","feedback_markers":["AddLog","_message"]},
+    {"id":"D4-RELOAD","surface":"D4","label":"装填炮弹 [R]","input":"R/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"Reload","owner":"D4 combat resolver","feedback_markers":["_message","炮组已装填"]},
+    {"id":"D4-FIRE","surface":"D4","label":"开炮 [Space]","input":"Space/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"Fire","owner":"D4 combat resolver","feedback_markers":["_message","AddLog"]},
+    {"id":"D4-UPGRADE","surface":"D4","label":"船体改装 [U]","input":"U/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"UpgradeHull","owner":"D4 shipyard resolver","feedback_markers":["_message","AddLog"]},
+    {"id":"D4-ANIMAL","surface":"D4","label":"观察动物 [A]","input":"A/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"ObserveAnimal","owner":"D4 ecology resolver","feedback_markers":["_message","AddLog"]},
+    {"id":"D4-MEDICAL","surface":"D4","label":"医疗 [M]","input":"M/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"TreatCrew","owner":"D4 medical resolver","feedback_markers":["_message","AddLog"]},
+    {"id":"D4-MAINLINE","surface":"D4","label":"推进主线 [J]","input":"J/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"AdvanceMainline","owner":"D4 mainline resolver","feedback_markers":["_message","AddLog"]},
+    {"id":"D4-CLOSE","surface":"D4","label":"关闭内容页 [Esc]","input":"Escape/click","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","callback":"CloseContentPage","owner":"D4 local page state + RuntimeHudCoordinator","feedback_markers":["主 HUD 已恢复"]},
+    {"id":"D9-BERTH","surface":"D9","label":"进入/泊位 [B]","input":"B/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"EnterAndBerth","owner":"D9 preparation owner","feedback_markers":["SetResult","D9-A01"]},
+    {"id":"D9-SALT","surface":"D9","label":"市场：买盐 [M]","input":"M/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"BuySalt","owner":"D9 preparation owner","feedback_markers":["SetResult"]},
+    {"id":"D9-TIMBER","surface":"D9","label":"市场：买木材 [X]","input":"X/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"BuyTimber","owner":"D9 preparation owner","feedback_markers":["SetResult"]},
+    {"id":"D9-TAVERN","surface":"D9","label":"酒馆 [T]","input":"T/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"VisitTavern","owner":"D10TavernSocialBootstrap.OpenSocialPage","feedback_markers":["_lastMessage","酒馆社会页"]},
+    {"id":"D9-SUPPLIES","surface":"D9","label":"补给水×5 [S]","input":"S/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"BuyWater","owner":"D9 preparation owner","feedback_markers":["SetResult"]},
+    {"id":"D9-REPAIR","surface":"D9","label":"修船 10 点 [R]","input":"R/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"RepairHull","owner":"D9 preparation owner","feedback_markers":["SetResult"]},
+    {"id":"D9-RECRUIT","surface":"D9","label":"招募艾萨克 [Q]","input":"Q/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"RecruitIsaac","owner":"D9 preparation owner","feedback_markers":["SetResult"]},
+    {"id":"D9-WAGES","surface":"D9","label":"发工资 [W]","input":"W/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"SettleWages","owner":"D9 preparation owner","feedback_markers":["SetResult"]},
+    {"id":"D9-SHIPYARD","surface":"D9","label":"船坞船体改装 [U]","input":"U/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"UpgradeHull","owner":"D4 shipyard resolver","feedback_markers":["SetResult","船坞"]},
+    {"id":"D9-DEPART","surface":"D9","label":"离港 [D]","input":"D/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"Depart","owner":"D3 voyage owner","feedback_markers":["_lastMessage","航行系统"]},
+    {"id":"D9-CLOSE","surface":"D9","label":"关闭整备页 [P / Esc]","input":"P/Escape/click","source":"game/Assets/Scripts/Gameplay/D9/D9PortShipPreparationBootstrap.cs","callback":"ClosePreparationPage","owner":"D9 local page state + RuntimeHudCoordinator","feedback_markers":["主 HUD 已恢复"]}
+  ],
+  "keyboard_only_controls": [
+    {"surface":"D4","input":"1/2/3","callback":"SelectWeapon","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","feedback_markers":["_message"]},
+    {"surface":"D4","input":"B","callback":"Board","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","feedback_markers":["_message","AddLog"]},
+    {"surface":"D4","input":"E","callback":"EscapeCombat","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","feedback_markers":["_message","AddLog"]},
+    {"surface":"D4","input":"C","callback":"SaveProgress","source":"game/Assets/Scripts/Gameplay/D4/D4RuntimeBootstrap.cs","feedback_markers":["_message","D4 内容状态已保存"]},
+    {"surface":"D29","input":"Q","callback":"CycleQuality","source":"game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs","owner":"D31VisualQualityRuntime.TryCycleQuality","feedback_markers":["Show(","TryCycleQuality","CurrentTier"]}
+  ]
+}

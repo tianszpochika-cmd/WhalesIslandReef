@@ -1,0 +1,220 @@
+{
+  "task_id": "Q01",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "read_only_current_root_visual_scale_writer_tolerance_and_defect_diagnosis",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q00"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q01_CURRENT_ROOT_CAUSE_PIPELINE_20260913",
+  "audit_time_local": "2026-09-13T02:40:07+08:00",
+  "changed_files": [
+    "game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_PIPELINE_20260913_RESULT.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q01.md",
+    "game/tools/results/LOCAL-QUALITY/Q01/RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/STATUS.md",
+    "docs/game/LOCAL_QUALITY_REMAINING_PLAN.md",
+    ".workbuddy/memory/2026-09-13.md"
+  ],
+  "scope_rule": "Q01 is diagnostic only. No product code, prefab, scene, generated Player or Systems file was changed. The existing dirty worktree was preserved.",
+  "pipeline_runtime_sample": {
+    "editor": "Unity 6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "endpoint": "127.0.0.1:7800",
+    "scene": "InitialHarbor",
+    "protocol": "open_scene -> editor_play -> targeted eval -> editor_stop",
+    "final_editor_state": "ready/compiling=false/domainReloadInProgress=false/playMode=stopped",
+    "console_after_clear": 0,
+    "live_log_markers": [
+      "[Q01-LIVE-R2] VISUAL",
+      "[Q01-LIVE-R2] STATE",
+      "[Q01-LIVE-R2] SHIP",
+      "[Q01-LIVE-R2] COLLISION"
+    ],
+    "evidence_boundary": "The values below are connected-Editor runtime values from InitialHarbor. The Editor was relaunched with -nographics after the prior D3D11 reset, so this sample is not a rendered visual acceptance frame."
+  },
+  "transform_scale_table": [
+    {
+      "node": "D2_PlayerAvatar / physical root",
+      "parent": "none",
+      "world_position": "(0.0000, 0.1497, -2.7000)",
+      "lossy_scale": "(1.0000, 1.0000, 1.0000)",
+      "owner": "D2CharacterController",
+      "meaning": "CharacterController movement, collision, grounded state and water state use this root."
+    },
+    {
+      "node": "D2_PlayerAvatar/HumanoidVisual / visualRoot",
+      "parent": "D2_PlayerAvatar",
+      "local_position": "(0.0000, 0.0000, 0.0000)",
+      "local_scale": "(0.6642, 0.6642, 0.6642)",
+      "world_position": "(0.0000, 0.1497, -2.7000)",
+      "renderer_count": 17,
+      "owner": "D2CharacterAnimationController",
+      "meaning": "The visual child is scaled independently from the unit physical root; its baseline and action pose must be submitted together."
+    },
+    {
+      "node": "imported/procedural character bones",
+      "parent": "HumanoidVisual",
+      "runtime_state": "BoundBoneCount=8; BoundBonesAreUnique=true; BoneBindingConflict=false",
+      "pose_state": "PoseDriverMode=Procedural; FormalAnimatorReady=false; ProceduralPoseLayerActive=true",
+      "owner": "D2CharacterAnimationController",
+      "meaning": "Default Player is not consuming an authored Humanoid action clip; this is the primary action-distortion boundary."
+    },
+    {
+      "node": "CharacterController",
+      "parent": "D2_PlayerAvatar",
+      "runtime_values": "radius=0.2424m; height=1.8000m; center=(0.0000,0.8469,0.0000); skinWidth=0.0194m; enabled=true",
+      "owner": "D2CharacterController",
+      "meaning": "Physical capsule remains upright and is not rotated for swim presentation."
+    },
+    {
+      "node": "ph_ship_fishing / stable gameplay root",
+      "parent": "InitialHarbor",
+      "world_position": "(0.0000, 0.0000, -5.2000)",
+      "lossy_scale": "(2.5740, 2.5740, 2.5740)",
+      "owner": "D7ShipDeckController for helm anchor; D2ControlRouter for mode/parent transition",
+      "meaning": "All world-metre deck anchors must be inverse-transformed through this scaled root."
+    },
+    {
+      "node": "D7_HelmPoint / D7_VisibleHelmAnchor",
+      "parent": "stable gameplay root / D19_R03_ShipVisualInstance",
+      "world_position": "both=(0.0000, 1.1000, -6.6800)",
+      "runtime_state": "D7 IsReady=true; HelmReady=true; PlayerBoarded=false; DeckCollisionReady=true; TransitionCount=0",
+      "owner": "D7ShipDeckController consumes the D19 presentation anchor",
+      "meaning": "The gameplay helm point and visible R03 anchor are aligned in the current initial state; natural hand contact still requires rendered review."
+    },
+    {
+      "node": "D19_R03_HarborPresentation/D19_TerrainRoot",
+      "parent": "D19_R03_HarborPresentation",
+      "world_position": "(0.0000, 0.0000, 0.0000)",
+      "lossy_scale": "(1.0000, 1.0000, 1.0000)",
+      "collider": "MeshCollider enabled=true; isTrigger=false; sharedMesh=D19_R03_IslandSurfaceMesh",
+      "owner": "HarborCollisionController consumes this scoped R03 owner",
+      "meaning": "This is the authored walkable surface owner, distinct from the duplicate-name legacy node."
+    },
+    {
+      "node": "D19_EnvironmentRoot/D19_TerrainRoot",
+      "parent": "D19_EnvironmentRoot",
+      "world_position": "(-128.0000, -8.0000, -128.0000)",
+      "collider": "TerrainCollider enabled=false; GameObject active=true",
+      "owner": "legacy compatibility node; not the R03 collision surface",
+      "meaning": "Global name lookup is ambiguous; any future diagnostic must use the scoped R03 hierarchy."
+    },
+    {
+      "node": "WaterWaveSurface / logical OceanAdapter surface",
+      "parent": "D19_R03_ShorelineAndWater / D2 runtime host",
+      "runtime_values": "render surface y=-0.0238m; D2 logical WaterSurfaceY=-0.0200m",
+      "owner": "D19 owns visible water; OceanAdapter supplies logical water; D2CharacterController owns swimming state",
+      "meaning": "These are separate owners and must not be merged by coordinate tuning."
+    }
+  ],
+  "state_writers": [
+    {
+      "state": "physical player root and CharacterController",
+      "owner": "D2CharacterController",
+      "source_evidence": "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs:576-1377",
+      "writes": ["CharacterController.Move", "transform.position recovery/snap", "grounded/swimming state"]
+    },
+    {
+      "state": "visualRoot baseline, action pose and visual grounding offset",
+      "owner": "D2CharacterAnimationController",
+      "source_evidence": "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs:207-797",
+      "writes": ["ApplyPose", "visualRoot.localPosition", "visualRoot.localRotation", "verified procedural bone localRotation"],
+      "competing_writer_result": "D7CharacterPresentationController only measures GroundError and calls SetVisualGroundingOffsetWorld; DirectVisualRootWriteCount=0 in the live sample."
+    },
+    {
+      "state": "character/ship mode, parent transition and E interaction priority",
+      "owner": "D2ControlRouter",
+      "source_evidence": "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs:80-315",
+      "writes": ["Mode", "EnterShip", "ExitShip", "LastInteractionFeedback"]
+    },
+    {
+      "state": "helm anchor and deck diagnostics",
+      "owner": "D7ShipDeckController",
+      "source_evidence": "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs:14-117",
+      "writes": ["HelmPoint localPosition/localRotation", "PlayerBoarded", "TransitionCount"]
+    },
+    {
+      "state": "visible R03 island, water, ship presentation and vegetation placement",
+      "owner": "D19R03HarborPresentationBuilder / D19 runtime presentation",
+      "source_evidence": "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs:618-1697",
+      "writes": ["R03 terrain mesh", "visible helm anchor", "vegetation instances", "water/ship presentation"]
+    },
+    {
+      "state": "walkable and boundary collision",
+      "owner": "HarborCollisionController",
+      "source_evidence": "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs:15-130",
+      "writes": ["scoped R03 MeshCollider registration", "dock/gangplank/boundary colliders"]
+    }
+  ],
+  "tolerance_table": [
+    {"quantity": "visual root scale", "value": 0.6642, "unit": "multiplier", "source": "live InitialHarbor eval", "note": "presentation scale only; physical root remains one"},
+    {"quantity": "CharacterController radius", "value": 0.2424, "unit": "m", "source": "live InitialHarbor eval", "note": "contact reference, not a visual no-clipping proof"},
+    {"quantity": "CharacterController height", "value": 1.8, "unit": "m", "source": "live InitialHarbor eval", "note": "physical capsule reference"},
+    {"quantity": "CharacterController skinWidth", "value": 0.0194, "unit": "m", "source": "live InitialHarbor eval", "note": "collision tolerance only"},
+    {"quantity": "grounding correction trigger", "value": 0.08, "unit": "m", "source": "D7CharacterPresentationController", "note": "does not authorize repeated root writes or conceal intersections"},
+    {"quantity": "logical water surface", "value": -0.02, "unit": "m", "source": "D2/OceanAdapter live eval", "note": "swimming owner input"},
+    {"quantity": "swim body offset", "value": 0.42, "unit": "m", "source": "D2CharacterController source contract", "note": "presentation/physical separation; do not rotate the capsule"},
+    {"quantity": "ship root scale", "value": 2.573956, "unit": "uniform multiplier", "source": "live InitialHarbor eval", "note": "inverse-transform authored world anchors"},
+    {"quantity": "ship interaction range", "value": 8.0, "unit": "m", "source": "D2ControlRouter", "note": "far E must reject without mode/parent mutation"},
+    {"quantity": "crew interaction range", "value": 3.5, "unit": "m", "source": "D2ControlRouter", "note": "separate from ship range"}
+  ],
+  "defect_diagnosis": [
+    {
+      "defect": "任务动作扭曲",
+      "reproduction": "PARTIAL_REPRODUCED_CURRENT_SOURCE",
+      "root_cause": "The default InitialHarbor consumer is still Procedural with FormalAnimatorReady=false; the formal Humanoid route is explicit opt-in. The default live sample proves the consumer boundary, while Q03-A16's exact current opt-in Player proves the candidate pose route is not the default finished action system.",
+      "evidence": ["[Q01-LIVE-R2] STATE", "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2_RESULT.json"],
+      "status_boundary": "No authored locomotion or visual-quality PASS. Q03 remains BLOCKED_ASSET."
+    },
+    {
+      "defect": "海洋不能游泳",
+      "reproduction": "LOGIC_REPRODUCED_VISUAL_NOT_ACCEPTED",
+      "root_cause": "D2 owns water entry/exit and the current test/build route reaches Swimming; the visible water surface and logical OceanAdapter surface remain separate, and the formal swim pose is only an opt-in diagnostic path.",
+      "evidence": ["D17 current PlayMode 16/16 PASS including ten shallow/deep cycles", "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2_RESULT.json: hidden Player Swimming=true/Fish/pitch=70"],
+      "status_boundary": "Pipeline-injected route evidence is not physical foreground W/S or natural swim-pose acceptance."
+    },
+    {
+      "defect": "上船后人物/船控异常",
+      "reproduction": "ANCHOR_AND_LOGIC_REPRODUCED_VISUAL_NOT_ACCEPTED",
+      "root_cause": "The current scaled ship root and visible R03 helm anchor are now aligned, and D2/D7 mode ownership is stable; natural hand-to-wheel contact, deck intersection and continuous camera readability still require rendered review.",
+      "evidence": ["[Q01-LIVE-R2] SHIP", "game/tools/results/LOCAL-QUALITY/Q03-A16/Q03_A16_FORMAL_HUMANOID_PIPELINE_R2_RESULT.json: left/right hand distance 0.219m/0.222m"],
+      "status_boundary": "Anchor measurements and ship-control observations do not close the no-clipping/manual visual gate."
+    },
+    {
+      "defect": "树在空中飘",
+      "reproduction": "NOT_REPRODUCED_BY_CURRENT_TRANSFORM_SAMPLE",
+      "root_cause": "The scoped R03 terrain owner is present and the legacy TerrainCollider is disabled. Q20-A03's current candidate guard reports 24/24 visible R03 vegetation samples grounded and 0 active legacy palm renderers, but formal authored palm pivot/bounds and every camera are not accepted.",
+      "evidence": ["[Q01-LIVE-R2] COLLISION", "game/tools/results/LOCAL-QUALITY/Q20-A03/RESULT.json"],
+      "status_boundary": "Containment and sampled contact are not a full vegetation visual PASS; Q20/D31 remain partial."
+    },
+    {
+      "defect": "W/S 与右上角菜单联动",
+      "reproduction": "NOT_REPRODUCED_IN_CURRENT_AUTOMATED_RUN",
+      "root_cause": "D16InputRouter and HarborInteractionStabilizer have an explicit gameplay/UI ownership regression guard; current D17A15 passes, but no foreground physical keyboard focus was exercised in this Q01 sample.",
+      "evidence": ["D17 current PlayMode 16/16 PASS including D17A15", "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs", "game/Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs"],
+      "status_boundary": "Do not call this user-reported behavior fixed without foreground input evidence or a reproducible automated failure."
+    }
+  ],
+  "file_whitelist": {
+    "Q02": ["game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs", "game/Assets/Tests/EditMode/D2/D2CharacterAnimationControllerTests.cs", "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"],
+    "Q03": ["game/Assets/Scripts/Presentation/D20/PlayerAnimation/", "game/Assets/Scripts/Gameplay/D2/D20PlayerCandidatePresentationBridge.cs", "game/Assets/Tests/PlayMode/Q03D20FormalHumanoidPosePlayModeTests.cs", "game/Assets/Tests/EditMode/D20/"],
+    "Q04_Q06": ["game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs", "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs", "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"],
+    "Q07_Q26": ["game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs", "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs", "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs", "game/Assets/Tests/EditMode/D19R03/"],
+    "Q09_Q11": ["game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs", "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs", "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"],
+    "Q12": ["game/Assets/Scripts/Gameplay/CameraFollow.cs", "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"],
+    "Q13": ["game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs", "game/Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs", "game/Assets/Tests/PlayMode/D16InputRouterPlayModeTests.cs"],
+    "Q20": ["game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs", "game/Assets/Tests/PlayMode/D19R03Q20VegetationPlayModeTests.cs", "game/Assets/Tests/EditMode/D19R03/"],
+    "Q31_VC_G01": ["game/tools/results/LOCAL-QUALITY/", "docs/game/design/common/handoffs/VISUAL-CLEAN/", "docs/game/VISUAL_CLEANUP_EXECUTION_PLAN.md"]
+  },
+  "checks": [
+    {"name": "current_runtime_transform_inventory", "result": "PASS_WITHIN_SCOPE", "evidence": "Connected Unity Pipeline InitialHarbor eval captured player root, visualRoot, capsule, ship/helm, R03/legacy terrain and water facts."},
+    {"name": "state_writer_and_single_writer_diagnosis", "result": "PASS_WITHIN_SCOPE", "evidence": "Current source inspection plus DirectVisualRootWriteCount=0 identifies D2 animation as the visualRoot submitter and D7 as measurement/offset handoff only."},
+    {"name": "collision_water_and_scale_tolerance_table", "result": "PASS_WITHIN_SCOPE", "evidence": "Current runtime values and source-defined thresholds are recorded above; the duplicate-name terrain ambiguity is explicitly scoped."},
+    {"name": "five_reported_input_visual_defect_boundaries", "result": "PARTIAL", "evidence": "Current runtime/logic evidence distinguishes reproduced logic from unaccepted rendered/manual behavior; no unverified PASS was promoted."},
+    {"name": "q02_to_q13_file_whitelist", "result": "PASS", "evidence": "The whitelist above is the boundary for the next owner-scoped cards; files outside it require a new card/dependency update."}
+  ],
+  "next_task": "Q04_CURRENT_PIPELINE_REAUDIT_20260913",
+  "status_boundary": "Q01 is verified only for current read-only diagnosis. It does not claim any user-reported visual defect fixed, formal action assets admitted, physical keyboard accepted, or VC-G01/D31 completed."
+}

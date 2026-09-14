@@ -43,8 +43,9 @@ namespace Whalebone.Gameplay.UI.D19RouteHud
                 var go = new GameObject("EventSystem");
                 eventSystem = go.AddComponent<EventSystem>();
             }
-            if (eventSystem.GetComponent<StandaloneInputModule>() == null)
-                eventSystem.gameObject.AddComponent<StandaloneInputModule>();
+            // This manager only subscribes to D2 feedback and updates text.
+            // The InitialHarbor input owner is HarborInteractionStabilizer / D29;
+            // do not add a second legacy module that can consume WASD navigation.
         }
 
         private void Update()

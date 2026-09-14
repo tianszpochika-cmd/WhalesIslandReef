@@ -74,7 +74,11 @@ namespace WhalesIslandReef.Editor.D20A02
                 {
                     var state = stateMachine.AddState(stateName);
                     state.motion = clips[stateName];
-                    state.writeDefaultValues = true;
+                    // These clips are generic transform-path clips. Every
+                    // authored limb axis is written explicitly below, so the
+                    // controller must not reset omitted model axes to Unity's
+                    // default pose when a state changes.
+                    state.writeDefaultValues = false;
                     if (stateName == "Idle") stateMachine.defaultState = state;
                 }
 
@@ -105,6 +109,21 @@ namespace WhalesIslandReef.Editor.D20A02
                 new Keyframe(1f, rootPosition.y)
             });
 
+            // The D2 procedural swim pitch belongs to its legacy fallback
+            // visual root. The candidate is an independent presentation child,
+            // so give only Fish a stable surface-swim pitch while every other
+            // state explicitly restores the source root orientation. This
+            // keeps a generic clip transition from leaving stale root rotation.
+            // The candidate mesh is authored standing upright. A full
+            // quarter-turn lays the visual child on the water plane; the D2
+            // physical root remains authoritative and is never animated.
+            const float candidateSwimPitch = 90f;
+            var rootEuler = root.localEulerAngles;
+            var rootPitch = rootEuler.x + (stateName == "Fish" ? candidateSwimPitch : 0f);
+            AddConstantCurve(clip, "", "localEulerAnglesRaw.x", rootPitch);
+            AddConstantCurve(clip, "", "localEulerAnglesRaw.y", rootEuler.y);
+            AddConstantCurve(clip, "", "localEulerAnglesRaw.z", rootEuler.z);
+
             AddLimbCurve(clip, root, "thigh_l", stateName, true);
             AddLimbCurve(clip, root, "thigh_r", stateName, false);
             AddLimbCurve(clip, root, "upperarm_l", stateName, true);
@@ -119,7 +138,7 @@ namespace WhalesIslandReef.Editor.D20A02
             var bone = FindByName(root, boneName);
             if (bone == null) return;
             var path = AnimationUtility.CalculateTransformPath(bone, root);
-            var baseAngle = bone.localEulerAngles.x;
+            var baseEuler = bone.localEulerAngles;
             var magnitude = 0f;
             switch (stateName)
             {
@@ -131,7 +150,10 @@ namespace WhalesIslandReef.Editor.D20A02
                 case "Interact": magnitude = boneName.Contains("arm") ? 16f : 4f; break;
                 case "Talk": magnitude = boneName.Contains("arm") ? 8f : 2f; break;
                 case "Carry": magnitude = boneName.Contains("arm") ? 22f : 10f; break;
-                case "Fish": magnitude = boneName.Contains("arm") ? 30f : 5f; break;
+                // Candidate-only generic Fish presentation: keep the arms in a
+                // restrained forward stroke envelope until a current-rig authored
+                // swimming set or a verified Avatar/axis adapter is admitted.
+                case "Fish": magnitude = boneName.Contains("arm") ? 8f : 5f; break;
                 case "Board": magnitude = boneName.Contains("thigh") ? 14f : 20f; break;
                 case "Disembark": magnitude = boneName.Contains("thigh") ? 12f : 16f; break;
                 case "Helm": magnitude = boneName.Contains("arm") ? 18f : 3f; break;
@@ -142,9 +164,21 @@ namespace WhalesIslandReef.Editor.D20A02
             var sign = left ? -1f : 1f;
             AddFloatCurve(clip, path, typeof(Transform), "localEulerAnglesRaw.x", new[]
             {
-                new Keyframe(0f, baseAngle),
-                new Keyframe(0.5f, baseAngle + sign * magnitude),
-                new Keyframe(1f, baseAngle)
+                new Keyframe(0f, baseEuler.x),
+                new Keyframe(0.5f, baseEuler.x + sign * magnitude),
+                new Keyframe(1f, baseEuler.x)
+            });
+            AddConstantCurve(clip, path, "localEulerAnglesRaw.y", baseEuler.y);
+            AddConstantCurve(clip, path, "localEulerAnglesRaw.z", baseEuler.z);
+        }
+
+        private static void AddConstantCurve(AnimationClip clip, string path, string property, float value)
+        {
+            AddFloatCurve(clip, path, typeof(Transform), property, new[]
+            {
+                new Keyframe(0f, value),
+                new Keyframe(0.5f, value),
+                new Keyframe(1f, value)
             });
         }
 

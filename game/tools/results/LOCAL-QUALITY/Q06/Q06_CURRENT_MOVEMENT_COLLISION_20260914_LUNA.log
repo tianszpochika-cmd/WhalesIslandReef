@@ -1,0 +1,23 @@
+Q06_CURRENT_MOVEMENT_COLLISION_20260914_LUNA
+captured_at=2026-09-14T09:17:54+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800
+
+Command:
+unity command run_tests --project-path game --mode playmode --filter D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite --async_tests true --timeout 300
+status=completed duration=14.5s test_duration=14.033055s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+
+Coverage:
+- ten real TryJump-to-ground cycles
+- positive, diagonal, lateral and reverse small ApplyPhysicsMotion steps near spawn
+- each route asserts grounded, non-swimming and finite Transform state
+- current runtime log reports worldHeight=1.80, worldRadius=0.24, worldStepOffset=0.35 and visualGroundOffset=-0.05
+
+Boundary:
+- no collision disabling, extra air-wall, threshold relaxation or illegal position injection
+- no production source/config/Prefab/scene change
+- this is current-source PlayMode collision/movement evidence only, not wall/slope/shore/ramp/ship-deck visual contact or native Player keyboard acceptance
+
+Final editor=ready compiling=false domainReloadInProgress=false playMode=stopped

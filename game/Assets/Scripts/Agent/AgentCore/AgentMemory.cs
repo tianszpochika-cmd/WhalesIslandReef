@@ -22,6 +22,43 @@ namespace Whalebone.Agent
         }
     }
 
+    /// <summary>
+    /// Serializable, Unity-independent memory event projection used by the
+    /// Save domain. The AgentCore model remains the owner of memory meaning;
+    /// the Save domain only encodes and restores this projection.
+    /// </summary>
+    public sealed class MemoryEventSnapshot
+    {
+        public DateTime Time;
+        public float Importance;
+        public string Kind;
+        public string Text;
+
+        public MemoryEventSnapshot() { }
+
+        public MemoryEventSnapshot(MemoryEvent source)
+        {
+            if (source == null) return;
+            Time = source.Time;
+            Importance = source.Importance;
+            Kind = source.Kind ?? string.Empty;
+            Text = source.Text ?? string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// Complete persisted AgentMemory state. Lists are intentionally plain
+    /// data so the Save domain can map them to its JSON representation without
+    /// importing Unity or a third-party serializer into AgentCore.
+    /// </summary>
+    public sealed class AgentMemorySnapshot
+    {
+        public List<string> ShortContext = new List<string>();
+        public string SessionSummary = string.Empty;
+        public int TurnCount;
+        public List<MemoryEventSnapshot> Events = new List<MemoryEventSnapshot>();
+    }
+
     // ============================================================
     // 记忆存储接口：骨架用内存实现；Unity 阶段接入 SQLite
     // ============================================================
@@ -29,6 +66,8 @@ namespace Whalebone.Agent
     {
         void Append(MemoryEvent e);
         List<MemoryEvent> Top(int n);
+        List<MemoryEvent> Snapshot();
+        void Replace(IEnumerable<MemoryEvent> events);
     }
 
     public class InMemoryStore : IMemoryStore
@@ -41,6 +80,16 @@ namespace Whalebone.Agent
             var sorted = new List<MemoryEvent>(_events);
             sorted.Sort((a, b) => b.Importance.CompareTo(a.Importance));
             return sorted.GetRange(0, n);
+        }
+
+        public List<MemoryEvent> Snapshot() => new List<MemoryEvent>(_events);
+
+        public void Replace(IEnumerable<MemoryEvent> events)
+        {
+            _events.Clear();
+            if (events == null) return;
+            foreach (var e in events)
+                if (e != null) _events.Add(e);
         }
     }
 
@@ -58,7 +107,7 @@ namespace Whalebone.Agent
         private readonly IMemoryStore _store;
         private int _turnCount;
 
-        public AgentMemory(IMemoryStore store) { _store = store; }
+        public AgentMemory(IMemoryStore store) { _store = store ?? new InMemoryStore(); }
 
         public void RecordDialogue(string player, string agent)
         {
@@ -100,6 +149,58 @@ namespace Whalebone.Agent
         public IReadOnlyList<string> GetShortTermContext()
         {
             return new List<string>(_shortContext).AsReadOnly();
+        }
+
+        /// <summary>Capture all three memory layers for SaveSystem.</summary>
+        public AgentMemorySnapshot CaptureSnapshot()
+        {
+            var snapshot = new AgentMemorySnapshot
+            {
+                ShortContext = new List<string>(_shortContext),
+                SessionSummary = _sessionSummary ?? string.Empty,
+                TurnCount = _turnCount,
+            };
+            foreach (var e in _store.Snapshot())
+                if (e != null) snapshot.Events.Add(new MemoryEventSnapshot(e));
+            return snapshot;
+        }
+
+        /// <summary>
+        /// Restore a previously captured snapshot. This restores memory only;
+        /// it never writes a domain fact, crew duty, relation, or other system
+        /// state.
+        /// </summary>
+        public void RestoreSnapshot(AgentMemorySnapshot snapshot)
+        {
+            _shortContext.Clear();
+            _sessionSummary = string.Empty;
+            _turnCount = 0;
+            _store.Replace(null);
+            if (snapshot == null) return;
+
+            if (snapshot.ShortContext != null)
+            {
+                foreach (var entry in snapshot.ShortContext)
+                    _shortContext.AddLast(entry ?? string.Empty);
+                while (_shortContext.Count > MaxShortContext) _shortContext.RemoveFirst();
+            }
+            _sessionSummary = snapshot.SessionSummary ?? string.Empty;
+            _turnCount = Math.Max(0, snapshot.TurnCount);
+
+            var events = new List<MemoryEvent>();
+            if (snapshot.Events != null)
+            {
+                foreach (var item in snapshot.Events)
+                {
+                    if (item == null) continue;
+                    var restored = new MemoryEvent(item.Kind ?? string.Empty, item.Text ?? string.Empty, item.Importance)
+                    {
+                        Time = item.Time == default(DateTime) ? DateTime.Now : item.Time,
+                    };
+                    events.Add(restored);
+                }
+            }
+            _store.Replace(events);
         }
 
         /// <summary>触发摘要压缩（由 LLM 生成）。骨架里做文本拼接占位。</summary>

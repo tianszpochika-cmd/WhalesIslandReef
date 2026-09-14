@@ -645,6 +645,9 @@ namespace Whalebone.Gameplay.UI.D16
                 case D16InputAction.Quality: return Localization.Get("a11y_action_quality");
                 case D16InputAction.Achievement: return Localization.Get("a11y_action_achievement");
                 case D16InputAction.Save: return Localization.Get("a11y_action_save");
+                case D16InputAction.D29OpenMarket: return Localization.Get("a11y_action_d29_open_market");
+                case D16InputAction.D29ToggleWarehouse: return Localization.Get("a11y_action_d29_toggle_warehouse");
+                case D16InputAction.D29OpenTavern: return Localization.Get("a11y_action_d29_open_tavern");
                 case D16InputAction.D3CloseTrade: return Localization.Get("a11y_action_d3_close_trade");
                 case D16InputAction.D3StartVoyage: return Localization.Get("a11y_action_d3_start_voyage");
                 case D16InputAction.D3AdvanceVoyage: return Localization.Get("a11y_action_d3_advance_voyage");

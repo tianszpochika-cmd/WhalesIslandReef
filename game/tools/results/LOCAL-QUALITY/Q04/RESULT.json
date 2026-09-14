@@ -1,0 +1,131 @@
+{
+  "task_id": "Q04",
+  "status": "VERIFIED",
+  "status_scope": "playmode_water_state_entry_exit_and_surface_height",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q04_PIPELINE_WATER_TEN_CYCLES_20260910_233046",
+  "audit_time_local": "2026-09-10T23:30:46+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner": "D2CharacterController",
+    "changes": [
+      "Added a real InitialHarbor PlayMode boundary regression covering ten shallow shoreline cycles and ten deep-water cycles.",
+      "The test consumes OceanAdapter's scene water surface, exercises the D2 physics owner, checks water-height stabilization and checks non-zero swimming displacement; it does not inject IsSwimming."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "9660288E20928F60DADF644E019BA3BB4559236EFEA6C9AE4AB6B84721B937A5"
+    }
+  },
+  "checks": [
+    {
+      "name": "ten_shallow_shoreline_entry_exit_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q04/Q04_WATER_TEN_CYCLES_PLAYMODE_R9.xml; D17A07 total=1 passed=1, failed=0, inconclusive=0, skipped=0; R9 log contains repeated edge-entry and exit decisions"
+    },
+    {
+      "name": "ten_deep_water_entry_move_exit_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q04/Q04_WATER_TEN_CYCLES_PLAYMODE_R9.xml; current source checks 10 deep entries, non-zero horizontal displacement, non-zero CurrentSpeed and grounded recovery"
+    },
+    {
+      "name": "water_surface_source",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q04/Q04_WATER_TEN_CYCLES_PLAYMODE_R9_UNITY.log records OceanAdapter surfaceY=-0.02 and body snap checks around surfaceY+0.42; visual surface and logical owner remain separate documented boundaries"
+    }
+  ],
+  "previous_revalidation_20260909": {
+    "result": "PASS_WITHIN_SCOPE",
+    "test_filter": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "xml": "game/tools/results/LOCAL-QUALITY/Q04/Q04_WATER_TEN_CYCLES_PLAYMODE_R9.xml",
+    "unity_log": "game/tools/results/LOCAL-QUALITY/Q04/Q04_WATER_TEN_CYCLES_PLAYMODE_R9_UNITY.log",
+    "summary": "Current-source Unity PlayMode run completed with total=1, passed=1, failed=0, inconclusive=0, skipped=0; Unity exited with code 0 and no Unity process remained.",
+    "observed_markers": "Repeated shallow edge entry/exit plus deep entry/movement/exit; log records surfaceY=-0.02, body playerY=0.42, non-zero swimming movement and walkable-ground recovery.",
+    "boundary": "This revalidation proves the D2 water-state logic boundary only. It does not prove native Player W/S input, authored swim pose quality, water material correctness or VC-G01 visual acceptance."
+  },
+  "current_revalidation": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q04/Q04_WATER_TEN_CYCLES_PIPELINE_20260910.json",
+    "test_filter": "Whalebone.Tests.D17.D17ActionQualityPlayModeTests.D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "protocol": "Unity Pipeline run_tests --mode playmode --async_tests true followed by test_status until completed; Total=1 was counted only after completed status",
+    "summary": "Current-source connected Editor run completed in 9.06s with total=1, passed=1, failed=0, skipped=0, inconclusive=0.",
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "665341FDC7BB0147082B2550EBFAF2BBBF6E2EE9141143AC27BE6F2FEACA6F29",
+      "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "346A2CD81C436BA78A674102C768A644F4750D83FC82B05C8C7FAF8652FCC987",
+      "game/Assets/Scripts/Gameplay/World/OceanAdapter.cs": "5D7EE7A2FEFEB18B2C507C3C01035038CA4EC22DC4BEA8CA12A06C99DC7078E4"
+    },
+    "boundary": "This revalidation proves the D2 water-state owner in the current InitialHarbor scene. It does not prove native Player W/S input, authored swim-pose quality, water-material correctness or VC-G01 visual acceptance."
+  },
+  "status_boundary": "Q04 VERIFIED means the current scene's D2 water state owner is repeatably entering, moving and exiting in PlayMode. It does not prove the native Player's W/S input route, final swim pose quality, or a visual screenshot acceptance.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A07 passed",
+    "source_hashes_current": true,
+    "boundary": "Current-source water-state verification only; no native Player or rendered swim-pose claim."
+  },
+  "latest_reaudit_r2_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_20260912_R2_RESULT.json",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; duration=9.45s",
+    "source_hashes_current": true,
+    "boundary": "Current-source targeted water-state verification only; no native Player, physical keyboard, screenshot, or visual acceptance claim."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=11.1657914s; total duration=11.26s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current-source D2 water-state verification only; no native Player input, authored swim pose, material visual or VC-G01 acceptance claim."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=10.0865023s; total duration=10.2s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current-source D2 water-state verification only; no native Player input, foreground keyboard focus, authored swim pose, material visual or VC-G01 acceptance claim."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.764308s; total duration=12.91s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current-source D2 water-state verification only; no native Player input, foreground keyboard focus, authored swim pose, material visual or VC-G01 acceptance claim."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=9.094856s; pipeline duration=9.3s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current-source D2 water-state verification only; no native Player input, foreground keyboard focus, authored swim pose, water material visual or VC-G01 acceptance claim. Six known readiness/fallback warnings were recorded separately.",
+    "next_task": "Q05_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_water_owner_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_WATER_OWNER_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=10.378946s; pipeline duration=10.81s",
+    "source_hashes_current": true,
+    "runtime_facts": "Ten shallow shoreline and ten deep-water cycles reached Swimming, non-zero movement, surfaceY=-0.02/playerY=0.42, then walkable recovery surfaceY=0.09.",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false",
+    "boundary": "Current-source D2 water-state owner only; no native Player W/S/focus, authored/natural swim pose, water-material visual, screenshot, target-device performance or VC-G01 claim.",
+    "next_task": "Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
+  },
+  "current_source_reaudit_q03a23_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A07 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=8.8308678s; pipeline duration=8.85s",
+    "source_hashes_current": "D2RuntimeBootstrap=3D854D17...9A32F2B4A; OceanAdapter=5D7EE7A2...DC7078E; D17=85493325...0F3BA03; D2Animation=EF4683FC...A67581C2",
+    "editor_final": "ready/stopped; error console=0; console cleared",
+    "boundary": "Current-source D2 water-state owner only; no native Player W/S/focus, authored natural swim pose, water material visual, screenshot, target-device performance or VC-G01 claim.",
+    "next_task": "Q05_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA"
+  }
+}

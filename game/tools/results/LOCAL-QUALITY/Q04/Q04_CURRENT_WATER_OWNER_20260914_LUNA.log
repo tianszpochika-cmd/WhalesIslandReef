@@ -1,0 +1,24 @@
+Q04_CURRENT_WATER_OWNER_20260914_LUNA
+captured_at=2026-09-14T09:10:37+08:00
+project=C:\Users\Administrator\Desktop\game\first01\game
+unity=6000.0.80f1
+pipeline=com.unity.pipeline@0.6.0-exp.1
+editor=PID 53332 127.0.0.1:7800
+
+Command:
+unity command run_tests --project-path game --mode playmode --filter D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles --async_tests true --timeout 300
+status=completed duration=10.81s test_duration=10.378946s total=1 passed=1 failed=0 skipped=0 inconclusive=0
+
+Observed runtime messages during this run:
+- ten shallow shoreline entries and exits reached D2 Swimming and then walkable recovery
+- ten deep-water cycles reached Swimming with non-zero motion and then walkable recovery
+- surfaceY=-0.02; swimming playerY=0.42; recovery surfaceY=0.09
+- final TestResultCollector: 1 total, 1 passed, 0 failed
+
+Boundary:
+- no IsSwimming injection, water replacement or collision disabling was used by D17A07
+- no production code/config/Prefab/scene changes
+- retained console buffer still contains older errors before this run; no Q04-timestamp error was observed
+- this is current-source PlayMode logic evidence, not native Player W/S, formal/natural swim pose, water-material visual or compositor acceptance
+
+Final editor=ready, compiling=false, domainReloadInProgress=false, playMode=stopped

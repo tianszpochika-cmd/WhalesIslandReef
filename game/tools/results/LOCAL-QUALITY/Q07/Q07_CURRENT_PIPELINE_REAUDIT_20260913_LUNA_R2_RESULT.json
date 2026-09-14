@@ -1,0 +1,43 @@
+{
+  "task_id": "Q07",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current_source_harbor_collision_owner_and_route_contracts",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q04", "Q06"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q07_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2",
+  "audit_time_local": "2026-09-13T13:17:43+08:00",
+  "changed_files": [
+    "game/tools/results/LOCAL-QUALITY/Q07/Q07_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "game/tools/results/LOCAL-QUALITY/Q07/RESULT.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q07/Q07.md",
+    "game/tools/results/LOCAL-QUALITY/STATUS.md",
+    "docs/game/LOCAL_QUALITY_REMAINING_PLAN.md",
+    ".workbuddy/memory/2026-09-13.md"
+  ],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Tests/PlayMode/D19R03Q07BuildingCollisionPlayModeTests.cs": "A83611841A3F8CC84C6589F5BD85828A00E684D3375E5EB950F58A04BFD3D6E9",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "DAFFDD729D0AD4A01DC8874FAB1ACB3BE8DADC132E17B5D7D721971F2E4BDC20"
+  },
+  "protocol": {
+    "tool": "Unity Pipeline com.unity.pipeline@0.6.0-exp.1",
+    "editor": "Unity 6000.0.80f1",
+    "editor_pid": 53332,
+    "scene": "Assets/Scenes/InitialHarbor.unity",
+    "tests": [
+      {"filter": "D19R03Q07BuildingCollisionPlayModeTests.R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries", "status": "completed", "summary": "total=1, passed=1, failed=0, skipped=0, inconclusive=0; duration=2.284088s"},
+      {"filter": "D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps", "status": "completed", "summary": "total=1, passed=1, failed=0, skipped=0, inconclusive=0; duration=4.0585166s"}
+    ],
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false",
+    "error_console": 0
+  },
+  "checks": [
+    {"name": "service_building_collision_owner", "result": "PASS_WITHIN_SCOPE", "evidence": "All four R03 service-building Body boundaries are owned by D6 Harbor collision and the targeted Q07 test passed."},
+    {"name": "terrain_dock_gangplank_bidirectional_steps", "result": "PASS_WITHIN_SCOPE", "evidence": "D17A10 found active non-trigger route colliders and passed the bidirectional small-step contract after CharacterController contact."},
+    {"name": "post_run_editor_health", "result": "PASS_WITHIN_SCOPE", "evidence": "Both tests ended in a ready/stopped Editor state and error console query returned zero entries."}
+  ],
+  "status_boundary": "Q07 is verified only for the tested Harbor collision owners and automated bidirectional route contracts. It does not prove every wall/slope/shore, visual mesh contact, ship boarding/deck route, native Player WASD, or VC-G01 visual completion.",
+  "next_task": "Q08_BLOCKED_THEN_Q09_CURRENT_PIPELINE_REAUDIT"
+}
