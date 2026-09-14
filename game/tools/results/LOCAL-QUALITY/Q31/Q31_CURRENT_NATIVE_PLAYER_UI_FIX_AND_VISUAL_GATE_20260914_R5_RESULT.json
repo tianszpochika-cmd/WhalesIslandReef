@@ -1,0 +1,130 @@
+{
+  "task_id": "Q31",
+  "subtask_id": "Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5",
+  "status": "PARTIAL",
+  "status_scope": "Current-source visible native Windows Player UI fix and bounded visual gate; not final visual acceptance.",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [
+    "Q29_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R10",
+    "Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4"
+  ],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q31_R5_VISIBLE_NATIVE_PLAYER_UI_FIX_20260914",
+  "audit_time_local": "2026-09-14",
+  "implementation": {
+    "production_code_changed": true,
+    "changed_file": "game/Assets/Scripts/Gameplay/UI/MainMenuController.cs",
+    "change": "Moved the New Game title from y=150 to y=210 so its 48px Text rect clears the captain-name input row in the native 1280x720 Player.",
+    "single_owner_boundary": "MainMenuController owns only the New Game UI layout adjustment; no Systems, AgentCore, scene, Prefab, input owner, or gameplay authority was changed in this R5 card.",
+    "source_sha256": "30D813FC73E2462DED3025347E749D376805290C7883D146E1E1E871489EA5D5"
+  },
+  "checks": [
+    {
+      "id": "accepted_player_build",
+      "status": "PASS_WITHIN_SCOPE",
+      "build_id": "build_fc9d95893976",
+      "build_guid": "506d6349798641cc8a4ed720190c3d6c",
+      "output": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_PLAYER.exe",
+      "build_report": "StandaloneWindows64; Succeeded; 0 errors; 0 warnings; 220891074 bytes; 6032ms",
+      "exe_sha256": "98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+      "assembly_csharp_sha256": "E2178D2F75E534848651CEDC169E929BA925B6E1508AEABD492CDF79D2F0619D"
+    },
+    {
+      "id": "new_game_native_visual_fix",
+      "status": "PASS_WITHIN_SCOPE",
+      "evidence": [
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_MAINMENU.png",
+          "bytes": 34186,
+          "sha256": "7F6DA50E2BDB9A2C86196CDFE68D53FDF72BB6A92544465490F90A4B72F0E416"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_NEWGAME.png",
+          "bytes": 30982,
+          "sha256": "9EEB04F2F92035E3B08C3168EF414CDF8F90AFBA382E7167A936DA04B4D03250"
+        }
+      ],
+      "observation": "The title and captain-name placeholder are visibly separated in the compositor-visible 1280x720 New Game window; the prior overlap is not present in the accepted build."
+    },
+    {
+      "id": "native_visible_player_route",
+      "status": "PASS_WITHIN_SCOPE",
+      "runtime": "Visible Windows Player launched from PowerShell with Runtime Pipeline temporarily enabled on 127.0.0.1:7906; UnityEngine.ScreenCapture.CaptureScreenshot was invoked through the Player eval command.",
+      "route": "MainMenu NewGame/Confirm pointer entry -> InitialHarbor -> W movement -> E board -> E disembark -> W route -> S route -> clean quit.",
+      "evidence": [
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_INITIAL_HARBOR.png",
+          "bytes": 942319,
+          "sha256": "FE77C21B6C4B714F907F5557841B9A3C62977495CEA5ABFD4781D9C31710A710"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_AFTER_W.png",
+          "bytes": 927225,
+          "sha256": "182BEEE0E19E6185B1B6E969B656DFF402D9AB578086EBD72CB7AF0FC610C445"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_BOARD.png",
+          "bytes": 895828,
+          "sha256": "2BFBF4FA01BE0BE814F407714BF1EE12CE993C734D1FFBA2EBF229EC399E3F3E"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_SWIM_ROUTE.png",
+          "bytes": 973905,
+          "sha256": "E4A15A02554AE94469691556A337B87B251DF6BB8B1DF49E66495AF9E831D0E5"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_S_ROUTE.png",
+          "bytes": 1167425,
+          "sha256": "A1DD60A904E92C010FEA39765AB865D5B6E7EE0DEDCC44993C820FD72F3424BD"
+        }
+      ],
+      "runtime_status": "InitialHarbor; targetFrameRate=60; observed FPS=50.58; average frame=19.77ms; CPU=16.5ms; GPU=0.906ms; this is an observation only, not target-device performance acceptance."
+    },
+    {
+      "id": "runtime_error_boundary",
+      "status": "PASS_WITHIN_SCOPE",
+      "runtime_console_error_entries": 0,
+      "player_log_strict_error_tokens": 0,
+      "player_log": {
+        "path": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log",
+        "bytes": 131352,
+        "sha256": "94C6A5F88F224ED4F9BCAC08BF256C84A02D75758E029B58C8075D99B272AB06"
+      },
+      "close": "Player quit command succeeded; descriptor and process were absent after close."
+    },
+    {
+      "id": "visual_gate",
+      "status": "PARTIAL",
+      "observation": "The visible native frames show a real composited harbor, ship and Player, but the scene remains visibly low-poly/procedural with rough HUD and environment presentation. The board frame does not establish authored boarding/helm animation or natural hand IK. The W/S sequence did not visibly enter open water, so it does not prove natural ocean swimming."
+    },
+    {
+      "id": "configuration_restore",
+      "status": "PASS_WITHIN_SCOPE",
+      "runtime_pipeline": "enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10",
+      "build_settings": "developmentBuild=false; allowDebugging=false; connectWithProfiler=false",
+      "editor": "Unity Pipeline connected Editor PID 53332; ready after Player close."
+    }
+  ],
+  "defect_matrix": {
+    "new_game_title_placeholder_overlap": "FIXED_WITH_VISIBLE_PLAYER_EVIDENCE",
+    "wasd_primary_hud_navigation": "PASS_WITHIN_SCOPE_LOGIC_AND_PIPELINE_ROUTE; foreground physical keyboard remains unverified",
+    "distorted_action_avatar": "PARTIAL",
+    "ocean_swimming_visual": "PARTIAL; natural route did not reach water in this capture",
+    "boarding_helm_presentation": "PARTIAL; ship and wheel visible, authored animation/IK not proven",
+    "floating_trees_and_all_camera_grounding": "OPEN",
+    "target_device_performance": "OPEN"
+  },
+  "status_boundary": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31-P04, D31-S05 and D31-G06 remain PARTIAL. This R5 evidence must not be upgraded to final visual acceptance or full human-play acceptance.",
+  "pause_point": {
+    "status": "TEMPORARILY_PAUSED",
+    "safe_resume_from": "Q31 R5 visual backlog after the accepted New Game UI overlap fix",
+    "workspace_policy": "Only the scoped R5 package is committed; unrelated dirty and untracked worktree content remains untouched.",
+    "resume_prerequisites": [
+      "Select one single-owner visual defect with a reproducible current Player frame.",
+      "Keep formal action/avatar, natural swim/helm, vegetation grounding/intersections and target-device performance as separate gates.",
+      "Do not unlock VC-G02 or VC-G03 until VC-G01 has direct evidence for its remaining scope."
+    ]
+  },
+  "next_task": "PAUSED_Q31_RESUME_WITH_SINGLE_OWNER_VISUAL_DEFECT_AND_NATIVE_PLAYER_EVIDENCE"
+}

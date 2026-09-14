@@ -263,7 +263,12 @@ namespace Whalebone.Gameplay.UI
         {
             _newGamePanel = CreatePanel("NewGamePanel");
 
-            CreateLocalizedText(_newGamePanel, "Title", "newgame_title", 48, new Vector2(0, 150));
+            // Keep the title clear of the 48px captain-name field and its
+            // localized placeholder at the 1920x1080 reference resolution.
+            // The previous 150px offset left only a 20px nominal gap between
+            // the title Text rect and the input row, which overlapped in the
+            // native 1280x720 Player capture.
+            CreateLocalizedText(_newGamePanel, "Title", "newgame_title", 48, new Vector2(0, 210));
 
             // 船长名输入
             CreateLocalizedText(_newGamePanel, "NameLabel", "newgame_captain_name", 26, new Vector2(-280, 70));
@@ -660,7 +665,7 @@ namespace Whalebone.Gameplay.UI
                     // 优先加载 Noto Sans CJK（中文字形；位于 Assets/Resources/Fonts/，统筹修复 2026-08-08）
                     _default = Resources.Load<Font>("Fonts/ph_font_noto_sans_cjk_sc");
                     if (_default == null)
-                        _default = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); // 兜底（无中文字形）
+                        _default = LoadBuiltinFallback();
                 }
                 return _default;
             }
@@ -672,9 +677,20 @@ namespace Whalebone.Gameplay.UI
             get
             {
                 if (_fallback == null)
-                    _fallback = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+                    _fallback = LoadBuiltinFallback();
                 return _fallback;
             }
+        }
+
+        /// <summary>
+        /// Unity 版本之间的 legacy 内置字体名称并不稳定。先尝试旧名称，
+        /// 再尝试 Unity 6 仍提供的 Arial.ttf，避免运行时 Text.font 为空。
+        /// </summary>
+        private static Font LoadBuiltinFallback()
+        {
+            var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            if (font == null) font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            return font;
         }
 
         /// <summary>

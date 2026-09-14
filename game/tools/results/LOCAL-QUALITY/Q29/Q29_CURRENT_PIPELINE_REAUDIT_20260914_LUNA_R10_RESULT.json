@@ -1,0 +1,143 @@
+{
+  "task_id": "Q29",
+  "run_id": "Q29_PIPELINE_R10_FULL_INTERACTION_CURRENT_SOURCE_20260914",
+  "status": "PASS_WITHIN_SCOPE",
+  "parent_status": "PARTIAL",
+  "audit_time_local": "2026-09-14T19:33:22+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "scope": "current-source hidden Windows Player Runtime Pipeline control-surface route, MainMenu pointer entry, gameplay input ownership, state transitions and clean close",
+  "implementation": {
+    "production_code_changed": false,
+    "test_code_changed": false,
+    "temporary_configuration_changed": true,
+    "change_summary": "Built the current source as a fresh Development Pipeline-enabled QA Player, exercised bounded runtime input/state routes, then restored Runtime Pipeline and Build Settings to the pre-run defaults.",
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+      "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "7CA2DF25DDD025E1160D6BFA8BFBAE0B40FC944F8DDB7EDF753F21349FE4B377",
+      "game/Assets/Scenes/D19/R03/Whalebone_D19_R03_HarborPresentation.prefab": "F28686F12236FA9F9FA5DD087E0B4EF4959CAD57C31A52FC241056D806FAE163",
+      "game/Assets/Scenes/InitialHarbor.unity": "FF3FFF691E2A3E6C2B2616F7126855B29FC307F7647210CBF3AC0FB4A125DA04",
+      "game/tools/results/LOCAL-QUALITY/Q29/Q29_RUNTIME_PIPELINE_QA_R10_Data/Managed/Assembly-CSharp.dll": "A92B3961946F2FF8F523ECC6EBF995AC67CE405771029B81A59F6D5123C95B94"
+    }
+  },
+  "control_surface": {
+    "plugin": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "editor_version": "6000.0.80f1",
+    "runtime_port": 7906,
+    "runtime_gui": "hidden GUI Windows Player launched with Start-Process -WindowStyle Hidden",
+    "foreground_physical_keyboard": false,
+    "screenshot_count": 0,
+    "runtime_target_resolution": "not captured",
+    "target_device_performance": false,
+    "input_protocol": "simulate_pointer move/down/external wait/up and simulate_key down/external wait/up through the Player Input System"
+  },
+  "build": {
+    "build_id": "build_b5958f0eeca0",
+    "result": "Succeeded",
+    "target": "StandaloneWindows64",
+    "scenes": ["MainMenu", "Bootstrap", "InitialHarbor"],
+    "options": ["Development", "DetailedBuildReport"],
+    "total_size_bytes": 220891074,
+    "build_time_ms": 66197,
+    "total_errors": 0,
+    "total_warnings": 0,
+    "build_guid": "b6219a929070455f864861cfbbcb7548",
+    "exe": "game/tools/results/LOCAL-QUALITY/Q29/Q29_RUNTIME_PIPELINE_QA_R10.exe",
+    "exe_sha256": "98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "exe_bytes": 671744,
+    "assembly_sha256": "A92B3961946F2FF8F523ECC6EBF995AC67CE405771029B81A59F6D5123C95B94",
+    "assembly_bytes": 509440
+  },
+  "route_checks": [
+    {
+      "name": "natural_main_menu_pointer_entry",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "In the same hidden Player, pointer move/down/external 350ms wait/up at BtnNewGame=(640,413) opened NewGamePanel; the same protocol at Confirm=(573,287) loaded InitialHarbor buildIndex=2. UI reflection logged BtnNewGame position=(640.00,413.33) and BtnConfirm position=(573.33,286.67)."
+    },
+    {
+      "name": "character_w_and_warehouse_modal_boundary",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "After deterministic InitialHarbor entry, W down/external 900ms wait/up moved D2_PlayerAvatar to (0.20,0.12,-4.94). I opened WarehousePanel=True; W held 700ms left the position unchanged at (0.20,0.12,-4.94); Escape closed the panel with TimeScale=1."
+    },
+    {
+      "name": "market_open_duplicate_close",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "M opened D3 IsTradeOpen=True; a second M kept IsTradeOpen=True; Escape returned IsTradeOpen=False and did not pause TimeScale."
+    },
+    {
+      "name": "tavern_owner_ready_open_duplicate_close",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "An early T before D3/D10 binding was correctly rejected with the owner-not-ready feedback and is recorded as a startup-timing observation. After the natural NewGame/Confirm route and a bounded wait, reflection reported d3=True/d10=True; T then produced HasEnteredTavern=True and HasInputFocus=True, a repeated T preserved the same state, and Escape returned HasInputFocus=False with TimeScale=1."
+    },
+    {
+      "name": "board_disembark_reboard",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Natural E input changed D2ControlRouter Character->Ship, player position=(0.00,1.10,-6.68), parent=ph_ship_fishing; the next E changed Ship->Character at authored disembark position=(0.00,0.17,-0.70), parent empty; a third E reboarded and restored Ship/parent=ph_ship_fishing."
+    },
+    {
+      "name": "voyage_and_market_rejection",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Y produced D3 VoyageStatus=Sailing, loc=santa_margarita, dest=green_cay; M during sailing kept IsTradeOpen=False and LastRouteFeedback message was 航行中不能打开港口市场。"
+    },
+    {
+      "name": "ship_wasd_turning_boundary",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "On the hidden Player, Ship W moved ph_ship_fishing to (0.00,0.00,-11.70), A changed yaw to 155.5216, and D changed yaw to 178.6077. S was delivered successfully but the bounded sample did not show additional displacement at the captured frame; no stronger S movement claim is made."
+    },
+    {
+      "name": "pause_resume",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Escape changed runtime_status TimeScale from 1 to 0 while InitialHarbor remained loaded; the next Escape restored TimeScale=1."
+    },
+    {
+      "name": "runtime_error_and_clean_close",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Runtime console --level error --tail 200 returned entries=[] with dropped=false. Player PID 57100 and the runtime descriptor were absent after Pipeline quit. Player.log was 395790 bytes, SHA256=1C039D3B5E291C5789D4A427F135AA6AA9523F0B14612626FA7EDF0D1C3BA401, and strict case-sensitive ERROR|EXCEPTION|CRASH|FATAL count=0."
+    }
+  ],
+  "runtime": {
+    "player_pid": 57100,
+    "runtime_status_final": "WindowsPlayer / Unity 6000.0.80f1 / BuildGuid=b6219a929070455f864861cfbbcb7548 / InitialHarbor buildIndex=2 / TimeScale=1 / TargetFrameRate=60",
+    "runtime_pipeline": "server=127.0.0.1:7906; enableInBuilds=true during run; requestTimeoutMs=30000; auditLogging=true; autoStart=true; maxWorkItemsPerFrame=10",
+    "console_error_entries": 0,
+    "console_dropped": false,
+    "player_log": {
+      "path": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log",
+      "bytes": 395790,
+      "sha256": "1C039D3B5E291C5789D4A427F135AA6AA9523F0B14612626FA7EDF0D1C3BA401",
+      "strict_token_scan": "ERROR|EXCEPTION|CRASH|FATAL = 0"
+    },
+    "clean_close": true,
+    "descriptor_removed": true
+  },
+  "tooling_boundaries": [
+    "The runtime command registry does not expose simulate_key or simulate_pointer through the editor --query listing; known runtime commands were used against the connected Player endpoint.",
+    "simulate_pointer has no runtime action named wait; the wait in the accepted route was an external bounded delay between down and up. The invalid action response was tooling-scope evidence, not a product failure.",
+    "One early T happened before D10 owner binding and returned the explicit owner-not-ready feedback. It was not counted as a product PASS or final product failure; the accepted route waited for d3=True/d10=True and then succeeded.",
+    "The available Runtime Pipeline command surface has no screenshot command. No compositor-visible screenshot, foreground Win32 keyboard, or human visual conclusion was fabricated.",
+    "runtime_status performance values were observed for diagnostics only; this run is not a target-device/GPU performance gate."
+  ],
+  "temporary_configuration": {
+    "during_qa": {
+      "runtime_pipeline_enableInBuilds": true,
+      "runtime_pipeline_port": 7906,
+      "runtime_pipeline_requestTimeoutMs": 30000,
+      "runtime_pipeline_enableAuditLogging": true,
+      "runtime_pipeline_autoStart": true,
+      "runtime_pipeline_maxWorkItemsPerFrame": 10,
+      "developmentBuild": true,
+      "allowDebugging": false,
+      "connectWithProfiler": false
+    },
+    "after_qa_readback": {
+      "runtime_pipeline_enableInBuilds": false,
+      "runtime_pipeline_port": 0,
+      "developmentBuild": false,
+      "allowDebugging": false,
+      "connectWithProfiler": false,
+      "editor_status": "ready / compiling=false / domainReloadInProgress=false / playMode=stopped"
+    }
+  },
+  "status_boundary": "Q29 child R10 is PASS_WITHIN_SCOPE for the current hidden Windows Player Pipeline input/state route, natural MainMenu pointer entry, owner-ready timing observation, interaction ownership, clean close and strict runtime error boundary. Q29 parent remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31-P04, D31-S05 and D31-G06 remain PARTIAL. Foreground physical keyboard, compositor-visible screenshots, formal Avatar/action resources, natural swim/IK/helm contact, all-angle vegetation grounding, target-device performance and human visual acceptance remain unproven."
+}

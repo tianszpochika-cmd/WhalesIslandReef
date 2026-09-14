@@ -1,0 +1,93 @@
+{
+  "task_id": "Q31",
+  "run_id": "Q31_CURRENT_PIPELINE_UI_FOCUS_REAUDIT_20260914_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "parent_status": "PARTIAL",
+  "audit_time_local": "2026-09-14T16:53:53+08:00",
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "scope": "Current-source hidden Windows Player W/S gameplay-versus-UGUI focus isolation through Unity Pipeline; no final visual, foreground physical-input, or manual acceptance gate.",
+  "source_binding": {
+    "d2_runtime_path": "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs",
+    "d2_runtime_sha256": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "q26_a22_test_path": "game/Assets/Tests/PlayMode/D19R03Q26GameplayDefectPlayModeTests.cs",
+    "q26_a22_test_sha256": "B604A367A1DE24D3C02251B8E3FB4D3E707CB5C099842A0274F1870BDE9F7F72",
+    "relation": "The R1 Player Assembly-CSharp hash matches the current Q26-A22/R9 source-bound Player artifact; the R1 build was created after the current-source recheck."
+  },
+  "implementation": {
+    "production_code_changed_in_this_run": false,
+    "test_code_changed_in_this_run": true,
+    "test_file": "game/Assets/Tests/PlayMode/D29PanelFocusPlayModeTests.cs",
+    "test_file_sha256": "F9CA95059258AC7900437D57172160812C60CB0D8D726E63698B2637DCBB5748",
+    "test_change": "Added D29Q15GameplayWasdDoesNotNavigatePrimaryHud to exercise gameplay-state EventSystem navigation suppression while holding W and S.",
+    "existing_runtime_owner_exercised": "HarborInteractionStabilizer gameplay navigation policy and RuntimeHudCoordinator input ownership."
+  },
+  "control_surface": {
+    "plugin": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 53332,
+    "runtime_port": 7900,
+    "player_pid": 35684,
+    "build_id": "build_abd8d26ad740",
+    "build_guid": "0a37da6019744951a0f06509c07e4d84",
+    "player_path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_UI_FOCUS_PIPELINE_R1.exe",
+    "player_sha256": "98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly_csharp_sha256": "C21752E45595A58E7E9E21C44D3C833AD41ECAA8A3468915955C52EA8133ED2B",
+    "build_bytes": 220891074,
+    "build_time_ms": 57114,
+    "build_report": "Succeeded / 0 errors / 1 warning; the warning belongs to the temporary QA Runtime Pipeline bridge and this was not promoted as a release build.",
+    "hidden_gui": true,
+    "foreground_physical_keyboard": false,
+    "injected_input_only": true
+  },
+  "route": {
+    "entry": "MainMenu New Game and Confirm via Pipeline simulate_pointer, then InitialHarbor",
+    "initial_probe": "scene=InitialHarbor; nav=False; move=<null>; selected=<none>; focus=True; gameplayBlocked=False; mode=Character; hud=True",
+    "w_hold": "Pipeline simulate_key W down for 500ms changed the player position to (0.197, 0.116, -4.938); nav=False; move=<null>; selected=<none>; W up accepted.",
+    "s_hold": "Pipeline simulate_key S down for 500ms changed the player position to (0.197, 0.162, -1.937); nav=False; move=<null>; selected=<none>; S up accepted.",
+    "result": "PASS_WITHIN_SCOPE"
+  },
+  "checks": [
+    {
+      "name": "new_editor_regression",
+      "result": "PASS",
+      "test": "Whalebone.Tests.D29.D29PanelFocusPlayModeTests.D29Q15GameplayWasdDoesNotNavigatePrimaryHud",
+      "summary": "1/1 passed, 0 failed, 0 skipped, 0 inconclusive; test duration 5.0205583s."
+    },
+    {
+      "name": "existing_d29_panel_focus_regression",
+      "result": "PASS",
+      "test": "Whalebone.Tests.D29.D29PanelFocusPlayModeTests.D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes",
+      "summary": "1/1 passed, 0 failed, 0 skipped, 0 inconclusive; test duration 18.4838492s."
+    },
+    {
+      "name": "existing_d16_input_router_regression",
+      "result": "PASS",
+      "test": "Whalebone.Tests.D16.D16InputRouterPlayModeTests.D16A03GameplayWASDDoesNotNavigateHudAndModalWASDDoesNotLeak",
+      "summary": "1/1 passed, 0 failed, 0 skipped, 0 inconclusive; test duration 4.8466917s."
+    }
+  ],
+  "runtime": {
+    "w_and_s_changed_player_position": true,
+    "event_system_send_navigation_events": false,
+    "input_system_ui_move_action": null,
+    "current_selected_game_object": null,
+    "runtime_error_entries_before_quit": 0,
+    "player_clean_close": true,
+    "editor_after": "ready/stopped",
+    "runtime_pipeline_after": {
+      "enableInBuilds": false,
+      "port": 0,
+      "requestTimeoutMs": 30000,
+      "enableAuditLogging": true,
+      "autoStart": true,
+      "maxWorkItemsPerFrame": 10
+    }
+  },
+  "boundaries": [
+    "No compositor-visible foreground screenshot was obtained.",
+    "No foreground Win32 physical keyboard or mouse was used.",
+    "This does not validate formal authored Avatar/action resources, natural swim cycle, natural helm IK/contact, vegetation grounding, clipping, target-device performance, or human visual acceptance.",
+    "The short runtime FPS sample was diagnostic only and is not a Q27 performance-window result."
+  ],
+  "status_boundary": "This child evidence is PASS_WITHIN_SCOPE. Q31 remains PARTIAL and VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 and D31 visual gates remain locked/partial as previously recorded."
+}

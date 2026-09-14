@@ -1,0 +1,125 @@
+{
+  "task_id": "Q30",
+  "subtask_id": "Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4",
+  "status": "PARTIAL",
+  "status_scope": "current-source independent review after Q29 R10 hidden Player route",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": [
+    "Q29"
+  ],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "audit_time_local": "2026-09-14T19:48:36+08:00",
+  "implementation": {
+    "production_code_changed": false,
+    "test_contract_changed": false,
+    "runtime_configuration_changed": false,
+    "change": "Independent review only. Re-ran the current-source targeted Python suite and the Unity Pipeline input/action/world-logic owner suites, then reconciled Q29 R10 route evidence and the D2 sailing input semantics. No Unity production source, prefab, scene, or runtime setting was modified."
+  },
+  "checks": [
+    {
+      "name": "python_targeted_current_source",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "python -m unittest tools.tests.test_d19_r03_visual_builder tools.tests.test_vc_g01_runtime_probe tools.tests.test_vc_g01_runtime_input_probe -q; Ran 65 tests in 0.026s; OK."
+    },
+    {
+      "name": "unity_d16_input_router",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Unity Pipeline run_tests mode=playmode filter=D16InputRouterPlayModeTests; 11/11 passed, 0 failed, 0 skipped, 0 inconclusive; duration=12.12s. Includes gameplay WASD not navigating HUD and modal WASD not leaking."
+    },
+    {
+      "name": "unity_d17_action_quality",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Unity Pipeline async run_tests mode=playmode filter=D17ActionQualityPlayModeTests; 16/16 passed, 0 failed, 0 skipped, 0 inconclusive; duration=87.42s."
+    },
+    {
+      "name": "unity_vc_g01_world_logic",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Unity Pipeline run_tests mode=editor filter=VcG01WorldLogicTests; 14/14 passed, 0 failed, 0 skipped, 0 inconclusive; duration=1.18s."
+    },
+    {
+      "name": "q29_r10_dependency_integrity",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q29 R10 result JSON parses and records the same build_b5958f0eeca0 hidden Player route: MainMenu NewGame/Confirm pointer entry, W/I/M/T/E/Y/Esc route, in-voyage M rejection, ship W/A/S/D, runtime error query=0, strict Player log error-token count=0 and clean close."
+    },
+    {
+      "name": "ship_s_semantics_review",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Current D2 SailingSystem contract explicitly states Throttle<=0 means stop/decelerate and D2 does not allow reverse. Q29 R10 ship S keeping position after W is therefore the designed braking result, not a keyboard conflict or a safe basis for a production change."
+    },
+    {
+      "name": "editor_error_boundary",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Unity Editor status was ready with PID 53332 and play_mode stopped. Console error query returned 0 entries with dropped=false; warning query returned 157 known D27/D2 fallback/readiness/animation and expected disembark-rejection warnings, then the console was cleared."
+    },
+    {
+      "name": "visual_and_foreground_gate",
+      "result": "PARTIAL",
+      "evidence": "No current evidence supplies a compositor-visible foreground Player screenshot, physical Win32 keyboard/mouse trace, formal authored action/avatar admission, approved palm/vegetation resource admission, all-camera intersection proof or target-device GPU/performance acceptance."
+    }
+  ],
+  "defect_matrix": {
+    "keyboard_conflict": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "UNVERIFIED",
+      "evidence": "D16 input router 11/11, D17 keyboard/HUD isolation 16/16 and Q29 R10 modal W blocking support owner-level isolation; foreground physical focus and rendered menu acceptance remain open."
+    },
+    "distorted_actions": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "D17 16/16 passes the bounded action/grounding contract, but the runtime warning confirms the Player still uses the procedural fallback because the imported rig is unverified. Q03 formal authored action/avatar remains BLOCKED_ASSET."
+    },
+    "ocean_swimming": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "D17 water/action tests and Q29 R10 character route prove bounded movement/state ownership; they do not establish a finished swim cycle, natural water contact or final camera composition."
+    },
+    "boarding_helm": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "D17 and Q29 R10 prove board/disembark/reboard ownership and ship control; authored helm contact, natural IK, action animation and final camera presentation remain open."
+    },
+    "floating_trees": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "VcG01WorldLogic 14/14 and Q20/Q26 bounded grounding checks pass within owner scope, while approved palm/vegetation admission and all-camera visual grounding/intersection acceptance remain blocked."
+    }
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2ShipController.cs": "E683ADEF4B0085BCD83C8219B6A07413CFB283A31CE7ABF562A31280807AACD9",
+    "game/Assets/Scripts/Systems/D2/SailingSystem.cs": "AED64B6DA68235B2693093FD6C7B2CA761E4599F46D4452FA5378165E783AA71",
+    "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs": "35BE73701C036F16F79BAAE743D01CE961E5C284A00143C393EC96FA4F1B9EDB",
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "D07CC06223BFEF5F24390FF1E140214863B72E1A4C426E1C22494E9EB43BBD20"
+  },
+  "evidence_files": {
+    "current_result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4_RESULT.json",
+    "current_log": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4.log",
+    "q29_r10_result": "game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R10_RESULT.json",
+    "q29_r10_log": "game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R10.log",
+    "q29_r10_result_sha256": "30BA9C1DC5EFC617646E24047BB22FAB662BFE28DA5F9E690FE589EB4C2C598A",
+    "q29_r10_log_sha256": "828EF27AAE4C5F7788BA9B273E34B92A1CEEE738D5CD2A001485429CA3E908AC"
+  },
+  "observed_metrics": {
+    "python_targeted_tests": "65/65",
+    "d16_input_router": "11/11",
+    "d17_action_quality": "16/16",
+    "vc_g01_world_logic": "14/14",
+    "q29_r10_runtime_error_entries": 0,
+    "q29_r10_player_strict_error_count": 0,
+    "q29_r10_clean_close": true,
+    "editor_console_error_entries": 0,
+    "editor_console_warning_entries_returned": 157,
+    "editor_console_warning_dropped": false,
+    "editor_final_state": "ready / play_mode=stopped",
+    "runtime_pipeline_final_state": "enableInBuilds=false / port=0"
+  },
+  "remaining_scope": [
+    "Q03 remains BLOCKED_ASSET because the current imported rig lacks a verified authored action/Avatar contract; procedural fallback is a diagnostic/playable safety layer, not final animation.",
+    "Q20 remains PARTIAL/BLOCKED_ASSET because no approved LocalDevelopmentReady palm resource is available; generated grounding checks do not complete asset admission.",
+    "Q29 R10 hidden Player control-surface proof is bounded route evidence, not compositor-visible foreground or physical Win32 input acceptance.",
+    "Final camera-angle visual quality, terrain/shoreline layering, asset fidelity, sound and target-device performance remain open for Q31.",
+    "VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31-P04/D31-S05/D31-G06 remain PARTIAL."
+  ],
+  "status_boundary": "Q30 remains PARTIAL. Current-source owner logic and the Q29 R10 hidden Player route are supported by fresh Unity/Python evidence, but the screenshot-visible game can still contain the reported low-fidelity action, swimming, helm and vegetation problems. No final visual or foreground input PASS is claimed.",
+  "next_task": "Q31 final native Player visual gate. If a compositor-visible foreground path is unavailable, record the exact environment blocker and continue only owner-scoped non-visual checks without upgrading VC-G01."
+}

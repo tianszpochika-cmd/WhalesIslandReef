@@ -1,0 +1,249 @@
+{
+  "task_id": "Q30",
+  "status": "PARTIAL",
+  "status_scope": "independent_review_of_Q28_Q29_and_targeted_action_vegetation_space_defects",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q29"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q30_R16_BACKDROP_ISOLATION_AND_CAP_REMEDIATION_20260909",
+  "audit_time_local": "2026-09-09T09:59:06+08:00",
+  "changed_files": [
+    "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs",
+    "game/Assets/Editor/D19R03/D19R03PlayerBuilder.cs",
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs",
+    "tools/tests/test_d19_r03_visual_builder.py",
+    "game/Assets/Prefabs/Environment/D19/Integration/R03/D19_R03_HarborPresentation.prefab",
+    "game/Assets/Scenes/InitialHarbor.unity",
+    "game/tools/results/LOCAL-QUALITY/Q30/",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q30_R7_20260906.json",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_PLAYER_RUNTIME_INPUT_Q30_R7_20260906.log",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q30_r7_20260906/",
+    "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN59_WATER_Q30_R7.json",
+    "docs/game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md",
+    "game/tools/results/LOCAL-QUALITY/STATUS.md",
+    "docs/game/VISUAL_CLEANUP_EXECUTION_PLAN.md",
+    "docs/README.md",
+    ".workbuddy/memory/2026-09-09.md"
+  ],
+  "implementation": {
+    "owner_under_test": "D19 R03 presentation geometry plus D2 fallback visual swim guard; gameplay ownership, colliders, Systems and AgentCore unchanged",
+    "changes": [
+      "Replaced the R03 rock six-vertex/pyramid-like silhouette with a closed eight-segment, four-ring rounded mesh whose blunt cap reaches 0.80r instead of the old 1.34r apex.",
+      "Replaced the four-sided shrub pyramid with a closed eight-segment rounded tuft and kept GroundVegetationPosition on the conservative island-interior clamp and Height function.",
+      "Kept authored palms disabled because the available candidate has no accepted ready asset contract; this prevents unverified tree pivots from being shipped as PASS evidence.",
+      "Changed only the procedural fallback player's visual root swimming lean from 48 degrees to 64 degrees and lowered its bob slightly; the physics root and unknown imported bone axes remain untouched.",
+      "Added independent Q30 R6/R7 non-development Player build entries so candidate artifacts are never overwritten."
+    ],
+    "source_hashes": {
+      "game/Assets/Editor/D19R03/D19R03HarborPresentationBuilder.cs": "8646708B8EA4EF6A9A431D846C9BD6ADFEDA87923A397827D4B1437E549C816A",
+      "game/Assets/Editor/D19R03/D19R03PlayerBuilder.cs": "8D902070B4155279D963F5D33E41119D899EE05E1268A6F33726E00633928112",
+      "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "065B13D0B78EDC890C78373BF1EE79B7F855E11F304B5ADB931D1FDD0A495DF3",
+      "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "C9ACE6F405120250382864475A355D58557643D7D7677B2814EBF563DA24377B",
+      "game/Assets/Scripts/Gameplay/D2/D2FallbackHumanoidBuilder.cs": "A43D6B0A5E923E28A8A3DDCDE7C937FDC7FE345A1C39A1BCB10B67AEB2CBD62A",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "6025C047D9E3C7B66C7FC927B4281B7FFBEAF094A54BDCD6E13F49805058EC31",
+      "tools/tests/test_d19_r03_visual_builder.py": "E7800A022BEDC61E0679A14A02F51BB18802B6BA924EF7669ACEDCA3CA70A32A"
+    }
+  },
+  "checks": [
+    {
+      "name": "r03_geometry_static_contract",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "python -m unittest tools.tests.test_d19_r03_visual_builder; 32/32 tests passed. The test now rejects the old 1.34r rock apex and four-sided shrub pyramid while requiring closed ring geometry."
+    },
+    {
+      "name": "r03_presentation_rebuild",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q30_R03_PRESENTATION_REBUILD_R2.log; Unity BuildFromMenu completed with [D19-R03-A02] Built and placed, no C# compile error, and refreshed InitialHarbor/R03 presentation assets."
+    },
+    {
+      "name": "d17_action_revalidation",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q30_D17_ACTION_REVALIDATION_R7.xml; D17ActionQualityPlayModeTests 15/15 passed, 0 failed, 0 skipped. D17A08 specifically recorded procedural swim rootAngle about 64 degrees with bounded arm/leg motion and restored baseline."
+    },
+    {
+      "name": "vc_g01_world_logic_revalidation",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q30_VC_G01_WORLD_LOGIC_R2.xml; VcG01WorldLogicTests 12/12 passed, 0 failed, 0 skipped."
+    },
+    {
+      "name": "q20_q21_structural_revalidation",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q30_Q20_VEGETATION_REVALIDATION_R1.xml and Q30_Q21_HARBOR_SPACE_REVALIDATION_R1.xml; candidate vegetation audit 1/1 and current R03 harbor space audit 1/1 passed. These are structural audits, not final Player visual acceptance."
+    },
+    {
+      "name": "python_targeted_regression",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "python -m unittest tools.tests.test_d19_r03_visual_builder tools.tests.test_vc_g01_runtime_probe tools.tests.test_vc_g01_runtime_input_probe -q; 47/47 passed."
+    },
+    {
+      "name": "q30_candidate_player_build",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q30_CANDIDATE_PLAYER_R7_BUILD.log and Q30_CANDIDATE_PLAYER_R7_EDITOR.log; standalone Windows Player, BuildOptions.None, DisplayProgressNotification: Build Successful, no error CS, output Q30_CANDIDATE_PLAYER_R7.exe."
+    },
+    {
+      "name": "q30_r7_real_native_route",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "VC_G01_RUNTIME_INPUT_Q30_R7_20260906.json; real Win32 input to Q30-CANDIDATE-R7 produced 45/45 input steps, 18 screenshots, InitialHarbor, 152 observations, 69 moving observations, 102 swimming observations, route/business/pause/interaction matrix true, fatal_error=null. Player.log markers confirmed scene, boarded, disembarked, warehouse, market, tavern, pause open and pause resume."
+    },
+    {
+      "name": "q30_visual_quality_boundary",
+      "result": "PARTIAL",
+      "evidence": "Q30 R7 screenshots show the old sharp triangular vegetation silhouette is reduced and the player remains in the water, but the procedural fallback is still a visibly low-fidelity placeholder and the harbor still exposes low-poly construction, shoreline/terrain layering and camera-angle intersection risks. The screenshot evidence does not justify a final visual PASS."
+    }
+  ],
+  "defect_matrix": {
+    "distorted_actions": {
+      "status": "PARTIAL",
+      "evidence": "Unverified imported skinned Player is quarantined and the procedural fallback avoids guessed FBX bone axes; D17 15/15 passes. The fallback is coherent enough for logic testing but is not authored animation quality. Q03 remains BLOCKED_ASSET."
+    },
+    "ocean_swimming": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "Q30 R7 native probe recorded 102 swimming observations and D17A08 records a bounded whole-root swim lean; the screenshot still shows a low-fidelity placeholder rather than a finished swim clip."
+    },
+    "boarding_helm": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "Q30 R7 Player.log confirms boarded/disembarked and the boarding screenshot places the player on the visible helm route; helm/ship/character art remains low fidelity and is not final acceptance."
+    },
+    "floating_trees": {
+      "status": "PARTIAL",
+      "evidence": "Authored palm renderers remain disabled because the ready asset gate is blocked; generated rock/shrub geometry was rounded and clamped inside the island. R7 screenshots no longer show the old sharp triangular tree-like cards, but vegetation admission and all camera-angle ground-contact proof remain open."
+    },
+    "keyboard_conflict": {
+      "status": "PASS_WITHIN_SCOPE",
+      "evidence": "Q30 R7 real input route and prior Q13/Q15 PlayMode evidence cover W/S gameplay isolation, I/M/T ownership, duplicate toggles and Esc recovery. This does not close the visual gate."
+    }
+  },
+  "evidence_hashes": {
+    "game/tools/results/LOCAL-QUALITY/Q30/Q30_CANDIDATE_PLAYER_R7.exe": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "game/tools/results/LOCAL-QUALITY/Q30/Q30_CANDIDATE_PLAYER_R7_Data/Managed/Assembly-CSharp.dll": "52B4B83F9A72460806E35F60C54D85C28B1F7B41115603893B847856AC748B5E",
+    "game/tools/results/LOCAL-QUALITY/Q30/Q30_D17_ACTION_REVALIDATION_R7.xml": "05C7E0E4AA0DD189A45827BC60784BBB0604E4D1F3B5E5C6F89CBF79B05B15A6",
+    "game/tools/results/LOCAL-QUALITY/Q30/Q30_VC_G01_WORLD_LOGIC_R2.xml": "C2C89AE916876EBF844B78725B5C5DC1A51A313B19CC6F759B797410C7ACFE2C",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q30_R7_20260906.json": "AD4CFB72F497AF64D253D816C209530D2189954182162113AE61D1BA7E9DF989",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_PLAYER_RUNTIME_INPUT_Q30_R7_20260906.log": "8FA145D0332BA3DCF974F207B00E46620255EF4C75CAB8D0B4CDACDDC4A6F212",
+    "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN59_WATER_Q30_R7.json": "DDEE0CAEC5B0CE8F884CFFF5889B9B7DF6A19ACC457D8F43C0AB3F8EDDDBB958",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q30_r7_20260906/20260909_061719_route_initial_harbor.png": "3D6CC604D347AD59F388844621AE26666FFDA487EF8B5E1BEE37EC5CC66DC2EB",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q30_r7_20260906/20260909_061719_swimming_water_route.png": "650385AD7EC9075DF350376C82AA3CFED55E1F05A1543098001BEF87F3AE798D",
+    "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q30_r7_20260906/20260909_061719_board_or_reject_e.png": "D2595734D17A7A1B5AA148A3E080EF30E0C280DFA6A8E4899790D0F91297E34C"
+  },
+  "observed_metrics": {
+    "q30_r7_input_steps": 45,
+    "q30_r7_screenshot_count": 18,
+    "q30_r7_probe_observations": 152,
+    "q30_r7_probe_moving_observations": 69,
+    "q30_r7_probe_swimming_observations": 102,
+    "q30_r7_runtime_route_proof": true,
+    "q30_r7_business_interaction_proof": true,
+    "q30_r7_pause_recovery_proof": true,
+    "q30_r7_interaction_matrix_proof": true,
+    "q30_r7_far_ship_reject_proof": false,
+    "q30_r7_fatal_error": null,
+    "d17_action_tests": "15/15",
+    "vc_g01_world_logic_tests": "12/12",
+    "q20_vegetation_tests": "1/1",
+    "q21_harbor_space_tests": "1/1",
+    "python_targeted_tests": "47/47"
+  },
+  "remaining_scope": [
+    "Q03 remains BLOCKED_ASSET because the current imported rig still lacks a verified authored action/Avatar contract; the procedural fallback is a diagnostic/playable safety layer, not final animation.",
+    "Q20 remains PARTIAL/BLOCKED_ASSET because no approved LocalDevelopmentReady palm resource is available; disabling unverified palms is containment, not asset completion.",
+    "Q30 does not prove owner-not-ready I/M/T reject in the same R7 sequence; the matrix records false honestly and keeps dedicated bootstrap evidence separate.",
+    "Final camera-angle visual quality, terrain/shoreline layering, asset fidelity, sound and target-device performance remain open for Q31.",
+    "VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31-P04/D31-S05/D31-G06 remain PARTIAL."
+  ],
+  "status_boundary": "Q30 PARTIAL means targeted source fixes, structural regressions and a real native Win32 Player route were completed, while the screenshots still expose placeholder character art and harbor presentation risks. It does not mean the screenshot-visible game is production-ready or that VC-G01 is closed.",
+  "next_task": "TEMPORARILY_PAUSED_AT_Q31_R5_AFTER_NATIVE_PLAYER_UI_FIX; resume with one single-owner visual defect and only upgrade VC-G01 when the remaining visual/interaction gates have direct evidence.",
+  "remediation_r8_result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_REMEDIATION_R8_RESULT.json",
+  "remediation_r8_status": "PARTIAL",
+  "remediation_r8_summary": "R8 corrected fallback limb envelope, low-profile/height-aligned shoreline geometry, gameplay HUD navigation isolation, added real ship-control observations, and bounded D2 movement integration to 50ms per step. Native R8 recorded 48 input steps, 19 screenshots, 167 observations, 125 swimming observations, 5.7000008m ship displacement and 15.7681885 degrees heading change; D17 full action revalidation R9 passed 15/15; final visual quality and VC-G01 remain open.",
+  "remediation_r16_result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_REMEDIATION_R16_RESULT.json",
+  "remediation_r16_status": "PARTIAL",
+  "remediation_r16_summary": "R16 closed the R15 offshore backdrop ring source by isolating the unverified backdrop root and retained the cap-winding containment; Python targeted regression passed 53/53, D17 full action revalidation passed 15/15, R03 rebuild and non-development Player build succeeded, and the bounded native route recorded 48 inputs, 19 screenshots, 167 observations, 123 swimming observations, 22 ship-control observations, 5.745615m displacement and 15.743011 degrees heading change. The R16 screenshots still show low-fidelity fallback art and harbor geometry risks, so Q30 and VC-G01 remain PARTIAL/IN_PROGRESS.",
+  "latest_native_player": {
+    "player": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CANDIDATE_PLAYER_R16.exe",
+    "build_log": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CANDIDATE_PLAYER_R16_BUILD.log",
+    "runtime_summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q30_R16_20260906.json",
+    "player_log": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_PLAYER_RUNTIME_INPUT_Q30_R16_20260906.log",
+    "probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN68.json",
+    "screenshots": "game/tools/results/VISUAL-CLEAN/VC-G01/runtime_input_q30_r16_20260906/",
+    "visual_status": "PARTIAL",
+    "far_ship_reject_proof": false,
+    "fatal_error": null
+  },
+  "latest_current_candidate_recheck_20260911": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_CANDIDATE_RECHECK_20260911_RESULT.json",
+    "python_targeted": "75/75 PASS",
+    "python_full": "1144/1144 PASS",
+    "current_player": "game/tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R3.exe",
+    "q29_routes": "water 48/48 input, 19 screenshots, 166 observations, 124 swimming, 21 Ship control; far reject 45/45 input, 17 screenshots, 123 observations, 81 ship_too_far",
+    "visual_status": "PARTIAL",
+    "status_effect": "Q30/Q31 remain PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED."
+  },
+  "latest_current_pipeline_reaudit_20260913": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "evidence": "Current-source targeted Python 65/65; Unity D16Accessibility 8/8, D16InputRouter 10/10, D17 action quality 16/16 and VC-G01 world logic 14/14; Q28 R5 build and Q29 R5 hidden Player route completed within scope.",
+    "python_full_boundary": "Full Python discovery attempt was stopped after about 215 seconds without a completion verdict; it is not counted as PASS.",
+    "defect_matrix": "keyboard_conflict logic PASS_WITHIN_SCOPE; distorted_actions/ocean_swimming/boarding_helm/floating_trees remain PARTIAL because formal assets and screenshot-visible quality are open.",
+    "visual_gate": "No current R5 screenshots; Q31 remains the final native Player visual gate.",
+    "restored": "enableInBuilds=false, port=0, developmentBuild=false, Editor ready/stopped",
+    "boundary": "Q30 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_current_pipeline_reaudit_20260913_rerun2": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260913_RERUN2_RESULT.json",
+    "result_sha256": "799E3FCF4D16570C94B380BE9F431BB46BA459BC4F3A6E8E4640B2DC1DDF0D62",
+    "capture": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260913_RERUN2_PIPELINE_CAPTURE.log",
+    "capture_sha256": "61D8CC25EC23DBC228E7A391E31BCDE53121D28C79DB9F84B6B5C9EDC668DF44",
+    "evidence": "Current-source targeted Python 65/65; Unity D16Accessibility 8/8, D16InputRouter 10/10, D17 action quality 16/16 and VC-G01 world logic 14/14; Q07 current collision owner 1/1; Q15/Q16/Q17 current rerun2 each 1/1; Q28 R6 build and Q29 R6 hidden Player route completed within scope.",
+    "python_full_boundary": "Full Python discovery attempt was bounded at about 215 seconds without a completion verdict; it is not counted as PASS.",
+    "defect_matrix": "keyboard_conflict logic PASS_WITHIN_SCOPE; distorted_actions/ocean_swimming/boarding_helm/floating_trees remain PARTIAL because formal assets and screenshot-visible quality are open.",
+    "visual_gate": "Q29 R6 captured no valid screenshot; Q31 remains the final native Player visual gate.",
+    "restored": "enableInBuilds=false, port=0, developmentBuild=false, Editor ready/stopped, console error query=0",
+    "boundary": "Q30 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_current_pipeline_reaudit_20260914_luna": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result_sha256": "16D3220134B1AC3CE0EDECD9E1150F25E6D32E0FD8783F81D3F4213F60E8F187",
+    "capture": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260914_LUNA.log",
+    "capture_sha256": "32E02EE4BC9D3F894AFEABA7D8F957DFCF6540A9D77DCE2FB1EF4FEEC8881884",
+    "evidence": "Current-source Python targeted suite 65/65 after synchronizing one stale warm-wood helm assertion; Unity D16Accessibility 8/8, D16InputRouter 11/11, D17 action quality 16/16, VC-G01 world logic 14/14, Q07 building collision 1/1, Q15/Q16/Q17 each 1/1. Q29 R7 current-source hidden Player route is referenced with W, I modal W block, M/T duplicate and Esc recovery, E board/disembark/reboard, Y departure, sailing M rejection, Ship W/A and Esc pause/resume.",
+    "diagnosis": "The previous Python 64/65 failure was a real stale test contract: test expected the superseded near-black helm color while the current source and accepted Q26-A18 owner use warm wood 0.34/0.16/0.055. The test was updated narrowly; no production Unity source changed.",
+    "python_full_boundary": "No full Python discovery was attempted in this card; this result is the targeted Q30 suite only and is not a full-suite PASS.",
+    "visual_gate": "Foreground physical keyboard/mouse, compositor-visible Player screenshot, authored action/avatar, formal vegetation admission and target-device performance remain open; Q31 remains the final native Player visual gate.",
+    "console": "Editor error query=0; warning query returned 141 with dropped=false, consisting of known D2/D27 fallback/readiness/animation warnings plus expected D29 exception-path feedback; console cleared afterward.",
+    "restored": "Editor ready/stopped; no Player process; Q29 temporary Runtime Pipeline settings remain restored to enableInBuilds=false / port=0 and non-development build settings.",
+    "boundary": "Q30 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_current_pipeline_reaudit_20260914_luna_r3": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R3_RESULT.json",
+    "capture": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R3.log",
+    "result_sha256": "FC5141E3371D6D5F0DAF4C2682B96C91E0A0119A4EF77C2799B3B8A1C0B60B6A",
+    "capture_sha256": "F7498EF1E7BE4AE97AFB646C2E8876201C971D7159DC13D30A4AA14F1A4BA408",
+    "implementation": "test-only synchronization of stale R03 candidate audit assertion; no Unity production source, prefab, scene or Runtime Pipeline setting changed",
+    "python_targeted": "65/65 PASS after initial 64/65 stale-contract failure",
+    "unity_checks": "D16Accessibility 8/8; D16InputRouter 11/11; D17 first 15/16 with A08 idle-arm failure, focused A08 1/1, full rerun 16/16; VcG01 14/14; Q07/Q15/Q16/Q17 each 1/1",
+    "console": "error=0; warnings=141; dropped=false; console cleared; Editor ready/stopped",
+    "q29_dependency": "Q29 R9 current-source hidden Pipeline swim/W/A shoreline and clean-close evidence remains PASS_WITHIN_SCOPE; no screenshot command available",
+    "stability_boundary": "The first D17 full run exposed an intermittent A08 failure (82.6231079deg arm baseline error) before focused and full reruns passed. It remains a stability risk and is not treated as visual acceptance.",
+    "status_boundary": "Q30 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_current_source_independent_review_20260914_r4": {
+    "status": "PARTIAL",
+    "result": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4_RESULT.json",
+    "capture": "game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4.log",
+    "result_sha256": "8814DA4CD3BB329129902E3FEB9F26281D76D5D660B428D84A5E3F032F8F7AB1",
+    "capture_sha256": "BF9479CD1610A1C1E947595748A85AF4ECFB159F7602A00FFC919C1A93CA726F",
+    "evidence": "Current-source Python targeted 65/65; Unity D16InputRouter PlayMode 11/11; D17 action quality PlayMode 16/16; VcG01WorldLogic EditMode 14/14; Q29 R10 hidden Player route dependency parses and retains runtime error=0, strict Player error-token count=0 and clean close.",
+    "sailing_semantics": "S after W is intentionally deceleration because SailingSystem forbids reverse; no production change was opened for that observation.",
+    "visual_gate": "Foreground compositor screenshot, physical Win32 input, formal action/avatar, approved vegetation resources, all-camera visual grounding and target-device performance remain open.",
+    "console": "Editor ready/stopped; error query=0; warning query returned 157 known warnings with dropped=false; console cleared.",
+    "boundary": "Q30 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  }
+}

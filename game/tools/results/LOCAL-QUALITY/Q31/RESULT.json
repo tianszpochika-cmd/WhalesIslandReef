@@ -1,0 +1,423 @@
+{
+  "task_id": "Q31",
+  "status": "PARTIAL",
+  "status_scope": "preflight_player_handoff_only_not_final_vc_g01_acceptance",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q30"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q31_PREPLAYTEST_HANDOFF_Q05_A03_R31_20260909",
+  "build_id": "Q05_A03_CANDIDATE_PLAYER_R31_20260909",
+  "audit_time_local": "2026-09-09T17:49:30+08:00",
+  "latest_manual_review_at_local": "2026-09-10T21:10:07+08:00",
+  "latest_pipeline_audit_at_local": "2026-09-14T16:53:53+08:00",
+  "latest_next_task_note": "Q31 R5 fixed and visibly verified the New Game title/captain-name overlap in a native Player. Development is temporarily paused at this safe point; resume with one single-owner visual defect. Q31 remains PARTIAL and VC-G01 remains IN_PROGRESS; do not enter VC-G02 before the remaining visual/manual gates are directly evidenced.",
+  "dirty_source_manifest": {
+    "status_lines_at_handoff": 5230,
+    "untracked_lines_at_handoff": 4822,
+    "cleanup_performed": false,
+    "note": "工作区已有改动全部保留；本卡只登记唯一候选和验收材料，不清理或覆盖其他文件。"
+  },
+  "canonical_player": {
+    "path": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31.exe",
+    "absolute_path": "C:/Users/Administrator/Desktop/game/first01/game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31.exe",
+    "working_directory": "C:/Users/Administrator/Desktop/game/first01/game/tools/results/LOCAL-QUALITY/Q05-A03",
+    "build_log": "game/tools/results/LOCAL-QUALITY/Q05-A03/Q05_A03_CANDIDATE_PLAYER_R31_BUILD.log",
+    "editor_log": "game/tools/results/LOCAL-QUALITY/Q05_A03_CANDIDATE_PLAYER_R31_UNITY.log",
+    "build_options": "None",
+    "sha256": "D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE",
+    "assembly_csharp_sha256": "A67243C1922372973DA9BF6F41AC7A526E538F8705980852C7C6ECA591166E1B",
+    "candidate_refresh": {
+      "task_id": "Q13-A01",
+      "build_log": "game/tools/results/LOCAL-QUALITY/Q13-A01/Q13_A01_PLAYER_BUILD_R32_UNITY.log",
+      "refresh_scope": "InputSystemUIInputModule.move gameplay/modal ownership",
+      "player_visual_acceptance": "NOT_REVALIDATED"
+    }
+  },
+  "automated_preflight": {
+    "result": "PASS_WITHIN_SCOPE",
+    "python_targeted_tests": "Q05-A02/Q05-A03 D19 builder + D2 animation source tests 56/56 PASS",
+    "full_python_regression": "1143/1143 PASS (after Q05-A02 forearm and Q05-A03 grounding/route evidence changes; 290.891s)",
+    "d17_action_revalidation": "15/15 PASS; Q05-A03_D17_PLAYMODE_R3.xml",
+    "r03_presentation_rebuild": "PASS",
+    "r03_presentation_rebuild_log": "game/tools/results/LOCAL-QUALITY/Q21-A04/Q21_A04_HARBOR_REBUILD_SPOKES_EDITOR.log",
+    "camera_source": "game/Assets/Scripts/Gameplay/CameraFollow.cs",
+    "native_route_summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q05_A03_R31_20260906.json",
+    "native_route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN83.json",
+    "native_route_metrics": {
+      "input_steps": 48,
+      "screenshots": 19,
+      "observations": 164,
+      "moving_observations": 72,
+      "swimming_observations": 122,
+      "ship_control_observations": 21,
+      "ship_displacement_m": 5.94788122177124,
+      "ship_heading_delta_degrees": 17.841796875,
+      "route_proof": true,
+      "business_interaction_proof": true,
+      "pause_recovery_proof": true,
+      "interaction_matrix_proof": true,
+      "fatal_error": null,
+      "runtime_warning": "ShoreBoundary 未在 bootstrap 180 帧窗口内出现；本次未将该缺口伪造为拒绝或通过。",
+      "scope": "Q05-A02 bounded fallback forearm correction plus Q05-A03 swimming grounding/helm calibration follow-up and inherited Q03-A01/Q20-A01/Q21-A05 presentation changes; real route evidence is not final visual acceptance."
+    },
+    "q26_helm_playmode": {
+      "result": "PASS",
+      "tests": "1/1",
+      "test_results": "game/tools/results/LOCAL-QUALITY/Q05-A03_Q26_PLAYMODE_R2.xml",
+      "log": "game/tools/results/LOCAL-QUALITY/Q05-A03_Q26_PLAYMODE_R2_UNITY.log"
+    },
+      "boundary": "这些证据证明 R28 真实 Player 输入已经进入路由和 owner 状态，并证明 Q05-A01 没有破坏游泳/船控/页面矩阵；不证明用户主观视觉接受，也不证明 owner-not-ready reject/far-ship reject 已在同一序列完成。"
+  },
+  "manual_playtest": {
+    "required": true,
+    "status": "USER_REPORTED_DEFECTS",
+    "received_at_local": "2026-09-10T21:10:07+08:00",
+    "evidence_mode": "direct_user_playtest_report_after_entering_current_R31_Player",
+    "acceptance": "REJECTED",
+    "reported_defects": [
+      "任务动作扭曲",
+      "海洋不能游泳",
+      "上船人物与舵/控制对象关系错误，用户读作控制瓢而不是合理操舵",
+      "树在空中飘",
+      "W/S 移动时右上角 HUD 菜单跟随切换，键盘输入冲突"
+    ],
+    "duration_target_minutes": "10-15",
+    "checklist": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PLAYER_PLAYTEST_CHECKLIST.md",
+    "issue_template": "每个问题记录步骤、预期、实际、位置、最后一个输入、是否可重复，并附截图或短录屏；不要只写‘很烂’或‘正常’。",
+    "must_review": [
+      "WASD 行走、停下、转向、倒退和任务/动作是否扭曲或滑步",
+      "进入深水、持续游泳、回岸后是否恢复地面控制",
+      "E 登船、登船后 W/S 加减速与 A/D 转向、E 下船；确认人物是否站在可理解的舵位而不是控制无关物体",
+      "I/M/T 打开、重复按键、Esc 关闭与恢复；确认 W/S 不切换右侧菜单",
+      "远离船体时 E 的拒绝反馈，以及保存 C、退出、Continue 的最小恢复路径"
+    ]
+  },
+  "known_defects_before_user_review": [
+    "本卡当前候选已更新为 Q05-A03/R31；它在 Q05-A02/R29、Q03-A01/R25、Q20-A01/R26 和 Q21-A05/R27 基础上收窄 fallback 前臂折叠、清除游泳 stale grounded 视觉偏移并保留最新舵位校准。初始港口仍有低模 fallback 角色和建筑/道路/岸线的明显层级、穿插或材质问题。",
+    "正式动作/Avatar 资源缺失，Q03 仍为 BLOCKED_ASSET；自动化 D17 通过不等于动作美术通过。",
+    "游泳和船控逻辑有真实运行证据，R25 水面 containment、R24 轮舵可读性、R27 fallback 操舵姿态、R29 前臂源修复和 R31 游泳 grounding/舵位校准均有有限改善，但 R31 截图仍显示低模直立/碎片化泳姿，正式角色泳姿、自然握舵关系和整体美术仍为 PARTIAL。",
+    "正式棕榈/树资源未准入；D26 只证明当前活动对象的接地隔离，不证明完整植被完成。",
+    "用户已实际进入当前 Player 并拒绝画面；本次反馈是人工否决证据，不是完整清单 PASS，也不等于所有根因已经定位。"
+  ],
+  "gate_decision": {
+    "vc_g01": "IN_PROGRESS",
+    "vc_g02": "LOCKED",
+    "vc_g03": "LOCKED",
+    "final_acceptance": "NOT_READY",
+    "human_visual_gate": "REJECTED_ON_REPORTED_DEFECTS",
+    "reason": "用户已实际进入 Q05-A03/R31 并报告任务动作扭曲、不能游泳、错误操舵对象/舵位关系、树木漂浮以及 W/S 与 HUD Navigate 冲突。D17/Q26/旧 R31 路线证据只能证明有限逻辑范围，不能覆盖这次人工画面否决；VC-G01 不能升级。"
+  },
+  "next_task": "TEMPORARILY_PAUSED_AT_Q31_R5; resume with one single-owner visual defect and a current visible native Player evidence loop; preserve VC-G01=IN_PROGRESS and VC-G02/VC-G03=LOCKED.",
+  "latest_current_candidate_recheck_20260911": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_CANDIDATE_RECHECK_20260911_RESULT.json",
+    "candidate": "game/tools/results/LOCAL-QUALITY/Q28/Q28_CANDIDATE_PLAYER_R3.exe",
+    "runtime": "game/tools/results/LOCAL-QUALITY/Q29/Q29_PLAYER_RECHECK_20260911_RESULT.json",
+    "visual_gate": "REJECTED_WITHIN_AUTOMATED_REVIEW",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED."
+  },
+  "latest_q21_a06_candidate_reaudit_20260911": {
+    "result": "PARTIAL",
+    "candidate": "game/tools/results/LOCAL-QUALITY/Q21-A06/Q21_A06_CANDIDATE_PLAYER_RERUN94.exe",
+    "build_result": "game/tools/results/LOCAL-QUALITY/Q21-A06/Q21_A06_CANDIDATE_PLAYER_RERUN94_BUILD_RESULT.json",
+    "runtime_summary": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_RUNTIME_INPUT_Q21_A06_RERUN94_20260906.json",
+    "route_probe": "game/tools/results/D19/D19-R03-A01/D19_R03_A01_RUNTIME_ROUTE_PROBE_RERUN94.json",
+    "native_scope": "46/46 real Win32 input steps; 17 screenshots; movement, turning, swimming observations, boarding/disembark, business pages, pause recovery, far-ship rejection and clean close recorded; ship-control segment not sent in this route.",
+    "visual_gate": "PARTIAL",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED."
+  },
+  "latest_pipeline_runtime_recheck_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_RUNTIME_RECHECK_20260912_RESULT.json",
+    "build_id": "build_b5d99f79b224",
+    "player": "game/Builds/Q31_PIPELINE_CURRENT_CANDIDATE_R1.exe",
+    "runtime": "Hidden GUI Development Player entered InitialHarbor through Pipeline pointer control; W/S movement, A turning, runtime swimming entry/exit markers, E board/disembark, I warehouse, T tavern, Esc modal close and pause/resume were observed; runtime error console=0; clean close.",
+    "market_boundary": "The loaded user save was already Sailing, so M produced the expected owner rejection. Market success was not forced by mutating the save and is not claimed in this run.",
+    "status_effect": "Q31 remains PARTIAL with the existing human visual rejection; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_pipeline_camera_diagnostic_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CAMERA_DIAGNOSTIC_20260912_RESULT.json",
+    "build_id": "build_b5d99f79b224",
+    "camera_artifacts": [
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CURRENT_CANDIDATE_R1_INITIAL_CAMERA_20260912.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CURRENT_CANDIDATE_R1_BOARD_CAMERA_20260912.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CURRENT_CANDIDATE_R1_SWIM_CAMERA_20260912.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_CURRENT_CANDIDATE_R1_HELM_CLOSE_CAMERA_20260912.png"
+    ],
+    "helm_probe": "HelmWheel 与左右 fallback hands 的运行时距离均为 0.2608m；player parent=ph_ship_fishing；Q26A05 同轮复核为 1/1 PASS。",
+    "visual_boundary": "相机证据仍显示低模/占位角色与粗糙场景表现；游泳默认帧不足以判断自然泳姿，不升级最终视觉门。",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_current_pipeline_d2_overhead_guard_20260913": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "scope": "D2 water-overhead safety fix, current-source PlayMode regression and hidden Player RenderTexture/runtime diagnostic; not final visual acceptance.",
+    "production_fix": "D2 detects walkable terrain above the swim volume with a downward ray compatible with D19 one-sided MeshCollider surfaces; it rejects swimming under terrain and relocates the player to the walkable top surface.",
+    "source": {
+      "d2_runtime_bootstrap_sha256": "0A0A17E0A47A67BF4EF06F867DF1ECA408FED4E39B026C646BEA0397EE980029",
+      "playmode_test_sha256": "3A2B4884EBDD13A437279D241D48751594F26F4FE388C13AF998B3B689930A86"
+    },
+    "verification": "recompile failed=false/errorCount=0; targeted D17 water/camera/input/integration/overhead suite=9/9 PASS; build_33970c8639b5 Succeeded with 0 errors / 7 warnings.",
+    "before_fix": "At the reported coordinate player=(-4.901,0.400,2.369) remained swim=true/grounded=false while D19_TerrainRoot top was terrainY=0.940; the first upward probe missed the one-sided MeshCollider.",
+    "after_fix": "The R2 hidden Player at the same coordinate reported player=(-4.901,1.003,2.369), swim=false, grounded=true; D17A17 asserts the exit/recovery log in the same physics call.",
+    "open_water": "Hidden Player open-water W produced player=(0.334,0.400,29.927), swim=true, grounded=false, speed=2.073093, action=Swimming.",
+    "visual_boundary": "The recovered overlap frame still has a close wall and no visible player; open-water frames are low-detail/procedural. This does not close actions, natural swimming, helm contact, vegetation, intersections, physical Win32 input, performance or the human visual rejection.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_q07_r03_building_collision_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q07/RESULT.json",
+    "source": "HarborCollisionController installs four D6-owned solid exterior BoxCollider boundaries from the R03 service-building Body renderer bounds; no D2/Systems ownership change.",
+    "verification": "Q07 targeted PlayMode=1/1 PASS; D17=16/16 PASS; D19R03Q26=16/16 PASS; hidden Development Player build_c3588a5c004b entered InitialHarbor, four building colliders and four raycasts resolved to D6_HarborCollision, runtime error console=0, Player.log strict ERROR/Exception/Crash/Fatal=0, clean close.",
+    "visual_boundary": "This is a collision-owner fix and runtime probe, not final camera composition, natural action/swim/helm visual, vegetation, physical foreground input, performance or human visual acceptance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_pipeline_current_visual_diagnostic_20260913_rerun2": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_VISUAL_DIAGNOSTIC_20260913_RERUN2_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_VISUAL_DIAGNOSTIC_20260913_RERUN2_PIPELINE_CAPTURE.log",
+    "runtime": "Current-source Q29 R6 hidden GUI Player was driven through Pipeline pointer/key controls; InitialHarbor -> land -> open water was observed, with swim=true and a held-S moving capture.",
+    "valid_frames": "Three current-source 1280x720 RenderTexture PNGs were non-black and hash-verified; a separate ScreenCapture path produced black frames and was excluded.",
+    "visual_boundary": "The valid frames still show low-detail/procedural harbor and player presentation; the swimming silhouette is visible but does not prove a natural authored cycle. This remains offscreen diagnostic evidence, not compositor-visible foreground or human visual acceptance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_pipeline_helm_presentation_20260913": {
+    "result": "PARTIAL",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_HELM_PRESENTATION_PIPELINE_20260913_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_HELM_PRESENTATION_PIPELINE_20260913_PIPELINE_CAPTURE.log",
+    "source_change": "D19R03HarborPresentationBuilder changed the generated HelmWheel from near-black blue-gray to warm low-sheen wood; generated geometry and owner boundaries were unchanged.",
+    "verification": "Recompile failed=false/errors=[]; Q26A18=1/1; D19R03Q26=17/17; D17ActionQuality=16/16; VcG01WorldLogic=14/14; build_467144669770 succeeded with 0 errors/0 warnings.",
+    "runtime": "Clean hidden GUI Player rerun through Pipeline pointer NewGame/Confirm and E down/wait/up reached InitialHarbor and ph_ship_fishing; runtime material was D7Polish_HelmWheel_0 RGBA(0.340,0.160,0.055,1.000); left/right hands were at (-0.19,1.89,-6.33)/(0.19,1.89,-6.33); error console returned 0; quit was clean.",
+    "capture": "Q31_QA_HELM_WARM_WOOD_BOARDING_FORWARD_RT_20260913_R2.png is a 829168-byte hash-verified offscreen RenderTexture frame showing the warm-brown wheel and player/hand arrangement.",
+    "visual_boundary": "This directly diagnoses and improves the reported dark/ambiguous helm prop, but does not prove natural IK/contact, authored action/avatar readiness, swim cycle, vegetation grounding, intersections, physical foreground input, target-device performance or final human acceptance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_q03_a17_formal_swim_candidate_20260913": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q03-A17/Q03_A17_FORMAL_HUMANOID_PIPELINE_R3_RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q03-A17/Q03-A17.md",
+    "scope": "Opt-in D20 Formal Humanoid swim-envelope candidate compared through hidden Player RenderTexture capture; no default Player promotion",
+    "verification": "Q03D20=4/4 PASS; D17ActionQuality=16/16 PASS; build_21e1ee070799=0 errors/1 warning; hidden formal bridge installed=true/humanoid=true; swim probe returned Swimming/Fish/pitch=70; runtime error console=0; clean close.",
+    "visual_boundary": "The candidate frame reduces knee folding but still has raised/stylized arms and a low-detail procedural body. The probe used read-only D2 placement, so it is not a full physical-input or human visual acceptance route.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; Q03 remains BLOCKED_ASSET; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_pipeline_hud_visual_diagnostic_20260913_r1": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_HUD_VISUAL_DIAGNOSTIC_20260913_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_HUD_VISUAL_DIAGNOSTIC_20260913_R1_PIPELINE_CAPTURE.log",
+    "test_change": "D16InputRouterPlayModeTests added D16A03GameplayWASDDoesNotNavigateHudAndModalWASDDoesNotLeak; targeted 1/1 and class 11/11 PASS.",
+    "runtime": "Current-source Q29 R6 hidden GUI Player was driven through Pipeline pointer/key controls; the open-water route reported swim=true/action=Swimming, and the warehouse W probe kept position and selected=Close.",
+    "visual_artifacts": [
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_QA_CURRENT_PLAYER_R1_INITIAL.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_QA_CURRENT_PLAYER_R1_SWIM_HELD.png"
+    ],
+    "visual_boundary": "Valid RenderTexture frames still show low-detail/procedural Player presentation; injected input is not physical foreground keyboard evidence, and the route does not close formal Avatar/action, natural swim cycle, vegetation grounding, helm contact, target-device performance or human visual acceptance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_q26_a19_helm_support_wood_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q26-A19/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q26-A19/Q26-A19.md",
+    "scope": "D19-R03 candidate/fallback helm support material and semantic owner, verified after D7 asynchronous material polish and hidden Development Player RenderTexture capture",
+    "verification": "Q26A19=1/1 PASS; D19R03Q26GameplayDefectPlayModeTests=18/18 PASS; release-like QA build=0 errors/2 warnings; Development QA build=0 errors/1 warning; runtime material=D7Polish_HelmStand_0 texture=brown_planks_03_albedo; Player clean close",
+    "visual_artifacts": [
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_Q26A19_HELM_WOOD_DEV_R1_BOARD_RT.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_Q26A19_HELM_WOOD_DEV_R1.log"
+    ],
+    "visual_boundary": "This closes only the stone-like helm-support presentation defect. The RenderTexture is hidden Player diagnostic evidence, not foreground compositor acceptance; formal Avatar/action, natural IK/swim, vegetation/intersections, physical foreground input, target-device performance and human visual acceptance remain open.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_q26_a21_procedural_swim_pose_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q26-A21/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q26-A21/Q26-A21.md",
+    "scope": "Default procedural swim presentation continuity and hidden Player open-water movement diagnostic",
+    "verification": "Q26A21=1/1 PASS; D19R03Q26GameplayDefectPlayModeTests=19/19 PASS; marker=Procedural/pitch=64.0/bodyDrop=-0.601/maxArmDelta=6.47/maxFootDelta=1.94; hidden Player W moved in water and cleanly closed",
+    "visual_artifacts": [
+      "game/tools/results/LOCAL-QUALITY/Q26-A21/Q26_A21_SWIM_STATIC_R1.png",
+      "game/tools/results/LOCAL-QUALITY/Q26-A21/Q26_A21_SWIM_STATIC_R2.png",
+      "game/tools/results/LOCAL-QUALITY/Q26-A21/Q26_A21_SWIM_MOVING_R1.png",
+      "game/tools/results/LOCAL-QUALITY/Q26-A21/Q26_A21_SWIM_DIAGNOSTIC_PLAYER.log"
+    ],
+    "visual_boundary": "This proves continuous change in the default procedural fallback, not a natural authored swim cycle or final visual acceptance. Q31 remains PARTIAL and VC-G01 remains IN_PROGRESS; formal Avatar/action, physical foreground input, vegetation/intersections and target-device performance remain open.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_q26_a22_d29_hud_bootstrap_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q26-A22/RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/Q26-A22/Q26-A22.md",
+    "scope": "D29 bootstrap-frame UI move-action detachment and current-source hidden Player input route",
+    "verification": "D16InputRouterPlayModeTests=11/11 PASS; D19R03Q26GameplayDefectPlayModeTests=19/19 PASS; build_236bb62b66a6=Succeeded / 0 errors / 0 warnings; runtime console error query=0",
+    "runtime": "Pipeline pointer reached InitialHarbor; W gameplay, I warehouse open/close, modal W, Esc pause/resume and clean quit were executed on the Q26-A22 build.",
+    "visual_boundary": "This is hidden Player and injected-input evidence only. It does not prove foreground physical keyboard, compositor-visible visual acceptance, formal Avatar/action, natural swimming, vegetation/intersections, helm contact or target-device performance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_q31_interaction_matrix_on_q26_a22_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_INTERACTION_MATRIX_Q26A22_20260913_RESULT.json",
+    "scope": "Hidden current-source Player interaction matrix for E boarding/disembark, M success/rejection/repeat, T repeat/close and Esc recovery",
+    "verification": "E board/disembark, M in-port success, M repeat no duplicate, T open/repeat no duplicate, Esc close, Y/N voyage transition and M owner rejection all emitted expected runtime markers; final error console=0; clean close",
+    "visual_boundary": "Pipeline injected input and runtime console markers are not foreground physical keyboard or human visual acceptance; Q31 remains PARTIAL."
+  },
+  "latest_pipeline_editor_capability_20260913_r1": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_EDITOR_CAPABILITY_20260913_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_EDITOR_CAPABILITY_20260913_R1_PIPELINE_CAPTURE.log",
+    "verification": "Connected Pipeline Editor accepted editor_play/editor_stop, returned InitialHarbor hierarchy, and completed D16Accessibility=8/8; final Editor status was ready/stopped.",
+    "screenshot_boundary": "Editor Game View screenshot commands produced two identical 13556-byte gray frames with SHA256=557E66D338223BD72B1ED5B680E747BB159FE626F832D752C1B9D8E9B3CFBE98 and console error RenderTexture.Create failed on Null Device; Scene View was not active.",
+    "product_code_changed": false,
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED. Null Device Editor captures are excluded from visual acceptance."
+  },
+  "latest_pipeline_asset_discovery_20260913_r1": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_EDITOR_CAPABILITY_20260913_R1_RESULT.json",
+    "verification": "find_assets returned 15 D20 Player clips and 12 palm GameObjects; the D20 folder has no swim-name clip; get_animation_clip Walk/Helm bindings use Armature/root paths.",
+    "decision": "Candidate assets are present but no formal resource admission was performed. Q03 formal authored action/swim and Q20 formal vegetation gates remain closed; no blind promotion.",
+    "controller_boundary": "Three D20 Player AnimatorControllers exist, but the Formal controller has 15 states with no Swimming state and zero transitions; its motions resolve to the generic D20 clip set."
+  },
+  "latest_pipeline_current_source_r4_20260914": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_REAUDIT_Q26A22_20260914_R4_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_REAUDIT_Q26A22_20260914_R4_PIPELINE_CAPTURE.log",
+    "scope": "Hidden current-source Development + AllowDebugging Player driven through Unity Pipeline keyboard/pointer/runtime-eval controls; no foreground window or physical keyboard claim.",
+    "verification": "MainMenu->InitialHarbor, W/S movement and open-water Swimming, E board/disembark, far-ship E rejection, I warehouse modal W isolation, M success/repeat/Esc close, T open/Esc close, and Esc pause/resume were observed; runtime console --level error returned 0; Player quit and QA settings were restored.",
+    "visual_artifacts": [
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_INITIAL_RT_20260914.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_SWIM_STATIC_RT_20260914.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_SWIM_MOVING_RT_20260914.png",
+      "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_BOARDING_RT_20260914.png"
+    ],
+    "vegetation_boundary": "Current runtime reported legacy tree root enabled renderers=0 and placeholder palm enabled renderers=0; no visible legacy tree was reproduced, but this does not close the human tree-floating rejection or formal vegetation gate.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_pipeline_editor_runtime_probe_20260914": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PIPELINE_EDITOR_RUNTIME_PROBE_20260914_RESULT.json",
+    "diagnostic_source": "game/AgentScripts/LocalQuality/UnityPipelinePoseAndInputProbe.cs",
+    "scope": "Connected Unity Pipeline Editor PlayMode plus ephemeral run_script probe; no foreground window, physical keyboard, compositor screenshot, or target-device performance claim.",
+    "verification": "InitialHarbor Character/Idle, procedural fallback with renderer_count=17 and skinned_renderer_count=0; Board succeeded to Ship parent ph_ship_fishing with player at HelmPoint and both hands 0.194m from HelmWheel; QA-only open-water positioning then produced Character/Swimming with IsSwimming=true and 64 degree procedural visual-root pitch; UI navigation remained disabled and move action unbound.",
+    "boundary": "Editor capture was unavailable because the connected Editor reported Null Device/GraphicsDeviceType=Null. An asynchronous PlayMode test attempt was not counted as PASS because no terminal result was obtained; existing Q13 test evidence remains authoritative.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL; Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET."
+  },
+  "latest_current_r4_visual_inspection_20260914": {
+    "result": "PARTIAL",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_REAUDIT_Q26A22_20260914_R4_RESULT.json",
+    "render_texture_artifacts": {
+      "resolution": "1280x720",
+      "initial": {
+        "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_INITIAL_RT_20260914.png",
+        "bytes": 1144670,
+        "sha256": "2C492DB7AEFBE4974B634FF5B98B6B42CACFA09040C4E95F158C7E1E2C7A8BFA"
+      },
+      "swim_static": {
+        "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_SWIM_STATIC_RT_20260914.png",
+        "bytes": 766718,
+        "sha256": "D9E3642E1B387B5FAC98B50C40DAF5719D8DB77FDD218ADA08E78993880CA539"
+      },
+      "swim_moving": {
+        "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_SWIM_MOVING_RT_20260914.png",
+        "bytes": 393161,
+        "sha256": "C2686D06CD40833D781F27D4DD5E9C7282A2F8ECC80AA7A90651864FAB927003"
+      },
+      "boarding": {
+        "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_R4_BOARDING_RT_20260914.png",
+        "bytes": 1100795,
+        "sha256": "42D4936BCBB8811838D1061957F44A7A50F9EA23D0FB4CC55713356A3975AE3A"
+      }
+    },
+    "direct_inspection": {
+      "initial_harbor": "Valid frame. The harbor, buildings, ship and player are visible; the scene remains visibly low-poly with terrain/shoreline layering and rough facade/detail boundaries.",
+      "swimming": "Valid static and moving frames. The procedural fallback player is visible horizontally over the water with extended limbs and a readable shadow; the frame does not show a verified authored swim cycle or natural water-contact presentation.",
+      "boarding": "Valid frame. The warm-brown HelmWheel is visibly distinct and the player is on the ship; the image still does not establish natural hand IK/contact or authored boarding/helm animation.",
+      "vegetation": "This fixed frame set did not reproduce a visible legacy tree/palm renderer. That is containment evidence only, not formal vegetation admission or all-camera grounding proof."
+    },
+    "acceptance_boundary": "These are hidden Player offscreen RenderTexture frames inspected as diagnostic images, not compositor-visible foreground screenshots and not human final visual acceptance. Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED."
+  },
+  "latest_current_pipeline_backbuffer_reaudit_20260914_r5": {
+    "result": "PARTIAL",
+    "capture_status": "BLOCKED_GRAY_FRAME",
+    "result_file": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_BACKBUFFER_REAUDIT_20260914_R5_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_BACKBUFFER_REAUDIT_20260914_R5.log",
+    "raw_d31_result": "game/tools/results/LOCAL-QUALITY/Q29/D31_P04_VISUAL_EVIDENCE_PLAYER_Q31_R5.json",
+    "runtime": "Q29 R9 current-source hidden Windows Player, pid=69852, RTX 4070 Ti / Direct3D11, clean probe exit",
+    "capture": "D31VisualEvidenceProbe requested and found all 14 fixed + 3 weather files at 1280x720, but all 17 were identical 12152-byte black frames with SHA256=5CAAF573FFC294827DF39B5DE5BF9F433AC2D1F443C29FF696D19FD12D36C47B",
+    "error_boundary": "Player.log strict ERROR|EXCEPTION|CRASH|FATAL=0; only case-insensitive match was grounding text error=0.000",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; no visual PASS or upgrade is justified."
+  },
+  "latest_hidden_player_interaction_reaudit_20260914_r6": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_INTERACTION_PLAYER_REAUDIT_20260914_R6_RESULT.json",
+    "capture_log": "game/tools/results/VISUAL-CLEAN/VC-G01/VC_G01_INTERACTION_PLAYER_REAUDIT_20260914_R6.log",
+    "scope": "Current-source hidden GUI Player interaction route through Unity Pipeline; MainMenu confirmation, W movement, I/M/T repeat and close, modal W blocking, E board/disembark/reboard and Esc pause/resume.",
+    "verification": "The route reached InitialHarbor through MainMenu pointer input, moved on W, blocked W while warehouse modal was active, ran I/M/T success/repeat/close paths, boarded/disembarked/reboarded through E and paused/resumed through Esc; runtime error console=0 and clean close were verified.",
+    "editor_regression": "D29PanelFocusPlayModeTests.D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes=1/1 PASS; Pipeline 32.31s; Editor ready/stopped.",
+    "visual_boundary": "The route has no compositor-visible screenshot and uses injected Pipeline input rather than foreground physical keyboard. It does not close the Q31 visual gate, formal action/avatar, natural swim/helm IK, vegetation grounding, target-device performance or human visual acceptance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
+  },
+  "latest_pipeline_ui_focus_isolation_20260914_r1": {
+    "result": "PASS_WITHIN_SCOPE",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_UI_FOCUS_REAUDIT_20260914_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_PIPELINE_UI_FOCUS_REAUDIT_20260914_R1.log",
+    "build": "build_abd8d26ad740; EXE SHA256=98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81; Assembly-CSharp SHA256=C21752E45595A58E7E9E21C44D3C833AD41ECAA8A3468915955C52EA8133ED2B",
+    "verification": "Current-source hidden Player reached InitialHarbor through MainMenu pointer input; W and S changed the Player position while EventSystem navigation stayed false, UI move stayed null, and selection stayed none. The new D29 regression, existing D29 panel recovery, and D16 input-router test each passed 1/1.",
+    "boundary": "No foreground physical keyboard, compositor-visible screenshot, formal action/avatar, natural swim/helm presentation, vegetation/clipping, target-device performance or final human visual acceptance.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; Q03/Q20/D31 visual gates remain open."
+  },
+  "latest_current_native_player_ui_fix_visual_gate_20260914_r5": {
+    "result": "PARTIAL",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5_RESULT.json",
+    "log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5.log",
+    "artifact_sha256": "664B209E778297FCF342B990737FBB202BB1E5732B7A129A2CF1FC58AB4E77B2",
+    "log_sha256": "3D5399FCA71EDC74141F0280E85B98532D4E8CEFE56E59EF4AD91B779EF952E7",
+    "build": "build_fc9d95893976; BuildGuid=506d6349798641cc8a4ed720190c3d6c; EXE SHA256=98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81; Assembly-CSharp SHA256=E2178D2F75E534848651CEDC169E929BA925B6E1508AEABD492CDF79D2F0619D",
+    "production_change": "game/Assets/Scripts/Gameplay/UI/MainMenuController.cs title offset y=150 -> y=210; source SHA256=30D813FC73E2462DED3025347E749D376805290C7883D146E1E1E871489EA5D5",
+    "visible_player_evidence": {
+      "resolution": "1280x720",
+      "new_game_overlap": "FIXED_WITH_VISIBLE_PLAYER_EVIDENCE",
+      "screenshots": [
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_MAINMENU.png",
+          "bytes": 34186,
+          "sha256": "7F6DA50E2BDB9A2C86196CDFE68D53FDF72BB6A92544465490F90A4B72F0E416"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_NEWGAME.png",
+          "bytes": 30982,
+          "sha256": "9EEB04F2F92035E3B08C3168EF414CDF8F90AFBA382E7167A936DA04B4D03250"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_INITIAL_HARBOR.png",
+          "bytes": 942319,
+          "sha256": "FE77C21B6C4B714F907F5557841B9A3C62977495CEA5ABFD4781D9C31710A710"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_AFTER_W.png",
+          "bytes": 927225,
+          "sha256": "182BEEE0E19E6185B1B6E969B656DFF402D9AB578086EBD72CB7AF0FC610C445"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_BOARD.png",
+          "bytes": 895828,
+          "sha256": "2BFBF4FA01BE0BE814F407714BF1EE12CE993C734D1FFBA2EBF229EC399E3F3E"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_SWIM_ROUTE.png",
+          "bytes": 973905,
+          "sha256": "E4A15A02554AE94469691556A337B87B251DF6BB8B1DF49E66495AF9E831D0E5"
+        },
+        {
+          "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R5_UI_FIX_S_ROUTE.png",
+          "bytes": 1167425,
+          "sha256": "A1DD60A904E92C010FEA39765AB865D5B6E7EE0DEDCC44993C820FD72F3424BD"
+        }
+      ]
+    },
+    "runtime": "Visible native Player through Runtime Pipeline port 7906; natural MainMenu NewGame/Confirm -> InitialHarbor -> W -> E board -> E disembark -> W/S route; console error entries=0; Player strict error tokens=0; clean close.",
+    "visual_boundary": "InitialHarbor and boarding frames are valid compositor-visible frames but remain low-poly/procedural; this route did not visibly demonstrate open-water swimming. Formal authored action/avatar, natural swim/helm, vegetation grounding/intersections, physical Win32 input and target-device performance remain open.",
+    "restored": "Runtime Pipeline enableInBuilds=false/port=0; developmentBuild=false/allowDebugging=false/connectWithProfiler=false; Editor ready.",
+    "status_effect": "Q31 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL.",
+    "pause_effect": "Temporary development pause at this safe stopping point; resume from Q31 R5 with one single-owner visual defect."
+  }
+}

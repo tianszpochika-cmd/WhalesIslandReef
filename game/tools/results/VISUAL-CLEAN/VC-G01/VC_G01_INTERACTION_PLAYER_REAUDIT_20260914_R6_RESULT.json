@@ -1,0 +1,109 @@
+{
+  "task_id": "VC-G01",
+  "run_id": "VC_G01_INTERACTION_PLAYER_REAUDIT_20260914_R6",
+  "status": "PASS_WITHIN_SCOPE",
+  "scope": "current-source hidden Windows Player Runtime Pipeline full interaction route: MainMenu entry, W movement, modal input isolation, I/M/T pages, E board/disembark/reboard and Esc pause recovery; no foreground desktop takeover, no compositor screenshot, no target-device performance claim",
+  "audit_time_local": "2026-09-14T15:45:45+08:00",
+  "implementation": {
+    "production_code_changed": false,
+    "test_code_changed": false,
+    "configuration_changed": false,
+    "player_build_source": "Current-source Q29 R9 Player; Runtime Pipeline and build settings were restored to disabled/non-development values after the build and before this route."
+  },
+  "control_surface": {
+    "plugin": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_endpoint": "127.0.0.1:7800",
+    "runtime_endpoint": "127.0.0.1:7905",
+    "editor_pid": 53332,
+    "player_pid": 66300,
+    "player": "game/tools/results/LOCAL-QUALITY/Q29/Q29_RUNTIME_PIPELINE_QA_R9.exe",
+    "player_sha256": "98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly_csharp_sha256": "C21752E45595A58E7E9E21C44D3C833AD41ECAA8A3468915955C52EA8133ED2B",
+    "build_id": "build_bb39e1a3233d",
+    "build_guid": "743f12fdaf924971bf4cacdc743cda45",
+    "window_mode": "hidden GUI Windows Player via Start-Process -WindowStyle Hidden",
+    "physical_foreground_keyboard": false,
+    "input_route": "Unity Pipeline simulate_pointer/simulate_key -> Player Input System"
+  },
+  "route": {
+    "main_menu": {
+      "result": "PASS_WITHIN_SCOPE",
+      "actions": "Pointer down/up at (640,413) opened New Game; pointer down/up at (573,287) confirmed.",
+      "scene_after_confirm": "InitialHarbor",
+      "build_index": 2,
+      "runtime_marker": "[MainMenu] 确认按钮被点击; NewGame 已发起：新船长"
+    },
+    "movement": {
+      "result": "PASS_WITHIN_SCOPE",
+      "initial_position": "(0.00,0.15,-2.70)",
+      "w_hold": "simulate_key W down; hold=450ms",
+      "position_after_w": "(0.03,0.12,-4.35)",
+      "displacement_observed": true,
+      "input_release": "simulate_key W up accepted"
+    },
+    "warehouse_i": {
+      "open": "success marker: 仓库面板已打开; modal navigation=true",
+      "modal_w": "position remained (0.00,0.17,-0.70) before and after W hold; gameplay movement blocked",
+      "close": "success state transition to closed",
+      "close_log_count": 2,
+      "close_log_boundary": "The two identical close messages are emitted by CloseWarehouse Show(...) plus its explicit Debug.Log; runtime state closed once and no second panel transition occurred."
+    },
+    "market_m": {
+      "open": "success marker: 市场面板已打开; modal navigation=true",
+      "repeat": "second M produced no second open transition",
+      "escape": "Esc closed the market and restored gameplay suppression"
+    },
+    "tavern_t": {
+      "open": "success marker: 酒馆社交面板已打开; modal navigation=true",
+      "repeat": "second T produced no second open transition",
+      "escape": "Esc closed the tavern and restored the main HUD"
+    },
+    "boarding_e": {
+      "first_press": "boarded authored ship; D7 control mode Ship and deck state=true",
+      "second_press": "disembarked to author anchor (0.00,1.21,-0.70); D19 terrain landing surface y=0.11, player y=0.17",
+      "third_press": "reboarded; Ship control restored",
+      "repeat_and_reject": "The route covered successful board, successful disembark and successful reboard; no far-ship rejection was asserted in this run."
+    },
+    "pause_escape": {
+      "pause": "Esc emitted HarborPause 游戏已暂停 and modal navigation=true",
+      "resume": "Esc emitted HarborPause 游戏已恢复 and returned to Ship gameplay"
+    },
+    "post_route_modal_guard": {
+      "warehouse_open_position": "(0.00,0.17,-0.70)",
+      "warehouse_w_position": "(0.00,0.17,-0.70)",
+      "result": "W remained blocked while warehouse modal was active"
+    }
+  },
+  "runtime": {
+    "error_console_entries": 0,
+    "error_console_dropped": false,
+    "player_process_clean_close": true,
+    "player_descriptor_removed": true,
+    "runtime_port_after_close": false,
+    "editor_after_close": "ready/stopped",
+    "runtime_pipeline_settings_after_close": {
+      "enableInBuilds": false,
+      "port": 0,
+      "requestTimeoutMs": 30000,
+      "enableAuditLogging": true,
+      "autoStart": true,
+      "maxWorkItemsPerFrame": 10
+    },
+    "player_log": {
+      "path": "C:/Users/Administrator/AppData/LocalLow/Whalebone Studio/WhalesIslandReef/Player.log",
+      "bytes": 181468,
+      "sha256": "619B705AF5223CB9BE34B76462DC3A1171E059BA5B4FE69F5E1645E5E4E5C7FD",
+      "strict_error_token_scan": "0; case-insensitive grounding text error=0.000 is not a runtime error"
+    }
+  },
+  "editor_regression": {
+    "filter": "D29PanelFocusPlayModeTests",
+    "test": "Whalebone.Tests.D29.D29PanelFocusPlayModeTests.D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes",
+    "result": "1/1 PASS",
+    "pipeline_duration_seconds": 32.31,
+    "test_duration_seconds": 31.5521629,
+    "editor_status_after_test": "ready/stopped",
+    "console_boundary": "A later manual CLI check accidentally called unavailable command status and Unity recorded one command-resolution error. This tool-layer error occurred after the Player route and after the test; it is not a test failure or a Player runtime error."
+  },
+  "status_boundary": "This closes the current-source hidden Player interaction/control-surface route within Unity Pipeline: MainMenu confirmation, movement, I/M/T repeat and close behavior, modal W blocking, E board/disembark/reboard and Esc pause/resume. It does not prove foreground physical Win32 keyboard focus, compositor-visible Player UI, screenshot-based visual acceptance, natural authored swim/helm IK, formal action/avatar, vegetation grounding or clipping, target-device performance or final human visual acceptance. VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; Q31 remains PARTIAL."
+}

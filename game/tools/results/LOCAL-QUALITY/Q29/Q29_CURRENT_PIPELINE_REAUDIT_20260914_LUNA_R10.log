@@ -1,0 +1,55 @@
+# Q29 current-source Unity Pipeline hidden Player route, 2026-09-14 Luna R10
+# Player: Q29_RUNTIME_PIPELINE_QA_R10.exe; PID 57100; hidden GUI; no foreground activation.
+# Runtime: 127.0.0.1:7906; Unity 6000.0.80f1; BuildGuid b6219a929070455f864861cfbbcb7548.
+# Input boundary: Unity Pipeline Input System injection, not physical foreground keyboard/mouse.
+
+## Build
+- build_id=build_b5958f0eeca0
+- result=Succeeded; target=StandaloneWindows64; scenes=MainMenu,Bootstrap,InitialHarbor
+- options=Development,DetailedBuildReport; totalSizeBytes=220891074; buildTimeMs=66197
+- buildReport totalErrors=0 totalWarnings=0
+- exe_sha256=98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81; exeBytes=671744
+- assembly_sha256=A92B3961946F2FF8F523ECC6EBF995AC67CE405771029B81A59F6D5123C95B94; assemblyBytes=509440
+
+## Runtime setup and entry
+- Runtime Pipeline temporarily enabled with port=7906; Development Build=true; Player launched with Start-Process -WindowStyle Hidden.
+- Direct InitialHarbor QA setup was used for the early W/I/M modal probes; those markers are not MainMenu acceptance evidence.
+- Natural pointer route on the same Player used move/down/external 350ms wait/up at (640,413) to open BtnNewGame, then (573,287) to activate Confirm. runtime_status reported InitialHarbor buildIndex=2.
+- After the natural route, a bounded readiness probe reported d3=True and d10=True before the accepted tavern route.
+
+## Accepted route markers
+- Q29R10|pos=(0.20, 0.12, -4.94): deterministic InitialHarbor W movement.
+- Q29R10|warehouse=True; modal W left the same position; Escape returned warehouse=False and TimeScale=1.
+- Q29R10|market|open=True; repeated M kept the page open; Escape returned open=False and TimeScale=1.
+- Early T before owner binding returned D10 owner-not-ready feedback; this was retained as a startup timing observation, not a PASS or product failure.
+- Q29R10|ready|d3=True|d10=True|timeScale=1.
+- Q29R10|tavernReady|entered=True|focus=True|ready=True; repeated T preserved the state; Escape returned focus=False and TimeScale=1.
+- Q29R10|boardNatural|mode=Ship|pos=(0.00, 1.10, -6.68)|parent=ph_ship_fishing.
+- Q29R10|disembark|mode=Character|pos=(0.00, 0.17, -0.70)|parent=.
+- Q29R10|reboard|mode=Ship|pos=(0.00, 1.10, -6.68)|parent=ph_ship_fishing.
+- Q29R10|voyage|status=Sailing|loc=santa_margarita|dest=green_cay.
+- Q29R10|voyageMarket|open=False|message=航行中不能打开港口市场。
+- Q29R10|shipW|pos=(0.00, 0.00, -11.70)|yaw=180; shipA yaw=155.5216; shipD yaw=178.6077.
+- Ship S was delivered successfully but the bounded sample retained the same captured position; no S displacement PASS is claimed.
+- Escape runtime_status: TimeScale=0; next Escape: TimeScale=1; LoadedLevel=InitialHarbor.
+
+## Runtime/error boundary
+- runtime console --level error --tail 200 returned entries=[]; dropped=false.
+- Player log bytes=395790; sha256=1C039D3B5E291C5789D4A427F135AA6AA9523F0B14612626FA7EDF0D1C3BA401.
+- Player log strict case-sensitive ERROR|EXCEPTION|CRASH|FATAL count=0.
+- runtime quit returned success; PID 57100 was absent after close wait; .unity-pipeline-runtime-port descriptor was removed.
+
+## Tooling boundary
+- simulate_pointer action=wait is unsupported; external bounded delay was used between down/up.
+- The plugin command listing query does not list runtime-only simulate_key/simulate_pointer commands; runtime endpoint accepted them.
+- No screenshot command is exposed by the available Runtime Pipeline command surface; screenshot_count=0.
+
+## Restore
+- Runtime Pipeline dry_run and confirm applied: enableInBuilds=true/port=7906 -> enableInBuilds=false/port=0; timeout=30000; auditLogging=true; autoStart=true; maxWorkItemsPerFrame=10.
+- Build settings dry_run and confirm applied: developmentBuild=true -> false; allowDebugging=false; connectWithProfiler=false.
+- Read-back: Runtime Pipeline disabled/port=0; developmentBuild=false; Editor PID 53332 ready; Player absent.
+
+## Status boundary
+- PASS_WITHIN_SCOPE: hidden Windows Player input/state/control-surface route, natural MainMenu pointer entry, owner-ready timing evidence and clean close.
+- Q29 remains PARTIAL; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL.
+- This run does not claim foreground physical keyboard, compositor-visible screenshots, target-device performance, formal authored action/avatar, natural swim presentation, vegetation admission, or final visual acceptance.

@@ -1,0 +1,51 @@
+Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4
+date_local=2026-09-14
+project=C:\Users\Administrator\Desktop\game\first01\game
+editor=Unity 6000.0.80f1
+editor_pid=53332
+pipeline_endpoint=127.0.0.1:7800
+
+[python]
+command=python -m unittest tools.tests.test_d19_r03_visual_builder tools.tests.test_vc_g01_runtime_probe tools.tests.test_vc_g01_runtime_input_probe -q
+result=Ran 65 tests in 0.026s; OK
+
+[unity_pipeline]
+command=run_tests mode=playmode filter=D16InputRouterPlayModeTests async=true
+result=11/11 passed; failed=0; skipped=0; inconclusive=0; duration=12.12s
+coverage=D16A03GameplayWASDDoesNotNavigateHudAndModalWASDDoesNotLeak; D16A03InitialHarborKeyboardCameraAndBoardingLoopWorks
+command=run_tests mode=editor filter=VcG01WorldLogicTests async=false
+result=14/14 passed; failed=0; skipped=0; inconclusive=0; duration=1.18s
+command=run_tests mode=playmode filter=D17ActionQualityPlayModeTests async=true
+result=16/16 passed; failed=0; skipped=0; inconclusive=0; duration=87.42s
+
+[q29_dependency]
+result=game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_R10_RESULT.json
+result_sha256=30BA9C1DC5EFC617646E24047BB22FAB662BFE28DA5F9E690FE589EB4C2C598A
+route=MainMenu NewGame/Confirm pointer entry; W; I modal W block; M/T repeat and Esc; E board/disembark/reboard; Y depart; sailing M reject; ship W/A/S/D; Esc pause/resume
+runtime_error_entries=0
+player_strict_error_count=0
+clean_close=true
+
+[sailing_semantics]
+source=game/Assets/Scripts/Systems/D2/SailingSystem.cs
+contract=Throttle<=0 means stop/decelerate; D2 does not allow reverse
+review=ship S keeping position after a preceding W is designed braking behavior, not an input conflict
+
+[console]
+editor_status=ready
+play_mode=stopped
+error_entries=0
+warning_entries_returned=157
+warning_dropped=false
+warning_boundary=known D27/D2 fallback/readiness/animation warnings plus expected disembark-rejection warnings
+cleanup=unity command clear_console; cleared=true
+
+[final_state]
+Q30=PARTIAL
+VC-G01=IN_PROGRESS
+VC-G02=LOCKED
+VC-G03=LOCKED
+D31-P04=PARTIAL
+D31-S05=PARTIAL
+D31-G06=PARTIAL
+next=Q31 final native Player visual gate; no final visual or foreground physical input PASS claimed
