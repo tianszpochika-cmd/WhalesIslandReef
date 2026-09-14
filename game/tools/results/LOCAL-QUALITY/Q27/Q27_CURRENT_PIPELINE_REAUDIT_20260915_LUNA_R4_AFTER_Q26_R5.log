@@ -1,0 +1,52 @@
+Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5
+captured_at_local=2026-09-15T02:35:50+08:00
+source_head=00554ed52f137906beaeb88fdd39fbb87a70523a
+branch=agent/publish-project-changes-20260813
+unity_version=6000.0.80f1
+pipeline_endpoint=127.0.0.1:7800
+pipeline_editor_pid=63572
+
+[command]
+unity command run_tests --project-path game --mode editmode --filter D16PerformanceBudgetTests --filter_type testName --async_tests true --timeout 180 --format json
+[result]
+status=completed duration=0.03 total=6 passed=6 failed=0 skipped=0 inconclusive=0
+
+[command]
+unity command run_tests --project-path game --mode playmode --filter D16A01RuntimePerformanceWindowSamplesContinuously --filter_type testName --async_tests true --timeout 180 --format json
+[result]
+status=completed duration=63.69 total=1 passed=1 failed=0 skipped=0 inconclusive=0 test_duration=63.5862239
+
+[report]
+path=tools/results/d16_a01_performance_window_report.json
+scene=InitialHarbor
+graphics_device=Null Device
+graphics_device_type=Null
+window_seconds=60.27712631225586
+sample_count=162
+average_fps=30.917356491088868
+min_fps=0.839942216873169
+average_frame_ms=157.7773895263672
+longest_frame_ms=1190.55810546875
+long_frame_count_over_50ms=84
+average_main_thread_ms=16.41341781616211
+gpu_sample_available=false
+performance_probe_active=true
+performance_probe_owned_by_controller=true
+performance_probe_host=D16WorldPerformanceController
+budget_satisfied=true
+passed=true
+
+[console]
+post_run_query_level=warn
+returned_at_or_above_warning=192
+errors=0
+warnings=192
+dropped=false
+warning_families=D27_presentation_wait:96;D2_procedural_player_fallback:32;D2_unverified_ph_crew_male_skin:32;D2_absolute_euler_animator_fallback:32
+after_capture=clear_console issued; Editor ready/stopped
+
+[boundary]
+Q27=PARTIAL
+This is a connected headless Editor diagnostic. It does not prove target-device/GPU performance, compositor-visible smoothness, native Win32 keyboard focus, screenshots, final visual quality, formal Avatar/action assets, or VC-G01.
+No production code/configuration was changed.
+next=Q28_CURRENT_PIPELINE_REAUDIT

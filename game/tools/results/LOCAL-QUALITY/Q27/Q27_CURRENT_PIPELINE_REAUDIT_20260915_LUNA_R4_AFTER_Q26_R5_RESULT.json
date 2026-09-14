@@ -1,0 +1,115 @@
+{
+  "task_id": "Q27",
+  "run_id": "Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5",
+  "status": "PARTIAL",
+  "scope": "Current-source D16 budget contract and 60-second headless runtime probe through the connected Unity Pipeline Editor after Q26 R5; no native Player or target-device performance claim.",
+  "captured_at_local": "2026-09-15T02:35:50+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q26"],
+  "source_head": "00554ed52f137906beaeb88fdd39fbb87a70523a",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Q27 current-source performance revalidation after Q26 R5. No D16 production optimization was inferred from Null Device metrics."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_latest_seq": 8920,
+    "console_screened_after_run": {
+      "entries_at_or_above_warning": 192,
+      "errors": 0,
+      "warnings": 192,
+      "dropped": false,
+      "warning_families": {
+        "D27_presentation_wait": 96,
+        "D2_procedural_player_fallback": 32,
+        "D2_unverified_ph_crew_male_skin": 32,
+        "D2_absolute_euler_animator_fallback": 32
+      }
+    },
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D16PerformanceBudgetTests.cs": "CF60FBD8B423A064FE832EC4FC2566DE1931F2C9A0BB725D8156C4838954BE79",
+    "game/Assets/Tests/PlayMode/D16RuntimeAcceptanceTests.cs": "5FF95AB9AA3700084FECF27234DC85772113A2130C31F1827119791D0A7A5606",
+    "game/Assets/Scripts/Gameplay/D16/D16WorldPerformanceController.cs": "159EE4E08F681CB5F37192C0E580FD2CF350E6A5221B2F481C951D5B2D1C3968",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "tools/results/d16_a01_performance_window_report.json": "4609BC2C48EAFE68ECE49B789D523AB6BF3DCD701F72F7C122EC832898D34AFD"
+  },
+  "checks": [
+    {
+      "name": "d16_budget_contract",
+      "command": "unity command run_tests --project-path game --mode editmode --filter D16PerformanceBudgetTests --filter_type testName --async_tests true --timeout 180 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "pipeline_duration_seconds": 0.03
+      }
+    },
+    {
+      "name": "d16_runtime_performance_window",
+      "command": "unity command run_tests --project-path game --mode playmode --filter D16A01RuntimePerformanceWindowSamplesContinuously --filter_type testName --async_tests true --timeout 180 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "pipeline_duration_seconds": 63.69,
+        "test_duration_seconds": 63.5862239
+      },
+      "report": "tools/results/d16_a01_performance_window_report.json"
+    },
+    {
+      "name": "headless_performance_probe",
+      "result": "DIAGNOSTIC_RISK_ONLY",
+      "metrics": {
+        "scene": "InitialHarbor",
+        "graphics_device": "Null Device",
+        "graphics_device_type": "Null",
+        "gpu_sample_available": false,
+        "window_seconds": 60.27712631225586,
+        "required_sample_count": 100,
+        "sample_count": 162,
+        "average_fps": 30.917356491088868,
+        "min_fps": 0.839942216873169,
+        "average_frame_ms": 157.7773895263672,
+        "longest_frame_ms": 1190.55810546875,
+        "longest_frame_at_seconds": 0.6120796203613281,
+        "long_frame_count_over_50ms": 84,
+        "average_main_thread_ms": 16.41341781616211,
+        "gpu_time_ms": -1.0,
+        "scene_load_seconds": 2.4893932342529297,
+        "runtime_bootstrap_ready_seconds": 0.0009622573852539063,
+        "d5_runtime_ready_seconds": 0.7781248092651367,
+        "d5_runtime_build_elapsed_ms": 1354.5989990234375,
+        "d2_runtime_build_elapsed_ms": 762.5140991210938,
+        "performance_probe_active": true,
+        "performance_probe_owned_by_controller": true,
+        "performance_probe_host": "D16WorldPerformanceController",
+        "budget_satisfied": true,
+        "passed": true
+      }
+    },
+    {
+      "name": "console_boundary",
+      "result": "RECORDED_NOT_BLOCKING_THIS_CARD",
+      "evidence": "Post-run console query returned 192 warning entries, Error=0, dropped=false. Warning families were D27 presentation readiness, D2 procedural Player fallback, unverified ph_crew_male skin and absolute-Euler animator fallback. Console was cleared only after capture."
+    }
+  ],
+  "decision": "No D16 production optimization is justified by this connected headless run. Null Device metrics, unavailable GPU timing and the long-frame window are diagnostic risks only.",
+  "status_boundary": "Q27 remains PARTIAL. The D16 budget contract and headless probe executed successfully, but GPU timing, target-device performance, smoothness acceptance, warning debt and native Player visual/input acceptance remain open.",
+  "next_task": "Q28_CURRENT_PIPELINE_REAUDIT"
+}

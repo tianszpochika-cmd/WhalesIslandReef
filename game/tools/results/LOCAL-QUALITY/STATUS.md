@@ -1882,3 +1882,11 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - Console=`Error 0 / Warning 98`；warning families=`D27 readiness 48`、`D2 procedural fallback 17`、`D2 unverified ph_crew_male 16`、`D2 absolute-Euler animator 17`。Info 查询达到 `1000` 条 API 窗口并抽取 Q26 marker；取证后 Console 已清空。Editor=`ready/stopped`；Runtime Pipeline=`enableInBuilds=false / port=0`。
 - Q26 有界 gameplay/owner/collision/Input System 注入/procedural fallback 证据通过，但不等于 native Player 前台 Win32 输入、最终视觉、正式 Avatar/action、自然 IK/泳姿、全镜头植被/穿模、音频或性能通过；Q26 保持 `PARTIAL`。下一张执行卡为 `Q27_CURRENT_PIPELINE_REAUDIT`。
 - 结果/日志/交接：[Q26 R5 result](Q26/Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5_RESULT.json)、[Q26 R5 log](Q26/Q26_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R5.log)、[Q26 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q26/Q26.md)。
+
+## 2026-09-15 Q27 current-source performance revalidation R4 after Q26 R5
+
+- Q27=`PARTIAL`：`D16PerformanceBudgetTests`=`6/6 PASS`（Pipeline `0.03s`）；`D16A01RuntimePerformanceWindowSamplesContinuously`=`1/1 PASS`（Pipeline `63.69s`，test `63.5862239s`）。
+- Null Device report：`60.2771263s`、`162` samples、average `30.9174 FPS`、minimum `0.8399 FPS`、average frame `157.7774ms`、longest `1190.5581ms`、`84` frames over `50ms`、average main thread `16.4134ms`、GPU unavailable；probe owner and budget contract true.
+- Console after capture: Error=`0`、Warning=`192`、dropped=`false`; families=`D27 readiness 96 / D2 procedural fallback 32 / D2 unverified ph_crew_male 32 / D2 absolute-Euler 32`; Console cleared afterward, Editor=`ready/stopped`.
+- No D16 production code/configuration changed. Q27 remains `PARTIAL`: Null Device metrics are diagnostic risk only, not target-device/GPU/smoothness/native Player visual or input PASS. Next=`Q28_CURRENT_PIPELINE_REAUDIT`.
+- Result/log/handoff: `Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5_RESULT.json`, `Q27_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R4_AFTER_Q26_R5.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q27/Q27.md`.
