@@ -1,0 +1,111 @@
+{
+  "task_id": "Q25",
+  "run_id": "Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA",
+  "status": "PARTIAL",
+  "status_scope": "current-source D30/D23 first-voyage projection and bounded InitialHarbor route",
+  "captured_at_local": "2026-09-15T02:00:33+08:00",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q24"],
+  "source_head": "0d64fbae6a46459bb11e92c8d7c357091dc948c4",
+  "branch": "agent/publish-project-changes-20260813",
+  "implementation": {
+    "owner": "D30 visual loop projection, D23 owner-first voyage support and bounded InitialHarbor route tests",
+    "product_code_changed": false,
+    "configuration_changed": false,
+    "changed_files": [],
+    "note": "Q25 was revalidated against the current source without modifying Systems, Gameplay product code, Prefabs, scenes or runtime configuration."
+  },
+  "environment": {
+    "unity_version": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_editor_pid": 63572,
+    "pipeline_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "console_screened_after_playmode": {
+      "errors": 0,
+      "warnings": 12,
+      "warning_families": {
+        "D27_presentation_not_ready": 6,
+        "D2_unverified_ph_crew_male": 2,
+        "D2_procedural_low_model_fallback": 2,
+        "D2_generated_crew_animator_absolute_euler": 2
+      }
+    },
+    "runtime_logs": {
+      "audio_fallback": true,
+      "performance_approval": "pending",
+      "q25_playmode_marker": "not_observed_in_current_console_tail; test_status is authoritative"
+    },
+    "console_after_capture": "cleared"
+  },
+  "source_hashes_current": {
+    "game/Assets/Tests/EditMode/D19Q25FirstVoyageLoopDiagnosticTests.cs": "97A4C93712C247EDAD1F084898F49307C94493134161889055AAB81726D053D0",
+    "game/Assets/Tests/EditMode/Save.Tests.asmdef": "8B00679FECD7AA832212B98BD48A971747D68BD287601BE5196C4802F4AD2D65",
+    "game/Assets/Scripts/Gameplay/D30/Logic/D30VisualStagePolicy.cs": "6BC203AF8C1D4AC8FEA148E341545634F252CDD7CC357C99C3EF80828366FCE9",
+    "game/Assets/Tests/EditMode/D23/D23FullLoopScenarioSupport.cs": "DBADD53ED12E70F94B85D69762201FB5B87630B59C7ABA0CF51F5D766179D552",
+    "game/Assets/Tests/PlayMode/D19Route/D19R02A03RoutePlayModeTests.cs": "23EDCE9C62EC588204101CEFEB4C8D68C0C24822E5F690E2DECC5755BC4FEFB8"
+  },
+  "checks": [
+    {
+      "name": "d30_d23_first_voyage_editmode",
+      "command": "unity command run_tests --project-path game --mode editmode --filter Save.Tests.D19Q25FirstVoyageLoopDiagnosticTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "pipeline_duration_seconds": 0.5,
+        "cases": {
+          "D23OwnerFirstVoyageLoop_TradesSailsReturnsAndRestoresSaveProjection": "0.4852662s PASS",
+          "D30FirstVoyageProjection_FailureAndDuplicateNeverAdvanceOrAward": "0.0022754s PASS"
+        }
+      },
+      "runtime_markers": [
+        "[Q25/D30] projection_sequence=preparation>market>tavern>shipyard>boarded>departed>returned, failure_stable=True, duplicate_stable=True",
+        "[Q25/D23] first_voyage_loop=true, ticks=40, arrived=True, returned=True, d19_facts=172, d21_events=163, save_restored=true, duplicate_owner_checks=true"
+      ]
+    },
+    {
+      "name": "initial_harbor_route_playmode",
+      "command": "unity command run_tests --project-path game --mode playmode --filter WhalesIslandReef.Tests.D19Route.D19R02A03RoutePlayModeTests --filter_type testName --async_tests true --timeout 120 --format json",
+      "result": "PASS_WITHIN_SCOPE",
+      "completed": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0,
+        "pipeline_duration_seconds": 5.64,
+        "cases": {
+          "DepartureAdvanceAndReturnUseSystemOwnedState": "3.4442834s PASS",
+          "TradeCloseAndSavePublishActionableRouteEvidence": "2.1014472s PASS"
+        }
+      },
+      "runtime_boundary": "The current console tail did not contain a dedicated Q25 PlayMode marker; completed test_status and the two named case results are the authoritative route evidence."
+    },
+    {
+      "name": "native_player_and_visual_boundary",
+      "result": "NOT_PROVEN",
+      "evidence": "The tested owner route does not prove foreground native Player WASD/E/I/M/T/Esc input, action animation, swimming, camera framing, boarding-control feel, vegetation grounding, sound playback, performance approval or final visual quality."
+    }
+  ],
+  "observed_metrics": {
+    "projection_sequence": "preparation>market>tavern>shipyard>boarded>departed>returned",
+    "failure_stable": true,
+    "duplicate_stable": true,
+    "d23_ticks": 40,
+    "arrived": true,
+    "returned": true,
+    "d19_facts": 172,
+    "d21_events": 163,
+    "save_restored": true,
+    "duplicate_owner_checks": true,
+    "initial_harbor_route_cases": 2,
+    "initial_harbor_route_passed": 2
+  },
+  "status_boundary": "Q25 remains PARTIAL. Current-source D30/D23 owner projection and two bounded InitialHarbor route cases pass, but this is not complete human play or native Player/visual/performance acceptance. Q03 remains BLOCKED_ASSET; Q20 remains PARTIAL/BLOCKED_ASSET; VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED; D31-P04/D31-S05/D31-G06 remain PARTIAL.",
+  "next_task": "Q26_CURRENT_PIPELINE_REAUDIT"
+}

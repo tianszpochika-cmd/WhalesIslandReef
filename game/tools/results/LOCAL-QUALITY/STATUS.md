@@ -1865,3 +1865,11 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - 进行中：无活动执行进程；项目开发在 Q24 安全点临时暂停。
 - 阻塞/未完成：Q18/Q20—Q24 的完整 Player/视觉边界、Q25—Q35、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、D31-P04/S05/G06=`PARTIAL`。
 - 下一步：恢复后执行 `Q25_CURRENT_PIPELINE_REAUDIT`，继续首航/循环集成诊断；不得将 Q24 存档 PASS 扩大为完整游戏 PASS。
+
+## 2026-09-15 Q25 current-source first-voyage/loop revalidation
+
+- Q25=`PARTIAL`：D30/D23 `D19Q25FirstVoyageLoopDiagnosticTests` EditMode=`2/2 PASS`（Pipeline `0.50s`），InitialHarbor `D19R02A03RoutePlayModeTests` PlayMode=`2/2 PASS`（Pipeline `5.64s`）。
+- 当前 marker：D30 `preparation>market>tavern>shipyard>boarded>departed>returned`、failure/duplicate stable；D23 `40` ticks、arrived/returned、`d19_facts=172`、`d21_events=163`、save restored、duplicate owner checks；PlayMode 两个路线用例均通过。
+- PlayMode Console=`Error 0 / Warning 12`，警告家族为 D27 readiness `6`、D2 未验证 `ph_crew_male` `2`、程序化低模回退 `2`、generated D6CrewAnimator 绝对 Euler `2`；D7 audio=`fallback=True`，D31 runtime performance approval=`pending`。Editor=`ready/stopped`，Console 已清空。
+- Q25 只证明 D30/D23 owner 路线和有限 InitialHarbor 路线，不证明 native Player、完整人工游玩、动作/游泳/上船视觉、植被、音效、性能或最终视觉。下一步 Q26 当前源码测量基线。
+- 结果/日志/交接：[Q25 result](Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q25 log](Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA.log)、[Q25 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)。

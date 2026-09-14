@@ -2118,3 +2118,11 @@ Q23 仍为 `PARTIAL`：正式场景集成/重开合同不等于 native Player �
 Q24 继续为 `PARTIAL`，因为 `PlayerState` 没有独立游泳状态/姿态字段，且上述证据不覆盖原生 Player 前台输入、动作、游泳、船控/镜头、树木接地、音效、性能、完整首航或最终视觉。现在把 Q24 标记为**临时安全暂停点**：没有活动测试进程，Q25 是明确且可独立恢复的下一张卡。暂停不等于产品完成，不提前升级 Q25—Q35、VC-G01、VC-G02、VC-G03 或 D31 状态。
 
 权威交接：[临时安全暂停交接](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915.md)、[Q24 current result](../game/tools/results/LOCAL-QUALITY/Q24/Q24_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q24 handoff](design/common/handoffs/LOCAL-QUALITY/Q24/Q24.md)。恢复时从 `Q25_CURRENT_PIPELINE_REAUDIT` 开始，不继承旧 Player/RERUN 的视觉或输入结论。
+
+## 2026-09-15 Q25 current-source first-voyage/loop revalidation
+
+Q25 已在当前 HEAD `0d64fbae6a46459bb11e92c8d7c357091dc948c4`、Unity `6000.0.80f1`、Pipeline Editor PID=`63572` 上完成两段当前源回归：D30/D23 `D19Q25FirstVoyageLoopDiagnosticTests` EditMode=`2/2 PASS`（Pipeline `0.50s`），InitialHarbor `D19R02A03RoutePlayModeTests` PlayMode=`2/2 PASS`（Pipeline `5.64s`）。实际 D30/D23 marker 覆盖七阶段投影、失败/重复稳定、40 tick 首航、到达、返港、`d19_facts=172`、`d21_events=163`、保存恢复和重复 owner 检查；两个 PlayMode 用例覆盖系统所有权出航/推进/返港和交易关闭/保存路线。
+
+PlayMode 运行证据同时记录 Error=`0`、Warning=`12`（D27 readiness `6`、D2 未验证 `ph_crew_male` `2`、程序化低模回退 `2`、generated D6CrewAnimator 绝对 Euler `2`），D7 音频 `fallback=True`，D31 runtime performance approval=`pending`；Editor 最终 `ready/stopped`，取证后 Console 已清空。Q25 继续 `PARTIAL`，不把 owner 路线扩大为原生 Player、完整人工游玩、动作/游泳/上船视觉、植被、音效、性能或最终视觉通过。
+
+权威证据：[Q25 current result](../game/tools/results/LOCAL-QUALITY/Q25/Q25_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_RESULT.json)、[Q25 handoff](design/common/handoffs/LOCAL-QUALITY/Q25/Q25.md)。下一张执行卡为 `Q26_CURRENT_PIPELINE_REAUDIT`，先建立当前源码真实帧/性能测量与缺陷基线。
