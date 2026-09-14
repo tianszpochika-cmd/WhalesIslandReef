@@ -1,0 +1,41 @@
+Q29 R11 safe-pause capture — 2026-09-15 Asia/Shanghai
+
+Scope: current HEAD 3dbde02fe12d2e78d386ce52054303ff1a916e46; hidden Windows Player entry smoke only.
+No Computer Use, no foreground activation, no physical keyboard, no screenshots.
+
+[build dry-run]
+unity command build --project-path game --target StandaloneWindows64 --outputPath tools/results/LOCAL-QUALITY/Q29/Q29_RUNTIME_PIPELINE_QA_R11.exe --scenes [MainMenu,Bootstrap,InitialHarbor] --options [Development,DetailedBuildReport] --dry_run
+valid=true; validationErrors=[]
+
+[build]
+build_id=build_fb5d1ad58690
+result=Succeeded; target=StandaloneWindows64; totalErrors=0; totalWarnings=7; totalSizeBytes=243870645; buildTimeMs=34076
+warning_summary=7 obsolete FindObjectOfType warnings
+exe_sha256=98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81
+assembly_sha256=0CF0586F35096D25FB38C5E53FC0DEC27FC3D261384C4B91C2B63AC42477076F
+
+[runtime entry]
+Start-Process -WindowStyle Hidden Q29_RUNTIME_PIPELINE_QA_R11.exe
+pid=2724; runtime_port=7907; screen=1600x900; scene_before=MainMenu
+BtnNewGame=(800.0,516.7); pointer move/down/external 350ms wait/up opened New Game panel
+BtnConfirm=(716.7,358.3); pointer move/down/external 350ms wait/up loaded InitialHarbor buildIndex=2
+runtime_status_after_entry=WindowsPlayer/Unity 6000.0.80f1/InitialHarbor/TimeScale=1/TargetFrameRate=60
+diagnostic_only_fps=38.7194862; average_frame_ms=25.82679; max_frame_ms=777.0617; gpu_ms=0
+console --level error --tail 50: entries=[]; dropped=false
+
+[safe close]
+unity command --runtime-path game/tools/results/LOCAL-QUALITY/Q29 quit --format json
+quit_result=success; exit_code=0 scheduled
+after_wait=PID 2724 absent; .unity-pipeline-runtime-port absent
+Player.log bytes=116982; sha256=8279298995a843b60b9f3e11adf1964b5dfa3b4e659e084e8af3100214cd6aa4; strict ERROR|EXCEPTION|CRASH|FATAL=0
+
+[restore]
+set_runtime_pipeline_settings dry_run: enableInBuilds True -> False; port 7907 -> 0
+set_runtime_pipeline_settings confirm: enableInBuilds=false; port=0; requestTimeoutMs=30000; auditLogging=true; autoStart=true; maxWorkItemsPerFrame=10
+set_build_settings dry_run: developmentBuild True -> False; allowDebugging/connectWithProfiler unchanged false
+set_build_settings confirm: developmentBuild=false
+get_build_settings: StandaloneWindows64; developmentBuild=false; allowDebugging=false; connectWithProfiler=false; il2CppCodeGeneration=OptimizeSpeed
+get_runtime_pipeline_settings: enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10
+editor_status: ready; compiling=false; domainReloadInProgress=false; playMode=stopped
+
+Decision: intentional pause after a real MainMenu -> InitialHarbor entry. Q29 R10 remains the latest completed full hidden interaction route; Q29 parent and VC-G01 are not upgraded.

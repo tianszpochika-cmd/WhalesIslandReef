@@ -1,6 +1,6 @@
 # LOCAL-QUALITY 看板
 
-更新时间：2026-09-12
+更新时间：2026-09-15
 
 | 任务 | 状态 | 结论/证据 | 下一步 |
 |---|---|---|---|
@@ -1899,3 +1899,10 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - D17 后 Console=`Error 0 / Warning 187 / dropped=false`，families=`Pipeline disabled 1 / D27 readiness 93 / D2 procedural fallback 31 / D2 unverified ph_crew_male 31 / D2 absolute-Euler 31`；Editor=`ready/stopped`，取证后清空。
 - R13 只证明当前候选包身份、BuildReport 和 D17 root guard；不证明 Player 前台、物理输入、截图、GPU/目标设备性能、正式动作或 VC-G01。下一步=`Q29_CURRENT_PLAYER_ROUTE_REAUDIT`。
 - Result/log/handoff: `Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4_RESULT.json`, `Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4.log`, `docs/game/design/common/handoffs/LOCAL-QUALITY/Q28/Q28.md`.
+
+## 2026-09-15 Q29 R11 entry smoke and temporary safe pause
+
+- Q29 R11 从当前 HEAD `3dbde02f` 构建 `build_fb5d1ad58690`，dry-run 有效，BuildReport=`Succeeded / 0 errors / 7 warnings / 243870645 bytes / 34076ms`；hidden Player 通过真实 Pipeline pointer 从 MainMenu 进入 `InitialHarbor` build index=`2`。
+- 本轮按用户暂停要求在入口后停止，没有把未执行的 W/A/S/D、E、I、M、T、Esc 或完整业务路线记为 PASS；Q29 R10 仍是最近一次完成的 hidden Player 全交互证据。
+- `quit` 后 PID=`2724` 和 descriptor 均消失；Runtime error=`0`、Player 严格错误词=`0`；最终 Runtime=`enableInBuilds=false / port=0`、Build=`developmentBuild=false`、Editor=`ready/stopped`。
+- Q29=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。暂停交接：[PAUSE_20260915_Q29](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)；结果/日志：`Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json` / `Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log`。

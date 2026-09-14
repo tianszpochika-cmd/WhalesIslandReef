@@ -2152,3 +2152,16 @@ Q28 已在当前 HEAD `762d351ab79bd165efff8d18227f62dfba2e133f` 通过 Unity Pi
 当前源 D17A08=`1/1 PASS`（Pipeline `14.02s`、测试 `13.9233925s`），10 周期 rootAngle=`64.00°`、rootOffsetY=`0.012..0.034`、手/头对齐=`0.992..1.000`；这是根安全守卫，不是正式动作/Avatar 或最终视觉通过。D17 后 Console=`Error 0 / Warning 187 / dropped=false`，包含 Pipeline disabled、D27 readiness 和 D2 procedural/unverified/absolute-Euler fallback；取证后清空，Editor=`ready/stopped`。
 
 Q28 继续 `PARTIAL`：R13 只关闭当前候选包的 BuildReport/身份边界和 D17 root guard，不关闭 Player 前台窗口、物理键盘、输入路线、截图、GPU/目标设备性能、正式动作资源或 VC-G01。下一步为 `Q29_CURRENT_PLAYER_ROUTE_REAUDIT`。结果：[Q28 R13](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4_RESULT.json)；日志：[Q28 R13 log](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4.log)；交接：[Q28](design/common/handoffs/LOCAL-QUALITY/Q28/Q28.md)。
+
+## 2026-09-15 Q29 current-source Pipeline R11 entry smoke and temporary safe pause
+
+按用户要求在当前源码建立安全暂停点。本轮没有修改生产代码、测试代码、Prefab、场景或持久运行时配置；只临时打开 Pipeline Player QA 设置构建并运行隐藏 Player，结束后通过 `dry_run + confirm=true` 恢复默认值。
+
+- 当前 HEAD=`3dbde02fe12d2e78d386ce52054303ff1a916e46`；dry-run=`valid=true / validationErrors=[]`；`build_fb5d1ad58690`=`StandaloneWindows64 / Succeeded / 0 errors / 7 warnings / 243870645 bytes / 34076ms`。7 条 warning 为 obsolete `FindObjectOfType`，没有构建错误。
+- R11 Player 使用 Runtime Pipeline `127.0.0.1:7907` 隐藏启动，分辨率 `1600x900`。真实 pointer move/down/外部等待/up 打开 MainMenu New Game，Confirm 后加载 `InitialHarbor` build index=`2`。随后按暂停要求停止，没有将未执行的 W/A/S/D、E、I、M、T、Esc 和完整业务重复/拒绝路径记为 PASS。
+- R11 runtime error console=`0`；Player.log 严格 `ERROR|EXCEPTION|CRASH|FATAL=0`；`quit` 后 PID `2724` 与 descriptor 均消失。R10 仍是 Q29 最近一次完成的 hidden Player 全交互路线，本轮 R11 是入口 smoke/安全收口记录，不替代 R10。
+- 最终回读：Runtime `enableInBuilds=false / port=0`；Build `developmentBuild=false / allowDebugging=false / connectWithProfiler=false`；Editor=`ready/stopped`。不清理已有未跟踪历史证据与构建产物。
+
+暂停交接：[PAUSE_20260915_Q29](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)；结果：[Q29 R11 paused result](../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；日志：[Q29 R11 paused log](../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log)。
+
+暂停状态：Q29=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。恢复入口为 Q30 当前源码独立审查，再进入 Q31 最终 native Player visual gate；formal action/avatar、natural swim/helm、植被接地/穿模、前台物理键盘、目标设备性能和人工最终视觉仍开放。

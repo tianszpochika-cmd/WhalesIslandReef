@@ -1257,3 +1257,12 @@ I/M 的早期直接 InitialHarbor 探针以及 owner 未就绪 T 被单独登记
 同一可见 Player 通过 MainMenu NewGame/Confirm 进入 `InitialHarbor`，完成 W、E 登船、E 下船以及 W/S 路径截图；runtime error console=`0`、Player 严格错误词=`0`、clean close，Runtime Pipeline 与 Development Build 配置已恢复关闭。InitialHarbor/Board 帧确实是真实可见画面，但仍为低模/程序化表现；本轮 W/S 路径没有视觉证明进入开放水域，不能据此宣称游泳通过。
 
 安全暂停点：`Q31=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。正式动作/Avatar、自然 swim/helm、植被全镜头接地与穿模、前台物理键盘、目标设备性能和人工最终视觉验收继续开放。恢复时从 Q31 R5 选择单一 visual owner，先写回归再修改，不跨依赖解锁后续门禁。权威结果：[Q31 R5](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5_RESULT.json)；日志：[R5](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_UI_FIX_AND_VISUAL_GATE_20260914_R5.log)；暂停交接：[PAUSE_20260914_Q31_R5](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260914_Q31_R5.md)。
+
+## 2026-09-15 Q29 R11 入口 smoke 与临时暂停
+
+用户要求在当前开发阶段找安全收口点并临时暂停。本轮使用当前 HEAD 构建 Pipeline-enabled hidden Player，真实通过 MainMenu NewGame/Confirm pointer 路径进入 `InitialHarbor`，随后主动停止；没有把未执行的完整输入路线或画面结论记为 PASS。
+
+- R11 结果：[paused result](../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；日志：[paused log](../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log)；交接：[PAUSE_20260915_Q29](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)。
+- 安全不变量：Player PID/descriptor 已消失；Editor=`ready/stopped`；Runtime Pipeline=`enableInBuilds=false / port=0`；Development Build、Debugging、Profiler 连接均关闭。
+- 状态保持：`Q29=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。formal action/avatar、natural swim/helm、植被接地/穿模、前台物理输入、目标设备性能和最终人工视觉仍未关闭。
+- 恢复入口：Q30 当前源码独立审查 → Q31 最终 native Player visual gate；已有 Q29 R10 hidden Player 全交互结果保持为独立证据。

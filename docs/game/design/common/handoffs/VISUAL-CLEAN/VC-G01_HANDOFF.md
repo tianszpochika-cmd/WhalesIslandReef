@@ -1233,3 +1233,13 @@ Q03-A23 之后的当前源码复核已确认：默认 `InitialHarbor` 可见呈�
 相关回归：D2=`8/8 PASS`、D17=`16/16 PASS`、Q03Formal=`5/5 PASS`、Q03D20Formal=`2/2 PASS`、recompile errors=`0`。当前 exact Player 为 `build_099a228c638b`，EXE SHA=`D5CB971878002AF0FADCC7CFD86C4368691D7596B3174C99449A14B26896A6BE`。证据：[Q00 exact rebind](../../../../../../game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_SOURCE_REBIND_Q03A23_20260914_R2_RESULT.json)、[Q03 current route](../../../../../../game/tools/results/LOCAL-QUALITY/Q03/Q03_CURRENT_DEFAULT_HUMANOID_ROUTE_20260914_LUNA_RESULT.json)。
 
 VC-G01 仍为 `IN_PROGRESS`：没有把 headless/hidden Pipeline 结果当作 compositor-visible 画面、前台物理键盘、自然泳姿/握舵、穿模/植被接地、目标设备性能或人工视觉 PASS。下一步是 Q04/Q05 的表现 owner 复核，之后回到 Q31 的最终 native Player gate。
+
+## 2026-09-15 Q29 R11 入口 smoke 与临时暂停
+
+按用户要求在当前源码建立安全暂停点。R11 使用 Unity Pipeline 临时构建 hidden Windows Player，真实完成 MainMenu NewGame/Confirm pointer entry 并加载 `InitialHarbor`，随后主动停止；没有把未执行的完整交互路线或截图记为 PASS。Q29 R10 仍是最近一次已完成的 hidden Player 全交互证据。
+
+- `build_fb5d1ad58690`=`Succeeded / 0 errors / 7 warnings`；runtime error console=`0`；Player 严格错误词=`0`；PID `2724` 与 descriptor 已在 `quit` 后消失。
+- 最终恢复并回读：Runtime Pipeline `enableInBuilds=false / port=0`，Build `developmentBuild=false / allowDebugging=false / connectWithProfiler=false`，Editor=`ready/stopped`。
+- 本轮结果：[Q29 R11 paused result](../../../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；暂停交接：[PAUSE_20260915_Q29](../LOCAL-QUALITY/PAUSE_20260915_Q29.md)。
+
+门禁不升级：`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`Q29=PARTIAL`、`D31-P04/S05/G06=PARTIAL`。正式动作/Avatar、自然 swim/helm、植被接地/穿模、前台物理输入、目标设备性能和人工最终视觉仍未收口。恢复入口为 Q30 当前源码独立审查，再进入 Q31 最终 native Player visual gate。

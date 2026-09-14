@@ -390,3 +390,9 @@ Q27 在 Q26 R5 后重新绑定到当前 HEAD，D16 预算 EditMode=`6/6 PASS`，
 ## 2026-09-15 Q28 current-source candidate R13 build and D17 guard
 
 Q28 在 Q27 R4 后生成当前源码 R13：`build_73c3a973e2d8` 为 `StandaloneWindows64 / Succeeded / 0 errors / 1 warning`，唯一 warning 是 `enableInBuilds=false`，候选不带 Player Runtime Pipeline。D17A08=`1/1 PASS`，10 周期 rootAngle=`64°`、rootOffsetY=`0.012..0.034`、手头对齐=`0.992..1.000`；Q28 继续 `PARTIAL`，因为本轮未启动 Player、未发物理输入、未采集 compositor 截图或测量 GPU/目标设备性能。结果：[Q28 R13](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4_RESULT.json)；日志：[Q28 R13 log](../game/tools/results/LOCAL-QUALITY/Q28/Q28_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R13_AFTER_Q27_R4.log)；交接：[Q28](game/design/common/handoffs/LOCAL-QUALITY/Q28/Q28.md)。下一步 Q29 当前 Player 路线复核。
+
+## 2026-09-15 Q29 R11 current-source entry smoke and temporary safe pause
+
+Q29 R11 从当前 HEAD 构建 Pipeline-enabled hidden Windows Player，dry-run 有效，`build_fb5d1ad58690`=`StandaloneWindows64 / Succeeded / 0 errors / 7 warnings / 243870645 bytes / 34076ms`。通过真实 Pipeline pointer 完成 MainMenu NewGame/Confirm，进入 `InitialHarbor` build index=`2` 后按用户要求暂停；未把未执行的完整输入路线或画面结论记为 PASS。`quit` 后 PID/descriptor 消失，Runtime error=`0`，Player 严格错误词=`0`，临时 Runtime/Build 设置已恢复，Editor=`ready/stopped`。
+
+Q29 父任务继续 `PARTIAL`、VC-G01 继续 `IN_PROGRESS`、VC-G02/VC-G03 继续 `LOCKED`、D31-P04/S05/G06 继续 `PARTIAL`。暂停交接：[PAUSE_20260915_Q29](game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)；结果：[Q29 R11 paused result](../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；日志：[Q29 R11 paused log](../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log)。恢复入口为 Q30 当前源码独立审查，再进入 Q31 最终 native Player visual gate。
