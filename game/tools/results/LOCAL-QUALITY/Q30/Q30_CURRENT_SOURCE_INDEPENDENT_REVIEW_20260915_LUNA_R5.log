@@ -1,0 +1,47 @@
+Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5
+date=2026-09-15 Asia/Shanghai
+source_head=94950f36c0d5a3daf4ba719216808a0ae6d71be9
+branch=agent/publish-project-changes-20260813
+
+scope
+- Current-source owner regression after Q29 safe pause.
+- No Unity production source, Prefab, scene, test or persistent runtime/build setting changed.
+- Previous Q30 R4 was bound to 01024cae2823c26b2595a660e6dde5879870dfc8; this run was not reused as current-source evidence.
+
+commands_and_results
+- python -m unittest tools.tests.test_d19_r03_visual_builder tools.tests.test_vc_g01_runtime_probe tools.tests.test_vc_g01_runtime_input_probe -q
+  result=Ran 65 tests in 0.123s; OK
+- unity command run_tests --project-path game --mode playmode --filter D16InputRouterPlayModeTests --filter_type testName --async_tests true --timeout 180 --format json
+  result=total=11 passed=11 failed=0 skipped=0 inconclusive=0 duration=19.41s
+- unity command run_tests --project-path game --mode playmode --filter D17ActionQualityPlayModeTests --filter_type testName --async_tests true --timeout 240 --format json
+  result=total=16 passed=16 failed=0 skipped=0 inconclusive=0 duration=98.19s
+- unity command run_tests --project-path game --mode editmode --filter VcG01WorldLogicTests --filter_type testName --async_tests true --timeout 180 --format json
+  result=total=14 passed=14 failed=0 skipped=0 inconclusive=0 duration=0.19s
+
+editor_and_settings
+- editor_status=ready; compiling=false; domainReloadInProgress=false; playMode=stopped; Unity=6000.0.80f1
+- get_runtime_pipeline_settings=enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10
+- get_build_settings=StandaloneWindows64; developmentBuild=false; allowDebugging=false; connectWithProfiler=false; il2CppCodeGeneration=OptimizeSpeed
+- get_audio_settings=volume=1; rolloffScale=1; dopplerFactor=1
+- eval AudioSettings marker=sampleRate=48000; speaker=Stereo; dspBuffer=1024; realVoices=32; virtualVoices=512; driver=Stereo
+
+console_capture_before_cleanup
+- error query returned exactly one product/environment entry before any cleanup: seq=9057; timestamp=2026-09-14T23:57:41.4060967Z; FMOD failed to switch back to normal output; Error initializing output device (60)
+- warning query returned 160 entries; dropped=false
+- warning families: D27 presentation wait=72; D2 unverified ph_crew_male=24; D2 procedural player fallback=24; D2 absolute imported Euler animator fallback=24; D6 R03 building collider skip=4; expected D2 disembark rejection=2; Runtime Pipeline disabled in Player build=1; uncategorized=9
+- read-only Windows PnP checks saw Realtek(R) Audio, NVIDIA High Definition Audio and NVIDIA Virtual Audio Device in OK state; that does not establish successful Unity/FMOD normal output.
+
+cleanup_and_tool_noise
+- clear_console returned cleared=true.
+- After the primary evidence capture, two invalid CLI command names were issued while reading settings: pipeline and build_settings. Unity recorded these as ResolveCommand errors. They are tooling errors, not gameplay/runtime failures, and are excluded from the Q30 product error count.
+- No Player process or test remained active; Editor final state was ready/stopped.
+
+status
+- Q30=PARTIAL
+- VC-G01=IN_PROGRESS
+- VC-G02=LOCKED
+- VC-G03=LOCKED
+- D31-P04=PARTIAL
+- D31-S05=PARTIAL
+- D31-G06=PARTIAL
+- next=Q31 final native Player visual gate with explicit audio/compositor boundary

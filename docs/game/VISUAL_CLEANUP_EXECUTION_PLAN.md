@@ -1266,3 +1266,9 @@ I/M 的早期直接 InitialHarbor 探针以及 owner 未就绪 T 被单独登记
 - 安全不变量：Player PID/descriptor 已消失；Editor=`ready/stopped`；Runtime Pipeline=`enableInBuilds=false / port=0`；Development Build、Debugging、Profiler 连接均关闭。
 - 状态保持：`Q29=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。formal action/avatar、natural swim/helm、植被接地/穿模、前台物理输入、目标设备性能和最终人工视觉仍未关闭。
 - 恢复入口：Q30 当前源码独立审查 → Q31 最终 native Player visual gate；已有 Q29 R10 hidden Player 全交互结果保持为独立证据。
+
+## 2026-09-15 Q30 R5 current-source owner revalidation
+
+Q30 R5 已绑定当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9`。Python `65/65`、D16 输入 `11/11`、D17 动作质量 `16/16`、VcG01 世界逻辑 `14/14` 通过范围内回归；没有修改生产视觉代码。Editor 和 Runtime Pipeline 已回到安全状态。
+
+本轮必须保留的视觉/环境边界：FMOD 在 Editor 测试会话中真实报告 `Error initializing output device (60)`；Windows 音频设备枚举为 OK、AudioSettings 可读仍不等于播放成立。程序化低模、未验证 `ph_crew_male`、absolute-Euler fallback、D27 presentation wait 和正式植被准入仍解释当前用户可见缺陷，Q30 继续 `PARTIAL`，Q31 继续最终 native Player visual gate。结果与交接见 `game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json`、`docs/game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md`。

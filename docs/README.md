@@ -396,3 +396,9 @@ Q28 在 Q27 R4 后生成当前源码 R13：`build_73c3a973e2d8` 为 `StandaloneW
 Q29 R11 从当前 HEAD 构建 Pipeline-enabled hidden Windows Player，dry-run 有效，`build_fb5d1ad58690`=`StandaloneWindows64 / Succeeded / 0 errors / 7 warnings / 243870645 bytes / 34076ms`。通过真实 Pipeline pointer 完成 MainMenu NewGame/Confirm，进入 `InitialHarbor` build index=`2` 后按用户要求暂停；未把未执行的完整输入路线或画面结论记为 PASS。`quit` 后 PID/descriptor 消失，Runtime error=`0`，Player 严格错误词=`0`，临时 Runtime/Build 设置已恢复，Editor=`ready/stopped`。
 
 Q29 父任务继续 `PARTIAL`、VC-G01 继续 `IN_PROGRESS`、VC-G02/VC-G03 继续 `LOCKED`、D31-P04/S05/G06 继续 `PARTIAL`。暂停交接：[PAUSE_20260915_Q29](game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)；结果：[Q29 R11 paused result](../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；日志：[Q29 R11 paused log](../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log)。恢复入口为 Q30 当前源码独立审查，再进入 Q31 最终 native Player visual gate。
+
+## 2026-09-15 Q30 current-source independent review R5
+
+Q30 R5 已按当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9` 重新绑定：Python 定向 `65/65`、D16InputRouter `11/11`、D17ActionQuality `16/16`、VcG01WorldLogic `14/14` 均通过范围内回归；没有修改生产代码或持久配置。Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。
+
+本轮真实捕获 FMOD `Error initializing output device (60)`，Windows 设备枚举和 Unity AudioSettings 配置不能替代成功播放证据，因此音频仍为 `BLOCKED_ENVIRONMENT`。Q30 保持 `PARTIAL`，VC-G01 保持 `IN_PROGRESS`，VC-G02/VC-G03 保持 `LOCKED`，下一步 Q31 最终 native Player visual gate。详见 [Q30 R5 result](../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json)、[Q30 R5 log](../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5.log) 和 [Q30 handoff](game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md)。

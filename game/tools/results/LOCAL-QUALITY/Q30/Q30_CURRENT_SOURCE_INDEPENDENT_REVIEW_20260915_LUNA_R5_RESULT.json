@@ -1,0 +1,122 @@
+{
+  "task_id": "Q30",
+  "subtask_id": "Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5",
+  "status": "PARTIAL",
+  "status_scope": "current-source owner regression and environment-boundary revalidation after the Q29 safe pause",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q29"],
+  "source_head": "94950f36c0d5a3daf4ba719216808a0ae6d71be9",
+  "branch": "agent/publish-project-changes-20260813",
+  "audit_time_local": "2026-09-15T08:06:25+08:00",
+  "evidence_binding": {
+    "previous_review": "Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260914_R4_RESULT.json",
+    "previous_review_source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+    "current_head_note": "The intervening Q29 safe-pause commit contains evidence and handoff updates; this R5 reruns the owner checks against the current HEAD instead of reusing the stale R4 source binding."
+  },
+  "implementation": {
+    "production_code_changed": false,
+    "test_contract_changed": false,
+    "persistent_runtime_config_changed": false,
+    "scope": "No Unity production source, Prefab, scene, contract, test or persistent runtime/build setting was changed in R5."
+  },
+  "checks": [
+    {
+      "name": "python_targeted_regression",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "python -m unittest tools.tests.test_d19_r03_visual_builder tools.tests.test_vc_g01_runtime_probe tools.tests.test_vc_g01_runtime_input_probe -q; 65/65 passed in 0.123s."
+    },
+    {
+      "name": "d16_input_router_playmode",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Unity Pipeline async PlayMode run of D16InputRouterPlayModeTests; 11/11 passed, 0 failed, 0 skipped, 0 inconclusive, duration 19.41s. Includes gameplay WASD versus HUD isolation, modal WASD blocking, keyboard/camera/boarding loop and Esc pause recovery."
+    },
+    {
+      "name": "d17_action_quality_playmode",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Unity Pipeline async PlayMode run of D17ActionQualityPlayModeTests; 16/16 passed, 0 failed, 0 skipped, 0 inconclusive, duration 98.19s. Includes swimming, shoreline, root guard, ten-cycle water entry/exit, deck anchor, safe disembark, camera, WASD/HUD and integrated shore-water-deck checks."
+    },
+    {
+      "name": "vc_g01_world_logic_editmode",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Connected Unity Pipeline async EditMode run of VcG01WorldLogicTests; 14/14 passed, 0 failed, 0 skipped, 0 inconclusive, duration 0.19s. Includes collider boundaries, helm anchors, vegetation positions and water ownership."
+    },
+    {
+      "name": "editor_runtime_safe_state",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Final editor_status returned ready, compiling=false, domainReloadInProgress=false, playMode=stopped, Unity 6000.0.80f1. get_runtime_pipeline_settings returned enableInBuilds=false, port=0, requestTimeoutMs=30000, enableAuditLogging=true, autoStart=true, maxWorkItemsPerFrame=10. get_build_settings returned StandaloneWindows64, developmentBuild=false, allowDebugging=false, connectWithProfiler=false, il2CppCodeGeneration=OptimizeSpeed."
+    },
+    {
+      "name": "audio_output_initialization",
+      "result": "BLOCKED_ENVIRONMENT",
+      "evidence": "During the current Editor test session, the console captured one FMOD error at seq 9057: FMOD failed to switch back to normal output: Error initializing output device (60). Windows read-only PnP checks saw Realtek(R) Audio and NVIDIA audio devices in OK state, and Unity AudioSettings reported 48000 Hz, Stereo, DSP buffer 1024, 32 real voices, 512 virtual voices, driver Stereo; this proves configuration visibility but not successful normal output playback. A later native Player/audio-capable session or explicit output-device verification is required before audio acceptance."
+    },
+    {
+      "name": "editor_warning_boundary",
+      "result": "OBSERVED_NOT_ACCEPTANCE",
+      "evidence": "Warning query before cleanup returned 160 entries with dropped=false. Families: D27 presentation wait=72; D2 unverified ph_crew_male=24; D2 procedural player fallback=24; D2 absolute imported Euler animator fallback=24; D6 R03 building collider skip=4; expected D2 disembark rejection=2; Runtime Pipeline disabled in Player build=1; other uncategorized warnings=9. These are recorded, not suppressed or promoted to PASS."
+    },
+    {
+      "name": "foreground_visual_gate",
+      "result": "PARTIAL",
+      "evidence": "These owner tests do not provide compositor-visible foreground Player screenshots, physical Win32 keyboard evidence, authored action/avatar acceptance, natural swim/helm contact, all-camera vegetation grounding/intersection proof or target-device GPU/audio performance."
+    }
+  ],
+  "observed_metrics": {
+    "python_targeted_tests": "65/65",
+    "d16_input_router": "11/11",
+    "d17_action_quality": "16/16",
+    "vc_g01_world_logic": "14/14",
+    "editor_status": "ready / compiling=false / domainReloadInProgress=false / playMode=stopped",
+    "runtime_pipeline_final_state": "enableInBuilds=false / port=0",
+    "build_final_state": "developmentBuild=false / allowDebugging=false / connectWithProfiler=false",
+    "editor_errors_captured_before_cleanup": 1,
+    "editor_warnings_captured_before_cleanup": 160,
+    "audio_settings": "sampleRate=48000 / speaker=Stereo / dspBuffer=1024 / realVoices=32 / virtualVoices=512 / driver=Stereo"
+  },
+  "cleanup": {
+    "clear_console_command": "returned cleared=true",
+    "active_test_or_player_process": false,
+    "note": "Two invalid command-name probes made after the primary error capture were Unity Pipeline tool errors, not product errors; they are explicitly excluded from the Q30 product/error count and are recorded in the companion log."
+  },
+  "defect_matrix": {
+    "keyboard_conflict": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "UNVERIFIED",
+      "evidence": "D16 11/11 and D17 16/16 owner checks cover gameplay/HUD and modal input isolation; foreground focus and rendered menu acceptance remain open."
+    },
+    "distorted_actions": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "D17 action guards pass, but current warnings still identify the unverified imported rig and procedural fallback; authored action/avatar quality remains open."
+    },
+    "ocean_swimming": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "D17 water/action guards pass; no new compositor-visible evidence proves natural swim contact or finished swim animation."
+    },
+    "boarding_helm": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "D17 deck/boarding guards pass; natural IK, helm contact and final camera presentation remain open."
+    },
+    "floating_trees": {
+      "logic_status": "PASS_WITHIN_SCOPE",
+      "visual_status": "PARTIAL",
+      "evidence": "VcG01 world logic passes the bounded owner checks; approved vegetation admission and all-camera grounding/intersection acceptance remain open."
+    },
+    "audio_output": {
+      "logic_status": "UNVERIFIED",
+      "visual_status": "UNVERIFIED",
+      "evidence": "FMOD output device initialization failed in this Editor session despite visible Windows audio devices."
+    }
+  },
+  "remaining_scope": [
+    "Q30 remains PARTIAL; this R5 closes no visual or foreground-input gate.",
+    "Q03 formal authored action/avatar remains BLOCKED_ASSET and Q20 approved vegetation admission remains PARTIAL/BLOCKED_ASSET.",
+    "Q31 remains the final native Player visual gate; a compositor-visible screenshot and real foreground input path are still required.",
+    "Audio output requires a later audio-capable native Player or explicitly verified output-device session.",
+    "VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; D31-P04, D31-S05 and D31-G06 remain PARTIAL."
+  ],
+  "status_boundary": "Q30 remains PARTIAL. Current-source owner logic is freshly verified, but the FMOD output-device boundary and the reported screenshot-visible action, swimming, helm and vegetation defects remain open. No final visual, audio, foreground physical-input or complete-game PASS is claimed.",
+  "next_task": "Q31 final native Player visual gate. If the compositor-visible route or audio-capable output remains unavailable, record the exact environment blocker and keep VC-G01 IN_PROGRESS."
+}

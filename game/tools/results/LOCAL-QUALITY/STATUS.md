@@ -1906,3 +1906,12 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - 本轮按用户暂停要求在入口后停止，没有把未执行的 W/A/S/D、E、I、M、T、Esc 或完整业务路线记为 PASS；Q29 R10 仍是最近一次完成的 hidden Player 全交互证据。
 - `quit` 后 PID=`2724` 和 descriptor 均消失；Runtime error=`0`、Player 严格错误词=`0`；最终 Runtime=`enableInBuilds=false / port=0`、Build=`developmentBuild=false`、Editor=`ready/stopped`。
 - Q29=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。暂停交接：[PAUSE_20260915_Q29](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)；结果/日志：`Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json` / `Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log`。
+
+## 2026-09-15 Q30 current-source independent review R5
+
+- Q30 R5 在当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9` 完成：Python `65/65`、D16InputRouter `11/11`、D17ActionQuality `16/16`、VcG01WorldLogic `14/14` 均通过范围内回归；本轮无生产代码/测试契约/持久配置变更。
+- Editor 最终 `ready/stopped`；Runtime Pipeline `enableInBuilds=false / port=0`；Build `developmentBuild=false / allowDebugging=false / connectWithProfiler=false`。
+- Console 边界：取证前真实 FMOD output-device 初始化错误 `1`，Warning `160` 且 `dropped=false`。FMOD/音频维持 `BLOCKED_ENVIRONMENT`；不能以 Windows 设备存在或 AudioSettings 配置代替播放证据。取证后执行 `clear_console`；两次误用 CLI 命令造成的 ResolveCommand 仅为工具噪声，单独记录并排除。
+- 状态不变：Q30=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步 Q31 最终 native Player visual gate。
+
+结果：[Q30 R5](Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json)；日志：[Q30 R5 log](Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5.log)；交接：[Q30](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md)。

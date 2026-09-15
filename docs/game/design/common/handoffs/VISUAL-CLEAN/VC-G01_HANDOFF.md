@@ -1243,3 +1243,11 @@ VC-G01 仍为 `IN_PROGRESS`：没有把 headless/hidden Pipeline 结果当作 co
 - 本轮结果：[Q29 R11 paused result](../../../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；暂停交接：[PAUSE_20260915_Q29](../LOCAL-QUALITY/PAUSE_20260915_Q29.md)。
 
 门禁不升级：`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`Q29=PARTIAL`、`D31-P04/S05/G06=PARTIAL`。正式动作/Avatar、自然 swim/helm、植被接地/穿模、前台物理输入、目标设备性能和人工最终视觉仍未收口。恢复入口为 Q30 当前源码独立审查，再进入 Q31 最终 native Player visual gate。
+
+## 2026-09-15 Q30 current-source independent review R5
+
+Q30 R5 已把 owner 回归重新绑定当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9`：Python `65/65`、D16InputRouter `11/11`、D17ActionQuality `16/16`、VcG01WorldLogic `14/14` 均通过范围内回归。无生产代码、Prefab、场景、测试契约或持久运行时设置变更；Editor 最终 `ready/stopped`，Runtime Pipeline `enableInBuilds=false / port=0`。
+
+本轮真实捕获 FMOD `Error initializing output device (60)`；即使 Windows PnP 能看到 Realtek/NVIDIA 设备且 AudioSettings 可读，也不能替代成功 normal output 播放证据，音频保持 `BLOCKED_ENVIRONMENT`。Warning `160 / dropped=false` 和 D2/D27 fallback 家族继续说明截图可见动作/植被边界。VC-G01 仍 `IN_PROGRESS`，下一步 Q31 最终 native Player visual gate。
+
+结果：[Q30 R5](../../../../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json)；日志：[Q30 R5 log](../../../../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5.log)。

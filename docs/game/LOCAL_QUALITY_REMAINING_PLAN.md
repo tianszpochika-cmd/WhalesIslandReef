@@ -2165,3 +2165,12 @@ Q28 继续 `PARTIAL`：R13 只关闭当前候选包的 BuildReport/身份边界�
 暂停交接：[PAUSE_20260915_Q29](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260915_Q29.md)；结果：[Q29 R11 paused result](../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED_RESULT.json)；日志：[Q29 R11 paused log](../../game/tools/results/LOCAL-QUALITY/Q29/Q29_CURRENT_PIPELINE_REAUDIT_20260915_LUNA_R11_PAUSED.log)。
 
 暂停状态：Q29=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。恢复入口为 Q30 当前源码独立审查，再进入 Q31 最终 native Player visual gate；formal action/avatar、natural swim/helm、植被接地/穿模、前台物理键盘、目标设备性能和人工最终视觉仍开放。
+
+## 2026-09-15 Q30 current-source independent review R5
+
+- Q30 R5 重新绑定当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9`，没有修改生产代码、测试契约或持久运行时配置。Python 定向 `65/65 PASS`；D16InputRouter `11/11 PASS`；D17ActionQuality `16/16 PASS`；VcG01WorldLogic `14/14 PASS`。
+- 安全回读：Editor=`ready/stopped`；Runtime Pipeline=`enableInBuilds=false / port=0`；Build=`StandaloneWindows64 / non-development / debugging=false / profiler=false`。
+- 新增明确环境边界：本轮 Editor Console 真实捕获 FMOD `Error initializing output device (60)`；Windows 音频设备存在且 Unity AudioSettings 有配置，但 normal output 未证明成功。音频保持 `BLOCKED_ENVIRONMENT`，不得把配置存在写成播放通过。Warning=`160 / dropped=false`，按 D27/D2/D6/expected/uncategorized 家族登记。
+- Q30 仍 `PARTIAL`；VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一张执行卡为 Q31 最终 native Player visual gate；需要同时保留 compositor、前台物理输入和音频环境边界。
+
+结果：[Q30 R5](../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json)；日志：[Q30 R5 log](../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5.log)；交接：[Q30 handoff](design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md)。
