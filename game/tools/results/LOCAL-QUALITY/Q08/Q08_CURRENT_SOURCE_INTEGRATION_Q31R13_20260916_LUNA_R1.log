@@ -1,0 +1,10 @@
+Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1
+Unity 6000.0.80f1 | Pipeline 127.0.0.1:7800 | Editor PID 34276
+Dependency gates: Q03Formal EditMode=5/5 PASS; Q03D20Formal PlayMode=2/2 PASS; Q05 focused=all PASS within scope; Q07 building=1/1 and D17A10=1/1 PASS.
+Integration: D17ActionQualityPlayModeTests=16/16 PASS; failed=0; skipped=0; inconclusive=0; pipeline=52.88s.
+Coverage: movement/jump, swim/shoreline, grounding owner, collision routes, scaled deck/boarding, ship motion, safe disembark, camera handoff, UI modal ownership and integrated shore-water-deck route.
+Current source: D2Animation=DCB8F837...9ECB52; CameraFollow=0C6D8BE0...E39C991; D20Humanoid=F02CAD34...B9FF88D7; D17=EC2BE01F...4B139B1B.
+Console error query: returned=0 since seq 400; cursor=3266; dropped=true. Console was cleared after evidence; no stronger log-cleanliness claim is made.
+Editor final: ready/stopped.
+Runtime Pipeline final: enableInBuilds=false; port=0.
+Boundary: code-level connected Editor integration only; no final native Player/compositor/foreground-input/visual/performance acceptance.

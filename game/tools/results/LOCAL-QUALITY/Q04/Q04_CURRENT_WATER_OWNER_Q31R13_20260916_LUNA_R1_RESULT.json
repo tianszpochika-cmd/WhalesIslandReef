@@ -1,0 +1,32 @@
+{
+  "task_id": "Q04",
+  "subtask_id": "Q04_CURRENT_WATER_OWNER_Q31R13_20260916_LUNA_R1",
+  "captured_at_local": "2026-09-16T09:02:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "status": "PASS_WITHIN_SCOPE",
+  "production_changes": "none; this was a current-source regression only",
+  "test": {
+    "name": "D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0,
+    "test_duration_seconds": 8.9007896
+  },
+  "environment": {
+    "unity": "6000.0.80f1",
+    "pipeline": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "endpoint": "127.0.0.1:7800",
+    "final_editor_state": "ready/stopped",
+    "recompile": "up_to_date; failed=false; errors=[]",
+    "new_error_delta_since_seq_400": 0,
+    "runtime_config": "enableInBuilds=false; port=0"
+  },
+  "scope": {
+    "proved": "Current D2/OceanAdapter water-entry and exit regression remains green after the Q31 R12 production presentation patch and R13 test addition.",
+    "not_proved": "Native Player W/S, foreground keyboard focus, authored/natural swim pose, water-material visual quality, compositor screenshot acceptance, target-device performance or VC-G01."
+  },
+  "next_task": "Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
+}

@@ -1,0 +1,52 @@
+{
+  "task_id": "Q07",
+  "run_id": "Q07_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source harbor collision owner and terrain/dock/gangplank route contracts",
+  "captured_at_local": "2026-09-16T10:12:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Tests/PlayMode/D19R03Q07BuildingCollisionPlayModeTests.cs": "A83611841A3F8CC84C6589F5BD85828A00E684D3375E5EB950F58A04BFD3D6E9",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B"
+  },
+  "tests": {
+    "D19R03Q07BuildingCollisionPlayModeTests.R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries": {
+      "status": "1/1 PASS",
+      "pipeline_duration_s": 1.5,
+      "test_duration_s": 1.4001556,
+      "coverage": "four R03 service-building body colliders are enabled, non-trigger and owned by D6_HarborCollision"
+    },
+    "D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps": {
+      "status": "1/1 PASS",
+      "pipeline_duration_s": 3.09,
+      "test_duration_s": 2.994615,
+      "coverage": "D19 terrain, DockGround and GangplankGround active collision with bidirectional small-step grounded/non-swimming routes"
+    }
+  },
+  "runtime_facts": {
+    "collision_owner": "HarborCollisionController / D6_HarborCollision for building bodies; D19 terrain/dock/gangplank route surfaces remain active",
+    "production_code_changed": false,
+    "collision_disabled": false,
+    "air_wall_added": false,
+    "threshold_relaxed": false
+  },
+  "validation_boundary": {
+    "console_error_delta_since_seq_400": 0,
+    "console_cursor_after_tests": 1767,
+    "console_cleared_after_evidence": true,
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0",
+    "status_boundary": "Q07 is PASS_WITHIN_SCOPE only for the tested building collision owner and terrain/dock/gangplank automated routes. It does not prove every wall/slope/shore, visual mesh contact, full boarding/deck route, native Player WASD, vegetation grounding, performance or VC-G01 acceptance. Q08 remains blocked by the formal action/avatar asset dependency; Q09 is the next independent deck-anchor card."
+  },
+  "next_task": "Q08_BLOCKED_THEN_Q09_CURRENT_DECK_ANCHOR_REAUDIT_Q31R13_20260916_LUNA"
+}

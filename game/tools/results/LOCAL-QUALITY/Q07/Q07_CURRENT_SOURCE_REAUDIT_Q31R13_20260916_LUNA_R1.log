@@ -1,0 +1,11 @@
+Q07_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1
+Unity 6000.0.80f1 | Pipeline 127.0.0.1:7800 | Editor PID 34276
+Tests:
+- D19R03Q07BuildingCollisionPlayModeTests.R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries: 1/1 PASS; pipeline=1.50s; test=1.4001556s
+- D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps: 1/1 PASS; pipeline=3.09s; test=2.994615s
+Current hashes: HarborCollision=E04E24C9...EFD71FD; Q07 building test=A8361184...BFD3D6E9; D17=EC2BE01F...4B139B1B.
+Production code changed: false.
+Console error delta since seq 400: 0; cursor after tests=1767; console cleared after evidence.
+Editor final: ready/stopped.
+Runtime Pipeline final: enableInBuilds=false; port=0.
+Boundary: tested building owner and terrain/dock/gangplank routes only; visual mesh, full deck/boarding, native Player and final visual remain open.

@@ -1,0 +1,54 @@
+{
+  "task_id": "Q09",
+  "run_id": "Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source scaled ship helm anchor, ten boarding cycles and remote rejection",
+  "captured_at_local": "2026-09-16T11:06:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "depends_on": ["Q01", "Q07"],
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B"
+  },
+  "test": {
+    "filter": "D17A11StableDeckAnchorSupportsTenBoardingCyclesAndRejectsRemoteBoarding",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 3.12,
+    "test_duration_s": 3.0245131,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "runtime_facts": {
+    "ship_root_scale_contract": "stable non-unit scale remains exercised by D17A11",
+    "boarding_cycles": 10,
+    "remote_rejection": "30m remote TryToggleShip request rejected while preserving Character mode and null parent",
+    "deck_anchor_contract": "HelmPoint stable under the current gameplay ship root"
+  },
+  "validation_boundary": {
+    "console_error_entries_returned": 0,
+    "console_cursor_after_test": 3427,
+    "console_dropped": true,
+    "console_cleared_after_evidence": true,
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0",
+    "status_boundary": "Q09 is PASS_WITHIN_SCOPE only for scaled HelmPoint/boarding lifecycle and remote rejection. It does not prove natural helm contact, ship-motion relative transforms, safe disembark edge cases, hull/camera visual clearance, native Player input, vegetation, performance or VC-G01 acceptance."
+  },
+  "next_task": "Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA"
+}

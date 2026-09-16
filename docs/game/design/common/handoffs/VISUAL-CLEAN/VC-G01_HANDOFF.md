@@ -1295,3 +1295,57 @@ R13 在 R12 Development Player 上完成真实 Pipeline E/W/A 路线：E 登船�
 RenderTexture 帧确认角色确实在可见舵轮前、双手接近轮盘，但这仍不是正式 authored boarding/helm animation 或自然手部 IK 通过；R13 只登记交互子范围 `PASS_WITHIN_SCOPE`，VC-G01 继续 `IN_PROGRESS`，Q31 继续 `PARTIAL`。
 
 结果：[Q31 R13](../../../../../../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json)；日志：[R13 log](../../../../../../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log)；截图：[boarding RenderTexture](../../../../../../game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png)。
+
+## 2026-09-16 Q00/Q01/Q04 current-source boundary after R13
+
+R13 后已重新完成 Q00 source/Player/Editor 对账、Q01 owner/root-cause 诊断和 Q04 水域回归。当前 connected Editor 只读事实确认 D20 Formal Humanoid 为可见 presentation writer，D2 仍为物理根与 gameplay action owner；D17A02、D17A03、D17A07 均 `1/1 PASS`，recompile=`up_to_date`，console seq `400` 后 Error delta=`0`。R12 Player 的生产 D20 patch 已由 HEAD `0a711417` 记录，但 R13 的 D17A02 测试断言后置于 Player build，不声称进入二进制。
+
+这只更新 VC-G01 的证据边界，不升级状态：`VC-G01=IN_PROGRESS`、`Q31=PARTIAL`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。Formal action/avatar、自然 swim/helm IK、植被接地/穿模、前台物理键盘、目标设备性能和最终人工视觉仍开放。下一步为 Q05 当前游泳 presentation 复核，再从 Q31 R14 选择单一 visual owner。
+
+结果：[Q00 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q01 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q04 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_WATER_OWNER_Q31R13_20260916_LUNA_R1_RESULT.json)。
+
+## 2026-09-16 Q05 transition guard closed within scope
+
+Q05 本轮先发现并登记了一个当前源码回归：程序化 fallback 在从岸上进入游泳的首帧复用了 D7 陆地校准偏移，`D17A08` 实测 visualRoot 抬高 `0.396687269m`。D2 是该动作/视觉根提交的 owner，因此最小修复放在 `D2CharacterAnimationController.UpdateAction`，只在 `Swimming` 边界清除 grounded-only offset；D7 测量所有权、物理 CharacterController 和 D20 Formal 可见 writer 均未改变。
+
+修复后 `D17A08/D17A03/D17A07/D17A02` 均 `1/1 PASS`，D2 动画 EditMode=`8/8 PASS`；runtime probe 的 swim visualRoot local Y=`0.0144426823m` 且 grounding offset=`0`，recompile 无错误，Error Console 增量=`0`，证据后已清空 Console，Editor=`ready/stopped`。这只恢复 Q05 的 bounded fallback transition guard，不是 VC-G01 的 native Player/compositor、正式 Avatar/action、自然泳姿/握舵、树木穿模、前台物理键盘或性能通过。VC-G01 仍 `IN_PROGRESS`，Q31 仍 `PARTIAL`；下一步为 Q06 当前源码回归，再按依赖回到 Q31 R14。
+
+结果：[Q05 regression R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_REGRESSION_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q05 fixed R2](../../../../../../game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2_RESULT.json)。
+
+## 2026-09-16 Q06 current-source boundary after Q05 fix
+
+Q06 在 Q05 transition guard 修复后重新验证 `D17A09`：十次跳跃/落地与出生点附近四向小步移动 `1/1 PASS`，当前 D2/HarborCollision/D17 hash 已登记，Error Console 增量=`0`，证据后清空，Editor=`ready/stopped`。这只确认基础物理稳定性，不改变 VC-G01 的视觉门禁。
+
+Q06 仍不证明墙/坡/岸线/Ramp/跳板/船甲板视觉接触、native Player 键盘、正式 Avatar/action、植被接地/穿模、目标设备性能或最终人工视觉。VC-G01=`IN_PROGRESS`、Q31=`PARTIAL`；下一步是 `Q07_CURRENT_COLLISION_ROUTE_REAUDIT_Q31R13_20260916_LUNA`，之后再回 Q31 R14。
+
+结果：[Q06 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json)。
+
+## 2026-09-16 Q07 current-source collision boundary after Q31 R13
+
+Q07 当前源码复核确认四栋 R03 服务建筑由 `D6_HarborCollision` 持有实体碰撞，且 D19 terrain/DockGround/GangplankGround 双向小步路线均通过；两条 PlayMode 均 `1/1 PASS`，Error Console 增量=`0`，Editor=`ready/stopped`。这只确认碰撞 owner/自动化路线，不改变 VC-G01 的视觉门禁。
+
+Q07 不证明所有坡墙岸线、视觉网格接触、完整船甲板/上下船、native Player WASD、植被接地/穿模、目标设备性能或人工最终视觉。Q08 继续被正式 action/avatar asset 阻塞，Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`；下一步进入独立 Q09 甲板锚点复核。
+
+结果：[Q07 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q07/Q07_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json)。
+
+## 2026-09-16 Q08 current-source code integration boundary after Q31 R13
+
+Q08 当前依赖门与整合套件已重新验证：Q03Formal=`5/5` EditMode、Q03D20Formal=`2/2` PlayMode、完整 D17=`16/16 PASS`。这只确认 connected Editor 的 action-state/movement/swim/grounding/camera/input-modal/deck code path；长套件 Error 查询返回 `0`，但 `dropped=true`，不能扩大为全量日志清洁证明。
+
+VC-G01 仍不升级：compositor-visible native Player、前台物理键盘、自然 authored action/swim/helm IK、植被接地/穿模、性能、音频和人工最终视觉仍开放。Q08=`PASS_WITHIN_SCOPE`、Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`；下一步 Q09 甲板锚点复核，再回 Q31 R14。
+
+结果：[Q08 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1_RESULT.json)。
+
+## 2026-09-16 Q09 current-source deck-anchor boundary after Q31 R13
+
+Q09 当前源码甲板锚点复核 `D17A11=1/1 PASS`：十次登船/下船、非单位船缩放下 HelmPoint 稳定关系和 30m 远距拒绝通过。Error 查询返回 `0` 但 `dropped=true`，不扩大为强日志清洁证明；这只确认 D7/D2 代码级锚点/生命周期边界。
+
+VC-G01 仍不升级：自然握舵、航行中船动相对关系、安全下船、船体/镜头视觉清除、native Player、植被、性能和人工最终视觉仍开放。Q09=`PASS_WITHIN_SCOPE`、Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`；下一步 Q10 当前航行中甲板关系复核。
+
+结果：[Q09 R1](../../../../../../game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json)。
+
+## 2026-09-16 temporary safe pause after Q09 R1
+
+本轮在 Q09 后建立临时安全暂停点。Q05 的真实 Swimming transition regression 已修复并回归，Q06-Q09 当前源码证据已登记；这些证据不等于 native Player、前台物理键盘、compositor-visible 最终视觉或 VC-G01 完成。Q31 保持 `PARTIAL`，VC-G01 保持 `IN_PROGRESS`，VC-G02/VC-G03 保持 `LOCKED`，D31-P04/S05/G06 保持 `PARTIAL`。
+
+恢复入口为 `Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA`。暂停结果：[Q31 Q09 R1 pause result](../../../../../../game/tools/results/LOCAL-QUALITY/Q31/Q31_PAUSE_CHECKPOINT_20260916_Q09_R1_RESULT.json)；暂停交接：[PAUSE_20260916_Q09_R1](../../../../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q09_R1.md)。

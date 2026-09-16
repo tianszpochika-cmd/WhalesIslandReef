@@ -1,0 +1,46 @@
+{
+  "task_id": "Q31",
+  "checkpoint_id": "Q31_PAUSE_CHECKPOINT_20260916_Q09_R1",
+  "status": "PAUSED",
+  "status_scope": "Temporary development pause after current-source Q05-Q09 evidence; not project completion and not VC-G01 acceptance",
+  "recorded_at_local": "2026-09-16T09:47:14+08:00",
+  "source_head_before_pause_commit": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "latest_evidence": {
+    "q05": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2_RESULT.json",
+    "q06": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "q07": "game/tools/results/LOCAL-QUALITY/Q07/Q07_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "q08": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "q09": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "production_fix": "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs",
+    "diagnostic_probe": "game/AgentScripts/LocalQuality/UnityPipelineSwimmingRootProbe.cs"
+  },
+  "accepted_scope": [
+    "Q05 caught and fixed a real Swimming-entry stale grounded-visual-offset regression; focused D17 regressions and D2 animation EditMode tests passed",
+    "Q06 current-source jump/grounded/diagonal finite-motion re-audit passed",
+    "Q07 current-source building collision and terrain/dock/gangplank route re-audit passed",
+    "Q08 current-source formal dependency and complete D17 integration suite passed; console buffer dropped evidence was retained as a boundary",
+    "Q09 current-source scaled HelmPoint anchor, ten boarding cycles and 30m remote rejection passed"
+  ],
+  "safe_stop": {
+    "native_player": "No native Player was left running by Q05-Q09; the prior R13 Player route had already clean-quit through Unity Pipeline",
+    "editor": "connected game Editor ready/stopped after Q09",
+    "runtime_pipeline": "enableInBuilds=false; port=0",
+    "console": "Q09 query returned 0 error entries but dropped=true; evidence was retained and Console was cleared afterward",
+    "workspace_cleanup": "none; existing tracked and untracked work was preserved",
+    "audit_boundary": "Initial takeover audit observed 29 tracked status lines and 1476 untracked status lines; no broad artifact cleanup or reset was performed"
+  },
+  "open_gates": [
+    "Q31 remains PARTIAL",
+    "VC-G01 remains IN_PROGRESS",
+    "VC-G02 and VC-G03 remain LOCKED",
+    "D31-P04, D31-S05 and D31-G06 remain PARTIAL",
+    "Q10 ship-motion relative deck stability and Q11 safe-disembark edge cases are not yet re-audited",
+    "authored action/avatar, natural swim/helm IK, compositor-visible native Player input, vegetation grounding/intersections, target-device performance, audio and final human visual acceptance remain open"
+  ],
+  "resume_entry": {
+    "next_card": "Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA",
+    "rule": "Resume with one bounded current-source card; do not treat Q05-Q09 code evidence as native Player or final visual acceptance",
+    "dependency": "Complete Q10/Q11 and their evidence before selecting the next Q31 visual owner; do not enter VC-G02 or VC-G03 before VC-G01 is directly evidenced"
+  }
+}

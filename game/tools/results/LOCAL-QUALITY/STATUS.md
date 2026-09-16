@@ -1959,3 +1959,53 @@ R13 复用 R12 Development Player 完成 E 登船、E 下船、重复登船和 W
 真实 RenderTexture 帧证明玩家处于可见舵轮前且双手接近轮盘，但低模/程序化几何、正式 boarding/helm clip 和自然 hand IK 仍开放。状态不升级：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步转向另一个单一 owner 缺陷。
 
 结果/日志：`Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json` / `Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log`。
+
+## 2026-09-16 Q00/Q01/Q04 current-source takeover after Q31 R13
+
+- 已完成：Q00 当前工作区/Player/Editor 对账；Q01 当前 owner、根节点、尺度、水域、D20 Formal presentation writer 根因采样；Q04 当前水域 owner 回归。
+- 当前证据：R12 Player `build_8eca102a61b4` 被 R13 复用；D20 生产补丁已由 HEAD `0a711417` 记录，R13 的 D17A02 测试断言不声称进入 Player。D17A02、D17A03、D17A07 均 `1/1 PASS`，recompile=`up_to_date`，console seq `400` 后 Error delta=`0`，Editor=`ready/stopped`。
+- 进行中：Q05 当前游泳 presentation 复核，随后按单一 owner 选择 Q31 R14。
+- 未完成/阻塞：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`；正式 action/avatar、自然 swim/helm IK、树木接地/穿模、前台物理键盘、目标设备性能和人工视觉仍开放。
+- 权威结果：[Q00 R1](Q00/Q00_CURRENT_TAKEOVER_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q01 R1](Q01/Q01_CURRENT_ROOT_CAUSE_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q04 R1](Q04/Q04_CURRENT_WATER_OWNER_Q31R13_20260916_LUNA_R1_RESULT.json)；交接见 `docs/game/design/common/handoffs/LOCAL-QUALITY/Q00.md`、`Q01.md`、`Q04.md`、`Q31.md`。
+
+## 2026-09-16 Q05 current-source swim transition guard after Q31 R13
+
+- Q05 先捕获并登记一条真实回归：`D17A08`=`0/1 PASS, 1 failed`，程序化 fallback visualRoot 首帧相对基线抬高到 `0.396687269m`；根因是 D7 grounded-only visual offset 在 D2 进入 `Swimming` 的首帧仍被复用。
+- 最小修复归属 `D2CharacterAnimationController.UpdateAction`：进入 `Swimming` 时立即清除该陆地校准偏移。修复后 `D17A08=1/1`、`D17A03=1/1`、`D17A07=1/1`、`D17A02=1/1 PASS`，D2 动画 EditMode=`8/8 PASS`；recompile=`failed=false/errors=[]`，runtime probe `visualRoot.localPosition.y=0.0144426823m`、grounding offset=`0`、pitch=`64°`、roll=`0°`、bodyDrop=`-0.6145817041m`。
+- Q05 恢复 `PASS_WITHIN_SCOPE`，只覆盖程序化 fallback swim root 水面高度/物理根分离/离水恢复和首帧 stale-grounding guard。Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL` 不变；正式 D20 authored swim、native Player、前台输入、最终视觉、植被和性能仍开放。
+- 结果/日志/交接：[Q05 R2 result](Q05/Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2_RESULT.json)、[Q05 R2 log](Q05/Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2.log)、[Q05 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q05/Q05.md)。下一张为 `Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA`。
+
+## 2026-09-16 Q06 current-source re-audit after Q05 transition guard
+
+- Q06=`PASS_WITHIN_SCOPE`：当前源码执行 `D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite`，`1/1 PASS`，Pipeline=`10.57s`、test=`10.4788045s`。十次 TryJump→落地与正/斜/横/反向小步移动均保持 grounded、non-swimming、finite Transform。
+- 当前 hash：D2 animation=`DCB8F837...9ECB52`、D2 runtime=`3D854D17...A32F2B4A`、HarborCollision=`E04E24C9...EFD71FD`、D17=`EC2BE01F...4B139B1B`；Error Console 增量=`0`，证据后清空，Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。
+- 边界不变：Q06 只覆盖基础跳跃/接地/出生点小步稳定性；墙、坡、岸线、Ramp/跳板、船甲板视觉接触、native Player 键盘、植被、性能和 VC-G01 仍开放。下一张为 `Q07_CURRENT_COLLISION_ROUTE_REAUDIT_Q31R13_20260916_LUNA`。
+- 结果/日志/交接：[Q06 R1 result](Q06/Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q06 R1 log](Q06/Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1.log)、[Q06 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q06/Q06.md)。
+
+## 2026-09-16 Q07 current-source collision-route re-audit after Q31 R13
+
+- Q07=`PASS_WITHIN_SCOPE`：`D19R03Q07BuildingCollisionPlayModeTests.R03ServiceBuildingsHaveSolidHarborOwnedBodyBoundaries=1/1 PASS`（test=`1.4001556s`），`D17A10TerrainDockAndGangplankSupportBidirectionalWalkSteps=1/1 PASS`（test=`2.994615s`）。
+- 当前 HarborCollision、Q07 building test 和 D17 hash 已登记；本轮未修改生产代码、场景、Prefab 或配置。Error Console 增量=`0`，证据后清空，Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。
+- 边界：只覆盖四栋 R03 服务建筑 collision owner 与 D19 terrain/DockGround/GangplankGround 自动化路线；所有坡墙岸线、视觉网格接触、完整船甲板/上下船、native Player WASD、植被、性能和 VC-G01 仍开放。Q08 因正式动作/Avatar asset 依赖保持阻塞，下一张独立卡为 Q09。
+- 结果/日志/交接：[Q07 R1 result](Q07/Q07_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q07 R1 log](Q07/Q07_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1.log)、[Q07 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q07/Q07.md)。下一张为 `Q08_BLOCKED_THEN_Q09_CURRENT_DECK_ANCHOR_REAUDIT_Q31R13_20260916_LUNA`。
+
+## 2026-09-16 Q08 current-source integration re-audit after Q31 R13
+
+- Q08=`PASS_WITHIN_SCOPE`：Q03Formal EditMode=`5/5 PASS`、Q03D20Formal PlayMode=`2/2 PASS`；完整 `D17ActionQualityPlayModeTests=16/16 PASS`，Pipeline=`52.88s`，failed/skipped/inconclusive=`0`。
+- 当前源覆盖移动/跳跃/游泳/岸线/接地、碰撞路线、缩放甲板/上下船、船动相对关系、安全下船、相机交接、HUD 输入模态和综合路线；D2/D20/CameraFollow/D17 hash 已登记。Error 查询返回=`0`，但长套件日志缓冲 `dropped=true`，因此不宣称更强的全量日志清洁；证据后 Console 已清空，Editor=`ready/stopped`，Runtime Pipeline 关闭。
+- 边界：只关闭 connected Editor 代码级整合门，不关闭 native Player/compositor/前台物理键盘、自然 authored action/swim/helm、植被、性能、音频或 VC-G01。下一张为 `Q09_CURRENT_DECK_ANCHOR_REAUDIT_Q31R13_20260916_LUNA`。
+- 结果/日志/交接：[Q08 R1 result](Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q08 R1 log](Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1.log)、[Q08 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q08/Q08.md)。
+
+## 2026-09-16 Q09 current-source deck-anchor re-audit after Q31 R13
+
+- Q09=`PASS_WITHIN_SCOPE`：`D17A11StableDeckAnchorSupportsTenBoardingCyclesAndRejectsRemoteBoarding=1/1 PASS`，Pipeline=`3.12s`、test=`3.0245131s`；十次缩放船根下登船/下船、稳定 HelmPoint 锚点和约 30m 远距拒绝均通过。
+- 当前 D7ShipDeck/D2Control/D2Runtime/D17 hash 已登记；Error 查询返回=`0`，但日志缓冲 `dropped=true`，证据后清空 Console，Editor=`ready/stopped`，Runtime Pipeline 关闭。
+- 边界：只覆盖缩放锚点、上下船生命周期、远距拒绝；自然握舵、航行中相对关系、安全下船、船体/镜头视觉、native Player、植被、性能和 VC-G01 仍开放。下一张为 `Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA`。
+- 结果/日志/交接：[Q09 R1 result](Q09/Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q09 R1 log](Q09/Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1.log)、[Q09 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q09/Q09.md)。
+
+## 2026-09-16 temporary safe pause after Q09 R1
+
+- 本轮在 Q09 当前源码甲板锚点复核后暂停开发；Q05-Q09 的结果/日志/交接已登记，工作区既有 tracked/untracked 改动全部保留，未执行 reset、checkout、clean 或大范围清理。
+- 暂停时状态：`Q31=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。
+- 安全停止：connected game Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`；Q09 Error 查询=`0` 但 `dropped=true`，已按边界记录并清空 Console。
+- 恢复入口：`Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA`；暂停结果/交接：[Q31 pause result](Q31/Q31_PAUSE_CHECKPOINT_20260916_Q09_R1_RESULT.json)、[pause handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q09_R1.md)。

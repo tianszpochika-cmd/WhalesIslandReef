@@ -1,0 +1,13 @@
+Q05_CURRENT_SWIMMING_PRESENTATION_REGRESSION_Q31R13_20260916_LUNA_R1
+Unity 6000.0.80f1 | Pipeline 127.0.0.1:7800 | Editor PID 34276
+Filter: D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot
+Status: completed
+Summary: total=1 passed=0 failed=1 skipped=0 inconclusive=0
+Duration: 5.74s
+Failure: 程序化游泳视觉根抬得过高，人物会漂在水面上方。
+Expected: visualRoot.localPosition.y < basePosition.y + 0.20f
+Actual: 0.396687269
+Source: game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs:733
+Console error delta after run: 0
+Editor final: ready/stopped
+Diagnosis: D2CharacterAnimationController.ApplyProceduralVisualPose is the active writer; D20 Formal is not the failing branch.

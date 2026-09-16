@@ -1,0 +1,122 @@
+{
+  "task_id": "Q09",
+  "status": "VERIFIED",
+  "status_scope": "stable_scaled_ship_helm_anchor_ten_boarding_cycles_and_remote_rejection",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q01", "Q07"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q09_DECK_ANCHOR_PLAYMODE_R1_20260908",
+  "audit_time_local": "2026-09-08T23:31:58+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D7ShipDeckController",
+    "changes": [
+      "Added an InitialHarbor PlayMode check that resolves HelmPoint from the stable gameplay ship root and validates its world-metre offset under the current non-unit ship scale.",
+      "Added ten real TryToggleShip boarding/disembarking cycles, checking parent, control mode, CharacterController lifecycle, PlayerBoarded and deck/helm coincidence on every cycle.",
+      "Added a remote boarding rejection path that must preserve Character mode and a null player parent."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "77F9D407F5AB434212C9DB5848B2589032CD3D9A721F6366FFF117704FC40E9C"
+    }
+  },
+  "checks": [
+    {
+      "name": "stable_scaled_helm_anchor",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q09/Q09_DECK_ANCHOR_PLAYMODE_R1.xml; stable root scale=(2.57,2.57,2.57), HelmPoint remains a direct child of ph_ship_fishing and the measured world offset is (0,1.1,-1.8) within 0.02m"
+    },
+    {
+      "name": "ten_boarding_disembarking_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q09/Q09_DECK_ANCHOR_PLAYMODE_R1.xml and .log; D17A11 total=1 passed=1; ten cycles completed with maxDeckHeightDelta=0.0000 and maxDeckAnchorDistance=0.0000"
+    },
+    {
+      "name": "remote_boarding_rejection",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A11 moves the real player 30m from the ship, calls TryToggleShip, and asserts false result, Character mode and null parent before restoring the observed legal approach point"
+    }
+  ],
+  "remaining_scope": [
+    "Q10 still needs movement/turning snapshots while boarded and must verify the relative deck transform remains stable.",
+    "This is physics/state evidence, not native Player keyboard evidence or continuous visual proof; Q31 remains the manual gate.",
+    "Safe disembark edge cases, moving-ship refusal and no-ground behavior remain Q11."
+  ],
+  "status_boundary": "Q09 VERIFIED means the stable scaled anchor, repeated boarding lifecycle and remote rejection contract are evidenced. It does not close ship movement, visual hull clearance, camera, UI or the final Player gate.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A11 passed in 2.2906652s",
+    "source_hashes_current": true,
+    "boundary": "Current scaled-anchor/boarding lifecycle evidence only; natural visual contact and native Player input remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.7154567s; total duration=4.81s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current scaled-anchor/boarding lifecycle and remote rejection evidence only; natural helm contact and native Player input remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.9577833s; total duration=4.07s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current scaled-anchor/boarding lifecycle and remote rejection only; natural helm contact, ship motion, native Player input and visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.447238s; total duration=2.55s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current scaled-anchor/boarding lifecycle and remote rejection only; natural helm contact, ship motion, native Player input and visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.2753674s; total duration=5.51s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "boundary": "Current scaled-anchor/boarding lifecycle and remote rejection only; natural helm contact, ship motion, native Player input and visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.2919116s; pipeline duration=3.52s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current scaled-anchor/boarding lifecycle and remote rejection only; natural helm contact, ship motion, native Player E and visual acceptance remain open.",
+    "next_task": "Q10_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.5399619s; pipeline duration=6.0s",
+    "runtime_log": "boarding_cycles=10; maxDeckHeightDelta=0.0000; maxDeckAnchorDistance=0.0000; shipScale=(2.57,2.57,2.57)",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 0,
+    "next_task": "Q10_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_source_reaudit_q31r13_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q09/Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A11 total=1 passed=1 failed=0 skipped=0 inconclusive=0; pipeline=3.12s; test=3.0245131s",
+    "source_hashes_current": true,
+    "runtime_facts": "Ten scaled boarding/disembarking cycles, stable HelmPoint relation and 30m remote rejection",
+    "console": "error entries returned=0; cursor=3427; dropped=true; console cleared after evidence",
+    "editor_final": "ready/stopped",
+    "boundary": "Current scaled-anchor/boarding lifecycle/remote rejection only; natural helm contact, ship-motion relative transforms, safe disembark edge cases, hull/camera visual clearance, native Player input, vegetation, performance and VC-G01 remain open.",
+    "next_task": "Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA"
+  }
+}

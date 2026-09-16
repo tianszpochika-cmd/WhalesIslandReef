@@ -263,6 +263,16 @@ namespace Whalebone.Gameplay.D2
 
         private void UpdateAction(D2CharacterAction nextAction, float deltaTime)
         {
+            if (nextAction == D2CharacterAction.Swimming)
+            {
+                // D7's grounding offset is valid only for a grounded visual.
+                // Clear it at the D2 action boundary as soon as water owns the
+                // presentation; otherwise the first swimming frame can reuse
+                // the previous shore correction and lift the whole character
+                // above the surface before D7's LateUpdate observes swimming.
+                _visualGroundingOffsetLocal = Vector3.zero;
+            }
+
             if (!_actionInitialized)
             {
                 Action = nextAction;

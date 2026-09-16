@@ -138,5 +138,30 @@
     "editor_final": "ready/stopped; error console=0; console cleared",
     "boundary": "Current-source whole-visual-root procedural tilt/restore and physics-root separation only; authored natural swim quality, native Player input, screenshot and final visual acceptance remain open.",
     "next_task": "Q06_CURRENT_SOURCE_REAUDIT_Q03A23_20260914_LUNA"
+  },
+  "current_swimming_presentation_regression_q31r13_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_REGRESSION_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_REGRESSION_Q31R13_20260916_LUNA_R1.log",
+    "result": "FAILED_REGRESSION_ROOT_CAUSE_CONFIRMED",
+    "test_run": "D17A08 total=1 passed=0 failed=1 skipped=0 inconclusive=0; duration=5.74s",
+    "failure": "visualRoot.localPosition.y actual=0.396687269 exceeded basePosition.y+0.20f",
+    "active_writer": "D2CharacterAnimationController.ApplyProceduralVisualPose",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; error console=0",
+    "boundary": "Current-source procedural fallback visual-root water-height envelope only. This is a real regression caught by the focused contract; it does not change D20 Formal or native Player acceptance status.",
+    "next_task": "Q05_REPAIR_PROCEDURAL_SWIM_PIVOT_AND_RERUN_D17A08"
+  },
+  "current_swimming_presentation_q31r13_20260916_luna_r2": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q05/Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "fix": "D2 UpdateAction clears the D7 shore-only visual offset at the Swimming action boundary, preventing a stale first-frame lift.",
+    "test_run": "D17A08=1/1 PASS; D17A03=1/1 PASS; D17A07=1/1 PASS; D17A02=1/1 PASS; D2CharacterAnimationControllerTests EditMode=8/8 PASS",
+    "runtime_probe": "Swimming=true; visualRoot.localPosition.y=0.0144426823; groundingOffsetLocal.y=0; pitch=64; roll=0; bodyDrop=-0.6145817041",
+    "source_hashes_current": true,
+    "recompile": "completed; failed=false; errors=[]",
+    "editor_final": "ready/stopped; error console delta=0; console cleared after evidence",
+    "boundary": "Q05 is PASS_WITHIN_SCOPE only for the bounded procedural whole-visual-root swim envelope, stale-grounding transition guard, physics-root separation and neutral restore. Native Player, formal authored swim, natural IK, foreground input, final visual and VC-G01 remain open.",
+    "next_task": "Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA"
   }
 }

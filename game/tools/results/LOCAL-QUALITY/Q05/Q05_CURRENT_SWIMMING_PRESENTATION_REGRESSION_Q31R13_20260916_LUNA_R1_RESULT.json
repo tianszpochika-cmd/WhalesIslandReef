@@ -1,0 +1,52 @@
+{
+  "task_id": "Q05",
+  "run_id": "Q05_CURRENT_SWIMMING_PRESENTATION_REGRESSION_Q31R13_20260916_LUNA_R1",
+  "status": "FAILED_REGRESSION_ROOT_CAUSE_CONFIRMED",
+  "status_scope": "current-source procedural fallback visual-root water-height envelope",
+  "captured_at_local": "2026-09-16T09:18:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "EF4683FC5050146FDA2382E0BAC7904E50F07809DECC7050C60E4C50A67581C2",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B"
+  },
+  "test": {
+    "filter": "D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot",
+    "mode": "PlayMode",
+    "status": "completed",
+    "duration_s": 5.74,
+    "summary": {
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "failure": {
+      "message": "程序化游泳视觉根抬得过高，人物会漂在水面上方。",
+      "expected": "visualRoot.localPosition.y < basePosition.y + 0.20f",
+      "actual": 0.396687269,
+      "source_line": "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs:733"
+    }
+  },
+  "diagnosis": {
+    "active_writer": "D2CharacterAnimationController.ApplyProceduralVisualPose",
+    "current_inputs": "swimPivotHeight=1.12f; swimBodyDrop=-0.62f; pitch=64f; roll=0f",
+    "write_formula": "visualPosition += baseRotation*pivot - visualRotation*pivot; localPosition = visualPosition + up*bodyDrop",
+    "boundary": "The failure is a current-source procedural fallback regression caught by the focused contract. It is not a D20 Formal adapter failure, native Player visual proof, or an excuse to mark visual acceptance PASS."
+  },
+  "console_boundary": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "editor_left_ready_and_stopped": true
+  },
+  "next_action": "Repair D2 procedural swim pivot compensation, then rerun D17A08 before any Player rebuild."
+}

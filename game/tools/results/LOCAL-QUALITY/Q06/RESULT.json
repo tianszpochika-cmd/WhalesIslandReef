@@ -114,5 +114,16 @@
     "editor_final": "ready/stopped; error console=0; console cleared",
     "boundary": "Current-source jump/grounded/small-step stability only; wall, slope, shore, ramp/gangplank, ship-deck visual contact, native Player and VC-G01 remain open.",
     "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  },
+  "current_source_reaudit_q31r13_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q06/Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A09 total=1 passed=1 failed=0 skipped=0 inconclusive=0; duration=10.57s",
+    "source_hashes_current": true,
+    "runtime_facts": "Ten real TryJump-to-ground cycles and positive/diagonal/lateral/reverse small movement remained grounded, non-swimming and finite; collision owner unchanged.",
+    "editor_final": "ready/stopped; error console delta=0; console cleared after evidence",
+    "boundary": "Current-source jump/grounded/small-step evidence only; wall, slope, shore, ramp/gangplank, ship-deck visual contact, native Player, vegetation, performance and VC-G01 remain open.",
+    "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT_Q31R13_20260916_LUNA"
   }
 }

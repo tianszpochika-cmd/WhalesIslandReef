@@ -1,0 +1,67 @@
+{
+  "task_id": "Q08",
+  "run_id": "Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source action-state, movement, swimming, camera handoff, grounding, input-modal and formal-route code integration",
+  "captured_at_local": "2026-09-16T10:49:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "depends_on": ["Q03", "Q05", "Q07"],
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "DCB8F837774CB3F15AE4C0B73673501035C443E3754DFBFD00ACDAF7979ECB52",
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "0C6D8BE009E2AAA9AB5A34F560BF47ABB8E0C960BFCC32A03EACE75E9E39C991",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs": "F02CAD34554C90389DBA668FB485AEB0C4D5DCEDEF86B544F8887E43B9FF88D7",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B",
+    "game/Assets/Tests/EditMode/D20A02/Q03FormalActionAdmissionGateTests.cs": "7906A51C85D8E7605E906C11B0D5B2040DC5C4A88F5DB02993BFBCE2A20AF755",
+    "game/Assets/Tests/EditMode/D20A02/Q03FormalAvatarActionResourceContractTests.cs": "6EF285CFFF6E4B6871FA5621325786E938F018EF92EE07A2C2E04D39654F1585",
+    "game/Assets/Tests/PlayMode/Q03D20FormalHumanoidPosePlayModeTests.cs": "93CF85E1518C6E554B6DDC5434DA31879F9977F428CE98040E24B26D1C7ACE5A",
+    "game/Assets/Tests/PlayMode/Q03D20FormalPresentationPlayModeTests.cs": "31F9C2E4C7DCF172C578EB0F8D1BD45A7705B52838B2BD4B61F615A0644F8FDA"
+  },
+  "dependency_checks": {
+    "Q03Formal_editmode": "5/5 PASS; includes the formal action gate and resource contract checks",
+    "Q03D20Formal_playmode": "2/2 PASS",
+    "Q05_transition_guard": "D17A08/D17A03/D17A07/D17A02=1/1 PASS; D2 EditMode=8/8 PASS",
+    "Q07_collision_routes": "building owner=1/1 PASS; D17A10=1/1 PASS"
+  },
+  "integration_suite": {
+    "filter": "D17ActionQualityPlayModeTests",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 52.88,
+    "summary": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "covered": [
+      "movement/jump/action state",
+      "swimming/shoreline/ten water cycles",
+      "grounding and visual-root writer ownership",
+      "terrain/dock/gangplank and scaled deck routes",
+      "ship motion and safe disembark",
+      "camera modes/obstruction/swim heading handoff",
+      "gameplay keyboard does not navigate HUD and pause modal restores",
+      "integrated shore-water-deck-turn-disembark sequence"
+    ]
+  },
+  "validation_boundary": {
+    "console_error_entries_returned": 0,
+    "console_cursor_after_test": 3266,
+    "console_dropped": true,
+    "console_cleared_after_evidence": true,
+    "recompile": "already completed during Q05 fix; failed=false; errors=[]",
+    "runtime_pipeline": "enableInBuilds=false; port=0",
+    "status_boundary": "Q08 is PASS_WITHIN_SCOPE only for current Editor/connected Pipeline code-level integration. It does not prove compositor-visible final visuals, foreground Win32 keyboard focus, native Player manual acceptance, natural authored action/swim/helm IK, no clipping/vegetation grounding, target-device performance, audio quality, VC-G01, Q31 or D31 completion. The console buffer dropped records during the long suite, so no stronger log-cleanliness claim is made."
+  },
+  "next_task": "Q09_CURRENT_DECK_ANCHOR_REAUDIT_Q31R13_20260916_LUNA"
+}

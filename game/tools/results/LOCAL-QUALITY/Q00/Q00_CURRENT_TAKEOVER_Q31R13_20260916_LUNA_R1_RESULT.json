@@ -1,0 +1,77 @@
+{
+  "task_id": "Q00",
+  "subtask_id": "Q00_CURRENT_TAKEOVER_Q31R13_20260916_LUNA_R1",
+  "captured_at_local": "2026-09-16T08:55:27+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "worktree_boundary": {
+    "status_lines": 1464,
+    "untracked": 1457,
+    "tracked_or_staged": 7,
+    "diff_shortstat": "7 files changed, 121 insertions(+), 121 deletions(-)",
+    "cleanup_performed": false,
+    "note": "Existing dirty changes and historical untracked evidence were preserved. No reset, checkout, clean, stash or broad cleanup was performed."
+  },
+  "current_source": {
+    "d20_formal_humanoid_pose_adapter_sha256": "F02CAD34554C90389DBA668FB485AEB0C4D5DCEDEF86B544F8887E43B9FF88D7",
+    "d17_action_quality_tests_sha256": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B",
+    "runtime_config": "enableInBuilds=false; port=0",
+    "commit_note": "HEAD records the R12 production D20 swim-envelope patch and the later D17 focused assertions."
+  },
+  "player_binding": {
+    "latest_player": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_R12.exe",
+    "build_id": "build_8eca102a61b4",
+    "build_guid": "6b9d61d35c2b41c787c24dd601c5d3d0",
+    "build_result": "StandaloneWindows64 succeeded; 0 errors; 0 warnings; Development build",
+    "executable_sha256": "98751D0DFF0DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly_csharp_sha256": "0CF0586F35096D25FB38C5E53FC0DEC27FC3D261384C4B91C2B63AC42477076F",
+    "build_source_head": "9fd08f711e7b699a32a420d82a0a5f1d4ac38a0c",
+    "relation_to_current_head": "R12 was built from the working tree at the prior source head with the uncommitted D20 production patch. Commit 0a711417 records that same production patch. The current D17 test file was added after the Player build and is not claimed to be in the Player binary.",
+    "r13_reuse": "R13 reused this exact R12 Player; it did not create a new binary."
+  },
+  "pipeline": {
+    "unity": "6000.0.80f1",
+    "package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "endpoint": "127.0.0.1:7800",
+    "final_state": "ready",
+    "play_mode_after_validation": "stopped",
+    "console_error_since_seq_400": 0
+  },
+  "runtime_probe": {
+    "scene": "InitialHarbor",
+    "d2_root": "D2_PlayerAvatar",
+    "d2_root_position": [0.0, 0.1497475654, -2.6999998093],
+    "d2_root_parent": "",
+    "d2_root_lossy_scale": [1.0, 1.0, 1.0],
+    "d2_action": "Idle",
+    "d2_pose_driver": "Procedural",
+    "d2_procedural_pose_layer_active": true,
+    "d20_bridge_mode": "Formal",
+    "d20_humanoid_pose_adapter": true,
+    "d20_humanoid_ready_and_last_apply_succeeded": true,
+    "d20_candidate_skinned_renderers": 7,
+    "d20_hidden_fallback_renderers": 17,
+    "ui_navigation_enabled": false,
+    "ui_move_action_bound": false,
+    "selected_ui_object": "",
+    "ship_position": [0.0, 0.0, -5.1999998093],
+    "ship_uniform_scale": 2.5739560127,
+    "water_surface_y": -0.0199999996,
+    "harbor_collision_initialized": true,
+    "harbor_r03_surface_installed": true,
+    "harbor_collider_count": 9,
+    "harbor_walkable_surface_count": 3,
+    "harbor_building_collision_count": 4
+  },
+  "validation": {
+    "d17a02_board_to_helm": "1/1 PASS; current connected Editor run",
+    "d17a03_swimming": "1/1 PASS; current connected Editor run",
+    "d17a07_water_cycles": "1/1 PASS; test duration 8.9007896s",
+    "recompile": "up_to_date; failed=false; errors=[]",
+    "current_editor_error_delta": "0 errors since console cursor 400; older FMOD/Test Runner errors remain historical and are not erased from the audit boundary"
+  },
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_boundary": "Q00 verifies the current worktree, source-to-R12 Player relationship, connected Editor runtime ownership facts and focused regressions. It does not prove exact HEAD binary identity, foreground Win32 input, compositor-visible final visual quality, natural action/swim/helm IK, vegetation grounding, target-device performance or final VC-G01 acceptance.",
+  "next_task": "Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
+}

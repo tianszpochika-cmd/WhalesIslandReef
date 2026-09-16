@@ -1314,3 +1314,17 @@ R13 在 R12 Development Player 上完成 E boarding/disembark/repeat 和 W+A shi
 本轮真实 RenderTexture 帧是有效的动作/归属诊断，但不是最终 compositor-backbuffer 或人工视觉验收：角色已经处于可见舵轮前，低模/程序化几何、正式动作 clip 和自然 hand IK 仍然开放。执行顺序保持单一 owner 边界，Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`。
 
 结果：[Q31 R13](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json)；日志：[R13](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log)；截图：[boarding frame](../game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png)。
+
+## 2026-09-16 temporary safe pause after Q09 current-source re-audit
+
+Q05-Q09 已完成当前源码层的有界推进：Q05 捕获并修复 Swimming transition 的真实 stale grounded-visual-offset 回归，Q06/Q07/Q08/Q09 的 focused/整合/锚点回归均已登记。该收口点只证明 connected Editor 的逻辑与代码边界，不能替代 native Player 前台输入、compositor-visible 最终视觉、自然动作/泳姿/握舵、植被和目标设备性能验收。
+
+暂停状态保持：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。Editor 已回到 `ready/stopped`，Runtime Pipeline 已恢复 `enableInBuilds=false / port=0`，工作区已有 tracked/untracked 改动未清理。恢复入口为 `Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA`；权威暂停结果见 [Q31 Q09 R1 pause checkpoint](../game/tools/results/LOCAL-QUALITY/Q31/Q31_PAUSE_CHECKPOINT_20260916_Q09_R1_RESULT.json)，暂停交接见 [PAUSE_20260916_Q09_R1](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q09_R1.md)。
+
+## 2026-09-16 current-source rebind after Q31 R13
+
+Q00/Q01/Q04 已从 R13 暂停点重新建立当前证据链：工作区保持脏状态并未清理；R12 Player 被 R13 复用，D20 泳姿生产 patch 已由当前 HEAD `0a711417` 记录，R13 测试断言不被误写为 Player 二进制内容。Connected Editor 采样确认 D20 Formal Humanoid 是可见 presentation writer，D2 仍负责物理根与 gameplay action；D17A02/D17A03/D17A07 均 `1/1 PASS`。
+
+这次只收紧 source/owner/逻辑边界，不改变视觉门禁：`VC-G01=IN_PROGRESS`、`Q31=PARTIAL`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。下一步 Q05 当前游泳 presentation 复核，然后才选择 Q31 R14 的单一 visual owner；不得把 Pipeline 回归或局部 RenderTexture 帧扩大为最终视觉通过。
+
+结果：[Q00 R1](../game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q01 R1](../game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_Q31R13_20260916_LUNA_R1_RESULT.json)、[Q04 R1](../game/tools/results/LOCAL-QUALITY/Q04/Q04_CURRENT_WATER_OWNER_Q31R13_20260916_LUNA_R1_RESULT.json)。

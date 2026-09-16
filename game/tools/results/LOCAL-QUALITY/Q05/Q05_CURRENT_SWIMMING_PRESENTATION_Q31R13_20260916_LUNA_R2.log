@@ -1,0 +1,15 @@
+Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2
+Unity 6000.0.80f1 | Pipeline 127.0.0.1:7800 | Editor PID 34276
+Fix: D2CharacterAnimationController.UpdateAction clears the D7 shore-only visual offset at the Swimming action boundary.
+Recompile: completed; failed=false; errors=[]
+Tests:
+- D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot: 1/1 PASS, 10.36s
+- D17A03CharacterEntersWaterAndReportsSwimmingAction: 1/1 PASS, 2.02s
+- D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles: 1/1 PASS, 8.97s
+- D17A02CharacterActionStateFollowsMovementJumpAndBoarding: 1/1 PASS, 3.36s
+- D2CharacterAnimationControllerTests (EditMode): 8/8 PASS, 0.06s
+Runtime probe: action=Swimming; swimming=true; playerY=0.3999999762; visualRootLocalY=0.0144426823; groundingOffsetLocalY=0; pitch=64; roll=0; bodyDrop=-0.6145817041.
+Console error delta since seq 400: 0; cursor after validation=1544; console cleared after evidence.
+Editor final: ready/stopped.
+Runtime Pipeline final: enableInBuilds=false; port=0.
+Boundary: procedural fallback root-height/physics-root contract only; no native Player or final visual acceptance claim.

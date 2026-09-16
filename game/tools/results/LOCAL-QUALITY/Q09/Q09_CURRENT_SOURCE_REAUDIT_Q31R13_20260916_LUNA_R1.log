@@ -1,0 +1,11 @@
+Q09_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1
+Unity 6000.0.80f1 | Pipeline 127.0.0.1:7800 | Editor PID 34276
+Filter: D17A11StableDeckAnchorSupportsTenBoardingCyclesAndRejectsRemoteBoarding
+Result: total=1 passed=1 failed=0 skipped=0 inconclusive=0
+Pipeline=3.12s; test=3.0245131s
+Current source: D7ShipDeck=4EE9C269...308F0A; D2Control=1C03D5CF...AD9A537; D2Runtime=3D854D17...A32F2B4A; D17=EC2BE01F...4B139B1B.
+Runtime facts: ten boarding/disembarking cycles; scaled HelmPoint contract; 30m remote rejection preserves Character mode and null parent.
+Console error query: returned=0 since seq 400; cursor=3427; dropped=true. Console cleared after evidence; no stronger log-cleanliness claim is made.
+Editor final: ready/stopped.
+Runtime Pipeline final: enableInBuilds=false; port=0.
+Boundary: scaled anchor/lifecycle/remote rejection only; ship motion, natural helm visual and native Player remain open.

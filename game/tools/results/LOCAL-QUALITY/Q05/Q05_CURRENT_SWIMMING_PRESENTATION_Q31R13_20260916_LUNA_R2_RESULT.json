@@ -1,0 +1,81 @@
+{
+  "task_id": "Q05",
+  "run_id": "Q05_CURRENT_SWIMMING_PRESENTATION_Q31R13_20260916_LUNA_R2",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source procedural fallback visual-root water-height envelope and physics-root separation",
+  "captured_at_local": "2026-09-16T09:39:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs",
+    "game/AgentScripts/LocalQuality/UnityPipelineSwimmingRootProbe.cs"
+  ],
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "DCB8F837774CB3F15AE4C0B73673501035C443E3754DFBFD00ACDAF7979ECB52",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B",
+    "game/AgentScripts/LocalQuality/UnityPipelineSwimmingRootProbe.cs": "CCE18C77791A980AA704B3CE0F17F8C718F10A24F15DDFE5A349BFC812C795E9"
+  },
+  "fix": {
+    "owner": "D2CharacterAnimationController.UpdateAction",
+    "change": "Clear the D7 ground-only visual offset at the D2 Swimming action boundary before the first swimming pose submission.",
+    "reason": "A stale shore correction was applied for one transition frame and lifted the fallback visual root to 0.396687269m above its baseline.",
+    "physics_root_unchanged": true,
+    "d7_measurement_owner_unchanged": true
+  },
+  "focused_tests": {
+    "D17A08SwimmingVisualRootTiltsAndRestoresWithoutTiltingPhysicsRoot": {
+      "status": "1/1 PASS",
+      "duration_s": 10.36,
+      "scope": "ten water cycles; procedural root tilt; y envelope; physics root upright; neutral restore"
+    },
+    "D17A03CharacterEntersWaterAndReportsSwimmingAction": {
+      "status": "1/1 PASS",
+      "duration_s": 2.02
+    },
+    "D17A07WaterEntryExitSurvivesTenShallowAndDeepCycles": {
+      "status": "1/1 PASS",
+      "duration_s": 8.97
+    },
+    "D17A02CharacterActionStateFollowsMovementJumpAndBoarding": {
+      "status": "1/1 PASS",
+      "duration_s": 3.36
+    },
+    "D2CharacterAnimationControllerTests": {
+      "status": "8/8 PASS",
+      "duration_s": 0.06,
+      "mode": "EditMode"
+    }
+  },
+  "runtime_probe_after_fix": {
+    "scene": "InitialHarbor",
+    "action": "Swimming",
+    "swimming": true,
+    "player_y": 0.3999999762,
+    "visual_root_local_position_y": 0.0144426823,
+    "visual_root_base_position_y": 0.0,
+    "visual_grounding_offset_local_y": 0.0,
+    "visual_root_local_euler": [64.0, 0.0, 0.0],
+    "swimming_body_drop": -0.6145817041,
+    "swimming_pitch_degrees": 64.0,
+    "swimming_roll_degrees": 0.0,
+    "probe_scope": "connected Editor runtime only; no native Player visual claim"
+  },
+  "validation_boundary": {
+    "recompile": "completed; failed=false; errors=[]",
+    "console_error_delta_since_seq_400": 0,
+    "console_cursor_after_probe": 1544,
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0",
+    "previous_failure": "Q05_CURRENT_SWIMMING_PRESENTATION_REGRESSION_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "status_boundary": "This reopens Q05 only within the bounded procedural whole-visual-root and physics-root separation contract. It does not prove the D20 Formal authored swim silhouette, native Player foreground input, compositor-visible final visual, vegetation grounding, performance, or VC-G01 acceptance."
+  },
+  "next_task": "Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA"
+}

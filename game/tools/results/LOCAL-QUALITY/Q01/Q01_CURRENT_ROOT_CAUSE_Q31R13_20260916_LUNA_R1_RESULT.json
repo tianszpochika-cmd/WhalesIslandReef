@@ -1,0 +1,52 @@
+{
+  "task_id": "Q01",
+  "subtask_id": "Q01_CURRENT_ROOT_CAUSE_Q31R13_20260916_LUNA_R1",
+  "captured_at_local": "2026-09-16T08:55:27+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "status": "PASS_WITHIN_SCOPE",
+  "evidence_mode": "read-only connected Unity Pipeline Editor runtime probes plus current focused PlayMode regressions",
+  "runtime_facts": {
+    "physical_root": "D2_PlayerAvatar parent=null position=(0.000,0.150,-2.700) lossyScale=(1,1,1)",
+    "character_controller": "enabled radius=0.2424353212m height=1.7999997139m center.y=0.8468632698m skinWidth=0.0193948261m",
+    "d2_logic": "Idle / Procedural / procedural layer active / grounded=true / swimming=false / movement source=D16InputRouter",
+    "d20_visible_consumer": "Formal / HumanoidPoseAdapter=true / GenericPathAdapter=false / candidate skinned renderers=7 / hidden fallback renderers=17 / ready=true / last apply succeeded=true",
+    "ship": "ph_ship_fishing position=(0.000,0.000,-5.200) uniform scale=2.5739560127",
+    "water": "OceanAdapter surfaceY=-0.020m halfExtent=600 fallback=false",
+    "harbor_collision": "initialized=true R03=true colliders=9 walkable=3 building=4",
+    "ui_focus_configuration": "EventSystem navigation=false; InputSystemUIInputModule move action=null; selected object empty"
+  },
+  "root_cause_reconciliation": {
+    "action_distortion": "The current default visible route is no longer the old 17-renderer procedural fallback: D20 Formal Humanoid is the active presentation writer. The remaining action-quality defect therefore requires compositor-visible Player review of the formal avatar/pose, not another assumption that the old fallback owns the frame.",
+    "swimming": "D17A03 and Q31 R12 prove the state route and Formal Fish adapter application. The R12 compositor frame remains partial for natural stroke, silhouette and water contact; logic PASS is not visual PASS.",
+    "boarding_helm": "Q31 R13 proves D2/D7 parent, mode and Board-to-Helm state transitions. It does not prove authored boarding/helm clips, hand IK or no-clipping. Initial-state hand-to-wheel distances in the read-only probe are not used as a boarded-contact verdict.",
+    "floating_trees": "Not reproduced or visually inspected by this Q01 probe. Vegetation pivot/bounds and full-camera grounding remain Q20/D31-owned.",
+    "wasd_hud_conflict": "The current EventSystem/UI owner configuration is isolated from navigation in runtime facts, but only foreground physical keyboard testing can close the user's W/S focus report."
+  },
+  "owner_table": {
+    "physical_root_and_swimming": "D2CharacterController",
+    "gameplay_action_state": "D2CharacterAnimationController / D2 runtime",
+    "visible_formal_pose": "D20PlayerCandidatePresentationBridge + D20FormalHumanoidPoseAdapter",
+    "mode_and_parent_transition": "D2ControlRouter",
+    "deck_and_helm_anchor": "D7ShipDeckController",
+    "logical_water": "OceanAdapter",
+    "walkable_collision": "HarborCollisionController with scoped R03 authored MeshCollider",
+    "vegetation": "D19/Q20 presentation and resource owner"
+  },
+  "tolerance_inputs": {
+    "root_scale": "(1,1,1)",
+    "visual_root_scale": 0.6642063856,
+    "water_surface_y": -0.0199999996,
+    "ship_scale": 2.5739560127,
+    "ship_helm_world": "(0.000,1.100,-6.680)"
+  },
+  "checks": {
+    "D17A02": "1/1 PASS",
+    "D17A03": "1/1 PASS",
+    "D17A07": "1/1 PASS",
+    "recompile": "up_to_date; failed=false; errors=[]",
+    "editor": "ready/stopped after validation",
+    "new_error_delta_since_seq_400": 0
+  },
+  "status_boundary": "Q01 closes the current owner/root/scale diagnosis within connected Pipeline scope. It does not close native foreground input, subjective or compositor-visible visual quality, authored action assets, natural swimming or helm IK, vegetation grounding, no-clipping or target-device performance.",
+  "next_task": "Q04_CURRENT_WATER_OWNER_REAUDIT_COMPLETED; continue Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
+}

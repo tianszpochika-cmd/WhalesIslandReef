@@ -959,5 +959,16 @@
     "checks": "D2 EditMode=8/8; D17 PlayMode=16/16; Q03D20 Formal=2/2; Q03Formal=5/5; recompile errors=0",
     "boundary": "No foreground/native input, compositor screenshot, subjective visual acceptance, no-clipping, vegetation grounding or target-device performance PASS",
     "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  },
+  "current_root_cause_q31r13_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q01/Q01_CURRENT_ROOT_CAUSE_Q31R13_20260916_LUNA_R1.log",
+    "status": "PASS_WITHIN_SCOPE",
+    "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+    "runtime": "D2 physical root=(0.000,0.150,-2.700), unit scale; D2 reports Procedural/Idle; D20 bridge reports Formal Humanoid active and ready/apply=true; water=-0.020; ship scale=2.573956; R03 collision=initialized/installed/9/3/4",
+    "root_cause": "Current default visible presentation is D20 Formal Humanoid, not the historical 17-renderer fallback. Remaining action/swim/helm issues require compositor-visible Player review; trees remain Q20-owned; W/S-HUD still requires foreground physical-keyboard evidence.",
+    "validation": "D17A02=1/1; D17A03=1/1; D17A07=1/1; recompile=up_to_date; error delta since console seq 400=0",
+    "boundary": "Owner/root/scale diagnosis within connected Pipeline only; no native input, subjective visual, authored action, natural swim/helm IK, vegetation grounding, no-clipping or target-device performance PASS",
+    "next_task": "Q04_CURRENT_WATER_OWNER_REAUDIT_COMPLETED; continue Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
   }
 }

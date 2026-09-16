@@ -1037,5 +1037,17 @@
     "regression": "D2 EditMode=8/8; D17 PlayMode=16/16; Q03D20 Formal PlayMode=2/2; Q03Formal EditMode=5/5; recompile failed=false/errors=[]",
     "boundary": "Exact source/build/runtime binding only; no foreground physical keyboard, compositor screenshot, target-device performance or final visual acceptance",
     "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT"
+  },
+  "current_takeover_q31r13_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q00/Q00_CURRENT_TAKEOVER_Q31R13_20260916_LUNA_R1.log",
+    "status": "VERIFIED_WITH_SCOPE",
+    "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+    "worktree": "1464 status lines; 1457 untracked; 7 tracked/staged; existing changes preserved; no cleanup",
+    "player_binding": "R12 build_8eca102a61b4 / BuildGuid=6b9d61d35c2b41c787c24dd601c5d3d0; EXE SHA=98751D0D...C2B42E81; Assembly-CSharp SHA=0CF0586F...477076F; R13 reused the exact R12 binary; current D17 test assertions postdate the Player",
+    "runtime": "Connected Pipeline Editor PID 34276; InitialHarbor D2 root unit scale; D20 Formal Humanoid ready/apply=true; 7 candidate skinned renderers; 17 fallback renderers hidden; UI navigation=false/move=null/selection empty; R03 collision initialized",
+    "validation": "D17A02=1/1; D17A03=1/1; D17A07=1/1; recompile=up_to_date; error delta since console seq 400=0",
+    "boundary": "Current source/runtime/Player relationship and focused regression evidence only; no exact HEAD binary identity, foreground Win32 input, final visual, natural IK, vegetation, target-device performance or VC-G01 PASS",
+    "next_task": "Q05_CURRENT_SWIMMING_PRESENTATION_REAUDIT"
   }
 }

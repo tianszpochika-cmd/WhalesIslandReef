@@ -104,5 +104,17 @@
     "status_boundary": "Code-level integration only; no final compositor/native-input/visual/performance acceptance.",
     "next_task": "SAFE_PAUSE_AT_Q08_BEFORE_Q09_AND_Q31_NATIVE_VISUAL_GATE"
   },
-  "next_task": "SAFE_PAUSE_AT_Q08_BEFORE_Q09_AND_Q31_NATIVE_VISUAL_GATE"
+  "next_task": "Q09_CURRENT_DECK_ANCHOR_REAUDIT_Q31R13_20260916_LUNA",
+  "current_source_integration_q31r13_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1_RESULT.json",
+    "capture_log": "game/tools/results/LOCAL-QUALITY/Q08/Q08_CURRENT_SOURCE_INTEGRATION_Q31R13_20260916_LUNA_R1.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "dependency_checks": "Q03Formal=5/5 EditMode; Q03D20Formal=2/2 PlayMode; Q05 focused dependencies PASS within scope; Q07 dependencies PASS within scope",
+    "integration_test": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0 skipped=0 inconclusive=0; pipeline=52.88s",
+    "source_hashes_current": true,
+    "console": "error entries returned=0; cursor=3266; dropped=true; console cleared after evidence",
+    "editor_final": "ready/stopped",
+    "boundary": "Current connected Editor code integration only. No compositor-visible native Player, foreground keyboard, natural authored action/swim/helm, vegetation/no-clipping, target-device performance, audio or VC-G01 completion claim.",
+    "next_task": "Q09_CURRENT_DECK_ANCHOR_REAUDIT_Q31R13_20260916_LUNA"
+  }
 }

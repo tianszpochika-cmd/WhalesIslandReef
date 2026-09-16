@@ -1,0 +1,59 @@
+{
+  "task_id": "Q06",
+  "run_id": "Q06_CURRENT_SOURCE_REAUDIT_Q31R13_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "current-source InitialHarbor jump, grounded recovery and small-step movement stability",
+  "captured_at_local": "2026-09-16T09:58:00+08:00",
+  "source_head": "0a711417c3a08f20491e87571d5159071d80427a",
+  "branch": "agent/publish-project-changes-20260813",
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "DCB8F837774CB3F15AE4C0B73673501035C443E3754DFBFD00ACDAF7979ECB52",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B"
+  },
+  "test": {
+    "filter": "D17A09TenJumpCyclesAndGroundedDiagonalMotionStayFinite",
+    "mode": "PlayMode",
+    "status": "completed",
+    "duration_s": 10.57,
+    "test_duration_s": 10.4788045,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "coverage": [
+      "ten real TryJump-to-ground cycles",
+      "positive, diagonal, lateral and reverse ApplyPhysicsMotion small steps",
+      "grounded and non-swimming invariants",
+      "finite Transform state"
+    ]
+  },
+  "runtime_facts": {
+    "collision_owner": "D2 CharacterController over HarborCollisionController / D19_R03_IslandSurfaceMesh",
+    "no_collision_disabled": true,
+    "no_air_wall_added": true,
+    "no_threshold_relaxed": true,
+    "no_illegal_position_injection": true
+  },
+  "validation_boundary": {
+    "console_error_delta_since_seq_400": 0,
+    "console_cursor_after_test": 1611,
+    "console_cleared_after_evidence": true,
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0",
+    "status_boundary": "Q06 is PASS_WITHIN_SCOPE only for InitialHarbor basic jump/grounded and spawn-area small-step stability. It does not prove wall, slope, shore, ramp/gangplank, ship-deck visual contact, native Player keyboard, vegetation grounding, performance or VC-G01 acceptance."
+  },
+  "next_task": "Q07_CURRENT_COLLISION_ROUTE_REAUDIT_Q31R13_20260916_LUNA"
+}

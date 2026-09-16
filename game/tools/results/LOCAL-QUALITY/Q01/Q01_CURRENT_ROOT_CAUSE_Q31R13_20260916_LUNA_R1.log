@@ -1,0 +1,12 @@
+Q01 current root-cause audit after Q31 R13
+source_head=0a711417c3a08f20491e87571d5159071d80427a
+scene=InitialHarbor;editor=34276;endpoint=127.0.0.1:7800
+physical_root=D2_PlayerAvatar;parent=null;position=(0.000,0.150,-2.700);scale=(1,1,1)
+d2=Idle/Procedural/procedural_active=true;grounded=true;swimming=false;source=D16InputRouter
+d20=Formal;humanoid=true;generic=false;candidate_skinned=7;fallback_hidden=17;ready=true;apply=true
+controller=radius=0.2424353212;height=1.7999997139;centerY=0.8468632698;skin=0.0193948261
+ship=ph_ship_fishing;scale=2.5739560127;water=-0.0199999996;collision=initialized/R03/9/3/4
+ui=navigation=false;move=null;selected=empty
+root_cause=action/swim/helm visual quality needs compositor Player evidence; trees remain Q20; W/S focus needs foreground keyboard evidence
+validation=D17A02=1/1;D17A03=1/1;D17A07=1/1;recompile=up_to_date;new_error_delta_since_seq_400=0
+status=PASS_WITHIN_SCOPE
