@@ -1,0 +1,131 @@
+{
+  "task_id": "Q11",
+  "status": "VERIFIED",
+  "status_scope": "safe_legal_disembark_ten_cycles_and_no_ground_refusal",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q09", "Q10"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q11_SAFE_DISEMBARK_PLAYMODE_R2_20260908",
+  "audit_time_local": "2026-09-08T23:42:47+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D7ShipDeckController",
+    "supporting_runtime_path": "D2ControlRouter.ExitShip and D2ShipController.ApplySnapshot",
+    "changes": [
+      "Added ten legal TryToggleShip boarding/disembarking cycles with grounded, non-swimming, collision, parent, control-mode and Disembarking-transition assertions.",
+      "Added a no-ground refusal route that moves the ship beyond the actual runtime D19_TerrainRoot bounds through the D2 sailing owner, then verifies disembark_unavailable preserves Ship mode, ship parent and disabled CharacterController.",
+      "Restores the original sailing snapshot and verifies a subsequent legal disembark recovers Character mode, grounded state and collision."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "0857BAFB845E28DE9E27AA12A0D47653C6C6868DF2EF68DF65D26C1CA3E13C11"
+    }
+  },
+  "checks": [
+    {
+      "name": "ten_legal_disembark_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q11/Q11_SAFE_DISEMBARK_PLAYMODE_R2.xml and .log; D17A13 legal_disembark_cycles=10; total=1 passed=1 failed=0 skipped=0"
+    },
+    {
+      "name": "legal_restore_contract",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Each legal cycle restores Character mode, null parent, enabled CharacterController, Unity/D2 grounded state, non-swimming state and Disembarking transition; the player remains beyond the visible ship center"
+    },
+    {
+      "name": "no_ground_refusal_preserves_ship_control",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The test derives a position beyond the actual D19_TerrainRoot bounds, applies it through D2ShipController, then observes false TryToggleShip with disembark_unavailable, Ship mode, ship parent, PlayerBoarded=true and disabled CharacterController"
+    },
+    {
+      "name": "test_assumption_correction",
+      "result": "R1_REJECTED_R2_PASS",
+      "evidence": "R1's fixed (100,100) point was still inside the regenerated D19 mesh and correctly found terrain; R2 uses actual collider bounds instead of guessing a world coordinate and passes without weakening the product path"
+    }
+  ],
+  "remaining_scope": [
+    "This does not prove native Player keyboard input, moving-ship physical collision or continuous visual camera evidence; Q13 and Q31 remain separate.",
+    "The formal action-resource gate Q03 remains BLOCKED_ASSET; the Disembarking checks validate state transition/lifecycle only, not imported limb animation quality.",
+    "Q12 must validate camera occlusion and Q14 must run the full shore/ship integration sequence."
+  ],
+  "status_boundary": "Q11 VERIFIED means the authored legal disembark path, repeated recovery and no-ground refusal contract are evidenced through the existing owners. It is not a final Player or visual-quality pass.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A13 passed in 2.269023s",
+    "source_hashes_current": true,
+    "boundary": "Current legal/no-ground disembark state evidence only; native input and visual action quality remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.2898463s; total duration=5.39s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current legal/no-ground disembark state evidence only; moving-ship collision, native input and visual action quality remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.1991542s; total duration=4.31s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current legal/no-ground disembark state evidence only; moving-ship visual collision, native input, authored action quality and camera remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.365028s; total duration=3.48s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current legal/no-ground disembark state evidence only; moving-ship visual collision, native input, authored action quality and camera remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.4638275s; total duration=5.71s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "boundary": "Current legal/no-ground disembark state evidence only; moving-ship collision, native input, authored action quality and camera remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.6895698s; pipeline duration=3.93s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current legal/no-ground disembark state evidence only; moving-ship collision, native input, authored action quality and camera remain open.",
+    "next_task": "Q12_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.4956044s; pipeline duration=5.98s",
+    "runtime_log": "legal_disembark_cycles=10; no_ground_rejection=true; final_grounded=True; final_mode=Character",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 1,
+    "warning_boundary": "Expected no-ground disembark rejection warning retained in evidence.",
+    "next_task": "Q12_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q11/Q11_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A13 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.1345655s; pipeline duration=3.23s",
+    "runtime_log": "legal_disembark_cycles=10; no_ground_rejection=true; final_grounded=True; final_mode=Character",
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_boundary": "Expected no-ground disembark rejection warning retained as behavior evidence; Console cleared after evidence",
+    "boundary": "Current legal/no-ground disembark state evidence only; moving-ship visual collision, all shoreline/ramp routes, native input, authored action quality, camera, vegetation, performance, audio and VC-G01 remain open.",
+    "next_task": "Q12_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  }
+}

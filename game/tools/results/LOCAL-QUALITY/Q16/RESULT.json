@@ -1,0 +1,160 @@
+{
+  "task_id": "Q16",
+  "status": "VERIFIED",
+  "status_scope": "d29_d3_trade_bridge_success_rejection_and_busy_recovery",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q15"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q16_TRADE_BRIDGE_PLAYMODE_R2_20260909",
+  "audit_time_local": "2026-09-09T00:37:25+08:00",
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs",
+    "game/Assets/Tests/PlayMode/D29TradeBridgePlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D29 market button/feedback bridge + D3RuntimeBootstrap + TradeEconomySystem + D3InventorySystem",
+    "changes": [
+      "Added a real InitialHarbor PlayMode bridge test using SaveSystem.NewGame, the D29 market Button, the D3 trade panel Buy/Sell Buttons, and the public D3 owner read models.",
+      "The fixture pauses and restores the real D3 Behaviour to exercise the owner-not-ready feedback boundary without injecting a fake owner or business result.",
+      "The fixture arranges insufficient-money and full-cargo boundaries in the real D3TradeState/D3InventorySystem, then verifies the existing D3 owner result and visible feedback without UI-side compensation."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D29TradeBridgePlayModeTests.cs": "754F2706EA54FAD8F16B46202C08515E75288DC6EAA0A96546B92897DA56C15A"
+    }
+  },
+  "current_source_revalidation": {
+    "reason": "Q17 修复 D29 可用性刷新覆盖最新动作反馈后，重新执行 Q16 以确认交易 owner 桥接和拒绝反馈不受影响。",
+    "run_id": "Q16_TRADE_BRIDGE_PLAYMODE_R3_20260909",
+    "result": "1/1 PASS",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q16/Q16_TRADE_BRIDGE_PLAYMODE_R3.xml 与 .log；not_ready=true，shortcut_double_click_one_owner=true，buy_success_one_change=true，sell_success_one_change=true，insufficient_funds_unchanged=true，cargo_full_unchanged=true",
+    "source_hash": "B815FCC65EBA4E869285650F28964596B206BA0AC2213DECE855ADE2165C6E09"
+  },
+  "checks": [
+    {
+      "name": "owner_not_ready_feedback",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q16_TRADE_BRIDGE_PLAYMODE_R2.xml; log contains D29 feedback '市场 owner 尚未就绪；按钮已响应，请稍后再试。' and not_ready=true; trade owner remained closed"
+    },
+    {
+      "name": "rapid_double_click_one_owner",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The real D29 market Button was invoked twice before a frame boundary; log shortcut_double_click_one_owner=true and D3 remained one active trade owner"
+    },
+    {
+      "name": "buy_sell_one_change_per_request",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Real D3 Buy/Sell Buttons changed money by the current quote and cargo by exactly one unit; visible text was 购买完成 / 出售完成; log buy_success_one_change=true and sell_success_one_change=true"
+    },
+    {
+      "name": "insufficient_money_and_full_cargo_rejection",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D3 owner returned/Displayed 金币不足 and 货舱体积不足; money and cargo remained unchanged in both cases; log insufficient_funds_unchanged=true and cargo_full_unchanged=true"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "run_id": "Q16_TRADE_BRIDGE_PLAYMODE_R1_20260909",
+      "result": "TEST_FIXTURE_COMPILE_ERROR",
+      "reason": "The test held D3 as Component and accessed enabled; fixed by explicit Behaviour conversion before the passing R2 run"
+    }
+  ],
+  "remaining_scope": [
+    "This closes the bounded D29/D3 trade bridge cases only; it does not prove native Windows Player mouse hit testing, screenshots, performance, or complete voyage/Continue flow.",
+    "Q17 still covers shipyard/preparation success, material shortage, duplicate, cancel and exception recovery.",
+    "Q03 remains BLOCKED_ASSET for imported-rig action quality; Q13 adjacent CameraFollow NaN remains open; VC-G01 remains IN_PROGRESS."
+  ],
+  "status_boundary": "Q16 VERIFIED means the existing D3 business owner and D29 UI bridge produced the tested success/rejection/busy feedback and one-change state deltas in real InitialHarbor PlayMode. It is not a final game or D31 acceptance pass.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D29Q16TradeBridgeCoversSuccessRejectBusyAndOneChangePerRequest total=1 passed=1 failed=0 in 2.24s",
+    "source_hashes_current": true,
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.7550835s; total duration=4.85s",
+    "source_hashes_current": true,
+    "console_marker": "not_ready=true, shortcut_double_click_one_owner=true, buy_success_one_change=true, sell_success_one_change=true, insufficient_funds_unchanged=true, cargo_full_unchanged=true; errors=0 before clear",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913_rerun2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260913_RERUN2_RESULT.json",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.7009758s; total duration=3.81s",
+    "console_marker": "not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0; console cleared after marker inspection",
+    "boundary": "Current D29/D3 trade logic only; native Player visual/mouse and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "marker_log": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_CONSOLE_MARKER.log",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.8561068s; total duration=2.97s",
+    "console_marker": "not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0",
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual, performance and complete voyage flow remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "marker_log": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_CONSOLE_MARKER.log",
+    "test_run": "D29Q16TradeBridgeCoversSuccessRejectBusyAndOneChangePerRequest total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=1.9034709s; total duration=2.02s",
+    "console_marker": "seq=21609; not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0",
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual, performance, complete voyage flow and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.0648674s; total duration=4.28s",
+    "console_marker": "seq=31829; not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 31752=0",
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual, performance and complete voyage flow remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=1.923169s; pipeline duration=2.13s",
+    "console_marker": "seq=35575; not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 35498=0",
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual, performance and complete voyage flow remain open.",
+    "next_task": "Q17_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.7348475s; pipeline duration=4.11s",
+    "console_marker": "not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 6,
+    "warning_boundary": "Known D2/D27 fallback and initialization warnings retained; not a zero-warning claim.",
+    "next_task": "Q17_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.1992274s; pipeline duration=2.30s",
+    "console_marker": "not_ready=true; shortcut_double_click_one_owner=true; buy_success_one_change=true; sell_success_one_change=true; insufficient_funds_unchanged=true; cargo_full_unchanged=true",
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "owner_feedback": "D3 trade owner logged purchase and sale completion",
+    "boundary": "Current D29/D3 trade logic only; native Player mouse/visual, online/save data, full voyage, authored action, performance, audio and VC-G01 remain open.",
+    "next_task": "Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  }
+}

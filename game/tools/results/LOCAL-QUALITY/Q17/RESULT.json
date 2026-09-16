@@ -1,0 +1,191 @@
+{
+  "task_id": "Q17",
+  "status": "VERIFIED",
+  "status_scope": "d29_d9_preparation_and_d4_shipyard_feedback_recovery",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q15", "Q16"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q17_SHIPYARD_PREPARATION_PLAYMODE_R5_20260909",
+  "audit_time_local": "2026-09-09T00:55:01+08:00",
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs",
+    "game/Assets/Tests/PlayMode/D29ShipyardPreparationPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D29 UI bridge + D9PortShipPreparationBootstrap/D9PortShipPreparationSystem + D4RuntimeBootstrap/D4ShipyardSystem + RuntimeHudCoordinator",
+    "changes": [
+      "Added a real InitialHarbor PlayMode fixture using SaveSystem.NewGame, the D29 preparation/shipyard Buttons, the D9 Repair/Close Buttons, and the public D3/D4 owner state.",
+      "Covered D9 repair success, material shortage, same-frame repeated repair with unchanged money/hull/material, same saveRevision domain idempotency, page cancel and primary-input restoration.",
+      "Covered D4 shipyard success, insufficient-money rejection, and a fault-injected owner exception through D29's real recovery path; the test restores the original owner after the exception branch.",
+      "Fixed a real D29 UI defect: owner availability refresh no longer overwrites the latest success/rejection/exception feedback before the player can read it."
+    ],
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "B815FCC65EBA4E869285650F28964596B206BA0AC2213DECE855ADE2165C6E09",
+      "game/Assets/Tests/PlayMode/D29ShipyardPreparationPlayModeTests.cs": "4B704F6128AFA8F45871B84212E1B3E3DDA575ED2D39692736DFCBE4DD935CFA"
+    }
+  },
+  "checks": [
+    {
+      "name": "d9_preparation_repair_success",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q17_SHIPYARD_PREPARATION_PLAYMODE_R5.xml; real D9 Repair Button changed hull by exactly 10, deducted 80 money and consumed one timber; log contains preparation_success=true."
+    },
+    {
+      "name": "repair_material_shortage_rejection",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The real D9 Repair Button with empty timber inventory kept money and hull unchanged and returned feedback containing 木材; log contains repair_reject_material=true."
+    },
+    {
+      "name": "repair_repeat_and_domain_idempotency",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Repeated repair after a full hull kept money/hull/material unchanged; the same D9 saveRevision returned duplicate_settlement with no second mutation; log contains repair_duplicate_unchanged=true and domain_duplicate_idempotent=true."
+    },
+    {
+      "name": "cancel_and_busy_recovery",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The real D9 Close Button hid the page and restored RuntimeHudCoordinator.PrimaryInputAllowed; rejection and exception branches also restored primary input. Log contains cancel_recovery=true and primary_input_restored=true."
+    },
+    {
+      "name": "d4_shipyard_success_and_rejection",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The real D29 Shipyard Button advanced D4 Hull upgrade exactly one level with sufficient money/reputation; insufficient money left the level unchanged, closed the empty page, and displayed the rejection. Log contains shipyard_success=true and shipyard_reject=true."
+    },
+    {
+      "name": "exception_feedback_and_recovery",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The test temporarily nulls the existing D4 shipyard owner to trigger the real D29 catch/recovery path; money and level stayed unchanged, the temporary page closed, and status contained 请求异常. Log contains exception_recovery=true."
+    },
+    {
+      "name": "feedback_persistence_fix",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "R4 exposed D29.RefreshButtonAvailability overwriting the successful shipyard feedback with 交互入口已就绪; the D29 _hasActionFeedback fix was followed by R5 1/1 PASS with the success, rejection and exception assertions intact."
+    },
+    {
+      "name": "dependent_d29_regression",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "After the D29 feedback fix, Q15_PANEL_FOCUS_PLAYMODE_R6.xml and Q16_TRADE_BRIDGE_PLAYMODE_R3.xml each passed 1/1; the combined Whalebone.Tests.D29 run Q17_D29_REGRESSION_PLAYMODE_R1.xml passed 3/3 in one Unity process. Their result JSON files contain current-source revalidation entries."
+    }
+  ],
+  "failed_attempts": [
+    {
+      "run_id": "Q17_SHIPYARD_PREPARATION_PLAYMODE_R1_20260909",
+      "result": "TEST_FIXTURE_COMPILE_ERROR",
+      "reason": "The D16 PlayMode test assembly does not reference Gameplay/UI or Agent assemblies; the fixture was changed to use reflection for Gameplay owner types, matching Q15/Q16."
+    },
+    {
+      "run_id": "Q17_SHIPYARD_PREPARATION_PLAYMODE_R2_20260909",
+      "result": "TEST_FIXTURE_ASSERTION_ERROR",
+      "reason": "The fixture treated D9's _panel controls object as a canvas root and searched for D9PortServiceControls/Repair; it was corrected to search the actual controls children."
+    },
+    {
+      "run_id": "Q17_SHIPYARD_PREPARATION_PLAYMODE_R3_20260909",
+      "result": "TEST_FIXTURE_ARRANGEMENT_ERROR",
+      "reason": "D4 shipyard reputation is owned by D4FactionSystem rather than GameState.CurrentPlayer.Reputation; the fixture now arranges the real D4 faction owner."
+    },
+    {
+      "run_id": "Q17_SHIPYARD_PREPARATION_PLAYMODE_R4_20260909",
+      "result": "PRODUCT_DEFECT_FOUND_AND_FIXED",
+      "reason": "D29 availability refresh overwrote the latest shipyard success feedback on the following frame; D29 now preserves action feedback, and R5 revalidated the complete route."
+    }
+  ],
+  "remaining_scope": [
+    "This closes the bounded D29/D9/D4 preparation and shipyard logic/feedback routes only; it does not prove native Windows Player screenshots, mouse hit testing, performance, or complete voyage/Continue flow.",
+    "Q03 remains BLOCKED_ASSET for imported-rig action quality, so the user's task-animation distortion still needs valid current-rig action assets/adapter and native visual recheck.",
+    "Q04/Q05 prove the code-level swimming state/motion boundary, but the native Player ocean visual and control experience still requires VC-G01-NATIVE evidence.",
+    "VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED and D31-P04/D31-S05/D31-G06 remain PARTIAL."
+  ],
+  "status_boundary": "Q17 VERIFIED means the tested D29/D9/D4 owner bridges produced the tested success/rejection/duplicate/cancel/exception state and feedback results in real InitialHarbor PlayMode. It is not a final game or D31 acceptance pass.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException total=1 passed=1 failed=0 in 3.07s",
+    "source_hashes_current": true,
+    "boundary": "Current D29/D9/D4 preparation logic only; native Player and visual quality remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.1822541s; total duration=4.28s",
+    "source_hashes_current": true,
+    "console_marker": "preparation_success=true, repair_reject_material=true, repair_duplicate_unchanged=true, domain_duplicate_idempotent=true, cancel_recovery=true, shipyard_success=true, shipyard_reject=true, exception_recovery=true, primary_input_restored=true; 88 logs and 0 Error entries before clear",
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current D29/D9/D4 preparation and shipyard logic only; native Player visual/mouse, performance and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_rerun2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260913_RERUN2_RESULT.json",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.319115s; total duration=4.43s",
+    "console_marker": "preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0; console cleared after marker inspection",
+    "boundary": "Current D29/D9/D4 preparation and shipyard logic only; native Player visual/mouse, performance and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "marker_log": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_CONSOLE_MARKER.log",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.7202408s; total duration=3.84s",
+    "console_marker": "preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0",
+    "boundary": "Current D29/D9/D4 preparation and shipyard owner bridges only; native Player keyboard/mouse, screenshots, performance and complete voyage flow remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "marker_log": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_CONSOLE_MARKER.log",
+    "test_run": "D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.6833445s; total duration=2.79s",
+    "console_marker": "seq=21700; preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0",
+    "expected_warning_recorded": "Empty-owner exception path logged Warning feedback; test confirmed state unchanged and recovery",
+    "boundary": "Current D29/D9/D4 preparation and shipyard owner bridges only; native Player keyboard/mouse, screenshots, performance, complete voyage flow and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.5880272s; total duration=5.81s",
+    "console_marker": "seq=31923; preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 31834=0",
+    "boundary": "Current D29/D9/D4 preparation and shipyard logic only; native Player visual/mouse, performance and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.7098296s; total duration=2.89s",
+    "console_marker": "seq=35667; preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "expected_warning": "seq=35665 empty-owner exception branch; state unchanged and recovery asserted",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 35580=0",
+    "boundary": "Current D29/D9/D4 preparation and shipyard logic only; native Player visual/mouse, performance and VC-G01 remain open."
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.9706462s; pipeline duration=5.38s",
+    "console_marker": "preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 7,
+    "expected_warning": "D4 empty-owner exception feedback path; state unchanged and recovery asserted.",
+    "next_task": "Q18_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "marker_log": "game/tools/results/LOCAL-QUALITY/Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q17 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.9858148s; pipeline duration=3.08s",
+    "console_marker": "preparation_success=true; repair_reject_material=true; repair_duplicate_unchanged=true; domain_duplicate_idempotent=true; cancel_recovery=true; shipyard_success=true; shipyard_reject=true; exception_recovery=true; primary_input_restored=true",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "expected_warning": "D4 empty-owner exception feedback path logged a controlled warning; state unchanged and recovery asserted.",
+    "boundary": "Current D29/D9/D4 preparation and shipyard owner bridges only; native Player keyboard/mouse, screenshots, rendered visual quality, performance, complete voyage flow and VC-G01 remain open."
+  },
+  "next_task": "Q18"
+}

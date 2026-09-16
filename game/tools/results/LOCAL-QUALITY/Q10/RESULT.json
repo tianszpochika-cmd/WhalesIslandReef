@@ -1,0 +1,127 @@
+{
+  "task_id": "Q10",
+  "status": "VERIFIED",
+  "status_scope": "boarded_player_relative_deck_stability_during_ship_translation_and_heading_changes",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q09"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q10_DECK_MOTION_PLAYMODE_R1_20260908",
+  "audit_time_local": "2026-09-08T23:35:00+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D7ShipDeckController",
+    "supporting_runtime_path": "D2ShipController.ApplySnapshot",
+    "changes": [
+      "Added a boarded-player relation test using the existing D2 ship controller snapshot application path, not a direct transform write to the player.",
+      "Applied ten changing ship position/heading/speed samples and checked that the player stayed under the stable ship root with the same local deck position and local rotation.",
+      "Restored the original sailing snapshot and verified the normal safe disembark path still returned to Character mode."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "CCC1A3B938676C0CED4CF2114A310FD1FF87FBF7B92BA763477273DEC217ED1B"
+    }
+  },
+  "checks": [
+    {
+      "name": "ship_translation_and_heading_samples",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q10/Q10_DECK_MOTION_PLAYMODE_R1.xml and .log; D17A12 ran 10 samples with maxShipTranslation=1.486m and maxShipHeadingDelta=32.000 degrees"
+    },
+    {
+      "name": "relative_deck_position_and_rotation",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A12 computes expected world pose from ship.TransformPoint/ship.rotation and observed boarded local pose; maxRelativePositionError=0.000000 and maxRelativeRotationError=0.000000"
+    },
+    {
+      "name": "control_and_collision_lifecycle",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Each sample preserved Ship mode, ship parent and disabled CharacterController; restoring the original snapshot then returned Character mode, null parent and enabled CharacterController"
+    }
+  ],
+  "remaining_scope": [
+    "The snapshot route proves deck following, not native Player W/S/A/D input or final visual camera quality; Q13 and Q31 remain separate.",
+    "Q11 must cover safe disembark at the authored shore/ramp, moving/remote/no-ground refusal and ten complete legal/illegal cycles.",
+    "This card does not validate ship collision or open-sea navigation correctness beyond the existing D2 snapshot owner path."
+  ],
+  "status_boundary": "Q10 VERIFIED means a boarded player remains stable relative to the stable gameplay ship root while that root translates and rotates through the D2 sailing snapshot path. It does not claim full sailing, input or visual acceptance.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A12 passed in 1.6780672s",
+    "source_hashes_current": true,
+    "boundary": "Current snapshot-driven relative deck evidence only; native input and visual camera remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A12 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.2831358s; total duration=3.38s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current snapshot-driven relative deck evidence only; native input and visual camera remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A12 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.8314083s; total duration=2.95s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current snapshot-driven relative deck evidence only; native input, open-sea navigation, ship collision, camera and visual contact remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A12 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=1.649084s; total duration=1.75s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current snapshot-driven relative deck evidence only; native input, open-sea navigation, ship collision, camera and visual contact remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A12 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.7330901s; total duration=3.98s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "boundary": "Current snapshot-driven relative deck evidence only; native input, open-sea navigation, ship collision, camera and visual contact remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A12 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.2846007s; pipeline duration=2.56s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current snapshot-driven relative deck evidence only; native input, open-sea navigation, ship collision, camera and visual contact remain open.",
+    "next_task": "Q11_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A12 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.9655668s; pipeline duration=4.45s",
+    "runtime_log": "motion_samples=10; maxRelativePositionError=0.000000; maxRelativeRotationError=0.000000; maxShipTranslation=1.498; maxShipHeadingDelta=32.000",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 6,
+    "warning_boundary": "Known D2 procedural/neutral fallback and D27 initialization warnings retained in the result; not a clean zero-warning claim.",
+    "next_task": "Q11_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q10/Q10_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A12 second run total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=1.8683108s; pipeline duration=1.96s; first run also 1/1 PASS",
+    "runtime_log": "motion_samples=10; maxRelativePositionError=0.000000; maxRelativeRotationError=0.000000; maxShipTranslation=1.510; maxShipHeadingDelta=32.000",
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_boundary": "Known D27 readiness, D2 unverified/procedural fallback and expected no-walkable-disembark warning retained; Console cleared after evidence",
+    "boundary": "Current snapshot-driven relative deck evidence only; native input, open-sea navigation, ship collision, camera, helm contact, authored action/Avatar, vegetation, performance, audio and VC-G01 remain open.",
+    "next_task": "Q11_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  },
+  "next_task": "Q11"
+}

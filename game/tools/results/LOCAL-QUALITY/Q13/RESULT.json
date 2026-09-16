@@ -1,0 +1,153 @@
+{
+  "task_id": "Q13",
+  "status": "VERIFIED",
+  "status_scope": "gameplay_keyboard_ui_navigation_ownership_and_pause_restore",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q08", "Q11", "Q12"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q13_INPUT_PLAYMODE_R2_20260909",
+  "audit_time_local": "2026-09-09T00:05:01+08:00",
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D16InputRouter + HarborInteractionStabilizer + RuntimeHudCoordinator",
+    "changes": [
+      "Added D17A15 PlayMode coverage for ten W/S gameplay cycles, normal gameplay UI-focus suppression, Esc pause/resume ownership, D16 gameplay blocking and focus recovery.",
+      "Made RuntimeHudCoordinator.PrimaryInputAllowed return false while D16 gameplay input is blocked, so modal keyboard focus cannot leak into the primary HUD shortcut owner.",
+      "The Esc test injects the edge at a Unity frame boundary; it does not manually clear wasPressedThisFrame before HarborPauseController.Update."
+    ],
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5",
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "3E6CCC960C852A836D228FA67C3C1EB4C201144D213FB2579E7DC8A2A0DAC593"
+    }
+  },
+  "checks": [
+    {
+      "name": "D17A15_gameplay_keyboard_and_modal_ownership",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q13/Q13_INPUT_PLAYMODE_R2.xml; total=1 passed=1 failed=0; log records gameplay_w_s_cycles=10, normal_navigation=false, pause_navigation=true, blocked_navigation=true, restored_navigation=false and enabled_ui_module=InputSystemUIInputModule"
+    },
+    {
+      "name": "D16_input_router_isolated_synthetic_keyboard_gamepad_test",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q13/Q13_D16_INPUT_SINGLE_R2.xml; D16A03SyntheticGamepadAndKeyboardEventsReachIntentRouter total=1 passed=1 failed=0"
+    },
+    {
+      "name": "D16_input_router_fixture_regression",
+      "result": "PARTIAL_ADJACENT_FAILURE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q13/Q13_D16_INPUT_ROUTER_PLAYMODE_R2.xml; total=10 passed=9 failed=1. The failed case emits CameraFollow.cs Main Camera NaN transform errors after the preceding InitialHarbor integration case; the same synthetic input case passes when isolated in Q13_D16_INPUT_SINGLE_R2.xml. This was not changed or counted as Q13 scope evidence."
+    },
+    {
+      "name": "pre_fix_diagnostic",
+      "result": "FAIL_REPRODUCED_THEN_FIXED",
+      "evidence": "Q13_INPUT_PLAYMODE_BASELINE_R4.xml failed because D16 gameplay blocking left RuntimeHudCoordinator.PrimaryInputAllowed=true; the product guard was added and Q13_INPUT_PLAYMODE_R1/R2 then passed."
+    }
+  ],
+  "remaining_scope": [
+    "This is a runtime logic/input-ownership gate, not native Player visual acceptance.",
+    "E boarding, I warehouse, M market, T tavern, duplicate/denied owner paths and page-specific recovery continue under Q15 and VC-G01.",
+    "The D16 full-fixture CameraFollow NaN lifecycle failure remains an adjacent camera/test-isolation defect and must not be treated as green.",
+    "Q03 remains BLOCKED_ASSET, so Q08/Q14 cannot claim final imported-rig animation quality from this result."
+  ],
+  "status_boundary": "Q13 VERIFIED means the D16/UI ownership contract and the W/S versus UGUI navigation regression are evidenced in InitialHarbor PlayMode. It does not prove final visual quality, native Player activation, or the complete VC-G01 flow.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A15 passed in 2.7867954s",
+    "source_hashes_current": true,
+    "boundary": "Current PlayMode input ownership evidence only; separate D16 full-fixture adjacent NaN failure remains open and native Player visual remains unverified."
+  },
+  "q13_a02_navigation_policy_reassertion_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q13-A02/RESULT.json",
+    "source_hashes_current": true,
+    "test_run": "D16PrimaryHudNavigationPlayModeTests total=2 passed=2 failed=0 skipped=0 inconclusive=0; D17ActionQualityPlayModeTests total=16 passed=16 failed=0 skipped=0 inconclusive=0; D16InputRouterPlayModeTests repeated twice at 10/10",
+    "observed": "gameplay sendNavigationEvents=false; move=null after external UI move restore; reasserted=true",
+    "boundary": "Race guard only; two current D16 full-fixture runs did not reproduce the historical CameraFollow NaN failure, but the historical 9/10 evidence remains retained as an intermittent watch item. Q13 remains VERIFIED, Q31/VC-G01 visual and physical-input gates unchanged."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A15 total=1 passed=1; D16InputRouterPlayModeTests total=10 passed=10; failed/skipped/inconclusive=0",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after runs",
+    "boundary": "Unity Input System PlayMode ownership evidence only; physical foreground keyboard and final visual acceptance remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A15 total=1 passed=1; D16InputRouterPlayModeTests total=10 passed=10; failed/skipped/inconclusive=0",
+    "durations": {
+      "d17a15_test_seconds": 4.3906842,
+      "d17a15_total_seconds": 4.51,
+      "d16_total_seconds": 5.62
+    },
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console returned 0 entries",
+    "boundary": "Unity Input System PlayMode ownership evidence only; physical foreground keyboard, rendered HUD, E/I/M/T business flow and final visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A15 total=1 passed=1; D16InputRouterPlayModeTests total=10 passed=10; failed/skipped/inconclusive=0",
+    "durations": {"d17a15_test_seconds": 3.0398572, "d17a15_total_seconds": 3.15, "d16_total_seconds": 3.72},
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console returned 0 entries",
+    "boundary": "Unity Input System PlayMode ownership evidence only; physical foreground keyboard, rendered HUD, E/I/M/T business flow and final visual acceptance remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=7.9642195s; total duration=8.22s; D16InputRouterPlayModeTests total=11 passed=11 failed=0 skipped=0 inconclusive=0; total duration=9.7s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 30989=0",
+    "boundary": "Unity Input System ownership only; physical foreground keyboard, rendered HUD, E/I/M/T business flow and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A15 1/1 PASS (3.3452959s); D16InputRouterPlayModeTests 11/11 PASS (4.86s); D16PrimaryHudNavigationPlayModeTests 2/2 PASS (2.79s)",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Unity Input System/UI ownership only; physical foreground keyboard, rendered HUD, E/I/M/T business flow and VC-G01 remain open.",
+    "next_task": "Q14_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A15 1/1 PASS (5.8881073s; pipeline 6.35s); D16InputRouterPlayModeTests 11/11 PASS (pipeline 10.23s); D16PrimaryHudNavigationPlayModeTests 2/2 PASS (pipeline 6.88s)",
+    "runtime_markers": [
+      "gameplay_w_s_cycles=10; normal_navigation=false; pause_navigation=true; blocked_navigation=true; restored_navigation=false",
+      "D16/A03 ship W input reaches gameplay route and moves ship",
+      "EventSystem navigation=gameplay_suppressed"
+    ],
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_runs": 0,
+    "warning_boundary": "Known D2/D27 fallback and initialization warnings retained; not a zero-warning claim.",
+    "next_task": "Q14_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q13/Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A15 1/1 PASS (3.418016s; pipeline 3.51s); D16InputRouterPlayModeTests 11/11 PASS (pipeline 5.18s); D16PrimaryHudNavigationPlayModeTests 2/2 PASS (pipeline 2.93s)",
+    "runtime_markers": [
+      "gameplay_w_s_cycles=10; normal_navigation=false; pause_navigation=true; blocked_navigation=true; restored_navigation=false",
+      "EventSystem navigation=modal -> gameplay_suppressed; W/S primary selection stayed null",
+      "ship W input keyboardCurrent=true; gameplayAllowed=true; primaryInputAllowed=true; distance=0.0278; speed=0.351"
+    ],
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_runs": 0,
+    "input_boundary": "Unity Input System test devices/runtime injection; not foreground Win32 physical keyboard",
+    "boundary": "Input/UI ownership only; rendered HUD, E/I/M/T business flow, native Player, authored action quality, vegetation, performance, audio and VC-G01 remain open.",
+    "next_task": "Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  }
+}

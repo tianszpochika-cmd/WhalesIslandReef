@@ -1,0 +1,55 @@
+{
+  "task_id": "Q12",
+  "run_id": "Q12_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current-source CameraFollow mode/target switching, controlled obstruction contraction and damping recovery",
+  "captured_at_local": "2026-09-16T10:15:02+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "production_code_changed": false,
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "0C6D8BE009E2AAA9AB5A34F560BF47ABB8E0C960BFCC32A03EACE75E9E39C991",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B"
+  },
+  "test": {
+    "filter": "D17A14CameraModesAndExternalObstructionRecoverWithoutInvalidPose",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 3.41,
+    "test_duration_s": 3.3152951,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "runtime_markers": {
+    "mode_cycles": 10,
+    "obstructed": true,
+    "distance_before_m": 5.5,
+    "distance_blocked_m": 3.79,
+    "distance_recovered_m": 5.494,
+    "collision_checks": 109,
+    "contract": "Character/Overview/ShipDeck target switching stayed finite; a controlled external BoxCollider triggered the actual SphereCast contraction and removal allowed damping recovery."
+  },
+  "console": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "cleared_after_evidence": true
+  },
+  "validation_boundary": "Q12 is PASS_WITHIN_SCOPE only for CameraFollow's bounded mode/target switching, controlled obstruction contraction and recovery. It does not prove every world wall/corner/hull visual, compositor-visible final composition, render clipping, native Player activation/input, target-device performance, audio or VC-G01 acceptance.",
+  "next_task": "Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+}

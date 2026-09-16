@@ -1,0 +1,165 @@
+{
+  "task_id": "Q15",
+  "status": "VERIFIED",
+  "status_scope": "d29_d16_shortcut_and_modal_focus_recovery",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q13", "Q14"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q15_PANEL_FOCUS_PLAYMODE_R9_20260909",
+  "audit_time_local": "2026-09-09T13:13:29+08:00",
+  "changed_files": [
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs",
+    "game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs",
+    "game/Assets/Scripts/Gameplay/UI/D16/D16AccessibilityPanel.cs",
+    "game/Assets/Scripts/Gameplay/UI/Localization.cs",
+    "game/Assets/Tests/PlayMode/D29PanelFocusPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D29InteractionHud + D16InputRouter contracts + D3 trade owner + D10 tavern owner + RuntimeHudCoordinator/EventSystem",
+    "changes": [
+      "Added D29-scoped D16 actions for market M/B, warehouse I and tavern T, with localized accessibility labels and legacy keyboard fallback.",
+      "D29 now reads the unified D16 route before legacy Input.GetKeyDown and cannot bypass D16 global gameplay-input blocking.",
+      "Added a real InitialHarbor PlayMode fixture that calls SaveSystem.NewGame before scene load, then injects I/M/T keyboard events and repeats warehouse/market/tavern open-repeat-close-recovery cycles ten times."
+      ,"D29 one-shot presentation guard now resets when the corresponding owner session is closed, so a valid reopen cannot inherit a stale timestamp; duplicate requests while the page is open remain blocked by the primary input owner."
+    ],
+    "source_hashes": {
+      "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "B815FCC65EBA4E869285650F28964596B206BA0AC2213DECE855ADE2165C6E09",
+      "game/Assets/Scripts/Systems/D16/D16AccessibilityContracts.cs": "C51F385D19DCD4E1917B899A43E665718F0982D90E72B069ABBFBC0200F1742F",
+      "game/Assets/Scripts/Gameplay/UI/D16/D16AccessibilityPanel.cs": "A6424E8CC30C8C592C15220985A6159F86F331481288D43E136007E180ABCD29",
+      "game/Assets/Scripts/Gameplay/UI/Localization.cs": "133DECBC1981DDBB33B3A38A10FFE47989B348258CEAC01DE57A4489EB5A3EB4",
+      "game/Assets/Tests/PlayMode/D29PanelFocusPlayModeTests.cs": "E829C22BA0A79B6BC86470B881D2E39BC42E9717873951D07A06DD68C4657CF8"
+    }
+  },
+  "current_source_revalidation": {
+    "reason": "Q15 R7/R8 在当前 D29 源码上稳定复现第 2 次市场重开被旧一次性时间戳误拒；修复 owner 会话关闭时清除表现层防重状态后，重新执行 R9。",
+    "run_id": "Q15_PANEL_FOCUS_PLAYMODE_R9_20260909",
+    "result": "1/1 PASS",
+    "evidence": "game/tools/results/LOCAL-QUALITY/Q15/Q15_PANEL_FOCUS_PLAYMODE_R9.xml 与 .log；shortcut_input=true，warehouse_cycles=10，market_cycles=10，tavern_cycles=10，exclusive=true，repeated_request_rejected=true，gameplay_recovery=true",
+    "source_hash": "E247E2AD9BCE48B7AC666634AAB4422C32EA3308F8D4C5403F30352E2A27ACA0"
+  },
+  "checks": [
+    {
+      "name": "real_shortcut_dispatch",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q15/Q15_PANEL_FOCUS_PLAYMODE_R5.xml; total=1 passed=1; log shortcut_input=true, keys=I,M,T, legacy_keydown_reached_owner=true"
+    },
+    {
+      "name": "modal_exclusivity_and_repeated_requests",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "Q15 R5 log: warehouse_cycles=10, market_cycles=10, tavern_cycles=10, exclusive=true, repeated_request_rejected=true, gameplay_recovery=true"
+    },
+    {
+      "name": "input_contract_regression",
+      "result": "FAIL_REPRODUCED_THEN_FIXED",
+      "evidence": "Q15_PANEL_FOCUS_PLAYMODE_R3.xml failed because synthetic I did not reach the legacy-only D29 path; D16 d29 actions were added, and Q15 R4/R5 passed the same real keyboard probe"
+    },
+    {
+      "name": "owner_session_reopen_regression",
+      "result": "FAIL_REPRODUCED_THEN_FIXED",
+      "evidence": "Q15_PANEL_FOCUS_PLAYMODE_R7.xml 与 R8.xml 均在第 2 次市场打开失败；日志显示旧一次性防重反馈。修复 D29 owner-close reset 后 Q15_PANEL_FOCUS_PLAYMODE_R9.xml 为 1/1 PASS。"
+    },
+    {
+      "name": "valid_game_state_startup",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "The final test calls SaveSystem.NewGame before InitialHarbor, proving D10 readiness from the real Player/Ship initialization path; the original direct-scene fixture was rejected by D10 as not-ready and is not counted as a pass"
+    }
+  ],
+  "remaining_scope": [
+    "This verifies logic/input ownership and modal recovery, not native Windows Player screenshots, mouse hit testing, frame-time performance, or final visual quality.",
+    "Q03 remains BLOCKED_ASSET, so imported-rig action animation can still remain neutral-only and is not closed by Q15.",
+    "Q13's full D16 fixture adjacent CameraFollow NaN failure remains open and is not hidden by this result.",
+    "VC-G01 remains IN_PROGRESS; VC-G02/VC-G03 remain LOCKED until the dependency and native Player evidence gates are satisfied."
+  ],
+  "status_boundary": "Q15 VERIFIED means the D29/D16 I-M-T route, mutually exclusive temporary page ownership, repeated-request rejection, and gameplay focus restoration passed in real InitialHarbor PlayMode. It is not a complete game or D31 acceptance pass.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes total=1 passed=1 failed=0 in 13.53s",
+    "source_hashes_current": true,
+    "boundary": "Current D29/D16 focus logic only; native Player visual/mouse and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=17.3518531s; total duration=17.45s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current D29/D16 focus logic only; native Player visual/mouse and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913_rerun2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260913_RERUN2_RESULT.json",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=20.1427708s; total duration=20.25s",
+    "console_markers": "shortcut_input=true; warehouse_cycles=10; market_cycles=10; tavern_cycles=10; exclusive=true; repeated_request_rejected=true; gameplay_recovery=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0; console cleared after marker inspection",
+    "boundary": "Current D29/D16 focus logic only; native Player visual/mouse and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "marker_log": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_CONSOLE_MARKERS.log",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=14.8763723s; total duration=15.0s",
+    "console_markers": "shortcut_input=true; warehouse_cycles=10; market_cycles=10; tavern_cycles=10; exclusive=true; repeated_request_rejected=true; gameplay_recovery=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0",
+    "boundary": "Current D29/D16 focus logic only; native Player keyboard/mouse, rendered panels, business-owner truth and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "test_run": "D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.4690213s; total duration=12.58s",
+    "console_marker": "seq=21529; warehouse_cycles=10; market_cycles=10; tavern_cycles=10; exclusive=true; repeated_request_rejected=true; gameplay_recovery=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error_console=0",
+    "runtime_warnings_recorded": "D27 presentation readiness wait and D2 procedural Player fallback warnings observed; not treated as product PASS",
+    "boundary": "Current D29/D16 focus logic only; native Player keyboard/mouse, rendered panels, business-owner truth, Q03 action quality and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=16.5811208s; total duration=16.85s",
+    "console_markers": "seq=31660 shortcut_input=true keys=I,M,T legacy_keydown_reached_owner=true; seq=31749 warehouse_cycles=10 market_cycles=10 tavern_cycles=10 exclusive=true repeated_request_rejected=true gameplay_recovery=true",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 31535=0",
+    "boundary": "Current D29/D16 focus logic only; native Player keyboard/mouse, rendered panels, business-owner truth and Q03 action quality remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=12.655612s; pipeline duration=12.86s",
+    "console_markers": "seq=35408 shortcut_input=true keys=I,M,T legacy_keydown_reached_owner=true; seq=35495 warehouse_cycles=10 market_cycles=10 tavern_cycles=10 exclusive=true repeated_request_rejected=true gameplay_recovery=true",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 35283=0",
+    "boundary": "Current D29/D16 focus logic only; native Player keyboard/mouse, rendered panels, business-owner truth and Q03 action quality remain open.",
+    "next_task": "Q16_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=18.118572s; pipeline duration=18.63s",
+    "console_markers": "shortcut_input=true keys=I,M,T legacy_keydown_reached_owner=true; warehouse_cycles=10 market_cycles=10 tavern_cycles=10 exclusive=true repeated_request_rejected=true gameplay_recovery=true",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 0,
+    "next_task": "Q16_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q15/Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D29Q15 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=13.5745984s; pipeline duration=13.67s",
+    "console_markers": "shortcut_input=true keys=I,M,T legacy_keydown_reached_owner=true; warehouse_cycles=10 market_cycles=10 tavern_cycles=10 exclusive=true repeated_request_rejected=true gameplay_recovery=true",
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_boundary": "No warning verdict was promoted; only the zero error query is claimed",
+    "boundary": "Current D29/D16 focus logic only; foreground native input/mouse, rendered panels, Player business-owner truth, authored actions, performance, audio and VC-G01 remain open.",
+    "next_task": "Q16_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  }
+}

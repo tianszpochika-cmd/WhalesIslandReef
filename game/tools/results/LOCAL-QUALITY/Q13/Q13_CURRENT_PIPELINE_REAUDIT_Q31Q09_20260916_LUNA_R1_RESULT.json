@@ -1,0 +1,59 @@
+{
+  "task_id": "Q13",
+  "run_id": "Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current-source Unity Input System gameplay/UI ownership, Esc modal recovery and HUD-navigation suppression",
+  "captured_at_local": "2026-09-16T10:19:58+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "production_code_changed": false,
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs": "35BE73701C036F16F79BAAE743D01CE961E5C284A00143C393EC96FA4F1B9EDB",
+    "game/Assets/Scripts/Gameplay/UI/HarborInteractionStabilizer.cs": "12F39F34ADD3244D5B856314B501C3F36E22D590742593C9E4444409A5A7BD5B",
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5",
+    "game/Assets/Scripts/Gameplay/UI/HarborPauseController.cs": "EBD4A7353C00841B3FAD5E107F58F9A6E948FEA2A365106F69638D4B130E7A29",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B",
+    "game/Assets/Tests/PlayMode/D16InputRouterPlayModeTests.cs": "D8F3FB7976045EBDF5642B10C22279A7862FAF6AF8E32830F243526E4B5E77E2",
+    "game/Assets/Tests/PlayMode/D16PrimaryHudNavigationPlayModeTests.cs": "E8FD23B177ABF0EA665BD579F50B1266E2534D02592CFD0B7AE89FD93CC0715A"
+  },
+  "tests": {
+    "D17A15GameplayKeyboardDoesNotNavigateHudAndPauseRestoresModalOwnership": {
+      "status": "1/1 PASS",
+      "pipeline_duration_s": 3.51,
+      "test_duration_s": 3.418016,
+      "marker": "gameplay_w_s_cycles=10; normal_navigation=false; pause_navigation=true; blocked_navigation=true; restored_navigation=false; enabled_ui_module=InputSystemUIInputModule"
+    },
+    "D16InputRouterPlayModeTests": {
+      "status": "11/11 PASS",
+      "pipeline_duration_s": 5.18,
+      "coverage": "W/S gameplay-vs-HUD isolation, InitialHarbor keyboard/camera/boarding loop, Esc pause, synthetic keyboard/gamepad intent and rebind routes"
+    },
+    "D16PrimaryHudNavigationPlayModeTests": {
+      "status": "2/2 PASS",
+      "pipeline_duration_s": 2.93,
+      "coverage": "gameplay movement does not navigate primary HUD; suppression reasserts when UI Move action is externally restored"
+    }
+  },
+  "runtime_markers": {
+    "hud_ownership": "W/S retained gameplay movement and primary selection stayed null; modal selection stayed scoped",
+    "event_system": "navigation=modal during pause; navigation=gameplay_suppressed after gameplay ownership was restored",
+    "ship_w_route": "keyboardCurrent=true; moveAxis=(0.00,1.00); gameplayAllowed=true; primaryInputAllowed=true; distance=0.0278; shipSpeedAfterFrames=0.351"
+  },
+  "console": {
+    "error_entries_after_runs": 0,
+    "dropped": false,
+    "cleared_after_evidence": true
+  },
+  "input_boundary": "All evidence in this card uses Unity Input System test devices/runtime injection inside the connected Editor. It proves route ownership and regression behavior, not foreground Win32 physical keyboard focus, compositor-visible HUD feedback or native Player acceptance.",
+  "validation_boundary": "Q13 is PASS_WITHIN_SCOPE only for gameplay/UI input ownership, W/S HUD suppression, Esc modal recovery and UI Move reassertion. It does not prove E/I/M/T business flows, native Player visual/input, authored action resources, vegetation, performance, audio or VC-G01 acceptance.",
+  "next_task": "Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+}

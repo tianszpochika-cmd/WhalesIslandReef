@@ -1,0 +1,133 @@
+{
+  "task_id": "Q14",
+  "status": "VERIFIED",
+  "status_scope": "ship_shore_logic_integration_precheck_only",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q08", "Q11", "Q12", "Q13"],
+  "dependency_boundary": {
+    "Q08": "BLOCKED",
+    "reason": "Q03 BLOCKED_ASSET remains; this result verifies the executable state/ownership chain only and does not close imported-rig animation quality."
+  },
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q14_INTEGRATED_ROUTE_PLAYMODE_R1_20260909",
+  "audit_time_local": "2026-09-09T00:12:00+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "D2 character/water + D2ControlRouter/D2ShipController + D7 deck + CameraFollow + D16 input ownership",
+    "changes": [
+      "Added D17A16 as a single real InitialHarbor integration sequence: shore to water, water to shore, boarding, ShipDeck framing, keyboard W+D throttle/rudder, no-ground disembark rejection, legal recovery and disembark.",
+      "The test keeps route/collision/actor-owner checks separate from imported animation asset quality; it records ImportedSkinnedRigNeutralOnly explicitly."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "ACBD414496DAF5BF8D5022BF1A592D9EF6D39F1EE280E0A6120FC7946319CC6D"
+    }
+  },
+  "checks": [
+    {
+      "name": "shore_water_shore_state_chain",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q14/Q14_INTEGRATED_ROUTE_PLAYMODE_R1.xml; total=1 passed=1; log shore_water_shore=true and action state entered Swimming before returning grounded"
+    },
+    {
+      "name": "boarding_ship_owner_and_input_turn",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A16 log board_owner=Ship, ship_input_turn=true; real D16 keyboard W+D changed the ship root position and heading while CameraFollow remained ShipDeck targeting the player"
+    },
+    {
+      "name": "no_ground_rejection_and_legal_disembark",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A16 log no_ground_rejection=true, legal_disembark=true; no-ground route retained Ship/parent and disembark_unavailable, restored baseline then returned Character/grounded/player target"
+    },
+    {
+      "name": "formal_imported_rig_animation_quality",
+      "result": "BLOCKED_BY_Q03",
+      "evidence": "D17A16 log imported_neutral=True; Q03 remains BLOCKED_ASSET because current D6 absolute imported Euler clips lack a valid Avatar/axis adapter for this rig"
+    }
+  ],
+  "remaining_scope": [
+    "This closes only the executable ship/shore integration precheck; Q03/Q08 still block formal imported-rig action quality and continuous visual proof.",
+    "Native Windows Player E/I/M/T flow, duplicate/denied business paths and screenshots remain under Q15/VC-G01/Q31.",
+    "The D16 full-fixture adjacent CameraFollow NaN failure recorded by Q13 remains open."
+  ],
+  "status_boundary": "Q14 VERIFIED means the real InitialHarbor state, collision, ship-owner, camera-target and keyboard turn chain passed in a bounded PlayMode sequence. It is not D31 completion, not a formal animation asset pass, and not native Player visual acceptance.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; integrated D17A16 passed in 1.5996333s",
+    "source_hashes_current": true,
+    "boundary": "Current bounded state-chain evidence only; formal action quality remains BLOCKED_BY_Q03 and native Player business/visual flow remains open."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A16Integrated total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.4093881s; total duration=4.51s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current bounded state-chain evidence only; formal action quality remains BLOCKED_BY_Q03 and native Player business/visual flow remains open."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A16Integrated total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.3597823s; total duration=3.48s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console returned 0 entries",
+    "boundary": "Current bounded state-chain evidence only; formal action quality remains BLOCKED_BY_Q03 and native Player business/visual flow remains open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A16Integrated total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.3439029s; total duration=2.46s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console returned 0 entries",
+    "boundary": "Current bounded state-chain evidence only; formal action quality remains BLOCKED_BY_Q03 and native Player business/visual flow remains open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.7407475s; total duration=6.01s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 31455=0",
+    "boundary": "Current bounded state-chain only; formal action remains BLOCKED_BY_Q03 and native Player business/visual flow remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A16Integrated total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.2802981s; pipeline duration=2.5s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current bounded state-chain only; Q03/Q08 formal action remains blocked and native Player business/visual flow remains open.",
+    "next_task": "Q15_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A16Integrated total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.2337608s; pipeline duration=4.73s",
+    "runtime_log": "shore_water_shore=true; board_owner=Ship; ship_input_turn=true; no_ground_rejection=true; legal_disembark=true; imported_neutral=False",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 7,
+    "formal_action_boundary": "imported_neutral=False is the current procedural Player branch; Q03 remains BLOCKED_ASSET and this is not formal animation admission.",
+    "next_task": "Q15_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q14/Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A16 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=2.6117578s; pipeline duration=2.71s",
+    "runtime_log": "shore_water_shore=true; board_owner=Ship; ship_input_turn=true; no_ground_rejection=true; legal_disembark=true; imported_neutral=False",
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "formal_action_boundary": "imported_neutral=False is the procedural Player branch, not formal authored action/avatar admission",
+    "boundary": "Current bounded shore-water-deck state/owner chain only; native input, E/I/M/T business, final visual, vegetation, performance, audio and VC-G01 remain open.",
+    "next_task": "Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  },
+  "next_task": "Q15"
+}

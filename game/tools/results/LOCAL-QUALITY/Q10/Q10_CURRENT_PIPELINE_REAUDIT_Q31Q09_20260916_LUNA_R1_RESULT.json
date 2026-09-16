@@ -1,0 +1,57 @@
+{
+  "task_id": "Q10",
+  "run_id": "Q10_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current-source snapshot-driven ship-motion relative-deck stability and state recovery",
+  "captured_at_local": "2026-09-16T10:07:49+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "production_code_changed": false,
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2ShipController.cs": "E683ADEF4B0085BCD83C8219B6A07413CFB283A31CE7ABF562A31280807AACD9",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B"
+  },
+  "test": {
+    "filter": "D17A12ShipMotionKeepsBoardedPlayerRelativeDeckStable",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 1.96,
+    "test_duration_s": 1.8683108,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    },
+    "repeated_run": "A first run also completed 1/1 PASS in 1.95s; the second run was retained because its console marker was captured."
+  },
+  "runtime_markers": {
+    "motion_samples": 10,
+    "max_relative_position_error_m": 0.0,
+    "max_relative_rotation_error_deg": 0.0,
+    "max_ship_translation_m": 1.510,
+    "max_ship_heading_delta_deg": 32.0,
+    "ship_state_contract": "Player remained parented to the moving ship in Ship mode with CharacterController disabled for the snapshots; baseline restore allowed the legal disembark path to return to Character/no parent/collision enabled."
+  },
+  "console": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "warning_boundary": "A nonzero warning tail was retained before clearing: known D27 presentation readiness, D2 unverified/procedural fallback and one expected no-walkable-disembark rejection. This is not a zero-warning claim.",
+    "cleared_after_evidence": true
+  },
+  "validation_boundary": "Q10 is PASS_WITHIN_SCOPE only for the tested snapshot-driven relative-deck transform and state-recovery contract. It does not prove open-sea navigation, foreground/native Player W/S/A/D, ship collision, camera composition, natural helm contact, authored action/Avatar quality, vegetation, performance, audio or VC-G01 acceptance.",
+  "next_task": "Q11_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+}

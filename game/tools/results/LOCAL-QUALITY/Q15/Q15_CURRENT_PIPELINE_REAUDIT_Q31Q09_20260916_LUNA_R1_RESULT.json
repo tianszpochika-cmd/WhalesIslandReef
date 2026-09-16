@@ -1,0 +1,59 @@
+{
+  "task_id": "Q15",
+  "run_id": "Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current-source D29/D16 shortcut owner, panel exclusivity, repeated-request rejection and gameplay recovery",
+  "captured_at_local": "2026-09-16T10:28:52+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "production_code_changed": false,
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "D07CC06223BFEF5F24390FF1E140214863B72E1A4C426E1C22494E9EB43BBD20",
+    "game/Assets/Scripts/Gameplay/D29/Logic/D29OneShotPolicy.cs": "88542C14D2D13EC514EEDE8D63975B0AF13A1DDCCEE16D110F123EAF25AA6061",
+    "game/Assets/Scripts/Gameplay/UI/D16/D16InputRouter.cs": "35BE73701C036F16F79BAAE743D01CE961E5C284A00143C393EC96FA4F1B9EDB",
+    "game/Assets/Scripts/Gameplay/UI/RuntimeHudCoordinator.cs": "C33C991909D4F0452D08E70B2A9606EF32A54C1AC3F8CC94D91A06D9216444E5",
+    "game/Assets/Tests/PlayMode/D29PanelFocusPlayModeTests.cs": "F9CA95059258AC7900437D57172160812C60CB0D8D726E63698B2637DCBB5748"
+  },
+  "test": {
+    "filter": "D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes",
+    "full_name": "Whalebone.Tests.D29.D29PanelFocusPlayModeTests.D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 13.67,
+    "test_duration_s": 13.5745984,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "runtime_markers": {
+    "shortcut_input": true,
+    "keys": ["I", "M", "T"],
+    "legacy_keydown_reached_owner": true,
+    "warehouse_cycles": 10,
+    "market_cycles": 10,
+    "tavern_cycles": 10,
+    "exclusive": true,
+    "repeated_request_rejected": true,
+    "gameplay_recovery": true
+  },
+  "console": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "cleared_after_evidence": true
+  },
+  "validation_boundary": "Q15 is PASS_WITHIN_SCOPE only for D29/D16 PlayMode shortcut ownership, three temporary-page exclusivity, duplicate-request rejection and gameplay recovery. It does not prove foreground Win32 keyboard/mouse, native Player rendering, panel hit testing, business-owner results in a Player, authored action quality, target-device performance, audio or VC-G01 acceptance.",
+  "next_task": "Q16_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+}

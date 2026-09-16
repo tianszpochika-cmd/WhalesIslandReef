@@ -1,0 +1,69 @@
+{
+  "task_id": "Q00",
+  "subtask_id": "Q00_CURRENT_TAKEOVER_Q31Q09_20260916_LUNA_R2",
+  "status": "VERIFIED_WITH_SCOPE",
+  "status_scope": "Current-source takeover rebind after the Q09 safe pause; source, connected Editor and Player correspondence only",
+  "captured_at_local": "2026-09-16T10:00:06+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "remote_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "worktree_boundary": {
+    "status_lines": 1456,
+    "untracked": 1456,
+    "tracked_or_staged": 0,
+    "diff_stat": "",
+    "cleanup_performed": false,
+    "note": "Existing untracked historical/generated evidence was preserved. No reset, checkout, clean, stash or broad cleanup was performed."
+  },
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_state": "ready",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "current_source_hashes": {
+    "game/Assets/Scripts/Gameplay/D2/D2CharacterAnimationController.cs": "DCB8F837774CB3F15AE4C0B73673501035C443E3754DFBFD00ACDAF7979ECB52",
+    "game/Assets/Scripts/Gameplay/D2/D2RuntimeBootstrap.cs": "3D854D172925703EE556FC0FD2AF7E384B19B5AEE32246178625C1A9A32F2B4A",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/CameraFollow.cs": "0C6D8BE009E2AAA9AB5A34F560BF47ABB8E0C960BFCC32A03EACE75E9E39C991",
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs": "F02CAD34554C90389DBA668FB485AEB0C4D5DCEDEF86B544F8887E43B9FF88D7",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B",
+    "game/AgentScripts/LocalQuality/UnityPipelineSwimmingRootProbe.cs": "CCE18C77791A980AA704B3CE0F17F8C718F10A24F15DDFE5A349BFC812C795E9"
+  },
+  "player_binding": {
+    "latest_relevant_player": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_R12.exe",
+    "build_id": "build_8eca102a61b4",
+    "build_guid": "6b9d61d35c2b41c787c24dd601c5d3d0",
+    "executable_sha256": "98751D0DFF00DD3ADE563C2B505A0E9F7A46E8E8895864212E1B884EDBCB42E81",
+    "assembly_csharp_sha256": "0CF0586F35096D25FB38C5E53FC0DEC27FC3D261384C4B91C2B63AC42477076F",
+    "build_source_head": "9fd08f711e7b699a32a420d82a0a5f1d4ac38a0c",
+    "r13_reuse": true,
+    "exact_current_source_match": false,
+    "mismatch_reason": "The R12/R13 Player predates the Q05 D2 Swimming-entry stale grounded-visual-offset fix now present in the current source and also predates the current pause commit. R13 added a test assertion after the binary was built; it was never claimed as Player content.",
+    "status_boundary": "No current-source native Player PASS is inherited; a new Player build is required before using Player evidence for the current source."
+  },
+  "latest_current_source_evidence": {
+    "q05": "PASS_WITHIN_SCOPE; D17A08/D17A03/D17A07/D17A02=1/1 and D2 animation EditMode=8/8 after the D2 transition guard",
+    "q06": "PASS_WITHIN_SCOPE; D17A09=1/1",
+    "q07": "PASS_WITHIN_SCOPE; R03 building owner=1/1 and D17A10=1/1",
+    "q08": "PASS_WITHIN_SCOPE; D17ActionQualityPlayModeTests=16/16, console_dropped=true retained as a boundary",
+    "q09": "PASS_WITHIN_SCOPE; D17A11=1/1, ten scaled boarding cycles and remote rejection",
+    "q31": "PARTIAL",
+    "vc_g01": "IN_PROGRESS",
+    "vc_g02": "LOCKED",
+    "vc_g03": "LOCKED",
+    "d31_p04_s05_g06": "PARTIAL"
+  },
+  "validation": {
+    "git_remote_sync": "local HEAD equals origin/agent/publish-project-changes-20260813",
+    "unity_status": "success=true; one connected same-project Editor; no Player process was started by this audit",
+    "source_hash_check": "all listed current-source hashes match the working tree",
+    "cleanup": "none",
+    "visual_or_input_acceptance": "not claimed"
+  },
+  "next_task": "Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA"
+}

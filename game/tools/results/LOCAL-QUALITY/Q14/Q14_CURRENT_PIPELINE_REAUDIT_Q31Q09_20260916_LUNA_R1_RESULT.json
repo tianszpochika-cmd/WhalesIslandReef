@@ -1,0 +1,56 @@
+{
+  "task_id": "Q14",
+  "run_id": "Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current-source integrated shore-water-deck state/owner chain",
+  "captured_at_local": "2026-09-16T10:24:30+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "production_code_changed": false,
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "source_hashes": {
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "EC2BE01FCC89A096111F7B0CFF3DB913EA0E622E521DE95B4CF37A5A4B139B1B",
+    "game/Assets/Scripts/Gameplay/D2/D2ControlRouter.cs": "1C03D5CFB42E9716974716822EE0885C6036B3ADEE4EF6A9CFFF81514AD9A537",
+    "game/Assets/Scripts/Gameplay/D2/D2ShipController.cs": "E683ADEF4B0085BCD83C8219B6A07413CFB283A31CE7ABF562A31280807AACD9",
+    "game/Assets/Scripts/Gameplay/D7/D7ShipDeckController.cs": "4EE9C269861C73E1A60A638985C448711BC8A8DEF1E6EF4167FD51D8EB308F0A",
+    "game/Assets/Scripts/Gameplay/Harbor/HarborCollisionController.cs": "E04E24C957F25966C687C49B271629E411762BC0168BF43940256E100EFD71FD"
+  },
+  "test": {
+    "filter": "D17A16IntegratedShoreWaterDeckTurnAndSafeDisembarkSequence",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 2.71,
+    "test_duration_s": 2.6117578,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "runtime_markers": {
+    "shore_water_shore": true,
+    "board_owner": "Ship",
+    "ship_input_turn": true,
+    "no_ground_rejection": true,
+    "legal_disembark": true,
+    "imported_neutral": false,
+    "contract": "The bounded route used the real D16 gameplay input path and retained owner/state transitions across shore, water, ship deck, turn, rejected disembark and legal recovery."
+  },
+  "console": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "cleared_after_evidence": true
+  },
+  "validation_boundary": "Q14 is PASS_WITHIN_SCOPE only for the tested shore-water-shore, boarding, ship-turn, no-ground rejection and legal-disembark state/owner chain. imported_neutral=false identifies the procedural Player branch; it is not formal authored action/avatar admission. This does not prove foreground/native Player keyboard, E/I/M/T business, final visuals, vegetation, target-device performance, audio or VC-G01 acceptance.",
+  "next_task": "Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+}

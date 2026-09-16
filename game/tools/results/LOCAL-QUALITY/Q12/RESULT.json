@@ -1,0 +1,125 @@
+{
+  "task_id": "Q12",
+  "status": "VERIFIED",
+  "status_scope": "camera_mode_target_obstruction_and_damped_recovery",
+  "parent_task": "LOCAL-QUALITY",
+  "depends_on": ["Q07", "Q10", "Q11"],
+  "source_head": "01024cae2823c26b2595a660e6dde5879870dfc8",
+  "branch": "agent/publish-project-changes-20260813",
+  "run_id": "Q12_CAMERA_PLAYMODE_R1_20260908",
+  "audit_time_local": "2026-09-08T23:48:00+08:00",
+  "changed_files": [
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "implementation": {
+    "owner_under_test": "CameraFollow",
+    "changes": [
+      "Added ten Character/Overview/ShipDeck mode cycles against the real InitialHarbor camera and target bindings.",
+      "Added a controlled external BoxCollider between the real player pivot and camera to exercise the actual sphere-cast obstruction path, then removed it and checked damped distance recovery.",
+      "Verified ship-control automatic ShipDeck selection and player target restoration without changing camera production code."
+    ],
+    "source_hashes": {
+      "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs": "F6063AEE30198BEC4B71FCD45F9BC2847E3FAAF3F0366E42353BF74F50DF62B3"
+    }
+  },
+  "checks": [
+    {
+      "name": "camera_mode_target_cycles",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CAMERA_PLAYMODE_R1.xml; D17A14 completed 10 Overview/ShipDeck cycles, kept the player target and maintained a resolved distance above the 1.05m safety floor"
+    },
+    {
+      "name": "external_obstruction_shrink",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "D17A14 temporary external wall triggered IsObstructed=true and reduced ResolvedDistance from 10.500m to 4.137m through CameraFollow's real SphereCast path"
+    },
+    {
+      "name": "damped_recovery_and_finite_pose",
+      "result": "PASS_WITHIN_SCOPE",
+      "evidence": "After wall removal, ResolvedDistance recovered to 10.478m over 20 frames; collisionChecks=109 and camera position remained finite"
+    }
+  ],
+  "remaining_scope": [
+    "The obstruction wall is a controlled automated probe, not a replacement for Q31/Q32 continuous Player screenshots at final scene walls, ship rails and low props.",
+    "Q13 must verify keyboard focus/modal transitions and prevent W/S movement input from being consumed by UI navigation.",
+    "This card does not prove final camera composition, visual clipping or native Player activation."
+  ],
+  "status_boundary": "Q12 VERIFIED means CameraFollow's mode target, obstruction shrink and recovery logic are evidenced in InitialHarbor. It is not a full visual camera gate.",
+  "current_reaudit_20260912": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_20260912_RESULT.json",
+    "test_run": "D17ActionQualityPlayModeTests total=16 passed=16 failed=0; D17A14 passed in 2.4606404s",
+    "source_hashes_current": true,
+    "boundary": "Current CameraFollow logic evidence only; controlled obstruction is not final visual acceptance."
+  },
+  "current_reaudit_20260913": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_20260913_RESULT.json",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.0176968s; total duration=5.11s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; console cleared after run",
+    "boundary": "Current CameraFollow logic evidence only; controlled obstruction is not final visual acceptance."
+  },
+  "current_reaudit_20260913_luna_r2": {
+    "result": "PASS_WITHIN_SCOPE",
+    "evidence_json": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_20260913_LUNA_R2_RESULT.json",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=4.44514s; total duration=4.56s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current CameraFollow mode/target and controlled obstruction recovery only; final scene camera composition, visual clipping, native input and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q03a17_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_Q03A17_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.2043464s; total duration=3.31s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query=0",
+    "boundary": "Current CameraFollow mode/target and controlled obstruction recovery only; final scene camera composition, visual clipping, native input and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.5607355s; total duration=5.81s",
+    "source_hashes_current": true,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console query since seq 30989=0",
+    "boundary": "Current CameraFollow mode/target and controlled obstruction recovery only; final scene composition, visual clipping, native input and VC-G01 remain open."
+  },
+  "current_reaudit_20260913_q26a22_luna_r3": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_Q26A22_20260913_LUNA_R3_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.1757306s; pipeline duration=3.39s",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; error console since seq 33835=0",
+    "boundary": "Current CameraFollow mode/target and controlled obstruction recovery only; final scene camera composition, visual clipping, native input and VC-G01 remain open.",
+    "next_task": "Q13_CURRENT_PIPELINE_REAUDIT_Q26A22_LUNA_R3"
+  },
+  "current_reaudit_20260914_luna": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_20260914_LUNA_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=5.9748085s; pipeline duration=6.47s",
+    "runtime_log": "mode_cycles=10; obstructed=true; distanceBefore=5.500; distanceBlocked=3.746; distanceRecovered=5.500; collisionChecks=109",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_console_after_run": 6,
+    "warning_boundary": "Known D2 procedural/neutral fallback and D27 initialization warnings retained in the result; not a clean zero-warning claim.",
+    "next_task": "Q13_CURRENT_PIPELINE_REAUDIT"
+  },
+  "current_reaudit_q31q09_20260916_luna_r1": {
+    "result_artifact": "game/tools/results/LOCAL-QUALITY/Q12/Q12_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json",
+    "result": "PASS_WITHIN_SCOPE",
+    "test_run": "D17A14 total=1 passed=1 failed=0 skipped=0 inconclusive=0; test duration=3.3152951s; pipeline duration=3.41s",
+    "runtime_log": "mode_cycles=10; obstructed=true; distanceBefore=5.500; distanceBlocked=3.790; distanceRecovered=5.494; collisionChecks=109",
+    "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+    "source_hashes_current": true,
+    "product_code_changed": false,
+    "editor_final": "ready/stopped; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "error_console_after_run": 0,
+    "warning_boundary": "Any known warning tail was not promoted to a zero-warning claim; Console cleared after evidence",
+    "boundary": "Current CameraFollow mode/target and controlled obstruction recovery only; final world composition, clipping, native input, target-device performance, audio and VC-G01 remain open.",
+    "next_task": "Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+  },
+  "next_task": "Q13"
+}

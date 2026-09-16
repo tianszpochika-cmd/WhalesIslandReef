@@ -2009,3 +2009,59 @@ R13 复用 R12 Development Player 完成 E 登船、E 下船、重复登船和 W
 - 暂停时状态：`Q31=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。
 - 安全停止：connected game Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`；Q09 Error 查询=`0` 但 `dropped=true`，已按边界记录并清空 Console。
 - 恢复入口：`Q10_CURRENT_PIPELINE_REAUDIT_Q31R13_20260916_LUNA`；暂停结果/交接：[Q31 pause result](Q31/Q31_PAUSE_CHECKPOINT_20260916_Q09_R1_RESULT.json)、[pause handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q09_R1.md)。
+
+## 2026-09-16 Q00 current takeover rebind after Q09 pause
+
+- 当前分支与远程均为 `agent/publish-project-changes-20260813` / `8413feeffa5cf4e1367c3aaff73890f30bb39d2f`；工作区 `1456` 条 status lines 全部为既有未跟踪历史/生成证据，tracked diff=`0`，没有清理。
+- Connected Editor=`6000.0.80f1 / PID 34276 / 127.0.0.1:7800 / ready`；Runtime Pipeline=`enableInBuilds=false / port=0`。R12/R13 Player `build_8eca102a61b4` 来自旧 source head `9fd08f...`，早于当前 Q05 D2 transition guard，`exact_current_source_match=false`，不继承为当前 Player 验收。
+- Q00=`VERIFIED_WITH_SCOPE`；Q31=`PARTIAL`；VC-G01=`IN_PROGRESS`；VC-G02/VC-G03=`LOCKED`；D31-P04/S05/G06=`PARTIAL`。结果/日志/交接：[Q00 R2 result](Q00/Q00_CURRENT_TAKEOVER_Q31Q09_20260916_LUNA_R2_RESULT.json)、[Q00 R2 log](Q00/Q00_CURRENT_TAKEOVER_Q31Q09_20260916_LUNA_R2.log)、[Q00 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q00.md)。
+
+## 2026-09-16 Q10 current-source ship-motion re-audit after Q09 pause
+
+- Q10=`PASS_WITHIN_SCOPE`：`D17A12ShipMotionKeepsBoardedPlayerRelativeDeckStable=1/1 PASS`；第二次 Pipeline=`1.96s`、test=`1.8683108s`，第一次也为 `1/1 PASS`。真实 marker：`motion_samples=10`、最大相对位置/旋转误差=`0.000000`、最大船位移=`1.510m`、最大航向变化=`32.000°`。
+- Error Console=`0`、dropped=`false`；warning tail 保留已知 D27/D2 fallback/readiness 和预期无落点拒绝，取证后清空。Editor=`ready/stopped`，Runtime Pipeline 关闭。本轮没有修改生产代码。
+- 边界：只覆盖 snapshot 驱动的相对甲板 transform 和状态恢复，不关闭开放海/native Player 输入、船碰撞、相机/握舵视觉、正式动作/Avatar、植被、性能、音频或 VC-G01。结果/日志/交接：[Q10 R1 result](Q10/Q10_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q10 R1 log](Q10/Q10_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q10 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q10/Q10.md)。下一张为 `Q11_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q11 current-source safe-disembark re-audit
+
+- Q11=`PASS_WITHIN_SCOPE`：`D17A13SafeDisembarkSurvivesTenLegalCyclesAndRejectsNoGround=1/1 PASS`，Pipeline=`3.23s`、test=`3.1345655s`；marker=`legal_disembark_cycles=10 / no_ground_rejection=true / final_grounded=True / final_mode=Character`。
+- 无可行沙滩/码头/跳板时的拒绝 warning 按预期行为保留；Error Console=`0`、dropped=`false`，取证后清空。Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`，没有生产代码变更。
+- 边界：只覆盖合法/无落点下船状态、碰撞生命周期和重复恢复；不关闭移动船体视觉碰撞、全岸线/跳板路线、native Player 输入、正式动作、相机、植被、性能、音频或 VC-G01。结果/日志/交接：[Q11 R1 result](Q11/Q11_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q11 R1 log](Q11/Q11_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q11 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q11/Q11.md)。下一张为 `Q12_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q12 current-source camera re-audit
+
+- Q12=`PASS_WITHIN_SCOPE`：`D17A14CameraModesAndExternalObstructionRecoverWithoutInvalidPose=1/1 PASS`，Pipeline=`3.41s`、test=`3.3152951s`；marker=`mode_cycles=10 / obstructed=true / distanceBefore=5.500 / distanceBlocked=3.790 / distanceRecovered=5.494 / collisionChecks=109`。
+- 受控 BoxCollider 的实际 SphereCast 遮挡收缩和移除后阻尼恢复通过；Error Console=`0`、dropped=`false`，取证后清空。Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`，没有生产代码变更。
+- 边界：只覆盖 CameraFollow 的有界模式/目标切换和受控遮挡恢复；不关闭最终世界穿模/构图、native Player、性能、音频或 VC-G01。结果/日志/交接：[Q12 R1 result](Q12/Q12_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q12 R1 log](Q12/Q12_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q12 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q12/Q12.md)。下一张为 `Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q13 current-source input/UI re-audit
+
+- Q13=`PASS_WITHIN_SCOPE`：D17A15=`1/1 PASS`（Pipeline=`3.51s`）、D16InputRouter=`11/11 PASS`（Pipeline=`5.18s`）、D16PrimaryHudNavigation=`2/2 PASS`（Pipeline=`2.93s`）。D17A15 marker=`gameplay_w_s_cycles=10 / normal_navigation=false / pause_navigation=true / blocked_navigation=true / restored_navigation=false`。
+- 真实日志确认 `EventSystem navigation=modal -> gameplay_suppressed`、W/S 主选择保持 null、`ship W input` 进入 gameplay route。Error Console=`0`、dropped=`false`，取证后清空；Editor=`ready/stopped`，Runtime Pipeline 关闭，没有生产代码变更。
+- 边界：这是 Unity Input System 测试设备/运行时路由证据，不是前台 Win32 物理键盘或渲染 HUD 验收；E/I/M/T 业务、原生 Player、正式动作/Avatar、植被、性能、音频和 VC-G01 仍开放。结果/日志/交接：[Q13 R1 result](Q13/Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q13 R1 log](Q13/Q13_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q13 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q13/Q13.md)。下一张为 `Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q14 current-source shore/water/deck integration re-audit
+
+- Q14=`PASS_WITHIN_SCOPE`：`D17A16IntegratedShoreWaterDeckTurnAndSafeDisembarkSequence=1/1 PASS`，Pipeline=`2.71s`、test=`2.6117578s`；marker=`shore_water_shore=true / board_owner=Ship / ship_input_turn=true / no_ground_rejection=true / legal_disembark=true / imported_neutral=False`。
+- 该路径覆盖岸→水→岸、登船/ShipDeck、船上转向、无落点拒绝和合法下船的 owner/state 链；`imported_neutral=False` 只标识当前程序化 Player 分支，不是正式 authored action/avatar 通过。Error Console=`0`、dropped=`false`，取证后清空；Editor=`ready/stopped`，Runtime Pipeline 关闭，没有生产代码变更。
+- 边界：不关闭前台/native Player 键盘、E/I/M/T 业务、最终视觉、植被、性能、音频或 VC-G01。结果/日志/交接：[Q14 R1 result](Q14/Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q14 R1 log](Q14/Q14_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q14 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q14/Q14.md)。下一张为 `Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q15 current-source panel-focus/shortcut re-audit
+
+- Q15=`PASS_WITHIN_SCOPE`：`D29Q15WarehouseMarketTavernAreExclusiveAndRecoverTenTimes=1/1 PASS`，Pipeline=`13.67s`、test=`13.5745984s`；marker=`shortcut_input=true / keys=I,M,T / legacy_keydown_reached_owner=true / warehouse_cycles=10 / market_cycles=10 / tavern_cycles=10 / exclusive=true / repeated_request_rejected=true / gameplay_recovery=true`。
+- Error Console=`0`、dropped=`false`，取证后清空；Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`，没有生产代码变更。
+- 边界：只关闭 D29/D16 PlayMode 快捷键 owner、临时页互斥、重复请求拒绝和 Gameplay 恢复，不关闭前台 Win32 键鼠、原生 Player 面板渲染/鼠标命中、Player 业务 owner 真实结果、正式动作、性能、音频或 VC-G01。结果/日志/交接：[Q15 R1 result](Q15/Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q15 R1 log](Q15/Q15_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q15 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q15/Q15.md)。下一张为 `Q16_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q16 current-source trade-bridge re-audit
+
+- Q16=`PASS_WITHIN_SCOPE`：`D29Q16TradeBridgeCoversSuccessRejectBusyAndOneChangePerRequest=1/1 PASS`，Pipeline=`2.30s`、test=`2.1992274s`；marker=`not_ready=true / shortcut_double_click_one_owner=true / buy_success_one_change=true / sell_success_one_change=true / insufficient_funds_unchanged=true / cargo_full_unchanged=true`。
+- 实际 D3 owner 日志记录购买完成与出售完成；Error Console=`0`、dropped=`false`，取证后清空。Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`，没有生产代码变更。
+- 边界：只覆盖 D29/D3 owner 桥接和成功/拒绝状态，不关闭 native Player 鼠标/市场渲染、在线/存档数据、完整航程、正式动作、性能、音频或 VC-G01。结果/日志/交接：[Q16 R1 result](Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)、[Q16 R1 log](Q16/Q16_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)、[Q16 handoff](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q16/Q16.md)。下一张为 `Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+## 2026-09-16 Q17 current-source shipyard/preparation re-audit
+
+- Q17=`PASS_WITHIN_SCOPE`：`D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException=1/1 PASS`，Pipeline=`3.08s`、test=`2.9858148s`；marker=`preparation_success=true / repair_reject_material=true / repair_duplicate_unchanged=true / domain_duplicate_idempotent=true / cancel_recovery=true / shipyard_success=true / shipyard_reject=true / exception_recovery=true / primary_input_restored=true`。
+- D4 空 owner 故障注入只产生预期受控 Warning；测试确认状态未变化、异常恢复和主输入恢复。Error Console=`0`、dropped=`false`，取证后清空；Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。
+- 边界：只覆盖当前源码 D29/D9/D4 owner 桥接及成功/拒绝/重复/取消/异常反馈，不覆盖前台 Win32 键鼠、native Player、截图、最终视觉、正式动作/Avatar、植被、性能、音频、完整首航或 VC-G01。下一张为 `Q18_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA`。
+
+结果：[Q17 R1 result](Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1_RESULT.json)；日志：[Q17 R1 log](Q17/Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1.log)；暂停点：[Q31 Q17 R1](Q31/Q31_PAUSE_CHECKPOINT_20260916_Q17_R1_RESULT.json)。

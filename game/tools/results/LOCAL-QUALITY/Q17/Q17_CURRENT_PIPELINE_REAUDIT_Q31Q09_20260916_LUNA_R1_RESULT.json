@@ -1,0 +1,60 @@
+{
+  "task_id": "Q17",
+  "run_id": "Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1",
+  "status": "PASS_WITHIN_SCOPE",
+  "status_scope": "Current-source D29/D9/D4 preparation and shipyard owner bridges, including success, rejection, duplicate, cancel and exception recovery",
+  "captured_at_local": "2026-09-16T10:36:51+08:00",
+  "source_head": "8413feeffa5cf4e1367c3aaff73890f30bb39d2f",
+  "branch": "agent/publish-project-changes-20260813",
+  "production_code_changed": false,
+  "unity": {
+    "version": "6000.0.80f1",
+    "project_path": "C:/Users/Administrator/Desktop/game/first01/game",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "editor_pid": 34276,
+    "editor_endpoint": "127.0.0.1:7800",
+    "editor_final": "ready/stopped",
+    "runtime_pipeline": "enableInBuilds=false; port=0"
+  },
+  "source_hashes": {
+    "game/Assets/Scripts/Gameplay/D29/D29InteractionHud.cs": "D07CC06223BFEF5F24390FF1E140214863B72E1A4C426E1C22494E9EB43BBD20",
+    "game/Assets/Scripts/Systems/D9/D9PortShipPreparationSystem.cs": "E22FC0ED45FFA2B49AE52DC2F3C9D77FFC5368561365AB01C9723C9C77B296D0",
+    "game/Assets/Scripts/Systems/D4/D4ShipyardSystem.cs": "F66383A2423A23E2BBE7EA5750EEF17A2D44CC2ECFE4F0EC1BC94CF11A569B13",
+    "game/Assets/Tests/PlayMode/D29ShipyardPreparationPlayModeTests.cs": "4B704F6128AFA8F45871B84212E1B3E3DDA575ED2D39692736DFCBE4DD935CFA",
+    "game/Assets/Scripts/Gameplay/D29/D29OneShotPolicy.cs": "88542C14D2D13EC514EEDE8D63975B0AF13A1DDCCEE16D110F123EAF25AA6061"
+  },
+  "test": {
+    "filter": "D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException",
+    "full_name": "Whalebone.Tests.D29.D29ShipyardPreparationPlayModeTests.D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException",
+    "mode": "PlayMode",
+    "status": "completed",
+    "pipeline_duration_s": 3.08,
+    "test_duration_s": 2.9858148,
+    "summary": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "inconclusive": 0
+    }
+  },
+  "runtime_markers": {
+    "preparation_success": true,
+    "repair_reject_material": true,
+    "repair_duplicate_unchanged": true,
+    "domain_duplicate_idempotent": true,
+    "cancel_recovery": true,
+    "shipyard_success": true,
+    "shipyard_reject": true,
+    "exception_recovery": true,
+    "primary_input_restored": true
+  },
+  "console": {
+    "error_entries_after_run": 0,
+    "dropped": false,
+    "expected_warning_recorded": "D4 empty-owner exception path logged a controlled warning; the test confirmed unchanged state and recovery.",
+    "cleared_after_evidence": true
+  },
+  "validation_boundary": "Q17 is PASS_WITHIN_SCOPE only for current-source D29/D9/D4 preparation and shipyard owner bridges, including success, material/funds rejection, duplicate idempotency, cancel recovery, exception recovery and primary input restoration. It does not prove foreground/native Player keyboard or mouse, screenshots, rendered visual quality, performance, complete voyage flow, authored action quality or VC-G01 acceptance.",
+  "next_task": "Q18_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA"
+}

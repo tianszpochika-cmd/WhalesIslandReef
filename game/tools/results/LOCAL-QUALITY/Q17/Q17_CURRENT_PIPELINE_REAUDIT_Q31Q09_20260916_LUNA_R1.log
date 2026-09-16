@@ -1,0 +1,17 @@
+Q17_CURRENT_PIPELINE_REAUDIT_Q31Q09_20260916_LUNA_R1
+captured_at_local=2026-09-16T10:36:51+08:00
+source_head=8413feeffa5cf4e1367c3aaff73890f30bb39d2f
+unity=6000.0.80f1; editor_pid=34276; pipeline=127.0.0.1:7800
+test=D29Q17ShipyardAndPreparationCoverSuccessRejectDuplicateCancelAndException
+result=total=1; passed=1; failed=0; skipped=0; inconclusive=0
+duration=pipeline=3.08s; test=2.9858148s
+marker=[D29/Q17] preparation_success=true, repair_reject_material=true, repair_duplicate_unchanged=true, domain_duplicate_idempotent=true, cancel_recovery=true, shipyard_success=true, shipyard_reject=true, exception_recovery=true, primary_input_restored=true
+controlled_warning=[D29/Interaction] 船坞 action failed: Object reference not set to an instance of an object
+warning_boundary=The empty-owner exception warning is expected evidence for the controlled failure path; it is not an Error Console failure.
+error_returned=0
+error_dropped=false
+editor_final=ready; compiling=false; domainReloadInProgress=false; playMode=stopped
+console_cleared_after_evidence=true
+runtime_pipeline=enableInBuilds=false; port=0
+status=PASS_WITHIN_SCOPE
+boundary=Current-source D29/D9/D4 owner bridge only; native Player, foreground input, screenshots, visual quality, performance, complete voyage and VC-G01 remain open.
