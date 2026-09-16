@@ -1,6 +1,6 @@
 # LOCAL-QUALITY 看板
 
-更新时间：2026-09-15
+更新时间：2026-09-16
 
 | 任务 | 状态 | 结论/证据 | 下一步 |
 |---|---|---|---|
@@ -1915,3 +1915,47 @@ Result: `game/tools/results/LOCAL-QUALITY/Q23/Q23_CURRENT_PIPELINE_REAUDIT_20260
 - 状态不变：Q30=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步 Q31 最终 native Player visual gate。
 
 结果：[Q30 R5](Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json)；日志：[Q30 R5 log](Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5.log)；交接：[Q30](../../../docs/game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md)。
+
+## 2026-09-15 Q31 R6 current-source visible native Player route
+
+- `build_9f35f8fcb2f4`：`StandaloneWindows64 / Succeeded / 0 errors / 0 warnings / 243870645 bytes`；Unity Pipeline 可见原生 Player `1600x900` 从 MainMenu NewGame/Confirm 进入 `InitialHarbor`，完成 E 登船/下船并写出真实 compositor-visible 帧。
+- W/A/D 下船路线在约 `z=-4.94 / -18.48 / -23.36` 出现边界停滞；本轮没有权威 `IsSwimming=true` marker，既有 S/open-water 结果不与本轮混算。
+- 会话在最终 runtime console、严格 Player 日志和 clean-close 断言前中断；接管后 Player PID/descriptor 均不存在，Runtime Pipeline 已恢复 `enableInBuilds=false / port=0`，正确 `game` Editor=`127.0.0.1:7800 / ready`。
+- 状态不升级：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步是 connected Editor Pipeline 碰撞/状态诊断，不是盲目调坐标。
+
+结果/日志：`Q31_CURRENT_NATIVE_PLAYER_VISUAL_20260915_LUNA_R6_RESULT.json` / `Q31_CURRENT_NATIVE_PLAYER_VISUAL_20260915_LUNA_R6.log`；交接：`docs/game/design/common/handoffs/LOCAL-QUALITY/Q31.md`。
+
+## 2026-09-16 Q31 R7 visible native S-route and swim-presentation boundary
+
+- 当前源码可见 Player 经 Pipeline pointer 进入 `InitialHarbor`；相机平面前方=`-Z`，W 是船/港口侧，S 是去水边的 `+Z` 路线。
+- S 分段到约 `(0.33,0.40,18.80)` 时真实 runtime `IsSwimming=true / IsGrounded=false / D16InputRouter`；释放后仍为游泳态。该子范围=`PASS_WITHIN_SCOPE`，不等于自然泳姿视觉通过。
+- 四张真实 `1600x900` 帧确认角色水平扭曲、四肢弯折、水面接触不可信；InitialHarbor 还观察到 `3.8–4.5 FPS`、平均帧 `224–261ms`。视觉与性能均保持开放。
+- runtime console error=`0`、Player.log 严格错误行=`0`、Pipeline `quit` 后 PID/descriptor 消失；Runtime Pipeline 恢复 `enableInBuilds=false / port=0`。
+- 状态不升级：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步锁定 `D2CharacterAnimationController`/D7 presentation 与 formal avatar asset contract 的单一 owner。
+
+结果/日志：`Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7_RESULT.json` / `Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7.log`；Editor 诊断：`Q31_CURRENT_EDITOR_SHORELINE_DIAGNOSTIC_20260916_R1.json`。
+
+## 2026-09-16 Q31 R12 — Formal swim safe envelope
+
+R12 真实 Development Player 通过 Unity Pipeline 从 InitialHarbor 沿 S 路线到达 `IsSwimming=true / IsGrounded=false`；D20 Formal Fish pose ready/apply=`true`。D20 泳姿 body 下移 `0.85m`、前臂/小腿伸展后，真实帧显示四肢和身体位置改善，但单臂划水与水面接触仍不自然，结果为 `IMPROVED_WITHIN_SCOPE`，不是自然泳姿 PASS。
+
+验证：build `build_8eca102a61b4`，`0 errors / 0 warnings`；`D17A03CharacterEntersWaterAndReportsSwimmingAction=1/1 PASS`；runtime console error entries=`0`；Player.log 严格错误行=`0`；clean quit；Runtime Pipeline 恢复 `enableInBuilds=false / port=0`。状态不升级：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步检查 action/boarding presentation 单一 owner。
+
+结果/日志：`Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12_RESULT.json` / `Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12.log`。
+
+## 2026-09-16 Q31 R13 — boarding/helm route boundary
+
+## 2026-09-16 Q31 R13 安全暂停
+
+本轮在 R13 的真实 Player 交互边界处收口并临时暂停开发。Player 已通过 Unity Pipeline `quit --exitCode 0` 退出，PID 与 `.unity-pipeline-runtime-port` 均已消失；连接的 `game` Editor 为 `ready/stopped`，Runtime Pipeline 已恢复 `enableInBuilds=false / port=0`。R12/R13 结果、截图、日志和 focused PlayMode 证据已登记，未把它们扩大为最终视觉通过。
+
+- 状态保持：`Q31=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。
+- 未关闭：正式 action/avatar、自然 swim/helm IK、植被接地/穿模、前台物理输入、目标设备性能和最终人工视觉。
+- 交接：[PAUSE_20260916_Q31_R13](../../../../docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q31_R13.md)；结果：[pause result](Q31/Q31_PAUSE_CHECKPOINT_20260916_R13_RESULT.json)。
+- 恢复入口：`Q31 R14`，只处理一个单一 owner 的可见缺陷，先 focused regression，再用当前源码构建 Player 复验；不进入 VC-G02/G03。
+
+R13 复用 R12 Development Player 完成 E 登船、E 下船、重复登船和 W/A 船控。真实运行时：登船后 parent=`ph_ship_fishing`、D7 `PlayerBoarded=true`、玩家位于 HelmPoint；稳定后 D20 Formal candidate/formal state=`Helm`、ready/apply=`true`；W 推进船只，W+A 改变 heading。D17A02 新增 Board→Helm 契约后 `1/1 PASS`，D17A03=`1/1 PASS`，Editor recompile=`failed=false/errors=[]`。
+
+真实 RenderTexture 帧证明玩家处于可见舵轮前且双手接近轮盘，但低模/程序化几何、正式 boarding/helm clip 和自然 hand IK 仍开放。状态不升级：Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL`。下一步转向另一个单一 owner 缺陷。
+
+结果/日志：`Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json` / `Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log`。

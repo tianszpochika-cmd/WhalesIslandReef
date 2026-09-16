@@ -1,0 +1,45 @@
+{
+  "task_id": "Q31",
+  "checkpoint_id": "Q31_PAUSE_CHECKPOINT_20260916_R13",
+  "status": "PAUSED",
+  "status_scope": "Temporary development pause after bounded R12/R13 evidence; not project completion and not VC-G01 acceptance",
+  "recorded_at_local": "2026-09-16T08:40:04+08:00",
+  "source_head_before_checkpoint_commit": "9fd08f711e7b699a32a420d82a0a5f1d4ac38a0c",
+  "branch": "agent/publish-project-changes-20260813",
+  "latest_evidence": {
+    "swim": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12_RESULT.json",
+    "boarding_helm": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json",
+    "boarding_helm_log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log",
+    "boarding_frame": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png",
+    "focused_playmode": [
+      "D17A02CharacterActionStateFollowsMovementJumpAndBoarding=1/1 PASS",
+      "D17A03CharacterEntersWaterAndReportsSwimmingAction=1/1 PASS"
+    ],
+    "recompile": "completed; failed=false; errors=[]"
+  },
+  "safe_stop": {
+    "player": "R13 Player quit through Unity Pipeline with exitCode=0; PID 29980 absent after bounded close",
+    "runtime_descriptor": "Q31 .unity-pipeline-runtime-port absent",
+    "editor": "connected game Editor ready; compiling=false; domainReloadInProgress=false; playMode=stopped",
+    "runtime_pipeline_config": "enableInBuilds=false; port=0; requestTimeoutMs=30000; enableAuditLogging=true; autoStart=true; maxWorkItemsPerFrame=10",
+    "workspace_cleanup": "none; existing tracked and untracked work was preserved"
+  },
+  "accepted_scope": [
+    "R12 S route reached authoritative IsSwimming=true / IsGrounded=false and Formal Fish pose apply succeeded",
+    "R13 E boarding/disembark/repeat and W/A ship-control reached authoritative D7/D2 states",
+    "R13 Formal presentation settled into Helm with ready/apply=true",
+    "Focused D17 regressions and connected Editor recompile passed"
+  ],
+  "open_gates": [
+    "Q31 remains PARTIAL",
+    "VC-G01 remains IN_PROGRESS",
+    "VC-G02 and VC-G03 remain LOCKED",
+    "D31-P04, D31-S05 and D31-G06 remain PARTIAL",
+    "Authored action/avatar, natural swim/helm IK, vegetation grounding/intersections, foreground physical Win32 input, target-device performance and final human visual acceptance remain open"
+  ],
+  "resume_entry": {
+    "next_card": "Q31 R14",
+    "rule": "Choose one single-owner visual defect, write or reuse a focused regression, then revalidate with a current native Player; do not broaden R13 into final acceptance",
+    "dependency": "Do not enter VC-G02 or VC-G03 before VC-G01 is directly evidenced"
+  }
+}

@@ -2396,5 +2396,51 @@
     "verification": "Editor ended ready/stopped with Runtime Pipeline enableInBuilds=false / port=0 and non-development build settings. One real FMOD normal-output initialization error (60) was captured; warnings=160 and dropped=false.",
     "boundary": "This does not close compositor-visible Player, foreground physical input, formal action/avatar, natural swim/helm, vegetation all-camera grounding, audio playback or target-device performance.",
     "status_effect": "VC-G01 remains IN_PROGRESS; VC-G02 and VC-G03 remain LOCKED; Q30 and D31-P04/S05/G06 remain PARTIAL. Next Q31 final native Player visual gate."
+  },
+  "latest_q31_current_native_player_visual_20260915_luna_r6": {
+    "result": "PARTIAL",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_VISUAL_20260915_LUNA_R6_RESULT.json",
+    "log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_VISUAL_20260915_LUNA_R6.log",
+    "scope": "Current-source visible native Windows Player route and visual diagnostic through Unity Pipeline; interrupted after bounded W/A/D route.",
+    "verification": "build_9f35f8fcb2f4 succeeded with 0 errors and 0 warnings; MainMenu NewGame/Confirm reached InitialHarbor; compositor-visible 1600x900 frames captured; E board/disembark completed; no authoritative IsSwimming=true marker was captured in the interrupted W/A/D route.",
+    "boundary": "This does not close VC-G01 visual acceptance, formal Avatar/action, natural swim/helm IK, vegetation grounding/intersections, foreground physical input, target-device performance, final runtime error/clean-close assertions or human acceptance.",
+    "restoration": "The recorded Player PID and Q31 descriptor were absent after handoff; RuntimePipelineConfig.json was read back with enableInBuilds=false and port=0; the connected game Editor remained ready.",
+    "status_effect": "VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02 and VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL. Next action is a connected Editor Pipeline collider/state diagnostic before any production-code change."
+  },
+  "latest_q31_current_native_player_swim_route_20260916_r7": {
+    "result": "PARTIAL",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7_RESULT.json",
+    "log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7.log",
+    "scope": "Current-source visible native Player S-route and swim-presentation diagnostic through Unity Pipeline.",
+    "verification": "S reached IsSwimming=true / IsGrounded=false at approximately (0.333,0.400,18.801) and remained swimming after release; four compositor-visible 1600x900 frames were captured; runtime console error entries=0; Player strict error lines=0; clean quit removed PID 38608 and the descriptor.",
+    "boundary": "The finite S-to-swim state route is PASS_WITHIN_SCOPE, but visible swim/action presentation is defective: horizontal distorted pose, bent limbs and unconvincing water contact. Observed 3.8-4.5 FPS is a separate runtime diagnostic, not final target-device performance acceptance.",
+    "status_effect": "VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02 and VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL. Next action is focused swim-presentation/Avatar contract review before any shoreline coordinate changes."
+  },
+  "latest_q31_current_native_player_swim_formal_safe_20260916_r12": {
+    "result": "PARTIAL",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12_RESULT.json",
+    "log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12.log",
+    "scope": "Current-source native Player swim-presentation remediation through Unity Pipeline after the D20 Formal Humanoid ownership review.",
+    "verification": "R12 build_8eca102a61b4 succeeded with 0 errors and 0 warnings; S reached authoritative IsSwimming=true / IsGrounded=false; Formal Fish pose was ready and applied; focused D17A03 was 1/1 PASS; compositor-visible 1600x900 evidence was captured; runtime console and Player.log strict error boundaries were 0; clean quit and Runtime Pipeline restoration succeeded.",
+    "boundary": "The visible pose is improved but still stylized, with a one-arm stroke and low-confidence water contact. This does not close VC-G01 visual acceptance, physical Win32 input, target-device performance or final human acceptance.",
+    "status_effect": "VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02 and VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL. Continue with the next single-owner action/boarding presentation validation."
+  },
+  "latest_q31_current_native_player_boarding_helm_route_20260916_r13": {
+    "result": "PARTIAL",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json",
+    "log": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log",
+    "scope": "Current-source native Player E boarding/disembark and W/A ship-control route plus Formal Board-to-Helm presentation contract.",
+    "verification": "E reached the authoritative D7 PlayerBoarded=true/false transitions and the Formal presentation settled into Helm with ready/apply=true; W moved the ship and W+A changed heading; D17A02=1/1 PASS after adding Board and settled Helm assertions; D17A03=1/1 PASS; clean quit removed the Player PID and runtime descriptor.",
+    "boundary": "The route and RenderTexture frame are valid diagnostic evidence, but no authored boarding/helm clip or natural hand IK acceptance is claimed. Physical Win32 input, target-device performance and final human visual acceptance remain open.",
+    "status_effect": "VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02 and VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL. Continue with a bounded single-owner visual defect."
+  },
+  "latest_q31_pause_checkpoint_20260916_r13": {
+    "result": "PAUSED",
+    "artifact": "game/tools/results/LOCAL-QUALITY/Q31/Q31_PAUSE_CHECKPOINT_20260916_R13_RESULT.json",
+    "handoff": "docs/game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q31_R13.md",
+    "scope": "Temporary pause after real Unity Pipeline R12/R13 evidence; no VC-G01 promotion.",
+    "safe_stop": "R13 Player quit cleanly; PID and runtime descriptor absent; Editor ready/stopped; Runtime Pipeline restored to enableInBuilds=false / port=0.",
+    "boundary": "Formal authored action/avatar, natural swim/helm IK, vegetation/intersection, physical Win32 input, target-device performance and final human visual acceptance remain open.",
+    "status_effect": "VC-G01 remains IN_PROGRESS; Q31 remains PARTIAL; VC-G02 and VC-G03 remain LOCKED; D31-P04/S05/G06 remain PARTIAL."
   }
 }

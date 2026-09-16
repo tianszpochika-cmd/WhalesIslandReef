@@ -1,0 +1,62 @@
+{
+  "task_id": "Q31",
+  "subtask_id": "Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13",
+  "status": "PARTIAL",
+  "status_scope": "Current-source native Windows Player boarding/helm route and formal presentation contract; not final VC-G01 acceptance",
+  "source_head": "9fd08f711e7b699a32a420d82a0a5f1d4ac38a0c",
+  "source_state": "R12 production source plus the focused D17A02 Formal Board-to-Helm regression added after the Player build",
+  "branch": "agent/publish-project-changes-20260813",
+  "player_build": {
+    "build_id": "build_8eca102a61b4",
+    "build_guid": "6b9d61d35c2b41c787c24dd601c5d3d0",
+    "unity_version": "6000.0.80f1",
+    "pipeline_package": "com.unity.pipeline@0.6.0-exp.1",
+    "runtime_port": 7900,
+    "resolution": "1600x900",
+    "development_build": true,
+    "executable": "game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_R12.exe",
+    "build_report": "R12 StandaloneWindows64 succeeded; 0 errors; 0 warnings",
+    "note": "The executable predates the test-only D17A02 assertion added in this R13; production D20 source is the R12 source recorded in the R12 result."
+  },
+  "route": {
+    "input_surface": "Unity Pipeline runtime simulate_pointer and simulate_key Input System injection; no Computer Use or foreground Win32 keyboard claim",
+    "entry": "NewGame pointer (800,516.7), Confirm pointer (716.7,358.3), InitialHarbor build index 2",
+    "initial_state": "player=(0.00,0.15,-2.70); ship=(0.00,0.00,-5.20); HelmPoint=(0.00,1.10,-6.68); helm distance=4.091867; mode=Character; PlayerBoarded=false",
+    "boarding": "E down/up succeeded: player=(0.00,1.10,-6.68); parent=ph_ship_fishing; mode=Ship; PlayerBoarded=true; feedback=boarded/True",
+    "formal_after_boarding_settled": "consumer=Formal; UsesHumanoidPoseAdapter=true; D2 action=Idle after transition; candidate state=Helm; formal state=Helm; formal ready=true; formal apply=true; UsesGenericPathAdapter=false; snapshotMode=Ship; intent=helm",
+    "disembark": "E down/up succeeded: player=(0.00,0.17,-0.70); parent=<none>; mode=Character; PlayerBoarded=false; feedback=disembarked/True",
+    "repeat_boarding": "A second E press from the safe disembark position succeeded and restored parent=ph_ship_fishing/mode=Ship/PlayerBoarded=true; repeated operation is functional, not a duplicate-rejection case",
+    "ship_forward": "W held for approximately 1 second while boarded: ship position=(3.969865E-16,-8.441641), heading=180, speed=3.930213; player remained parented to ph_ship_fishing at (0.00,1.10,-9.92)",
+    "ship_turn": "W+A held concurrently for approximately 1 second: ship position=(3.735874,-16.71201), heading=92.0754, speed=4.0; after release heading=63.94967 and speed=0",
+    "route_result": "PASS_WITHIN_SCOPE: E boarding/disembark and W/A ship movement/turning reached the authoritative D2/D7 states and the Formal presentation settled into Helm",
+    "boundary": "Not proof of authored boarding/helm animation, natural hand IK, physical Win32 input, target-device performance or final human visual acceptance"
+  },
+  "visual_evidence": {
+    "path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png",
+    "method": "Camera.Render to 1600x900 ARGB32 RenderTexture, ReadPixels and PNG encoding through runtime eval",
+    "bytes": 1409085,
+    "sha256": "9CCD25F6389FF1D8C8BF5C1C4ACFEB713B1BBC67F37FCAE6E7F95DCBED9BE594",
+    "observation": "The real Player render shows the Formal R02 character centered at the visible helm with both hands near the warm-wood wheel. The frame is valid route/ownership evidence, but the low-poly character/ship and lack of authored hand IK keep the boarding/helm presentation partial; it is not a compositor-backbuffer or human-acceptance PASS."
+  },
+  "validation": {
+    "d17a02_after_regression_patch": "1/1 PASS; 3.1668316s; D2 Boarding -> D20 Formal Board -> settled Helm assertions included",
+    "d17a03_after_recompile": "1/1 PASS; 1.9908031s",
+    "recompile": "completed; failed=false; errors=[]",
+    "editor_status_after_recompile": "ready; compiling=false; domainReloadInProgress=false; playMode=stopped"
+  },
+  "runtime_integrity": {
+    "player_pid": 29980,
+    "player_log_path": "game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_ACTION_BOARDING_PLAYER_20260916_R1.log",
+    "player_log_bytes": 148208,
+    "player_log_sha256": "4993EB1EF9EEE9701AF530A7F9C4EFADD84ED9E4A9BE8A0049CC44A528FE3AF6",
+    "player_log_strict_error_tokens": 0,
+    "runtime_console_query": "not run for this bounded route; no console-zero claim",
+    "quit": "Pipeline quit --exitCode 0; PID 29980 absent after 3 seconds; Q31 .unity-pipeline-runtime-port absent"
+  },
+  "production_and_test_changes": [
+    "game/Assets/Scripts/Presentation/D20/PlayerAnimation/D20FormalHumanoidPoseAdapter.cs",
+    "game/Assets/Tests/PlayMode/D17ActionQualityPlayModeTests.cs"
+  ],
+  "status_boundary": "Q31=PARTIAL; VC-G01=IN_PROGRESS; VC-G02/VC-G03=LOCKED; D31-P04/S05/G06=PARTIAL",
+  "next_task": "Keep the boarding/helm visual defect explicit and move to the next single-owner action or vegetation defect; do not treat the valid D2/D7 route as authored IK or final visual acceptance"
+}

@@ -1272,3 +1272,45 @@ I/M 的早期直接 InitialHarbor 探针以及 owner 未就绪 T 被单独登记
 Q30 R5 已绑定当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9`。Python `65/65`、D16 输入 `11/11`、D17 动作质量 `16/16`、VcG01 世界逻辑 `14/14` 通过范围内回归；没有修改生产视觉代码。Editor 和 Runtime Pipeline 已回到安全状态。
 
 本轮必须保留的视觉/环境边界：FMOD 在 Editor 测试会话中真实报告 `Error initializing output device (60)`；Windows 音频设备枚举为 OK、AudioSettings 可读仍不等于播放成立。程序化低模、未验证 `ph_crew_male`、absolute-Euler fallback、D27 presentation wait 和正式植被准入仍解释当前用户可见缺陷，Q30 继续 `PARTIAL`，Q31 继续最终 native Player visual gate。结果与交接见 `game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json`、`docs/game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md`。
+
+## 2026-09-15 Q31 R6 visible native Player diagnostic boundary
+
+R6 使用当前 HEAD `9fd08f711e7b699a32a420d82a0a5f1d4ac38a0c` 构建 `build_9f35f8fcb2f4` 并通过 Unity Pipeline 启动可见原生 Player。MainMenu NewGame/Confirm → `InitialHarbor`、E 登船/下船和 `1600x900` compositor-visible 截图已真实执行。截图可用于诊断当前低模/程序化环境、动作姿态和岸线路线问题，但不构成 VC-G01 PASS。
+
+W/A/D 下船路线在约 `z=-4.94 / -18.48 / -23.36` 停滞；本轮没有权威 `IsSwimming=true` marker，既有 S/open-water 证据与本轮分开登记。会话在最终 runtime console、严格 Player 日志和 clean-close 断言前中断，接管后 PID/descriptor 已消失、Runtime Pipeline 已恢复 `enableInBuilds=false / port=0`。状态继续为 Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`。
+
+后续执行顺序固定为：connected Editor Pipeline 记录相机朝向 → Player/CharacterController → 地形/建筑 Collider 命中 → OceanAdapter 水面查询 → `IsSwimming` 转换；完成单一 owner 归属和最小回归后，才允许改生产代码。禁止用截图、固定 token、mock 或构造位置替代真实路线证据。
+
+结果：[Q31 R6](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_VISUAL_20260915_LUNA_R6_RESULT.json)；交接：[Q31](design/common/handoffs/LOCAL-QUALITY/Q31.md)。
+
+## 2026-09-16 Q31 R7 S-route confirms swim state and isolates visual owner
+
+当前源码可见原生 Player 通过 Pipeline pointer 进入 `InitialHarbor`，相机平面前方为 `-Z`。W 走向船/港口碰撞体，S 走向 `+Z` 水边；S 分段到约 `(0.33,0.40,18.80)` 后运行时明确 `IsSwimming=true / IsGrounded=false`，释放和继续移动后游泳态保持。因此不能把“W 路线撞住”解释成海洋逻辑完全失效。
+
+R7 的四张真实 `1600x900` compositor-visible 帧暴露了下一项明确缺陷：角色虽进入权威游泳态，却以扭曲水平姿态、弯折四肢和不可信水面接触关系呈现；InitialHarbor 还观察到约 `3.8–4.5 FPS`、平均帧 `224–261ms` 的严重卡顿。前者归入泳姿 presentation/Avatar owner，后者另开性能诊断，不互相替代。
+
+R7 完成 runtime console error=`0`、Player.log 严格错误行=`0`、clean quit、PID/descriptor 消失和 Runtime Pipeline 恢复关闭；Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED` 保持。执行顺序更新为：先检查 `D2CharacterAnimationController`/D7 presentation 与 formal avatar asset contract → 写 focused regression → 最小视觉修复 → visible Player 复验；禁止继续盲调岸线坐标。
+
+结果：[Q31 R7](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7_RESULT.json)；日志：[R7](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7.log)；交接：[Q31](design/common/handoffs/LOCAL-QUALITY/Q31.md)。
+
+## 2026-09-16 Q31 R12 execution record
+
+R12 完成了 swim presentation owner 的最小修复和真实 Player 复验：D20 Formal Humanoid adapter 将泳姿 body presentation 下移 `0.85m`，保持前臂/小腿伸展，新增 PlayMode safety contract。Development Player `build_8eca102a61b4` 以 `0 errors / 0 warnings` 构建，通过 Unity Pipeline 完成 S→真实游泳状态路线；`D17A03=1/1 PASS`，runtime console/Player.log 严格错误边界均为 `0`，clean quit 和配置恢复成功。
+
+可见结果仍为 `IMPROVED_WITHIN_SCOPE` 而非最终 PASS：身体和四肢位置改善，但单臂划水、风格化姿态与水面接触仍不自然。执行顺序保持为：action/boarding presentation 单一 owner 检查 → focused regression → 最小修复/或缺陷登记 → visible Player 复验；Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`，禁止盲调岸线坐标。
+
+结果：[Q31 R12](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12_RESULT.json)；日志：[R12](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12.log)；交接：[Q31](design/common/handoffs/LOCAL-QUALITY/Q31.md)。
+
+## 2026-09-16 Q31 R13 execution record
+
+## 2026-09-16 Q31 R13 safe pause
+
+R13 作为本阶段临时暂停点正式登记。Pipeline 控制的真实 Player 已完成有界 E/W/A 路线并 clean quit；D17A02/D17A03 focused regressions 通过，Editor 回到 `ready/stopped`，Runtime Pipeline 回到 `enableInBuilds=false / port=0`。R13 只证明交互/状态契约的有限范围，不能升级 `VC-G01`，也不能提前打开 `VC-G02/VC-G03`。
+
+未关闭项仍包括正式 action/avatar、自然 swim/helm IK、植被空间接地/穿模、前台物理键盘、目标设备性能、音频和人工最终视觉。恢复从 `Q31 R14` 开始，继续遵守单一 owner → focused regression → 当前 native Player 复验的顺序。交接：[PAUSE_20260916_Q31_R13](design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q31_R13.md)；结果：[pause result](../game/tools/results/LOCAL-QUALITY/Q31/Q31_PAUSE_CHECKPOINT_20260916_R13_RESULT.json)。
+
+R13 在 R12 Development Player 上完成 E boarding/disembark/repeat 和 W+A ship-control 路线，确认 D7 的 parent/PlayerBoarded、D2 的 Ship/Character mode、Formal D20 的 Helm state 以及 heading 变化。新增 D17A02 Board→Helm focused contract 后 `1/1 PASS`，D17A03=`1/1 PASS`，Editor recompile 无错误。
+
+本轮真实 RenderTexture 帧是有效的动作/归属诊断，但不是最终 compositor-backbuffer 或人工视觉验收：角色已经处于可见舵轮前，低模/程序化几何、正式动作 clip 和自然 hand IK 仍然开放。执行顺序保持单一 owner 边界，Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`。
+
+结果：[Q31 R13](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json)；日志：[R13](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log)；截图：[boarding frame](../game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png)。

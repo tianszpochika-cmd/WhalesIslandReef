@@ -402,3 +402,27 @@ Q29 父任务继续 `PARTIAL`、VC-G01 继续 `IN_PROGRESS`、VC-G02/VC-G03 继�
 Q30 R5 已按当前 HEAD `94950f36c0d5a3daf4ba719216808a0ae6d71be9` 重新绑定：Python 定向 `65/65`、D16InputRouter `11/11`、D17ActionQuality `16/16`、VcG01WorldLogic `14/14` 均通过范围内回归；没有修改生产代码或持久配置。Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。
 
 本轮真实捕获 FMOD `Error initializing output device (60)`，Windows 设备枚举和 Unity AudioSettings 配置不能替代成功播放证据，因此音频仍为 `BLOCKED_ENVIRONMENT`。Q30 保持 `PARTIAL`，VC-G01 保持 `IN_PROGRESS`，VC-G02/VC-G03 保持 `LOCKED`，下一步 Q31 最终 native Player visual gate。详见 [Q30 R5 result](../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5_RESULT.json)、[Q30 R5 log](../game/tools/results/LOCAL-QUALITY/Q30/Q30_CURRENT_SOURCE_INDEPENDENT_REVIEW_20260915_LUNA_R5.log) 和 [Q30 handoff](game/design/common/handoffs/LOCAL-QUALITY/Q30/Q30.md)。
+
+## 2026-09-15 Q31 R6 visible native Player diagnostic boundary
+
+使用 Unity Pipeline 控制当前源码可见原生 Windows Player，`build_9f35f8fcb2f4` 构建成功（0 errors/0 warnings），通过 MainMenu NewGame/Confirm 进入 `InitialHarbor`，完成 E 登船/下船并采集 `1600x900` compositor-visible 帧。画面证据确认真实港口/船/水面/Player 已渲染，但仍可见低模/程序化环境、neutral/awkward action posture、自然握舵/IK 未闭合和岸线路线疑点。
+
+R6 的 W/A/D 路线在约 `z=-4.94 / -18.48 / -23.36` 出现停滞；没有权威 `IsSwimming=true` marker，不能写成游泳通过。会话在最终 runtime console、严格 Player 日志和 clean-close 断言前中断；接管后 PID/descriptor 均已消失，Runtime Pipeline 已恢复关闭。Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`、VC-G02/VC-G03=`LOCKED`、D31-P04/S05/G06=`PARTIAL` 保持。下一步先用 connected Editor Pipeline 做碰撞体/状态诊断，再决定唯一 owner 和最小修复。详见 [Q31 R6 result](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_VISUAL_20260915_LUNA_R6_RESULT.json)、[Q31 handoff](game/design/common/handoffs/LOCAL-QUALITY/Q31.md)。
+
+## 2026-09-16 Q31 R7 native S-route and swim-presentation evidence
+
+当前源码可见 Windows Player 通过 Unity Pipeline 从 `InitialHarbor` 的出生点沿 S（相机平面 `+Z`）走到约 `(0.33,0.40,18.80)`，运行时明确为 `IsSwimming=true / IsGrounded=false`；因此“完全不能游泳”不成立，实际问题是路线方向/到达距离加上视觉表现缺陷。真实 `1600x900` 帧显示角色在岸线附近以扭曲水平姿态和弯折四肢呈现，水面接触不可信；同时观测到约 `3.8–4.5 FPS` 的严重卡顿。R7 已 clean quit、错误日志边界为 0、Runtime Pipeline 已恢复关闭，状态仍为 Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`。下一步锁定泳姿 presentation/Avatar owner，再做最小修复和 visible Player 复验。详见 [Q31 R7](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_ROUTE_20260916_R7_RESULT.json) 与 [Q31 handoff](game/design/common/handoffs/LOCAL-QUALITY/Q31.md)。
+
+## 2026-09-16 Q31 R12 formal swim envelope revalidation
+
+R12 已将 D20 Formal Humanoid 泳姿的身体下移和四肢伸展修复带入真实 Development Windows Player：Unity Pipeline 路线明确进入 `IsSwimming=true / IsGrounded=false`，focused PlayMode `1/1 PASS`，build/runtime/log/clean-close 边界均有证据。真实帧显示角色比前一轮更低、四肢更伸展，但单臂划水、风格化姿态和水面接触仍有缺陷，因此 Q31 仍为 `PARTIAL`、VC-G01 仍为 `IN_PROGRESS`。详见 [Q31 R12 result](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12_RESULT.json)、[R12 log](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_20260916_R12.log) 与 [Q31 handoff](game/design/common/handoffs/LOCAL-QUALITY/Q31.md)。
+
+## 2026-09-16 Q31 R13 boarding/helm route evidence
+
+## 2026-09-16 Q31 R13 temporary safe pause
+
+当前开发在 R13 真实 Player 交互证据后暂时暂停。Player 已 clean quit，PID/descriptor 消失，Editor=`ready/stopped`，Runtime Pipeline=`enableInBuilds=false / port=0`。R12/R13 结果和 focused PlayMode 证据已留档，但正式 action/avatar、自然 swim/helm IK、植被接地/穿模、前台物理输入、目标设备性能、音频和最终人工视觉仍未关闭。
+
+状态保持：`Q31=PARTIAL`、`VC-G01=IN_PROGRESS`、`VC-G02/VC-G03=LOCKED`、`D31-P04/S05/G06=PARTIAL`。恢复入口：[Q31 R13 pause handoff](game/design/common/handoffs/LOCAL-QUALITY/PAUSE_20260916_Q31_R13.md)；机器结果：[pause result](../game/tools/results/LOCAL-QUALITY/Q31/Q31_PAUSE_CHECKPOINT_20260916_R13_RESULT.json)。
+
+R13 通过 Unity Pipeline 真实完成 E 登船/下船/重复登船和 W+A 船控转向：D7 `PlayerBoarded`、`ph_ship_fishing` parent、Formal D20 `Helm` state 和船舶 heading 变化均有运行时证据；D17A02 新增 Board→Helm 契约后 `1/1 PASS`，D17A03=`1/1 PASS`。可见 RenderTexture 帧显示角色位于舵轮前、双手接近轮盘，但正式 boarding/helm animation、自然 hand IK 和美术质量仍未通过，因此 Q31=`PARTIAL`、VC-G01=`IN_PROGRESS`。详见 [Q31 R13 result](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13_RESULT.json)、[R13 log](../game/tools/results/LOCAL-QUALITY/Q31/Q31_CURRENT_NATIVE_PLAYER_BOARDING_HELM_ROUTE_20260916_R13.log) 与 [boarding frame](../game/tools/results/LOCAL-QUALITY/Q31/Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png)。

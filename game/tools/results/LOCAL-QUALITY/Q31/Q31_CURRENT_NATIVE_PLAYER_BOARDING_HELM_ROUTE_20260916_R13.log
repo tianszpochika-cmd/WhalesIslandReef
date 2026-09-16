@@ -1,0 +1,13 @@
+Q31 R13 current-source native Player boarding/helm route and Formal presentation contract
+Player: Q31_CURRENT_NATIVE_PLAYER_SWIM_FORMAL_SAFE_R12.exe; PID=29980; buildGuid=6b9d61d35c2b41c787c24dd601c5d3d0; runtime_port=7900; 1600x900; hidden GUI launch, no foreground desktop takeover.
+Entry: Pipeline pointer NewGame (800,516.7) and Confirm (716.7,358.3) reached InitialHarbor build index 2.
+Initial: player=(0.00,0.15,-2.70); ship=(0.00,0.00,-5.20); HelmPoint=(0.00,1.10,-6.68); helm distance=4.091867; mode=Character; PlayerBoarded=false.
+Board: E down/up -> player=(0.00,1.10,-6.68); parent=ph_ship_fishing; mode=Ship; PlayerBoarded=true; feedback=boarded/True.
+Formal settled state: consumer=Formal; UsesHumanoidPoseAdapter=true; D2 action=Idle after transition; candidate=Helm; formal=Helm; ready=true; apply=true; generic=false; snapshotMode=Ship; intent=helm.
+Disembark: E down/up -> player=(0.00,0.17,-0.70); parent=<none>; mode=Character; PlayerBoarded=false; feedback=disembarked/True.
+Repeat: second E from the safe disembark position restored parent=ph_ship_fishing; mode=Ship; PlayerBoarded=true; feedback=boarded/True.
+Ship movement: W ~1s -> ship=(3.969865E-16,-8.441641), heading=180, speed=3.930213; player remained parented at (0.00,1.10,-9.92). W+A ~1s -> ship=(3.735874,-16.71201), heading=92.0754, speed=4.0; after release heading=63.94967, speed=0.
+Visual: Q31_R12_VISIBLE_BOARDING_ACTION_R1_RT.png via Camera.Render/RenderTexture/ReadPixels; bytes=1409085; sha256=9CCD25F6389FF1D8C8BF5C1C4ACFEB713B1BBC67F37FCAE6E7F95DCBED9BE594. Character is centered at warm-wood helm with hands nearby, but low-poly and authored hand IK remain open.
+Tests after source recompile: D17A02CharacterActionStateFollowsMovementJumpAndBoarding=1/1 PASS (3.1668316s); D17A03CharacterEntersWaterAndReportsSwimmingAction=1/1 PASS (1.9908031s); recompile failed=false errors=[]; Editor ready/stopped.
+Close: Pipeline quit exitCode=0; PID=29980 absent after 3s; runtime descriptor absent; Player log bytes=148208; SHA256=4993EB1EF9EEE9701AF530A7F9C4EFADD9E4A9BE8A0049CC44A528FE3AF6; strict whole-token ERROR/EXCEPTION/CRASH/FATAL scan=0. Runtime console query was not run.
+Status: Q31=PARTIAL; VC-G01=IN_PROGRESS; VC-G02/VC-G03=LOCKED; D31-P04/S05/G06=PARTIAL.

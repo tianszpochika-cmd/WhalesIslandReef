@@ -188,6 +188,20 @@ namespace Whalebone.Tests.D17
                 {
                     Assert.AreEqual("Boarding", presentationType.GetProperty("LastD2Action").GetValue(presentation),
                         "D20 表现消费者没有消费 D2 Boarding 动作状态。");
+
+                    if ((bool)presentationType.GetProperty("UsesHumanoidPoseAdapter").GetValue(presentation))
+                    {
+                        var formalAdapter = presentationType.GetProperty("HumanoidPoseAdapter").GetValue(presentation);
+                        Assert.IsNotNull(formalAdapter, "Formal Humanoid consumer 已声明启用，但 adapter 实例不存在。");
+                        Assert.IsTrue((bool)formalAdapter.GetType().GetProperty("IsReady").GetValue(formalAdapter),
+                            "登船过渡期间 Formal Humanoid adapter 必须保持 ready。");
+                        Assert.IsTrue((bool)formalAdapter.GetType().GetProperty("LastApplySucceeded").GetValue(formalAdapter),
+                            "登船过渡期间 Formal Humanoid adapter 必须成功提交 pose。");
+                        Assert.AreEqual("Board", formalAdapter.GetType().GetProperty("CurrentState").GetValue(formalAdapter).ToString(),
+                            "D2 Boarding 动作必须映射为 Formal Humanoid Board presentation state。");
+                        Assert.AreEqual("Board", presentationType.GetProperty("LastCandidateState").GetValue(presentation).ToString(),
+                            "D20 candidate 在上船过渡期间必须处于 Board presentation state。");
+                    }
                 }
                 else if (hasSkinnedVisual)
                 {
@@ -200,6 +214,19 @@ namespace Whalebone.Tests.D17
                         "进入船控后相机没有切换到船上视角。");
                     Assert.AreEqual(player.transform, cameraType.GetProperty("Target").GetValue(camera),
                         "船上视角必须以已登船玩家为取景主体，不能只盯船根导致玩家被船帆遮挡。");
+                }
+
+                deadline = Time.realtimeSinceStartup + 2f;
+                while ((bool)transitioning.GetValue(animation) && Time.realtimeSinceStartup < deadline)
+                    yield return null;
+                if (hasSkinnedVisual && presentationInstalled &&
+                    (bool)presentationType.GetProperty("UsesHumanoidPoseAdapter").GetValue(presentation))
+                {
+                    var formalAdapter = presentationType.GetProperty("HumanoidPoseAdapter").GetValue(presentation);
+                    Assert.AreEqual("Helm", formalAdapter.GetType().GetProperty("CurrentState").GetValue(formalAdapter).ToString(),
+                        "登船过渡结束后 Formal Humanoid consumer 必须进入 Helm presentation state。");
+                    Assert.AreEqual("Helm", presentationType.GetProperty("LastCandidateState").GetValue(presentation).ToString(),
+                        "船控模式下 D20 candidate 必须进入 Helm presentation state。");
                 }
 
                 Assert.IsTrue((bool)tryToggleShip.Invoke(router, null), "动作回归无法完成下船。");
@@ -346,6 +373,37 @@ namespace Whalebone.Tests.D17
                     Assert.IsNotNull(humanoidAdapter, "Humanoid presentation consumer 缺少 pose adapter。");
                     Assert.IsTrue((bool)humanoidAdapter.GetType().GetProperty("LastApplySucceeded").GetValue(humanoidAdapter),
                         "Humanoid presentation consumer 没有成功提交 Swimming pose。");
+                    // The formal Avatar uses Stretch muscles where values near
+                    // zero fold the imported elbows/knees. Keep this contract
+                    // explicit so a logical Fish state cannot regress to the
+                    // raised-arms/tucked-legs silhouette seen in the native
+                    // Player evidence.
+                    var poseField = humanoidAdapter.GetType().GetField("_pose",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    Assert.IsNotNull(poseField, "Humanoid presentation consumer 缺少当前 HumanPose 诊断。");
+                    var pose = poseField.GetValue(humanoidAdapter);
+                    var musclesField = pose.GetType().GetField("muscles");
+                    Assert.IsNotNull(musclesField, "Humanoid presentation consumer 缺少 muscles 数据。");
+                    var muscles = (float[])musclesField.GetValue(pose);
+                    var bodyPositionField = pose.GetType().GetField("bodyPosition");
+                    var restPoseField = humanoidAdapter.GetType().GetField("_restPose",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    Assert.IsNotNull(bodyPositionField, "Humanoid presentation consumer 缺少 bodyPosition 数据。");
+                    Assert.IsNotNull(restPoseField, "Humanoid presentation consumer 缺少 neutral HumanPose 基线。");
+                    var restPose = restPoseField.GetValue(humanoidAdapter);
+                    var swimBodyPosition = (Vector3)bodyPositionField.GetValue(pose);
+                    var restBodyPosition = (Vector3)bodyPositionField.GetValue(restPose);
+                    var bodyDrop = swimBodyPosition.y - restBodyPosition.y;
+                    Assert.That(bodyDrop, Is.InRange(-1.05f, -0.60f),
+                        "正式游泳姿态没有把视觉骨架下沉到海面附近。");
+                    Assert.Greater(muscles[42], 0.70f, "正式游泳姿态的左前臂 Stretch 过低，人物会折肘。");
+                    Assert.Greater(muscles[51], 0.70f, "正式游泳姿态的右前臂 Stretch 过低，人物会折肘。");
+                    Assert.Greater(muscles[24], 0.75f, "正式游泳姿态的左小腿 Stretch 过低，人物会收膝。");
+                    Assert.Greater(muscles[32], 0.75f, "正式游泳姿态的右小腿 Stretch 过低，人物会收膝。");
+                    Assert.Less(Mathf.Abs(muscles[37]), 0.25f, "正式游泳姿态的左肩抬举超出安全包络。");
+                    Assert.Less(Mathf.Abs(muscles[46]), 0.25f, "正式游泳姿态的右肩抬举超出安全包络。");
+                    var bodyPitch = (float)humanoidAdapter.GetType().GetProperty("LastBodyPitchDegrees").GetValue(humanoidAdapter);
+                    Assert.That(bodyPitch, Is.InRange(55f, 75f), "正式游泳姿态的整体 pitch 超出安全包络。");
                 }
             }
             else if (hasSkinnedVisual)

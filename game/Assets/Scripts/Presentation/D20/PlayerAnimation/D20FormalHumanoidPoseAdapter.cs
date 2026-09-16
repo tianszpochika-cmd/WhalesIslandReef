@@ -24,6 +24,8 @@ namespace WhalesIslandReef.Presentation.D20.PlayerAnimation
         // the current R02 prefab + InitialHarbor HelmWheel in the connected
         // Windows Player. They are a bounded presentation pose, not gameplay
         // or IK ownership; the physical D2 root remains untouched.
+        private static readonly Vector3 SwimBodyPositionOffset =
+            new Vector3(0f, -0.85f, 0f);
         private static readonly Vector3 HelmBodyPositionOffset =
             new Vector3(0f, -0.73f, 0.34f);
         private const float HelmShoulderFrontBack = -1f;
@@ -262,34 +264,37 @@ namespace WhalesIslandReef.Presentation.D20.PlayerAnimation
             var stroke = Mathf.Sin(_phase);
             var counterStroke = Mathf.Sin(_phase + Mathf.PI);
             _pose.bodyRotation = _restPose.bodyRotation * Quaternion.Euler(SwimBodyPitchDegrees, 0f, 0f);
+            _pose.bodyPosition = _restPose.bodyPosition + SwimBodyPositionOffset;
             LastBodyPitchDegrees = SwimBodyPitchDegrees;
-            // Keep the verified whole-body pitch, but use a restrained
-            // surface-swim envelope.  The previous broad muscle values made
-            // the R02 Humanoid candidate lift both arms toward the face and
-            // fold the knees into a running-like silhouette in the hidden
-            // Player frame.  This remains presentation-only: D2 owns the
-            // physical root and no imported action clip is admitted here.
-            Set(SpineFrontBack, 0.04f);
-            Set(ChestFrontBack, 0.03f);
-            Set(UpperChestFrontBack, 0.02f);
-            Set(LeftShoulderDownUp, 0.28f);
-            Set(RightShoulderDownUp, 0.28f);
-            Set(LeftShoulderFrontBack, -0.02f);
-            Set(RightShoulderFrontBack, -0.02f);
-            Set(LeftArmDownUp, 0.24f);
-            Set(RightArmDownUp, 0.24f);
-            Set(LeftArmFrontBack, -0.36f + stroke * 0.10f);
-            Set(RightArmFrontBack, -0.36f + counterStroke * 0.10f);
-            Set(LeftForearmStretch, 0.12f + stroke * 0.06f);
-            Set(RightForearmStretch, 0.12f + counterStroke * 0.06f);
-            Set(LeftUpperLegFrontBack, 0.14f * counterStroke);
-            Set(RightUpperLegFrontBack, 0.14f * stroke);
-            Set(LeftUpperLegTwist, 0.04f * stroke);
-            Set(RightUpperLegTwist, 0.04f * counterStroke);
-            Set(LeftLowerLegStretch, 0.08f);
-            Set(RightLowerLegStretch, 0.08f);
-            Set(LeftFootUpDown, -0.06f * counterStroke);
-            Set(RightFootUpDown, -0.06f * stroke);
+            // Keep the verified whole-body pitch, but preserve the Avatar's
+            // extended-limb rest envelope.  The former values drove the
+            // Stretch muscles toward zero, which is a folded elbow/knee for
+            // this imported Avatar rather than a relaxed surface stroke. The
+            // result was the visible raised-arms and tucked-legs silhouette
+            // recorded in the R7 native Player frame. This remains
+            // presentation-only: D2 owns the physical root and no imported
+            // action clip is admitted here.
+            Set(SpineFrontBack, 0.01f);
+            Set(ChestFrontBack, 0.01f);
+            Set(UpperChestFrontBack, 0.01f);
+            Set(LeftShoulderDownUp, -0.08f);
+            Set(RightShoulderDownUp, -0.08f);
+            Set(LeftShoulderFrontBack, -0.06f);
+            Set(RightShoulderFrontBack, -0.06f);
+            Set(LeftArmDownUp, -0.04f);
+            Set(RightArmDownUp, -0.04f);
+            Set(LeftArmFrontBack, -0.18f + stroke * 0.06f);
+            Set(RightArmFrontBack, -0.18f + counterStroke * 0.06f);
+            Set(LeftForearmStretch, 0.82f + stroke * 0.04f);
+            Set(RightForearmStretch, 0.82f + counterStroke * 0.04f);
+            Set(LeftUpperLegFrontBack, 0.04f * counterStroke);
+            Set(RightUpperLegFrontBack, 0.04f * stroke);
+            Set(LeftUpperLegTwist, 0.01f * stroke);
+            Set(RightUpperLegTwist, 0.01f * counterStroke);
+            Set(LeftLowerLegStretch, 0.86f);
+            Set(RightLowerLegStretch, 0.86f);
+            Set(LeftFootUpDown, -0.02f * counterStroke);
+            Set(RightFootUpDown, -0.02f * stroke);
         }
 
         private void Set(int index, float value)
